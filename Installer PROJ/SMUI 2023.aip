@@ -1,0 +1,536 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<DOCUMENT Type="Advanced Installer" CreateVersion="20.7.1" version="20.7.1" Modules="architect" RootPath="." Language="zh" Id="{A12F99ED-F1EE-445F-8B52-85137FD53D6F}">
+  <COMPONENT cid="caphyon.advinst.msicomp.ProjectOptionsComponent">
+    <ROW Name="HiddenItems" Value="AppXProductDetailsComponent;AppXDependenciesComponent;AppXAppDetailsComponent;AppXVisualAssetsComponent;AppXCapabilitiesComponent;AppXAppDeclarationsComponent;AppXUriRulesComponent;ActSyncAppComponent;CPLAppletComponent;AutorunComponent;GameUxComponent;SilverlightSlnComponent;SharePointSlnComponent;FixupComponent;MsiXDiffComponent;MsixManifestEditorComponent"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiPropsComponent">
+    <ROW Property="AI_APP_FILE" Value="[#StardewMUI2023.exe]"/>
+    <ROW Property="AI_BITMAP_DISPLAY_MODE" Value="0"/>
+    <ROW Property="AI_DESKTOP_SH" Type="4" MsiKey="AI_DESKTOP_SH"/>
+    <ROW Property="AI_EXTERNALUIUNINSTALLERNAME" MultiBuildValue="DefaultBuild:aiui"/>
+    <ROW Property="AI_FINDEXE_TITLE" Value="选择 [|ProductName] 安装包" ValueLocId="AI.Property.FindExeTitle"/>
+    <ROW Property="AI_PREDEF_LCONDS_PROPS" Value="AI_DETECTED_INTERNET_CONNECTION"/>
+    <ROW Property="AI_PRODUCTNAME_ARP" Value="SMUI 2023"/>
+    <ROW Property="AI_SHORTCUTSREG" Value="0|0|0|0|"/>
+    <ROW Property="AI_UNINSTALLER" Value="msiexec.exe"/>
+    <ROW Property="AI_UPGRADE" Value="No"/>
+    <ROW Property="ALLUSERS" Value="1" MultiBuildValue="DefaultBuild:"/>
+    <ROW Property="ARPCOMMENTS" Value="此 Installer 数据库包含了安装 [|ProductName] 所需的逻辑和数据。" ValueLocId="*"/>
+    <ROW Property="ARPNOREPAIR" Value="1" MultiBuildValue="DefaultBuild:1"/>
+    <ROW Property="ARPPRODUCTICON" Value="dropbox.exe" Type="8"/>
+    <ROW Property="ARPSYSTEMCOMPONENT" Value="1"/>
+    <ROW Property="CTRLS" Value="2"/>
+    <ROW Property="MYappLogo" Value="dropbox.png" Type="1"/>
+    <ROW Property="Manufacturer" Value="1059 Studio"/>
+    <ROW Property="ProductCode" Value="2052:{AD127EA3-05CE-4C55-839D-AEC5C67B10DB} " Type="16"/>
+    <ROW Property="ProductLanguage" Value="2052"/>
+    <ROW Property="ProductName" Value="SMUI 2023"/>
+    <ROW Property="ProductVersion" Value="6.0.0" Options="32"/>
+    <ROW Property="REBOOT" MultiBuildValue="DefaultBuild:ReallySuppress"/>
+    <ROW Property="SecureCustomProperties" Value="OLDPRODUCTS;AI_NEWERPRODUCTFOUND;AI_SETUPEXEPATH;SETUPEXEDIR"/>
+    <ROW Property="UpgradeCode" Value="{349EDF0D-1EB2-4B52-B72A-0F3AEC12DAC8}"/>
+    <ROW Property="WindowsType9X" MultiBuildValue="DefaultBuild:Windows 9x/ME" ValueLocId="-"/>
+    <ROW Property="WindowsType9XDisplay" MultiBuildValue="DefaultBuild:Windows 9x/ME" ValueLocId="-"/>
+    <ROW Property="WindowsTypeNT40" MultiBuildValue="DefaultBuild:Windows NT 4.0" ValueLocId="-"/>
+    <ROW Property="WindowsTypeNT40Display" MultiBuildValue="DefaultBuild:Windows NT 4.0" ValueLocId="-"/>
+    <ROW Property="WindowsTypeNT50" MultiBuildValue="DefaultBuild:Windows 2000" ValueLocId="-"/>
+    <ROW Property="WindowsTypeNT50Display" MultiBuildValue="DefaultBuild:Windows 2000" ValueLocId="-"/>
+    <ROW Property="WindowsTypeNT5X" MultiBuildValue="DefaultBuild:Windows XP/2003" ValueLocId="-"/>
+    <ROW Property="WindowsTypeNT5XDisplay" MultiBuildValue="DefaultBuild:Windows XP/2003" ValueLocId="-"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiDirsComponent">
+    <ROW Directory="APPDIR" Directory_Parent="TARGETDIR" DefaultDir="APPDIR:." IsPseudoRoot="1"/>
+    <ROW Directory="SHORTCUTDIR" Directory_Parent="TARGETDIR" DefaultDir="SHORTC~1|SHORTCUTDIR" IsPseudoRoot="1"/>
+    <ROW Directory="TARGETDIR" DefaultDir="SourceDir"/>
+    <ROW Directory="lib_1_Dir" Directory_Parent="winx64_Dir" DefaultDir="lib"/>
+    <ROW Directory="locales_1_Dir" Directory_Parent="native_1_Dir" DefaultDir="locales"/>
+    <ROW Directory="native_1_Dir" Directory_Parent="winx64_Dir" DefaultDir="native"/>
+    <ROW Directory="netcoreapp3.1_1_Dir" Directory_Parent="lib_1_Dir" DefaultDir="NETCOR~1.1|netcoreapp3.1"/>
+    <ROW Directory="runtimes_Dir" Directory_Parent="APPDIR" DefaultDir="runtimes"/>
+    <ROW Directory="winx64_Dir" Directory_Parent="runtimes_Dir" DefaultDir="win-x64"/>
+    <ROW Directory="za64_Dir" Directory_Parent="APPDIR" DefaultDir="7za64"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiCompsComponent">
+    <ROW Component="AI_CustomARPName" ComponentId="{85B85875-36CA-4A07-972E-D79E6F789A16}" Directory_="APPDIR" Attributes="260" KeyPath="DisplayName" Options="1"/>
+    <ROW Component="AI_ExePath" ComponentId="{CBAF2252-48D8-4146-9D8B-2E99237377E4}" Directory_="APPDIR" Attributes="260" KeyPath="AI_ExePath"/>
+    <ROW Component="AI_SHORTCUTSREG" ComponentId="{E88BB48E-FFB9-4C85-A187-79007CB5BBA6}" Directory_="APPDIR" Attributes="260" KeyPath="AI_SHORTCUTSREG" Options="1"/>
+    <ROW Component="APPDIR" ComponentId="{94CEB0EC-B9B4-444F-9BAB-40F57B9BEAC3}" Directory_="APPDIR" Attributes="0"/>
+    <ROW Component="BetterFolderBrowser.dll" ComponentId="{1BCA3982-16C9-416E-8757-B2A21888D5DB}" Directory_="APPDIR" Attributes="0" KeyPath="BetterFolderBrowser.dll"/>
+    <ROW Component="C63A5E8718343189D035A252D1450C5" ComponentId="{5B320FC5-C028-49BB-B631-D97744530102}" Directory_="APPDIR" Attributes="260" KeyPath="C63A5E8718343189D035A252D1450C5" Options="2"/>
+    <ROW Component="CefSharp.BrowserSubprocess.Core.dll_1" ComponentId="{C287A51D-6E1A-4C1F-8D67-095959C53889}" Directory_="native_1_Dir" Attributes="256" KeyPath="CefSharp.BrowserSubprocess.Core.dll_1"/>
+    <ROW Component="CefSharp.BrowserSubprocess.dll_1" ComponentId="{F93F1B6C-23CC-4719-94EF-2A4D42394E75}" Directory_="native_1_Dir" Attributes="256" KeyPath="CefSharp.BrowserSubprocess.dll_1"/>
+    <ROW Component="CefSharp.BrowserSubprocess.exe_1" ComponentId="{1280A1F6-306E-467A-BFB7-61C1AEEDF315}" Directory_="native_1_Dir" Attributes="256" KeyPath="CefSharp.BrowserSubprocess.exe_1"/>
+    <ROW Component="CefSharp.BrowserSubprocess.runtimeconfig.json_1" ComponentId="{7215B3D7-4782-44CF-9593-689975ECB41A}" Directory_="native_1_Dir" Attributes="0" KeyPath="CefSharp.BrowserSubprocess.runtimeconfig.json_1" Type="0"/>
+    <ROW Component="CefSharp.Core.Runtime.dll_1" ComponentId="{892227F2-939B-4A6C-8F5B-480167457281}" Directory_="netcoreapp3.1_1_Dir" Attributes="256" KeyPath="CefSharp.Core.Runtime.dll_1"/>
+    <ROW Component="CefSharp.Core.dll_1" ComponentId="{539CE792-B9FF-4E2D-B38E-461E1961EDDD}" Directory_="netcoreapp3.1_1_Dir" Attributes="0" KeyPath="CefSharp.Core.dll_1"/>
+    <ROW Component="CefSharp.WinForms.dll" ComponentId="{BB7F20C2-3583-49D6-86C6-3E1F0885B502}" Directory_="APPDIR" Attributes="0" KeyPath="CefSharp.WinForms.dll"/>
+    <ROW Component="CefSharp.dll_2" ComponentId="{A74DB4D2-8012-4FAF-A94B-B7E4B72CA8CD}" Directory_="netcoreapp3.1_1_Dir" Attributes="0" KeyPath="CefSharp.dll_2"/>
+    <ROW Component="CefSharp.dll_3" ComponentId="{1426654F-6587-4879-A94D-6D0C739906E1}" Directory_="native_1_Dir" Attributes="0" KeyPath="CefSharp.dll_3"/>
+    <ROW Component="Ijwhost.dll_2" ComponentId="{2C27BC73-7DD6-41A6-AFB1-7753F74AC22B}" Directory_="netcoreapp3.1_1_Dir" Attributes="256" KeyPath="Ijwhost.dll_2"/>
+    <ROW Component="Ijwhost.dll_3" ComponentId="{A3222ADF-4BEC-4795-BF10-F9D380B794CF}" Directory_="native_1_Dir" Attributes="256" KeyPath="Ijwhost.dll_3"/>
+    <ROW Component="Imazen.WebP.dll" ComponentId="{65818165-08BC-42CC-8857-B089CDB5E975}" Directory_="APPDIR" Attributes="0" KeyPath="Imazen.WebP.dll"/>
+    <ROW Component="Newtonsoft.Json.dll" ComponentId="{1F7ED94F-3F1D-4EA2-9A1B-925CE4604540}" Directory_="APPDIR" Attributes="0" KeyPath="Newtonsoft.Json.dll"/>
+    <ROW Component="ProductInformation" ComponentId="{25605BB1-86A4-478E-A3B7-2D721F907123}" Directory_="APPDIR" Attributes="260" KeyPath="Version"/>
+    <ROW Component="SHORTCUTDIR" ComponentId="{1E141D83-BAC5-423F-B016-3DA92C68B3E7}" Directory_="SHORTCUTDIR" Attributes="0"/>
+    <ROW Component="SevenZipSharp.dll" ComponentId="{C3BF938C-13EE-4D8C-B832-CBFB6F4B367E}" Directory_="APPDIR" Attributes="0" KeyPath="SevenZipSharp.dll"/>
+    <ROW Component="StardewMUI2023.deps.json" ComponentId="{C703E57F-45DD-4159-81F3-62D02AAEBC3D}" Directory_="APPDIR" Attributes="0" KeyPath="StardewMUI2023.deps.json" Type="0"/>
+    <ROW Component="StardewMUI2023.dll" ComponentId="{700692DD-8CF5-4ACD-A061-3F20A5838042}" Directory_="APPDIR" Attributes="256" KeyPath="StardewMUI2023.dll"/>
+    <ROW Component="StardewMUI2023.exe" ComponentId="{5D2340F3-1B59-4F5A-B336-96866EB3D099}" Directory_="APPDIR" Attributes="256" KeyPath="StardewMUI2023.exe"/>
+    <ROW Component="SunnyUI.Common.dll" ComponentId="{CED03858-B9E2-427E-8CCB-633EE65257A8}" Directory_="APPDIR" Attributes="0" KeyPath="SunnyUI.Common.dll"/>
+    <ROW Component="SunnyUI.dll" ComponentId="{1A4116C3-B423-4304-BF56-27695C5C04C5}" Directory_="APPDIR" Attributes="0" KeyPath="SunnyUI.dll"/>
+    <ROW Component="af.pak_1" ComponentId="{6759917D-3812-4336-B937-7F9574A3951E}" Directory_="locales_1_Dir" Attributes="0" KeyPath="enUS.pak_1" Type="0"/>
+    <ROW Component="chrome_elf.dll_1" ComponentId="{6A2DAF6D-FD57-4262-9913-1469FCC04FA5}" Directory_="native_1_Dir" Attributes="256" KeyPath="chrome_elf.dll_1"/>
+    <ROW Component="d3dcompiler_47.dll_1" ComponentId="{D234BAAD-F98E-4177-8EC2-5100B79C4E9E}" Directory_="native_1_Dir" Attributes="256" KeyPath="d3dcompiler_47.dll_1"/>
+    <ROW Component="libEGL.dll_1" ComponentId="{FC6E7304-541E-407C-8320-F1D0CE9762F1}" Directory_="native_1_Dir" Attributes="256" KeyPath="libEGL.dll_1"/>
+    <ROW Component="libGLESv2.dll_1" ComponentId="{0A8B29E3-0B0D-4E4A-BCB8-A229BB2444DF}" Directory_="native_1_Dir" Attributes="256" KeyPath="libGLESv2.dll_1"/>
+    <ROW Component="libcef.dll_1" ComponentId="{14494675-53AB-423C-A237-5BB4A75DF61F}" Directory_="native_1_Dir" Attributes="256" KeyPath="libcef.dll_1"/>
+    <ROW Component="libwebp.dll" ComponentId="{F782F21E-60CC-48EB-A2BA-5536E56B2715}" Directory_="APPDIR" Attributes="256" KeyPath="libwebp.dll"/>
+    <ROW Component="vk_swiftshader.dll_1" ComponentId="{F5F7088C-30D0-4B92-B772-0F596C67DB3B}" Directory_="native_1_Dir" Attributes="256" KeyPath="vk_swiftshader.dll_1"/>
+    <ROW Component="vulkan1.dll_1" ComponentId="{3E0098AB-50E0-4B11-A13F-0FF09C371B47}" Directory_="native_1_Dir" Attributes="256" KeyPath="vulkan1.dll_1"/>
+    <ROW Component="zFull64.dll" ComponentId="{4E31A195-353F-4D55-A650-A3A91B62EF5B}" Directory_="APPDIR" Attributes="256" KeyPath="zFull64.dll"/>
+    <ROW Component="za.dll" ComponentId="{B156BABE-2283-4E3A-9AF2-33F34BC3A71A}" Directory_="za64_Dir" Attributes="256" KeyPath="za.dll"/>
+    <ROW Component="za.exe" ComponentId="{C1D9CEA6-C8DB-4DF2-8E6D-8010561D39E0}" Directory_="za64_Dir" Attributes="256" KeyPath="za.exe"/>
+    <ROW Component="zxa.dll" ComponentId="{C2A77404-C0DA-41F0-85D6-512F8A0BBD5F}" Directory_="za64_Dir" Attributes="256" KeyPath="zxa.dll"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiFeatsComponent">
+    <ROW Feature="C63A5E8718343189D035A252D1450C5" Title=".NET 7 Desktop Runtime x64" Description=".NET 7 Desktop Runtime x64" Display="3" Level="1" Attributes="0"/>
+    <ROW Feature="MainFeature" Title="MainFeature" Description="Description" Display="1" Level="1" Directory_="APPDIR" Attributes="0"/>
+    <ATTRIBUTE name="CurrentFeature" value="MainFeature"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiFilesComponent">
+    <ROW File="CefSharp.WinForms.dll" Component_="CefSharp.WinForms.dll" FileName="CEFSHA~1.DLL|CefSharp.WinForms.dll" Attributes="0" SourcePath="..\StardewMUI 2023\bin\Debug\net7.0-windows\CefSharp.WinForms.dll" SelfReg="false"/>
+    <ROW File="StardewMUI2023.deps.json" Component_="StardewMUI2023.deps.json" FileName="STARDE~1.JSO|StardewMUI 2023.deps.json" Attributes="0" SourcePath="..\StardewMUI 2023\bin\Debug\net7.0-windows\StardewMUI 2023.deps.json" SelfReg="false"/>
+    <ROW File="StardewMUI2023.dll" Component_="StardewMUI2023.dll" FileName="STARDE~1.DLL|StardewMUI 2023.dll" Attributes="0" SourcePath="..\StardewMUI 2023\bin\Debug\net7.0-windows\StardewMUI 2023.dll" SelfReg="false"/>
+    <ROW File="StardewMUI2023.exe" Component_="StardewMUI2023.exe" FileName="STARDE~1.EXE|StardewMUI 2023.exe" Attributes="0" SourcePath="..\StardewMUI 2023\bin\Debug\net7.0-windows\StardewMUI 2023.exe" SelfReg="false" DigSign="true"/>
+    <ROW File="StardewMUI2023.runtimeconfig.json" Component_="StardewMUI2023.deps.json" FileName="STARDE~2.JSO|StardewMUI 2023.runtimeconfig.json" Attributes="0" SourcePath="..\StardewMUI 2023\bin\Debug\net7.0-windows\StardewMUI 2023.runtimeconfig.json" SelfReg="false"/>
+    <ROW File="SunnyUI.Common.dll" Component_="SunnyUI.Common.dll" FileName="SUNNYU~1.DLL|SunnyUI.Common.dll" Attributes="0" SourcePath="..\StardewMUI 2023\bin\Debug\net7.0-windows\SunnyUI.Common.dll" SelfReg="false"/>
+    <ROW File="SunnyUI.dll" Component_="SunnyUI.dll" FileName="SunnyUI.dll" Attributes="0" SourcePath="..\StardewMUI 2023\bin\Debug\net7.0-windows\SunnyUI.dll" SelfReg="false"/>
+    <ROW File="CefSharp.Core.dll_1" Component_="CefSharp.Core.dll_1" FileName="CEFSHA~1.DLL|CefSharp.Core.dll" Attributes="0" SourcePath="..\StardewMUI 2023\bin\Debug\net7.0-windows\runtimes\win-x64\lib\netcoreapp3.1\CefSharp.Core.dll" SelfReg="false"/>
+    <ROW File="CefSharp.Core.Runtime.dll_1" Component_="CefSharp.Core.Runtime.dll_1" FileName="CEFSHA~2.DLL|CefSharp.Core.Runtime.dll" Attributes="0" SourcePath="..\StardewMUI 2023\bin\Debug\net7.0-windows\runtimes\win-x64\lib\netcoreapp3.1\CefSharp.Core.Runtime.dll" SelfReg="false"/>
+    <ROW File="CefSharp.dll_2" Component_="CefSharp.dll_2" FileName="CefSharp.dll" Attributes="0" SourcePath="..\StardewMUI 2023\bin\Debug\net7.0-windows\runtimes\win-x64\lib\netcoreapp3.1\CefSharp.dll" SelfReg="false"/>
+    <ROW File="Ijwhost.dll_2" Component_="Ijwhost.dll_2" FileName="Ijwhost.dll" Attributes="0" SourcePath="..\StardewMUI 2023\bin\Debug\net7.0-windows\runtimes\win-x64\lib\netcoreapp3.1\Ijwhost.dll" SelfReg="false"/>
+    <ROW File="CefSharp.BrowserSubprocess.Core.dll_1" Component_="CefSharp.BrowserSubprocess.Core.dll_1" FileName="CEFSHA~1.DLL|CefSharp.BrowserSubprocess.Core.dll" Attributes="0" SourcePath="..\StardewMUI 2023\bin\Debug\net7.0-windows\runtimes\win-x64\native\CefSharp.BrowserSubprocess.Core.dll" SelfReg="false"/>
+    <ROW File="CefSharp.BrowserSubprocess.dll_1" Component_="CefSharp.BrowserSubprocess.dll_1" FileName="CEFSHA~2.DLL|CefSharp.BrowserSubprocess.dll" Attributes="0" SourcePath="..\StardewMUI 2023\bin\Debug\net7.0-windows\runtimes\win-x64\native\CefSharp.BrowserSubprocess.dll" SelfReg="false"/>
+    <ROW File="CefSharp.BrowserSubprocess.exe_1" Component_="CefSharp.BrowserSubprocess.exe_1" FileName="CEFSHA~1.EXE|CefSharp.BrowserSubprocess.exe" Attributes="0" SourcePath="..\StardewMUI 2023\bin\Debug\net7.0-windows\runtimes\win-x64\native\CefSharp.BrowserSubprocess.exe" SelfReg="false" DigSign="true"/>
+    <ROW File="CefSharp.BrowserSubprocess.runtimeconfig.json_1" Component_="CefSharp.BrowserSubprocess.runtimeconfig.json_1" FileName="CEFSHA~1.JSO|CefSharp.BrowserSubprocess.runtimeconfig.json" Attributes="0" SourcePath="..\StardewMUI 2023\bin\Debug\net7.0-windows\runtimes\win-x64\native\CefSharp.BrowserSubprocess.runtimeconfig.json" SelfReg="false"/>
+    <ROW File="CefSharp.dll_3" Component_="CefSharp.dll_3" FileName="CefSharp.dll" Attributes="0" SourcePath="..\StardewMUI 2023\bin\Debug\net7.0-windows\runtimes\win-x64\native\CefSharp.dll" SelfReg="false"/>
+    <ROW File="chrome_100_percent.pak_1" Component_="CefSharp.BrowserSubprocess.runtimeconfig.json_1" FileName="CHROME~1.PAK|chrome_100_percent.pak" Attributes="0" SourcePath="..\StardewMUI 2023\bin\Debug\net7.0-windows\runtimes\win-x64\native\chrome_100_percent.pak" SelfReg="false"/>
+    <ROW File="chrome_200_percent.pak_1" Component_="CefSharp.BrowserSubprocess.runtimeconfig.json_1" FileName="CHROME~2.PAK|chrome_200_percent.pak" Attributes="0" SourcePath="..\StardewMUI 2023\bin\Debug\net7.0-windows\runtimes\win-x64\native\chrome_200_percent.pak" SelfReg="false"/>
+    <ROW File="chrome_elf.dll_1" Component_="chrome_elf.dll_1" FileName="CHROME~1.DLL|chrome_elf.dll" Attributes="0" SourcePath="..\StardewMUI 2023\bin\Debug\net7.0-windows\runtimes\win-x64\native\chrome_elf.dll" SelfReg="false"/>
+    <ROW File="d3dcompiler_47.dll_1" Component_="d3dcompiler_47.dll_1" FileName="D3DCOM~1.DLL|d3dcompiler_47.dll" Attributes="0" SourcePath="..\StardewMUI 2023\bin\Debug\net7.0-windows\runtimes\win-x64\native\d3dcompiler_47.dll" SelfReg="false"/>
+    <ROW File="icudtl.dat_1" Component_="CefSharp.BrowserSubprocess.runtimeconfig.json_1" FileName="icudtl.dat" Attributes="0" SourcePath="..\StardewMUI 2023\bin\Debug\net7.0-windows\runtimes\win-x64\native\icudtl.dat" SelfReg="false"/>
+    <ROW File="Ijwhost.dll_3" Component_="Ijwhost.dll_3" FileName="Ijwhost.dll" Attributes="0" SourcePath="..\StardewMUI 2023\bin\Debug\net7.0-windows\runtimes\win-x64\native\Ijwhost.dll" SelfReg="false"/>
+    <ROW File="libcef.dll_1" Component_="libcef.dll_1" FileName="libcef.dll" Attributes="0" SourcePath="..\StardewMUI 2023\bin\Debug\net7.0-windows\runtimes\win-x64\native\libcef.dll" SelfReg="false"/>
+    <ROW File="libEGL.dll_1" Component_="libEGL.dll_1" FileName="libEGL.dll" Attributes="0" SourcePath="..\StardewMUI 2023\bin\Debug\net7.0-windows\runtimes\win-x64\native\libEGL.dll" SelfReg="false"/>
+    <ROW File="libGLESv2.dll_1" Component_="libGLESv2.dll_1" FileName="LIBGLE~1.DLL|libGLESv2.dll" Attributes="0" SourcePath="..\StardewMUI 2023\bin\Debug\net7.0-windows\runtimes\win-x64\native\libGLESv2.dll" SelfReg="false"/>
+    <ROW File="enUS.pak_1" Component_="af.pak_1" FileName="en-US.pak" Attributes="0" SourcePath="..\StardewMUI 2023\bin\Debug\net7.0-windows\runtimes\win-x64\native\locales\en-US.pak" SelfReg="false"/>
+    <ROW File="zhCN.pak_1" Component_="af.pak_1" FileName="zh-CN.pak" Attributes="0" SourcePath="..\StardewMUI 2023\bin\Debug\net7.0-windows\runtimes\win-x64\native\locales\zh-CN.pak" SelfReg="false"/>
+    <ROW File="resources.pak_1" Component_="CefSharp.BrowserSubprocess.runtimeconfig.json_1" FileName="RESOUR~1.PAK|resources.pak" Attributes="0" SourcePath="..\StardewMUI 2023\bin\Debug\net7.0-windows\runtimes\win-x64\native\resources.pak" SelfReg="false"/>
+    <ROW File="snapshot_blob.bin_1" Component_="CefSharp.BrowserSubprocess.runtimeconfig.json_1" FileName="SNAPSH~1.BIN|snapshot_blob.bin" Attributes="0" SourcePath="..\StardewMUI 2023\bin\Debug\net7.0-windows\runtimes\win-x64\native\snapshot_blob.bin" SelfReg="false"/>
+    <ROW File="v8_context_snapshot.bin_1" Component_="CefSharp.BrowserSubprocess.runtimeconfig.json_1" FileName="V8_CON~1.BIN|v8_context_snapshot.bin" Attributes="0" SourcePath="..\StardewMUI 2023\bin\Debug\net7.0-windows\runtimes\win-x64\native\v8_context_snapshot.bin" SelfReg="false"/>
+    <ROW File="vk_swiftshader.dll_1" Component_="vk_swiftshader.dll_1" FileName="VK_SWI~1.DLL|vk_swiftshader.dll" Attributes="0" SourcePath="..\StardewMUI 2023\bin\Debug\net7.0-windows\runtimes\win-x64\native\vk_swiftshader.dll" SelfReg="false"/>
+    <ROW File="vk_swiftshader_icd.json_1" Component_="CefSharp.BrowserSubprocess.runtimeconfig.json_1" FileName="VK_SWI~1.JSO|vk_swiftshader_icd.json" Attributes="0" SourcePath="..\StardewMUI 2023\bin\Debug\net7.0-windows\runtimes\win-x64\native\vk_swiftshader_icd.json" SelfReg="false"/>
+    <ROW File="vulkan1.dll_1" Component_="vulkan1.dll_1" FileName="vulkan-1.dll" Attributes="0" SourcePath="..\StardewMUI 2023\bin\Debug\net7.0-windows\runtimes\win-x64\native\vulkan-1.dll" SelfReg="false"/>
+    <ROW File="zFull64.dll" Component_="zFull64.dll" FileName="7zFull64.dll" Attributes="0" SourcePath="..\StardewMUI 2023\bin\Debug\net7.0-windows\7zFull64.dll" SelfReg="false"/>
+    <ROW File="BetterFolderBrowser.dll" Component_="BetterFolderBrowser.dll" FileName="BETTER~1.DLL|BetterFolderBrowser.dll" Attributes="0" SourcePath="..\StardewMUI 2023\bin\Debug\net7.0-windows\BetterFolderBrowser.dll" SelfReg="false"/>
+    <ROW File="Imazen.WebP.dll" Component_="Imazen.WebP.dll" FileName="IMAZEN~1.DLL|Imazen.WebP.dll" Attributes="0" SourcePath="..\StardewMUI 2023\bin\Debug\net7.0-windows\Imazen.WebP.dll" SelfReg="false"/>
+    <ROW File="libwebp.dll" Component_="libwebp.dll" FileName="libwebp.dll" Attributes="0" SourcePath="..\StardewMUI 2023\bin\Debug\net7.0-windows\libwebp.dll" SelfReg="false"/>
+    <ROW File="Newtonsoft.Json.dll" Component_="Newtonsoft.Json.dll" FileName="NEWTON~1.DLL|Newtonsoft.Json.dll" Attributes="0" SourcePath="..\StardewMUI 2023\bin\Debug\net7.0-windows\Newtonsoft.Json.dll" SelfReg="false"/>
+    <ROW File="SevenZipSharp.dll" Component_="SevenZipSharp.dll" FileName="SEVENZ~1.DLL|SevenZipSharp.dll" Attributes="0" SourcePath="..\StardewMUI 2023\bin\Debug\net7.0-windows\SevenZipSharp.dll" SelfReg="false"/>
+    <ROW File="za.dll" Component_="za.dll" FileName="7za.dll" Attributes="0" SourcePath="..\StardewMUI 2023\bin\Debug\net7.0-windows\7za64\7za.dll" SelfReg="false"/>
+    <ROW File="za.exe" Component_="za.exe" FileName="7za.exe" Attributes="0" SourcePath="..\StardewMUI 2023\bin\Debug\net7.0-windows\7za64\7za.exe" SelfReg="false" DigSign="true"/>
+    <ROW File="zxa.dll" Component_="zxa.dll" FileName="7zxa.dll" Attributes="0" SourcePath="..\StardewMUI 2023\bin\Debug\net7.0-windows\7za64\7zxa.dll" SelfReg="false"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.AiPersistentPropComponent">
+    <ROW Property="AI_SHORTCUTSREG" Registry="AI_SHORTCUTSREG" HklmSearch="AI_SHORTCUTSREG" HkcuSearch="AI_SHORTCUTSREG_1" Hklm64Search="AI_SHORTCUTSREG_2" Hkcu64Search="AI_SHORTCUTSREG_3"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.BootstrOptComponent">
+    <ROW BootstrOptKey="GlobalOptions" DownloadFolder="[AppDataFolder][|Manufacturer]\[|ProductName]\prerequisites" Options="2"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.BootstrapperUISequenceComponent">
+    <ROW Action="AI_DetectSoftware" Sequence="151"/>
+    <ROW Action="AI_CustomFrameType" Condition="VersionNT64&gt;=1100" Sequence="51" MsiKey="AI_CustomFrameType"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.BuildComponent">
+    <ROW BuildKey="DefaultBuild" BuildName="DefaultBuild" BuildOrder="1" BuildType="0" PackageFolder="C:\Users\1059\Desktop" Languages="zh" InstallationType="2" CabsLocation="1" UseLzma="true" LzmaMethod="2" LzmaCompressionLevel="4" PackageType="1" FilesInsideExe="true" ExeIconPath="dropbox.ico" ExtractionFolder="[AppDataFolder][|Manufacturer]\[|ProductName] [|ProductVersion]\install" ExtUI="true" Options="16" UseLargeSchema="true" Unicode="true" ExeName="SMUI 6 Installer" MsiPackageType="x64"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.DictionaryComponent">
+    <ROW Path="&lt;AI_DICTS&gt;ui.ail"/>
+    <ROW Path="&lt;AI_DICTS&gt;ui_zh.ail"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.DigCertStoreComponent">
+    <ROW TimeStampUrl="http://timestamp.digicert.com" SignerDescription="[|ProductName]" SignOptions="0" SignTool="4" UseSha256="1"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.FragmentComponent">
+    <ROW Fragment="CommonUI.aip" Path="&lt;AI_FRAGS&gt;CommonUI.aip"/>
+    <ROW Fragment="FolderDlg.aip" Path="&lt;AI_THEMES&gt;appinstaller\fragments\FolderDlg.aip"/>
+    <ROW Fragment="MaintenanceWelcomeDlg.aip" Path="&lt;AI_THEMES&gt;appinstaller\fragments\MaintenanceWelcomeDlg.aip"/>
+    <ROW Fragment="SequenceDialogs.aip" Path="&lt;AI_THEMES&gt;appinstaller\fragments\SequenceDialogs.aip"/>
+    <ROW Fragment="Sequences.aip" Path="&lt;AI_FRAGS&gt;Sequences.aip"/>
+    <ROW Fragment="ShortcutsDlg.aip" Path="&lt;AI_THEMES&gt;appinstaller\fragments\ShortcutsDlg.aip"/>
+    <ROW Fragment="StaticUIStrings.aip" Path="&lt;AI_FRAGS&gt;StaticUIStrings.aip"/>
+    <ROW Fragment="Themes.aip" Path="&lt;AI_FRAGS&gt;Themes.aip"/>
+    <ROW Fragment="UI.aip" Path="&lt;AI_THEMES&gt;appinstaller\fragments\UI.aip"/>
+    <ROW Fragment="Validation.aip" Path="&lt;AI_FRAGS&gt;Validation.aip"/>
+    <ROW Fragment="WelcomeDlg.aip" Path="&lt;AI_THEMES&gt;appinstaller\fragments\WelcomeDlg.aip"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiActionTextComponent">
+    <ROW Action="AI_ConfigureChainer" Description="配置先决条件启动器" DescriptionLocId="ActionText.Description.AI_ConfigureChainer" Template="配置启动器" TemplateLocId="ActionText.Template.AI_ConfigureChainer"/>
+    <ROW Action="AI_DeleteLzma" Description="正在删除从档案中提取的文件" DescriptionLocId="ActionText.Description.AI_DeleteLzma" TemplateLocId="-"/>
+    <ROW Action="AI_DeleteRLzma" Description="正在删除从档案中提取的文件" DescriptionLocId="ActionText.Description.AI_DeleteLzma" TemplateLocId="-"/>
+    <ROW Action="AI_DownloadPrereq" Description="正在下载运行环境软件" DescriptionLocId="ActionText.Description.AI_DownloadPrereq" Template="[1]" TemplateLocId="ActionText.Template.AI_DownloadPrereq"/>
+    <ROW Action="AI_ExtractFiles" Description="正在从档案中提取文件" DescriptionLocId="ActionText.Description.AI_ExtractLzma" TemplateLocId="-"/>
+    <ROW Action="AI_ExtractLzma" Description="正在从档案中提取文件" DescriptionLocId="ActionText.Description.AI_ExtractLzma" TemplateLocId="-"/>
+    <ROW Action="AI_ExtractPrereq" Description="正在提取运行环境软件" DescriptionLocId="ActionText.Description.AI_ExtractPrereq" Template="[1]" TemplateLocId="ActionText.Template.AI_ExtractPrereq"/>
+    <ROW Action="AI_InstallPostPrerequisite" Description="正在安装运行环境软件" DescriptionLocId="ActionText.Description.AI_InstallPrerequisite" Template="[1]" TemplateLocId="ActionText.Template.AI_InstallPrerequisite"/>
+    <ROW Action="AI_InstallPrerequisite" Description="正在安装运行环境软件" DescriptionLocId="ActionText.Description.AI_InstallPrerequisite" Template="[1]" TemplateLocId="ActionText.Template.AI_InstallPrerequisite"/>
+    <ROW Action="AI_VerifyPrereq" Description="正在验证运行环境" DescriptionLocId="ActionText.Description.AI_VerifyPrereq" Template="[1] 没有被正确安装." TemplateLocId="ActionText.Template.AI_VerifyPrereq"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiAppSearchComponent">
+    <ROW Property="AI_SETUPEXEPATH" Signature_="AI_EXE_PATH_LM" Builds="DefaultBuild"/>
+    <ROW Property="AI_SETUPEXEPATH" Signature_="AI_EXE_PATH_CU" Builds="DefaultBuild"/>
+    <ROW Property="AI_SHORTCUTSREG" Signature_="AI_SHORTCUTSREG"/>
+    <ROW Property="AI_SHORTCUTSREG" Signature_="AI_SHORTCUTSREG_1"/>
+    <ROW Property="AI_SHORTCUTSREG" Signature_="AI_SHORTCUTSREG_2"/>
+    <ROW Property="AI_SHORTCUTSREG" Signature_="AI_SHORTCUTSREG_3"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiBinaryComponent">
+    <ROW Name="ExternalUICleaner.dll" SourcePath="&lt;AI_CUSTACTS&gt;ExternalUICleaner.dll"/>
+    <ROW Name="Prereq.dll" SourcePath="&lt;AI_CUSTACTS&gt;Prereq.dll"/>
+    <ROW Name="SoftwareDetector.dll" SourcePath="&lt;AI_CUSTACTS&gt;SoftwareDetector.dll"/>
+    <ROW Name="aicustact.dll" SourcePath="&lt;AI_CUSTACTS&gt;aicustact.dll"/>
+    <ROW Name="aipackagechainer.exe" SourcePath="&lt;AI_CUSTACTS&gt;aipackagechainer.exe" DigSign="true"/>
+    <ROW Name="dropbox.png" SourcePath="dropbox.png"/>
+    <ROW Name="file_deleter.ps1" SourcePath="&lt;AI_SCRIPTS&gt;file_deleter.ps1"/>
+    <ROW Name="lzmaextractor.dll" SourcePath="&lt;AI_CUSTACTS&gt;lzmaextractor.dll"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiControlComponent">
+    <ROW Dialog_="AboutDlg" Control="LicenseAgreementLink" Type="Hyperlink" X="21" Y="63" Width="193" Height="15" Attributes="196611" Text="&lt;a href=&quot;&quot;&gt;[Manufacturer] 软件许可条款&lt;/a&gt;" TextStyle="[HyperlinkFont]" Order="600" MsiKey="AboutDlg#LicenseAgreementLink"/>
+    <ROW Dialog_="AdminWelcomeDlg" Control="ProductNameTitle" Type="Text" X="15" Y="17" Width="364" Height="32" Attributes="196611" Text="安装 [ProductName]" TextStyle="[ProductNameTitleFont]" Order="500" MsiKey="AdminWelcomeDlg#ProductNameTitle"/>
+    <ROW Dialog_="AdminWelcomeDlg" Control="ProductLogo" Type="Bitmap" X="404" Y="15" Width="70" Height="70" Attributes="1" Text="[MYappLogo]" Order="700" MsiKey="AdminWelcomeDlg#ProductLogo"/>
+    <ROW Dialog_="ExitDialog" Control="ProductNameTitle" Type="Text" X="15" Y="17" Width="364" Height="32" Attributes="196611" Text="安装 [ProductName]" TextStyle="[ProductNameTitleFont]" Order="500" MsiKey="ExitDialog#ProductNameTitle"/>
+    <ROW Dialog_="ExitDialog" Control="ProductLogo" Type="Bitmap" X="404" Y="15" Width="70" Height="70" Attributes="1" Text="[MYappLogo]" Order="700" MsiKey="ExitDialog#ProductLogo"/>
+    <ROW Dialog_="ExitDialog" Control="ViewReadmeCheckBox" Type="ImageCheckBox" X="16" Y="218" Width="12" Height="15" Attributes="3" Property="VIEWREADME" Text="[CheckboxImage]" TextStyle="[ManufacturerFont]" Order="1300" MsiKey="ExitDialog#ViewReadmeCheckBox" ExtType="ImageCheckBox"/>
+    <ROW Dialog_="FatalError" Control="Finish" Type="ImageButton" X="379" Y="210" Width="95" Height="28" Attributes="3" Text="[ButtonImage]" TextStyle="[ImageBtnFont]" Order="400" MsiKey="FatalError#Finish" Options="1" ExtType="ImageButton" ExtData="[ButtonText_Finish] " ExtDataLocId="Metro.Control.ExtData.ExitDialog#Finish"/>
+    <ROW Dialog_="FatalError" Control="ProductNameTitle" Type="Text" X="15" Y="17" Width="364" Height="32" Attributes="196611" Text="安装 [ProductName]" TextStyle="[ProductNameTitleFont]" Order="500" MsiKey="FatalError#ProductNameTitle"/>
+    <ROW Dialog_="FatalError" Control="CompanyText" Type="Text" X="16" Y="46" Width="362" Height="15" Attributes="196611" Text="发布者: [Manufacturer]" TextStyle="[ManufacturerFont]" Order="600" TextLocId="AppInstaller.Control.Text.Manufacturer" MsiKey="FatalError#CompanyText"/>
+    <ROW Dialog_="FatalError" Control="ProductLogo" Type="Bitmap" X="404" Y="15" Width="70" Height="70" Attributes="1" Text="[MYappLogo]" Order="700" MsiKey="FatalError#ProductLogo"/>
+    <ROW Dialog_="FatalError" Control="ProducVersionText" Type="Text" X="16" Y="60" Width="362" Height="15" Attributes="196611" Text="版本: [ProductVersion]" TextStyle="[ManufacturerFont]" Order="800" TextLocId="AppInstaller.Control.Text.ProductVersion" MsiKey="FatalError#ProducVersionText"/>
+    <ROW Dialog_="FatalError" Control="Description1" Type="Text" X="16" Y="94" Width="454" Height="40" Attributes="196611" Text="因为发生了错误，[ProductName] 的安装过早地结束。您的系统没有被修改。要稍后安装此程序，请再运行安装程序。" TextStyle="[DescriptionFont]" Order="900" TextLocId="Control.Text.FatalError#Description1" MsiKey="FatalError#Description1"/>
+    <ROW Dialog_="FatalError" Control="AboutBtn" Type="ImageButton" X="5" Y="269" Width="18" Height="18" Attributes="3" Text="[AboutBtnIcon]" TextStyle="[ManufacturerFont]" Order="1000" MsiKey="FatalError#AboutBtn" Options="1" ExtType="ImageButton"/>
+    <ROW Dialog_="FilesInUse" Control="ProductNameTitle" Type="Text" X="15" Y="17" Width="364" Height="32" Attributes="196611" Text="安装 [ProductName]" TextStyle="[ProductNameTitleFont]" Order="700" MsiKey="FilesInUse#ProductNameTitle"/>
+    <ROW Dialog_="FilesInUse" Control="ProductLogo" Type="Bitmap" X="404" Y="15" Width="70" Height="70" Attributes="1" Text="[MYappLogo]" Order="900" MsiKey="FilesInUse#ProductLogo"/>
+    <ROW Dialog_="FolderDlg" Control="ProductLogo" Type="Bitmap" X="404" Y="15" Width="70" Height="70" Attributes="1" Text="[MYappLogo]" Order="400" MsiKey="FolderDlg#ProductLogo"/>
+    <ROW Dialog_="FolderDlg" Control="ProductNameTitle" Type="Text" X="15" Y="17" Width="364" Height="32" Attributes="196611" Text="安装 [ProductName]" TextStyle="[ProductNameTitleFont]" Order="500" MsiKey="FolderDlg#ProductNameTitle"/>
+    <ROW Dialog_="FolderDlg" Control="FolderLabel" Type="Text" X="16" Y="150" Width="458" Height="15" Attributes="65539" Text="文件夹：" TextStyle="[ManufacturerFont]" Help="|" Order="800" HelpLocId="Control.Help.FolderDlg#FolderLabel" MsiKey="FolderDlg#FolderLabel"/>
+    <ROW Dialog_="FolderDlg" Control="FolderEdit" Type="PathEdit" X="16" Y="170" Width="458" Height="30" Attributes="7" Property="APPDIR" Help="|" Order="900" HelpLocId="Control.Help.FolderDlg#FolderEdit" MsiKey="FolderDlg#FolderEdit"/>
+    <ROW Dialog_="MaintenanceWelcomeDlg" Control="MaintenanceWelcomeDlgDialogInitializer" Type="DialogInitializer" X="0" Y="0" Width="0" Height="0" Attributes="0" Order="-1" TextLocId="-" HelpLocId="-" ExtDataLocId="-"/>
+    <ROW Dialog_="MaintenanceWelcomeDlg" Control="ProductNameTitle" Type="Text" X="15" Y="17" Width="364" Height="32" Attributes="196611" Text="安装 [ProductName]" TextStyle="[ProductNameTitleFont]" Order="700" MsiKey="MaintenanceWelcomeDlg#ProductNameTitle"/>
+    <ROW Dialog_="MaintenanceWelcomeDlg" Control="ProductLogo" Type="Bitmap" X="404" Y="15" Width="70" Height="70" Attributes="1" Text="[MYappLogo]" Order="900" MsiKey="MaintenanceWelcomeDlg#ProductLogo"/>
+    <ROW Dialog_="MsiRMFilesInUse" Control="ProductNameTitle" Type="Text" X="15" Y="17" Width="364" Height="32" Attributes="196611" Text="安装 [ProductName]" TextStyle="[ProductNameTitleFont]" Order="700" MsiKey="MsiRMFilesInUse#ProductNameTitle"/>
+    <ROW Dialog_="MsiRMFilesInUse" Control="ProductLogo" Type="Bitmap" X="404" Y="15" Width="70" Height="70" Attributes="1" Text="[MYappLogo]" Order="900" MsiKey="MsiRMFilesInUse#ProductLogo"/>
+    <ROW Dialog_="OutOfDiskDlg" Control="ProductNameTitle" Type="Text" X="15" Y="17" Width="364" Height="32" Attributes="196611" Text="安装 [ProductName]" TextStyle="[ProductNameTitleFont]" Order="500" MsiKey="OutOfDiskDlg#ProductNameTitle"/>
+    <ROW Dialog_="OutOfDiskDlg" Control="ProductLogo" Type="Bitmap" X="404" Y="15" Width="70" Height="70" Attributes="1" Text="[MYappLogo]" Order="700" MsiKey="OutOfDiskDlg#ProductLogo"/>
+    <ROW Dialog_="OutOfRbDiskDlg" Control="Description" Type="Text" X="16" Y="94" Width="458" Height="57" Attributes="196611" Text="突出显示的卷没有足够的磁盘空间用于当前选择的功能。您可以从突出显示的卷中删除一些文件，也可以选择不同的目标驱动器。或者，您可以选择禁用安装程序&apos;s的回滚功能。如果要冒险禁用回滚，请单击“是”." TextStyle="[DescriptionFont]" Order="400" TextLocId="AppInstaller.Control.Text.OutOfRbDiskDlg#Description" MsiKey="OutOfRbDiskDlg#Description"/>
+    <ROW Dialog_="OutOfRbDiskDlg" Control="VolumeList" Type="VolumeCostList" X="16" Y="151" Width="458" Height="54" Attributes="393223" Text="{120}{70}{70}{70}{70}" TextStyle="ListFontDark" Order="500" TextLocId="Control.Text.OutOfDiskDlg#VolumeList" MsiKey="OutOfRbDiskDlg#VolumeList"/>
+    <ROW Dialog_="OutOfRbDiskDlg" Control="ProductNameTitle" Type="Text" X="15" Y="17" Width="364" Height="32" Attributes="196611" Text="安装 [ProductName]" TextStyle="[ProductNameTitleFont]" Order="600" MsiKey="OutOfRbDiskDlg#ProductNameTitle"/>
+    <ROW Dialog_="OutOfRbDiskDlg" Control="CompanyText" Type="Text" X="16" Y="46" Width="362" Height="15" Attributes="196611" Text="发布者: [Manufacturer]" TextStyle="[ManufacturerFont]" Order="700" TextLocId="AppInstaller.Control.Text.Manufacturer" MsiKey="OutOfRbDiskDlg#CompanyText"/>
+    <ROW Dialog_="OutOfRbDiskDlg" Control="ProductLogo" Type="Bitmap" X="404" Y="15" Width="70" Height="70" Attributes="1" Text="[MYappLogo]" Order="800" MsiKey="OutOfRbDiskDlg#ProductLogo"/>
+    <ROW Dialog_="OutOfRbDiskDlg" Control="ProducVersionText" Type="Text" X="16" Y="60" Width="362" Height="15" Attributes="196611" Text="版本: [ProductVersion]" TextStyle="[ManufacturerFont]" Order="900" TextLocId="AppInstaller.Control.Text.ProductVersion" MsiKey="OutOfRbDiskDlg#ProducVersionText"/>
+    <ROW Dialog_="OutOfRbDiskDlg" Control="AboutBtn" Type="ImageButton" X="5" Y="269" Width="18" Height="18" Attributes="3" Text="[AboutBtnIcon]" TextStyle="[ManufacturerFont]" Order="1000" MsiKey="OutOfRbDiskDlg#AboutBtn" Options="1" ExtType="ImageButton"/>
+    <ROW Dialog_="PatchWelcomeDlg" Control="PatchWelcomeDlgDialogInitializer" Type="DialogInitializer" X="0" Y="0" Width="0" Height="0" Attributes="0" Order="-1" TextLocId="-" HelpLocId="-" ExtDataLocId="-"/>
+    <ROW Dialog_="PatchWelcomeDlg" Control="ProductNameTitle" Type="Text" X="15" Y="17" Width="364" Height="32" Attributes="196611" Text="安装 [ProductName]" TextStyle="[ProductNameTitleFont]" Order="600" MsiKey="PatchWelcomeDlg#ProductNameTitle"/>
+    <ROW Dialog_="PatchWelcomeDlg" Control="ProductLogo" Type="Bitmap" X="404" Y="15" Width="70" Height="70" Attributes="1" Text="[MYappLogo]" Order="800" MsiKey="PatchWelcomeDlg#ProductLogo"/>
+    <ROW Dialog_="PrepareDlg" Control="ProductNameTitle" Type="Text" X="15" Y="17" Width="364" Height="32" Attributes="196611" Text="安装 [ProductName]" TextStyle="[ProductNameTitleFont]" Order="600" MsiKey="PrepareDlg#ProductNameTitle"/>
+    <ROW Dialog_="PrepareDlg" Control="ProductLogo" Type="Bitmap" X="404" Y="15" Width="70" Height="70" Attributes="1" Text="[MYappLogo]" Order="800" MsiKey="PrepareDlg#ProductLogo"/>
+    <ROW Dialog_="ProgressDlg" Control="ProductNameTitle" Type="Text" X="15" Y="17" Width="364" Height="32" Attributes="196611" Text="安装 [ProductName]" TextStyle="[ProductNameTitleFont]" Order="700" MsiKey="ProgressDlg#ProductNameTitle"/>
+    <ROW Dialog_="ProgressDlg" Control="ProductLogo" Type="Bitmap" X="404" Y="15" Width="70" Height="70" Attributes="1" Text="[MYappLogo]" Order="900" MsiKey="ProgressDlg#ProductLogo"/>
+    <ROW Dialog_="ResumeDlg" Control="ProductNameTitle" Type="Text" X="15" Y="17" Width="364" Height="32" Attributes="196611" Text="安装 [ProductName]" TextStyle="[ProductNameTitleFont]" Order="600" MsiKey="ResumeDlg#ProductNameTitle"/>
+    <ROW Dialog_="ResumeDlg" Control="ProductLogo" Type="Bitmap" X="404" Y="15" Width="70" Height="70" Attributes="1" Text="[MYappLogo]" Order="800" MsiKey="ResumeDlg#ProductLogo"/>
+    <ROW Dialog_="ShortcutsDlg" Control="ShortcutsDlgDialogInitializer" Type="DialogInitializer" X="0" Y="0" Width="0" Height="0" Attributes="0" Order="-1" TextLocId="-" HelpLocId="-" ExtDataLocId="-"/>
+    <ROW Dialog_="ShortcutsDlg" Control="ProductNameTitle" Type="Text" X="15" Y="17" Width="364" Height="32" Attributes="196611" Text="安装 [ProductName]" TextStyle="[ProductNameTitleFont]" Order="700" MsiKey="ShortcutsDlg#ProductNameTitle"/>
+    <ROW Dialog_="ShortcutsDlg" Control="ProductLogo" Type="Bitmap" X="404" Y="15" Width="70" Height="70" Attributes="1" Text="[MYappLogo]" Order="1100" MsiKey="ShortcutsDlg#ProductLogo"/>
+    <ROW Dialog_="UserExit" Control="ProductNameTitle" Type="Text" X="15" Y="17" Width="364" Height="32" Attributes="196611" Text="安装 [ProductName]" TextStyle="[ProductNameTitleFont]" Order="500" MsiKey="UserExit#ProductNameTitle"/>
+    <ROW Dialog_="UserExit" Control="ProductLogo" Type="Bitmap" X="404" Y="15" Width="70" Height="70" Attributes="1" Text="[MYappLogo]" Order="700" MsiKey="UserExit#ProductLogo"/>
+    <ROW Dialog_="WelcomeDlg" Control="ProductNameTitle" Type="Text" X="15" Y="17" Width="364" Height="32" Attributes="196611" Text="安装 [ProductName]" TextStyle="[ProductNameTitleFont]" Order="500" MsiKey="WelcomeDlg#ProductNameTitle"/>
+    <ROW Dialog_="WelcomeDlg" Control="ProductLogo" Type="Bitmap" X="404" Y="15" Width="70" Height="70" Attributes="1" Text="[MYappLogo]" Order="700" MsiKey="WelcomeDlg#ProductLogo"/>
+    <ROW Dialog_="WelcomeDlg" Control="LaunchCheckBox" Type="ImageCheckBox" X="16" Y="218" Width="126" Height="15" Attributes="2" Property="AiSkipExitDlg" Text="[CheckboxImage]" TextStyle="[ManufacturerFont]" Order="900" MsiKey="WelcomeDlg#LaunchCheckBox" ExtType="ImageCheckBox" ExtData="准备就绪时启动" ExtDataLocId="AppInstaller.Control.Text.LaunchWhenReadyCheckbox"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiControlConditionComponent">
+    <ROW Dialog_="ShortcutsDlg" Control_="StartupShorcutsCheckBox" Action="Hide" Condition="(Not Installed)"/>
+    <ROW Dialog_="ShortcutsDlg" Control_="PinToTaskbarShortcutsCheckBox" Action="Show" Condition="(Not Installed)"/>
+    <ATTRIBUTE name="DeletedRows" value="ShortcutsDlg#PinToTaskbarShortcutsCheckBox#Hide#(Not Installed)@ShortcutsDlg#StartupShorcutsCheckBox#Show#(Not Installed)"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiControlEventComponent">
+    <ROW Dialog_="WelcomeDlg" Control_="Next" Event="NewDialog" Argument="FolderDlg" Condition="AI_INSTALL" Ordering="1"/>
+    <ROW Dialog_="MaintenanceWelcomeDlg" Control_="Next" Event="EndDialog" Argument="Return" Condition="AI_MAINT" Ordering="1"/>
+    <ROW Dialog_="PatchWelcomeDlg" Control_="Next" Event="EndDialog" Argument="Return" Condition="AI_PATCH" Ordering="201"/>
+    <ROW Dialog_="ResumeDlg" Control_="Install" Event="EndDialog" Argument="Return" Condition="AI_RESUME" Ordering="99"/>
+    <ROW Dialog_="MaintenanceWelcomeDlg" Control_="Next" Event="SpawnDialog" Argument="OutOfRbDiskDlg" Condition="AI_MAINT AND OutOfDiskSpace = 1 AND OutOfNoRbDiskSpace = 0 AND (PROMPTROLLBACKCOST=&quot;P&quot; OR NOT PROMPTROLLBACKCOST)" Ordering="2" Options="2"/>
+    <ROW Dialog_="MaintenanceWelcomeDlg" Control_="Next" Event="EnableRollback" Argument="False" Condition="AI_MAINT AND OutOfDiskSpace = 1 AND OutOfNoRbDiskSpace = 0 AND PROMPTROLLBACKCOST=&quot;D&quot;" Ordering="3" Options="2"/>
+    <ROW Dialog_="MaintenanceWelcomeDlg" Control_="Next" Event="SpawnDialog" Argument="OutOfDiskDlg" Condition="AI_MAINT AND ( (OutOfDiskSpace = 1 AND OutOfNoRbDiskSpace = 1) OR (OutOfDiskSpace = 1 AND PROMPTROLLBACKCOST=&quot;F&quot;) )" Ordering="4" Options="2"/>
+    <ROW Dialog_="MaintenanceWelcomeDlg" Control_="MaintenanceWelcomeDlgDialogInitializer" Event="[AI_ButtonText_Next_Orig]" Argument="[ButtonText_Next]" Condition="AI_MAINT" Ordering="0" Options="2"/>
+    <ROW Dialog_="MaintenanceWelcomeDlg" Control_="MaintenanceWelcomeDlgDialogInitializer" Event="[ButtonText_Next]" Argument="[[AI_CommitButton]]" Condition="AI_MAINT" Ordering="1" Options="2"/>
+    <ROW Dialog_="MaintenanceWelcomeDlg" Control_="MaintenanceWelcomeDlgDialogInitializer" Event="[AI_Text_Next_Orig]" Argument="[Text_Next]" Condition="AI_MAINT" Ordering="2" Options="2"/>
+    <ROW Dialog_="MaintenanceWelcomeDlg" Control_="MaintenanceWelcomeDlgDialogInitializer" Event="[Text_Next]" Argument="[Text_Install]" Condition="AI_MAINT" Ordering="3" Options="2"/>
+    <ROW Dialog_="PatchWelcomeDlg" Control_="Next" Event="SpawnDialog" Argument="OutOfRbDiskDlg" Condition="AI_PATCH AND OutOfDiskSpace = 1 AND OutOfNoRbDiskSpace = 0 AND (PROMPTROLLBACKCOST=&quot;P&quot; OR NOT PROMPTROLLBACKCOST)" Ordering="202" Options="2"/>
+    <ROW Dialog_="PatchWelcomeDlg" Control_="Next" Event="EnableRollback" Argument="False" Condition="AI_PATCH AND OutOfDiskSpace = 1 AND OutOfNoRbDiskSpace = 0 AND PROMPTROLLBACKCOST=&quot;D&quot;" Ordering="203" Options="2"/>
+    <ROW Dialog_="PatchWelcomeDlg" Control_="Next" Event="SpawnDialog" Argument="OutOfDiskDlg" Condition="AI_PATCH AND ( (OutOfDiskSpace = 1 AND OutOfNoRbDiskSpace = 1) OR (OutOfDiskSpace = 1 AND PROMPTROLLBACKCOST=&quot;F&quot;) )" Ordering="204" Options="2"/>
+    <ROW Dialog_="PatchWelcomeDlg" Control_="PatchWelcomeDlgDialogInitializer" Event="[AI_ButtonText_Next_Orig]" Argument="[ButtonText_Next]" Condition="AI_PATCH" Ordering="0" Options="2"/>
+    <ROW Dialog_="PatchWelcomeDlg" Control_="PatchWelcomeDlgDialogInitializer" Event="[ButtonText_Next]" Argument="[[AI_CommitButton]]" Condition="AI_PATCH" Ordering="1" Options="2"/>
+    <ROW Dialog_="PatchWelcomeDlg" Control_="PatchWelcomeDlgDialogInitializer" Event="[AI_Text_Next_Orig]" Argument="[Text_Next]" Condition="AI_PATCH" Ordering="2" Options="2"/>
+    <ROW Dialog_="PatchWelcomeDlg" Control_="PatchWelcomeDlgDialogInitializer" Event="[Text_Next]" Argument="[Text_Install]" Condition="AI_PATCH" Ordering="3" Options="2"/>
+    <ROW Dialog_="PatchWelcomeDlg" Control_="Back" Event="[ButtonText_Next]" Argument="[AI_ButtonText_Next_Orig]" Condition="AI_PATCH" Ordering="0" Options="2"/>
+    <ROW Dialog_="PatchWelcomeDlg" Control_="Back" Event="[Text_Next]" Argument="[AI_Text_Next_Orig]" Condition="AI_PATCH" Ordering="1" Options="2"/>
+    <ROW Dialog_="ExitDialog" Control_="Finish" Event="DoAction" Argument="AI_CleanPrereq" Condition="1" Ordering="201"/>
+    <ROW Dialog_="FatalError" Control_="Finish" Event="DoAction" Argument="AI_CleanPrereq" Condition="1" Ordering="201"/>
+    <ROW Dialog_="UserExit" Control_="Finish" Event="DoAction" Argument="AI_CleanPrereq" Condition="1" Ordering="101"/>
+    <ROW Dialog_="FolderDlg" Control_="Next" Event="NewDialog" Argument="ShortcutsDlg" Condition="AI_INSTALL" Ordering="101"/>
+    <ROW Dialog_="FolderDlg" Control_="Back" Event="NewDialog" Argument="WelcomeDlg" Condition="AI_INSTALL" Ordering="1"/>
+    <ROW Dialog_="ShortcutsDlg" Control_="Next" Event="EndDialog" Argument="Return" Condition="AI_INSTALL" Ordering="1"/>
+    <ROW Dialog_="ShortcutsDlg" Control_="Back" Event="NewDialog" Argument="FolderDlg" Condition="AI_INSTALL" Ordering="1"/>
+    <ROW Dialog_="ShortcutsDlg" Control_="Next" Event="SpawnDialog" Argument="OutOfRbDiskDlg" Condition="AI_INSTALL AND OutOfDiskSpace = 1 AND OutOfNoRbDiskSpace = 0 AND (PROMPTROLLBACKCOST=&quot;P&quot; OR NOT PROMPTROLLBACKCOST)" Ordering="2" Options="2"/>
+    <ROW Dialog_="ShortcutsDlg" Control_="Next" Event="EnableRollback" Argument="False" Condition="AI_INSTALL AND OutOfDiskSpace = 1 AND OutOfNoRbDiskSpace = 0 AND PROMPTROLLBACKCOST=&quot;D&quot;" Ordering="3" Options="2"/>
+    <ROW Dialog_="ShortcutsDlg" Control_="Next" Event="SpawnDialog" Argument="OutOfDiskDlg" Condition="AI_INSTALL AND ( (OutOfDiskSpace = 1 AND OutOfNoRbDiskSpace = 1) OR (OutOfDiskSpace = 1 AND PROMPTROLLBACKCOST=&quot;F&quot;) )" Ordering="4" Options="2"/>
+    <ROW Dialog_="ShortcutsDlg" Control_="ShortcutsDlgDialogInitializer" Event="[AI_ButtonText_Next_Orig]" Argument="[ButtonText_Next]" Condition="AI_INSTALL" Ordering="0" Options="2"/>
+    <ROW Dialog_="ShortcutsDlg" Control_="ShortcutsDlgDialogInitializer" Event="[ButtonText_Next]" Argument="[[AI_CommitButton]]" Condition="AI_INSTALL" Ordering="1" Options="2"/>
+    <ROW Dialog_="ShortcutsDlg" Control_="ShortcutsDlgDialogInitializer" Event="[AI_Text_Next_Orig]" Argument="[Text_Next]" Condition="AI_INSTALL" Ordering="2" Options="2"/>
+    <ROW Dialog_="ShortcutsDlg" Control_="ShortcutsDlgDialogInitializer" Event="[Text_Next]" Argument="[Text_Install]" Condition="AI_INSTALL" Ordering="3" Options="2"/>
+    <ROW Dialog_="ShortcutsDlg" Control_="Back" Event="[ButtonText_Next]" Argument="[AI_ButtonText_Next_Orig]" Condition="AI_INSTALL" Ordering="2" Options="2"/>
+    <ROW Dialog_="ShortcutsDlg" Control_="Back" Event="[Text_Next]" Argument="[AI_Text_Next_Orig]" Condition="AI_INSTALL" Ordering="3" Options="2"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiCreateFolderComponent">
+    <ROW Directory_="APPDIR" Component_="APPDIR" ManualDelete="true"/>
+    <ROW Directory_="SHORTCUTDIR" Component_="SHORTCUTDIR" ManualDelete="false"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiCustActComponent">
+    <ROW Action="AI_AppSearchEx" Type="1" Source="Prereq.dll" Target="DoAppSearchEx"/>
+    <ROW Action="AI_BACKUP_AI_SETUPEXEPATH" Type="51" Source="AI_SETUPEXEPATH_ORIGINAL" Target="[AI_SETUPEXEPATH]"/>
+    <ROW Action="AI_ChooseTextStyles" Type="1" Source="aicustact.dll" Target="ChooseTextStyles"/>
+    <ROW Action="AI_CleanPrereq" Type="65" Source="Prereq.dll" Target="CleanPrereq" WithoutSeq="true"/>
+    <ROW Action="AI_ConfigureChainer" Type="1" Source="Prereq.dll" Target="ConfigurePrereqLauncher"/>
+    <ROW Action="AI_DATA_SETTER" Type="51" Source="CustomActionData" Target="[AI_SETUPEXEPATH]"/>
+    <ROW Action="AI_DATA_SETTER_1" Type="51" Source="AI_DEL_EMPTY_SHORTCUTDIR" Target="[SHORTCUTDIR]"/>
+    <ROW Action="AI_DELETE_SHORTCUTS" Type="1" Source="aicustact.dll" Target="DeleteShortcuts"/>
+    <ROW Action="AI_DEL_EMPTY_SHORTCUTDIR" Type="3073" Source="aicustact.dll" Target="DeleteEmptyDirectory" AdditionalSeq="AI_DATA_SETTER_1"/>
+    <ROW Action="AI_DeleteCadLzma" Type="51" Source="AI_DeleteLzma" Target="[AI_SETUPEXEPATH]"/>
+    <ROW Action="AI_DeleteLzma" Type="1025" Source="lzmaextractor.dll" Target="DeleteLZMAFiles"/>
+    <ROW Action="AI_DeleteRCadLzma" Type="51" Source="AI_DeleteRLzma" Target="[AI_SETUPEXEPATH]"/>
+    <ROW Action="AI_DeleteRLzma" Type="1281" Source="lzmaextractor.dll" Target="DeleteLZMAFiles"/>
+    <ROW Action="AI_DetectSoftware" Type="257" Source="SoftwareDetector.dll" Target="OnDetectSoftware"/>
+    <ROW Action="AI_DoRemoveExternalUIStub" Type="3585" Source="ExternalUICleaner.dll" Target="DoRemoveExternalUIStub" WithoutSeq="true"/>
+    <ROW Action="AI_DownloadPrereq" Type="1" Source="Prereq.dll" Target="DownloadPrereq"/>
+    <ROW Action="AI_DpiContentScale" Type="1" Source="aicustact.dll" Target="DpiContentScale"/>
+    <ROW Action="AI_EnableDebugLog" Type="321" Source="aicustact.dll" Target="EnableDebugLog"/>
+    <ROW Action="AI_ExtractCadLzma" Type="51" Source="AI_ExtractLzma" Target="[AI_SETUPEXEPATH]"/>
+    <ROW Action="AI_ExtractFiles" Type="1" Source="Prereq.dll" Target="ExtractSourceFiles" AdditionalSeq="AI_DATA_SETTER"/>
+    <ROW Action="AI_ExtractLzma" Type="1025" Source="lzmaextractor.dll" Target="ExtractLZMAFiles"/>
+    <ROW Action="AI_ExtractPrereq" Type="65" Source="Prereq.dll" Target="ExtractPrereq"/>
+    <ROW Action="AI_FindExeLzma" Type="1" Source="lzmaextractor.dll" Target="FindEXE"/>
+    <ROW Action="AI_GetArpIconPath" Type="1" Source="aicustact.dll" Target="GetArpIconPath"/>
+    <ROW Action="AI_InstallModeCheck" Type="1" Source="aicustact.dll" Target="UpdateInstallMode" WithoutSeq="true"/>
+    <ROW Action="AI_InstallPostPrerequisite" Type="1" Source="Prereq.dll" Target="InstallPostPrereq"/>
+    <ROW Action="AI_InstallPrerequisite" Type="1" Source="Prereq.dll" Target="InstallPrereq"/>
+    <ROW Action="AI_LaunchApp" Type="1" Source="aicustact.dll" Target="LaunchApp"/>
+    <ROW Action="AI_LaunchChainer" Type="3314" Source="AI_PREREQ_CHAINER"/>
+    <ROW Action="AI_PREPARE_UPGRADE" Type="65" Source="aicustact.dll" Target="PrepareUpgrade"/>
+    <ROW Action="AI_PRESERVE_INSTALL_TYPE" Type="65" Source="aicustact.dll" Target="PreserveInstallType"/>
+    <ROW Action="AI_RESTORE_AI_SETUPEXEPATH" Type="51" Source="AI_SETUPEXEPATH" Target="[AI_SETUPEXEPATH_ORIGINAL]"/>
+    <ROW Action="AI_RESTORE_LOCATION" Type="65" Source="aicustact.dll" Target="RestoreLocation"/>
+    <ROW Action="AI_RemoveExternalUIStub" Type="1" Source="ExternalUICleaner.dll" Target="RemoveExternalUIStub"/>
+    <ROW Action="AI_ResolveKnownFolders" Type="1" Source="aicustact.dll" Target="AI_ResolveKnownFolders"/>
+    <ROW Action="AI_SHOW_LOG" Type="65" Source="aicustact.dll" Target="LaunchLogFile" WithoutSeq="true"/>
+    <ROW Action="AI_STORE_LOCATION" Type="51" Source="ARPINSTALLLOCATION" Target="[APPDIR]"/>
+    <ROW Action="AI_VerifyPrereq" Type="1" Source="Prereq.dll" Target="VerifyPrereq"/>
+    <ROW Action="SET_APPDIR" Type="307" Source="APPDIR" Target="[ProgramFilesFolder][Manufacturer]\[ProductName]" MultiBuildTarget="DefaultBuild:[AppDataFolder][Manufacturer]\[ProductName]"/>
+    <ROW Action="SET_SHORTCUTDIR" Type="307" Source="SHORTCUTDIR" Target="[ProgramMenuFolder][ProductName]"/>
+    <ROW Action="SET_TARGETDIR_TO_APPDIR" Type="51" Source="TARGETDIR" Target="[APPDIR]"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiFeatCompsComponent">
+    <ROW Feature_="MainFeature" Component_="APPDIR"/>
+    <ROW Feature_="MainFeature" Component_="ProductInformation"/>
+    <ROW Feature_="MainFeature" Component_="CefSharp.WinForms.dll"/>
+    <ROW Feature_="MainFeature" Component_="StardewMUI2023.deps.json"/>
+    <ROW Feature_="MainFeature" Component_="StardewMUI2023.dll"/>
+    <ROW Feature_="MainFeature" Component_="StardewMUI2023.exe"/>
+    <ROW Feature_="MainFeature" Component_="SunnyUI.Common.dll"/>
+    <ROW Feature_="MainFeature" Component_="SunnyUI.dll"/>
+    <ROW Feature_="C63A5E8718343189D035A252D1450C5" Component_="C63A5E8718343189D035A252D1450C5"/>
+    <ROW Feature_="MainFeature" Component_="CefSharp.Core.dll_1"/>
+    <ROW Feature_="MainFeature" Component_="CefSharp.Core.Runtime.dll_1"/>
+    <ROW Feature_="MainFeature" Component_="CefSharp.dll_2"/>
+    <ROW Feature_="MainFeature" Component_="Ijwhost.dll_2"/>
+    <ROW Feature_="MainFeature" Component_="CefSharp.BrowserSubprocess.Core.dll_1"/>
+    <ROW Feature_="MainFeature" Component_="CefSharp.BrowserSubprocess.dll_1"/>
+    <ROW Feature_="MainFeature" Component_="CefSharp.BrowserSubprocess.exe_1"/>
+    <ROW Feature_="MainFeature" Component_="CefSharp.BrowserSubprocess.runtimeconfig.json_1"/>
+    <ROW Feature_="MainFeature" Component_="CefSharp.dll_3"/>
+    <ROW Feature_="MainFeature" Component_="chrome_elf.dll_1"/>
+    <ROW Feature_="MainFeature" Component_="d3dcompiler_47.dll_1"/>
+    <ROW Feature_="MainFeature" Component_="Ijwhost.dll_3"/>
+    <ROW Feature_="MainFeature" Component_="libcef.dll_1"/>
+    <ROW Feature_="MainFeature" Component_="libEGL.dll_1"/>
+    <ROW Feature_="MainFeature" Component_="libGLESv2.dll_1"/>
+    <ROW Feature_="MainFeature" Component_="af.pak_1"/>
+    <ROW Feature_="MainFeature" Component_="vk_swiftshader.dll_1"/>
+    <ROW Feature_="MainFeature" Component_="vulkan1.dll_1"/>
+    <ROW Feature_="MainFeature" Component_="AI_ExePath"/>
+    <ROW Feature_="MainFeature" Component_="SHORTCUTDIR"/>
+    <ROW Feature_="MainFeature" Component_="zFull64.dll"/>
+    <ROW Feature_="MainFeature" Component_="BetterFolderBrowser.dll"/>
+    <ROW Feature_="MainFeature" Component_="Imazen.WebP.dll"/>
+    <ROW Feature_="MainFeature" Component_="libwebp.dll"/>
+    <ROW Feature_="MainFeature" Component_="Newtonsoft.Json.dll"/>
+    <ROW Feature_="MainFeature" Component_="SevenZipSharp.dll"/>
+    <ROW Feature_="MainFeature" Component_="za.dll"/>
+    <ROW Feature_="MainFeature" Component_="za.exe"/>
+    <ROW Feature_="MainFeature" Component_="zxa.dll"/>
+    <ROW Feature_="MainFeature" Component_="AI_CustomARPName"/>
+    <ROW Feature_="MainFeature" Component_="AI_SHORTCUTSREG"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiIconsComponent">
+    <ROW Name="dropbox.exe" SourcePath="dropbox.ico" Index="0"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiInstExSeqComponent">
+    <ROW Action="AI_RESTORE_LOCATION" Condition="APPDIR=&quot;&quot;" Sequence="749"/>
+    <ROW Action="AI_STORE_LOCATION" Condition="(Not Installed) OR REINSTALL" Sequence="1502"/>
+    <ROW Action="AI_PREPARE_UPGRADE" Condition="AI_UPGRADE=&quot;No&quot; AND (Not Installed)" Sequence="1397"/>
+    <ROW Action="AI_ResolveKnownFolders" Sequence="52"/>
+    <ROW Action="AI_EnableDebugLog" Sequence="51"/>
+    <ROW Action="AI_BACKUP_AI_SETUPEXEPATH" Sequence="99" Builds="DefaultBuild"/>
+    <ROW Action="AI_RESTORE_AI_SETUPEXEPATH" Condition="AI_SETUPEXEPATH_ORIGINAL" Sequence="101" Builds="DefaultBuild"/>
+    <ROW Action="AI_DeleteCadLzma" Condition="SETUPEXEDIR=&quot;&quot; AND Installed AND (REMOVE&lt;&gt;&quot;ALL&quot;) AND (AI_INSTALL_MODE&lt;&gt;&quot;Remove&quot;) AND (NOT PATCH)" Sequence="199" Builds="DefaultBuild"/>
+    <ROW Action="AI_DeleteRCadLzma" Condition="SETUPEXEDIR=&quot;&quot; AND Installed AND (REMOVE&lt;&gt;&quot;ALL&quot;) AND (AI_INSTALL_MODE&lt;&gt;&quot;Remove&quot;) AND (NOT PATCH)" Sequence="198" Builds="DefaultBuild"/>
+    <ROW Action="AI_ConfigureChainer" Condition="((UILevel = 2) OR (UILevel = 3)) AND (NOT UPGRADINGPRODUCTCODE)" Sequence="6597"/>
+    <ROW Action="AI_LaunchChainer" Condition="AI_PREREQ_CHAINER AND (NOT UPGRADINGPRODUCTCODE)" Sequence="6598"/>
+    <ROW Action="AI_VerifyPrereq" Sequence="1101"/>
+    <ROW Action="AI_AppSearchEx" Sequence="103"/>
+    <ROW Action="AI_DetectSoftware" Sequence="102"/>
+    <ROW Action="AI_ExtractCadLzma" Condition="SETUPEXEDIR=&quot;&quot; AND Installed AND (REMOVE&lt;&gt;&quot;ALL&quot;) AND (AI_INSTALL_MODE&lt;&gt;&quot;Remove&quot;) AND (NOT PATCH)" Sequence="197" Builds="DefaultBuild"/>
+    <ROW Action="AI_FindExeLzma" Condition="SETUPEXEDIR=&quot;&quot; AND Installed AND (REMOVE&lt;&gt;&quot;ALL&quot;) AND (AI_INSTALL_MODE&lt;&gt;&quot;Remove&quot;) AND (NOT PATCH)" Sequence="196" Builds="DefaultBuild"/>
+    <ROW Action="AI_ExtractLzma" Condition="SETUPEXEDIR=&quot;&quot; AND Installed AND (REMOVE&lt;&gt;&quot;ALL&quot;) AND (AI_INSTALL_MODE&lt;&gt;&quot;Remove&quot;) AND (NOT PATCH)" Sequence="1549" Builds="DefaultBuild"/>
+    <ROW Action="AI_DeleteRLzma" Condition="SETUPEXEDIR=&quot;&quot; AND Installed AND (REMOVE&lt;&gt;&quot;ALL&quot;) AND (AI_INSTALL_MODE&lt;&gt;&quot;Remove&quot;) AND (NOT PATCH)" Sequence="1548" Builds="DefaultBuild"/>
+    <ROW Action="AI_DeleteLzma" Condition="SETUPEXEDIR=&quot;&quot; AND Installed AND (REMOVE&lt;&gt;&quot;ALL&quot;) AND (AI_INSTALL_MODE&lt;&gt;&quot;Remove&quot;) AND (NOT PATCH)" Sequence="6599" Builds="DefaultBuild"/>
+    <ROW Action="AI_ExtractFiles" Sequence="1399" Builds="DefaultBuild"/>
+    <ROW Action="AI_DATA_SETTER" Sequence="1398"/>
+    <ROW Action="AI_GetArpIconPath" Sequence="1402"/>
+    <ROW Action="AI_RemoveExternalUIStub" Condition="(REMOVE=&quot;ALL&quot;) AND ((VersionNT &gt; 500) OR((VersionNT = 500) AND (ServicePackLevel &gt;= 4)))" Sequence="1501"/>
+    <ROW Action="AI_DELETE_SHORTCUTS" Condition="NOT (REMOVE=&quot;ALL&quot;)" Sequence="1401"/>
+    <ROW Action="AI_DEL_EMPTY_SHORTCUTDIR" Condition="NOT (REMOVE=&quot;ALL&quot;)" Sequence="6402"/>
+    <ROW Action="AI_DATA_SETTER_1" Condition="NOT (REMOVE=&quot;ALL&quot;)" Sequence="6401"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiInstallUISequenceComponent">
+    <ROW Action="AI_PRESERVE_INSTALL_TYPE" Sequence="199"/>
+    <ROW Action="AI_RESTORE_LOCATION" Condition="APPDIR=&quot;&quot;" Sequence="749"/>
+    <ROW Action="AI_ResolveKnownFolders" Sequence="56"/>
+    <ROW Action="AI_DpiContentScale" Sequence="52"/>
+    <ROW Action="AI_EnableDebugLog" Sequence="53"/>
+    <ROW Action="AI_CloseBtnBorderC" Condition="DarkTheme" Sequence="54" MsiKey="AI_CloseBtnBorderC"/>
+    <ROW Action="AI_MinBtnBaseC" Condition="DarkTheme" Sequence="55" MsiKey="AI_MinBtnBaseC"/>
+    <ROW Action="AI_MinBtnBorderC" Condition="DarkTheme" Sequence="57" MsiKey="AI_MinBtnBorderC"/>
+    <ROW Action="AI_MinBtnC" Condition="DarkTheme" Sequence="57" MsiKey="AI_MinBtnC"/>
+    <ROW Action="AI_FrameBaseC" Condition="DarkTheme" Sequence="58" MsiKey="AI_FrameBaseC"/>
+    <ROW Action="AI_FrameBorder1C" Condition="DarkTheme" Sequence="59" MsiKey="AI_FrameBorder1C"/>
+    <ROW Action="AI_FrameBorder2C" Condition="DarkTheme" Sequence="60" MsiKey="AI_FrameBorder2C"/>
+    <ROW Action="AI_FrameBorder3C" Condition="DarkTheme" Sequence="61" MsiKey="AI_FrameBorder3C"/>
+    <ROW Action="AI_FrameCaption2C" Condition="DarkTheme" Sequence="62" MsiKey="AI_FrameCaption2C"/>
+    <ROW Action="AI_ButtonImg" Condition="DarkTheme" Sequence="63" MsiKey="AI_ButtonImg"/>
+    <ROW Action="AI_AboutBtnImg" Condition="DarkTheme" Sequence="64" MsiKey="AI_AboutBtnImg"/>
+    <ROW Action="AI_BkgImg" Condition="DarkTheme" Sequence="65" MsiKey="AI_BkgImg"/>
+    <ROW Action="AI_AppLogoIc" Condition="DarkTheme" Sequence="67" MsiKey="AI_AppLogoIc"/>
+    <ROW Action="AI_CheckBoxImg" Condition="DarkTheme" Sequence="70" MsiKey="AI_CheckBoxImg"/>
+    <ROW Action="AI_BACKUP_AI_SETUPEXEPATH" Sequence="99"/>
+    <ROW Action="AI_RESTORE_AI_SETUPEXEPATH" Condition="AI_SETUPEXEPATH_ORIGINAL" Sequence="103"/>
+    <ROW Action="AI_DownloadPrereq" Sequence="1297"/>
+    <ROW Action="AI_ExtractPrereq" Sequence="1298"/>
+    <ROW Action="AI_InstallPrerequisite" Sequence="1299"/>
+    <ROW Action="AI_InstallPostPrerequisite" Sequence="1301"/>
+    <ROW Action="AI_CleanPrereq" Sequence="1302"/>
+    <ROW Action="AI_AppSearchEx" Sequence="102"/>
+    <ROW Action="AI_DetectSoftware" Sequence="101"/>
+    <ROW Action="AI_ControlVisualStyleExDark" Condition="DarkTheme" Sequence="69" MsiKey="AI_ControlVisualStyleExDark"/>
+    <ROW Action="AI_CustomFrameType" Condition="VersionNT64&gt;=1100" Sequence="71" MsiKey="AI_CustomFrameType"/>
+    <ROW Action="AI_ChooseTextStyles" Sequence="74"/>
+    <ROW Action="AI_CloseBtnC" Condition="DarkTheme" Sequence="56" MsiKey="AI_CloseBtnC"/>
+    <ROW Action="AI_WinuiReqTheme" Condition="DarkTheme" Sequence="68" MsiKey="AI_WinuiReqTheme"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiLaunchConditionsComponent">
+    <ROW Condition="((VersionNT &lt;&gt; 501) AND (VersionNT &lt;&gt; 502))" Description="[ProductName] 无法安装在 [WindowsTypeNT5XDisplay]." DescriptionLocId="AI.LaunchCondition.NoNT5X" IsPredefined="true" Builds="DefaultBuild"/>
+    <ROW Condition="(VersionNT &lt;&gt; 400)" Description="[ProductName] 无法安装在 [WindowsTypeNT40Display]." DescriptionLocId="AI.LaunchCondition.NoNT40" IsPredefined="true" Builds="DefaultBuild"/>
+    <ROW Condition="(VersionNT &lt;&gt; 500)" Description="[ProductName] 无法安装在 [WindowsTypeNT50Display]." DescriptionLocId="AI.LaunchCondition.NoNT50" IsPredefined="true" Builds="DefaultBuild"/>
+    <ROW Condition="AI_DETECTED_INTERNET_CONNECTION" Description="[ProductName] 安装需要一个活动的 Internet 连接。请检查您的网络配置和代理设置。" DescriptionLocId="AI.LaunchCondition.Internet" IsPredefined="true" Builds="DefaultBuild"/>
+    <ROW Condition="SETUPEXEDIR OR (REMOVE=&quot;ALL&quot;)" Description="此包只能从引导器运行。" DescriptionLocId="AI.LaunchCondition.RequireBootstrapper" IsPredefined="true" Builds="DefaultBuild"/>
+    <ROW Condition="VersionNT" Description="[ProductName] 无法安装在 [WindowsType9XDisplay]." DescriptionLocId="AI.LaunchCondition.No9X" IsPredefined="true" Builds="DefaultBuild"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiRegLocatorComponent">
+    <ROW Signature_="AI_EXE_PATH_CU" Root="1" Key="Software\Caphyon\Advanced Installer\LZMA\[ProductCode]\[ProductVersion]" Name="AI_ExePath" Type="2"/>
+    <ROW Signature_="AI_EXE_PATH_LM" Root="2" Key="Software\Caphyon\Advanced Installer\LZMA\[ProductCode]\[ProductVersion]" Name="AI_ExePath" Type="2"/>
+    <ROW Signature_="AI_SHORTCUTSREG" Root="2" Key="Software\[Manufacturer]\[UpgradeCode]" Name="AI_SHORTCUTSREG" Type="2"/>
+    <ROW Signature_="AI_SHORTCUTSREG_1" Root="1" Key="Software\[Manufacturer]\[UpgradeCode]" Name="AI_SHORTCUTSREG" Type="2"/>
+    <ROW Signature_="AI_SHORTCUTSREG_2" Root="2" Key="Software\[Manufacturer]\[UpgradeCode]" Name="AI_SHORTCUTSREG" Type="18"/>
+    <ROW Signature_="AI_SHORTCUTSREG_3" Root="1" Key="Software\[Manufacturer]\[UpgradeCode]" Name="AI_SHORTCUTSREG" Type="18"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiRegsComponent">
+    <ROW Registry="AI_ExePath" Root="-1" Key="Software\Caphyon\Advanced Installer\LZMA\[ProductCode]\[ProductVersion]" Name="AI_ExePath" Value="[AI_SETUPEXEPATH]" Component_="AI_ExePath"/>
+    <ROW Registry="AI_SHORTCUTSREG" Root="-1" Key="Software\[Manufacturer]\[UpgradeCode]" Name="AI_SHORTCUTSREG" Value="[AI_SHORTCUTSREG]" Component_="AI_SHORTCUTSREG"/>
+    <ROW Registry="AdvancedInstaller" Root="-1" Key="Software\Caphyon\Advanced Installer" Name="\"/>
+    <ROW Registry="C63A5E8718343189D035A252D1450C5" Root="-1" Key="Software\Caphyon\Advanced Installer\Prereqs\[ProductCode]\[ProductVersion]" Name="C63A5E8718343189D035A252D1450C5" Value="1" Component_="C63A5E8718343189D035A252D1450C5"/>
+    <ROW Registry="Caphyon" Root="-1" Key="Software\Caphyon" Name="\"/>
+    <ROW Registry="Comments" Root="-1" Key="Software\Microsoft\Windows\CurrentVersion\Uninstall\[ProductName] [ProductVersion]" Name="Comments" Value="[ARPCOMMENTS]" Component_="AI_CustomARPName"/>
+    <ROW Registry="Contact" Root="-1" Key="Software\Microsoft\Windows\CurrentVersion\Uninstall\[ProductName] [ProductVersion]" Name="Contact" Value="[ARPCONTACT]" Component_="AI_CustomARPName"/>
+    <ROW Registry="CurrentVersion" Root="-1" Key="Software\Microsoft\Windows\CurrentVersion" Name="\"/>
+    <ROW Registry="DisplayIcon" Root="-1" Key="Software\Microsoft\Windows\CurrentVersion\Uninstall\[ProductName] [ProductVersion]" Name="DisplayIcon" Value="[ARP_ICON_PATH]" Component_="AI_CustomARPName"/>
+    <ROW Registry="DisplayName" Root="-1" Key="Software\Microsoft\Windows\CurrentVersion\Uninstall\[ProductName] [ProductVersion]" Name="DisplayName" Value="[AI_PRODUCTNAME_ARP]" Component_="AI_CustomARPName"/>
+    <ROW Registry="DisplayVersion" Root="-1" Key="Software\Microsoft\Windows\CurrentVersion\Uninstall\[ProductName] [ProductVersion]" Name="DisplayVersion" Value="[ProductVersion]" Component_="AI_CustomARPName"/>
+    <ROW Registry="EstimatedSize" Root="-1" Key="Software\Microsoft\Windows\CurrentVersion\Uninstall\[ProductName] [ProductVersion]" Name="EstimatedSize" Value="#[AI_ARP_SIZE]" Component_="AI_CustomARPName" VirtualValue="#"/>
+    <ROW Registry="HelpLink" Root="-1" Key="Software\Microsoft\Windows\CurrentVersion\Uninstall\[ProductName] [ProductVersion]" Name="HelpLink" Value="[ARPHELPLINK]" Component_="AI_CustomARPName"/>
+    <ROW Registry="HelpTelephone" Root="-1" Key="Software\Microsoft\Windows\CurrentVersion\Uninstall\[ProductName] [ProductVersion]" Name="HelpTelephone" Value="[ARPHELPTELEPHONE]" Component_="AI_CustomARPName"/>
+    <ROW Registry="InstallLocation" Root="-1" Key="Software\Microsoft\Windows\CurrentVersion\Uninstall\[ProductName] [ProductVersion]" Name="InstallLocation" Value="[APPDIR]" Component_="AI_CustomARPName"/>
+    <ROW Registry="LZMA" Root="-1" Key="Software\Caphyon\Advanced Installer\LZMA" Name="\"/>
+    <ROW Registry="Manufacturer" Root="-1" Key="Software\[Manufacturer]" Name="\"/>
+    <ROW Registry="Microsoft" Root="-1" Key="Software\Microsoft" Name="\"/>
+    <ROW Registry="ModifyPath" Root="-1" Key="Software\Microsoft\Windows\CurrentVersion\Uninstall\[ProductName] [ProductVersion]" Name="ModifyPath" Value="[AI_UNINSTALLER] /i [ProductCode] AI_UNINSTALLER_CTP=1" Component_="AI_CustomARPName"/>
+    <ROW Registry="NoRepair" Root="-1" Key="Software\Microsoft\Windows\CurrentVersion\Uninstall\[ProductName] [ProductVersion]" Name="NoRepair" Value="#1" Component_="AI_CustomARPName" VirtualValue="#"/>
+    <ROW Registry="Path" Root="-1" Key="Software\[Manufacturer]\[ProductName]" Name="Path" Value="[APPDIR]" Component_="ProductInformation"/>
+    <ROW Registry="Prereqs" Root="-1" Key="Software\Caphyon\Advanced Installer\Prereqs" Name="\"/>
+    <ROW Registry="ProductCode" Root="-1" Key="Software\Caphyon\Advanced Installer\LZMA\[ProductCode]" Name="\"/>
+    <ROW Registry="ProductCode_1" Root="-1" Key="Software\Caphyon\Advanced Installer\Prereqs\[ProductCode]" Name="\"/>
+    <ROW Registry="ProductName" Root="-1" Key="Software\[Manufacturer]\[ProductName]" Name="\"/>
+    <ROW Registry="ProductNameProductVersion" Root="-1" Key="Software\Microsoft\Windows\CurrentVersion\Uninstall\[ProductName] [ProductVersion]" Name="\"/>
+    <ROW Registry="ProductVersion" Root="-1" Key="Software\Caphyon\Advanced Installer\LZMA\[ProductCode]\[ProductVersion]" Name="\"/>
+    <ROW Registry="ProductVersion_1" Root="-1" Key="Software\Caphyon\Advanced Installer\Prereqs\[ProductCode]\[ProductVersion]" Name="\"/>
+    <ROW Registry="Publisher" Root="-1" Key="Software\Microsoft\Windows\CurrentVersion\Uninstall\[ProductName] [ProductVersion]" Name="Publisher" Value="[Manufacturer]" Component_="AI_CustomARPName"/>
+    <ROW Registry="Readme" Root="-1" Key="Software\Microsoft\Windows\CurrentVersion\Uninstall\[ProductName] [ProductVersion]" Name="Readme" Value="[ARPREADME]" Component_="AI_CustomARPName"/>
+    <ROW Registry="Software" Root="-1" Key="Software" Name="\"/>
+    <ROW Registry="URLInfoAbout" Root="-1" Key="Software\Microsoft\Windows\CurrentVersion\Uninstall\[ProductName] [ProductVersion]" Name="URLInfoAbout" Value="[ARPURLINFOABOUT]" Component_="AI_CustomARPName"/>
+    <ROW Registry="URLUpdateInfo" Root="-1" Key="Software\Microsoft\Windows\CurrentVersion\Uninstall\[ProductName] [ProductVersion]" Name="URLUpdateInfo" Value="[ARPURLUPDATEINFO]" Component_="AI_CustomARPName"/>
+    <ROW Registry="Uninstall" Root="-1" Key="Software\Microsoft\Windows\CurrentVersion\Uninstall" Name="\"/>
+    <ROW Registry="UninstallPath" Root="-1" Key="Software\Microsoft\Windows\CurrentVersion\Uninstall\[ProductName] [ProductVersion]" Name="UninstallPath" Value="[AI_UNINSTALLER] /x [ProductCode] AI_UNINSTALLER_CTP=1" Component_="AI_CustomARPName"/>
+    <ROW Registry="UninstallString" Root="-1" Key="Software\Microsoft\Windows\CurrentVersion\Uninstall\[ProductName] [ProductVersion]" Name="UninstallString" Value="[AI_UNINSTALLER] /x [ProductCode] AI_UNINSTALLER_CTP=1" Component_="AI_CustomARPName"/>
+    <ROW Registry="UpgradeCode" Root="-1" Key="Software\[Manufacturer]\[UpgradeCode]" Name="\"/>
+    <ROW Registry="Version" Root="-1" Key="Software\[Manufacturer]\[ProductName]" Name="Version" Value="[ProductVersion]" Component_="ProductInformation"/>
+    <ROW Registry="VersionMajor" Root="-1" Key="Software\Microsoft\Windows\CurrentVersion\Uninstall\[ProductName] [ProductVersion]" Name="VersionMajor" Value="#6" Component_="AI_CustomARPName" VirtualValue="#"/>
+    <ROW Registry="VersionMinor" Root="-1" Key="Software\Microsoft\Windows\CurrentVersion\Uninstall\[ProductName] [ProductVersion]" Name="VersionMinor" Value="#0" Component_="AI_CustomARPName" VirtualValue="#"/>
+    <ROW Registry="Windows" Root="-1" Key="Software\Microsoft\Windows" Name="\"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiShortsComponent">
+    <ROW Shortcut="ProductName" Directory_="SHORTCUTDIR" Name="SMUI20~1|[|ProductName]" Component_="StardewMUI2023.exe" Target="[#StardewMUI2023.exe]" Hotkey="0" Icon_="dropbox.exe" IconIndex="0" ShowCmd="1" WkDir="APPDIR"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiTextStyleComponent">
+    <ROW TextStyle="ProductNameTitleDark" FaceName="Segoe UI" Size="20" Color="16777215" StyleBits="0" MsiKey="ProductNameTitleDark"/>
+    <ROW TextStyle="ProductNameTitleLight" FaceName="Segoe UI" Size="20" Color="4473924" StyleBits="0" MsiKey="ProductNameTitleLight"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiThemeComponent">
+    <ATTRIBUTE name="UsedTheme" value="appinstaller"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiUpgradeComponent">
+    <ROW UpgradeCode="[|UpgradeCode]" VersionMin="0.0.1" VersionMax="255.255.6555.6555" Attributes="257" ActionProperty="OLDPRODUCTS"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.PreReqComponent">
+    <ROW PrereqKey="C63A5E8718343189D035A252D1450C5" DisplayName=".NET 7 Desktop Runtime x64" VersionMin="7.0" SetupFileUrl="https://download.visualstudio.microsoft.com/download/pr/2ce1cbbe-71d1-44e7-8e80-d9ae336b9b17/a2706bca3474eef8ef95e10a12ecc2a4/windowsdesktop-runtime-7.0.11-win-x64.exe" Location="1" ExactSize="57837864" WinNTVersions="Windows 9x/ME/NT/2000/XP/Vista/Windows 7/Windows 8 x86/Windows 8.1 x86/Windows 10 x86" WinNT64Versions="Windows Vista x64, Windows Server 2008 x64, Windows 7 RTM x64, Windows Server 2008 R2 x64, Windows 8 x64, Windows Server 2012 x64" Operator="1" NoUiComLine="/q /norestart" Options="fx" MD5="7bfd7ef669ec2a3f975e9cabe993253f" TargetName=".NET 7.0" Feature="C63A5E8718343189D035A252D1450C5"/>
+    <ATTRIBUTE name="PrereqsOrder" value="C63A5E8718343189D035A252D1450C5"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.PreReqSearchComponent">
+    <ROW SearchKey="C63A5E8718343189D035A252D1450C5Syst" Prereq="C63A5E8718343189D035A252D1450C5" SearchType="14" SearchString="[ProgramFiles64Folder]dotnet\shared\Microsoft.WindowsDesktop.App" VerMin="7.0.5" Order="1" Property="PreReqSearch_C63A5E8718343189D035A2" Platform="1"/>
+  </COMPONENT>
+</DOCUMENT>

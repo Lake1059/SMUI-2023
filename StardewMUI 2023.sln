@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.6.33829.357
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "StardewMUI 2023", "StardewMUI 2023\StardewMUI 2023.vbproj", "{E7C1AE66-6234-4E6E-9D5D-497FA15532CB}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E7C1AE66-6234-4E6E-9D5D-497FA15532CB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E7C1AE66-6234-4E6E-9D5D-497FA15532CB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E7C1AE66-6234-4E6E-9D5D-497FA15532CB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E7C1AE66-6234-4E6E-9D5D-497FA15532CB}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {5E8639F4-CA3C-46A9-8F99-DB018A15F95B}
+	EndGlobalSection
+EndGlobal
