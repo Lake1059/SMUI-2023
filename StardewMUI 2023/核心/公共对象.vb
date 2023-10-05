@@ -36,18 +36,18 @@
     End Enum
 
     Public Structure 项数据计算类型枚举
-        Dim All As Boolean
-        Dim InstallStatus As Boolean
-        Dim Name As Boolean
-        Dim Author As Boolean
-        Dim Version As Boolean
-        Dim InstalledVersion As Boolean
-        Dim MinimumApiVersion As Boolean
-        Dim Description As Boolean
+        Dim 全部 As Boolean
+        Dim 安装状态 As Boolean
+        Dim 名称 As Boolean
+        Dim 作者 As Boolean
+        Dim 版本 As Boolean
+        Dim 已安装版本 As Boolean
+        Dim 最低SMAPI版本 As Boolean
+        Dim 描述 As Boolean
         Dim UniqueID As Boolean
-        Dim UpdateKeys As Boolean
-        Dim ContentPackFor As Boolean
-        Dim Dependencies As Boolean
+        Dim 更新键 As Boolean
+        Dim 内容包依赖 As Boolean
+        Dim 其他依赖项 As Boolean
     End Structure
 
     Public Enum CDTask
