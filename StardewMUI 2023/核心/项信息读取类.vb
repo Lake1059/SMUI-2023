@@ -1,5 +1,6 @@
 ﻿
 Imports System.IO
+Imports System.Runtime.InteropServices.JavaScript.JSType
 Imports Microsoft.VisualBasic.FileIO.FileSystem
 Imports Newtonsoft.Json
 Imports Newtonsoft.Json.Linq
@@ -89,7 +90,24 @@ Public Class 项信息读取类
                     Case "CDCD", "CDCP"
                         If i = 当前行数据.Length - 1 Then Continue For
 
-                        If 计算类型.安装状态 = True Then 处理CDCD命令的安装判断(安装状态, 安装命令数据(i + 1), 游戏路径)
+                        If 计算类型.安装状态 = True Then
+                            If DirectoryExists(Path.Combine(游戏路径, "Mods", 安装命令数据(i + 1))) = True Then
+                                Select Case 安装状态
+                                    Case 公共对象.安装状态枚举.未安装
+                                        安装状态 = 公共对象.安装状态枚举.安装不完整
+                                    Case Else
+                                        安装状态 = 公共对象.安装状态枚举.已安装
+                                End Select
+                            Else
+                                Select Case 安装状态
+                                    Case 公共对象.安装状态枚举.已安装
+                                        安装状态 = 公共对象.安装状态枚举.安装不完整
+                                    Case Else
+                                        安装状态 = 公共对象.安装状态枚举.未安装
+                                End Select
+                                未安装的文件夹.Add(安装命令数据(i + 1))
+                            End If
+                        End If
 
                         Dim 清单文件对象 As New 搜索文件类
                         清单文件对象.搜索清单文件(CombinePath(项路径, 安装命令数据(i + 1)))
@@ -205,10 +223,68 @@ Public Class 项信息读取类
                         i += 1
 
                     Case "CDGCD"
+                        If 计算类型.安装状态 = False Then Continue For
+                        If i = 当前行数据.Length - 1 Or i = 当前行数据.Length - 2 Then Continue For
+                        Dim x1 As String = 当前行数据(i + 1)
+                        Dim x2 As String = 当前行数据(i + 2)
+                        Select Case 安装状态
+                            Case 公共对象.安装状态枚举.未知
+                                If DirectoryExists(CombinePath(游戏路径, x2)) = True Then
+                                    安装状态 = 公共对象.安装状态枚举.文件夹已复制
+                                Else
+                                    安装状态 = 公共对象.安装状态枚举.文件夹未复制
+                                    未复制的文件夹.Add(x2)
+                                End If
+                            Case 公共对象.安装状态枚举.文件夹已复制
+                                If DirectoryExists(CombinePath(游戏路径, x2)) = False Then
+                                    安装状态 = 公共对象.安装状态枚举.文件夹部分复制
+                                    未复制的文件夹.Add(x2)
+                                End If
+                        End Select
+                        i += 2
+
+                    Case "CDMAD"
+                        If 计算类型.安装状态 = False Then Continue For
+                        If 安装状态 = 公共对象.安装状态枚举.未知 Then 安装状态 = 公共对象.安装状态枚举.附加内容
+
+                    Case "CDGRF"
+                        If 计算类型.安装状态 = False Then Continue For
+                        If i = 当前行数据.Length - 1 Or i = 当前行数据.Length - 2 Then Continue For
+                        Dim x1 As String = 当前行数据(i + 1)
+                        Dim x2 As String = 当前行数据(i + 2)
+
+                        If FileExists(Path.Combine(项路径, x1)) = False Then
+                            安装状态 = 公共对象.安装状态枚举.文件未替换
+                            Continue For
+                        End If
+                        If FileExists(Path.Combine(游戏路径, x2)) = False Then
+                            安装状态 = 公共对象.安装状态枚举.文件未替换
+                            Continue For
+                        End If
+                        Dim a1 As String = 共享方法.CalculateSHA256(Path.Combine(项路径, x1))
+                        Dim a2 As String = 共享方法.CalculateSHA256(Path.Combine(游戏路径, x2))
+                        Select Case 安装状态
+                            Case 公共对象.安装状态枚举.未知
+                                If a1 = a2 Then
+                                    安装状态 = 公共对象.安装状态枚举.文件已替换
+                                Else
+                                    安装状态 = 公共对象.安装状态枚举.文件未替换
+                                    未替换的文件.Add(x2)
+                                End If
+                            Case 公共对象.安装状态枚举.文件已替换
+                                If a1 <> a2 Then
+                                    安装状态 = 公共对象.安装状态枚举.文件部分替换
+                                    未替换的文件.Add(x2)
+                                End If
+                        End Select
+                        i += 2
+
+
 
 
 
                 End Select
+
 
             Next
 
@@ -218,29 +294,6 @@ Public Class 项信息读取类
         End Try
 
     End Sub
-
-    Sub 处理CDCD命令的安装判断(ByRef 要写入的安装状态 As 公共对象.安装状态枚举, 参数 As String, 游戏路径 As String)
-        If DirectoryExists(CombinePath(CombinePath(游戏路径, "Mods"), 参数)) = True Then
-            Select Case 要写入的安装状态
-                Case 公共对象.安装状态枚举.未安装
-                    要写入的安装状态 = 公共对象.安装状态枚举.安装不完整
-                Case Else
-                    要写入的安装状态 = 公共对象.安装状态枚举.已安装
-            End Select
-        Else
-            Select Case 要写入的安装状态
-                Case 公共对象.安装状态枚举.已安装
-                    要写入的安装状态 = 公共对象.安装状态枚举.安装不完整
-                Case Else
-                    要写入的安装状态 = 公共对象.安装状态枚举.未安装
-            End Select
-            未安装的文件夹.Add(参数)
-        End If
-    End Sub
-
-
-
-
 
     Public Shared Function 从JSON读取语义版本号(ByVal JsonTextInVersion As String, Optional ByRef ErrorString As String = "") As String
         Try
