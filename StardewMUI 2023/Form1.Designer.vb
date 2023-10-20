@@ -29,6 +29,7 @@ Partial Class Form1
         UiTabControlMenu1 = New Sunny.UI.UITabControlMenu()
         TabPage欢迎页 = New TabPage()
         Panel15 = New Panel()
+        LinkLabel5 = New LinkLabel()
         UiListBox3 = New Sunny.UI.UIListBox()
         UiButton40 = New Sunny.UI.UIButton()
         UiButton39 = New Sunny.UI.UIButton()
@@ -68,6 +69,8 @@ Partial Class Form1
         UiTextBox2 = New Sunny.UI.UITextBox()
         Label12 = New Label()
         TabPage15 = New TabPage()
+        UiComboBox7 = New Sunny.UI.UIComboBox()
+        Label66 = New Label()
         UiComboBox3 = New Sunny.UI.UIComboBox()
         Label21 = New Label()
         UiComboBox2 = New Sunny.UI.UIComboBox()
@@ -144,6 +147,11 @@ Partial Class Form1
         TabPage存档编辑器 = New TabPage()
         TabPage批量分发管理 = New TabPage()
         TabPageSMAPI安装管理器 = New TabPage()
+        LinkLabel4 = New LinkLabel()
+        LinkLabel3 = New LinkLabel()
+        LinkLabel2 = New LinkLabel()
+        Label65 = New Label()
+        UiRichTextBox5 = New Sunny.UI.UIRichTextBox()
         UiListBox6 = New Sunny.UI.UIListBox()
         Label64 = New Label()
         UiListBox4 = New Sunny.UI.UIListBox()
@@ -423,6 +431,7 @@ Partial Class Form1
         ' 
         ' Panel15
         ' 
+        Panel15.Controls.Add(LinkLabel5)
         Panel15.Controls.Add(UiListBox3)
         Panel15.Controls.Add(UiButton40)
         Panel15.Controls.Add(UiButton39)
@@ -439,6 +448,21 @@ Partial Class Form1
         Panel15.Name = "Panel15"
         Panel15.Size = New Size(563, 631)
         Panel15.TabIndex = 1
+        ' 
+        ' LinkLabel5
+        ' 
+        LinkLabel5.Anchor = AnchorStyles.Top Or AnchorStyles.Right
+        LinkLabel5.AutoSize = True
+        LinkLabel5.Font = New Font("微软雅黑", 12F, FontStyle.Regular, GraphicsUnit.Point)
+        LinkLabel5.LinkBehavior = LinkBehavior.HoverUnderline
+        LinkLabel5.LinkColor = Color.FromArgb(CByte(0), CByte(192), CByte(192))
+        LinkLabel5.Location = New Point(462, 457)
+        LinkLabel5.Margin = New Padding(0)
+        LinkLabel5.Name = "LinkLabel5"
+        LinkLabel5.Size = New Size(74, 21)
+        LinkLabel5.TabIndex = 47
+        LinkLabel5.TabStop = True
+        LinkLabel5.Text = "更新菜单"
         ' 
         ' UiListBox3
         ' 
@@ -1397,6 +1421,8 @@ Partial Class Form1
         ' TabPage15
         ' 
         TabPage15.BackColor = Color.FromArgb(CByte(24), CByte(24), CByte(24))
+        TabPage15.Controls.Add(UiComboBox7)
+        TabPage15.Controls.Add(Label66)
         TabPage15.Controls.Add(UiComboBox3)
         TabPage15.Controls.Add(Label21)
         TabPage15.Controls.Add(UiComboBox2)
@@ -1410,6 +1436,54 @@ Partial Class Form1
         TabPage15.Size = New Size(912, 631)
         TabPage15.TabIndex = 1
         TabPage15.Text = "地区和语言"
+        ' 
+        ' UiComboBox7
+        ' 
+        UiComboBox7.DataSource = Nothing
+        UiComboBox7.DropDownStyle = Sunny.UI.UIDropDownStyle.DropDownList
+        UiComboBox7.FillColor = Color.FromArgb(CByte(48), CByte(48), CByte(48))
+        UiComboBox7.FillColor2 = Color.FromArgb(CByte(48), CByte(48), CByte(48))
+        UiComboBox7.FillDisableColor = Color.FromArgb(CByte(48), CByte(48), CByte(48))
+        UiComboBox7.Font = New Font("微软雅黑", 9.75F, FontStyle.Regular, GraphicsUnit.Point)
+        UiComboBox7.ForeColor = Color.FromArgb(CByte(224), CByte(224), CByte(224))
+        UiComboBox7.ForeDisableColor = Color.Gray
+        UiComboBox7.ItemFillColor = Color.FromArgb(CByte(48), CByte(48), CByte(48))
+        UiComboBox7.ItemForeColor = Color.FromArgb(CByte(224), CByte(224), CByte(224))
+        UiComboBox7.ItemHeight = 30
+        UiComboBox7.ItemHoverColor = Color.FromArgb(CByte(64), CByte(64), CByte(64))
+        UiComboBox7.ItemRectColor = Color.FromArgb(CByte(48), CByte(48), CByte(48))
+        UiComboBox7.Items.AddRange(New Object() {"不使用", "BitBucket"})
+        UiComboBox7.ItemSelectBackColor = Color.DimGray
+        UiComboBox7.ItemSelectForeColor = Color.FromArgb(CByte(224), CByte(224), CByte(224))
+        UiComboBox7.Location = New Point(20, 425)
+        UiComboBox7.Margin = New Padding(20, 0, 0, 0)
+        UiComboBox7.MaxDropDownItems = 10
+        UiComboBox7.MinimumSize = New Size(63, 0)
+        UiComboBox7.Name = "UiComboBox7"
+        UiComboBox7.Padding = New Padding(0, 0, 30, 2)
+        UiComboBox7.Radius = 0
+        UiComboBox7.RadiusSides = Sunny.UI.UICornerRadiusSides.None
+        UiComboBox7.RectColor = Color.Silver
+        UiComboBox7.RectDisableColor = Color.Silver
+        UiComboBox7.RectSides = ToolStripStatusLabelBorderSides.None
+        UiComboBox7.Size = New Size(300, 30)
+        UiComboBox7.Style = Sunny.UI.UIStyle.Custom
+        UiComboBox7.TabIndex = 31
+        UiComboBox7.TabStop = False
+        UiComboBox7.TextAlignment = ContentAlignment.MiddleLeft
+        UiComboBox7.TrimFilter = True
+        UiComboBox7.Watermark = ""
+        ' 
+        ' Label66
+        ' 
+        Label66.AutoSize = True
+        Label66.Font = New Font("微软雅黑", 12F, FontStyle.Regular, GraphicsUnit.Point)
+        Label66.Location = New Point(20, 384)
+        Label66.Margin = New Padding(20)
+        Label66.Name = "Label66"
+        Label66.Size = New Size(122, 21)
+        Label66.TabIndex = 30
+        Label66.Text = "备选下载服务器"
         ' 
         ' UiComboBox3
         ' 
@@ -2046,7 +2120,6 @@ Partial Class Form1
         UiComboBox5.ItemHeight = 30
         UiComboBox5.ItemHoverColor = Color.FromArgb(CByte(64), CByte(64), CByte(64))
         UiComboBox5.ItemRectColor = Color.FromArgb(CByte(48), CByte(48), CByte(48))
-        UiComboBox5.Items.AddRange(New Object() {"简体中文", "English"})
         UiComboBox5.ItemSelectBackColor = Color.DimGray
         UiComboBox5.ItemSelectForeColor = Color.FromArgb(CByte(224), CByte(224), CByte(224))
         UiComboBox5.Location = New Point(20, 61)
@@ -2576,6 +2649,11 @@ Partial Class Form1
         ' TabPageSMAPI安装管理器
         ' 
         TabPageSMAPI安装管理器.BackColor = Color.FromArgb(CByte(24), CByte(24), CByte(24))
+        TabPageSMAPI安装管理器.Controls.Add(LinkLabel4)
+        TabPageSMAPI安装管理器.Controls.Add(LinkLabel3)
+        TabPageSMAPI安装管理器.Controls.Add(LinkLabel2)
+        TabPageSMAPI安装管理器.Controls.Add(Label65)
+        TabPageSMAPI安装管理器.Controls.Add(UiRichTextBox5)
         TabPageSMAPI安装管理器.Controls.Add(UiListBox6)
         TabPageSMAPI安装管理器.Controls.Add(Label64)
         TabPageSMAPI安装管理器.Controls.Add(UiListBox4)
@@ -2587,6 +2665,83 @@ Partial Class Form1
         TabPageSMAPI安装管理器.Size = New Size(912, 631)
         TabPageSMAPI安装管理器.TabIndex = 3
         TabPageSMAPI安装管理器.Text = "SMAPI 安装管理器"
+        ' 
+        ' LinkLabel4
+        ' 
+        LinkLabel4.AutoSize = True
+        LinkLabel4.Font = New Font("微软雅黑", 12F, FontStyle.Regular, GraphicsUnit.Point)
+        LinkLabel4.LinkBehavior = LinkBehavior.HoverUnderline
+        LinkLabel4.LinkColor = Color.FromArgb(CByte(0), CByte(192), CByte(0))
+        LinkLabel4.Location = New Point(277, 488)
+        LinkLabel4.Margin = New Padding(0)
+        LinkLabel4.Name = "LinkLabel4"
+        LinkLabel4.Size = New Size(243, 21)
+        LinkLabel4.TabIndex = 48
+        LinkLabel4.TabStop = True
+        LinkLabel4.Text = "清理已下载文件（114.514 MB）"
+        ' 
+        ' LinkLabel3
+        ' 
+        LinkLabel3.AutoSize = True
+        LinkLabel3.Font = New Font("微软雅黑", 12F, FontStyle.Regular, GraphicsUnit.Point)
+        LinkLabel3.LinkBehavior = LinkBehavior.HoverUnderline
+        LinkLabel3.LinkColor = Color.FromArgb(CByte(0), CByte(192), CByte(0))
+        LinkLabel3.Location = New Point(430, 20)
+        LinkLabel3.Margin = New Padding(0)
+        LinkLabel3.Name = "LinkLabel3"
+        LinkLabel3.Size = New Size(90, 21)
+        LinkLabel3.TabIndex = 47
+        LinkLabel3.TabStop = True
+        LinkLabel3.Text = "卸载已安装"
+        ' 
+        ' LinkLabel2
+        ' 
+        LinkLabel2.AutoSize = True
+        LinkLabel2.Font = New Font("微软雅黑", 12F, FontStyle.Regular, GraphicsUnit.Point)
+        LinkLabel2.LinkBehavior = LinkBehavior.HoverUnderline
+        LinkLabel2.LinkColor = Color.FromArgb(CByte(0), CByte(192), CByte(0))
+        LinkLabel2.Location = New Point(382, 163)
+        LinkLabel2.Margin = New Padding(0)
+        LinkLabel2.Name = "LinkLabel2"
+        LinkLabel2.Size = New Size(138, 21)
+        LinkLabel2.TabIndex = 46
+        LinkLabel2.TabStop = True
+        LinkLabel2.Text = "选择要获取的范围"
+        ' 
+        ' Label65
+        ' 
+        Label65.AutoSize = True
+        Label65.Font = New Font("微软雅黑", 12F, FontStyle.Regular, GraphicsUnit.Point)
+        Label65.Location = New Point(540, 20)
+        Label65.Margin = New Padding(20, 20, 20, 0)
+        Label65.Name = "Label65"
+        Label65.Size = New Size(90, 21)
+        Label65.TabIndex = 45
+        Label65.Text = "发行版说明"
+        ' 
+        ' UiRichTextBox5
+        ' 
+        UiRichTextBox5.Anchor = AnchorStyles.Top Or AnchorStyles.Bottom Or AnchorStyles.Left Or AnchorStyles.Right
+        UiRichTextBox5.FillColor = Color.FromArgb(CByte(32), CByte(32), CByte(32))
+        UiRichTextBox5.FillColor2 = Color.FromArgb(CByte(32), CByte(32), CByte(32))
+        UiRichTextBox5.FillDisableColor = Color.FromArgb(CByte(32), CByte(32), CByte(32))
+        UiRichTextBox5.Font = New Font("微软雅黑", 9.75F, FontStyle.Regular, GraphicsUnit.Point)
+        UiRichTextBox5.ForeColor = Color.FromArgb(CByte(224), CByte(224), CByte(224))
+        UiRichTextBox5.ForeDisableColor = Color.Silver
+        UiRichTextBox5.Location = New Point(540, 61)
+        UiRichTextBox5.Margin = New Padding(0, 0, 20, 20)
+        UiRichTextBox5.MinimumSize = New Size(1, 1)
+        UiRichTextBox5.Name = "UiRichTextBox5"
+        UiRichTextBox5.Padding = New Padding(8, 5, 1, 5)
+        UiRichTextBox5.RectSides = ToolStripStatusLabelBorderSides.None
+        UiRichTextBox5.ScrollBarBackColor = Color.FromArgb(CByte(32), CByte(32), CByte(32))
+        UiRichTextBox5.ScrollBarColor = Color.FromArgb(CByte(46), CByte(46), CByte(46))
+        UiRichTextBox5.ShowText = False
+        UiRichTextBox5.Size = New Size(352, 550)
+        UiRichTextBox5.Style = Sunny.UI.UIStyle.Custom
+        UiRichTextBox5.TabIndex = 44
+        UiRichTextBox5.Text = "字体样式"
+        UiRichTextBox5.TextAlignment = ContentAlignment.MiddleCenter
         ' 
         ' UiListBox6
         ' 
@@ -2604,8 +2759,8 @@ Partial Class Form1
         UiListBox6.Items.AddRange(New Object() {"正在下载的版本标题", "下载进度"})
         UiListBox6.ItemSelectBackColor = Color.FromArgb(CByte(64), CByte(64), CByte(64))
         UiListBox6.ItemSelectForeColor = Color.FromArgb(CByte(224), CByte(224), CByte(224))
-        UiListBox6.Location = New Point(30, 529)
-        UiListBox6.Margin = New Padding(30, 20, 30, 20)
+        UiListBox6.Location = New Point(20, 529)
+        UiListBox6.Margin = New Padding(20)
         UiListBox6.MinimumSize = New Size(1, 1)
         UiListBox6.Name = "UiListBox6"
         UiListBox6.Padding = New Padding(10)
@@ -2614,7 +2769,7 @@ Partial Class Form1
         UiListBox6.ScrollBarBackColor = Color.FromArgb(CByte(48), CByte(48), CByte(48))
         UiListBox6.ScrollBarColor = Color.DimGray
         UiListBox6.ShowText = False
-        UiListBox6.Size = New Size(506, 82)
+        UiListBox6.Size = New Size(500, 82)
         UiListBox6.Style = Sunny.UI.UIStyle.Custom
         UiListBox6.TabIndex = 43
         UiListBox6.Text = "UiListBox6"
@@ -2638,16 +2793,15 @@ Partial Class Form1
         UiListBox4.FillColor = Color.FromArgb(CByte(32), CByte(32), CByte(32))
         UiListBox4.FillColor2 = Color.FromArgb(CByte(32), CByte(32), CByte(32))
         UiListBox4.FillDisableColor = Color.FromArgb(CByte(32), CByte(32), CByte(32))
-        UiListBox4.Font = New Font("微软雅黑", 11.25F, FontStyle.Regular, GraphicsUnit.Point)
+        UiListBox4.Font = New Font("微软雅黑", 9.75F, FontStyle.Regular, GraphicsUnit.Point)
         UiListBox4.ForeColor = Color.FromArgb(CByte(224), CByte(224), CByte(224))
         UiListBox4.ForeDisableColor = Color.FromArgb(CByte(224), CByte(224), CByte(224))
         UiListBox4.HoverColor = Color.FromArgb(CByte(56), CByte(56), CByte(56))
-        UiListBox4.ItemHeight = 31
-        UiListBox4.Items.AddRange(New Object() {"本体最新版本标题", "发布者和时间", "本体更新下载进度"})
+        UiListBox4.Items.AddRange(New Object() {"SMAPI-3.18.6-installer-for-developers.zip", "SMAPI-3.18.6-installer.zip", "SMAPI-3.18.5-installer-for-developers.zip", "SMAPI-3.18.5-installer.zip", "SMAPI-3.18.4-installer-for-developers.zip", "SMAPI-3.18.4-installer.zip"})
         UiListBox4.ItemSelectBackColor = Color.FromArgb(CByte(64), CByte(64), CByte(64))
         UiListBox4.ItemSelectForeColor = Color.FromArgb(CByte(224), CByte(224), CByte(224))
-        UiListBox4.Location = New Point(30, 204)
-        UiListBox4.Margin = New Padding(30, 20, 30, 0)
+        UiListBox4.Location = New Point(20, 204)
+        UiListBox4.Margin = New Padding(20, 20, 20, 0)
         UiListBox4.MinimumSize = New Size(1, 1)
         UiListBox4.Name = "UiListBox4"
         UiListBox4.Padding = New Padding(10)
@@ -2656,7 +2810,7 @@ Partial Class Form1
         UiListBox4.ScrollBarBackColor = Color.FromArgb(CByte(48), CByte(48), CByte(48))
         UiListBox4.ScrollBarColor = Color.DimGray
         UiListBox4.ShowText = False
-        UiListBox4.Size = New Size(506, 264)
+        UiListBox4.Size = New Size(500, 264)
         UiListBox4.Style = Sunny.UI.UIStyle.Custom
         UiListBox4.TabIndex = 41
         UiListBox4.Text = "UiListBox4"
@@ -2676,8 +2830,8 @@ Partial Class Form1
         UiListBox5.Items.AddRange(New Object() {"当前已安装版本", "安装细节"})
         UiListBox5.ItemSelectBackColor = Color.FromArgb(CByte(64), CByte(64), CByte(64))
         UiListBox5.ItemSelectForeColor = Color.FromArgb(CByte(224), CByte(224), CByte(224))
-        UiListBox5.Location = New Point(30, 61)
-        UiListBox5.Margin = New Padding(30, 20, 30, 0)
+        UiListBox5.Location = New Point(20, 61)
+        UiListBox5.Margin = New Padding(20, 20, 20, 0)
         UiListBox5.MinimumSize = New Size(1, 1)
         UiListBox5.Name = "UiListBox5"
         UiListBox5.Padding = New Padding(10)
@@ -2686,7 +2840,7 @@ Partial Class Form1
         UiListBox5.ScrollBarBackColor = Color.FromArgb(CByte(48), CByte(48), CByte(48))
         UiListBox5.ScrollBarColor = Color.DimGray
         UiListBox5.ShowText = False
-        UiListBox5.Size = New Size(506, 82)
+        UiListBox5.Size = New Size(500, 82)
         UiListBox5.Style = Sunny.UI.UIStyle.Custom
         UiListBox5.TabIndex = 40
         UiListBox5.Text = "UiListBox5"
@@ -5043,4 +5197,12 @@ Partial Class Form1
     Friend WithEvents UiListBox6 As Sunny.UI.UIListBox
     Friend WithEvents Label64 As Label
     Friend WithEvents UiListBox4 As Sunny.UI.UIListBox
+    Friend WithEvents UiRichTextBox5 As Sunny.UI.UIRichTextBox
+    Friend WithEvents Label65 As Label
+    Friend WithEvents LinkLabel2 As LinkLabel
+    Friend WithEvents LinkLabel3 As LinkLabel
+    Friend WithEvents LinkLabel4 As LinkLabel
+    Friend WithEvents LinkLabel5 As LinkLabel
+    Friend WithEvents UiComboBox7 As Sunny.UI.UIComboBox
+    Friend WithEvents Label66 As Label
 End Class
