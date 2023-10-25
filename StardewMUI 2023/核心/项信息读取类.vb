@@ -1,6 +1,5 @@
 ﻿
 Imports System.IO
-Imports System.Runtime.InteropServices.JavaScript.JSType
 Imports Microsoft.VisualBasic.FileIO.FileSystem
 Imports Newtonsoft.Json
 Imports Newtonsoft.Json.Linq
@@ -279,6 +278,7 @@ Public Class 项信息读取类
                         End Select
                         i += 2
 
+                    Case "CDGCF"
 
 
 
@@ -335,6 +335,10 @@ Public Class 项信息读取类
             Return ""
         End Try
     End Function
+
+
+
+
 
 
 End Class
