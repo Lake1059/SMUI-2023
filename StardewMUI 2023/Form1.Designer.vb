@@ -24,9 +24,6 @@ Partial Class Form1
     Private Sub InitializeComponent()
         components = New ComponentModel.Container()
         Dim resources As ComponentModel.ComponentResourceManager = New ComponentModel.ComponentResourceManager(GetType(Form1))
-        Dim ListViewItem1 As ListViewItem = New ListViewItem("配置项1")
-        Dim ListViewItem2 As ListViewItem = New ListViewItem("配置项2")
-        Dim ListViewItem3 As ListViewItem = New ListViewItem("配置项3")
         UiTabControl1 = New Sunny.UI.UITabControl()
         TabPage1 = New TabPage()
         Panel29 = New Panel()
@@ -212,7 +209,6 @@ Partial Class Form1
         ListView7 = New ListView()
         ColumnHeader7 = New ColumnHeader()
         ColumnHeader8 = New ColumnHeader()
-        ColumnHeader9 = New ColumnHeader()
         Panel23 = New Panel()
         Label8 = New Label()
         UiButton41 = New Sunny.UI.UIButton()
@@ -220,7 +216,6 @@ Partial Class Form1
         UiButton20 = New Sunny.UI.UIButton()
         Panel24 = New Panel()
         Panel43 = New Panel()
-        UiListBox7 = New Sunny.UI.UIListBox()
         Panel25 = New Panel()
         Label9 = New Label()
         UiButton22 = New Sunny.UI.UIButton()
@@ -282,6 +277,11 @@ Partial Class Form1
         TabPage27 = New TabPage()
         TabPage6 = New TabPage()
         TabPage13 = New TabPage()
+        ListView8 = New ListView()
+        ColumnHeader11 = New ColumnHeader()
+        ColumnHeader12 = New ColumnHeader()
+        LinkLabel6 = New LinkLabel()
+        LinkLabel7 = New LinkLabel()
         UiTabControl1.SuspendLayout()
         TabPage1.SuspendLayout()
         Panel29.SuspendLayout()
@@ -2613,6 +2613,8 @@ Partial Class Form1
         ' TabPageSMAPI安装管理器
         ' 
         TabPageSMAPI安装管理器.BackColor = Color.FromArgb(CByte(24), CByte(24), CByte(24))
+        TabPageSMAPI安装管理器.Controls.Add(LinkLabel7)
+        TabPageSMAPI安装管理器.Controls.Add(LinkLabel6)
         TabPageSMAPI安装管理器.Controls.Add(LinkLabel4)
         TabPageSMAPI安装管理器.Controls.Add(LinkLabel3)
         TabPageSMAPI安装管理器.Controls.Add(LinkLabel2)
@@ -2636,13 +2638,13 @@ Partial Class Form1
         LinkLabel4.Font = New Font("微软雅黑", 12F, FontStyle.Regular, GraphicsUnit.Point)
         LinkLabel4.LinkBehavior = LinkBehavior.HoverUnderline
         LinkLabel4.LinkColor = Color.FromArgb(CByte(0), CByte(192), CByte(0))
-        LinkLabel4.Location = New Point(277, 488)
+        LinkLabel4.Location = New Point(478, 488)
         LinkLabel4.Margin = New Padding(0)
         LinkLabel4.Name = "LinkLabel4"
-        LinkLabel4.Size = New Size(243, 21)
+        LinkLabel4.Size = New Size(42, 21)
         LinkLabel4.TabIndex = 48
         LinkLabel4.TabStop = True
-        LinkLabel4.Text = "清理已下载文件（114.514 MB）"
+        LinkLabel4.Text = "清理"
         ' 
         ' LinkLabel3
         ' 
@@ -2664,13 +2666,13 @@ Partial Class Form1
         LinkLabel2.Font = New Font("微软雅黑", 12F, FontStyle.Regular, GraphicsUnit.Point)
         LinkLabel2.LinkBehavior = LinkBehavior.HoverUnderline
         LinkLabel2.LinkColor = Color.FromArgb(CByte(0), CByte(192), CByte(0))
-        LinkLabel2.Location = New Point(382, 163)
+        LinkLabel2.Location = New Point(446, 163)
         LinkLabel2.Margin = New Padding(0)
         LinkLabel2.Name = "LinkLabel2"
-        LinkLabel2.Size = New Size(138, 21)
+        LinkLabel2.Size = New Size(74, 21)
         LinkLabel2.TabIndex = 46
         LinkLabel2.TabStop = True
-        LinkLabel2.Text = "选择要获取的范围"
+        LinkLabel2.Text = "获取指定"
         ' 
         ' Label65
         ' 
@@ -2761,6 +2763,7 @@ Partial Class Form1
         UiListBox4.ForeColor = Color.FromArgb(CByte(224), CByte(224), CByte(224))
         UiListBox4.ForeDisableColor = Color.FromArgb(CByte(224), CByte(224), CByte(224))
         UiListBox4.HoverColor = Color.FromArgb(CByte(56), CByte(56), CByte(56))
+        UiListBox4.ItemHeight = 31
         UiListBox4.Items.AddRange(New Object() {"SMAPI-3.18.6-installer-for-developers.zip", "SMAPI-3.18.6-installer.zip", "SMAPI-3.18.5-installer-for-developers.zip", "SMAPI-3.18.5-installer.zip", "SMAPI-3.18.4-installer-for-developers.zip", "SMAPI-3.18.4-installer.zip"})
         UiListBox4.ItemSelectBackColor = Color.FromArgb(CByte(64), CByte(64), CByte(64))
         UiListBox4.ItemSelectForeColor = Color.FromArgb(CByte(224), CByte(224), CByte(224))
@@ -2972,7 +2975,7 @@ Partial Class Form1
         Panel12.Dock = DockStyle.Fill
         Panel12.Location = New Point(0, 40)
         Panel12.Name = "Panel12"
-        Panel12.Padding = New Padding(5)
+        Panel12.Padding = New Padding(10)
         Panel12.Size = New Size(714, 551)
         Panel12.TabIndex = 4
         ' 
@@ -2984,10 +2987,10 @@ Partial Class Form1
         ListView2.Dock = DockStyle.Fill
         ListView2.ForeColor = Color.FromArgb(CByte(224), CByte(224), CByte(224))
         ListView2.HeaderStyle = ColumnHeaderStyle.None
-        ListView2.Location = New Point(5, 5)
+        ListView2.Location = New Point(10, 10)
         ListView2.Name = "ListView2"
         ListView2.OwnerDraw = True
-        ListView2.Size = New Size(704, 541)
+        ListView2.Size = New Size(694, 531)
         ListView2.TabIndex = 3
         ListView2.TabStop = False
         ListView2.UseCompatibleStateImageBehavior = False
@@ -3473,7 +3476,7 @@ Partial Class Form1
         Panel11.Dock = DockStyle.Fill
         Panel11.Location = New Point(0, 40)
         Panel11.Name = "Panel11"
-        Panel11.Padding = New Padding(5)
+        Panel11.Padding = New Padding(10)
         Panel11.Size = New Size(250, 551)
         Panel11.TabIndex = 3
         ' 
@@ -3485,10 +3488,10 @@ Partial Class Form1
         ListView1.Dock = DockStyle.Left
         ListView1.ForeColor = Color.FromArgb(CByte(224), CByte(224), CByte(224))
         ListView1.HeaderStyle = ColumnHeaderStyle.None
-        ListView1.Location = New Point(5, 5)
+        ListView1.Location = New Point(10, 10)
         ListView1.Name = "ListView1"
         ListView1.OwnerDraw = True
-        ListView1.Size = New Size(201, 541)
+        ListView1.Size = New Size(201, 531)
         ListView1.TabIndex = 3
         ListView1.TabStop = False
         ListView1.UseCompatibleStateImageBehavior = False
@@ -3792,7 +3795,7 @@ Partial Class Form1
         Panel42.Dock = DockStyle.Fill
         Panel42.Location = New Point(0, 40)
         Panel42.Name = "Panel42"
-        Panel42.Padding = New Padding(5)
+        Panel42.Padding = New Padding(10)
         Panel42.Size = New Size(664, 401)
         Panel42.TabIndex = 5
         ' 
@@ -3800,18 +3803,27 @@ Partial Class Form1
         ' 
         ListView7.BackColor = Color.FromArgb(CByte(24), CByte(24), CByte(24))
         ListView7.BorderStyle = BorderStyle.None
-        ListView7.Columns.AddRange(New ColumnHeader() {ColumnHeader7, ColumnHeader8, ColumnHeader9})
+        ListView7.Columns.AddRange(New ColumnHeader() {ColumnHeader7, ColumnHeader8})
         ListView7.Dock = DockStyle.Fill
         ListView7.ForeColor = Color.FromArgb(CByte(224), CByte(224), CByte(224))
         ListView7.HeaderStyle = ColumnHeaderStyle.None
-        ListView7.Location = New Point(5, 5)
+        ListView7.Location = New Point(10, 10)
         ListView7.Name = "ListView7"
         ListView7.OwnerDraw = True
-        ListView7.Size = New Size(654, 391)
+        ListView7.Size = New Size(644, 381)
+        ListView7.SmallImageList = ImageList1
         ListView7.TabIndex = 3
         ListView7.TabStop = False
         ListView7.UseCompatibleStateImageBehavior = False
         ListView7.View = View.Details
+        ' 
+        ' ColumnHeader7
+        ' 
+        ColumnHeader7.Width = 200
+        ' 
+        ' ColumnHeader8
+        ' 
+        ColumnHeader8.Width = 400
         ' 
         ' Panel23
         ' 
@@ -3947,44 +3959,13 @@ Partial Class Form1
         ' 
         ' Panel43
         ' 
-        Panel43.Controls.Add(UiListBox7)
+        Panel43.Controls.Add(ListView8)
         Panel43.Dock = DockStyle.Fill
         Panel43.Location = New Point(0, 40)
         Panel43.Name = "Panel43"
-        Panel43.Padding = New Padding(5)
+        Panel43.Padding = New Padding(10)
         Panel43.Size = New Size(664, 110)
         Panel43.TabIndex = 6
-        ' 
-        ' UiListBox7
-        ' 
-        UiListBox7.Dock = DockStyle.Fill
-        UiListBox7.FillColor = Color.FromArgb(CByte(24), CByte(24), CByte(24))
-        UiListBox7.FillColor2 = Color.FromArgb(CByte(24), CByte(24), CByte(24))
-        UiListBox7.FillDisableColor = Color.FromArgb(CByte(40), CByte(40), CByte(40))
-        UiListBox7.Font = New Font("微软雅黑", 9.75F, FontStyle.Regular, GraphicsUnit.Point)
-        UiListBox7.ForeColor = Color.FromArgb(CByte(224), CByte(224), CByte(224))
-        UiListBox7.ForeDisableColor = Color.FromArgb(CByte(224), CByte(224), CByte(224))
-        UiListBox7.HoverColor = Color.FromArgb(CByte(32), CByte(32), CByte(32))
-        UiListBox7.ItemHeight = 30
-        UiListBox7.Items.AddRange(New Object() {"评估文本1", "评估文本2", "评估文本3"})
-        UiListBox7.ItemSelectBackColor = Color.FromArgb(CByte(48), CByte(48), CByte(48))
-        UiListBox7.ItemSelectForeColor = Color.FromArgb(CByte(224), CByte(224), CByte(224))
-        UiListBox7.Location = New Point(5, 5)
-        UiListBox7.Margin = New Padding(4, 5, 4, 5)
-        UiListBox7.MinimumSize = New Size(1, 1)
-        UiListBox7.Name = "UiListBox7"
-        UiListBox7.Padding = New Padding(5)
-        UiListBox7.RadiusSides = Sunny.UI.UICornerRadiusSides.None
-        UiListBox7.RectSides = ToolStripStatusLabelBorderSides.None
-        UiListBox7.ScrollBarBackColor = Color.FromArgb(CByte(48), CByte(48), CByte(48))
-        UiListBox7.ScrollBarColor = Color.DimGray
-        UiListBox7.ScrollBarHandleWidth = 15
-        UiListBox7.ScrollBarWidth = 25
-        UiListBox7.ShowText = False
-        UiListBox7.Size = New Size(654, 100)
-        UiListBox7.Style = Sunny.UI.UIStyle.Custom
-        UiListBox7.TabIndex = 5
-        UiListBox7.Text = "UiListBox7"
         ' 
         ' Panel25
         ' 
@@ -4067,7 +4048,7 @@ Partial Class Form1
         Panel41.Dock = DockStyle.Fill
         Panel41.Location = New Point(0, 40)
         Panel41.Name = "Panel41"
-        Panel41.Padding = New Padding(5)
+        Panel41.Padding = New Padding(10)
         Panel41.Size = New Size(600, 401)
         Panel41.TabIndex = 5
         ' 
@@ -4075,14 +4056,15 @@ Partial Class Form1
         ' 
         ListView6.BackColor = Color.FromArgb(CByte(32), CByte(32), CByte(32))
         ListView6.BorderStyle = BorderStyle.None
-        ListView6.Columns.AddRange(New ColumnHeader() {ColumnHeader6})
+        ListView6.Columns.AddRange(New ColumnHeader() {ColumnHeader6, ColumnHeader12})
         ListView6.Dock = DockStyle.Fill
         ListView6.ForeColor = Color.FromArgb(CByte(224), CByte(224), CByte(224))
         ListView6.HeaderStyle = ColumnHeaderStyle.None
-        ListView6.Location = New Point(5, 5)
+        ListView6.Location = New Point(10, 10)
         ListView6.Name = "ListView6"
         ListView6.OwnerDraw = True
-        ListView6.Size = New Size(590, 391)
+        ListView6.Size = New Size(580, 381)
+        ListView6.SmallImageList = ImageList1
         ListView6.TabIndex = 3
         ListView6.TabStop = False
         ListView6.UseCompatibleStateImageBehavior = False
@@ -4239,9 +4221,9 @@ Partial Class Form1
         ListView3.ForeColor = Color.FromArgb(CByte(224), CByte(224), CByte(224))
         ListView3.FullRowSelect = True
         ListView3.HeaderStyle = ColumnHeaderStyle.None
-        ListView3.Items.AddRange(New ListViewItem() {ListViewItem1, ListViewItem2, ListViewItem3})
         ListView3.Location = New Point(10, 10)
         ListView3.Name = "ListView3"
+        ListView3.OwnerDraw = True
         ListView3.Size = New Size(580, 90)
         ListView3.SmallImageList = ImageList1
         ListView3.TabIndex = 3
@@ -4918,6 +4900,60 @@ Partial Class Form1
         TabPage13.TabIndex = 6
         TabPage13.Text = "调试输出"
         ' 
+        ' ListView8
+        ' 
+        ListView8.BackColor = Color.FromArgb(CByte(24), CByte(24), CByte(24))
+        ListView8.BorderStyle = BorderStyle.None
+        ListView8.Columns.AddRange(New ColumnHeader() {ColumnHeader11})
+        ListView8.Dock = DockStyle.Fill
+        ListView8.ForeColor = Color.FromArgb(CByte(224), CByte(224), CByte(224))
+        ListView8.FullRowSelect = True
+        ListView8.HeaderStyle = ColumnHeaderStyle.None
+        ListView8.Location = New Point(10, 10)
+        ListView8.Name = "ListView8"
+        ListView8.OwnerDraw = True
+        ListView8.Size = New Size(644, 90)
+        ListView8.SmallImageList = ImageList1
+        ListView8.TabIndex = 4
+        ListView8.UseCompatibleStateImageBehavior = False
+        ListView8.View = View.Details
+        ' 
+        ' ColumnHeader11
+        ' 
+        ColumnHeader11.Width = 600
+        ' 
+        ' ColumnHeader12
+        ' 
+        ColumnHeader12.Width = 500
+        ' 
+        ' LinkLabel6
+        ' 
+        LinkLabel6.AutoSize = True
+        LinkLabel6.Font = New Font("微软雅黑", 12F, FontStyle.Regular, GraphicsUnit.Point)
+        LinkLabel6.LinkBehavior = LinkBehavior.HoverUnderline
+        LinkLabel6.LinkColor = Color.FromArgb(CByte(0), CByte(192), CByte(0))
+        LinkLabel6.Location = New Point(352, 163)
+        LinkLabel6.Margin = New Padding(0, 0, 20, 0)
+        LinkLabel6.Name = "LinkLabel6"
+        LinkLabel6.Size = New Size(74, 21)
+        LinkLabel6.TabIndex = 49
+        LinkLabel6.TabStop = True
+        LinkLabel6.Text = "选择本地"
+        ' 
+        ' LinkLabel7
+        ' 
+        LinkLabel7.AutoSize = True
+        LinkLabel7.Font = New Font("微软雅黑", 12F, FontStyle.Regular, GraphicsUnit.Point)
+        LinkLabel7.LinkBehavior = LinkBehavior.HoverUnderline
+        LinkLabel7.LinkColor = Color.FromArgb(CByte(0), CByte(192), CByte(0))
+        LinkLabel7.Location = New Point(416, 488)
+        LinkLabel7.Margin = New Padding(0, 0, 20, 0)
+        LinkLabel7.Name = "LinkLabel7"
+        LinkLabel7.Size = New Size(42, 21)
+        LinkLabel7.TabIndex = 50
+        LinkLabel7.TabStop = True
+        LinkLabel7.Text = "取消"
+        ' 
         ' Form1
         ' 
         AutoScaleDimensions = New SizeF(7F, 17F)
@@ -5270,10 +5306,13 @@ Partial Class Form1
     Friend WithEvents ListView7 As ListView
     Friend WithEvents ColumnHeader7 As ColumnHeader
     Friend WithEvents ColumnHeader8 As ColumnHeader
-    Friend WithEvents ColumnHeader9 As ColumnHeader
     Friend WithEvents UiButton44 As Sunny.UI.UIButton
     Friend WithEvents Panel43 As Panel
-    Friend WithEvents UiListBox7 As Sunny.UI.UIListBox
     Friend WithEvents ColumnHeader10 As ColumnHeader
     Friend WithEvents ImageList1 As ImageList
+    Friend WithEvents ListView8 As ListView
+    Friend WithEvents ColumnHeader11 As ColumnHeader
+    Friend WithEvents ColumnHeader12 As ColumnHeader
+    Friend WithEvents LinkLabel6 As LinkLabel
+    Friend WithEvents LinkLabel7 As LinkLabel
 End Class
