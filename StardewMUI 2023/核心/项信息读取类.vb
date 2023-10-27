@@ -217,8 +217,8 @@ Public Class 项信息读取类
 
                     Case "CD-D-CONTENT"
 
-
-
+                        If 计算类型.安装状态 = False Then Continue For
+                        If 安装状态 = 公共对象.安装状态枚举.未知 Then 安装状态 = 公共对象.安装状态枚举.覆盖Content文件夹
 
                     Case "CD-D-ROOT"
 
@@ -244,7 +244,28 @@ Public Class 项信息读取类
 
                     Case "CD-F-ADD"
 
+                        If 计算类型.安装状态 = False Then Continue For
+                        Dim x1, x2 As String
+                        Dim x3 As String() = 安装规划数据(i).Value.Split("|")
+                        x1 = x3(0) : x2 = x3(1)
+                        If FileExists(Path.Combine(游戏路径, x2)) = False Then
+                            Select Case 安装状态
+                                Case 公共对象.安装状态枚举.未知
+                                    安装状态 = 公共对象.安装状态枚举.文件未复制
+                                Case 公共对象.安装状态枚举.文件夹已复制
+                                    安装状态 = 公共对象.安装状态枚举.文件部分复制
+                            End Select
+                        Else
+                            Select Case 安装状态
+                                Case 公共对象.安装状态枚举.未知
+                                    安装状态 = 公共对象.安装状态枚举.文件夹已复制
+                            End Select
+                        End If
+
                     Case "CD-F-ADD-SHA"
+
+
+
 
                     Case "CD-F-REP"
 
@@ -278,6 +299,9 @@ Public Class 项信息读取类
                         End Select
 
                     Case "CD-F-NULL"
+
+                        If 计算类型.安装状态 = False Then Continue For
+                        If 安装状态 = 公共对象.安装状态枚举.未知 Then 安装状态 = 公共对象.安装状态枚举.不带判断的文件复制
 
                 End Select
 
