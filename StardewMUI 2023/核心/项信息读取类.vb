@@ -297,7 +297,7 @@ Public Class 项信息读取类
                     Case "CD-F-NULL"
 
                         If 计算类型.安装状态 = False Then Continue For
-                        If 安装状态 = 公共对象.安装状态枚举.未知 Then 安装状态 = 公共对象.安装状态枚举.不带验证的文件复制
+                        If 安装状态 = 公共对象.安装状态枚举.未知 Then 安装状态 = 公共对象.安装状态枚举.不带判断的文件复制
 
                 End Select
 
