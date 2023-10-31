@@ -8,7 +8,7 @@ Public Class 界面控制
 
     Public Shared Sub 初始化界面()
         Form1.TabPage6.Controls.Add(CEF浏览器控件)
-        Form1.UiRichTextBox4.Text = My.Resources.用户许可协议
+        Form1.UiRichTextBox4.Rtf = My.Resources.用户许可协议
         '设置富文本框行高(Form1.UiRichTextBox4, 30)
         Form1.UiRichTextBox4.AutoWordSelection = False
         Form1.UiRichTextBox4.LanguageOption = RichTextBoxLanguageOptions.UIFonts

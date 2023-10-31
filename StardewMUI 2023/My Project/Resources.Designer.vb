@@ -131,7 +131,13 @@ Namespace My.Resources
         End Property
         
         '''<summary>
-        '''  查找类似  的本地化字符串。
+        '''  查找类似 {\rtf1\ansi\ansicpg54936\deff0\nouicompat{\fonttbl{\f0\fnil\fcharset134 \&apos;cb\&apos;bc\&apos;d4\&apos;b4\&apos;ba\&apos;da\&apos;cc\&apos;e5 CN Normal;}}
+        '''{\colortbl ;\red102\green102\blue102;}
+        '''{\*\generator Riched20 10.0.19041}\viewkind4\uc1 
+        '''\pard\sl240\slmult1\qc\cf1\f0\fs32\lang2052 SMUI 2023\&apos;a3\&apos;a8SMUI 6\&apos;a3\&apos;a9\&apos;d3\&apos;c3\&apos;bb\&apos;a7\&apos;d0\&apos;ed\&apos;bf\&apos;c9\&apos;d0\&apos;ad\&apos;d2\&apos;e9\par
+        '''\fs22\par
+        '''
+        '''\pard\sl240\slmult1\tab\&apos;b1\&apos;be\&apos;d3\&apos;c3\&apos;bb\&apos;a7\&apos;d0\&apos;ed\&apos;bf\&apos;c9\&apos;d0\&apos;ad\&apos;d2\&apos;e9\&apos;a3\&apos;a8\&apos;d2\&apos;d4\&apos;cf\&apos;c2\&apos;bc\&apos;f2\&apos;b3\&apos;c6\ldblquote\&apos;b1\&apos;be\&apos;d0\&apos;ad\&apos;d2\&apos;e9\rdblqu [字符串的其余部分被截断]&quot;; 的本地化字符串。
         '''</summary>
         Friend ReadOnly Property 用户许可协议() As String
             Get
