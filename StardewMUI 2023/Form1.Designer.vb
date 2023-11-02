@@ -24,6 +24,12 @@ Partial Class Form1
     Private Sub InitializeComponent()
         components = New ComponentModel.Container()
         Dim resources As ComponentModel.ComponentResourceManager = New ComponentModel.ComponentResourceManager(GetType(Form1))
+        Dim ListViewItem1 As ListViewItem = New ListViewItem(New String() {"DLC 1 - 自定义输入扩展", "未启用"}, -1)
+        Dim ListViewItem2 As ListViewItem = New ListViewItem(New String() {"DLC 2 - 自定义皮肤加载器", "未启用"}, -1)
+        Dim ListViewItem3 As ListViewItem = New ListViewItem(New String() {"DLC 3 - 新项扩展", "未启用"}, -1)
+        Dim ListViewItem4 As ListViewItem = New ListViewItem(New String() {"DLC 4 - 检查更新扩展", "未启用"}, -1)
+        Dim ListViewItem5 As ListViewItem = New ListViewItem(New String() {"Season Pass 2023 - 基础扩展四件套", "未启用"}, -1, Color.MediumOrchid, Color.Empty, Nothing)
+        Dim ListViewItem6 As ListViewItem = New ListViewItem(New String() {"DLC 5 - 分发扩展", "未启用"}, -1)
         UiTabControl1 = New Sunny.UI.UITabControl()
         TabPage1 = New TabPage()
         Panel29 = New Panel()
@@ -118,20 +124,13 @@ Partial Class Form1
         Label37 = New Label()
         TabPage7 = New TabPage()
         TabPage扩展内容 = New TabPage()
-        Label32 = New Label()
-        Label33 = New Label()
+        Panel44 = New Panel()
+        ListView9 = New ListView()
+        ColumnHeader9 = New ColumnHeader()
+        ColumnHeader13 = New ColumnHeader()
+        ImageList1 = New ImageList(components)
         Panel39 = New Panel()
         ListView4 = New ListView()
-        Label56 = New Label()
-        Label55 = New Label()
-        Label54 = New Label()
-        Label53 = New Label()
-        Label52 = New Label()
-        Label51 = New Label()
-        Label50 = New Label()
-        Label49 = New Label()
-        Label48 = New Label()
-        Label47 = New Label()
         Label46 = New Label()
         Label45 = New Label()
         TabPage最新模组 = New TabPage()
@@ -214,7 +213,6 @@ Partial Class Form1
         ListView7 = New ListView()
         ColumnHeader7 = New ColumnHeader()
         ColumnHeader8 = New ColumnHeader()
-        ImageList1 = New ImageList(components)
         Panel23 = New Panel()
         Label8 = New Label()
         UiButton41 = New Sunny.UI.UIButton()
@@ -286,6 +284,7 @@ Partial Class Form1
         TabPage6 = New TabPage()
         TabPage13 = New TabPage()
         UiButton45 = New Sunny.UI.UIButton()
+        TabPage自动备份存档 = New TabPage()
         UiTabControl1.SuspendLayout()
         TabPage1.SuspendLayout()
         Panel29.SuspendLayout()
@@ -304,6 +303,7 @@ Partial Class Form1
         TabPage19.SuspendLayout()
         TabPage20.SuspendLayout()
         TabPage扩展内容.SuspendLayout()
+        Panel44.SuspendLayout()
         Panel39.SuspendLayout()
         TabPage最新模组.SuspendLayout()
         Panel40.SuspendLayout()
@@ -2350,19 +2350,8 @@ Partial Class Form1
         ' TabPage扩展内容
         ' 
         TabPage扩展内容.BackColor = Color.FromArgb(CByte(24), CByte(24), CByte(24))
-        TabPage扩展内容.Controls.Add(Label32)
-        TabPage扩展内容.Controls.Add(Label33)
+        TabPage扩展内容.Controls.Add(Panel44)
         TabPage扩展内容.Controls.Add(Panel39)
-        TabPage扩展内容.Controls.Add(Label56)
-        TabPage扩展内容.Controls.Add(Label55)
-        TabPage扩展内容.Controls.Add(Label54)
-        TabPage扩展内容.Controls.Add(Label53)
-        TabPage扩展内容.Controls.Add(Label52)
-        TabPage扩展内容.Controls.Add(Label51)
-        TabPage扩展内容.Controls.Add(Label50)
-        TabPage扩展内容.Controls.Add(Label49)
-        TabPage扩展内容.Controls.Add(Label48)
-        TabPage扩展内容.Controls.Add(Label47)
         TabPage扩展内容.Controls.Add(Label46)
         TabPage扩展内容.Controls.Add(Label45)
         TabPage扩展内容.Location = New Point(151, 0)
@@ -2371,27 +2360,47 @@ Partial Class Form1
         TabPage扩展内容.TabIndex = 5
         TabPage扩展内容.Text = "扩展内容"
         ' 
-        ' Label32
+        ' Panel44
         ' 
-        Label32.AutoSize = True
-        Label32.Font = New Font("微软雅黑", 12F, FontStyle.Regular, GraphicsUnit.Point)
-        Label32.Location = New Point(376, 266)
-        Label32.Margin = New Padding(20, 20, 20, 0)
-        Label32.Name = "Label32"
-        Label32.Size = New Size(58, 21)
-        Label32.TabIndex = 15
-        Label32.Text = "未启用"
+        Panel44.Anchor = AnchorStyles.Top Or AnchorStyles.Bottom Or AnchorStyles.Left Or AnchorStyles.Right
+        Panel44.Controls.Add(ListView9)
+        Panel44.Location = New Point(20, 61)
+        Panel44.Margin = New Padding(20)
+        Panel44.Name = "Panel44"
+        Panel44.Padding = New Padding(10)
+        Panel44.Size = New Size(486, 550)
+        Panel44.TabIndex = 16
         ' 
-        ' Label33
+        ' ListView9
         ' 
-        Label33.AutoSize = True
-        Label33.Font = New Font("微软雅黑", 12F, FontStyle.Regular, GraphicsUnit.Point)
-        Label33.Location = New Point(20, 266)
-        Label33.Margin = New Padding(20, 20, 20, 0)
-        Label33.Name = "Label33"
-        Label33.Size = New Size(136, 21)
-        Label33.TabIndex = 14
-        Label33.Text = "DLC 5 - 分发扩展"
+        ListView9.BackColor = Color.FromArgb(CByte(32), CByte(32), CByte(32))
+        ListView9.BorderStyle = BorderStyle.None
+        ListView9.Columns.AddRange(New ColumnHeader() {ColumnHeader9, ColumnHeader13})
+        ListView9.Dock = DockStyle.Left
+        ListView9.ForeColor = Color.FromArgb(CByte(224), CByte(224), CByte(224))
+        ListView9.HeaderStyle = ColumnHeaderStyle.None
+        ListView9.Items.AddRange(New ListViewItem() {ListViewItem1, ListViewItem2, ListViewItem3, ListViewItem4, ListViewItem5, ListViewItem6})
+        ListView9.Location = New Point(10, 10)
+        ListView9.Name = "ListView9"
+        ListView9.Size = New Size(440, 530)
+        ListView9.SmallImageList = ImageList1
+        ListView9.TabIndex = 1
+        ListView9.UseCompatibleStateImageBehavior = False
+        ListView9.View = View.Details
+        ' 
+        ' ColumnHeader9
+        ' 
+        ColumnHeader9.Width = 300
+        ' 
+        ' ColumnHeader13
+        ' 
+        ColumnHeader13.Width = 100
+        ' 
+        ' ImageList1
+        ' 
+        ImageList1.ColorDepth = ColorDepth.Depth8Bit
+        ImageList1.ImageSize = New Size(1, 29)
+        ImageList1.TransparentColor = Color.Transparent
         ' 
         ' Panel39
         ' 
@@ -2414,118 +2423,6 @@ Partial Class Form1
         ListView4.Size = New Size(495, 550)
         ListView4.TabIndex = 1
         ListView4.UseCompatibleStateImageBehavior = False
-        ' 
-        ' Label56
-        ' 
-        Label56.AutoSize = True
-        Label56.Font = New Font("微软雅黑", 12F, FontStyle.Regular, GraphicsUnit.Point)
-        Label56.ForeColor = Color.MediumOrchid
-        Label56.Location = New Point(376, 225)
-        Label56.Margin = New Padding(20, 20, 20, 0)
-        Label56.Name = "Label56"
-        Label56.Size = New Size(58, 21)
-        Label56.TabIndex = 12
-        Label56.Text = "未启用"
-        ' 
-        ' Label55
-        ' 
-        Label55.AutoSize = True
-        Label55.Font = New Font("微软雅黑", 12F, FontStyle.Regular, GraphicsUnit.Point)
-        Label55.Location = New Point(376, 184)
-        Label55.Margin = New Padding(20, 20, 20, 0)
-        Label55.Name = "Label55"
-        Label55.Size = New Size(58, 21)
-        Label55.TabIndex = 11
-        Label55.Text = "未启用"
-        ' 
-        ' Label54
-        ' 
-        Label54.AutoSize = True
-        Label54.Font = New Font("微软雅黑", 12F, FontStyle.Regular, GraphicsUnit.Point)
-        Label54.Location = New Point(376, 143)
-        Label54.Margin = New Padding(20, 20, 20, 0)
-        Label54.Name = "Label54"
-        Label54.Size = New Size(58, 21)
-        Label54.TabIndex = 10
-        Label54.Text = "未启用"
-        ' 
-        ' Label53
-        ' 
-        Label53.AutoSize = True
-        Label53.Font = New Font("微软雅黑", 12F, FontStyle.Regular, GraphicsUnit.Point)
-        Label53.Location = New Point(376, 102)
-        Label53.Margin = New Padding(20, 20, 20, 0)
-        Label53.Name = "Label53"
-        Label53.Size = New Size(58, 21)
-        Label53.TabIndex = 9
-        Label53.Text = "未启用"
-        ' 
-        ' Label52
-        ' 
-        Label52.AutoSize = True
-        Label52.Font = New Font("微软雅黑", 12F, FontStyle.Regular, GraphicsUnit.Point)
-        Label52.Location = New Point(376, 61)
-        Label52.Margin = New Padding(20, 20, 20, 0)
-        Label52.Name = "Label52"
-        Label52.Size = New Size(58, 21)
-        Label52.TabIndex = 8
-        Label52.Text = "未启用"
-        ' 
-        ' Label51
-        ' 
-        Label51.AutoSize = True
-        Label51.Font = New Font("微软雅黑", 12F, FontStyle.Regular, GraphicsUnit.Point)
-        Label51.ForeColor = Color.MediumOrchid
-        Label51.Location = New Point(20, 225)
-        Label51.Margin = New Padding(20, 20, 20, 0)
-        Label51.Name = "Label51"
-        Label51.Size = New Size(272, 21)
-        Label51.TabIndex = 7
-        Label51.Text = "Season Pass 2023 - 基础扩展四件套"
-        ' 
-        ' Label50
-        ' 
-        Label50.AutoSize = True
-        Label50.Font = New Font("微软雅黑", 12F, FontStyle.Regular, GraphicsUnit.Point)
-        Label50.Location = New Point(20, 184)
-        Label50.Margin = New Padding(20, 20, 20, 0)
-        Label50.Name = "Label50"
-        Label50.Size = New Size(168, 21)
-        Label50.TabIndex = 6
-        Label50.Text = "DLC 4 - 检查更新扩展"
-        ' 
-        ' Label49
-        ' 
-        Label49.AutoSize = True
-        Label49.Font = New Font("微软雅黑", 12F, FontStyle.Regular, GraphicsUnit.Point)
-        Label49.Location = New Point(20, 143)
-        Label49.Margin = New Padding(20, 20, 20, 0)
-        Label49.Name = "Label49"
-        Label49.Size = New Size(136, 21)
-        Label49.TabIndex = 5
-        Label49.Text = "DLC 3 - 新项扩展"
-        ' 
-        ' Label48
-        ' 
-        Label48.AutoSize = True
-        Label48.Font = New Font("微软雅黑", 12F, FontStyle.Regular, GraphicsUnit.Point)
-        Label48.Location = New Point(20, 102)
-        Label48.Margin = New Padding(20, 20, 20, 0)
-        Label48.Name = "Label48"
-        Label48.Size = New Size(200, 21)
-        Label48.TabIndex = 4
-        Label48.Text = "DLC 2 - 自定义皮肤加载器"
-        ' 
-        ' Label47
-        ' 
-        Label47.AutoSize = True
-        Label47.Font = New Font("微软雅黑", 12F, FontStyle.Regular, GraphicsUnit.Point)
-        Label47.Location = New Point(20, 61)
-        Label47.Margin = New Padding(20, 20, 20, 0)
-        Label47.Name = "Label47"
-        Label47.Size = New Size(184, 21)
-        Label47.TabIndex = 3
-        Label47.Text = "DLC 1 - 自定义输入扩展"
         ' 
         ' Label46
         ' 
@@ -2657,6 +2554,7 @@ Partial Class Form1
         UiTabControlMenu4.Controls.Add(TabPage存档编辑器)
         UiTabControlMenu4.Controls.Add(TabPage批量分发管理)
         UiTabControlMenu4.Controls.Add(TabPageSMAPI安装管理器)
+        UiTabControlMenu4.Controls.Add(TabPage自动备份存档)
         UiTabControlMenu4.Dock = DockStyle.Fill
         UiTabControlMenu4.DrawMode = TabDrawMode.OwnerDrawFixed
         UiTabControlMenu4.FillColor = Color.FromArgb(CByte(24), CByte(24), CByte(24))
@@ -3956,12 +3854,6 @@ Partial Class Form1
         ' 
         ColumnHeader8.Width = 400
         ' 
-        ' ImageList1
-        ' 
-        ImageList1.ColorDepth = ColorDepth.Depth8Bit
-        ImageList1.ImageSize = New Size(1, 29)
-        ImageList1.TransparentColor = Color.Transparent
-        ' 
         ' Panel23
         ' 
         Panel23.BackColor = Color.FromArgb(CByte(42), CByte(42), CByte(42))
@@ -4685,9 +4577,9 @@ Partial Class Form1
         TabPage4.BackColor = Color.FromArgb(CByte(24), CByte(24), CByte(24))
         TabPage4.Controls.Add(Panel31)
         TabPage4.ForeColor = Color.FromArgb(CByte(224), CByte(224), CByte(224))
-        TabPage4.Location = New Point(0, 50)
+        TabPage4.Location = New Point(0, 40)
         TabPage4.Name = "TabPage4"
-        TabPage4.Size = New Size(1264, 631)
+        TabPage4.Size = New Size(200, 60)
         TabPage4.TabIndex = 3
         TabPage4.Text = "下载管理"
         ' 
@@ -4697,7 +4589,7 @@ Partial Class Form1
         Panel31.Dock = DockStyle.Fill
         Panel31.Location = New Point(0, 0)
         Panel31.Name = "Panel31"
-        Panel31.Size = New Size(1264, 631)
+        Panel31.Size = New Size(200, 60)
         Panel31.TabIndex = 2
         ' 
         ' UiTabControlMenu3
@@ -4716,7 +4608,7 @@ Partial Class Form1
         UiTabControlMenu3.Multiline = True
         UiTabControlMenu3.Name = "UiTabControlMenu3"
         UiTabControlMenu3.SelectedIndex = 0
-        UiTabControlMenu3.Size = New Size(1264, 631)
+        UiTabControlMenu3.Size = New Size(200, 60)
         UiTabControlMenu3.SizeMode = TabSizeMode.Fixed
         UiTabControlMenu3.Style = Sunny.UI.UIStyle.Custom
         UiTabControlMenu3.TabBackColor = Color.FromArgb(CByte(48), CByte(48), CByte(48))
@@ -4728,9 +4620,9 @@ Partial Class Form1
         TabPage22.BackColor = Color.FromArgb(CByte(24), CByte(24), CByte(24))
         TabPage22.Controls.Add(Panel34)
         TabPage22.Controls.Add(Panel33)
-        TabPage22.Location = New Point(301, 0)
+        TabPage22.Location = New Point(901, 0)
         TabPage22.Name = "TabPage22"
-        TabPage22.Size = New Size(963, 631)
+        TabPage22.Size = New Size(0, 60)
         TabPage22.TabIndex = 0
         TabPage22.Text = "选择要下载的文件"
         ' 
@@ -4743,7 +4635,7 @@ Partial Class Form1
         Panel34.Location = New Point(0, 54)
         Panel34.Name = "Panel34"
         Panel34.Padding = New Padding(30)
-        Panel34.Size = New Size(963, 577)
+        Panel34.Size = New Size(0, 6)
         Panel34.TabIndex = 2
         ' 
         ' Panel36
@@ -4756,7 +4648,7 @@ Partial Class Form1
         Panel36.Location = New Point(30, 71)
         Panel36.Name = "Panel36"
         Panel36.Padding = New Padding(10)
-        Panel36.Size = New Size(903, 95)
+        Panel36.Size = New Size(0, 95)
         Panel36.TabIndex = 1
         ' 
         ' Label41
@@ -4813,7 +4705,7 @@ Partial Class Form1
         Panel33.Dock = DockStyle.Top
         Panel33.Location = New Point(0, 0)
         Panel33.Name = "Panel33"
-        Panel33.Size = New Size(963, 54)
+        Panel33.Size = New Size(0, 54)
         Panel33.TabIndex = 1
         ' 
         ' Label34
@@ -4821,7 +4713,7 @@ Partial Class Form1
         Label34.Dock = DockStyle.Fill
         Label34.Location = New Point(0, 0)
         Label34.Name = "Label34"
-        Label34.Size = New Size(963, 54)
+        Label34.Size = New Size(0, 54)
         Label34.TabIndex = 0
         Label34.Text = "   当前下载要在后续进行的操作：更新到项 / 新建项"
         Label34.TextAlign = ContentAlignment.MiddleLeft
@@ -4830,9 +4722,9 @@ Partial Class Form1
         ' 
         TabPage23.BackColor = Color.FromArgb(CByte(24), CByte(24), CByte(24))
         TabPage23.Controls.Add(Panel37)
-        TabPage23.Location = New Point(301, 0)
+        TabPage23.Location = New Point(901, 0)
         TabPage23.Name = "TabPage23"
-        TabPage23.Size = New Size(963, 631)
+        TabPage23.Size = New Size(0, 60)
         TabPage23.TabIndex = 1
         TabPage23.Text = "下载和更新队列"
         ' 
@@ -4843,7 +4735,7 @@ Partial Class Form1
         Panel37.Location = New Point(0, 0)
         Panel37.Name = "Panel37"
         Panel37.Padding = New Padding(30)
-        Panel37.Size = New Size(963, 631)
+        Panel37.Size = New Size(0, 60)
         Panel37.TabIndex = 1
         ' 
         ' Panel35
@@ -4858,7 +4750,7 @@ Partial Class Form1
         Panel35.Location = New Point(30, 30)
         Panel35.Name = "Panel35"
         Panel35.Padding = New Padding(10)
-        Panel35.Size = New Size(903, 90)
+        Panel35.Size = New Size(0, 90)
         Panel35.TabIndex = 0
         ' 
         ' UiButton43
@@ -4876,7 +4768,7 @@ Partial Class Form1
         UiButton43.ForeHoverColor = Color.FromArgb(CByte(244), CByte(244), CByte(244))
         UiButton43.ForePressColor = Color.FromArgb(CByte(244), CByte(244), CByte(244))
         UiButton43.ForeSelectedColor = Color.FromArgb(CByte(244), CByte(244), CByte(244))
-        UiButton43.Location = New Point(683, 10)
+        UiButton43.Location = New Point(-220, 10)
         UiButton43.Margin = New Padding(10, 10, 0, 10)
         UiButton43.MinimumSize = New Size(1, 1)
         UiButton43.Name = "UiButton43"
@@ -4910,7 +4802,7 @@ Partial Class Form1
         UiButton42.ForeHoverColor = Color.FromArgb(CByte(244), CByte(244), CByte(244))
         UiButton42.ForePressColor = Color.FromArgb(CByte(244), CByte(244), CByte(244))
         UiButton42.ForeSelectedColor = Color.FromArgb(CByte(244), CByte(244), CByte(244))
-        UiButton42.Location = New Point(793, 10)
+        UiButton42.Location = New Point(-110, 10)
         UiButton42.Margin = New Padding(10)
         UiButton42.MinimumSize = New Size(1, 1)
         UiButton42.Name = "UiButton42"
@@ -4971,9 +4863,9 @@ Partial Class Form1
         ' TabPage24
         ' 
         TabPage24.BackColor = Color.FromArgb(CByte(24), CByte(24), CByte(24))
-        TabPage24.Location = New Point(301, 0)
+        TabPage24.Location = New Point(901, 0)
         TabPage24.Name = "TabPage24"
-        TabPage24.Size = New Size(963, 631)
+        TabPage24.Size = New Size(0, 60)
         TabPage24.TabIndex = 2
         TabPage24.Text = "管理下载的文件"
         ' 
@@ -5095,6 +4987,15 @@ Partial Class Form1
         UiButton45.TipsColor = Color.Gray
         UiButton45.TipsFont = New Font("微软雅黑", 9F, FontStyle.Regular, GraphicsUnit.Point)
         ' 
+        ' TabPage自动备份存档
+        ' 
+        TabPage自动备份存档.Location = New Point(201, 0)
+        TabPage自动备份存档.Name = "TabPage自动备份存档"
+        TabPage自动备份存档.Size = New Size(912, 631)
+        TabPage自动备份存档.TabIndex = 4
+        TabPage自动备份存档.Text = "自动备份存档"
+        TabPage自动备份存档.UseVisualStyleBackColor = True
+        ' 
         ' Form1
         ' 
         AutoScaleDimensions = New SizeF(7F, 17F)
@@ -5137,6 +5038,7 @@ Partial Class Form1
         TabPage20.PerformLayout()
         TabPage扩展内容.ResumeLayout(False)
         TabPage扩展内容.PerformLayout()
+        Panel44.ResumeLayout(False)
         Panel39.ResumeLayout(False)
         TabPage最新模组.ResumeLayout(False)
         TabPage最新模组.PerformLayout()
@@ -5369,16 +5271,6 @@ Partial Class Form1
     Friend WithEvents Label40 As Label
     Friend WithEvents Label45 As Label
     Friend WithEvents Label46 As Label
-    Friend WithEvents Label47 As Label
-    Friend WithEvents Label51 As Label
-    Friend WithEvents Label50 As Label
-    Friend WithEvents Label49 As Label
-    Friend WithEvents Label48 As Label
-    Friend WithEvents Label56 As Label
-    Friend WithEvents Label55 As Label
-    Friend WithEvents Label54 As Label
-    Friend WithEvents Label53 As Label
-    Friend WithEvents Label52 As Label
     Friend WithEvents Panel39 As Panel
     Friend WithEvents ListView4 As ListView
     Friend WithEvents Label60 As Label
@@ -5404,8 +5296,6 @@ Partial Class Form1
     Friend WithEvents TabPage全局模组安装检查 As TabPage
     Friend WithEvents TabPage存档编辑器 As TabPage
     Friend WithEvents TabPage批量分发管理 As TabPage
-    Friend WithEvents Label32 As Label
-    Friend WithEvents Label33 As Label
     Friend WithEvents UiListBox3 As Sunny.UI.UIListBox
     Friend WithEvents Panel33 As Panel
     Friend WithEvents Label34 As Label
@@ -5461,4 +5351,9 @@ Partial Class Form1
     Friend WithEvents UiButton46 As Sunny.UI.UIButton
     Friend WithEvents UiButton48 As Sunny.UI.UIButton
     Friend WithEvents UiButton47 As Sunny.UI.UIButton
+    Friend WithEvents Panel44 As Panel
+    Friend WithEvents ListView9 As ListView
+    Friend WithEvents ColumnHeader9 As ColumnHeader
+    Friend WithEvents ColumnHeader13 As ColumnHeader
+    Friend WithEvents TabPage自动备份存档 As TabPage
 End Class
