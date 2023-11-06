@@ -24,12 +24,16 @@
         文件已复制并验证 = 35
         文件已复制但验证失败 = 36
 
+        源文件夹丢失 = 101
+        源文件丢失 = 102
+
         不带判断的文件复制 = 40
 
         覆盖Content文件夹 = 50
+
     End Enum
 
-    Public Structure 项数据计算类型枚举
+    Public Structure 项数据计算类型结构
         Dim 全部 As Boolean
         Dim 安装状态 As Boolean
         Dim 名称 As Boolean
@@ -44,45 +48,35 @@
         Dim 其他依赖项 As Boolean
     End Structure
 
-    Public Enum CDTask
-        CDCD = 1
+    Public Enum 任务队列操作类型枚举
+        复制文件夹到Mods = 1
+        覆盖文件夹到Mods = 2
+        复制文件夹 = 6
+        覆盖Content = 9
+        新增文件 = 11
+        新增文件并验证 = 12
+        替换文件 = 16
+        替换文件且无检测 = 19
 
-        CDGCD = 10
+        安装时检查文件夹 = 51
+        安装时检查文件 = 52
+        卸载时检查文件夹 = 53
+        卸载时检查文件 = 54
 
-        CDMAD = 20
+        在安装时检查Mods中的排斥文件夹 = 56
 
-        CDGRF = 30
-        CDGRF_SHA = 31
-        CDGRF_SHA_BYTE = 32
+        禁用卸载 = 61
+        取消卸载 = 62
 
-        CDGCF = 40
-        CDGCF_SHA = 41
-        CDGCF_SHA_BYTE = 42
+        安装时运行可执行文件 = 71
+        卸载时运行可执行文件 = 72
 
-        CDF = 50
+        安装时确认信息 = 81
+        卸载时确认信息 = 82
 
-        CDVD = 60
-
-        RQ_D = 71
-        RQ_D_IN = 72
-        RQ_D_UN = 73
-        RQ_F = 74
-        RQ_F_IN = 75
-        RQ_F_UN = 76
-
-        CR_UN_OFF = 80
-        CR_CG_DB = 81
-        CR_UN_CANCEL = 82
-
-        CR_APP_SHELL_IN = 100
-        CR_APP_SHELL_UN = 101
-        CR_APP_SHELL_P_IN = 102
-        CR_APP_SHELL_P_UN = 103
-
-        SUB_D_EX_IN = 200
+        安装时提示信息 = 91
+        卸载时提示信息 = 92
 
     End Enum
-
-
 
 End Class

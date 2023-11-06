@@ -63,7 +63,7 @@ Public Class 项信息读取类
         错误信息 = ""
     End Sub
 
-    Public Sub 读取项信息(项路径 As String, 计算类型 As 公共对象.项数据计算类型枚举, Optional 游戏路径 As String = "")
+    Public Sub 读取项信息(项路径 As String, 计算类型 As 公共对象.项数据计算类型结构, Optional 游戏路径 As String = "")
         错误信息 = ""
         If DirectoryExists(项路径) = False Then 错误信息 = "项不存在：" & 项路径 : Exit Sub
         If FileExists(CombinePath(项路径, "Code2")) = False Then 错误信息 = "项未配置：" & 项路径 : Exit Sub
@@ -248,6 +248,10 @@ Public Class 项信息读取类
                         Dim x1, x2 As String
                         Dim x3 As String() = 安装规划数据(i).Value.Split("|")
                         x1 = x3(0) : x2 = x3(1)
+                        If FileExists(Path.Combine(游戏路径, x1)) = False Then
+                            安装状态 = 公共对象.安装状态枚举.源文件丢失
+                            Continue For
+                        End If
                         If FileExists(Path.Combine(游戏路径, x2)) = False Then
                             Select Case 安装状态
                                 Case 公共对象.安装状态枚举.未知
@@ -259,13 +263,45 @@ Public Class 项信息读取类
                             Select Case 安装状态
                                 Case 公共对象.安装状态枚举.未知
                                     安装状态 = 公共对象.安装状态枚举.文件夹已复制
+
                             End Select
                         End If
 
                     Case "CD-F-ADD-SHA"
 
-
-
+                        If 计算类型.安装状态 = False Then Continue For
+                        Dim x1, x2 As String
+                        Dim x3 As String() = 安装规划数据(i).Value.Split("|")
+                        x1 = x3(0) : x2 = x3(1)
+                        If FileExists(Path.Combine(游戏路径, x1)) = False Then
+                            安装状态 = 公共对象.安装状态枚举.源文件丢失
+                            Continue For
+                        End If
+                        If FileExists(Path.Combine(游戏路径, x2)) = False Then
+                            Select Case 安装状态
+                                Case 公共对象.安装状态枚举.未知
+                                    安装状态 = 公共对象.安装状态枚举.文件未复制
+                                Case 公共对象.安装状态枚举.文件已替换
+                                    安装状态 = 公共对象.安装状态枚举.文件部分复制
+                            End Select
+                            Continue For
+                        End If
+                        Dim a1 As String = 共享方法.CalculateSHA256(Path.Combine(项路径, x1))
+                        Dim a2 As String = 共享方法.CalculateSHA256(Path.Combine(游戏路径, x2))
+                        Select Case 安装状态
+                            Case 公共对象.安装状态枚举.未知
+                                If a1 = a2 Then
+                                    安装状态 = 公共对象.安装状态枚举.文件已复制
+                                Else
+                                    安装状态 = 公共对象.安装状态枚举.文件已复制但验证失败
+                                    未替换的文件.Add(x2)
+                                End If
+                            Case 公共对象.安装状态枚举.文件已复制
+                                If a1 <> a2 Then
+                                    安装状态 = 公共对象.安装状态枚举.文件部分复制
+                                    未替换的文件.Add(x2)
+                                End If
+                        End Select
 
                     Case "CD-F-REP"
 
@@ -273,8 +309,17 @@ Public Class 项信息读取类
                         Dim x1, x2 As String
                         Dim x3 As String() = 安装规划数据(i).Value.Split("|")
                         x1 = x3(0) : x2 = x3(1)
+                        If FileExists(Path.Combine(游戏路径, x1)) = False Then
+                            安装状态 = 公共对象.安装状态枚举.源文件丢失
+                            Continue For
+                        End If
                         If FileExists(Path.Combine(游戏路径, x2)) = False Then
-                            安装状态 = 公共对象.安装状态枚举.文件未替换
+                            Select Case 安装状态
+                                Case 公共对象.安装状态枚举.未知
+                                    安装状态 = 公共对象.安装状态枚举.文件未替换
+                                Case 公共对象.安装状态枚举.文件已替换
+                                    安装状态 = 公共对象.安装状态枚举.文件部分替换
+                            End Select
                             Continue For
                         End If
                         Dim a1 As String = 共享方法.CalculateSHA256(Path.Combine(项路径, x1))
