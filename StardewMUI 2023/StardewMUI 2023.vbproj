@@ -3,11 +3,14 @@
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
     <TargetFramework>net7.0-windows</TargetFramework>
-    <RootNamespace>StardewMUI_2023</RootNamespace>
+    <RootNamespace>SMUI6</RootNamespace>
     <StartupObject>Sub Main</StartupObject>
     <UseWindowsForms>true</UseWindowsForms>
     <MyType>WindowsForms</MyType>
     <ApplicationIcon>dropbox.ico</ApplicationIcon>
+    <AssemblyName>SMUI6</AssemblyName>
+    <Copyright>Copyright © 2019-2024 1059 Studio, All Rights Reserved.</Copyright>
+    <Title>$(AssemblyName)</Title>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">

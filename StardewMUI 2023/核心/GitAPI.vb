@@ -1,7 +1,6 @@
 ﻿Imports Newtonsoft.Json
 Imports Newtonsoft.Json.Linq
-Imports StardewMUI_2023.GitAPI.GitApiObject
-Imports System.IO
+Imports SMUI6.GitAPI.GitApiObject
 Imports System.Net
 Imports System.Net.Http
 

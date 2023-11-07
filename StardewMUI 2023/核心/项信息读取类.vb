@@ -30,7 +30,6 @@ Public Class 项信息读取类
 
     Public 错误信息 As String = ""
 
-
     Public Structure 其他依赖项类型单片结构
         Public 依赖项必须性 As Boolean
         Public 依赖项最低版本号 As String
@@ -40,8 +39,7 @@ Public Class 项信息读取类
         Public 最低版本号 As String
     End Structure
 
-
-    Public Sub Reset()
+    Public Sub 重置()
         安装状态 = 公共对象.安装状态枚举.未知
         名称.Clear()
         作者.Clear()

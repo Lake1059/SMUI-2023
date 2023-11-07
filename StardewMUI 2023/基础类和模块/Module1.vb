@@ -3,7 +3,7 @@
 Module Module1
     'Win32 API
     Public Declare Auto Function ReleaseCapture Lib "user32.dll" Alias "ReleaseCapture" () As Boolean
-    Public Declare Auto Function SendMessage Lib "user32.dll" Alias "SendMessage" (ByVal hWnd As IntPtr, ByVal wMsg As Integer, ByVal wParam As Integer, ByVal lParam As Integer) As IntPtr
+    Public Declare Auto Function SendMessage Lib "user32.dll" Alias "SendMessage" (hWnd As IntPtr, wMsg As Integer, wParam As Integer, lParam As Integer) As IntPtr
     'Win32 Message
     Public Const WM_SYSCOMMAND As Integer = &H112&
     Public Const SC_MOVE As Integer = &HF010&
@@ -48,6 +48,15 @@ Module Module1
     Public Function SendMessage(hWnd As HandleRef, msg As Integer, wParam As Integer, ByRef lParam As PARAFORMAT2) As IntPtr
     End Function
 
-
+    Public Sub DebugPrint(文本 As String, 颜色 As Color, Optional 是否需要转到调试选项卡 As Boolean = False)
+        Form1.UiRichTextBox1.AppendText(vbCrLf & 文本)
+        Form1.UiRichTextBox1.Select(Form1.UiRichTextBox1.TextLength - 文本.Length, 文本.Length)
+        Form1.UiRichTextBox1.SelectionColor = 颜色
+        Form1.UiRichTextBox1.Select(Form1.UiRichTextBox1.TextLength, 0)
+        Form1.UiRichTextBox1.ScrollToCaret()
+        If 是否需要转到调试选项卡 = True Then
+            Form1.UiTabControl1.SelectedTab = Form1.TabPage调试输出
+        End If
+    End Sub
 
 End Module
