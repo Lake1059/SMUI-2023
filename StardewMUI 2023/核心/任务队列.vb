@@ -10,10 +10,10 @@ Public Class 任务队列
     Public Shared Property 任务列表 As List(Of 任务列表结构)
     Public Shared Property 当前正在处理的索引 As Integer
 
+
     Public Structure 任务列表结构
         Public 操作类型 As 公共对象.任务队列操作类型枚举
         Public 参数行 As String
-        Public 所在行数 As Integer
     End Structure
 
     Public Shared Property 队列键值匹配字典 As New Dictionary(Of String, DE1)()
@@ -40,8 +40,8 @@ Public Class 任务队列
         队列键值匹配字典.Add("CR-UN-SHELL", AddressOf CD1.匹配到_卸载时运行可执行文件)
         队列键值匹配字典.Add("CR-IN-MSGBOX", AddressOf CD1.匹配到_安装时弹窗)
         队列键值匹配字典.Add("CR-UN-MSGBOX", AddressOf CD1.匹配到_卸载时弹窗)
+        队列键值匹配字典.Add("CORE-CLASS", AddressOf CD1.匹配到_声明各种核心功能的启停)
     End Sub
-
 
     Public Shared Property 安装规划原文本列表对象 As New List(Of KeyValuePair(Of String, String))
 
@@ -78,6 +78,7 @@ Public Class 任务队列
     Public Shared Function 执行安装(任务索引 As Integer) As String
         Try
             If 安装操作匹配字典.ContainsKey(任务列表(任务索引).操作类型) Then
+                当前正在处理的索引 = 任务索引
                 Dim operation As DE2 = 安装操作匹配字典(任务列表(任务索引).操作类型)
                 operation.Invoke()
             End If
@@ -99,6 +100,7 @@ Public Class 任务队列
     Public Shared Function 执行卸载(任务索引 As Integer) As String
         Try
             If 卸载操作匹配字典.ContainsKey(任务列表(任务索引).操作类型) Then
+                当前正在处理的索引 = 任务索引
                 Dim operation As DE3 = 卸载操作匹配字典(任务列表(任务索引).操作类型)
                 operation.Invoke()
             End If

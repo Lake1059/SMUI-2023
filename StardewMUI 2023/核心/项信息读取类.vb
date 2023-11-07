@@ -344,7 +344,6 @@ Public Class 项信息读取类
 
                 End Select
 
-
             Next
 
             错误信息 = ""
