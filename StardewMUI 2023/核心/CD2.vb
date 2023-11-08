@@ -1,4 +1,5 @@
 ﻿Imports System.IO
+Imports System.Runtime.InteropServices.JavaScript.JSType
 Imports Microsoft.VisualBasic.FileIO.FileSystem
 
 Public Class CD2
@@ -44,7 +45,12 @@ Public Class CD2
 
     Public Shared Sub 匹配到_安装时检查文件夹的存在()
         Dim 参数列表 As New List(Of String)(任务队列.任务列表(任务队列.当前正在处理的索引).参数行.Split("|").ToList)
-
+        For i = 0 To 参数列表.Count - 1
+            If DirectoryExists(Path.Combine(任务队列.游戏路径, 参数列表(i))) = False Then
+                Err.Raise(10590203,, "要检查的文件夹不存在：" & 参数列表(i))
+                Exit Sub
+            End If
+        Next
     End Sub
 
     Public Shared Sub 匹配到_安装时检查文件的存在()
