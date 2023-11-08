@@ -197,10 +197,21 @@ Public Class 项信息读取类
                                         Dim dependency = JsonData.item("Dependencies")(int2)
                                         If dependency("UniqueID") IsNot Nothing Then
                                             Dim DependenciesString As String = dependency("UniqueID").ToString
+                                            Dim isRequiredValue = If(dependency("IsRequired") IsNot Nothing, dependency("IsRequired").ToString.ToLower.Replace(" ", ""), "true")
                                             If Not 其他依赖项.ContainsKey(DependenciesString) Then
-                                                Dim isRequiredValue = If(dependency("IsRequired") IsNot Nothing, dependency("IsRequired").ToString.ToLower.Replace(" ", ""), "true")
-                                                其他依赖项(DependenciesString) = New 其他依赖项类型单片结构 With {.依赖项必须性 = (isRequiredValue = "true"), .依赖项最低版本号 = If(dependency("MinimumVersion") IsNot Nothing, dependency("MinimumVersion").ToString, Nothing)}
+                                                其他依赖项(DependenciesString) = New 其他依赖项类型单片结构 With {.依赖项必须性 = (isRequiredValue = "true"), .依赖项最低版本号 = If(dependency("MinimumVersion") IsNot Nothing, dependency("MinimumVersion")?.ToString, Nothing)}
+                                            Else
+                                                Dim 现有最低版本号 As String = 其他依赖项(DependenciesString).依赖项最低版本号
+                                                Dim 新的最低版本号 As String = dependency("MinimumVersion")?.ToString
+                                                If 其他依赖项(DependenciesString).依赖项必须性 = False And isRequiredValue = "true" Then
+                                                    If 共享方法.CompareVersion(现有最低版本号, 新的最低版本号) > 0 Then
+                                                        其他依赖项(DependenciesString) = New 其他依赖项类型单片结构 With {.依赖项必须性 = True, .依赖项最低版本号 = 新的最低版本号}
+                                                    Else
+                                                        其他依赖项(DependenciesString) = New 其他依赖项类型单片结构 With {.依赖项必须性 = True, .依赖项最低版本号 = 现有最低版本号}
+                                                    End If
+                                                End If
                                             End If
+
                                         End If
                                     Next
                                 End If
@@ -344,6 +355,11 @@ Public Class 项信息读取类
 
                 End Select
 
+            Next
+
+            Dim 导出的其他依赖项列表 As New List(Of String)(其他依赖项.ToList)
+            For i = 0 To 导出的其他依赖项列表.Count - 1
+                其他依赖项.Remove(导出的其他依赖项列表(i))
             Next
 
             错误信息 = ""
