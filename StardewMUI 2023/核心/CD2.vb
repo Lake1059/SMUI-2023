@@ -1,6 +1,8 @@
 ﻿Imports System.IO
 Imports System.Runtime.InteropServices.JavaScript.JSType
 Imports Microsoft.VisualBasic.FileIO.FileSystem
+Imports Newtonsoft.Json
+Imports Newtonsoft.Json.Linq
 
 Public Class CD2
 
@@ -47,7 +49,7 @@ Public Class CD2
         Dim 参数列表 As New List(Of String)(任务队列.任务列表(任务队列.当前正在处理的索引).参数行.Split("|").ToList)
         For i = 0 To 参数列表.Count - 1
             If DirectoryExists(Path.Combine(任务队列.游戏路径, 参数列表(i))) = False Then
-                Err.Raise(10590203,, "要检查的文件夹不存在：" & 参数列表(i))
+                Err.Raise(10590202,, "要检查的文件夹不存在：" & 参数列表(i))
                 Exit Sub
             End If
         Next
@@ -55,22 +57,94 @@ Public Class CD2
 
     Public Shared Sub 匹配到_安装时检查文件的存在()
         Dim 参数列表 As New List(Of String)(任务队列.任务列表(任务队列.当前正在处理的索引).参数行.Split("|").ToList)
-
+        For i = 0 To 参数列表.Count - 1
+            If FileExists(Path.Combine(任务队列.游戏路径, 参数列表(i))) = False Then
+                Err.Raise(10590202,, "要检查的文件不存在：" & 参数列表(i))
+                Exit Sub
+            End If
+        Next
     End Sub
 
     Public Shared Sub 匹配到_安装时检查Mods中的排斥文件夹()
         Dim 参数列表 As New List(Of String)(任务队列.任务列表(任务队列.当前正在处理的索引).参数行.Split("|").ToList)
-
+        For i = 0 To 参数列表.Count - 1
+            If DirectoryExists(Path.Combine(任务队列.游戏路径, "Mods", 参数列表(i))) = True Then
+                Err.Raise(10590202,, "检查到定义的互斥模组文件夹存在：" & 参数列表(i))
+                Exit Sub
+            End If
+        Next
     End Sub
 
     Public Shared Sub 匹配到_安装时检查Mods中已安装模组的版本()
         Dim 参数列表 As New List(Of String)(任务队列.任务列表(任务队列.当前正在处理的索引).参数行.Split("|").ToList)
-
+        If 参数列表.Count <> 3 Then
+            Err.Raise(10590201,, "参数数量不正确，请不要擅自修改规划文件")
+            Exit Sub
+        End If
+        If DirectoryExists(Path.Combine(任务队列.游戏路径, "Mods", 参数列表(0))) = True Then
+            Err.Raise(10590202,, "要进行版本检查的模组文件夹未安装：" & 参数列表(0))
+            Exit Sub
+        End If
+        If FileExists(Path.Combine(任务队列.游戏路径, "Mods", 参数列表(0), "manifest.json")) = True Then
+            Err.Raise(10590202,, "要进行版本检查的模组文件夹中没有清单文件：" & 参数列表(0))
+            Exit Sub
+        End If
+        Dim a As String = ReadAllText(Path.Combine(任务队列.游戏路径, "Mods", 参数列表(0), "manifest.json"))
+        Dim JsonData As Object = CType(JsonConvert.DeserializeObject(a), JObject)
+        Dim x As String = JsonData.item("Version")?.ToString
+        If x = "" Then
+            Err.Raise(10590202,, "目标清单文件中不包含版本信息：" & 参数列表(0))
+            Exit Sub
+        End If
+        Select Case 参数列表(1)
+            Case "<"
+                If Not 共享方法.CompareVersion(x, 参数列表(2)) < 0 Then
+                    Err.Raise(10590202,, "已安装的模组必须小于此版本：" & 参数列表(0) & " " & 参数列表(2))
+                    Exit Sub
+                End If
+            Case "="
+                If Not 共享方法.CompareVersion(x, 参数列表(2)) = 0 Then
+                    Err.Raise(10590202,, "已安装的模组必须等于此版本：" & 参数列表(0) & " " & 参数列表(2))
+                    Exit Sub
+                End If
+            Case ">"
+                If Not 共享方法.CompareVersion(x, 参数列表(2)) > 0 Then
+                    Err.Raise(10590202,, "已安装的模组必须大于此版本：" & 参数列表(0) & " " & 参数列表(2))
+                    Exit Sub
+                End If
+            Case "<="
+                If Not 共享方法.CompareVersion(x, 参数列表(2)) <= 0 Then
+                    Err.Raise(10590202,, "已安装的模组必须小于等于此版本：" & 参数列表(0) & " " & 参数列表(2))
+                    Exit Sub
+                End If
+            Case ">="
+                If Not 共享方法.CompareVersion(x, 参数列表(2)) >= 0 Then
+                    Err.Raise(10590202,, "已安装的模组必须大于等于此版本：" & 参数列表(0) & " " & 参数列表(2))
+                    Exit Sub
+                End If
+            Case "<>"
+                If Not 共享方法.CompareVersion(x, 参数列表(2)) <> 0 Then
+                    Err.Raise(10590202,, "已安装的模组必须不相等于此版本：" & 参数列表(0) & " " & 参数列表(2))
+                    Exit Sub
+                End If
+            Case Else
+                Err.Raise(10590201,, "无法识别比较参数，请不要擅自修改规划文件")
+                Exit Sub
+        End Select
     End Sub
 
     Public Shared Sub 匹配到_安装时运行可执行文件()
         Dim 参数列表 As New List(Of String)(任务队列.任务列表(任务队列.当前正在处理的索引).参数行.Split("|").ToList)
-
+        If FileExists(Path.Combine(任务队列.项路径, 参数列表(0))) = False Then
+            Err.Raise(10590202,, "指定的可执行文件不存在：" & 参数列表(0))
+            Exit Sub
+        End If
+        Dim a As New Process
+        a.StartInfo.WorkingDirectory = Path.GetDirectoryName(Path.Combine(任务队列.项路径, 参数列表(0)))
+        a.StartInfo.FileName = Path.Combine(任务队列.项路径, 参数列表(0))
+        a.StartInfo.Arguments = 参数列表(1)
+        a.StartInfo.WindowStyle = ProcessWindowStyle.Normal
+        a.Start()
     End Sub
 
     Public Shared Sub 匹配到_安装时弹窗()
