@@ -1,5 +1,4 @@
 ﻿Imports System.IO
-Imports System.Runtime.InteropServices.JavaScript.JSType
 Imports Microsoft.VisualBasic.FileIO.FileSystem
 Imports Newtonsoft.Json
 Imports Newtonsoft.Json.Linq
@@ -154,6 +153,16 @@ Public Class CD2
 
     Public Shared Sub 匹配到_声明各种核心功能的启停()
         Dim 参数列表 As New List(Of String)(任务队列.任务列表(任务队列.当前正在处理的索引).参数行.Split("|").ToList)
+        For i = 0 To 参数列表.Count - 1
+            Select Case 参数列表(i)
+                Case "CG-DB"
+
+                Case "Mods-AMD"
+
+            End Select
+        Next
+
+
 
     End Sub
 
