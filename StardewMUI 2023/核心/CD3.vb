@@ -7,7 +7,12 @@ Public Class CD3
 
     Public Shared Sub 匹配到_复制文件夹到Mods()
         Dim 参数列表 As New List(Of String)(任务队列.任务列表(任务队列.当前正在处理的索引).参数行.Split("|").ToList)
-
+        If 任务队列.是否关闭config自动保留机制 = False Then
+            Dim a1 As String = Path.Combine(任务队列.项路径, ".config", 参数列表(0), "config.json")
+            Dim a2 As String = Path.Combine(任务队列.游戏路径, "Mods", 参数列表(0), "config.json")
+            If FileExists(a1) = True Then CopyFile(a2, a1, True)
+        End If
+        DeleteDirectory(Path.Combine(任务队列.游戏路径, "Mods", 参数列表(0)), FileIO.DeleteDirectoryOption.DeleteAllContents)
     End Sub
 
     Public Shared Sub 匹配到_覆盖文件夹到Mods()
@@ -34,32 +39,27 @@ Public Class CD3
 
     End Sub
 
-    Public Shared Sub 匹配到_安装时检查文件夹的存在()
+    Public Shared Sub 匹配到_卸载时检查文件夹的存在()
         Dim 参数列表 As New List(Of String)(任务队列.任务列表(任务队列.当前正在处理的索引).参数行.Split("|").ToList)
 
     End Sub
 
-    Public Shared Sub 匹配到_安装时检查文件的存在()
+    Public Shared Sub 匹配到_卸载时检查文件的存在()
         Dim 参数列表 As New List(Of String)(任务队列.任务列表(任务队列.当前正在处理的索引).参数行.Split("|").ToList)
 
     End Sub
 
-    Public Shared Sub 匹配到_安装时检查Mods中的排斥文件夹()
+    Public Shared Sub 匹配到_卸载时取消操作()
         Dim 参数列表 As New List(Of String)(任务队列.任务列表(任务队列.当前正在处理的索引).参数行.Split("|").ToList)
 
     End Sub
 
-    Public Shared Sub 匹配到_安装时检查Mods中已安装模组的版本()
+    Public Shared Sub 匹配到_卸载时运行可执行文件()
         Dim 参数列表 As New List(Of String)(任务队列.任务列表(任务队列.当前正在处理的索引).参数行.Split("|").ToList)
 
     End Sub
 
-    Public Shared Sub 匹配到_安装时运行可执行文件()
-        Dim 参数列表 As New List(Of String)(任务队列.任务列表(任务队列.当前正在处理的索引).参数行.Split("|").ToList)
-
-    End Sub
-
-    Public Shared Sub 匹配到_安装时弹窗()
+    Public Shared Sub 匹配到_卸载时弹窗()
         Dim 参数列表 As New List(Of String)(任务队列.任务列表(任务队列.当前正在处理的索引).参数行.Split("|").ToList)
 
     End Sub
@@ -68,6 +68,29 @@ Public Class CD3
         Dim 参数列表 As New List(Of String)(任务队列.任务列表(任务队列.当前正在处理的索引).参数行.Split("|").ToList)
 
     End Sub
+
+    Private Sub 卸载CDVD(ByVal PathInLibrary As String, ByVal CategoryInLibrary As String, ByVal NameInLibrary As String)
+        If DirectoryExists(PathInLibrary) = True Then
+            Dim mDirectory As New System.IO.DirectoryInfo(PathInLibrary)
+            For Each sFile In mDirectory.GetFiles("*.*")
+                Try
+                    Dim relativePath As String = Mid(Replace(PathInLibrary, 任务队列.项路径, ""), 2)
+                    Dim filePathInGameBackup As String = Path.Combine(任务队列.游戏备份路径, relativePath, sFile.Name)
+                    If FileExists(filePathInGameBackup) Then
+                        CopyFile(filePathInGameBackup, Path.Combine(任务队列.游戏路径, relativePath, sFile.Name), True)
+                    Else
+                        DeleteFile(Path.Combine(任务队列.游戏路径, relativePath, sFile.Name))
+                    End If
+                Catch ex As Exception
+
+                End Try
+            Next
+            For Each sSubDirectory In mDirectory.GetDirectories
+                卸载CDVD(sSubDirectory.FullName, CategoryInLibrary, NameInLibrary)
+            Next
+        End If
+    End Sub
+
 
 
 

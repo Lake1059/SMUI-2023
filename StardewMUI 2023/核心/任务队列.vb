@@ -13,7 +13,11 @@ Public Class 任务队列
     Public Shared Property 是否关闭config自动保留机制 As Boolean = False
     Public Shared Property 是否允许标准SMAPI模组文件夹套娃放置 As Boolean = False
 
-
+    Public Shared Sub 全部字典初始化()
+        初始化队列键值匹配字典()
+        初始化安装操作匹配字典()
+        初始化卸载操作匹配字典()
+    End Sub
 
     Public Structure 任务列表结构
         Public 操作类型 As 公共对象.任务队列操作类型枚举
@@ -113,9 +117,20 @@ Public Class 任务队列
     Delegate Sub DE3()
 
     Public Shared Sub 初始化卸载操作匹配字典()
-
+        卸载操作匹配字典.Add(任务队列操作类型枚举.复制文件夹到Mods, AddressOf CD3.匹配到_复制文件夹到Mods)
+        卸载操作匹配字典.Add(任务队列操作类型枚举.覆盖文件夹到Mods, AddressOf CD3.匹配到_覆盖文件夹到Mods)
+        卸载操作匹配字典.Add(任务队列操作类型枚举.复制文件夹, AddressOf CD3.匹配到_复制文件夹)
+        卸载操作匹配字典.Add(任务队列操作类型枚举.覆盖Content, AddressOf CD3.匹配到_覆盖Content)
+        卸载操作匹配字典.Add(任务队列操作类型枚举.新增文件, AddressOf CD3.匹配到_新增文件)
+        卸载操作匹配字典.Add(任务队列操作类型枚举.新增文件并验证, AddressOf CD3.匹配到_新增文件)
+        卸载操作匹配字典.Add(任务队列操作类型枚举.替换文件, AddressOf CD3.匹配到_替换文件)
+        卸载操作匹配字典.Add(任务队列操作类型枚举.替换文件且无检测, AddressOf CD3.匹配到_替换文件)
+        卸载操作匹配字典.Add(任务队列操作类型枚举.卸载时检查文件夹的存在, AddressOf CD3.匹配到_卸载时检查文件夹的存在)
+        卸载操作匹配字典.Add(任务队列操作类型枚举.卸载时检查文件的存在, AddressOf CD3.匹配到_卸载时检查文件的存在)
+        卸载操作匹配字典.Add(任务队列操作类型枚举.卸载时取消操作, AddressOf CD3.匹配到_卸载时取消操作)
+        卸载操作匹配字典.Add(任务队列操作类型枚举.卸载时运行可执行文件, AddressOf CD3.匹配到_卸载时运行可执行文件)
+        卸载操作匹配字典.Add(任务队列操作类型枚举.卸载时弹窗, AddressOf CD3.匹配到_卸载时弹窗)
     End Sub
-
 
     Public Shared Function 执行卸载(任务索引 As Integer) As String
         Try
