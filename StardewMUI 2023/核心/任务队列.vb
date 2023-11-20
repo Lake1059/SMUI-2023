@@ -65,8 +65,9 @@ Public Class 任务队列
             是否允许标准SMAPI模组文件夹套娃放置 = False
             键值对IO操作.读取键值对文件到列表(安装规划原文本列表对象, CombinePath(项路径, "Code2"))
             For i = 0 To 安装规划原文本列表对象.Count - 1
-                If 队列键值匹配字典.ContainsKey(安装规划原文本列表对象(i).Key) Then
-                    Dim operation As DE1 = 队列键值匹配字典(安装规划原文本列表对象(i).Key)
+                Dim value As DE1 = Nothing
+                If 队列键值匹配字典.TryGetValue(安装规划原文本列表对象(i).Key, value) Then
+                    Dim operation As DE1 = value
                     operation.Invoke()
                 Else
                     DebugPrint(安装规划原文本列表对象(i).Key & " 不是受支持的规划代码，请不要擅自修改规划文件", Color.OrangeRed, True)
@@ -101,9 +102,10 @@ Public Class 任务队列
 
     Public Shared Function 执行安装(任务索引 As Integer) As String
         Try
-            If 安装操作匹配字典.ContainsKey(任务列表(任务索引).操作类型) Then
+            Dim value As DE2 = Nothing
+            If 安装操作匹配字典.TryGetValue(任务列表(任务索引).操作类型, value) Then
                 当前正在处理的索引 = 任务索引
-                Dim operation As DE2 = 安装操作匹配字典(任务列表(任务索引).操作类型)
+                Dim operation As DE2 = value
                 operation.Invoke()
             End If
             Return ""
@@ -112,13 +114,11 @@ Public Class 任务队列
         End Try
     End Function
 
-
     Public Shared Property 卸载操作匹配字典 As New Dictionary(Of 任务队列操作类型枚举, DE3)()
     Delegate Sub DE3()
 
     Public Shared Sub 初始化卸载操作匹配字典()
         卸载操作匹配字典.Add(任务队列操作类型枚举.复制文件夹到Mods, AddressOf CD3.匹配到_复制文件夹到Mods)
-        卸载操作匹配字典.Add(任务队列操作类型枚举.覆盖文件夹到Mods, AddressOf CD3.匹配到_覆盖文件夹到Mods)
         卸载操作匹配字典.Add(任务队列操作类型枚举.复制文件夹, AddressOf CD3.匹配到_复制文件夹)
         卸载操作匹配字典.Add(任务队列操作类型枚举.覆盖Content, AddressOf CD3.匹配到_覆盖Content)
         卸载操作匹配字典.Add(任务队列操作类型枚举.新增文件, AddressOf CD3.匹配到_新增文件)
@@ -134,9 +134,10 @@ Public Class 任务队列
 
     Public Shared Function 执行卸载(任务索引 As Integer) As String
         Try
-            If 卸载操作匹配字典.ContainsKey(任务列表(任务索引).操作类型) Then
+            Dim value As DE3 = Nothing
+            If 卸载操作匹配字典.TryGetValue(任务列表(任务索引).操作类型, value) Then
                 当前正在处理的索引 = 任务索引
-                Dim operation As DE3 = 卸载操作匹配字典(任务列表(任务索引).操作类型)
+                Dim operation As DE3 = value
                 operation.Invoke()
             End If
             Return ""

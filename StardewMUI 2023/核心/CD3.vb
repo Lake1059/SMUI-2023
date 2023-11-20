@@ -15,18 +15,15 @@ Public Class CD3
         DeleteDirectory(Path.Combine(任务队列.游戏路径, "Mods", 参数列表(0)), FileIO.DeleteDirectoryOption.DeleteAllContents)
     End Sub
 
-    Public Shared Sub 匹配到_覆盖文件夹到Mods()
-        Dim 参数列表 As New List(Of String)(任务队列.任务列表(任务队列.当前正在处理的索引).参数行.Split("|").ToList)
-
-    End Sub
-
     Public Shared Sub 匹配到_复制文件夹()
         Dim 参数列表 As New List(Of String)(任务队列.任务列表(任务队列.当前正在处理的索引).参数行.Split("|").ToList)
-
+        DeleteDirectory(Path.Combine(任务队列.游戏路径, 参数列表(1)), FileIO.DeleteDirectoryOption.DeleteAllContents)
     End Sub
 
     Public Shared Sub 匹配到_覆盖Content()
-
+        Dim a As String = Path.GetFileName(任务队列.项路径)
+        Dim b As String = Path.GetFileName(Path.GetDirectoryName(任务队列.项路径))
+        卸载CDVD(Path.Combine(任务队列.项路径, "Content"), b, a)
     End Sub
 
     Public Shared Sub 匹配到_新增文件()
@@ -69,7 +66,7 @@ Public Class CD3
 
     End Sub
 
-    Private Sub 卸载CDVD(ByVal PathInLibrary As String, ByVal CategoryInLibrary As String, ByVal NameInLibrary As String)
+    Private Shared Sub 卸载CDVD(ByVal PathInLibrary As String, ByVal CategoryInLibrary As String, ByVal NameInLibrary As String)
         If DirectoryExists(PathInLibrary) = True Then
             Dim mDirectory As New System.IO.DirectoryInfo(PathInLibrary)
             For Each sFile In mDirectory.GetFiles("*.*")
