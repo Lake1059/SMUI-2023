@@ -1,7 +1,5 @@
 ﻿Imports System.IO
 Imports Microsoft.VisualBasic.FileIO.FileSystem
-Imports Newtonsoft.Json
-Imports Newtonsoft.Json.Linq
 
 Public Class CD3
 
@@ -28,12 +26,16 @@ Public Class CD3
 
     Public Shared Sub 匹配到_新增文件()
         Dim 参数列表 As New List(Of String)(任务队列.任务列表(任务队列.当前正在处理的索引).参数行.Split("|").ToList)
-
+        DeleteFile(Path.Combine(任务队列.游戏路径, 参数列表(1)))
     End Sub
 
     Public Shared Sub 匹配到_替换文件()
         Dim 参数列表 As New List(Of String)(任务队列.任务列表(任务队列.当前正在处理的索引).参数行.Split("|").ToList)
-
+        If FileExists(Path.Combine(任务队列.游戏备份路径, 参数列表(1))) = True Then
+            CopyFile(Path.Combine(任务队列.游戏备份路径, 参数列表(1)), Path.Combine(任务队列.游戏路径, 参数列表(1)), True)
+        Else
+            DeleteFile(Path.Combine(任务队列.游戏路径, 参数列表(1)))
+        End If
     End Sub
 
     Public Shared Sub 匹配到_卸载时检查文件夹的存在()

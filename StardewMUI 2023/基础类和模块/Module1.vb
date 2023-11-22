@@ -49,13 +49,13 @@ Module Module1
     End Function
 
     Public Sub DebugPrint(文本 As String, 颜色 As Color, Optional 是否需要转到调试选项卡 As Boolean = False)
-        Form1.UiRichTextBox1.AppendText(vbCrLf & 文本)
-        Form1.UiRichTextBox1.Select(Form1.UiRichTextBox1.TextLength - 文本.Length, 文本.Length)
-        Form1.UiRichTextBox1.SelectionColor = 颜色
-        Form1.UiRichTextBox1.Select(Form1.UiRichTextBox1.TextLength, 0)
-        Form1.UiRichTextBox1.ScrollToCaret()
+        Form1.UiRichTextBox2.AppendText(vbCrLf & 文本)
+        Form1.UiRichTextBox2.Select(Form1.UiRichTextBox2.TextLength - 文本.Length, 文本.Length)
+        Form1.UiRichTextBox2.SelectionColor = 颜色
+        Form1.UiRichTextBox2.Select(Form1.UiRichTextBox2.TextLength, 0)
+        Form1.UiRichTextBox2.ScrollToCaret()
         If 是否需要转到调试选项卡 = True Then
-            Form1.UiTabControl1.SelectedTab = Form1.TabPage调试输出
+            Form1.UiTabControl2.SelectedTab = Form1.TabPage调试输出
         End If
     End Sub
 

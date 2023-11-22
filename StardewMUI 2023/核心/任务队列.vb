@@ -41,7 +41,7 @@ Public Class 任务队列
         队列键值匹配字典.Add("CR-UN-D-CHECK", AddressOf CD1.匹配到_卸载时检查文件夹的存在)
         队列键值匹配字典.Add("CR-IN-F-CHECK", AddressOf CD1.匹配到_安装时检查文件的存在)
         队列键值匹配字典.Add("CR-UN-F-CHECK", AddressOf CD1.匹配到_卸载时检查文件的存在)
-        队列键值匹配字典.Add("CR-IN-MODS-CHECK", AddressOf CD1.匹配到_安装时检查Mods中的排斥文件夹)
+        队列键值匹配字典.Add("CR-IN-MODS-CHECK", AddressOf CD1.匹配到_安装时检查Mods中文件夹的存在)
         队列键值匹配字典.Add("CR-IN-MODS-VER", AddressOf CD1.匹配到_安装时检查Mods中已安装模组的版本)
         队列键值匹配字典.Add("CR-UN", AddressOf CD1.匹配到_卸载时取消操作)
         队列键值匹配字典.Add("CR-IN-SHELL", AddressOf CD1.匹配到_安装时运行可执行文件)
@@ -70,7 +70,7 @@ Public Class 任务队列
                     Dim operation As DE1 = value
                     operation.Invoke()
                 Else
-                    DebugPrint(安装规划原文本列表对象(i).Key & " 不是受支持的规划代码，请不要擅自修改规划文件", Color.OrangeRed, True)
+                    DebugPrint(安装规划原文本列表对象(i).Key & " 不是受支持的规划代码，请不要擅自修改 Code2 文件", Color.OrangeRed, True)
                 End If
             Next
             Return ""
@@ -93,7 +93,7 @@ Public Class 任务队列
         安装操作匹配字典.Add(任务队列操作类型枚举.替换文件且无检测, AddressOf CD2.匹配到_替换文件)
         安装操作匹配字典.Add(任务队列操作类型枚举.安装时检查文件夹的存在, AddressOf CD2.匹配到_安装时检查文件夹的存在)
         安装操作匹配字典.Add(任务队列操作类型枚举.安装时检查文件的存在, AddressOf CD2.匹配到_安装时检查文件的存在)
-        安装操作匹配字典.Add(任务队列操作类型枚举.安装时检查Mods中的排斥文件夹, AddressOf CD2.匹配到_安装时检查Mods中的排斥文件夹)
+        安装操作匹配字典.Add(任务队列操作类型枚举.安装时检查Mods中文件夹的存在, AddressOf CD2.匹配到_安装时检查Mods中文件夹的存在)
         安装操作匹配字典.Add(任务队列操作类型枚举.安装时检查Mods中已安装模组的版本, AddressOf CD2.匹配到_安装时检查Mods中已安装模组的版本)
         安装操作匹配字典.Add(任务队列操作类型枚举.安装时运行可执行文件, AddressOf CD2.匹配到_安装时运行可执行文件)
         安装操作匹配字典.Add(任务队列操作类型枚举.安装时弹窗, AddressOf CD2.匹配到_安装时弹窗)
