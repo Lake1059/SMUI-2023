@@ -83,9 +83,9 @@ Namespace My.Resources
         '''<summary>
         '''  查找 System.Drawing.Bitmap 类型的本地化资源。
         '''</summary>
-        Friend ReadOnly Property 实验() As System.Drawing.Bitmap
+        Friend ReadOnly Property 上传() As System.Drawing.Bitmap
             Get
-                Dim obj As Object = ResourceManager.GetObject("实验", resourceCulture)
+                Dim obj As Object = ResourceManager.GetObject("上传", resourceCulture)
                 Return CType(obj,System.Drawing.Bitmap)
             End Get
         End Property
@@ -93,9 +93,9 @@ Namespace My.Resources
         '''<summary>
         '''  查找 System.Drawing.Bitmap 类型的本地化资源。
         '''</summary>
-        Friend ReadOnly Property 数据库() As System.Drawing.Bitmap
+        Friend ReadOnly Property 上箭头() As System.Drawing.Bitmap
             Get
-                Dim obj As Object = ResourceManager.GetObject("数据库", resourceCulture)
+                Dim obj As Object = ResourceManager.GetObject("上箭头", resourceCulture)
                 Return CType(obj,System.Drawing.Bitmap)
             End Get
         End Property
@@ -103,9 +103,9 @@ Namespace My.Resources
         '''<summary>
         '''  查找 System.Drawing.Bitmap 类型的本地化资源。
         '''</summary>
-        Friend ReadOnly Property 椰树() As System.Drawing.Bitmap
+        Friend ReadOnly Property 下箭头() As System.Drawing.Bitmap
             Get
-                Dim obj As Object = ResourceManager.GetObject("椰树", resourceCulture)
+                Dim obj As Object = ResourceManager.GetObject("下箭头", resourceCulture)
                 Return CType(obj,System.Drawing.Bitmap)
             End Get
         End Property
@@ -113,9 +113,9 @@ Namespace My.Resources
         '''<summary>
         '''  查找 System.Drawing.Bitmap 类型的本地化资源。
         '''</summary>
-        Friend ReadOnly Property 添加() As System.Drawing.Bitmap
+        Friend ReadOnly Property 下载() As System.Drawing.Bitmap
             Get
-                Dim obj As Object = ResourceManager.GetObject("添加", resourceCulture)
+                Dim obj As Object = ResourceManager.GetObject("下载", resourceCulture)
                 Return CType(obj,System.Drawing.Bitmap)
             End Get
         End Property
@@ -123,9 +123,89 @@ Namespace My.Resources
         '''<summary>
         '''  查找 System.Drawing.Bitmap 类型的本地化资源。
         '''</summary>
-        Friend ReadOnly Property 特效() As System.Drawing.Bitmap
+        Friend ReadOnly Property 下载文件夹() As System.Drawing.Bitmap
             Get
-                Dim obj As Object = ResourceManager.GetObject("特效", resourceCulture)
+                Dim obj As Object = ResourceManager.GetObject("下载文件夹", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  查找 System.Drawing.Bitmap 类型的本地化资源。
+        '''</summary>
+        Friend ReadOnly Property 代码文件夹() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("代码文件夹", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  查找 System.Drawing.Bitmap 类型的本地化资源。
+        '''</summary>
+        Friend ReadOnly Property 刷新() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("刷新", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  查找 System.Drawing.Bitmap 类型的本地化资源。
+        '''</summary>
+        Friend ReadOnly Property 加号() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("加号", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  查找 System.Drawing.Bitmap 类型的本地化资源。
+        '''</summary>
+        Friend ReadOnly Property 叉号() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("叉号", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  查找 System.Drawing.Bitmap 类型的本地化资源。
+        '''</summary>
+        Friend ReadOnly Property 右箭头() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("右箭头", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  查找 System.Drawing.Bitmap 类型的本地化资源。
+        '''</summary>
+        Friend ReadOnly Property 左箭头() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("左箭头", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  查找 System.Drawing.Bitmap 类型的本地化资源。
+        '''</summary>
+        Friend ReadOnly Property 文件夹() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("文件夹", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  查找 System.Drawing.Bitmap 类型的本地化资源。
+        '''</summary>
+        Friend ReadOnly Property 添加带圆圈() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("添加带圆圈", resourceCulture)
                 Return CType(obj,System.Drawing.Bitmap)
             End Get
         End Property
@@ -148,9 +228,9 @@ Namespace My.Resources
         '''<summary>
         '''  查找 System.Drawing.Bitmap 类型的本地化资源。
         '''</summary>
-        Friend ReadOnly Property 西瓜() As System.Drawing.Bitmap
+        Friend ReadOnly Property 移动() As System.Drawing.Bitmap
             Get
-                Dim obj As Object = ResourceManager.GetObject("西瓜", resourceCulture)
+                Dim obj As Object = ResourceManager.GetObject("移动", resourceCulture)
                 Return CType(obj,System.Drawing.Bitmap)
             End Get
         End Property
@@ -158,9 +238,9 @@ Namespace My.Resources
         '''<summary>
         '''  查找 System.Drawing.Bitmap 类型的本地化资源。
         '''</summary>
-        Friend ReadOnly Property 鸡腿() As System.Drawing.Bitmap
+        Friend ReadOnly Property 试验() As System.Drawing.Bitmap
             Get
-                Dim obj As Object = ResourceManager.GetObject("鸡腿", resourceCulture)
+                Dim obj As Object = ResourceManager.GetObject("试验", resourceCulture)
                 Return CType(obj,System.Drawing.Bitmap)
             End Get
         End Property

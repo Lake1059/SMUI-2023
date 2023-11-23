@@ -1,4 +1,4 @@
-﻿Public Class 暗黑快捷菜单
+﻿Public Class 暗黑菜单条控件本体
     Inherits ContextMenuStrip
 
     Public Sub New()

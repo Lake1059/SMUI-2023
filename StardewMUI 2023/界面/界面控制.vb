@@ -2,7 +2,9 @@
 Imports CefSharp.WinForms
 
 Public Class 界面控制
-
+    Public Shared Property A As Graphics = Form1.CreateGraphics
+    Public Shared Property X轴DPI比率 As Single = A.DpiX / 96
+    Public Shared Property Y轴DPI比率 As Single = A.DpiY / 96
     Public Shared Property CEF浏览器控件 As New ChromiumWebBrowser With {.Dock = DockStyle.Fill}
 
 
@@ -15,6 +17,9 @@ Public Class 界面控制
         Form1.UiRichTextBox4.LanguageOption = RichTextBoxLanguageOptions.UIFonts
 
         主界面高DPI兼容()
+
+        管理模组的菜单.添加菜单的触发()
+
     End Sub
 
     Public Shared Sub 设置富文本框行高(RichTextBoxObject As Control, LineHeight As Integer)
@@ -27,9 +32,6 @@ Public Class 界面控制
     End Sub
 
     Public Shared Sub 主界面高DPI兼容()
-        Dim a As Graphics = Form1.CreateGraphics
-        Dim X轴DPI比率 As Single = a.DpiX / 96
-        Dim Y轴DPI比率 As Single = a.DpiY / 96
         If X轴DPI比率 = 1 And Y轴DPI比率 = 1 Then Exit Sub
         DebugPrint("X DPI：" & a.DpiX & " - " & X轴DPI比率 * 100 & "%" & "   Y DPI：" & a.DpiY & " - " & Y轴DPI比率 * 100 & "%", Form1.ForeColor)
         Form1.Width = Form1.MinimumSize.Width : Form1.Height = Form1.MinimumSize.Height

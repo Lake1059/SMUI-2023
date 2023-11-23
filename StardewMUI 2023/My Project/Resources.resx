@@ -124,28 +124,52 @@
   <data name="dropbox1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\dropbox.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="实验" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\实验.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="上传" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\上传.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="数据库" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\数据库.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="上箭头" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\上箭头.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="椰树" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\椰树.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="下箭头" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\下箭头.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="添加" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\添加.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="下载" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\下载.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="特效" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\特效.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="下载文件夹" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\下载文件夹.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="代码文件夹" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\代码文件夹.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="刷新" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\刷新.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="加号" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\加号.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="叉号" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\叉号.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="右箭头" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\右箭头.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="左箭头" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\左箭头.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="文件夹" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\文件夹.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="添加带圆圈" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\添加带圆圈.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="用户许可协议" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\用户许可协议.rtf;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;gb2312</value>
   </data>
-  <data name="西瓜" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\西瓜.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="移动" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\移动.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="鸡腿" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\鸡腿.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="试验" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\试验.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>
