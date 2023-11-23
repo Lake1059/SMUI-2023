@@ -36,14 +36,17 @@ Public Class 界面控制
         Form1.UiTabControl1.ItemSize = New Size((Form1.UiTabControl1.ItemSize.Width - 1) * X轴DPI比率, (Form1.UiTabControl1.ItemSize.Height - 1) * Y轴DPI比率)
         Form1.UiButton45.Height = Form1.UiTabControl1.ItemSize.Height : Form1.UiButton45.Width -= Form1.UiTabControl1.TabCount * 0.5
         Form1.UiButton45.Left = Form1.UiTabControl1.Width - Form1.UiButton45.Width
-        Form1.UiTabControlMenu1.ItemSize = New Size((Form1.UiTabControlMenu1.ItemSize.Width - 1) * X轴DPI比率, (Form1.UiTabControlMenu1.ItemSize.Height - 1) * Y轴DPI比率)
-        Form1.UiTabControlMenu2.ItemSize = New Size((Form1.UiTabControlMenu2.ItemSize.Width - 1) * X轴DPI比率, (Form1.UiTabControlMenu2.ItemSize.Height - 1) * Y轴DPI比率)
+        Form1.UiTabControlMenu1.ItemSize = New Size(Form1.UiTabControl1.ItemSize.Width - 1, (Form1.UiTabControlMenu1.ItemSize.Height - 1) * Y轴DPI比率)
+        Form1.UiTabControlMenu2.ItemSize = New Size(Form1.UiTabControlMenu2.ItemSize.Width - 1 * X轴DPI比率 - X轴DPI比率, (Form1.UiTabControlMenu2.ItemSize.Height - 1) * Y轴DPI比率)
+        Form1.UiTabControlMenu3.ItemSize = New Size(Form1.UiTabControlMenu3.ItemSize.Width - 1 * X轴DPI比率, (Form1.UiTabControlMenu3.ItemSize.Height - 1) * Y轴DPI比率)
+        Form1.UiTabControlMenu4.ItemSize = New Size(Form1.UiTabControlMenu4.ItemSize.Width - 1 * X轴DPI比率, (Form1.UiTabControlMenu4.ItemSize.Height - 1) * Y轴DPI比率)
+
+        Form1.UiTabControl2.ItemSize = New Size((Form1.UiTabControl2.ItemSize.Width - 1) * X轴DPI比率, (Form1.UiTabControl2.ItemSize.Height - 1) * Y轴DPI比率)
 
         Form1.UiListBox1.ItemHeight = (Form1.UiListBox1.Height - Form1.UiListBox1.Padding.Top - Form1.UiListBox1.Padding.Bottom) / Form1.UiListBox1.Items.Count
         Form1.UiListBox2.ItemHeight = Form1.UiListBox1.ItemHeight
-        Form1.UiListBox3.ItemHeight = (Form1.UiListBox3.Height - Form1.UiListBox3.Padding.Top - Form1.UiListBox3.Padding.Bottom) / Form1.UiListBox3.Items.Count
-
-
+        Form1.UiListBox3.ItemHeight = Form1.UiListBox1.ItemHeight
+        Form1.UiListBox4.ItemHeight = Form1.UiListBox1.ItemHeight
 
     End Sub
 
