@@ -12,6 +12,7 @@ Public Class 任务队列
     Public Shared Property 当前正在处理的索引 As Integer
     Public Shared Property 是否关闭config自动保留机制 As Boolean = False
     Public Shared Property 是否允许标准SMAPI模组文件夹套娃放置 As Boolean = False
+    Public Shared Property 是否取消了操作 As Boolean = False
 
     Public Shared Sub 全部字典初始化()
         初始化队列键值匹配字典()
@@ -41,7 +42,6 @@ Public Class 任务队列
         队列键值匹配字典.Add("CR-UN-D-CHECK", AddressOf CD1.匹配到_卸载时检查文件夹的存在)
         队列键值匹配字典.Add("CR-IN-F-CHECK", AddressOf CD1.匹配到_安装时检查文件的存在)
         队列键值匹配字典.Add("CR-UN-F-CHECK", AddressOf CD1.匹配到_卸载时检查文件的存在)
-        队列键值匹配字典.Add("CR-IN-MODS-CHECK", AddressOf CD1.匹配到_安装时检查Mods中文件夹的存在)
         队列键值匹配字典.Add("CR-IN-MODS-VER", AddressOf CD1.匹配到_安装时检查Mods中已安装模组的版本)
         队列键值匹配字典.Add("CR-UN", AddressOf CD1.匹配到_卸载时取消操作)
         队列键值匹配字典.Add("CR-IN-SHELL", AddressOf CD1.匹配到_安装时运行可执行文件)
@@ -93,7 +93,6 @@ Public Class 任务队列
         安装操作匹配字典.Add(任务队列操作类型枚举.替换文件且无检测, AddressOf CD2.匹配到_替换文件)
         安装操作匹配字典.Add(任务队列操作类型枚举.安装时检查文件夹的存在, AddressOf CD2.匹配到_安装时检查文件夹的存在)
         安装操作匹配字典.Add(任务队列操作类型枚举.安装时检查文件的存在, AddressOf CD2.匹配到_安装时检查文件的存在)
-        安装操作匹配字典.Add(任务队列操作类型枚举.安装时检查Mods中文件夹的存在, AddressOf CD2.匹配到_安装时检查Mods中文件夹的存在)
         安装操作匹配字典.Add(任务队列操作类型枚举.安装时检查Mods中已安装模组的版本, AddressOf CD2.匹配到_安装时检查Mods中已安装模组的版本)
         安装操作匹配字典.Add(任务队列操作类型枚举.安装时运行可执行文件, AddressOf CD2.匹配到_安装时运行可执行文件)
         安装操作匹配字典.Add(任务队列操作类型枚举.安装时弹窗, AddressOf CD2.匹配到_安装时弹窗)
@@ -145,5 +144,18 @@ Public Class 任务队列
             Return ex.Message
         End Try
     End Function
+
+    Public Shared Sub 规划检查器运行()
+        Dim 参数列表 As New List(Of String)(任务队列.任务列表(任务队列.当前正在处理的索引).参数行.Split("|").ToList)
+        For i = 0 To 参数列表.Count - 1
+            Select Case 参数列表(i)
+                Case "CG-DB"
+
+                Case "Mods-AMD"
+
+            End Select
+        Next
+    End Sub
+
 
 End Class

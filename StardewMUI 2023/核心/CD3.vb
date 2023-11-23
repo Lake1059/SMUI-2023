@@ -1,4 +1,5 @@
 ﻿Imports System.IO
+Imports System.Runtime.InteropServices.JavaScript.JSType
 Imports Microsoft.VisualBasic.FileIO.FileSystem
 
 Public Class CD3
@@ -40,22 +41,48 @@ Public Class CD3
 
     Public Shared Sub 匹配到_卸载时检查文件夹的存在()
         Dim 参数列表 As New List(Of String)(任务队列.任务列表(任务队列.当前正在处理的索引).参数行.Split("|").ToList)
-
+        Dim 要存在还是不存在 As Boolean = 参数列表(0) = "True"
+        For i = 1 To 参数列表.Count - 1
+            If DirectoryExists(Path.Combine(任务队列.游戏路径, 参数列表(i))) = 要存在还是不存在 Then
+                Err.Raise(10590202,, "要检查的文件夹的存在性应该为：" & 要存在还是不存在 & "" & 参数列表(i))
+                Exit Sub
+            End If
+        Next
     End Sub
 
     Public Shared Sub 匹配到_卸载时检查文件的存在()
         Dim 参数列表 As New List(Of String)(任务队列.任务列表(任务队列.当前正在处理的索引).参数行.Split("|").ToList)
-
+        Dim 要存在还是不存在 As Boolean = 参数列表(0) = "True"
+        For i = 1 To 参数列表.Count - 1
+            If FileExists(Path.Combine(任务队列.游戏路径, 参数列表(i))) = 要存在还是不存在 Then
+                Err.Raise(10590202,, "要检查的文件的存在性应该为：" & 要存在还是不存在 & "：" & 参数列表(i))
+                Exit Sub
+            End If
+        Next
     End Sub
 
     Public Shared Sub 匹配到_卸载时取消操作()
         Dim 参数列表 As New List(Of String)(任务队列.任务列表(任务队列.当前正在处理的索引).参数行.Split("|").ToList)
-
+        Select Case 参数列表(0)
+            Case "ERROR"
+                Err.Raise(10590204,, "此项禁止卸载")
+            Case "CANCEL"
+                任务队列.是否取消了操作 = True
+        End Select
     End Sub
 
     Public Shared Sub 匹配到_卸载时运行可执行文件()
         Dim 参数列表 As New List(Of String)(任务队列.任务列表(任务队列.当前正在处理的索引).参数行.Split("|").ToList)
-
+        If FileExists(Path.Combine(任务队列.项路径, 参数列表(0))) = False Then
+            Err.Raise(10590202,, "指定的可执行文件不存在：" & 参数列表(0))
+            Exit Sub
+        End If
+        Dim a As New Process
+        a.StartInfo.WorkingDirectory = Path.GetDirectoryName(Path.Combine(任务队列.项路径, 参数列表(0)))
+        a.StartInfo.FileName = Path.Combine(任务队列.项路径, 参数列表(0))
+        a.StartInfo.Arguments = 参数列表(1)
+        a.StartInfo.WindowStyle = ProcessWindowStyle.Normal
+        a.Start()
     End Sub
 
     Public Shared Sub 匹配到_卸载时弹窗()
@@ -64,7 +91,6 @@ Public Class CD3
     End Sub
 
     Public Shared Sub 匹配到_声明各种核心功能的启停()
-        Dim 参数列表 As New List(Of String)(任务队列.任务列表(任务队列.当前正在处理的索引).参数行.Split("|").ToList)
 
     End Sub
 
