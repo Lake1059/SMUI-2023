@@ -1,4 +1,6 @@
-﻿Public Class 管理模组的菜单
+﻿Imports Microsoft.VisualBasic.Devices
+
+Public Class 管理模组的菜单
 
     Public Shared Property 分类和子库菜单 As New 暗黑菜单条控件本体 With {.ImageScalingSize = New Size(25 * 界面控制.X轴DPI比率, 25 * 界面控制.Y轴DPI比率)}
     Public Shared Property 菜单项_刷新分类 As New ToolStripMenuItem With {.Text = "刷新", .Image = My.Resources.刷新}
@@ -58,6 +60,20 @@
 
     End Sub
 
+    Public Shared Property 分类右键菜单 As New 暗黑菜单条控件本体 With {.ImageScalingSize = New Size(25 * 界面控制.X轴DPI比率, 25 * 界面控制.Y轴DPI比率)}
+    Public Shared Property 菜单项_打开分类的文件夹 As New ToolStripMenuItem With {.Text = "文件夹", .Image = My.Resources.文件夹}
+    Public Shared Property 菜单项_重命名分类 As New ToolStripMenuItem With {.Text = "重命名"}
+    Public Shared Property 菜单项_设置分类的颜色 As New ToolStripMenuItem With {.Text = "设置颜色"}
+    Public Shared Property 菜单项_设置分类的字体 As New ToolStripMenuItem With {.Text = "设置字体"}
+
+    Public Shared Sub 添加分类右键菜单的所有菜单项()
+        分类右键菜单.Items.Add(菜单项_打开分类的文件夹)
+        分类右键菜单.Items.Add(菜单项_重命名分类)
+        分类右键菜单.Items.Add(New ToolStripSeparator)
+        分类右键菜单.Items.Add(菜单项_设置分类的颜色)
+        分类右键菜单.Items.Add(菜单项_设置分类的字体)
+    End Sub
+
     Public Shared Property 项菜单 As New 暗黑菜单条控件本体 With {.ImageScalingSize = New Size(25 * 界面控制.X轴DPI比率, 25 * 界面控制.Y轴DPI比率)}
     Public Shared Property 菜单项_新建项 As New ToolStripMenuItem With {.Text = "新建项", .Image = My.Resources.添加带圆圈}
     Public Shared Property 菜单项_下载并新建项 As New ToolStripMenuItem With {.Text = "下载并新建项", .Image = My.Resources.下载}
@@ -66,6 +82,11 @@
     Public Shared Property 菜单项_导入项 As New ToolStripMenuItem With {.Text = "导入项"}
     Public Shared Property 菜单项_导出项 As New ToolStripMenuItem With {.Text = "导出项"}
     Public Shared Property 菜单项_批量创建项 As New ToolStripMenuItem With {.Text = "批量创建", .Image = My.Resources.代码文件夹}
+
+    Public Shared Property 批量创建项菜单 As New 暗黑菜单条控件本体 With {.ImageScalingSize = New Size(25 * 界面控制.X轴DPI比率, 25 * 界面控制.Y轴DPI比率)}
+    Public Shared Property 菜单项_从Mods中覆盖到数据库 As New ToolStripMenuItem With {.Text = "从 Mods 中覆盖到数据库", .Image = My.Resources.试验}
+    Public Shared Property 菜单项_从Mods中替换到数据库 As New ToolStripMenuItem With {.Text = "从 Mods 中替换到数据库", .Image = My.Resources.试验}
+
     Public Shared Property 菜单项_本地更新项 As New ToolStripMenuItem With {.Text = "本地更新"}
     Public Shared Property 菜单项_设置项字体 As New ToolStripMenuItem With {.Text = "设置字体"}
     Public Shared Property 菜单项_切换项所属分类显示 As New ToolStripMenuItem With {.Text = "切换分类列"}
@@ -82,18 +103,38 @@
         项菜单.Items.Add(菜单项_导出项)
         项菜单.Items.Add(New ToolStripSeparator)
         项菜单.Items.Add(菜单项_批量创建项)
+        菜单项_批量创建项.DropDown = 批量创建项菜单
+        批量创建项菜单.Items.Add(菜单项_从Mods中覆盖到数据库)
+        批量创建项菜单.Items.Add(菜单项_从Mods中替换到数据库)
+
         项菜单.Items.Add(菜单项_本地更新项)
         项菜单.Items.Add(New ToolStripSeparator)
         项菜单.Items.Add(菜单项_设置项字体)
         项菜单.Items.Add(菜单项_切换项所属分类显示)
     End Sub
 
+    Public Shared Property 项右键菜单 As New 暗黑菜单条控件本体 With {.ImageScalingSize = New Size(25 * 界面控制.X轴DPI比率, 25 * 界面控制.Y轴DPI比率)}
+
+
+
+
+    Public Shared Sub 添加项右键菜单的所有菜单项()
+
+
+
+    End Sub
+
+
+
+
 
     Public Shared Sub 添加菜单的触发()
         添加分类和子库菜单的所有菜单项()
+        添加分类右键菜单的所有菜单项()
         添加项菜单的所有菜单项()
         AddHandler Form1.UiButton1.MouseDown, Sub(sender, e) 分类和子库菜单.Show(sender, New Point(sender.Width - 分类和子库菜单.Width, sender.Height))
         AddHandler Form1.UiButton2.MouseDown, Sub(sender, e) 项菜单.Show(sender, New Point(0, sender.Height))
+        AddHandler Form1.ListView1.MouseDown, Sub(sender, e) 分类右键菜单.Show(sender, e.X, e.Y)
     End Sub
 
 

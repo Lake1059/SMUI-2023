@@ -59,4 +59,23 @@ Module Module1
         End If
     End Sub
 
+    Public Const WM_NCLBUTTONDOWN As Integer = &HA1
+    Public Const HT_CAPTION As Integer = &H2
+
+    Public Function GetScrollBarWidth() As Integer
+        Dim dpiScaleFactor As Single = 1.0F
+        Using g As Graphics = Form1.CreateGraphics()
+            dpiScaleFactor = g.DpiX / 96.0F
+        End Using
+
+        Dim systemScrollBarWidth As Integer = SystemInformation.VerticalScrollBarWidth
+        Dim scaledScrollBarWidth As Integer = systemScrollBarWidth * dpiScaleFactor
+
+        Return scaledScrollBarWidth
+    End Function
+
+    <DllImport("shell32.dll")>
+    Public Function ShellExecute(hwnd As IntPtr, lpOperation As String, lpFile As String, lpParameters As String, lpDirectory As String, nShowCmd As Integer) As IntPtr
+    End Function
+
 End Module

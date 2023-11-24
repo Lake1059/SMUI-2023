@@ -4,7 +4,8 @@ Imports CefSharp.WinForms
 Public Class 界面控制
     Public Shared Property A As Graphics = Form1.CreateGraphics
     Public Shared Property X轴DPI比率 As Single = A.DpiX / 96
-    Public Shared Property Y轴DPI比率 As Single = A.DpiY / 96
+   Public Shared Property Y轴DPI比率 As Single = A.DpiY / 96
+    Public Shared Property 程序DPI_垂直滚动条宽度 As Integer = GetScrollBarWidth()
     Public Shared Property CEF浏览器控件 As New ChromiumWebBrowser With {.Dock = DockStyle.Fill}
 
 
@@ -12,7 +13,7 @@ Public Class 界面控制
         Form1.TabPage6.Controls.Add(CEF浏览器控件)
         Form1.UiRichTextBox4.Rtf = My.Resources.用户许可协议
 
-        '设置富文本框行高(Form1.UiRichTextBox4, 30)
+        设置富文本框行高(Form1.UiRichTextBox1, 30)
         Form1.UiRichTextBox4.AutoWordSelection = False
         Form1.UiRichTextBox4.LanguageOption = RichTextBoxLanguageOptions.UIFonts
 
@@ -33,12 +34,25 @@ Public Class 界面控制
         SendMessage(New HandleRef(RichTextBoxObject, RichTextBoxObject.Handle), EM_SETPARAFORMAT, 4, fmt)
     End Sub
 
+    Public Shared Sub 主界面元素尺寸动态调整()
+        Form1.Panel13.Width = Form1.Panel13.Parent.Width * 0.5
+        Form1.Panel45.Width = (Form1.Panel45.Parent.Width - Form1.Panel45.Left * 3) * 0.5
+        Form1.Panel46.Width = Form1.Panel45.Width
+        Form1.Panel47.Width = Form1.Panel45.Width
+        Form1.Panel48.Width = Form1.Panel45.Width
+        Form1.Panel46.Left = Form1.Panel45.Width + Form1.Panel45.Left * 2
+        Form1.Panel48.Left = Form1.Panel47.Width + Form1.Panel47.Left * 2
+
+        Form1.ListView1.Width = Form1.ListView1.Parent.Width - Form1.ListView1.Parent.Padding.Left + 程序DPI_垂直滚动条宽度
+
+
+    End Sub
+
     Public Shared Sub 主界面高DPI兼容()
         If X轴DPI比率 = 1 And Y轴DPI比率 = 1 Then Exit Sub
         DebugPrint("X DPI：" & A.DpiX & " - " & X轴DPI比率 * 100 & "%" & "   Y DPI：" & A.DpiY & " - " & Y轴DPI比率 * 100 & "%", Form1.ForeColor)
         Form1.MinimumSize = New Size(1280 * X轴DPI比率, 720 * Y轴DPI比率)
         Form1.Size = Form1.MinimumSize
-
 
         Form1.UiTabControl1.ItemSize = New Size((Form1.UiTabControl1.ItemSize.Width - 1) * X轴DPI比率, (Form1.UiTabControl1.ItemSize.Height - 1) * Y轴DPI比率)
 
@@ -58,15 +72,6 @@ Public Class 界面控制
 
     End Sub
 
-    Public Shared Sub 主界面元素尺寸动态调整()
-        Form1.Panel13.Width = Form1.Panel13.Parent.Width * 0.5
-        Form1.Panel45.Width = (Form1.Panel45.Parent.Width - Form1.Panel45.Left * 3) * 0.5
-        Form1.Panel46.Width = Form1.Panel45.Width
-        Form1.Panel47.Width = Form1.Panel45.Width
-        Form1.Panel48.Width = Form1.Panel45.Width
-        Form1.Panel46.Left = Form1.Panel45.Width + Form1.Panel45.Left * 2
-        Form1.Panel48.Left = Form1.Panel47.Width + Form1.Panel47.Left * 2
-    End Sub
 
 
 

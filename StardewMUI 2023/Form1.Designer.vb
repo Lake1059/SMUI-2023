@@ -3980,7 +3980,7 @@ Partial Class Form1
         ListView1.Location = New Point(10, 10)
         ListView1.Name = "ListView1"
         ListView1.OwnerDraw = True
-        ListView1.Size = New Size(201, 531)
+        ListView1.Size = New Size(227, 531)
         ListView1.TabIndex = 3
         ListView1.TabStop = False
         ListView1.UseCompatibleStateImageBehavior = False
@@ -5391,9 +5391,9 @@ Partial Class Form1
         ' 
         TabPage调试输出.BackColor = Color.FromArgb(CByte(24), CByte(24), CByte(24))
         TabPage调试输出.Controls.Add(UiRichTextBox2)
-        TabPage调试输出.Location = New Point(0, 40)
+        TabPage调试输出.Location = New Point(0, 50)
         TabPage调试输出.Name = "TabPage调试输出"
-        TabPage调试输出.Size = New Size(200, 60)
+        TabPage调试输出.Size = New Size(1264, 631)
         TabPage调试输出.TabIndex = 6
         TabPage调试输出.Text = "调试输出"
         ' 
@@ -5420,7 +5420,7 @@ Partial Class Form1
         UiRichTextBox2.ScrollBarStyleInherited = False
         UiRichTextBox2.ScrollBarWidth = 20
         UiRichTextBox2.ShowText = False
-        UiRichTextBox2.Size = New Size(200, 60)
+        UiRichTextBox2.Size = New Size(1264, 631)
         UiRichTextBox2.Style = Sunny.UI.UIStyle.Custom
         UiRichTextBox2.TabIndex = 2
         UiRichTextBox2.Text = "调试信息"

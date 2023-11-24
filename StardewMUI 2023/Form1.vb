@@ -10,6 +10,7 @@ Public Class Form1
     End Sub
 
     Private Sub Form1_ResizeEnd(sender As Object, e As EventArgs) Handles MyBase.ResizeEnd
+        If Me.WindowState = FormWindowState.Minimized Then Exit Sub
 
     End Sub
 
