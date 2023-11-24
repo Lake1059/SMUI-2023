@@ -56,7 +56,7 @@ Public Class 暗黑菜单项绘制类
     Protected Overrides Sub OnRenderSeparator(e As ToolStripSeparatorRenderEventArgs)
         Dim g = e.Graphics
         Dim rect As New Rectangle(1, 3, e.Item.Width, 1)
-        Using b As New SolidBrush(ColorTranslator.FromWin32(RGB(64, 64, 64)))
+        Using b As New SolidBrush(ColorTranslator.FromWin32(RGB(80, 80, 80)))
             g.FillRectangle(b, rect)
         End Using
     End Sub
@@ -76,7 +76,7 @@ Public Class 暗黑菜单项绘制类
             ' Normal item
             If e.Item.Selected Then
                 Dim rect As New Rectangle(2, 0, e.Item.Width - 3, e.Item.Height)
-                Using b As New SolidBrush(ColorTranslator.FromWin32(RGB(64, 64, 64)))
+                Using b As New SolidBrush(ColorTranslator.FromWin32(RGB(80, 80, 80)))
                     g.FillRectangle(b, rect)
                 End Using
             End If

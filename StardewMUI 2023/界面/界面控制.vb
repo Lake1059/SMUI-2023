@@ -17,6 +17,8 @@ Public Class 界面控制
         Form1.UiRichTextBox4.LanguageOption = RichTextBoxLanguageOptions.UIFonts
 
         主界面高DPI兼容()
+        主界面元素尺寸动态调整()
+
 
         管理模组的菜单.添加菜单的触发()
 
@@ -33,9 +35,13 @@ Public Class 界面控制
 
     Public Shared Sub 主界面高DPI兼容()
         If X轴DPI比率 = 1 And Y轴DPI比率 = 1 Then Exit Sub
-        DebugPrint("X DPI：" & a.DpiX & " - " & X轴DPI比率 * 100 & "%" & "   Y DPI：" & a.DpiY & " - " & Y轴DPI比率 * 100 & "%", Form1.ForeColor)
-        Form1.Width = Form1.MinimumSize.Width : Form1.Height = Form1.MinimumSize.Height
+        DebugPrint("X DPI：" & A.DpiX & " - " & X轴DPI比率 * 100 & "%" & "   Y DPI：" & A.DpiY & " - " & Y轴DPI比率 * 100 & "%", Form1.ForeColor)
+        Form1.MinimumSize = New Size(1280 * X轴DPI比率, 720 * Y轴DPI比率)
+        Form1.Size = Form1.MinimumSize
+
+
         Form1.UiTabControl1.ItemSize = New Size((Form1.UiTabControl1.ItemSize.Width - 1) * X轴DPI比率, (Form1.UiTabControl1.ItemSize.Height - 1) * Y轴DPI比率)
+
         Form1.UiButton45.Height = Form1.UiTabControl1.ItemSize.Height : Form1.UiButton45.Width -= Form1.UiTabControl1.TabCount * 0.5
         Form1.UiButton45.Left = Form1.UiTabControl1.Width - Form1.UiButton45.Width
         Form1.UiTabControlMenu1.ItemSize = New Size(Form1.UiTabControl1.ItemSize.Width - 1, (Form1.UiTabControlMenu1.ItemSize.Height - 1) * Y轴DPI比率)
@@ -51,6 +57,17 @@ Public Class 界面控制
         Form1.UiListBox4.ItemHeight = Form1.UiListBox1.ItemHeight
 
     End Sub
+
+    Public Shared Sub 主界面元素尺寸动态调整()
+        Form1.Panel13.Width = Form1.Panel13.Parent.Width * 0.5
+        Form1.Panel45.Width = (Form1.Panel45.Parent.Width - Form1.Panel45.Left * 3) * 0.5
+        Form1.Panel46.Width = Form1.Panel45.Width
+        Form1.Panel47.Width = Form1.Panel45.Width
+        Form1.Panel48.Width = Form1.Panel45.Width
+        Form1.Panel46.Left = Form1.Panel45.Width + Form1.Panel45.Left * 2
+        Form1.Panel48.Left = Form1.Panel47.Width + Form1.Panel47.Left * 2
+    End Sub
+
 
 
 End Class
