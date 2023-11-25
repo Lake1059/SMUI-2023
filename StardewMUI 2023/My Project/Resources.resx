@@ -127,6 +127,9 @@
   <data name="上传" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\上传.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="上传云" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\上传云.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="上箭头" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\上箭头.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -141,6 +144,12 @@
   </data>
   <data name="代码文件夹" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\代码文件夹.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="切换" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\切换.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="删除" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\删除.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="刷新" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\刷新.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -157,8 +166,17 @@
   <data name="左箭头" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\左箭头.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="数据切换" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\数据切换.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="数据库" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\数据库.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="文件夹" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\文件夹.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="文字大小" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\文字大小.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="添加带圆圈" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\添加带圆圈.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -171,5 +189,8 @@
   </data>
   <data name="试验" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\试验.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="颜色滤镜" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\颜色滤镜.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

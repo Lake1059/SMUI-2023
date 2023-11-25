@@ -93,6 +93,16 @@ Namespace My.Resources
         '''<summary>
         '''  查找 System.Drawing.Bitmap 类型的本地化资源。
         '''</summary>
+        Friend ReadOnly Property 上传云() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("上传云", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  查找 System.Drawing.Bitmap 类型的本地化资源。
+        '''</summary>
         Friend ReadOnly Property 上箭头() As System.Drawing.Bitmap
             Get
                 Dim obj As Object = ResourceManager.GetObject("上箭头", resourceCulture)
@@ -136,6 +146,26 @@ Namespace My.Resources
         Friend ReadOnly Property 代码文件夹() As System.Drawing.Bitmap
             Get
                 Dim obj As Object = ResourceManager.GetObject("代码文件夹", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  查找 System.Drawing.Bitmap 类型的本地化资源。
+        '''</summary>
+        Friend ReadOnly Property 切换() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("切换", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  查找 System.Drawing.Bitmap 类型的本地化资源。
+        '''</summary>
+        Friend ReadOnly Property 删除() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("删除", resourceCulture)
                 Return CType(obj,System.Drawing.Bitmap)
             End Get
         End Property
@@ -193,9 +223,39 @@ Namespace My.Resources
         '''<summary>
         '''  查找 System.Drawing.Bitmap 类型的本地化资源。
         '''</summary>
+        Friend ReadOnly Property 数据切换() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("数据切换", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  查找 System.Drawing.Bitmap 类型的本地化资源。
+        '''</summary>
+        Friend ReadOnly Property 数据库() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("数据库", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  查找 System.Drawing.Bitmap 类型的本地化资源。
+        '''</summary>
         Friend ReadOnly Property 文件夹() As System.Drawing.Bitmap
             Get
                 Dim obj As Object = ResourceManager.GetObject("文件夹", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  查找 System.Drawing.Bitmap 类型的本地化资源。
+        '''</summary>
+        Friend ReadOnly Property 文字大小() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("文字大小", resourceCulture)
                 Return CType(obj,System.Drawing.Bitmap)
             End Get
         End Property
@@ -211,13 +271,10 @@ Namespace My.Resources
         End Property
         
         '''<summary>
-        '''  查找类似 {\rtf1\ansi\ansicpg54936\deff0\nouicompat{\fonttbl{\f0\fnil\fcharset134 \&apos;cb\&apos;bc\&apos;d4\&apos;b4\&apos;ba\&apos;da\&apos;cc\&apos;e5 CN Normal;}}
-        '''{\colortbl ;\red128\green128\blue128;}
-        '''{\*\generator Riched20 10.0.19041}\viewkind4\uc1 
-        '''\pard\sl240\slmult1\qc\cf1\b\f0\fs32\lang2052 SMUI 2023\&apos;a3\&apos;a8SMUI 6\&apos;a3\&apos;a9\&apos;d3\&apos;c3\&apos;bb\&apos;a7\&apos;d0\&apos;ed\&apos;bf\&apos;c9\&apos;d0\&apos;ad\&apos;d2\&apos;e9\b0\par
-        '''\fs22\par
-        '''
-        '''\pard\sl240\slmult1\tab\&apos;b1\&apos;be\&apos;d3\&apos;c3\&apos;bb\&apos;a7\&apos;d0\&apos;ed\&apos;bf\&apos;c9\&apos;d0\&apos;ad\&apos;d2\&apos;e9\&apos;a3\&apos;a8\&apos;d2\&apos;d4\&apos;cf\&apos;c2\&apos;bc\&apos;f2\&apos;b3\&apos;c6\ldblquote\&apos;b1\&apos;be\&apos;d0\&apos;ad\&apos;d2\&apos;e9\r [字符串的其余部分被截断]&quot;; 的本地化字符串。
+        '''  查找类似 {\rtf1\ansi\ansicpg54936\deff0\nouicompat\deflang1033\deflangfe2052{\fonttbl{\f0\fnil\fprq2\fcharset134 \&apos;cb\&apos;ce\&apos;cc\&apos;e5;}{\f1\fswiss\fprq2\fcharset134 \&apos;cb\&apos;bc\&apos;d4\&apos;b4\&apos;ba\&apos;da\&apos;cc\&apos;e5 CN Normal;}{\f2\fnil\fprq2\fcharset0 DengXian Western;}}
+        '''{\colortbl ;\red128\green128\blue128;\red0\green0\blue255;\red5\green99\blue193;}
+        '''{\*\generator Riched20 10.0.19041}{\*\mmathPr\mnaryLim0\mdispDef1\mwrapIndent1440 }\viewkind4\uc1 
+        '''\pard\nowidctlpar\qc\cf1\b\f0\fs32\lang2052 SMUI 2023\&apos;a3\&apos;a8SMUI 6\&apos;a3\&apos;a9\&apos;d3\&apos;c3\&apos;b [字符串的其余部分被截断]&quot;; 的本地化字符串。
         '''</summary>
         Friend ReadOnly Property 用户许可协议() As String
             Get
@@ -241,6 +298,16 @@ Namespace My.Resources
         Friend ReadOnly Property 试验() As System.Drawing.Bitmap
             Get
                 Dim obj As Object = ResourceManager.GetObject("试验", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  查找 System.Drawing.Bitmap 类型的本地化资源。
+        '''</summary>
+        Friend ReadOnly Property 颜色滤镜() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("颜色滤镜", resourceCulture)
                 Return CType(obj,System.Drawing.Bitmap)
             End Get
         End Property
