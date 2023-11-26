@@ -11,6 +11,10 @@
     <AssemblyName>SMUI6</AssemblyName>
     <Copyright>Copyright © 2019-2024 1059 Studio, All Rights Reserved.</Copyright>
     <Title>$(AssemblyName)</Title>
+    <Authors>1059 Studio</Authors>
+    <PackAsTool>False</PackAsTool>
+    <AssemblyVersion>6.0</AssemblyVersion>
+    <FileVersion>6.0.0</FileVersion>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">

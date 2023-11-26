@@ -4,8 +4,8 @@ Public Class 管理模组的菜单
 
     Public Shared Property 分类和子库菜单 As New 暗黑菜单条控件本体 With {.ImageScalingSize = New Size(25 * 界面控制.X轴DPI比率, 25 * 界面控制.Y轴DPI比率)}
     Public Shared Property 菜单项_刷新分类 As New ToolStripMenuItem With {.Text = "刷新", .Image = My.Resources.刷新}
-    Public Shared Property 菜单项_子库菜单 As New ToolStripMenuItem With {.Text = "数据子库操作", .Image = My.Resources.数据库}
 
+    Public Shared Property 菜单项_子库菜单 As New ToolStripMenuItem With {.Text = "数据子库操作", .Image = My.Resources.数据库}
     Public Shared Property 数据子库操作菜单 As New 暗黑菜单条控件本体 With {.ImageScalingSize = New Size(25 * 界面控制.X轴DPI比率, 25 * 界面控制.Y轴DPI比率)}
     Public Shared Property 菜单项_切换数据子库 As New ToolStripMenuItem With {.Text = "切换数据子库", .Image = My.Resources.数据切换}
     Public Shared Property 菜单项_刷新数据子库 As New ToolStripMenuItem With {.Text = "刷新数据子库", .Image = My.Resources.刷新}
@@ -19,12 +19,14 @@ Public Class 管理模组的菜单
     Public Shared Property 菜单项_删除分类 As New ToolStripMenuItem With {.Text = "删除分类", .Image = My.Resources.删除}
     Public Shared Property 菜单项_导入分类 As New ToolStripMenuItem With {.Text = "导入分类", .Image = My.Resources.下载}
     Public Shared Property 菜单项_导出分类 As New ToolStripMenuItem With {.Text = "导出分类", .Image = My.Resources.上传}
-    Public Shared Property 菜单项_更多分类操作 As New ToolStripMenuItem With {.Text = "更多", .Image = My.Resources.试验}
 
+
+    Public Shared Property 菜单项_更多分类操作 As New ToolStripMenuItem With {.Text = "更多", .Image = My.Resources.试验}
     Public Shared Property 更多分类操作菜单 As New 暗黑菜单条控件本体 With {.ImageScalingSize = New Size(25 * 界面控制.X轴DPI比率, 25 * 界面控制.Y轴DPI比率)}
     Public Shared Property 菜单项_更多分类操作_清除Config缓存 As New ToolStripMenuItem With {.Text = "清除 Config 缓存", .Image = My.Resources.删除}
     Public Shared Property 菜单项_更多分类操作_转换安装命令到安装规划 As New ToolStripMenuItem With {.Text = "转换安装命令到安装规划", .Image = My.Resources.试验}
     Public Shared Property 菜单项_更多分类操作_转换安装规划到安装命令 As New ToolStripMenuItem With {.Text = "转换安装规划到安装命令", .Image = My.Resources.试验}
+
 
 
     Public Shared Sub 添加分类和子库菜单的所有菜单项()
@@ -90,6 +92,7 @@ Public Class 管理模组的菜单
 
     Public Shared Property 菜单项_设置项字体 As New ToolStripMenuItem With {.Text = "设置字体", .Image = My.Resources.文字大小}
     Public Shared Property 菜单项_切换项所属分类显示 As New ToolStripMenuItem With {.Text = "切换分类列", .Image = My.Resources.切换}
+    Public Shared Property 菜单项_管理虚拟组 As New ToolStripMenuItem With {.Text = "管理虚拟组", .Image = My.Resources.六个点}
 
 
     Public Shared Sub 添加项菜单的所有菜单项()
@@ -112,6 +115,7 @@ Public Class 管理模组的菜单
         项菜单.Items.Add(New ToolStripSeparator)
         项菜单.Items.Add(菜单项_设置项字体)
         项菜单.Items.Add(菜单项_切换项所属分类显示)
+        项菜单.Items.Add(菜单项_管理虚拟组)
     End Sub
 
     Public Shared Property 项右键菜单 As New 暗黑菜单条控件本体 With {.ImageScalingSize = New Size(25 * 界面控制.X轴DPI比率, 25 * 界面控制.Y轴DPI比率)}
@@ -128,6 +132,8 @@ Public Class 管理模组的菜单
     Public Shared Property 菜单项_编辑项_清除Config缓存 As New ToolStripMenuItem With {.Text = "清除 Config 缓存", .Image = My.Resources.删除}
     Public Shared Property 菜单项_编辑项_转换安装命令到安装规划 As New ToolStripMenuItem With {.Text = "转换安装命令到安装规划", .Image = My.Resources.试验}
     Public Shared Property 菜单项_编辑项_转换安装规划到安装命令 As New ToolStripMenuItem With {.Text = "转换安装规划到安装命令", .Image = My.Resources.试验}
+
+    Public Shared Property 菜单项_设置虚拟组 As New ToolStripMenuItem With {.Text = "设置虚拟组", .Image = My.Resources.六个点}
 
     Public Shared Sub 添加项右键菜单的所有菜单项()
         项右键菜单.Items.Add(菜单项_安装)
@@ -147,6 +153,42 @@ Public Class 管理模组的菜单
         编辑项功能菜单.Items.Add(New ToolStripSeparator)
         编辑项功能菜单.Items.Add(菜单项_编辑项_转换安装命令到安装规划)
         编辑项功能菜单.Items.Add(菜单项_编辑项_转换安装规划到安装命令)
+
+        项右键菜单.Items.Add(菜单项_设置虚拟组)
+    End Sub
+
+    Public Shared Property 项筛选菜单 As New 暗黑菜单条控件本体 With {.ImageScalingSize = New Size(25 * 界面控制.X轴DPI比率, 25 * 界面控制.Y轴DPI比率)}
+    Public Shared Property 菜单项_全选 As New ToolStripMenuItem With {.Text = "全选", .Image = My.Resources.全选}
+    Public Shared Property 菜单项_反选 As New ToolStripMenuItem With {.Text = "反选"}
+
+    Public Shared Property 菜单项_选中所有已安装 As New ToolStripMenuItem With {.Text = "选中所有已安装"}
+    Public Shared Property 菜单项_选中所有未安装 As New ToolStripMenuItem With {.Text = "选中所有未安装"}
+    Public Shared Property 菜单项_选中所有非标项 As New ToolStripMenuItem With {.Text = "选中所有非标项"}
+    Public Shared Property 菜单项_扫描当前子库所有已安装 As New ToolStripMenuItem With {.Text = "扫描当前子库所有已安装"}
+    Public Shared Property 菜单项_扫描当前子库所有未安装 As New ToolStripMenuItem With {.Text = "扫描当前子库所有未安装"}
+    Public Shared Property 菜单项_扫描当前子库所有非标项 As New ToolStripMenuItem With {.Text = "扫描当前子库所有非标项"}
+
+
+    Public Shared Sub 添加项筛选菜单的所有菜单项()
+        项筛选菜单.Items.Add(菜单项_全选)
+        项筛选菜单.Items.Add(菜单项_反选)
+        项筛选菜单.Items.Add(New ToolStripSeparator)
+        项筛选菜单.Items.Add(菜单项_选中所有已安装)
+        项筛选菜单.Items.Add(菜单项_选中所有未安装)
+        项筛选菜单.Items.Add(菜单项_选中所有非标项)
+        项筛选菜单.Items.Add(菜单项_扫描当前子库所有已安装)
+        项筛选菜单.Items.Add(菜单项_扫描当前子库所有未安装)
+        项筛选菜单.Items.Add(菜单项_扫描当前子库所有非标项)
+    End Sub
+
+
+
+    Public Shared Property 描述菜单 As New 暗黑菜单条控件本体 With {.ImageScalingSize = New Size(25 * 界面控制.X轴DPI比率, 25 * 界面控制.Y轴DPI比率)}
+    Public Shared Property 菜单项_保存描述 As New ToolStripMenuItem With {.Text = "保存", .Image = My.Resources.保存}
+
+
+    Public Shared Sub 添加描述菜单的所有菜单项()
+
     End Sub
 
 
@@ -155,10 +197,14 @@ Public Class 管理模组的菜单
         添加分类右键菜单的所有菜单项()
         添加项菜单的所有菜单项()
         添加项右键菜单的所有菜单项()
+        添加项筛选菜单的所有菜单项()
+        添加描述菜单的所有菜单项()
         AddHandler Form1.UiButton1.MouseDown, Sub(sender, e) 分类和子库菜单.Show(sender, New Point(sender.Width - 分类和子库菜单.Width, sender.Height))
         AddHandler Form1.UiButton2.MouseDown, Sub(sender, e) 项菜单.Show(sender, New Point(0, sender.Height))
         AddHandler Form1.ListView1.MouseDown, Sub(sender, e) If e.Button = MouseButtons.Right Then 分类右键菜单.Show(sender, e.X, e.Y)
         AddHandler Form1.ListView2.MouseDown, Sub(sender, e) If e.Button = MouseButtons.Right Then 项右键菜单.Show(sender, e.X, e.Y)
+        AddHandler Form1.UiButton5.MouseDown, Sub(sender, e) 项筛选菜单.Show(sender, New Point(0, sender.Height))
+        AddHandler Form1.UiButton10.MouseDown, Sub(sender, e) 描述菜单.Show(sender, New Point(0, sender.Height))
     End Sub
 
 
