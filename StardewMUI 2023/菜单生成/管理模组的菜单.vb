@@ -176,6 +176,7 @@ Public Class 管理模组的菜单
         项筛选菜单.Items.Add(菜单项_选中所有已安装)
         项筛选菜单.Items.Add(菜单项_选中所有未安装)
         项筛选菜单.Items.Add(菜单项_选中所有非标项)
+        项筛选菜单.Items.Add(New ToolStripSeparator)
         项筛选菜单.Items.Add(菜单项_扫描当前子库所有已安装)
         项筛选菜单.Items.Add(菜单项_扫描当前子库所有未安装)
         项筛选菜单.Items.Add(菜单项_扫描当前子库所有非标项)
@@ -184,13 +185,34 @@ Public Class 管理模组的菜单
 
 
     Public Shared Property 描述菜单 As New 暗黑菜单条控件本体 With {.ImageScalingSize = New Size(25 * 界面控制.X轴DPI比率, 25 * 界面控制.Y轴DPI比率)}
-    Public Shared Property 菜单项_保存描述 As New ToolStripMenuItem With {.Text = "保存", .Image = My.Resources.保存}
-
+    Public Shared Property 菜单项_保存描述到纯文本 As New ToolStripMenuItem With {.Text = "保存到纯文本", .Image = My.Resources.保存}
+    Public Shared Property 菜单项_保存描述到富文本 As New ToolStripMenuItem With {.Text = "保存到富文本", .Image = My.Resources.保存}
+    Public Shared Property 菜单项_新建富文本文档 As New ToolStripMenuItem With {.Text = "新建富文本文档", .Image = My.Resources.添加带圆圈}
+    Public Shared Property 菜单项_在写字板中编辑富文本 As New ToolStripMenuItem With {.Text = "用写字板编辑富文本"}
+    Public Shared Property 菜单项_删除所有自定义描述 As New ToolStripMenuItem With {.Text = "删除所有自定义描述", .Image = My.Resources.删除}
+    Public Shared Property 菜单项_切换描述栏富文本框的滚动条显示 As New ToolStripMenuItem With {.Text = "切换滚动条显示", .Image = My.Resources.切换}
+    Public Shared Property 菜单项_设置选中内容的字体 As New ToolStripMenuItem With {.Text = "设置字体", .Image = My.Resources.文字大小}
+    Public Shared Property 菜单项_设置选中内容的文字颜色 As New ToolStripMenuItem With {.Text = "设置文字颜色", .Image = My.Resources.颜色滤镜}
+    Public Shared Property 菜单项_设置选中内容的背景颜色 As New ToolStripMenuItem With {.Text = "设置文字背景颜色", .Image = My.Resources.颜色滤镜}
+    Public Shared Property 菜单项_清除所有格式 As New ToolStripMenuItem With {.Text = "清除所有格式", .Image = My.Resources.删除}
 
     Public Shared Sub 添加描述菜单的所有菜单项()
-
+        描述菜单.Items.Add(菜单项_保存描述到纯文本)
+        描述菜单.Items.Add(菜单项_保存描述到富文本)
+        描述菜单.Items.Add(New ToolStripSeparator)
+        描述菜单.Items.Add(菜单项_新建富文本文档)
+        描述菜单.Items.Add(菜单项_在写字板中编辑富文本)
+        描述菜单.Items.Add(New ToolStripSeparator)
+        描述菜单.Items.Add(菜单项_删除所有自定义描述)
+        描述菜单.Items.Add(New ToolStripSeparator)
+        描述菜单.Items.Add(菜单项_切换描述栏富文本框的滚动条显示)
+        描述菜单.Items.Add(New ToolStripSeparator)
+        描述菜单.Items.Add(菜单项_设置选中内容的字体)
+        描述菜单.Items.Add(菜单项_设置选中内容的文字颜色)
+        描述菜单.Items.Add(菜单项_设置选中内容的背景颜色)
+        描述菜单.Items.Add(New ToolStripSeparator)
+        描述菜单.Items.Add(菜单项_清除所有格式)
     End Sub
-
 
     Public Shared Sub 添加菜单的触发()
         添加分类和子库菜单的所有菜单项()
