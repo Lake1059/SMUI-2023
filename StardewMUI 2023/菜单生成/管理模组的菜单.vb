@@ -23,11 +23,10 @@ Public Class 管理模组的菜单
 
     Public Shared Property 菜单项_更多分类操作 As New ToolStripMenuItem With {.Text = "更多", .Image = My.Resources.试验}
     Public Shared Property 更多分类操作菜单 As New 暗黑菜单条控件本体 With {.ImageScalingSize = New Size(25 * 界面控制.X轴DPI比率, 25 * 界面控制.Y轴DPI比率)}
-    Public Shared Property 菜单项_更多分类操作_清除Config缓存 As New ToolStripMenuItem With {.Text = "清除 Config 缓存", .Image = My.Resources.删除}
     Public Shared Property 菜单项_更多分类操作_转换安装命令到安装规划 As New ToolStripMenuItem With {.Text = "转换安装命令到安装规划", .Image = My.Resources.试验}
     Public Shared Property 菜单项_更多分类操作_转换安装规划到安装命令 As New ToolStripMenuItem With {.Text = "转换安装规划到安装命令", .Image = My.Resources.试验}
-
-
+    Public Shared Property 菜单项_更多分类操作_清除Config缓存 As New ToolStripMenuItem With {.Text = "清除 Config 缓存", .Image = My.Resources.删除}
+    Public Shared Property 菜单项_更多分类操作_删除分类排序 As New ToolStripMenuItem With {.Text = "删除排序数据以重置顺序", .Image = My.Resources.删除}
 
     Public Shared Sub 添加分类和子库菜单的所有菜单项()
         分类和子库菜单.Items.Add(菜单项_刷新分类)
@@ -56,15 +55,22 @@ Public Class 管理模组的菜单
         分类和子库菜单.Items.Add(菜单项_更多分类操作)
 
         菜单项_更多分类操作.DropDown = 更多分类操作菜单
-        更多分类操作菜单.Items.Add(菜单项_更多分类操作_清除Config缓存)
         更多分类操作菜单.Items.Add(菜单项_更多分类操作_转换安装命令到安装规划)
         更多分类操作菜单.Items.Add(菜单项_更多分类操作_转换安装规划到安装命令)
-
+        更多分类操作菜单.Items.Add(菜单项_更多分类操作_清除Config缓存)
+        更多分类操作菜单.Items.Add(菜单项_更多分类操作_删除分类排序)
     End Sub
 
     Public Shared Property 分类右键菜单 As New 暗黑菜单条控件本体 With {.ImageScalingSize = New Size(25 * 界面控制.X轴DPI比率, 25 * 界面控制.Y轴DPI比率)}
     Public Shared Property 菜单项_打开分类的文件夹 As New ToolStripMenuItem With {.Text = "文件夹", .Image = My.Resources.文件夹}
     Public Shared Property 菜单项_重命名分类 As New ToolStripMenuItem With {.Text = "重命名"}
+
+    Public Shared Property 菜单项_分类上下移动菜单 As New ToolStripMenuItem With {.Text = "排序", .Image = My.Resources.移动}
+    Public Shared Property 分类上下移动菜单 As New 暗黑菜单条控件本体 With {.ImageScalingSize = New Size(25 * 界面控制.X轴DPI比率, 25 * 界面控制.Y轴DPI比率)}
+    Public Shared Property 菜单项_将分类上移 As New ToolStripMenuItem With {.Text = "上移", .Image = My.Resources.上箭头, .ShortcutKeys = Keys.F3}
+    Public Shared Property 菜单项_将分类下移 As New ToolStripMenuItem With {.Text = "下移", .Image = My.Resources.下箭头, .ShortcutKeys = Keys.F4}
+    Public Shared Property 菜单项_删除选中分类中的项排序 As New ToolStripMenuItem With {.Text = "删除其中的项排序", .Image = My.Resources.删除}
+
     Public Shared Property 菜单项_设置分类的颜色 As New ToolStripMenuItem With {.Text = "设置颜色", .Image = My.Resources.颜色滤镜}
     Public Shared Property 菜单项_设置分类的字体 As New ToolStripMenuItem With {.Text = "设置字体", .Image = My.Resources.文字大小}
 
@@ -74,6 +80,15 @@ Public Class 管理模组的菜单
         分类右键菜单.Items.Add(New ToolStripSeparator)
         分类右键菜单.Items.Add(菜单项_设置分类的颜色)
         分类右键菜单.Items.Add(菜单项_设置分类的字体)
+
+        分类右键菜单.Items.Add(菜单项_分类上下移动菜单)
+        菜单项_分类上下移动菜单.DropDown = 分类上下移动菜单
+        分类上下移动菜单.Items.Add(菜单项_将分类上移)
+        分类上下移动菜单.Items.Add(菜单项_将分类下移)
+        分类上下移动菜单.Items.Add(New ToolStripSeparator)
+        分类上下移动菜单.Items.Add(菜单项_删除选中分类中的项排序)
+
+
     End Sub
 
     Public Shared Property 项菜单 As New 暗黑菜单条控件本体 With {.ImageScalingSize = New Size(25 * 界面控制.X轴DPI比率, 25 * 界面控制.Y轴DPI比率)}
@@ -133,6 +148,11 @@ Public Class 管理模组的菜单
     Public Shared Property 菜单项_编辑项_转换安装命令到安装规划 As New ToolStripMenuItem With {.Text = "转换安装命令到安装规划", .Image = My.Resources.试验}
     Public Shared Property 菜单项_编辑项_转换安装规划到安装命令 As New ToolStripMenuItem With {.Text = "转换安装规划到安装命令", .Image = My.Resources.试验}
 
+    Public Shared Property 菜单项_项上下移动菜单 As New ToolStripMenuItem With {.Text = "排序", .Image = My.Resources.移动}
+    Public Shared Property 项上下移动菜单 As New 暗黑菜单条控件本体 With {.ImageScalingSize = New Size(25 * 界面控制.X轴DPI比率, 25 * 界面控制.Y轴DPI比率)}
+    Public Shared Property 菜单项_将项上移 As New ToolStripMenuItem With {.Text = "上移", .Image = My.Resources.上箭头, .ShortcutKeys = Keys.F3}
+    Public Shared Property 菜单项_将项下移 As New ToolStripMenuItem With {.Text = "下移", .Image = My.Resources.下箭头, .ShortcutKeys = Keys.F4}
+
     Public Shared Property 菜单项_设置虚拟组 As New ToolStripMenuItem With {.Text = "设置虚拟组", .Image = My.Resources.六个点}
 
     Public Shared Sub 添加项右键菜单的所有菜单项()
@@ -153,6 +173,13 @@ Public Class 管理模组的菜单
         编辑项功能菜单.Items.Add(New ToolStripSeparator)
         编辑项功能菜单.Items.Add(菜单项_编辑项_转换安装命令到安装规划)
         编辑项功能菜单.Items.Add(菜单项_编辑项_转换安装规划到安装命令)
+
+        项右键菜单.Items.Add(New ToolStripSeparator)
+
+        项右键菜单.Items.Add(菜单项_项上下移动菜单)
+        菜单项_项上下移动菜单.DropDown = 项上下移动菜单
+        项上下移动菜单.Items.Add(菜单项_将项上移)
+        项上下移动菜单.Items.Add(菜单项_将项下移)
 
         项右键菜单.Items.Add(菜单项_设置虚拟组)
     End Sub
@@ -213,6 +240,9 @@ Public Class 管理模组的菜单
         描述菜单.Items.Add(New ToolStripSeparator)
         描述菜单.Items.Add(菜单项_清除所有格式)
     End Sub
+
+
+
 
     Public Shared Sub 添加菜单的触发()
         添加分类和子库菜单的所有菜单项()
