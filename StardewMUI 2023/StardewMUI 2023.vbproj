@@ -36,11 +36,10 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="BetterFolderBrowser" Version="1.2.0" />
     <PackageReference Include="CefSharp.WinForms.NETCore" Version="119.4.30" />
     <PackageReference Include="Imazen.WebP" Version="10.0.1" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
-    <PackageReference Include="SunnyUI" Version="3.6.0" />
+    <PackageReference Include="SunnyUI" Version="3.6.1" />
     <PackageReference Include="SevenZipSharp" Version="0.64.0" />
   </ItemGroup>
 
