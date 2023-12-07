@@ -1,10 +1,11 @@
 ﻿Imports System.Runtime.InteropServices
 Imports CefSharp.WinForms
+Imports Sunny.UI
 
 Public Class 界面控制
     Public Shared Property A As Graphics = Form1.CreateGraphics
     Public Shared Property X轴DPI比率 As Single = A.DpiX / 96
-   Public Shared Property Y轴DPI比率 As Single = A.DpiY / 96
+    Public Shared Property Y轴DPI比率 As Single = A.DpiY / 96
     Public Shared Property 程序DPI_垂直滚动条宽度 As Integer = GetScrollBarWidth()
     Public Shared Property CEF浏览器控件 As New ChromiumWebBrowser With {.Dock = DockStyle.Fill}
 
@@ -17,10 +18,48 @@ Public Class 界面控制
         Form1.UiRichTextBox4.AutoWordSelection = False
         Form1.UiRichTextBox4.LanguageOption = RichTextBoxLanguageOptions.UIFonts
 
+        Form1.ListView1.DoubleBuffered(True)
+        Form1.ListView2.DoubleBuffered(True)
+        Form1.ListView3.DoubleBuffered(True)
+        Form1.ListView4.DoubleBuffered(True)
+        Form1.ListView5.DoubleBuffered(True)
+        Form1.ListView6.DoubleBuffered(True)
+        Form1.ListView7.DoubleBuffered(True)
+        Form1.ListView8.DoubleBuffered(True)
+        Form1.ListView9.DoubleBuffered(True)
+        AddHandler Form1.ListView1.DrawSubItem, Sub(sender, e) 暗黑列表视图自绘制.绑定绘制子项事件(sender, e, 暗黑主题资源.分类列包含的图标字典)
+        AddHandler Form1.ListView1.SelectedIndexChanged, Sub(sender, e) sender.Invalidate(sender.ClientRectangle)
+        AddHandler Form1.ListView1.ItemMouseHover, Sub(sender, e) sender.Invalidate(sender.ClientRectangle)
+        AddHandler Form1.ListView2.DrawSubItem, Sub(sender, e) 暗黑列表视图自绘制.绑定绘制子项事件(sender, e, New Dictionary(Of String, Image))
+        AddHandler Form1.ListView2.SelectedIndexChanged, Sub(sender, e) sender.Invalidate(sender.ClientRectangle)
+        AddHandler Form1.ListView2.ItemMouseHover, Sub(sender, e) sender.Invalidate(sender.ClientRectangle)
+        AddHandler Form1.ListView3.DrawSubItem, Sub(sender, e) 暗黑列表视图自绘制.绑定绘制子项事件(sender, e, New Dictionary(Of String, Image))
+        AddHandler Form1.ListView3.SelectedIndexChanged, Sub(sender, e) sender.Invalidate(sender.ClientRectangle)
+        AddHandler Form1.ListView3.ItemMouseHover, Sub(sender, e) sender.Invalidate(sender.ClientRectangle)
+        AddHandler Form1.ListView4.DrawSubItem, Sub(sender, e) 暗黑列表视图自绘制.绑定绘制子项事件(sender, e, New Dictionary(Of String, Image))
+        AddHandler Form1.ListView4.SelectedIndexChanged, Sub(sender, e) sender.Invalidate(sender.ClientRectangle)
+        AddHandler Form1.ListView4.ItemMouseHover, Sub(sender, e) sender.Invalidate(sender.ClientRectangle)
+        AddHandler Form1.ListView5.DrawSubItem, Sub(sender, e) 暗黑列表视图自绘制.绑定绘制子项事件(sender, e, New Dictionary(Of String, Image))
+        AddHandler Form1.ListView5.SelectedIndexChanged, Sub(sender, e) sender.Invalidate(sender.ClientRectangle)
+        AddHandler Form1.ListView5.ItemMouseHover, Sub(sender, e) sender.Invalidate(sender.ClientRectangle)
+        AddHandler Form1.ListView6.DrawSubItem, Sub(sender, e) 暗黑列表视图自绘制.绑定绘制子项事件(sender, e, New Dictionary(Of String, Image))
+        AddHandler Form1.ListView6.SelectedIndexChanged, Sub(sender, e) sender.Invalidate(sender.ClientRectangle)
+        AddHandler Form1.ListView6.ItemMouseHover, Sub(sender, e) sender.Invalidate(sender.ClientRectangle)
+        AddHandler Form1.ListView7.DrawSubItem, Sub(sender, e) 暗黑列表视图自绘制.绑定绘制子项事件(sender, e, New Dictionary(Of String, Image))
+        AddHandler Form1.ListView7.SelectedIndexChanged, Sub(sender, e) sender.Invalidate(sender.ClientRectangle)
+        AddHandler Form1.ListView7.ItemMouseHover, Sub(sender, e) sender.Invalidate(sender.ClientRectangle)
+        AddHandler Form1.ListView8.DrawSubItem, Sub(sender, e) 暗黑列表视图自绘制.绑定绘制子项事件(sender, e, New Dictionary(Of String, Image))
+        AddHandler Form1.ListView8.SelectedIndexChanged, Sub(sender, e) sender.Invalidate(sender.ClientRectangle)
+        AddHandler Form1.ListView8.ItemMouseHover, Sub(sender, e) sender.Invalidate(sender.ClientRectangle)
+        AddHandler Form1.ListView9.DrawSubItem, Sub(sender, e) 暗黑列表视图自绘制.绑定绘制子项事件(sender, e, New Dictionary(Of String, Image))
+        AddHandler Form1.ListView9.SelectedIndexChanged, Sub(sender, e) sender.Invalidate(sender.ClientRectangle)
+        AddHandler Form1.ListView9.ItemMouseHover, Sub(sender, e) sender.Invalidate(sender.ClientRectangle)
+
+        多项单选对话框.GlobalDpixRatio = X轴DPI比率
+
+
         主界面高DPI兼容()
         主界面元素尺寸动态调整()
-
-
         管理模组的菜单.添加菜单的触发()
 
     End Sub
@@ -70,6 +109,13 @@ Public Class 界面控制
         Form1.UiListBox3.ItemHeight = Form1.UiListBox1.ItemHeight
         Form1.UiListBox4.ItemHeight = Form1.UiListBox1.ItemHeight
 
+        Form1.UiComboBox1.ItemHeight = 30 * Y轴DPI比率
+        Form1.UiComboBox2.ItemHeight = 30 * Y轴DPI比率
+        Form1.UiComboBox3.ItemHeight = 30 * Y轴DPI比率
+        Form1.UiComboBox4.ItemHeight = 30 * Y轴DPI比率
+        Form1.UiComboBox5.ItemHeight = 30 * Y轴DPI比率
+        Form1.UiComboBox6.ItemHeight = 30 * Y轴DPI比率
+        Form1.UiComboBox7.ItemHeight = 30 * Y轴DPI比率
     End Sub
 
 

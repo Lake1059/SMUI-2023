@@ -147,9 +147,6 @@ Public Class 管理模组的菜单
     Public Shared Property 菜单项_编辑项_清除Config缓存 As New ToolStripMenuItem With {.Text = "清除 Config 缓存", .Image = My.Resources.删除}
     Public Shared Property 菜单项_编辑项_转换安装命令到安装规划 As New ToolStripMenuItem With {.Text = "转换安装命令到安装规划", .Image = My.Resources.试验}
     Public Shared Property 菜单项_编辑项_转换安装规划到安装命令 As New ToolStripMenuItem With {.Text = "转换安装规划到安装命令", .Image = My.Resources.试验}
-
-    Public Shared Property 菜单项_项上下移动菜单 As New ToolStripMenuItem With {.Text = "排序", .Image = My.Resources.移动}
-    Public Shared Property 项上下移动菜单 As New 暗黑菜单条控件本体 With {.ImageScalingSize = New Size(25 * 界面控制.X轴DPI比率, 25 * 界面控制.Y轴DPI比率)}
     Public Shared Property 菜单项_将项上移 As New ToolStripMenuItem With {.Text = "上移", .Image = My.Resources.上箭头, .ShortcutKeys = Keys.F3}
     Public Shared Property 菜单项_将项下移 As New ToolStripMenuItem With {.Text = "下移", .Image = My.Resources.下箭头, .ShortcutKeys = Keys.F4}
 
@@ -173,13 +170,9 @@ Public Class 管理模组的菜单
         编辑项功能菜单.Items.Add(New ToolStripSeparator)
         编辑项功能菜单.Items.Add(菜单项_编辑项_转换安装命令到安装规划)
         编辑项功能菜单.Items.Add(菜单项_编辑项_转换安装规划到安装命令)
-
-        项右键菜单.Items.Add(New ToolStripSeparator)
-
-        项右键菜单.Items.Add(菜单项_项上下移动菜单)
-        菜单项_项上下移动菜单.DropDown = 项上下移动菜单
-        项上下移动菜单.Items.Add(菜单项_将项上移)
-        项上下移动菜单.Items.Add(菜单项_将项下移)
+        编辑项功能菜单.Items.Add(New ToolStripSeparator)
+        编辑项功能菜单.Items.Add(菜单项_将项上移)
+        编辑项功能菜单.Items.Add(菜单项_将项下移)
 
         项右键菜单.Items.Add(菜单项_设置虚拟组)
     End Sub
