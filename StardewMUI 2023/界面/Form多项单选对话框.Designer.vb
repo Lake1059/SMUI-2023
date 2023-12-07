@@ -76,7 +76,7 @@ Partial Class Form多项单选对话框
         AutoScaleDimensions = New SizeF(96F, 96F)
         AutoScaleMode = AutoScaleMode.Dpi
         AutoSize = True
-        BackColor = Color.FromArgb(CByte(32), CByte(34), CByte(37))
+        BackColor = Color.FromArgb(CByte(24), CByte(24), CByte(24))
         ClientSize = New Size(284, 161)
         Controls.Add(Panel1)
         Controls.Add(Panel2)
