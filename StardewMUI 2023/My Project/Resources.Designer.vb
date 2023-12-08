@@ -301,10 +301,9 @@ Namespace My.Resources
         End Property
         
         '''<summary>
-        '''  查找类似 {\rtf1\ansi\ansicpg54936\deff0\nouicompat\deflang1033\deflangfe2052{\fonttbl{\f0\fnil\fprq2\fcharset134 \&apos;cb\&apos;ce\&apos;cc\&apos;e5;}{\f1\fswiss\fprq2\fcharset134 \&apos;cb\&apos;bc\&apos;d4\&apos;b4\&apos;ba\&apos;da\&apos;cc\&apos;e5 CN Normal;}{\f2\fnil\fprq2\fcharset0 DengXian Western;}}
-        '''{\colortbl ;\red128\green128\blue128;\red0\green0\blue255;\red5\green99\blue193;}
-        '''{\*\generator Riched20 10.0.19041}{\*\mmathPr\mnaryLim0\mdispDef1\mwrapIndent1440 }\viewkind4\uc1 
-        '''\pard\nowidctlpar\qc\cf1\b\f0\fs32\lang2052 SMUI 2023\&apos;a3\&apos;a8SMUI 6\&apos;a3\&apos;a9\&apos;d3\&apos;c3\&apos;b [字符串的其余部分被截断]&quot;; 的本地化字符串。
+        '''  查找类似 {\rtf1\adeflang1025\ansi\ansicpg936\uc2\adeff0\deff0\stshfdbch31505\stshfloch31506\stshfhich31506\stshfbi0\deflang1033\deflangfe2052\themelang1033\themelangfe2052\themelangcs0{\fonttbl{\f0\fbidi \froman\fcharset0\fprq2{\*\panose 02020603050405020304}Times New Roman;}
+        '''{\f12\fbidi \froman\fcharset129\fprq2{\*\panose 02030600000101010101}Batang{\*\falt ??};}{\f13\fbidi \fnil\fcharset134\fprq2{\*\panose 02010600030101010101}\&apos;cb\&apos;ce\&apos;cc\&apos;e5{\*\falt SimSun};}
+        '''{\f34\fbidi \froman\fcharset0\fprq2{\*\panose 02040 [字符串的其余部分被截断]&quot;; 的本地化字符串。
         '''</summary>
         Friend ReadOnly Property 用户许可协议() As String
             Get
@@ -339,6 +338,15 @@ Namespace My.Resources
             Get
                 Dim obj As Object = ResourceManager.GetObject("颜色滤镜", resourceCulture)
                 Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  查找类似  的本地化字符串。
+        '''</summary>
+        Friend ReadOnly Property 默认设置文件() As String
+            Get
+                Return ResourceManager.GetString("默认设置文件", resourceCulture)
             End Get
         End Property
     End Module

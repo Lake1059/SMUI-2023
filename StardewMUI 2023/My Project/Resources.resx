@@ -202,4 +202,7 @@
   <data name="颜色滤镜" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\颜色滤镜.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="默认设置文件" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\默认设置文件.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;gb2312</value>
+  </data>
 </root>
