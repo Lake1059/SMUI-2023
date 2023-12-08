@@ -342,7 +342,31 @@ Namespace My.Resources
         End Property
         
         '''<summary>
-        '''  查找类似  的本地化字符串。
+        '''  查找类似 StardewValleyGamePath=
+        '''LocalRepositoryPath=
+        '''StardewValleyGameBackupPath=
+        '''VisualStudioCodeEXE=
+        '''VisualStudioEXE=
+        '''DisplayLanguage=
+        '''NewsLanguage=
+        '''NewsSever=
+        '''UpdateSever=
+        '''AlternativeUpdateSever=
+        '''NexusAPI=
+        '''GiteeToken=
+        '''GithubToken=
+        '''LaunchSelection=1
+        '''LaunchParameters=
+        '''SaveUserWindowSize=True
+        '''MainWindowWidth=1280
+        '''MainWindowHeight=720
+        '''AutoGetNews=True
+        '''SaveNewsInTodayUse=False
+        '''AutoCheckUpdate=True
+        '''AutoStartDownloadUpdate=True
+        '''AdminDragDropPatch=True
+        '''AutoSelectFirstNexusDownloadSever=False
+        '''AutoC [字符串的其余部分被截断]&quot;; 的本地化字符串。
         '''</summary>
         Friend ReadOnly Property 默认设置文件() As String
             Get
