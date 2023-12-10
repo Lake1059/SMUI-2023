@@ -19,7 +19,7 @@
         For i = 0 To SelectionGroup.Length - 1
             Dim a As New Label With {
                 .Dock = DockStyle.Bottom,
-                .Height = 35 * GlobalDpixRatio,
+                .Height = 40 * GlobalDpixRatio,
                 .BackColor = ColorTranslator.FromWin32(RGB(50, 50, 50)),
                 .ForeColor = SystemColors.Control,
                 .TextAlign = ContentAlignment.MiddleLeft,
@@ -46,7 +46,7 @@
             newDialog.Panel2.Controls.Add(a)
             a.SendToBack()
         Next
-        newDialog.Panel2.Height = SelectionGroup.Length * (35 * GlobalDpixRatio + 10) + newDialog.Panel2.Padding.Bottom
+        newDialog.Panel2.Height = SelectionGroup.Length * (40 * GlobalDpixRatio + 10) + newDialog.Panel2.Padding.Bottom
         newDialog.MinimumSize = New Size(WindowWidth, 40 + DescriptionPanelHeight * GlobalDpixRatio + newDialog.Panel2.Height)
         newDialog.Height = newDialog.MinimumSize.Height
 
