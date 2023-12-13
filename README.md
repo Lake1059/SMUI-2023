@@ -40,3 +40,13 @@
 | 自我更新 | 自动执行 | 自动执行 | 墙了 | 仅检查 | 无 |
 | 学习成本 | 基本逻辑思维 | 基本编程思维 | 难蚌 | 简单 | 难以描述 |
 | 硬件消耗 | 硬盘消耗 x 2 | 硬盘消耗 x 2 | CPU 消耗 + | 普通 | 难受 |
+
+## Git
+写给我自己的，我懒得记 Git 代码所以就直接写这里方便复制了
+
+设置全局代理
+<code>git config --global http.proxy http://127.0.0.1:7890</code>
+<code>git config --global https.proxy https://127.0.0.1:7890</code>
+
+同步仓库到 Github
+<code>git push --mirror github</code>

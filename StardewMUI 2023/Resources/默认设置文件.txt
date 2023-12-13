@@ -1,3 +1,4 @@
+
 StardewValleyGamePath=
 LocalRepositoryPath=
 StardewValleyGameBackupPath=
@@ -7,12 +8,13 @@ DisplayLanguage=
 NewsLanguage=
 NewsSever=
 UpdateSever=
-AlternativeUpdateSever=0
+AlternativeUpdateSever=No Use
 NexusAPI=
 GiteeToken=
 GithubToken=
 LaunchSelection=1
 LaunchParameters=
+CustomLaunchCMD=
 SaveUserWindowSize=True
 MainWindowWidth=1280
 MainWindowHeight=720

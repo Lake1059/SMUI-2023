@@ -15,8 +15,11 @@ Public Class 界面控制
         Form1.UiRichTextBox4.Rtf = My.Resources.用户许可协议
 
         设置富文本框行高(Form1.UiRichTextBox1, 30)
-        Form1.UiRichTextBox4.AutoWordSelection = False
-        Form1.UiRichTextBox4.LanguageOption = RichTextBoxLanguageOptions.UIFonts
+        Form1.UiRichTextBox1.AutoWordSelection = False
+        Form1.UiRichTextBox1.LanguageOption = RichTextBoxLanguageOptions.UIFonts
+
+
+
 
         Form1.ListView1.DoubleBuffered(True)
         Form1.ListView2.DoubleBuffered(True)
