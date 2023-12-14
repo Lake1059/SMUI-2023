@@ -1,6 +1,7 @@
 ﻿
 Imports System.Drawing.Text
 Imports System.Reflection
+Imports Sunny.UI
 
 Public Class 设置
 
@@ -201,6 +202,7 @@ Public Class 设置
 
     Private Shared Sub 刷新字体显示(parentControl As Control)
         For Each ctrl As Control In parentControl.Controls
+            If ctrl Is Form1.UiRichTextBox4 Then Continue For
             刷新字体显示_检查属性(ctrl)
             If ctrl.HasChildren Then 刷新字体显示(ctrl)
         Next

@@ -4,10 +4,12 @@ Public Class Form1
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         界面控制.初始化界面()
         设置.启动时加载设置()
+
+
     End Sub
 
     Private Sub Form1_Shown(sender As Object, e As EventArgs) Handles MyBase.Shown
-
+        If 设置.全局设置数据("AutoCheckUpdate") Then 检查更新.运行后台服务器检查更新()
     End Sub
 
     Private Sub Form1_ResizeEnd(sender As Object, e As EventArgs) Handles MyBase.ResizeEnd

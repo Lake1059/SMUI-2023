@@ -6,6 +6,7 @@
   <COMPONENT cid="caphyon.advinst.msicomp.MsiPropsComponent">
     <ROW Property="AI_APP_FILE" Value="[#StardewMUI2023.exe]"/>
     <ROW Property="AI_BITMAP_DISPLAY_MODE" Value="0"/>
+    <ROW Property="AI_CF_TYPE" Value="1" MultiBuildValue="DefaultBuild:0" MsiKey="AI_CF_TYPE"/>
     <ROW Property="AI_DESKTOP_SH" Type="4" MsiKey="AI_DESKTOP_SH"/>
     <ROW Property="AI_EXTERNALUIUNINSTALLERNAME" MultiBuildValue="DefaultBuild:aiui"/>
     <ROW Property="AI_FINDEXE_TITLE" Value="选择 [|ProductName] 安装包" ValueLocId="AI.Property.FindExeTitle"/>
@@ -13,7 +14,6 @@
     <ROW Property="AI_PRODUCTNAME_ARP" Value="SMUI 2023"/>
     <ROW Property="AI_SHORTCUTSREG" Value="0|0|0|0|"/>
     <ROW Property="AI_UNINSTALLER" Value="msiexec.exe"/>
-    <ROW Property="AI_UPGRADE" Value="No"/>
     <ROW Property="ALLUSERS" Value="1" MultiBuildValue="DefaultBuild:"/>
     <ROW Property="ARPCOMMENTS" Value="此 Installer 数据库包含了安装 [|ProductName] 所需的逻辑和数据。" ValueLocId="*"/>
     <ROW Property="ARPNOREPAIR" Value="1" MultiBuildValue="DefaultBuild:1"/>
@@ -46,7 +46,7 @@
     <ROW Directory="locales_1_Dir" Directory_Parent="native_1_Dir" DefaultDir="locales"/>
     <ROW Directory="native_1_Dir" Directory_Parent="winx64_Dir" DefaultDir="native"/>
     <ROW Directory="netcoreapp3.1_1_Dir" Directory_Parent="lib_1_Dir" DefaultDir="NETCOR~1.1|netcoreapp3.1"/>
-    <ROW Directory="runtimes_Dir" Directory_Parent="APPDIR" DefaultDir="runtimes"/>
+    <ROW Directory="runtimes_Dir" Directory_Parent="za64_Dir" DefaultDir="runtimes"/>
     <ROW Directory="winx64_Dir" Directory_Parent="runtimes_Dir" DefaultDir="win-x64"/>
     <ROW Directory="za64_Dir" Directory_Parent="APPDIR" DefaultDir="7za64"/>
   </COMPONENT>
@@ -55,42 +55,42 @@
     <ROW Component="AI_ExePath" ComponentId="{CBAF2252-48D8-4146-9D8B-2E99237377E4}" Directory_="APPDIR" Attributes="260" KeyPath="AI_ExePath"/>
     <ROW Component="AI_SHORTCUTSREG" ComponentId="{E88BB48E-FFB9-4C85-A187-79007CB5BBA6}" Directory_="APPDIR" Attributes="260" KeyPath="AI_SHORTCUTSREG" Options="1"/>
     <ROW Component="APPDIR" ComponentId="{94CEB0EC-B9B4-444F-9BAB-40F57B9BEAC3}" Directory_="APPDIR" Attributes="0"/>
-    <ROW Component="BetterFolderBrowser.dll" ComponentId="{1BCA3982-16C9-416E-8757-B2A21888D5DB}" Directory_="APPDIR" Attributes="0" KeyPath="BetterFolderBrowser.dll"/>
     <ROW Component="C63A5E8718343189D035A252D1450C5" ComponentId="{5B320FC5-C028-49BB-B631-D97744530102}" Directory_="APPDIR" Attributes="260" KeyPath="C63A5E8718343189D035A252D1450C5" Options="2"/>
-    <ROW Component="CefSharp.BrowserSubprocess.Core.dll_1" ComponentId="{C287A51D-6E1A-4C1F-8D67-095959C53889}" Directory_="native_1_Dir" Attributes="256" KeyPath="CefSharp.BrowserSubprocess.Core.dll_1"/>
-    <ROW Component="CefSharp.BrowserSubprocess.dll_1" ComponentId="{F93F1B6C-23CC-4719-94EF-2A4D42394E75}" Directory_="native_1_Dir" Attributes="256" KeyPath="CefSharp.BrowserSubprocess.dll_1"/>
-    <ROW Component="CefSharp.BrowserSubprocess.exe_1" ComponentId="{1280A1F6-306E-467A-BFB7-61C1AEEDF315}" Directory_="native_1_Dir" Attributes="256" KeyPath="CefSharp.BrowserSubprocess.exe_1"/>
-    <ROW Component="CefSharp.BrowserSubprocess.runtimeconfig.json_1" ComponentId="{7215B3D7-4782-44CF-9593-689975ECB41A}" Directory_="native_1_Dir" Attributes="0" KeyPath="CefSharp.BrowserSubprocess.runtimeconfig.json_1" Type="0"/>
-    <ROW Component="CefSharp.Core.Runtime.dll_1" ComponentId="{892227F2-939B-4A6C-8F5B-480167457281}" Directory_="netcoreapp3.1_1_Dir" Attributes="256" KeyPath="CefSharp.Core.Runtime.dll_1"/>
-    <ROW Component="CefSharp.Core.dll_1" ComponentId="{539CE792-B9FF-4E2D-B38E-461E1961EDDD}" Directory_="netcoreapp3.1_1_Dir" Attributes="0" KeyPath="CefSharp.Core.dll_1"/>
-    <ROW Component="CefSharp.WinForms.dll" ComponentId="{BB7F20C2-3583-49D6-86C6-3E1F0885B502}" Directory_="APPDIR" Attributes="0" KeyPath="CefSharp.WinForms.dll"/>
-    <ROW Component="CefSharp.dll_2" ComponentId="{A74DB4D2-8012-4FAF-A94B-B7E4B72CA8CD}" Directory_="netcoreapp3.1_1_Dir" Attributes="0" KeyPath="CefSharp.dll_2"/>
-    <ROW Component="CefSharp.dll_3" ComponentId="{1426654F-6587-4879-A94D-6D0C739906E1}" Directory_="native_1_Dir" Attributes="0" KeyPath="CefSharp.dll_3"/>
-    <ROW Component="Ijwhost.dll_2" ComponentId="{2C27BC73-7DD6-41A6-AFB1-7753F74AC22B}" Directory_="netcoreapp3.1_1_Dir" Attributes="256" KeyPath="Ijwhost.dll_2"/>
-    <ROW Component="Ijwhost.dll_3" ComponentId="{A3222ADF-4BEC-4795-BF10-F9D380B794CF}" Directory_="native_1_Dir" Attributes="256" KeyPath="Ijwhost.dll_3"/>
-    <ROW Component="Imazen.WebP.dll" ComponentId="{65818165-08BC-42CC-8857-B089CDB5E975}" Directory_="APPDIR" Attributes="0" KeyPath="Imazen.WebP.dll"/>
-    <ROW Component="Newtonsoft.Json.dll" ComponentId="{1F7ED94F-3F1D-4EA2-9A1B-925CE4604540}" Directory_="APPDIR" Attributes="0" KeyPath="Newtonsoft.Json.dll"/>
+    <ROW Component="CefSharp.BrowserSubprocess.Core.dll_1" ComponentId="{4D420BF2-1077-4461-922A-40BDE4B16D32}" Directory_="native_1_Dir" Attributes="256" KeyPath="CefSharp.BrowserSubprocess.Core.dll_1"/>
+    <ROW Component="CefSharp.BrowserSubprocess.dll_1" ComponentId="{14A214D3-61E9-4940-81D0-B81C50D44165}" Directory_="native_1_Dir" Attributes="256" KeyPath="CefSharp.BrowserSubprocess.dll_1"/>
+    <ROW Component="CefSharp.BrowserSubprocess.exe_1" ComponentId="{237344E6-99A3-484F-8F3E-67E89E9E5BB4}" Directory_="native_1_Dir" Attributes="256" KeyPath="CefSharp.BrowserSubprocess.exe_1"/>
+    <ROW Component="CefSharp.BrowserSubprocess.runtimeconfig.json_1" ComponentId="{0EF62D2D-CEEA-42A3-A6A0-AA788346FFA2}" Directory_="native_1_Dir" Attributes="0" KeyPath="CefSharp.BrowserSubprocess.runtimeconfig.json_1" Type="0"/>
+    <ROW Component="CefSharp.Core.Runtime.dll_1" ComponentId="{0D9C6ABB-0546-4F3C-AFE4-26687A246240}" Directory_="netcoreapp3.1_1_Dir" Attributes="256" KeyPath="CefSharp.Core.Runtime.dll_1"/>
+    <ROW Component="CefSharp.Core.dll_1" ComponentId="{B0E0C814-D516-45F5-BBD0-43D612B3BB51}" Directory_="netcoreapp3.1_1_Dir" Attributes="0" KeyPath="CefSharp.Core.dll_1"/>
+    <ROW Component="CefSharp.WinForms.dll" ComponentId="{C77A3458-BF63-4178-AF3B-4F03BB486C1E}" Directory_="APPDIR" Attributes="0" KeyPath="CefSharp.WinForms.dll"/>
+    <ROW Component="CefSharp.dll_2" ComponentId="{C7E79C2F-5C00-4189-99C5-F1354D6C9D8F}" Directory_="netcoreapp3.1_1_Dir" Attributes="0" KeyPath="CefSharp.dll_2"/>
+    <ROW Component="CefSharp.dll_3" ComponentId="{A8D1FBCD-666D-46AA-BE6E-1DDC5C4C9344}" Directory_="native_1_Dir" Attributes="0" KeyPath="CefSharp.dll_3"/>
+    <ROW Component="Ijwhost.dll_2" ComponentId="{18284077-6ADC-4A2D-808F-3BCEBFC3AC08}" Directory_="netcoreapp3.1_1_Dir" Attributes="256" KeyPath="Ijwhost.dll_2"/>
+    <ROW Component="Ijwhost.dll_3" ComponentId="{040293A8-8E44-4B9A-80DB-AD62F4688084}" Directory_="native_1_Dir" Attributes="256" KeyPath="Ijwhost.dll_3"/>
+    <ROW Component="Imazen.WebP.dll" ComponentId="{B74325B0-CE4D-4EF3-BB48-6248CA06E269}" Directory_="APPDIR" Attributes="0" KeyPath="Imazen.WebP.dll"/>
+    <ROW Component="Microsoft.Windows.SDK.NET.dll" ComponentId="{63D2016B-C289-47D1-A487-C5C98EE58C2F}" Directory_="APPDIR" Attributes="0" KeyPath="Microsoft.Windows.SDK.NET.dll"/>
+    <ROW Component="Newtonsoft.Json.dll" ComponentId="{BE4E8596-E6BE-4728-A595-49E4673A3B70}" Directory_="APPDIR" Attributes="0" KeyPath="Newtonsoft.Json.dll"/>
     <ROW Component="ProductInformation" ComponentId="{25605BB1-86A4-478E-A3B7-2D721F907123}" Directory_="APPDIR" Attributes="260" KeyPath="Version"/>
-    <ROW Component="SHORTCUTDIR" ComponentId="{1E141D83-BAC5-423F-B016-3DA92C68B3E7}" Directory_="SHORTCUTDIR" Attributes="0"/>
-    <ROW Component="SevenZipSharp.dll" ComponentId="{C3BF938C-13EE-4D8C-B832-CBFB6F4B367E}" Directory_="APPDIR" Attributes="0" KeyPath="SevenZipSharp.dll"/>
-    <ROW Component="StardewMUI2023.deps.json" ComponentId="{C703E57F-45DD-4159-81F3-62D02AAEBC3D}" Directory_="APPDIR" Attributes="0" KeyPath="StardewMUI2023.deps.json" Type="0"/>
-    <ROW Component="StardewMUI2023.dll" ComponentId="{700692DD-8CF5-4ACD-A061-3F20A5838042}" Directory_="APPDIR" Attributes="256" KeyPath="StardewMUI2023.dll"/>
-    <ROW Component="StardewMUI2023.exe" ComponentId="{5D2340F3-1B59-4F5A-B336-96866EB3D099}" Directory_="APPDIR" Attributes="256" KeyPath="StardewMUI2023.exe"/>
-    <ROW Component="SunnyUI.Common.dll" ComponentId="{CED03858-B9E2-427E-8CCB-633EE65257A8}" Directory_="APPDIR" Attributes="0" KeyPath="SunnyUI.Common.dll"/>
-    <ROW Component="SunnyUI.dll" ComponentId="{1A4116C3-B423-4304-BF56-27695C5C04C5}" Directory_="APPDIR" Attributes="0" KeyPath="SunnyUI.dll"/>
-    <ROW Component="af.pak_1" ComponentId="{6759917D-3812-4336-B937-7F9574A3951E}" Directory_="locales_1_Dir" Attributes="0" KeyPath="enUS.pak_1" Type="0"/>
-    <ROW Component="chrome_elf.dll_1" ComponentId="{6A2DAF6D-FD57-4262-9913-1469FCC04FA5}" Directory_="native_1_Dir" Attributes="256" KeyPath="chrome_elf.dll_1"/>
-    <ROW Component="d3dcompiler_47.dll_1" ComponentId="{D234BAAD-F98E-4177-8EC2-5100B79C4E9E}" Directory_="native_1_Dir" Attributes="256" KeyPath="d3dcompiler_47.dll_1"/>
-    <ROW Component="libEGL.dll_1" ComponentId="{FC6E7304-541E-407C-8320-F1D0CE9762F1}" Directory_="native_1_Dir" Attributes="256" KeyPath="libEGL.dll_1"/>
-    <ROW Component="libGLESv2.dll_1" ComponentId="{0A8B29E3-0B0D-4E4A-BCB8-A229BB2444DF}" Directory_="native_1_Dir" Attributes="256" KeyPath="libGLESv2.dll_1"/>
-    <ROW Component="libcef.dll_1" ComponentId="{14494675-53AB-423C-A237-5BB4A75DF61F}" Directory_="native_1_Dir" Attributes="256" KeyPath="libcef.dll_1"/>
-    <ROW Component="libwebp.dll" ComponentId="{F782F21E-60CC-48EB-A2BA-5536E56B2715}" Directory_="APPDIR" Attributes="256" KeyPath="libwebp.dll"/>
-    <ROW Component="vk_swiftshader.dll_1" ComponentId="{F5F7088C-30D0-4B92-B772-0F596C67DB3B}" Directory_="native_1_Dir" Attributes="256" KeyPath="vk_swiftshader.dll_1"/>
-    <ROW Component="vulkan1.dll_1" ComponentId="{3E0098AB-50E0-4B11-A13F-0FF09C371B47}" Directory_="native_1_Dir" Attributes="256" KeyPath="vulkan1.dll_1"/>
-    <ROW Component="zFull64.dll" ComponentId="{4E31A195-353F-4D55-A650-A3A91B62EF5B}" Directory_="APPDIR" Attributes="256" KeyPath="zFull64.dll"/>
-    <ROW Component="za.dll" ComponentId="{B156BABE-2283-4E3A-9AF2-33F34BC3A71A}" Directory_="za64_Dir" Attributes="256" KeyPath="za.dll"/>
-    <ROW Component="za.exe" ComponentId="{C1D9CEA6-C8DB-4DF2-8E6D-8010561D39E0}" Directory_="za64_Dir" Attributes="256" KeyPath="za.exe"/>
-    <ROW Component="zxa.dll" ComponentId="{C2A77404-C0DA-41F0-85D6-512F8A0BBD5F}" Directory_="za64_Dir" Attributes="256" KeyPath="zxa.dll"/>
+    <ROW Component="SHORTCUTDIR" ComponentId="{CAE48E3A-2BCE-4301-8BEB-E359F0B9A54B}" Directory_="SHORTCUTDIR" Attributes="0"/>
+    <ROW Component="SMUI6.deps.json" ComponentId="{4D2BA544-BA82-4529-BB1D-0ED80E393157}" Directory_="APPDIR" Attributes="0" KeyPath="SMUI6.deps.json" Type="0"/>
+    <ROW Component="SMUI6.dll" ComponentId="{6D883CFB-8767-44DB-8AD1-AE948DCD3DE1}" Directory_="APPDIR" Attributes="256" KeyPath="SMUI6.dll"/>
+    <ROW Component="SMUI6.exe" ComponentId="{02245D95-07B3-4915-958E-BDEA65373590}" Directory_="APPDIR" Attributes="256" KeyPath="SMUI6.exe"/>
+    <ROW Component="SevenZipSharp.dll" ComponentId="{8EE5625F-3004-4996-86DD-FD3DE57E9570}" Directory_="APPDIR" Attributes="0" KeyPath="SevenZipSharp.dll"/>
+    <ROW Component="SunnyUI.Common.dll" ComponentId="{AB612BD1-E1B0-45D1-AEFB-8A9719B59212}" Directory_="APPDIR" Attributes="0" KeyPath="SunnyUI.Common.dll"/>
+    <ROW Component="SunnyUI.dll" ComponentId="{72F6DC9B-8456-4791-B11C-872F54E94C64}" Directory_="APPDIR" Attributes="0" KeyPath="SunnyUI.dll"/>
+    <ROW Component="WinRT.Runtime.dll" ComponentId="{BD05EC92-569C-46EF-AC5F-0D966D0BB311}" Directory_="APPDIR" Attributes="0" KeyPath="WinRT.Runtime.dll"/>
+    <ROW Component="af.pak_1" ComponentId="{D3F54ABF-5107-47E6-9D3E-FECC1F603D97}" Directory_="locales_1_Dir" Attributes="0" KeyPath="enUS.pak_1" Type="0"/>
+    <ROW Component="chrome_elf.dll_1" ComponentId="{A6E73906-317F-4209-9745-502E37C1CCBC}" Directory_="native_1_Dir" Attributes="256" KeyPath="chrome_elf.dll_1"/>
+    <ROW Component="d3dcompiler_47.dll_1" ComponentId="{D4F995E9-7142-4D5F-9355-AEBFDF576B68}" Directory_="native_1_Dir" Attributes="256" KeyPath="d3dcompiler_47.dll_1"/>
+    <ROW Component="libEGL.dll_1" ComponentId="{D065AD95-2F6B-4A06-880D-F22FF9387A18}" Directory_="native_1_Dir" Attributes="256" KeyPath="libEGL.dll_1"/>
+    <ROW Component="libGLESv2.dll_1" ComponentId="{084B572F-CF4A-4CAB-A81F-05A252688D24}" Directory_="native_1_Dir" Attributes="256" KeyPath="libGLESv2.dll_1"/>
+    <ROW Component="libcef.dll_1" ComponentId="{633367DE-7D58-417C-B5B1-FB31A916B066}" Directory_="native_1_Dir" Attributes="256" KeyPath="libcef.dll_1"/>
+    <ROW Component="vk_swiftshader.dll_1" ComponentId="{596C4602-76A7-4E43-BB98-0BAEC73AB68E}" Directory_="native_1_Dir" Attributes="256" KeyPath="vk_swiftshader.dll_1"/>
+    <ROW Component="vulkan1.dll_1" ComponentId="{7E259540-3DF9-47EC-A3A7-FE04DA118B67}" Directory_="native_1_Dir" Attributes="256" KeyPath="vulkan1.dll_1"/>
+    <ROW Component="zFull64.dll" ComponentId="{98ECA375-F4B5-4FAA-8725-86F112F20F95}" Directory_="APPDIR" Attributes="256" KeyPath="zFull64.dll"/>
+    <ROW Component="za.dll" ComponentId="{C473076E-3089-4B19-A0FB-F524B5832974}" Directory_="za64_Dir" Attributes="256" KeyPath="za.dll"/>
+    <ROW Component="za.exe" ComponentId="{03C966C6-5C43-4679-9082-F36452A3D740}" Directory_="za64_Dir" Attributes="256" KeyPath="za.exe"/>
+    <ROW Component="zxa.dll" ComponentId="{75CE9C48-3A10-412E-BD17-818BD1308C62}" Directory_="za64_Dir" Attributes="256" KeyPath="zxa.dll"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiFeatsComponent">
     <ROW Feature="C63A5E8718343189D035A252D1450C5" Title=".NET 7 Desktop Runtime x64" Description=".NET 7 Desktop Runtime x64" Display="3" Level="1" Attributes="0"/>
@@ -98,48 +98,47 @@
     <ATTRIBUTE name="CurrentFeature" value="MainFeature"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiFilesComponent">
-    <ROW File="CefSharp.WinForms.dll" Component_="CefSharp.WinForms.dll" FileName="CEFSHA~1.DLL|CefSharp.WinForms.dll" Attributes="0" SourcePath="..\StardewMUI 2023\bin\Debug\net7.0-windows\CefSharp.WinForms.dll" SelfReg="false"/>
-    <ROW File="StardewMUI2023.deps.json" Component_="StardewMUI2023.deps.json" FileName="STARDE~1.JSO|StardewMUI 2023.deps.json" Attributes="0" SourcePath="..\StardewMUI 2023\bin\Debug\net7.0-windows\StardewMUI 2023.deps.json" SelfReg="false"/>
-    <ROW File="StardewMUI2023.dll" Component_="StardewMUI2023.dll" FileName="STARDE~1.DLL|StardewMUI 2023.dll" Attributes="0" SourcePath="..\StardewMUI 2023\bin\Debug\net7.0-windows\StardewMUI 2023.dll" SelfReg="false"/>
-    <ROW File="StardewMUI2023.exe" Component_="StardewMUI2023.exe" FileName="STARDE~1.EXE|StardewMUI 2023.exe" Attributes="0" SourcePath="..\StardewMUI 2023\bin\Debug\net7.0-windows\StardewMUI 2023.exe" SelfReg="false" DigSign="true"/>
-    <ROW File="StardewMUI2023.runtimeconfig.json" Component_="StardewMUI2023.deps.json" FileName="STARDE~2.JSO|StardewMUI 2023.runtimeconfig.json" Attributes="0" SourcePath="..\StardewMUI 2023\bin\Debug\net7.0-windows\StardewMUI 2023.runtimeconfig.json" SelfReg="false"/>
-    <ROW File="SunnyUI.Common.dll" Component_="SunnyUI.Common.dll" FileName="SUNNYU~1.DLL|SunnyUI.Common.dll" Attributes="0" SourcePath="..\StardewMUI 2023\bin\Debug\net7.0-windows\SunnyUI.Common.dll" SelfReg="false"/>
-    <ROW File="SunnyUI.dll" Component_="SunnyUI.dll" FileName="SunnyUI.dll" Attributes="0" SourcePath="..\StardewMUI 2023\bin\Debug\net7.0-windows\SunnyUI.dll" SelfReg="false"/>
-    <ROW File="CefSharp.Core.dll_1" Component_="CefSharp.Core.dll_1" FileName="CEFSHA~1.DLL|CefSharp.Core.dll" Attributes="0" SourcePath="..\StardewMUI 2023\bin\Debug\net7.0-windows\runtimes\win-x64\lib\netcoreapp3.1\CefSharp.Core.dll" SelfReg="false"/>
-    <ROW File="CefSharp.Core.Runtime.dll_1" Component_="CefSharp.Core.Runtime.dll_1" FileName="CEFSHA~2.DLL|CefSharp.Core.Runtime.dll" Attributes="0" SourcePath="..\StardewMUI 2023\bin\Debug\net7.0-windows\runtimes\win-x64\lib\netcoreapp3.1\CefSharp.Core.Runtime.dll" SelfReg="false"/>
-    <ROW File="CefSharp.dll_2" Component_="CefSharp.dll_2" FileName="CefSharp.dll" Attributes="0" SourcePath="..\StardewMUI 2023\bin\Debug\net7.0-windows\runtimes\win-x64\lib\netcoreapp3.1\CefSharp.dll" SelfReg="false"/>
-    <ROW File="Ijwhost.dll_2" Component_="Ijwhost.dll_2" FileName="Ijwhost.dll" Attributes="0" SourcePath="..\StardewMUI 2023\bin\Debug\net7.0-windows\runtimes\win-x64\lib\netcoreapp3.1\Ijwhost.dll" SelfReg="false"/>
-    <ROW File="CefSharp.BrowserSubprocess.Core.dll_1" Component_="CefSharp.BrowserSubprocess.Core.dll_1" FileName="CEFSHA~1.DLL|CefSharp.BrowserSubprocess.Core.dll" Attributes="0" SourcePath="..\StardewMUI 2023\bin\Debug\net7.0-windows\runtimes\win-x64\native\CefSharp.BrowserSubprocess.Core.dll" SelfReg="false"/>
-    <ROW File="CefSharp.BrowserSubprocess.dll_1" Component_="CefSharp.BrowserSubprocess.dll_1" FileName="CEFSHA~2.DLL|CefSharp.BrowserSubprocess.dll" Attributes="0" SourcePath="..\StardewMUI 2023\bin\Debug\net7.0-windows\runtimes\win-x64\native\CefSharp.BrowserSubprocess.dll" SelfReg="false"/>
-    <ROW File="CefSharp.BrowserSubprocess.exe_1" Component_="CefSharp.BrowserSubprocess.exe_1" FileName="CEFSHA~1.EXE|CefSharp.BrowserSubprocess.exe" Attributes="0" SourcePath="..\StardewMUI 2023\bin\Debug\net7.0-windows\runtimes\win-x64\native\CefSharp.BrowserSubprocess.exe" SelfReg="false" DigSign="true"/>
-    <ROW File="CefSharp.BrowserSubprocess.runtimeconfig.json_1" Component_="CefSharp.BrowserSubprocess.runtimeconfig.json_1" FileName="CEFSHA~1.JSO|CefSharp.BrowserSubprocess.runtimeconfig.json" Attributes="0" SourcePath="..\StardewMUI 2023\bin\Debug\net7.0-windows\runtimes\win-x64\native\CefSharp.BrowserSubprocess.runtimeconfig.json" SelfReg="false"/>
-    <ROW File="CefSharp.dll_3" Component_="CefSharp.dll_3" FileName="CefSharp.dll" Attributes="0" SourcePath="..\StardewMUI 2023\bin\Debug\net7.0-windows\runtimes\win-x64\native\CefSharp.dll" SelfReg="false"/>
-    <ROW File="chrome_100_percent.pak_1" Component_="CefSharp.BrowserSubprocess.runtimeconfig.json_1" FileName="CHROME~1.PAK|chrome_100_percent.pak" Attributes="0" SourcePath="..\StardewMUI 2023\bin\Debug\net7.0-windows\runtimes\win-x64\native\chrome_100_percent.pak" SelfReg="false"/>
-    <ROW File="chrome_200_percent.pak_1" Component_="CefSharp.BrowserSubprocess.runtimeconfig.json_1" FileName="CHROME~2.PAK|chrome_200_percent.pak" Attributes="0" SourcePath="..\StardewMUI 2023\bin\Debug\net7.0-windows\runtimes\win-x64\native\chrome_200_percent.pak" SelfReg="false"/>
-    <ROW File="chrome_elf.dll_1" Component_="chrome_elf.dll_1" FileName="CHROME~1.DLL|chrome_elf.dll" Attributes="0" SourcePath="..\StardewMUI 2023\bin\Debug\net7.0-windows\runtimes\win-x64\native\chrome_elf.dll" SelfReg="false"/>
-    <ROW File="d3dcompiler_47.dll_1" Component_="d3dcompiler_47.dll_1" FileName="D3DCOM~1.DLL|d3dcompiler_47.dll" Attributes="0" SourcePath="..\StardewMUI 2023\bin\Debug\net7.0-windows\runtimes\win-x64\native\d3dcompiler_47.dll" SelfReg="false"/>
-    <ROW File="icudtl.dat_1" Component_="CefSharp.BrowserSubprocess.runtimeconfig.json_1" FileName="icudtl.dat" Attributes="0" SourcePath="..\StardewMUI 2023\bin\Debug\net7.0-windows\runtimes\win-x64\native\icudtl.dat" SelfReg="false"/>
-    <ROW File="Ijwhost.dll_3" Component_="Ijwhost.dll_3" FileName="Ijwhost.dll" Attributes="0" SourcePath="..\StardewMUI 2023\bin\Debug\net7.0-windows\runtimes\win-x64\native\Ijwhost.dll" SelfReg="false"/>
-    <ROW File="libcef.dll_1" Component_="libcef.dll_1" FileName="libcef.dll" Attributes="0" SourcePath="..\StardewMUI 2023\bin\Debug\net7.0-windows\runtimes\win-x64\native\libcef.dll" SelfReg="false"/>
-    <ROW File="libEGL.dll_1" Component_="libEGL.dll_1" FileName="libEGL.dll" Attributes="0" SourcePath="..\StardewMUI 2023\bin\Debug\net7.0-windows\runtimes\win-x64\native\libEGL.dll" SelfReg="false"/>
-    <ROW File="libGLESv2.dll_1" Component_="libGLESv2.dll_1" FileName="LIBGLE~1.DLL|libGLESv2.dll" Attributes="0" SourcePath="..\StardewMUI 2023\bin\Debug\net7.0-windows\runtimes\win-x64\native\libGLESv2.dll" SelfReg="false"/>
-    <ROW File="enUS.pak_1" Component_="af.pak_1" FileName="en-US.pak" Attributes="0" SourcePath="..\StardewMUI 2023\bin\Debug\net7.0-windows\runtimes\win-x64\native\locales\en-US.pak" SelfReg="false"/>
-    <ROW File="zhCN.pak_1" Component_="af.pak_1" FileName="zh-CN.pak" Attributes="0" SourcePath="..\StardewMUI 2023\bin\Debug\net7.0-windows\runtimes\win-x64\native\locales\zh-CN.pak" SelfReg="false"/>
-    <ROW File="resources.pak_1" Component_="CefSharp.BrowserSubprocess.runtimeconfig.json_1" FileName="RESOUR~1.PAK|resources.pak" Attributes="0" SourcePath="..\StardewMUI 2023\bin\Debug\net7.0-windows\runtimes\win-x64\native\resources.pak" SelfReg="false"/>
-    <ROW File="snapshot_blob.bin_1" Component_="CefSharp.BrowserSubprocess.runtimeconfig.json_1" FileName="SNAPSH~1.BIN|snapshot_blob.bin" Attributes="0" SourcePath="..\StardewMUI 2023\bin\Debug\net7.0-windows\runtimes\win-x64\native\snapshot_blob.bin" SelfReg="false"/>
-    <ROW File="v8_context_snapshot.bin_1" Component_="CefSharp.BrowserSubprocess.runtimeconfig.json_1" FileName="V8_CON~1.BIN|v8_context_snapshot.bin" Attributes="0" SourcePath="..\StardewMUI 2023\bin\Debug\net7.0-windows\runtimes\win-x64\native\v8_context_snapshot.bin" SelfReg="false"/>
-    <ROW File="vk_swiftshader.dll_1" Component_="vk_swiftshader.dll_1" FileName="VK_SWI~1.DLL|vk_swiftshader.dll" Attributes="0" SourcePath="..\StardewMUI 2023\bin\Debug\net7.0-windows\runtimes\win-x64\native\vk_swiftshader.dll" SelfReg="false"/>
-    <ROW File="vk_swiftshader_icd.json_1" Component_="CefSharp.BrowserSubprocess.runtimeconfig.json_1" FileName="VK_SWI~1.JSO|vk_swiftshader_icd.json" Attributes="0" SourcePath="..\StardewMUI 2023\bin\Debug\net7.0-windows\runtimes\win-x64\native\vk_swiftshader_icd.json" SelfReg="false"/>
-    <ROW File="vulkan1.dll_1" Component_="vulkan1.dll_1" FileName="vulkan-1.dll" Attributes="0" SourcePath="..\StardewMUI 2023\bin\Debug\net7.0-windows\runtimes\win-x64\native\vulkan-1.dll" SelfReg="false"/>
-    <ROW File="zFull64.dll" Component_="zFull64.dll" FileName="7zFull64.dll" Attributes="0" SourcePath="..\StardewMUI 2023\bin\Debug\net7.0-windows\7zFull64.dll" SelfReg="false"/>
-    <ROW File="BetterFolderBrowser.dll" Component_="BetterFolderBrowser.dll" FileName="BETTER~1.DLL|BetterFolderBrowser.dll" Attributes="0" SourcePath="..\StardewMUI 2023\bin\Debug\net7.0-windows\BetterFolderBrowser.dll" SelfReg="false"/>
-    <ROW File="Imazen.WebP.dll" Component_="Imazen.WebP.dll" FileName="IMAZEN~1.DLL|Imazen.WebP.dll" Attributes="0" SourcePath="..\StardewMUI 2023\bin\Debug\net7.0-windows\Imazen.WebP.dll" SelfReg="false"/>
-    <ROW File="libwebp.dll" Component_="libwebp.dll" FileName="libwebp.dll" Attributes="0" SourcePath="..\StardewMUI 2023\bin\Debug\net7.0-windows\libwebp.dll" SelfReg="false"/>
-    <ROW File="Newtonsoft.Json.dll" Component_="Newtonsoft.Json.dll" FileName="NEWTON~1.DLL|Newtonsoft.Json.dll" Attributes="0" SourcePath="..\StardewMUI 2023\bin\Debug\net7.0-windows\Newtonsoft.Json.dll" SelfReg="false"/>
-    <ROW File="SevenZipSharp.dll" Component_="SevenZipSharp.dll" FileName="SEVENZ~1.DLL|SevenZipSharp.dll" Attributes="0" SourcePath="..\StardewMUI 2023\bin\Debug\net7.0-windows\SevenZipSharp.dll" SelfReg="false"/>
-    <ROW File="za.dll" Component_="za.dll" FileName="7za.dll" Attributes="0" SourcePath="..\StardewMUI 2023\bin\Debug\net7.0-windows\7za64\7za.dll" SelfReg="false"/>
-    <ROW File="za.exe" Component_="za.exe" FileName="7za.exe" Attributes="0" SourcePath="..\StardewMUI 2023\bin\Debug\net7.0-windows\7za64\7za.exe" SelfReg="false" DigSign="true"/>
-    <ROW File="zxa.dll" Component_="zxa.dll" FileName="7zxa.dll" Attributes="0" SourcePath="..\StardewMUI 2023\bin\Debug\net7.0-windows\7za64\7zxa.dll" SelfReg="false"/>
+    <ROW File="zFull64.dll" Component_="zFull64.dll" FileName="7zFull64.dll" Attributes="0" SourcePath="..\StardewMUI 2023\bin\Debug\net7.0-windows10.0.22621.0\7zFull64.dll" SelfReg="false"/>
+    <ROW File="CefSharp.WinForms.dll" Component_="CefSharp.WinForms.dll" FileName="CEFSHA~1.DLL|CefSharp.WinForms.dll" Attributes="0" SourcePath="..\StardewMUI 2023\bin\Debug\net7.0-windows10.0.22621.0\CefSharp.WinForms.dll" SelfReg="false"/>
+    <ROW File="Imazen.WebP.dll" Component_="Imazen.WebP.dll" FileName="IMAZEN~1.DLL|Imazen.WebP.dll" Attributes="0" SourcePath="..\StardewMUI 2023\bin\Debug\net7.0-windows10.0.22621.0\Imazen.WebP.dll" SelfReg="false"/>
+    <ROW File="Microsoft.Windows.SDK.NET.dll" Component_="Microsoft.Windows.SDK.NET.dll" FileName="MICROS~1.DLL|Microsoft.Windows.SDK.NET.dll" Attributes="0" SourcePath="..\StardewMUI 2023\bin\Debug\net7.0-windows10.0.22621.0\Microsoft.Windows.SDK.NET.dll" SelfReg="false"/>
+    <ROW File="Newtonsoft.Json.dll" Component_="Newtonsoft.Json.dll" FileName="NEWTON~1.DLL|Newtonsoft.Json.dll" Attributes="0" SourcePath="..\StardewMUI 2023\bin\Debug\net7.0-windows10.0.22621.0\Newtonsoft.Json.dll" SelfReg="false"/>
+    <ROW File="SevenZipSharp.dll" Component_="SevenZipSharp.dll" FileName="SEVENZ~1.DLL|SevenZipSharp.dll" Attributes="0" SourcePath="..\StardewMUI 2023\bin\Debug\net7.0-windows10.0.22621.0\SevenZipSharp.dll" SelfReg="false"/>
+    <ROW File="SMUI6.deps.json" Component_="SMUI6.deps.json" FileName="SMUI6D~1.JSO|SMUI6.deps.json" Attributes="0" SourcePath="..\StardewMUI 2023\bin\Debug\net7.0-windows10.0.22621.0\SMUI6.deps.json" SelfReg="false"/>
+    <ROW File="SMUI6.dll" Component_="SMUI6.dll" FileName="SMUI6.dll" Attributes="0" SourcePath="..\StardewMUI 2023\bin\Debug\net7.0-windows10.0.22621.0\SMUI6.dll" SelfReg="false"/>
+    <ROW File="SMUI6.exe" Component_="SMUI6.exe" FileName="SMUI6.exe" Attributes="0" SourcePath="..\StardewMUI 2023\bin\Debug\net7.0-windows10.0.22621.0\SMUI6.exe" SelfReg="false"/>
+    <ROW File="SMUI6.runtimeconfig.json" Component_="SMUI6.deps.json" FileName="SMUI6R~1.JSO|SMUI6.runtimeconfig.json" Attributes="0" SourcePath="..\StardewMUI 2023\bin\Debug\net7.0-windows10.0.22621.0\SMUI6.runtimeconfig.json" SelfReg="false"/>
+    <ROW File="SunnyUI.Common.dll" Component_="SunnyUI.Common.dll" FileName="SUNNYU~1.DLL|SunnyUI.Common.dll" Attributes="0" SourcePath="..\StardewMUI 2023\bin\Debug\net7.0-windows10.0.22621.0\SunnyUI.Common.dll" SelfReg="false"/>
+    <ROW File="SunnyUI.dll" Component_="SunnyUI.dll" FileName="SunnyUI.dll" Attributes="0" SourcePath="..\StardewMUI 2023\bin\Debug\net7.0-windows10.0.22621.0\SunnyUI.dll" SelfReg="false"/>
+    <ROW File="WinRT.Runtime.dll" Component_="WinRT.Runtime.dll" FileName="WINRTR~1.DLL|WinRT.Runtime.dll" Attributes="0" SourcePath="..\StardewMUI 2023\bin\Debug\net7.0-windows10.0.22621.0\WinRT.Runtime.dll" SelfReg="false"/>
+    <ROW File="za.dll" Component_="za.dll" FileName="7za.dll" Attributes="0" SourcePath="..\StardewMUI 2023\bin\Debug\net7.0-windows10.0.22621.0\7za64\7za.dll" SelfReg="false"/>
+    <ROW File="za.exe" Component_="za.exe" FileName="7za.exe" Attributes="0" SourcePath="..\StardewMUI 2023\bin\Debug\net7.0-windows10.0.22621.0\7za64\7za.exe" SelfReg="false"/>
+    <ROW File="zxa.dll" Component_="zxa.dll" FileName="7zxa.dll" Attributes="0" SourcePath="..\StardewMUI 2023\bin\Debug\net7.0-windows10.0.22621.0\7za64\7zxa.dll" SelfReg="false"/>
+    <ROW File="CefSharp.Core.dll_1" Component_="CefSharp.Core.dll_1" FileName="CEFSHA~1.DLL|CefSharp.Core.dll" Attributes="0" SourcePath="..\StardewMUI 2023\bin\Debug\net7.0-windows10.0.22621.0\runtimes\win-x64\lib\netcoreapp3.1\CefSharp.Core.dll" SelfReg="false"/>
+    <ROW File="CefSharp.Core.Runtime.dll_1" Component_="CefSharp.Core.Runtime.dll_1" FileName="CEFSHA~2.DLL|CefSharp.Core.Runtime.dll" Attributes="0" SourcePath="..\StardewMUI 2023\bin\Debug\net7.0-windows10.0.22621.0\runtimes\win-x64\lib\netcoreapp3.1\CefSharp.Core.Runtime.dll" SelfReg="false"/>
+    <ROW File="CefSharp.dll_2" Component_="CefSharp.dll_2" FileName="CefSharp.dll" Attributes="0" SourcePath="..\StardewMUI 2023\bin\Debug\net7.0-windows10.0.22621.0\runtimes\win-x64\lib\netcoreapp3.1\CefSharp.dll" SelfReg="false"/>
+    <ROW File="Ijwhost.dll_2" Component_="Ijwhost.dll_2" FileName="Ijwhost.dll" Attributes="0" SourcePath="..\StardewMUI 2023\bin\Debug\net7.0-windows10.0.22621.0\runtimes\win-x64\lib\netcoreapp3.1\Ijwhost.dll" SelfReg="false"/>
+    <ROW File="CefSharp.BrowserSubprocess.Core.dll_1" Component_="CefSharp.BrowserSubprocess.Core.dll_1" FileName="CEFSHA~1.DLL|CefSharp.BrowserSubprocess.Core.dll" Attributes="0" SourcePath="..\StardewMUI 2023\bin\Debug\net7.0-windows10.0.22621.0\runtimes\win-x64\native\CefSharp.BrowserSubprocess.Core.dll" SelfReg="false"/>
+    <ROW File="CefSharp.BrowserSubprocess.dll_1" Component_="CefSharp.BrowserSubprocess.dll_1" FileName="CEFSHA~2.DLL|CefSharp.BrowserSubprocess.dll" Attributes="0" SourcePath="..\StardewMUI 2023\bin\Debug\net7.0-windows10.0.22621.0\runtimes\win-x64\native\CefSharp.BrowserSubprocess.dll" SelfReg="false"/>
+    <ROW File="CefSharp.BrowserSubprocess.exe_1" Component_="CefSharp.BrowserSubprocess.exe_1" FileName="CEFSHA~1.EXE|CefSharp.BrowserSubprocess.exe" Attributes="0" SourcePath="..\StardewMUI 2023\bin\Debug\net7.0-windows10.0.22621.0\runtimes\win-x64\native\CefSharp.BrowserSubprocess.exe" SelfReg="false"/>
+    <ROW File="CefSharp.BrowserSubprocess.runtimeconfig.json_1" Component_="CefSharp.BrowserSubprocess.runtimeconfig.json_1" FileName="CEFSHA~1.JSO|CefSharp.BrowserSubprocess.runtimeconfig.json" Attributes="0" SourcePath="..\StardewMUI 2023\bin\Debug\net7.0-windows10.0.22621.0\runtimes\win-x64\native\CefSharp.BrowserSubprocess.runtimeconfig.json" SelfReg="false"/>
+    <ROW File="CefSharp.dll_3" Component_="CefSharp.dll_3" FileName="CefSharp.dll" Attributes="0" SourcePath="..\StardewMUI 2023\bin\Debug\net7.0-windows10.0.22621.0\runtimes\win-x64\native\CefSharp.dll" SelfReg="false"/>
+    <ROW File="chrome_100_percent.pak_1" Component_="CefSharp.BrowserSubprocess.runtimeconfig.json_1" FileName="CHROME~1.PAK|chrome_100_percent.pak" Attributes="0" SourcePath="..\StardewMUI 2023\bin\Debug\net7.0-windows10.0.22621.0\runtimes\win-x64\native\chrome_100_percent.pak" SelfReg="false"/>
+    <ROW File="chrome_200_percent.pak_1" Component_="CefSharp.BrowserSubprocess.runtimeconfig.json_1" FileName="CHROME~2.PAK|chrome_200_percent.pak" Attributes="0" SourcePath="..\StardewMUI 2023\bin\Debug\net7.0-windows10.0.22621.0\runtimes\win-x64\native\chrome_200_percent.pak" SelfReg="false"/>
+    <ROW File="chrome_elf.dll_1" Component_="chrome_elf.dll_1" FileName="CHROME~1.DLL|chrome_elf.dll" Attributes="0" SourcePath="..\StardewMUI 2023\bin\Debug\net7.0-windows10.0.22621.0\runtimes\win-x64\native\chrome_elf.dll" SelfReg="false"/>
+    <ROW File="d3dcompiler_47.dll_1" Component_="d3dcompiler_47.dll_1" FileName="D3DCOM~1.DLL|d3dcompiler_47.dll" Attributes="0" SourcePath="..\StardewMUI 2023\bin\Debug\net7.0-windows10.0.22621.0\runtimes\win-x64\native\d3dcompiler_47.dll" SelfReg="false"/>
+    <ROW File="icudtl.dat_1" Component_="CefSharp.BrowserSubprocess.runtimeconfig.json_1" FileName="icudtl.dat" Attributes="0" SourcePath="..\StardewMUI 2023\bin\Debug\net7.0-windows10.0.22621.0\runtimes\win-x64\native\icudtl.dat" SelfReg="false"/>
+    <ROW File="Ijwhost.dll_3" Component_="Ijwhost.dll_3" FileName="Ijwhost.dll" Attributes="0" SourcePath="..\StardewMUI 2023\bin\Debug\net7.0-windows10.0.22621.0\runtimes\win-x64\native\Ijwhost.dll" SelfReg="false"/>
+    <ROW File="libcef.dll_1" Component_="libcef.dll_1" FileName="libcef.dll" Attributes="0" SourcePath="..\StardewMUI 2023\bin\Debug\net7.0-windows10.0.22621.0\runtimes\win-x64\native\libcef.dll" SelfReg="false"/>
+    <ROW File="libEGL.dll_1" Component_="libEGL.dll_1" FileName="libEGL.dll" Attributes="0" SourcePath="..\StardewMUI 2023\bin\Debug\net7.0-windows10.0.22621.0\runtimes\win-x64\native\libEGL.dll" SelfReg="false"/>
+    <ROW File="libGLESv2.dll_1" Component_="libGLESv2.dll_1" FileName="LIBGLE~1.DLL|libGLESv2.dll" Attributes="0" SourcePath="..\StardewMUI 2023\bin\Debug\net7.0-windows10.0.22621.0\runtimes\win-x64\native\libGLESv2.dll" SelfReg="false"/>
+    <ROW File="enUS.pak_1" Component_="af.pak_1" FileName="en-US.pak" Attributes="0" SourcePath="..\StardewMUI 2023\bin\Debug\net7.0-windows10.0.22621.0\runtimes\win-x64\native\locales\en-US.pak" SelfReg="false"/>
+    <ROW File="resources.pak_1" Component_="CefSharp.BrowserSubprocess.runtimeconfig.json_1" FileName="RESOUR~1.PAK|resources.pak" Attributes="0" SourcePath="..\StardewMUI 2023\bin\Debug\net7.0-windows10.0.22621.0\runtimes\win-x64\native\resources.pak" SelfReg="false"/>
+    <ROW File="snapshot_blob.bin_1" Component_="CefSharp.BrowserSubprocess.runtimeconfig.json_1" FileName="SNAPSH~1.BIN|snapshot_blob.bin" Attributes="0" SourcePath="..\StardewMUI 2023\bin\Debug\net7.0-windows10.0.22621.0\runtimes\win-x64\native\snapshot_blob.bin" SelfReg="false"/>
+    <ROW File="v8_context_snapshot.bin_1" Component_="CefSharp.BrowserSubprocess.runtimeconfig.json_1" FileName="V8_CON~1.BIN|v8_context_snapshot.bin" Attributes="0" SourcePath="..\StardewMUI 2023\bin\Debug\net7.0-windows10.0.22621.0\runtimes\win-x64\native\v8_context_snapshot.bin" SelfReg="false"/>
+    <ROW File="vk_swiftshader.dll_1" Component_="vk_swiftshader.dll_1" FileName="VK_SWI~1.DLL|vk_swiftshader.dll" Attributes="0" SourcePath="..\StardewMUI 2023\bin\Debug\net7.0-windows10.0.22621.0\runtimes\win-x64\native\vk_swiftshader.dll" SelfReg="false"/>
+    <ROW File="vk_swiftshader_icd.json_1" Component_="CefSharp.BrowserSubprocess.runtimeconfig.json_1" FileName="VK_SWI~1.JSO|vk_swiftshader_icd.json" Attributes="0" SourcePath="..\StardewMUI 2023\bin\Debug\net7.0-windows10.0.22621.0\runtimes\win-x64\native\vk_swiftshader_icd.json" SelfReg="false"/>
+    <ROW File="vulkan1.dll_1" Component_="vulkan1.dll_1" FileName="vulkan-1.dll" Attributes="0" SourcePath="..\StardewMUI 2023\bin\Debug\net7.0-windows10.0.22621.0\runtimes\win-x64\native\vulkan-1.dll" SelfReg="false"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.AiPersistentPropComponent">
     <ROW Property="AI_SHORTCUTSREG" Registry="AI_SHORTCUTSREG" HklmSearch="AI_SHORTCUTSREG" HkcuSearch="AI_SHORTCUTSREG_1" Hklm64Search="AI_SHORTCUTSREG_2" Hkcu64Search="AI_SHORTCUTSREG_3"/>
@@ -159,11 +158,10 @@
     <ROW Path="&lt;AI_DICTS&gt;ui_zh.ail"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.DigCertStoreComponent">
-    <ROW TimeStampUrl="http://timestamp.digicert.com" SignerDescription="[|ProductName]" SignOptions="0" SignTool="4" UseSha256="1"/>
+    <ROW TimeStampUrl="http://timestamp.digicert.com" SignerDescription="1059 Studio Sign" SignOptions="0" SignTool="0" UseSha256="1" Thumbprint="1150f0a9b204a83ca3788b020706e8d8b4abb881 Subject: 1059 Studio&#10;Issuer: 1059 Studio&#10;Valid from 12/15/2023 to 12/15/2024" Subject="CN=1059 Studio" Store="User\MY"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.FragmentComponent">
     <ROW Fragment="CommonUI.aip" Path="&lt;AI_FRAGS&gt;CommonUI.aip"/>
-    <ROW Fragment="FolderDlg.aip" Path="&lt;AI_THEMES&gt;appinstaller\fragments\FolderDlg.aip"/>
     <ROW Fragment="MaintenanceWelcomeDlg.aip" Path="&lt;AI_THEMES&gt;appinstaller\fragments\MaintenanceWelcomeDlg.aip"/>
     <ROW Fragment="SequenceDialogs.aip" Path="&lt;AI_THEMES&gt;appinstaller\fragments\SequenceDialogs.aip"/>
     <ROW Fragment="Sequences.aip" Path="&lt;AI_FRAGS&gt;Sequences.aip"/>
@@ -220,10 +218,6 @@
     <ROW Dialog_="FatalError" Control="AboutBtn" Type="ImageButton" X="5" Y="269" Width="18" Height="18" Attributes="3" Text="[AboutBtnIcon]" TextStyle="[ManufacturerFont]" Order="1000" MsiKey="FatalError#AboutBtn" Options="1" ExtType="ImageButton"/>
     <ROW Dialog_="FilesInUse" Control="ProductNameTitle" Type="Text" X="15" Y="17" Width="364" Height="32" Attributes="196611" Text="安装 [ProductName]" TextStyle="[ProductNameTitleFont]" Order="700" MsiKey="FilesInUse#ProductNameTitle"/>
     <ROW Dialog_="FilesInUse" Control="ProductLogo" Type="Bitmap" X="404" Y="15" Width="70" Height="70" Attributes="1" Text="[MYappLogo]" Order="900" MsiKey="FilesInUse#ProductLogo"/>
-    <ROW Dialog_="FolderDlg" Control="ProductLogo" Type="Bitmap" X="404" Y="15" Width="70" Height="70" Attributes="1" Text="[MYappLogo]" Order="400" MsiKey="FolderDlg#ProductLogo"/>
-    <ROW Dialog_="FolderDlg" Control="ProductNameTitle" Type="Text" X="15" Y="17" Width="364" Height="32" Attributes="196611" Text="安装 [ProductName]" TextStyle="[ProductNameTitleFont]" Order="500" MsiKey="FolderDlg#ProductNameTitle"/>
-    <ROW Dialog_="FolderDlg" Control="FolderLabel" Type="Text" X="16" Y="150" Width="458" Height="15" Attributes="65539" Text="文件夹：" TextStyle="[ManufacturerFont]" Help="|" Order="800" HelpLocId="Control.Help.FolderDlg#FolderLabel" MsiKey="FolderDlg#FolderLabel"/>
-    <ROW Dialog_="FolderDlg" Control="FolderEdit" Type="PathEdit" X="16" Y="170" Width="458" Height="30" Attributes="7" Property="APPDIR" Help="|" Order="900" HelpLocId="Control.Help.FolderDlg#FolderEdit" MsiKey="FolderDlg#FolderEdit"/>
     <ROW Dialog_="MaintenanceWelcomeDlg" Control="MaintenanceWelcomeDlgDialogInitializer" Type="DialogInitializer" X="0" Y="0" Width="0" Height="0" Attributes="0" Order="-1" TextLocId="-" HelpLocId="-" ExtDataLocId="-"/>
     <ROW Dialog_="MaintenanceWelcomeDlg" Control="ProductNameTitle" Type="Text" X="15" Y="17" Width="364" Height="32" Attributes="196611" Text="安装 [ProductName]" TextStyle="[ProductNameTitleFont]" Order="700" MsiKey="MaintenanceWelcomeDlg#ProductNameTitle"/>
     <ROW Dialog_="MaintenanceWelcomeDlg" Control="ProductLogo" Type="Bitmap" X="404" Y="15" Width="70" Height="70" Attributes="1" Text="[MYappLogo]" Order="900" MsiKey="MaintenanceWelcomeDlg#ProductLogo"/>
@@ -262,7 +256,7 @@
     <ATTRIBUTE name="DeletedRows" value="ShortcutsDlg#PinToTaskbarShortcutsCheckBox#Hide#(Not Installed)@ShortcutsDlg#StartupShorcutsCheckBox#Show#(Not Installed)"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiControlEventComponent">
-    <ROW Dialog_="WelcomeDlg" Control_="Next" Event="NewDialog" Argument="FolderDlg" Condition="AI_INSTALL" Ordering="1"/>
+    <ROW Dialog_="WelcomeDlg" Control_="Next" Event="NewDialog" Argument="ShortcutsDlg" Condition="AI_INSTALL" Ordering="1"/>
     <ROW Dialog_="MaintenanceWelcomeDlg" Control_="Next" Event="EndDialog" Argument="Return" Condition="AI_MAINT" Ordering="1"/>
     <ROW Dialog_="PatchWelcomeDlg" Control_="Next" Event="EndDialog" Argument="Return" Condition="AI_PATCH" Ordering="201"/>
     <ROW Dialog_="ResumeDlg" Control_="Install" Event="EndDialog" Argument="Return" Condition="AI_RESUME" Ordering="99"/>
@@ -285,10 +279,8 @@
     <ROW Dialog_="ExitDialog" Control_="Finish" Event="DoAction" Argument="AI_CleanPrereq" Condition="1" Ordering="201"/>
     <ROW Dialog_="FatalError" Control_="Finish" Event="DoAction" Argument="AI_CleanPrereq" Condition="1" Ordering="201"/>
     <ROW Dialog_="UserExit" Control_="Finish" Event="DoAction" Argument="AI_CleanPrereq" Condition="1" Ordering="101"/>
-    <ROW Dialog_="FolderDlg" Control_="Next" Event="NewDialog" Argument="ShortcutsDlg" Condition="AI_INSTALL" Ordering="101"/>
-    <ROW Dialog_="FolderDlg" Control_="Back" Event="NewDialog" Argument="WelcomeDlg" Condition="AI_INSTALL" Ordering="1"/>
     <ROW Dialog_="ShortcutsDlg" Control_="Next" Event="EndDialog" Argument="Return" Condition="AI_INSTALL" Ordering="1"/>
-    <ROW Dialog_="ShortcutsDlg" Control_="Back" Event="NewDialog" Argument="FolderDlg" Condition="AI_INSTALL" Ordering="1"/>
+    <ROW Dialog_="ShortcutsDlg" Control_="Back" Event="NewDialog" Argument="WelcomeDlg" Condition="AI_INSTALL" Ordering="1"/>
     <ROW Dialog_="ShortcutsDlg" Control_="Next" Event="SpawnDialog" Argument="OutOfRbDiskDlg" Condition="AI_INSTALL AND OutOfDiskSpace = 1 AND OutOfNoRbDiskSpace = 0 AND (PROMPTROLLBACKCOST=&quot;P&quot; OR NOT PROMPTROLLBACKCOST)" Ordering="2" Options="2"/>
     <ROW Dialog_="ShortcutsDlg" Control_="Next" Event="EnableRollback" Argument="False" Condition="AI_INSTALL AND OutOfDiskSpace = 1 AND OutOfNoRbDiskSpace = 0 AND PROMPTROLLBACKCOST=&quot;D&quot;" Ordering="3" Options="2"/>
     <ROW Dialog_="ShortcutsDlg" Control_="Next" Event="SpawnDialog" Argument="OutOfDiskDlg" Condition="AI_INSTALL AND ( (OutOfDiskSpace = 1 AND OutOfNoRbDiskSpace = 1) OR (OutOfDiskSpace = 1 AND PROMPTROLLBACKCOST=&quot;F&quot;) )" Ordering="4" Options="2"/>
@@ -313,6 +305,7 @@
     <ROW Action="AI_DATA_SETTER_1" Type="51" Source="AI_DEL_EMPTY_SHORTCUTDIR" Target="[SHORTCUTDIR]"/>
     <ROW Action="AI_DELETE_SHORTCUTS" Type="1" Source="aicustact.dll" Target="DeleteShortcuts"/>
     <ROW Action="AI_DEL_EMPTY_SHORTCUTDIR" Type="3073" Source="aicustact.dll" Target="DeleteEmptyDirectory" AdditionalSeq="AI_DATA_SETTER_1"/>
+    <ROW Action="AI_DOWNGRADE" Type="19" Target="4010"/>
     <ROW Action="AI_DeleteCadLzma" Type="51" Source="AI_DeleteLzma" Target="[AI_SETUPEXEPATH]"/>
     <ROW Action="AI_DeleteLzma" Type="1025" Source="lzmaextractor.dll" Target="DeleteLZMAFiles"/>
     <ROW Action="AI_DeleteRCadLzma" Type="51" Source="AI_DeleteRLzma" Target="[AI_SETUPEXEPATH]"/>
@@ -336,7 +329,6 @@
     <ROW Action="AI_PREPARE_UPGRADE" Type="65" Source="aicustact.dll" Target="PrepareUpgrade"/>
     <ROW Action="AI_PRESERVE_INSTALL_TYPE" Type="65" Source="aicustact.dll" Target="PreserveInstallType"/>
     <ROW Action="AI_RESTORE_AI_SETUPEXEPATH" Type="51" Source="AI_SETUPEXEPATH" Target="[AI_SETUPEXEPATH_ORIGINAL]"/>
-    <ROW Action="AI_RESTORE_LOCATION" Type="65" Source="aicustact.dll" Target="RestoreLocation"/>
     <ROW Action="AI_RemoveExternalUIStub" Type="1" Source="ExternalUICleaner.dll" Target="RemoveExternalUIStub"/>
     <ROW Action="AI_ResolveKnownFolders" Type="1" Source="aicustact.dll" Target="AI_ResolveKnownFolders"/>
     <ROW Action="AI_SHOW_LOG" Type="65" Source="aicustact.dll" Target="LaunchLogFile" WithoutSeq="true"/>
@@ -349,13 +341,26 @@
   <COMPONENT cid="caphyon.advinst.msicomp.MsiFeatCompsComponent">
     <ROW Feature_="MainFeature" Component_="APPDIR"/>
     <ROW Feature_="MainFeature" Component_="ProductInformation"/>
+    <ROW Feature_="MainFeature" Component_="zFull64.dll"/>
     <ROW Feature_="MainFeature" Component_="CefSharp.WinForms.dll"/>
-    <ROW Feature_="MainFeature" Component_="StardewMUI2023.deps.json"/>
-    <ROW Feature_="MainFeature" Component_="StardewMUI2023.dll"/>
-    <ROW Feature_="MainFeature" Component_="StardewMUI2023.exe"/>
+    <ROW Feature_="C63A5E8718343189D035A252D1450C5" Component_="C63A5E8718343189D035A252D1450C5"/>
+    <ROW Feature_="MainFeature" Component_="Imazen.WebP.dll"/>
+    <ROW Feature_="MainFeature" Component_="Microsoft.Windows.SDK.NET.dll"/>
+    <ROW Feature_="MainFeature" Component_="Newtonsoft.Json.dll"/>
+    <ROW Feature_="MainFeature" Component_="SevenZipSharp.dll"/>
+    <ROW Feature_="MainFeature" Component_="SMUI6.deps.json"/>
+    <ROW Feature_="MainFeature" Component_="SMUI6.dll"/>
+    <ROW Feature_="MainFeature" Component_="SMUI6.exe"/>
     <ROW Feature_="MainFeature" Component_="SunnyUI.Common.dll"/>
     <ROW Feature_="MainFeature" Component_="SunnyUI.dll"/>
-    <ROW Feature_="C63A5E8718343189D035A252D1450C5" Component_="C63A5E8718343189D035A252D1450C5"/>
+    <ROW Feature_="MainFeature" Component_="WinRT.Runtime.dll"/>
+    <ROW Feature_="MainFeature" Component_="za.dll"/>
+    <ROW Feature_="MainFeature" Component_="za.exe"/>
+    <ROW Feature_="MainFeature" Component_="zxa.dll"/>
+    <ROW Feature_="MainFeature" Component_="AI_ExePath"/>
+    <ROW Feature_="MainFeature" Component_="AI_CustomARPName"/>
+    <ROW Feature_="MainFeature" Component_="AI_SHORTCUTSREG"/>
+    <ROW Feature_="MainFeature" Component_="SHORTCUTDIR"/>
     <ROW Feature_="MainFeature" Component_="CefSharp.Core.dll_1"/>
     <ROW Feature_="MainFeature" Component_="CefSharp.Core.Runtime.dll_1"/>
     <ROW Feature_="MainFeature" Component_="CefSharp.dll_2"/>
@@ -374,25 +379,12 @@
     <ROW Feature_="MainFeature" Component_="af.pak_1"/>
     <ROW Feature_="MainFeature" Component_="vk_swiftshader.dll_1"/>
     <ROW Feature_="MainFeature" Component_="vulkan1.dll_1"/>
-    <ROW Feature_="MainFeature" Component_="AI_ExePath"/>
-    <ROW Feature_="MainFeature" Component_="SHORTCUTDIR"/>
-    <ROW Feature_="MainFeature" Component_="zFull64.dll"/>
-    <ROW Feature_="MainFeature" Component_="BetterFolderBrowser.dll"/>
-    <ROW Feature_="MainFeature" Component_="Imazen.WebP.dll"/>
-    <ROW Feature_="MainFeature" Component_="libwebp.dll"/>
-    <ROW Feature_="MainFeature" Component_="Newtonsoft.Json.dll"/>
-    <ROW Feature_="MainFeature" Component_="SevenZipSharp.dll"/>
-    <ROW Feature_="MainFeature" Component_="za.dll"/>
-    <ROW Feature_="MainFeature" Component_="za.exe"/>
-    <ROW Feature_="MainFeature" Component_="zxa.dll"/>
-    <ROW Feature_="MainFeature" Component_="AI_CustomARPName"/>
-    <ROW Feature_="MainFeature" Component_="AI_SHORTCUTSREG"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiIconsComponent">
+    <ROW Name="SMUI6.exe" SourcePath="..\StardewMUI 2023\dropbox.ico" Index="0"/>
     <ROW Name="dropbox.exe" SourcePath="dropbox.ico" Index="0"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiInstExSeqComponent">
-    <ROW Action="AI_RESTORE_LOCATION" Condition="APPDIR=&quot;&quot;" Sequence="749"/>
     <ROW Action="AI_STORE_LOCATION" Condition="(Not Installed) OR REINSTALL" Sequence="1502"/>
     <ROW Action="AI_PREPARE_UPGRADE" Condition="AI_UPGRADE=&quot;No&quot; AND (Not Installed)" Sequence="1397"/>
     <ROW Action="AI_ResolveKnownFolders" Sequence="52"/>
@@ -418,16 +410,16 @@
     <ROW Action="AI_DELETE_SHORTCUTS" Condition="NOT (REMOVE=&quot;ALL&quot;)" Sequence="1401"/>
     <ROW Action="AI_DEL_EMPTY_SHORTCUTDIR" Condition="NOT (REMOVE=&quot;ALL&quot;)" Sequence="6402"/>
     <ROW Action="AI_DATA_SETTER_1" Condition="NOT (REMOVE=&quot;ALL&quot;)" Sequence="6401"/>
+    <ROW Action="AI_DOWNGRADE" Condition="AI_NEWERPRODUCTFOUND AND (UILevel &lt;&gt; 5)" Sequence="201"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiInstallUISequenceComponent">
     <ROW Action="AI_PRESERVE_INSTALL_TYPE" Sequence="199"/>
-    <ROW Action="AI_RESTORE_LOCATION" Condition="APPDIR=&quot;&quot;" Sequence="749"/>
     <ROW Action="AI_ResolveKnownFolders" Sequence="56"/>
     <ROW Action="AI_DpiContentScale" Sequence="52"/>
     <ROW Action="AI_EnableDebugLog" Sequence="53"/>
     <ROW Action="AI_CloseBtnBorderC" Condition="DarkTheme" Sequence="54" MsiKey="AI_CloseBtnBorderC"/>
     <ROW Action="AI_MinBtnBaseC" Condition="DarkTheme" Sequence="55" MsiKey="AI_MinBtnBaseC"/>
-    <ROW Action="AI_MinBtnBorderC" Condition="DarkTheme" Sequence="57" MsiKey="AI_MinBtnBorderC"/>
+    <ROW Action="AI_MinBtnBorderC" Condition="DarkTheme" Sequence="58" MsiKey="AI_MinBtnBorderC"/>
     <ROW Action="AI_MinBtnC" Condition="DarkTheme" Sequence="57" MsiKey="AI_MinBtnC"/>
     <ROW Action="AI_FrameBaseC" Condition="DarkTheme" Sequence="58" MsiKey="AI_FrameBaseC"/>
     <ROW Action="AI_FrameBorder1C" Condition="DarkTheme" Sequence="59" MsiKey="AI_FrameBorder1C"/>
@@ -451,7 +443,7 @@
     <ROW Action="AI_ControlVisualStyleExDark" Condition="DarkTheme" Sequence="69" MsiKey="AI_ControlVisualStyleExDark"/>
     <ROW Action="AI_CustomFrameType" Condition="VersionNT64&gt;=1100" Sequence="71" MsiKey="AI_CustomFrameType"/>
     <ROW Action="AI_ChooseTextStyles" Sequence="74"/>
-    <ROW Action="AI_CloseBtnC" Condition="DarkTheme" Sequence="56" MsiKey="AI_CloseBtnC"/>
+    <ROW Action="AI_CloseBtnC" Condition="DarkTheme" Sequence="57" MsiKey="AI_CloseBtnC"/>
     <ROW Action="AI_WinuiReqTheme" Condition="DarkTheme" Sequence="68" MsiKey="AI_WinuiReqTheme"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiLaunchConditionsComponent">
@@ -514,7 +506,7 @@
     <ROW Registry="Windows" Root="-1" Key="Software\Microsoft\Windows" Name="\"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiShortsComponent">
-    <ROW Shortcut="ProductName" Directory_="SHORTCUTDIR" Name="SMUI20~1|[|ProductName]" Component_="StardewMUI2023.exe" Target="[#StardewMUI2023.exe]" Hotkey="0" Icon_="dropbox.exe" IconIndex="0" ShowCmd="1" WkDir="APPDIR"/>
+    <ROW Shortcut="ProductName" Directory_="SHORTCUTDIR" Name="SMUI20~1|[|ProductName]" Component_="SMUI6.exe" Target="[#SMUI6.exe]" Hotkey="0" Icon_="SMUI6.exe" IconIndex="0" ShowCmd="1" WkDir="APPDIR"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiTextStyleComponent">
     <ROW TextStyle="ProductNameTitleDark" FaceName="Segoe UI" Size="20" Color="16777215" StyleBits="0" MsiKey="ProductNameTitleDark"/>
@@ -525,6 +517,7 @@
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiUpgradeComponent">
     <ROW UpgradeCode="[|UpgradeCode]" VersionMin="0.0.1" VersionMax="255.255.6555.6555" Attributes="257" ActionProperty="OLDPRODUCTS"/>
+    <ROW UpgradeCode="[|UpgradeCode]" VersionMin="255.255.6555.6555" Attributes="2" ActionProperty="AI_NEWERPRODUCTFOUND"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.PreReqComponent">
     <ROW PrereqKey="C63A5E8718343189D035A252D1450C5" DisplayName=".NET 7 Desktop Runtime x64" VersionMin="7.0" SetupFileUrl="https://download.visualstudio.microsoft.com/download/pr/2ce1cbbe-71d1-44e7-8e80-d9ae336b9b17/a2706bca3474eef8ef95e10a12ecc2a4/windowsdesktop-runtime-7.0.11-win-x64.exe" Location="1" ExactSize="57837864" WinNTVersions="Windows 9x/ME/NT/2000/XP/Vista/Windows 7/Windows 8 x86/Windows 8.1 x86/Windows 10 x86" WinNT64Versions="Windows Vista x64, Windows Server 2008 x64, Windows 7 RTM x64, Windows Server 2008 R2 x64, Windows 8 x64, Windows Server 2012 x64" Operator="1" NoUiComLine="/q /norestart" Options="fx" MD5="7bfd7ef669ec2a3f975e9cabe993253f" TargetName=".NET 7.0" Feature="C63A5E8718343189D035A252D1450C5"/>
