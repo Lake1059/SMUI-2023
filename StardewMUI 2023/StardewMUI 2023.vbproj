@@ -16,6 +16,7 @@
     <AssemblyVersion>6.0</AssemblyVersion>
     <FileVersion>6.0.0</FileVersion>
     <SupportedOSPlatformVersion>10.0.17763.0</SupportedOSPlatformVersion>
+    <Version>6.0.0</Version>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
