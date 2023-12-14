@@ -134,6 +134,7 @@ Partial Class Form1
         UiComboBox5 = New Sunny.UI.UIComboBox()
         Label26 = New Label()
         TabPage20 = New TabPage()
+        UiButton38 = New Sunny.UI.UIButton()
         UiTextBox19 = New Sunny.UI.UITextBox()
         UiTextBox18 = New Sunny.UI.UITextBox()
         UiCheckBox15 = New Sunny.UI.UICheckBox()
@@ -346,7 +347,6 @@ Partial Class Form1
         TabPage调试输出 = New TabPage()
         UiRichTextBox2 = New Sunny.UI.UIRichTextBox()
         UiButton45 = New Sunny.UI.UIButton()
-        UiButton38 = New Sunny.UI.UIButton()
         UiTabControl1.SuspendLayout()
         TabPage1.SuspendLayout()
         Panel29.SuspendLayout()
@@ -451,6 +451,7 @@ Partial Class Form1
         UiTabControl1.Style = Sunny.UI.UIStyle.Custom
         UiTabControl1.TabIndex = 0
         UiTabControl1.TabUnSelectedForeColor = Color.FromArgb(CByte(240), CByte(240), CByte(240))
+        UiTabControl1.TipsFont = New Font("宋体", 9F, FontStyle.Regular, GraphicsUnit.Point)
         ' 
         ' TabPage1
         ' 
@@ -2482,7 +2483,7 @@ Partial Class Form1
         UiComboBox5.ItemSelectForeColor = Color.FromArgb(CByte(224), CByte(224), CByte(224))
         UiComboBox5.Location = New Point(20, 61)
         UiComboBox5.Margin = New Padding(20, 0, 0, 0)
-        UiComboBox5.MaxDropDownItems = 20
+        UiComboBox5.MaxDropDownItems = 15
         UiComboBox5.MinimumSize = New Size(63, 0)
         UiComboBox5.Name = "UiComboBox5"
         UiComboBox5.Padding = New Padding(0, 0, 30, 2)
@@ -2534,6 +2535,39 @@ Partial Class Form1
         TabPage20.Size = New Size(912, 631)
         TabPage20.TabIndex = 6
         TabPage20.Text = "隐私选项"
+        ' 
+        ' UiButton38
+        ' 
+        UiButton38.FillColor = Color.FromArgb(CByte(48), CByte(48), CByte(48))
+        UiButton38.FillColor2 = Color.FromArgb(CByte(48), CByte(48), CByte(48))
+        UiButton38.FillDisableColor = Color.FromArgb(CByte(48), CByte(48), CByte(48))
+        UiButton38.FillHoverColor = Color.FromArgb(CByte(64), CByte(64), CByte(64))
+        UiButton38.FillPressColor = Color.FromArgb(CByte(80), CByte(80), CByte(80))
+        UiButton38.FillSelectedColor = Color.FromArgb(CByte(48), CByte(48), CByte(48))
+        UiButton38.Font = New Font("微软雅黑", 9.75F, FontStyle.Regular, GraphicsUnit.Point)
+        UiButton38.ForeColor = Color.FromArgb(CByte(224), CByte(224), CByte(224))
+        UiButton38.ForeDisableColor = Color.Gray
+        UiButton38.ForeHoverColor = Color.FromArgb(CByte(244), CByte(244), CByte(244))
+        UiButton38.ForePressColor = Color.FromArgb(CByte(244), CByte(244), CByte(244))
+        UiButton38.ForeSelectedColor = Color.FromArgb(CByte(244), CByte(244), CByte(244))
+        UiButton38.Location = New Point(20, 20)
+        UiButton38.Margin = New Padding(20, 20, 20, 0)
+        UiButton38.MinimumSize = New Size(1, 1)
+        UiButton38.Name = "UiButton38"
+        UiButton38.Radius = 10
+        UiButton38.RadiusSides = Sunny.UI.UICornerRadiusSides.None
+        UiButton38.RectColor = Color.FromArgb(CByte(48), CByte(48), CByte(48))
+        UiButton38.RectDisableColor = Color.FromArgb(CByte(48), CByte(48), CByte(48))
+        UiButton38.RectHoverColor = Color.FromArgb(CByte(64), CByte(64), CByte(64))
+        UiButton38.RectPressColor = Color.FromArgb(CByte(80), CByte(80), CByte(80))
+        UiButton38.RectSelectedColor = Color.FromArgb(CByte(48), CByte(48), CByte(48))
+        UiButton38.Size = New Size(150, 30)
+        UiButton38.Style = Sunny.UI.UIStyle.Custom
+        UiButton38.TabIndex = 42
+        UiButton38.TabStop = False
+        UiButton38.Text = "保存本页设置"
+        UiButton38.TipsColor = Color.Gray
+        UiButton38.TipsFont = New Font("微软雅黑", 9F, FontStyle.Regular, GraphicsUnit.Point)
         ' 
         ' UiTextBox19
         ' 
@@ -4527,6 +4561,7 @@ Partial Class Form1
         UiButton1.Text = "   分类和子库菜单"
         UiButton1.TextAlign = ContentAlignment.MiddleLeft
         UiButton1.TipsColor = Color.Gray
+        UiButton1.TipsFont = New Font("宋体", 9F, FontStyle.Regular, GraphicsUnit.Point)
         ' 
         ' Panel1
         ' 
@@ -4902,6 +4937,7 @@ Partial Class Form1
         UiButton20.TabStop = False
         UiButton20.Text = "添加步骤"
         UiButton20.TipsColor = Color.Gray
+        UiButton20.TipsFont = New Font("宋体", 9F, FontStyle.Regular, GraphicsUnit.Point)
         ' 
         ' Panel24
         ' 
@@ -4998,6 +5034,7 @@ Partial Class Form1
         UiButton22.TabStop = False
         UiButton22.Text = "全部复制"
         UiButton22.TipsColor = Color.Gray
+        UiButton22.TipsFont = New Font("宋体", 9F, FontStyle.Regular, GraphicsUnit.Point)
         ' 
         ' Panel16
         ' 
@@ -5141,6 +5178,7 @@ Partial Class Form1
         UiButton18.TabStop = False
         UiButton18.Text = "添加文件"
         UiButton18.TipsColor = Color.Gray
+        UiButton18.TipsFont = New Font("宋体", 9F, FontStyle.Regular, GraphicsUnit.Point)
         ' 
         ' UiButton23
         ' 
@@ -5308,6 +5346,7 @@ Partial Class Form1
         UiButton16.TabStop = False
         UiButton16.Text = "移除选中"
         UiButton16.TipsColor = Color.Gray
+        UiButton16.TipsFont = New Font("宋体", 9F, FontStyle.Regular, GraphicsUnit.Point)
         ' 
         ' Panel26
         ' 
@@ -5833,6 +5872,7 @@ Partial Class Form1
         UiTabControl2.Style = Sunny.UI.UIStyle.Custom
         UiTabControl2.TabIndex = 0
         UiTabControl2.TabUnSelectedForeColor = Color.FromArgb(CByte(240), CByte(240), CByte(240))
+        UiTabControl2.TipsFont = New Font("宋体", 9F, FontStyle.Regular, GraphicsUnit.Point)
         ' 
         ' TabPage25
         ' 
@@ -5942,39 +5982,6 @@ Partial Class Form1
         UiButton45.Text = "RUN SMAPI"
         UiButton45.TipsColor = Color.Gray
         UiButton45.TipsFont = New Font("微软雅黑", 9F, FontStyle.Regular, GraphicsUnit.Point)
-        ' 
-        ' UiButton38
-        ' 
-        UiButton38.FillColor = Color.FromArgb(CByte(48), CByte(48), CByte(48))
-        UiButton38.FillColor2 = Color.FromArgb(CByte(48), CByte(48), CByte(48))
-        UiButton38.FillDisableColor = Color.FromArgb(CByte(48), CByte(48), CByte(48))
-        UiButton38.FillHoverColor = Color.FromArgb(CByte(64), CByte(64), CByte(64))
-        UiButton38.FillPressColor = Color.FromArgb(CByte(80), CByte(80), CByte(80))
-        UiButton38.FillSelectedColor = Color.FromArgb(CByte(48), CByte(48), CByte(48))
-        UiButton38.Font = New Font("微软雅黑", 9.75F, FontStyle.Regular, GraphicsUnit.Point)
-        UiButton38.ForeColor = Color.FromArgb(CByte(224), CByte(224), CByte(224))
-        UiButton38.ForeDisableColor = Color.Gray
-        UiButton38.ForeHoverColor = Color.FromArgb(CByte(244), CByte(244), CByte(244))
-        UiButton38.ForePressColor = Color.FromArgb(CByte(244), CByte(244), CByte(244))
-        UiButton38.ForeSelectedColor = Color.FromArgb(CByte(244), CByte(244), CByte(244))
-        UiButton38.Location = New Point(20, 20)
-        UiButton38.Margin = New Padding(20, 20, 20, 0)
-        UiButton38.MinimumSize = New Size(1, 1)
-        UiButton38.Name = "UiButton38"
-        UiButton38.Radius = 10
-        UiButton38.RadiusSides = Sunny.UI.UICornerRadiusSides.None
-        UiButton38.RectColor = Color.FromArgb(CByte(48), CByte(48), CByte(48))
-        UiButton38.RectDisableColor = Color.FromArgb(CByte(48), CByte(48), CByte(48))
-        UiButton38.RectHoverColor = Color.FromArgb(CByte(64), CByte(64), CByte(64))
-        UiButton38.RectPressColor = Color.FromArgb(CByte(80), CByte(80), CByte(80))
-        UiButton38.RectSelectedColor = Color.FromArgb(CByte(48), CByte(48), CByte(48))
-        UiButton38.Size = New Size(150, 30)
-        UiButton38.Style = Sunny.UI.UIStyle.Custom
-        UiButton38.TabIndex = 42
-        UiButton38.TabStop = False
-        UiButton38.Text = "保存本页设置"
-        UiButton38.TipsColor = Color.Gray
-        UiButton38.TipsFont = New Font("微软雅黑", 9F, FontStyle.Regular, GraphicsUnit.Point)
         ' 
         ' Form1
         ' 

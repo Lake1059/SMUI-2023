@@ -73,6 +73,7 @@ Public Class 设置
             Form1.Width = 全局设置数据("MainWindowWidth")
             Form1.Height = 全局设置数据("MainWindowHeight")
         End If
+        刷新字体显示(Form1)
         刷新设置显示()
     End Sub
 
