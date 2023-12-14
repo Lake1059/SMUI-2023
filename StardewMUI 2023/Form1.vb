@@ -20,7 +20,7 @@ Public Class Form1
     End Sub
 
     Private Sub Form1_Closing(sender As Object, e As CancelEventArgs) Handles MyBase.Closing
-
+        键值对IO操作.从字典键值对写入文件(设置.全局设置数据, 设置.设置文件存储路径)
     End Sub
 
     Private Sub Form1_Closed(sender As Object, e As EventArgs) Handles MyBase.Closed

@@ -1,4 +1,5 @@
-﻿Imports System.Runtime.InteropServices
+﻿Imports System.Drawing.Text
+Imports System.Runtime.InteropServices
 Imports CefSharp.WinForms
 Imports Sunny.UI
 

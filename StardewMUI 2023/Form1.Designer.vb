@@ -346,6 +346,7 @@ Partial Class Form1
         TabPage调试输出 = New TabPage()
         UiRichTextBox2 = New Sunny.UI.UIRichTextBox()
         UiButton45 = New Sunny.UI.UIButton()
+        UiButton38 = New Sunny.UI.UIButton()
         UiTabControl1.SuspendLayout()
         TabPage1.SuspendLayout()
         Panel29.SuspendLayout()
@@ -2481,7 +2482,7 @@ Partial Class Form1
         UiComboBox5.ItemSelectForeColor = Color.FromArgb(CByte(224), CByte(224), CByte(224))
         UiComboBox5.Location = New Point(20, 61)
         UiComboBox5.Margin = New Padding(20, 0, 0, 0)
-        UiComboBox5.MaxDropDownItems = 10
+        UiComboBox5.MaxDropDownItems = 20
         UiComboBox5.MinimumSize = New Size(63, 0)
         UiComboBox5.Name = "UiComboBox5"
         UiComboBox5.Padding = New Padding(0, 0, 30, 2)
@@ -2512,6 +2513,7 @@ Partial Class Form1
         ' TabPage20
         ' 
         TabPage20.BackColor = Color.FromArgb(CByte(24), CByte(24), CByte(24))
+        TabPage20.Controls.Add(UiButton38)
         TabPage20.Controls.Add(UiTextBox19)
         TabPage20.Controls.Add(UiTextBox18)
         TabPage20.Controls.Add(UiCheckBox15)
@@ -2545,7 +2547,7 @@ Partial Class Form1
         UiTextBox19.ForeColor = Color.FromArgb(CByte(224), CByte(224), CByte(224))
         UiTextBox19.ForeDisableColor = Color.Gray
         UiTextBox19.ForeReadOnlyColor = Color.Gray
-        UiTextBox19.Location = New Point(236, 298)
+        UiTextBox19.Location = New Point(236, 348)
         UiTextBox19.Margin = New Padding(0, 10, 20, 0)
         UiTextBox19.MinimumSize = New Size(1, 16)
         UiTextBox19.Name = "UiTextBox19"
@@ -2578,7 +2580,7 @@ Partial Class Form1
         UiTextBox18.ForeColor = Color.FromArgb(CByte(224), CByte(224), CByte(224))
         UiTextBox18.ForeDisableColor = Color.Gray
         UiTextBox18.ForeReadOnlyColor = Color.Gray
-        UiTextBox18.Location = New Point(20, 298)
+        UiTextBox18.Location = New Point(20, 348)
         UiTextBox18.Margin = New Padding(20, 10, 10, 0)
         UiTextBox18.MinimumSize = New Size(1, 16)
         UiTextBox18.Name = "UiTextBox18"
@@ -2604,7 +2606,7 @@ Partial Class Form1
         UiCheckBox15.Checked = True
         UiCheckBox15.Font = New Font("微软雅黑", 12F, FontStyle.Regular, GraphicsUnit.Point)
         UiCheckBox15.ForeColor = Color.FromArgb(CByte(224), CByte(224), CByte(224))
-        UiCheckBox15.Location = New Point(252, 225)
+        UiCheckBox15.Location = New Point(252, 275)
         UiCheckBox15.Margin = New Padding(20, 20, 20, 0)
         UiCheckBox15.MinimumSize = New Size(1, 1)
         UiCheckBox15.Name = "UiCheckBox15"
@@ -2618,7 +2620,7 @@ Partial Class Form1
         UiCheckBox14.Checked = True
         UiCheckBox14.Font = New Font("微软雅黑", 12F, FontStyle.Regular, GraphicsUnit.Point)
         UiCheckBox14.ForeColor = Color.FromArgb(CByte(224), CByte(224), CByte(224))
-        UiCheckBox14.Location = New Point(136, 225)
+        UiCheckBox14.Location = New Point(136, 275)
         UiCheckBox14.Margin = New Padding(20, 20, 20, 0)
         UiCheckBox14.MinimumSize = New Size(1, 1)
         UiCheckBox14.Name = "UiCheckBox14"
@@ -2639,7 +2641,7 @@ Partial Class Form1
         UiTextBox17.ForeColor = Color.FromArgb(CByte(224), CByte(224), CByte(224))
         UiTextBox17.ForeDisableColor = Color.Gray
         UiTextBox17.ForeReadOnlyColor = Color.Gray
-        UiTextBox17.Location = New Point(20, 464)
+        UiTextBox17.Location = New Point(20, 514)
         UiTextBox17.Margin = New Padding(20, 10, 20, 0)
         UiTextBox17.MinimumSize = New Size(1, 16)
         UiTextBox17.Name = "UiTextBox17"
@@ -2665,7 +2667,7 @@ Partial Class Form1
         UiCheckBox13.Checked = True
         UiCheckBox13.Font = New Font("微软雅黑", 12F, FontStyle.Regular, GraphicsUnit.Point)
         UiCheckBox13.ForeColor = Color.FromArgb(CByte(224), CByte(224), CByte(224))
-        UiCheckBox13.Location = New Point(20, 431)
+        UiCheckBox13.Location = New Point(20, 481)
         UiCheckBox13.Margin = New Padding(20, 20, 20, 0)
         UiCheckBox13.MinimumSize = New Size(1, 1)
         UiCheckBox13.Name = "UiCheckBox13"
@@ -2686,7 +2688,7 @@ Partial Class Form1
         UiTextBox16.ForeColor = Color.FromArgb(CByte(224), CByte(224), CByte(224))
         UiTextBox16.ForeDisableColor = Color.Gray
         UiTextBox16.ForeReadOnlyColor = Color.Gray
-        UiTextBox16.Location = New Point(20, 381)
+        UiTextBox16.Location = New Point(20, 431)
         UiTextBox16.Margin = New Padding(20, 10, 20, 0)
         UiTextBox16.MinimumSize = New Size(1, 16)
         UiTextBox16.Name = "UiTextBox16"
@@ -2712,7 +2714,7 @@ Partial Class Form1
         UiCheckBox12.Checked = True
         UiCheckBox12.Font = New Font("微软雅黑", 12F, FontStyle.Regular, GraphicsUnit.Point)
         UiCheckBox12.ForeColor = Color.FromArgb(CByte(224), CByte(224), CByte(224))
-        UiCheckBox12.Location = New Point(20, 348)
+        UiCheckBox12.Location = New Point(20, 398)
         UiCheckBox12.Margin = New Padding(20, 20, 20, 0)
         UiCheckBox12.MinimumSize = New Size(1, 1)
         UiCheckBox12.Name = "UiCheckBox12"
@@ -2733,7 +2735,7 @@ Partial Class Form1
         UiTextBox15.ForeColor = Color.FromArgb(CByte(224), CByte(224), CByte(224))
         UiTextBox15.ForeDisableColor = Color.Gray
         UiTextBox15.ForeReadOnlyColor = Color.Gray
-        UiTextBox15.Location = New Point(20, 258)
+        UiTextBox15.Location = New Point(20, 308)
         UiTextBox15.Margin = New Padding(20, 10, 20, 0)
         UiTextBox15.MinimumSize = New Size(1, 16)
         UiTextBox15.Name = "UiTextBox15"
@@ -2759,7 +2761,7 @@ Partial Class Form1
         UiCheckBox11.Checked = True
         UiCheckBox11.Font = New Font("微软雅黑", 12F, FontStyle.Regular, GraphicsUnit.Point)
         UiCheckBox11.ForeColor = Color.FromArgb(CByte(224), CByte(224), CByte(224))
-        UiCheckBox11.Location = New Point(20, 225)
+        UiCheckBox11.Location = New Point(20, 275)
         UiCheckBox11.Margin = New Padding(20, 20, 20, 0)
         UiCheckBox11.MinimumSize = New Size(1, 1)
         UiCheckBox11.Name = "UiCheckBox11"
@@ -2780,7 +2782,7 @@ Partial Class Form1
         UiTextBox14.ForeColor = Color.FromArgb(CByte(224), CByte(224), CByte(224))
         UiTextBox14.ForeDisableColor = Color.Gray
         UiTextBox14.ForeReadOnlyColor = Color.Gray
-        UiTextBox14.Location = New Point(20, 175)
+        UiTextBox14.Location = New Point(20, 225)
         UiTextBox14.Margin = New Padding(20, 10, 20, 0)
         UiTextBox14.MinimumSize = New Size(1, 16)
         UiTextBox14.Name = "UiTextBox14"
@@ -2806,7 +2808,7 @@ Partial Class Form1
         UiCheckBox3.Checked = True
         UiCheckBox3.Font = New Font("微软雅黑", 12F, FontStyle.Regular, GraphicsUnit.Point)
         UiCheckBox3.ForeColor = Color.FromArgb(CByte(224), CByte(224), CByte(224))
-        UiCheckBox3.Location = New Point(20, 142)
+        UiCheckBox3.Location = New Point(20, 192)
         UiCheckBox3.Margin = New Padding(20, 20, 20, 0)
         UiCheckBox3.MinimumSize = New Size(1, 1)
         UiCheckBox3.Name = "UiCheckBox3"
@@ -2819,7 +2821,7 @@ Partial Class Form1
         ' 
         UiRadioButton4.Font = New Font("微软雅黑", 12F, FontStyle.Regular, GraphicsUnit.Point)
         UiRadioButton4.ForeColor = Color.FromArgb(CByte(224), CByte(224), CByte(224))
-        UiRadioButton4.Location = New Point(20, 99)
+        UiRadioButton4.Location = New Point(20, 149)
         UiRadioButton4.Margin = New Padding(20, 15, 20, 0)
         UiRadioButton4.MinimumSize = New Size(1, 1)
         UiRadioButton4.Name = "UiRadioButton4"
@@ -2833,7 +2835,7 @@ Partial Class Form1
         UiRadioButton3.Checked = True
         UiRadioButton3.Font = New Font("微软雅黑", 12F, FontStyle.Regular, GraphicsUnit.Point)
         UiRadioButton3.ForeColor = Color.FromArgb(CByte(224), CByte(224), CByte(224))
-        UiRadioButton3.Location = New Point(20, 61)
+        UiRadioButton3.Location = New Point(20, 111)
         UiRadioButton3.Margin = New Padding(20, 15, 20, 0)
         UiRadioButton3.MinimumSize = New Size(1, 1)
         UiRadioButton3.Name = "UiRadioButton3"
@@ -2846,7 +2848,7 @@ Partial Class Form1
         ' 
         Label37.AutoSize = True
         Label37.Font = New Font("微软雅黑", 12F, FontStyle.Regular, GraphicsUnit.Point)
-        Label37.Location = New Point(20, 20)
+        Label37.Location = New Point(20, 70)
         Label37.Margin = New Padding(20, 20, 20, 0)
         Label37.Name = "Label37"
         Label37.Size = New Size(138, 21)
@@ -5646,9 +5648,9 @@ Partial Class Form1
         ' 
         TabPage23.BackColor = Color.FromArgb(CByte(24), CByte(24), CByte(24))
         TabPage23.Controls.Add(Panel37)
-        TabPage23.Location = New Point(301, 0)
+        TabPage23.Location = New Point(901, 0)
         TabPage23.Name = "TabPage23"
-        TabPage23.Size = New Size(963, 631)
+        TabPage23.Size = New Size(0, 60)
         TabPage23.TabIndex = 1
         TabPage23.Text = "下载和更新队列"
         ' 
@@ -5659,7 +5661,7 @@ Partial Class Form1
         Panel37.Location = New Point(0, 0)
         Panel37.Name = "Panel37"
         Panel37.Padding = New Padding(30)
-        Panel37.Size = New Size(963, 631)
+        Panel37.Size = New Size(0, 60)
         Panel37.TabIndex = 1
         ' 
         ' Panel35
@@ -5674,7 +5676,7 @@ Partial Class Form1
         Panel35.Location = New Point(30, 30)
         Panel35.Name = "Panel35"
         Panel35.Padding = New Padding(10)
-        Panel35.Size = New Size(903, 90)
+        Panel35.Size = New Size(0, 90)
         Panel35.TabIndex = 0
         ' 
         ' UiButton43
@@ -5692,7 +5694,7 @@ Partial Class Form1
         UiButton43.ForeHoverColor = Color.FromArgb(CByte(244), CByte(244), CByte(244))
         UiButton43.ForePressColor = Color.FromArgb(CByte(244), CByte(244), CByte(244))
         UiButton43.ForeSelectedColor = Color.FromArgb(CByte(244), CByte(244), CByte(244))
-        UiButton43.Location = New Point(683, 10)
+        UiButton43.Location = New Point(-220, 10)
         UiButton43.Margin = New Padding(10, 10, 0, 10)
         UiButton43.MinimumSize = New Size(1, 1)
         UiButton43.Name = "UiButton43"
@@ -5726,7 +5728,7 @@ Partial Class Form1
         UiButton42.ForeHoverColor = Color.FromArgb(CByte(244), CByte(244), CByte(244))
         UiButton42.ForePressColor = Color.FromArgb(CByte(244), CByte(244), CByte(244))
         UiButton42.ForeSelectedColor = Color.FromArgb(CByte(244), CByte(244), CByte(244))
-        UiButton42.Location = New Point(793, 10)
+        UiButton42.Location = New Point(-110, 10)
         UiButton42.Margin = New Padding(10)
         UiButton42.MinimumSize = New Size(1, 1)
         UiButton42.Name = "UiButton42"
@@ -5787,9 +5789,9 @@ Partial Class Form1
         ' TabPage24
         ' 
         TabPage24.BackColor = Color.FromArgb(CByte(24), CByte(24), CByte(24))
-        TabPage24.Location = New Point(301, 0)
+        TabPage24.Location = New Point(901, 0)
         TabPage24.Name = "TabPage24"
-        TabPage24.Size = New Size(963, 631)
+        TabPage24.Size = New Size(0, 60)
         TabPage24.TabIndex = 2
         TabPage24.Text = "管理下载的文件"
         ' 
@@ -5940,6 +5942,39 @@ Partial Class Form1
         UiButton45.Text = "RUN SMAPI"
         UiButton45.TipsColor = Color.Gray
         UiButton45.TipsFont = New Font("微软雅黑", 9F, FontStyle.Regular, GraphicsUnit.Point)
+        ' 
+        ' UiButton38
+        ' 
+        UiButton38.FillColor = Color.FromArgb(CByte(48), CByte(48), CByte(48))
+        UiButton38.FillColor2 = Color.FromArgb(CByte(48), CByte(48), CByte(48))
+        UiButton38.FillDisableColor = Color.FromArgb(CByte(48), CByte(48), CByte(48))
+        UiButton38.FillHoverColor = Color.FromArgb(CByte(64), CByte(64), CByte(64))
+        UiButton38.FillPressColor = Color.FromArgb(CByte(80), CByte(80), CByte(80))
+        UiButton38.FillSelectedColor = Color.FromArgb(CByte(48), CByte(48), CByte(48))
+        UiButton38.Font = New Font("微软雅黑", 9.75F, FontStyle.Regular, GraphicsUnit.Point)
+        UiButton38.ForeColor = Color.FromArgb(CByte(224), CByte(224), CByte(224))
+        UiButton38.ForeDisableColor = Color.Gray
+        UiButton38.ForeHoverColor = Color.FromArgb(CByte(244), CByte(244), CByte(244))
+        UiButton38.ForePressColor = Color.FromArgb(CByte(244), CByte(244), CByte(244))
+        UiButton38.ForeSelectedColor = Color.FromArgb(CByte(244), CByte(244), CByte(244))
+        UiButton38.Location = New Point(20, 20)
+        UiButton38.Margin = New Padding(20, 20, 20, 0)
+        UiButton38.MinimumSize = New Size(1, 1)
+        UiButton38.Name = "UiButton38"
+        UiButton38.Radius = 10
+        UiButton38.RadiusSides = Sunny.UI.UICornerRadiusSides.None
+        UiButton38.RectColor = Color.FromArgb(CByte(48), CByte(48), CByte(48))
+        UiButton38.RectDisableColor = Color.FromArgb(CByte(48), CByte(48), CByte(48))
+        UiButton38.RectHoverColor = Color.FromArgb(CByte(64), CByte(64), CByte(64))
+        UiButton38.RectPressColor = Color.FromArgb(CByte(80), CByte(80), CByte(80))
+        UiButton38.RectSelectedColor = Color.FromArgb(CByte(48), CByte(48), CByte(48))
+        UiButton38.Size = New Size(150, 30)
+        UiButton38.Style = Sunny.UI.UIStyle.Custom
+        UiButton38.TabIndex = 42
+        UiButton38.TabStop = False
+        UiButton38.Text = "保存本页设置"
+        UiButton38.TipsColor = Color.Gray
+        UiButton38.TipsFont = New Font("微软雅黑", 9F, FontStyle.Regular, GraphicsUnit.Point)
         ' 
         ' Form1
         ' 
@@ -6369,4 +6404,5 @@ Partial Class Form1
     Friend WithEvents UiButton32 As Sunny.UI.UIButton
     Friend WithEvents UiButton31 As Sunny.UI.UIButton
     Friend WithEvents UiButton35 As Sunny.UI.UIButton
+    Friend WithEvents UiButton38 As Sunny.UI.UIButton
 End Class

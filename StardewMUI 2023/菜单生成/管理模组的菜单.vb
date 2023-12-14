@@ -1,5 +1,4 @@
-﻿Imports Microsoft.VisualBasic.Devices
-
+﻿
 Public Class 管理模组的菜单
 
     Public Shared Property 分类和子库菜单 As New 暗黑菜单条控件本体 With {.ImageScalingSize = New Size(25 * 界面控制.X轴DPI比率, 25 * 界面控制.Y轴DPI比率)}
@@ -252,6 +251,18 @@ Public Class 管理模组的菜单
         AddHandler Form1.UiButton10.MouseDown, Sub(sender, e) 描述菜单.Show(sender, New Point(0, sender.Height))
     End Sub
 
-
+    Public Shared Sub 设置字体()
+        分类和子库菜单.Font = New Font(设置.全局设置数据("FontName"), Form1.Font.Size)
+        数据子库操作菜单.Font = New Font(设置.全局设置数据("FontName"), Form1.Font.Size)
+        更多分类操作菜单.Font = New Font(设置.全局设置数据("FontName"), Form1.Font.Size)
+        分类右键菜单.Font = New Font(设置.全局设置数据("FontName"), Form1.Font.Size)
+        分类上下移动菜单.Font = New Font(设置.全局设置数据("FontName"), Form1.Font.Size)
+        项菜单.Font = New Font(设置.全局设置数据("FontName"), Form1.Font.Size)
+        本地更新项菜单.Font = New Font(设置.全局设置数据("FontName"), Form1.Font.Size)
+        项右键菜单.Font = New Font(设置.全局设置数据("FontName"), Form1.Font.Size)
+        编辑项功能菜单.Font = New Font(设置.全局设置数据("FontName"), Form1.Font.Size)
+        项筛选菜单.Font = New Font(设置.全局设置数据("FontName"), Form1.Font.Size)
+        描述菜单.Font = New Font(设置.全局设置数据("FontName"), Form1.Font.Size)
+    End Sub
 
 End Class
