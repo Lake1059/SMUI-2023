@@ -4,7 +4,7 @@
     <ROW Name="HiddenItems" Value="AppXProductDetailsComponent;AppXDependenciesComponent;AppXAppDetailsComponent;AppXVisualAssetsComponent;AppXCapabilitiesComponent;AppXAppDeclarationsComponent;AppXUriRulesComponent;ActSyncAppComponent;CPLAppletComponent;AutorunComponent;GameUxComponent;SilverlightSlnComponent;SharePointSlnComponent;FixupComponent;MsiXDiffComponent;MsixManifestEditorComponent"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiPropsComponent">
-    <ROW Property="AI_APP_FILE" Value="[#StardewMUI2023.exe]"/>
+    <ROW Property="AI_APP_FILE" Value="[#SMUI6.exe]"/>
     <ROW Property="AI_BITMAP_DISPLAY_MODE" Value="0"/>
     <ROW Property="AI_CF_TYPE" Value="1" MultiBuildValue="DefaultBuild:0" MsiKey="AI_CF_TYPE"/>
     <ROW Property="AI_DESKTOP_SH" Type="4" MsiKey="AI_DESKTOP_SH"/>
@@ -17,6 +17,7 @@
     <ROW Property="ARPNOREPAIR" Value="1" MultiBuildValue="DefaultBuild:1"/>
     <ROW Property="ARPPRODUCTICON" Value="dropbox.exe" Type="8"/>
     <ROW Property="ARPSYSTEMCOMPONENT" Value="1"/>
+    <ROW Property="AiSkipExitDlg" Value="1" Type="4" MsiKey="AiSkipExitDlg"/>
     <ROW Property="CTRLS" Value="2"/>
     <ROW Property="MYappLogo" Value="dropbox.png" Type="1"/>
     <ROW Property="Manufacturer" Value="1059 Studio"/>
@@ -315,6 +316,7 @@
     <ROW Action="AI_ExtractLzma" Type="1025" Source="lzmaextractor.dll" Target="ExtractLZMAFiles"/>
     <ROW Action="AI_ExtractPrereq" Type="65" Source="Prereq.dll" Target="ExtractPrereq"/>
     <ROW Action="AI_FindExeLzma" Type="1" Source="lzmaextractor.dll" Target="FindEXE"/>
+    <ROW Action="AI_FinishActions" Type="1" Source="aicustact.dll" Target="RunAllExitActions"/>
     <ROW Action="AI_GetArpIconPath" Type="1" Source="aicustact.dll" Target="GetArpIconPath"/>
     <ROW Action="AI_InstallModeCheck" Type="1" Source="aicustact.dll" Target="UpdateInstallMode" WithoutSeq="true"/>
     <ROW Action="AI_InstallPostPrerequisite" Type="1" Source="Prereq.dll" Target="InstallPostPrereq"/>
@@ -328,6 +330,7 @@
     <ROW Action="AI_SHOW_LOG" Type="65" Source="aicustact.dll" Target="LaunchLogFile" WithoutSeq="true"/>
     <ROW Action="AI_STORE_LOCATION" Type="51" Source="ARPINSTALLLOCATION" Target="[APPDIR]"/>
     <ROW Action="AI_VerifyPrereq" Type="1" Source="Prereq.dll" Target="VerifyPrereq"/>
+    <ROW Action="AI_ViewReadme" Type="1" Source="aicustact.dll" Target="ViewReadMe"/>
     <ROW Action="SET_APPDIR" Type="307" Source="APPDIR" Target="[ProgramFilesFolder][Manufacturer]\[ProductName]" MultiBuildTarget="DefaultBuild:[AppDataFolder][Manufacturer]\[ProductName]"/>
     <ROW Action="SET_SHORTCUTDIR" Type="307" Source="SHORTCUTDIR" Target="[ProgramMenuFolder][ProductName]"/>
     <ROW Action="SET_TARGETDIR_TO_APPDIR" Type="51" Source="TARGETDIR" Target="[APPDIR]"/>
@@ -411,7 +414,7 @@
     <ROW Action="AI_EnableDebugLog" Sequence="53"/>
     <ROW Action="AI_CloseBtnBorderC" Condition="DarkTheme" Sequence="54" MsiKey="AI_CloseBtnBorderC"/>
     <ROW Action="AI_MinBtnBaseC" Condition="DarkTheme" Sequence="55" MsiKey="AI_MinBtnBaseC"/>
-    <ROW Action="AI_MinBtnBorderC" Condition="DarkTheme" Sequence="61" MsiKey="AI_MinBtnBorderC"/>
+    <ROW Action="AI_MinBtnBorderC" Condition="DarkTheme" Sequence="62" MsiKey="AI_MinBtnBorderC"/>
     <ROW Action="AI_MinBtnC" Condition="DarkTheme" Sequence="57" MsiKey="AI_MinBtnC"/>
     <ROW Action="AI_FrameBaseC" Condition="DarkTheme" Sequence="58" MsiKey="AI_FrameBaseC"/>
     <ROW Action="AI_FrameBorder1C" Condition="DarkTheme" Sequence="59" MsiKey="AI_FrameBorder1C"/>
@@ -428,14 +431,15 @@
     <ROW Action="AI_DownloadPrereq" Sequence="1297"/>
     <ROW Action="AI_ExtractPrereq" Sequence="1298"/>
     <ROW Action="AI_InstallPrerequisite" Sequence="1299"/>
-    <ROW Action="AI_InstallPostPrerequisite" Sequence="1301"/>
-    <ROW Action="AI_CleanPrereq" Sequence="1302"/>
+    <ROW Action="AI_InstallPostPrerequisite" Sequence="1302"/>
+    <ROW Action="AI_CleanPrereq" Sequence="1303"/>
     <ROW Action="AI_AppSearchEx" Sequence="101"/>
     <ROW Action="AI_ControlVisualStyleExDark" Condition="DarkTheme" Sequence="69" MsiKey="AI_ControlVisualStyleExDark"/>
     <ROW Action="AI_CustomFrameType" Condition="VersionNT64&gt;=1100" Sequence="71" MsiKey="AI_CustomFrameType"/>
     <ROW Action="AI_ChooseTextStyles" Sequence="74"/>
-    <ROW Action="AI_CloseBtnC" Condition="DarkTheme" Sequence="60" MsiKey="AI_CloseBtnC"/>
+    <ROW Action="AI_CloseBtnC" Condition="DarkTheme" Sequence="61" MsiKey="AI_CloseBtnC"/>
     <ROW Action="AI_WinuiReqTheme" Condition="DarkTheme" Sequence="68" MsiKey="AI_WinuiReqTheme"/>
+    <ROW Action="AI_FinishActions" Condition="AI_INSTALL AND AiSkipExitDlg" Sequence="1301"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiLaunchConditionsComponent">
     <ROW Condition="( Version9X OR VersionNT64 )" Description="[ProductName] 无法安装在 [WindowsTypeNTDisplay]." DescriptionLocId="AI.LaunchCondition.NoNT" IsPredefined="true" Builds="DefaultBuild"/>

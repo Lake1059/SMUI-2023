@@ -229,4 +229,8 @@ Public Class 设置
         全局设置数据("UploadScreen") = Form1.UiCheckBox13.Checked
     End Sub
 
+    Public Shared Sub 选择游戏文件夹路径()
+
+    End Sub
+
 End Class
