@@ -11,6 +11,10 @@ Public Class 浏览器控制
     Public Shared Property 界面刷新计时器 As New Timer With {.Interval = 500, .Enabled = False}
     Public Shared Property 计算额外参数计时器 As New Timer With {.Interval = 500, .Enabled = False}
     Public Shared Sub 初始化功能()
+
+
+
+
         AddHandler Form1.UiTabControl1.SelectedIndexChanged,
             Sub(sender, e)
                 If Form1.UiTabControl1.SelectedIndex = 5 Then
@@ -26,7 +30,7 @@ Public Class 浏览器控制
             End Sub
         AddHandler Form1.UiButton40.Click,
             Sub()
-                界面控制.CEF浏览器控件.Refresh()
+                界面控制.CEF浏览器控件.Reload()
             End Sub
         AddHandler Form1.UiButton50.Click,
             Sub()
@@ -50,7 +54,13 @@ Public Class 浏览器控制
             End Sub
         AddHandler Form1.UiButton54.Click,
             Sub()
-                界面控制.CEF浏览器控件.Load("about:blank")
+                Dim processes() As Process = Process.GetProcessesByName("CefSharp.BrowserSubprocess")
+                If processes.Length > 0 Then
+                    For Each proc As Process In processes
+                        DebugPrint(proc.MainModule.FileName, Form1.ForeColor)
+                        If proc.MainModule.FileName = Application.StartupPath & "runtimes\win-x64\native\CefSharp.BrowserSubprocess.exe" Then proc.Kill()
+                    Next
+                End If
             End Sub
         AddHandler 界面刷新计时器.Tick,
             Sub()
@@ -66,6 +76,22 @@ Public Class 浏览器控制
         AddHandler 界面控制.CEF浏览器控件.AddressChanged, AddressOf CEF_AddressChanged
         AddHandler 计算额外参数计时器.Tick, AddressOf 计算额外参数
     End Sub
+
+
+
+    Public Shared Sub 初始化嵌入浏览器窗口()
+
+
+
+
+
+
+
+    End Sub
+
+
+
+
 
     Public Shared Sub CEF_LoadingStateChanged(sender As Object, e As CefSharp.LoadingStateChangedEventArgs)
         当前地址 = 界面控制.CEF浏览器控件.Address
