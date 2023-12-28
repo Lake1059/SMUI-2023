@@ -72,6 +72,10 @@ Public Class 界面控制
         管理模组的菜单.添加菜单的触发()
 
 
+
+
+
+
     End Sub
 
     Public Shared Sub 设置富文本框行高(RichTextBoxObject As Control, LineHeight As Integer)

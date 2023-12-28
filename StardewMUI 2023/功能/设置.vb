@@ -1,6 +1,8 @@
 ﻿
 Imports System.Drawing.Text
+Imports System.IO
 Imports System.Reflection
+Imports System.Xml
 Imports Sunny.UI
 
 Public Class 设置
@@ -36,6 +38,7 @@ Public Class 设置
         AddHandler Form1.UiButton35.Click, AddressOf 保存数值和开关设置
         AddHandler Form1.UiButton37.Click, AddressOf 保存字体设置
         AddHandler Form1.UiButton38.Click, AddressOf 保存隐私设置
+        AddHandler Form1.UiButton25.Click, AddressOf 选择游戏文件夹路径
     End Sub
 
     Public Shared Sub 启动时加载设置()
@@ -76,6 +79,7 @@ Public Class 设置
         End If
         刷新字体显示(Form1)
         刷新设置显示()
+        UIMessageTip.DefaultStyle = New TipStyle With {.TextFont = New Font(Form1.Font.Name, 10), .BackColor = ColorTranslator.FromWin32(RGB(24, 24, 24)), .TextColor = Form1.ForeColor, .Padding = New Padding(15)}
     End Sub
 
     Public Shared Sub 启动时检查用户文件夹()
@@ -159,6 +163,7 @@ Public Class 设置
         全局设置数据("StardewValleyGameBackupPath") = Form1.UiTextBox4.Text
         全局设置数据("VisualStudioCodeEXE") = Form1.UiTextBox7.Text
         全局设置数据("VisualStudioEXE") = Form1.UiTextBox8.Text
+        UIMessageTip.Show("更改已写入内存，正常退出时写入文件",, 2500)
     End Sub
 
     Public Shared Sub 保存语言和服务器设置()
@@ -230,7 +235,65 @@ Public Class 设置
     End Sub
 
     Public Shared Sub 选择游戏文件夹路径()
+        Dim p1 As New List(Of String) From {"这里没有列出，手动选择游戏文件夹"}
+        Dim MyReg As Microsoft.Win32.RegistryKey = Microsoft.Win32.Registry.LocalMachine.OpenSubKey("SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\Steam App 413150")
+        If MyReg IsNot Nothing Then p1.Add(MyReg.GetValue("InstallLocation").ToString())
+        Dim MyReg2 As Microsoft.Win32.RegistryKey = Microsoft.Win32.Registry.LocalMachine.OpenSubKey("SOFTWARE\GOG.com\Games\1453375253")
+        If MyReg2 IsNot Nothing Then p1.Add(MyReg2.GetValue("PATH").ToString())
+        '这届的小白真是日了狗了，连个游戏文件夹都找不到，就TM这技术还玩单机游戏
+        Dim AllDrives() As DriveInfo = DriveInfo.GetDrives()
+        For Each D1 As DriveInfo In AllDrives
+            If My.Computer.FileSystem.FileExists(Path.Combine(D1.Name, "Program Files\Steam\steamapps\common\Stardew Valley\Stardew Valley.exe")) = True Then
+                If Not p1.Contains(Path.Combine(D1.Name, "Program Files\Steam\steamapps\common\Stardew Valley\Stardew Valley.exe")) Then
+                    p1.Add(Path.Combine(D1.Name, "Program Files\Steam\steamapps\common\Stardew Valley"))
+                End If
+            End If
+            If My.Computer.FileSystem.FileExists(Path.Combine(D1.Name, "Program Files (x86)\Steam\steamapps\common\Stardew Valley\Stardew Valley.exe")) = True Then
+                If Not p1.Contains(Path.Combine(D1.Name, "Program Files (x86)\Steam\steamapps\common\Stardew Valley\Stardew Valley.exe")) Then
+                    p1.Add(Path.Combine(D1.Name, "Program Files (x86)\Steam\steamapps\common\Stardew Valley"))
+                End If
+            End If
+            If My.Computer.FileSystem.FileExists(Path.Combine(D1.Name, "SteamLibrary\steamapps\common\Stardew Valley\Stardew Valley.exe")) = True Then
+                If Not p1.Contains(Path.Combine(D1.Name, "SteamLibrary\steamapps\common\Stardew Valley\Stardew Valley.exe")) Then
+                    p1.Add(Path.Combine(D1.Name, "SteamLibrary\steamapps\common\Stardew Valley"))
+                End If
+            End If
+            If My.Computer.FileSystem.FileExists(Path.Combine(D1.Name, "Program Files\ModifiableWindowsApps\Stardew Valley\Stardew Valley.exe")) = True Then
+                If Not p1.Contains(Path.Combine(D1.Name, "Program Files\ModifiableWindowsApps\Stardew Valley\Stardew Valley.exe")) Then
+                    p1.Add(Path.Combine(D1.Name, "Program Files\ModifiableWindowsApps\Stardew Valley"))
+                End If
+            End If
+        Next
+R1:
+        Dim a As New 多项单选对话框("选择星露谷游戏文件夹", p1, "选择程序自动找到的或者你可以自己浏览文件夹", 100, 600)
+        Dim b As Integer = a.ShowDialog(Form1)
+        Select Case b
+            Case -1
+                Exit Sub
+            Case 0
+                UIMessageTip.Show("如要取消选择，直接关闭选择器窗口即可返回上一步",, 5000)
+                Dim str1 As String = ""
+                If DirEx.SelectDirEx("选择你的星露谷游戏文件夹", str1) Then
+                    If My.Computer.FileSystem.FileExists(str1 & "\Stardew Valley.exe") = True Or My.Computer.FileSystem.FileExists(str1 & "\StardewValley.exe") = True Then
+                        Form1.UiTextBox2.Text = str1
+                    Else
+                        Dim c As New 多项单选对话框("选择错误", {"返回"}, "此文件夹路径下不包含星露谷的可执行文件：Stardew Valley.exe", 100, 500)
+                        c.ShowDialog(Form1)
+                        GoTo R1
+                    End If
+                Else
+                    GoTo R1
+                End If
+            Case Else
+                Form1.UiTextBox2.Text = p1(b)
+        End Select
+    End Sub
+
+    Public Shared Sub 选择数据库路径()
+
+
 
     End Sub
+
 
 End Class

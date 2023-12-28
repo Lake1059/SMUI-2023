@@ -1,4 +1,6 @@
-﻿Imports CefSharp
+﻿Imports System.Reflection.Metadata
+Imports CefSharp
+Imports CefSharp.DevTools
 
 Public Class 浏览器控制
 
@@ -75,26 +77,22 @@ Public Class 浏览器控制
         AddHandler 界面控制.CEF浏览器控件.LoadingStateChanged, AddressOf CEF_LoadingStateChanged
         AddHandler 界面控制.CEF浏览器控件.AddressChanged, AddressOf CEF_AddressChanged
         AddHandler 计算额外参数计时器.Tick, AddressOf 计算额外参数
-    End Sub
-
-
-
-    Public Shared Sub 初始化嵌入浏览器窗口()
-
-
-
-
-
-
 
     End Sub
 
-
-
-
+    Public Shared Property HideAdsScript As String = "
+            var ads = document.querySelectorAll('.ad');
+            ads.forEach(function(ad) {
+                ad.style.display = 'none';
+            });
+        "
 
     Public Shared Sub CEF_LoadingStateChanged(sender As Object, e As CefSharp.LoadingStateChangedEventArgs)
         当前地址 = 界面控制.CEF浏览器控件.Address
+        If Not e.IsLoading Then
+            界面控制.CEF浏览器控件.ExecuteScriptAsync("document.documentElement.setAttribute('data-theme', 'dark');")
+            界面控制.CEF浏览器控件.ExecuteScriptAsync(HideAdsScript)
+        End If
         If e.IsLoading = False And 当前是否在更新或下载模组 = True Then
             Dim task02 = e.Browser.GetSourceAsync()
             task02.ContinueWith(
@@ -146,5 +144,6 @@ Public Class 浏览器控制
         获取到的expires = extractedExpires
 
     End Sub
+
 
 End Class
