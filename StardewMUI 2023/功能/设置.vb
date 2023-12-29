@@ -3,6 +3,7 @@ Imports System.Drawing.Text
 Imports System.IO
 Imports System.Reflection
 Imports System.Text
+Imports System.Windows.Forms.VisualStyles.VisualStyleElement
 Imports System.Xml
 Imports Sunny.UI
 
@@ -41,6 +42,9 @@ Public Class 设置
         AddHandler Form1.UiButton38.Click, AddressOf 保存隐私设置
         AddHandler Form1.UiButton25.Click, AddressOf 选择游戏文件夹路径
         AddHandler Form1.UiButton26.Click, AddressOf 选择数据库路径
+        AddHandler Form1.UiButton27.Click, AddressOf 选择游戏备份路径
+        AddHandler Form1.UiButton29.Click, AddressOf 选择VSC路径
+        AddHandler Form1.UiButton30.Click, AddressOf 选择VS路径
     End Sub
 
     Public Shared Sub 启动时加载设置()
@@ -342,6 +346,34 @@ R1:
                 End If
                 Form1.UiTextBox3.Text = a1(b)
         End Select
+    End Sub
+
+    Public Shared Sub 选择游戏备份路径()
+        UIMessageTip.Show("要实现文件替换的卸载自动还原，需要手动备份对应文件",, 5000)
+        Dim str1 As String = ""
+        If DirEx.SelectDirEx("选择游戏文件备份路径（如果要使用文件替换类命令，则是必须的，否则程序会删除游戏文件）", str1) Then
+            Form1.UiTextBox4.Text = str1
+        End If
+    End Sub
+
+    Public Shared Sub 选择VSC路径()
+        Dim a As New OpenFileDialog With {.Filter = "Code.exe|Code.exe"}
+        If My.Computer.FileSystem.DirectoryExists($"C:\Users\{Environment.UserName}\AppData\Local\Programs\Microsoft VS Code") = True Then
+            a.InitialDirectory = $"C:\Users\{Environment.UserName}\AppData\Local\Programs\Microsoft VS Code"
+        End If
+        a.ShowDialog(Form1)
+        If a.FileName = "" Then Exit Sub
+        Form1.UiTextBox7.Text = a.FileName
+    End Sub
+
+    Public Shared Sub 选择VS路径()
+        Dim a As New OpenFileDialog With {.Filter = "devenv.exe|devenv.exe"}
+        If My.Computer.FileSystem.DirectoryExists("C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE") = True Then
+            a.InitialDirectory = "C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE"
+        End If
+        a.ShowDialog(Form1)
+        If a.FileName = "" Then Exit Sub
+        Form1.UiTextBox8.Text = a.FileName
     End Sub
 
 
