@@ -2,6 +2,7 @@
 Imports System.Drawing.Text
 Imports System.IO
 Imports System.Reflection
+Imports System.Text
 Imports System.Xml
 Imports Sunny.UI
 
@@ -39,6 +40,7 @@ Public Class 设置
         AddHandler Form1.UiButton37.Click, AddressOf 保存字体设置
         AddHandler Form1.UiButton38.Click, AddressOf 保存隐私设置
         AddHandler Form1.UiButton25.Click, AddressOf 选择游戏文件夹路径
+        AddHandler Form1.UiButton26.Click, AddressOf 选择数据库路径
     End Sub
 
     Public Shared Sub 启动时加载设置()
@@ -290,9 +292,56 @@ R1:
     End Sub
 
     Public Shared Sub 选择数据库路径()
+        Dim a1 As New List(Of String) From {"创建新的模组数据仓库，使用现有也可以"}
+        If FileIO.FileSystem.FileExists("C:\Users\Public\1059 Studio\SMUI Client 4\Settings\UserSettings.xml") Then
+            Dim x As New XmlDocument
+            x.Load("C:\Users\Public\1059 Studio\SMUI Client 4\Settings\UserSettings.xml")
+            If FileIO.FileSystem.DirectoryExists(x.SelectSingleNode("Data/LibraryPath").InnerText) Then a1.Add(x.SelectSingleNode("Data/LibraryPath").InnerText)
+        End If
+        If FileIO.FileSystem.FileExists($"C:\Users\{Environment.UserName}\AppData\Roaming\1059 Studio\SMUI Client 5 Cache\Settings.xml") Then
+            Dim x As New XmlDocument
+            x.Load($"C:\Users\{Environment.UserName}\AppData\Roaming\1059 Studio\SMUI Client 5 Cache\Settings.xml")
 
-
-
+            If FileIO.FileSystem.DirectoryExists(x.SelectSingleNode("data/ModRepositoryPath")?.InnerText) Then a1.Add(x.SelectSingleNode("data/ModRepositoryPath")?.InnerText)
+        End If
+R1:
+        Dim a As New 多项单选对话框("选择模组数据仓库", a1, $"你可以选择现有的模组数据仓库文件夹，如果你正在使用旧代产品则可以直接在下面选择，四代和五代的数据库都可以直接使用，新版本的配置文件将在使用中自动生成。如果你还没有本产品定义的模组数据仓库，请选择第一项然后选择一个空文件夹来创建新的数据仓库。{vbCrLf & vbCrLf}请确保你的数据仓库应该放在固态硬盘，而不是机械硬盘，SMUI 非常需要瞬间读取速度，否则 SMUI 的性能将大幅下降。同时建议将数据仓库和游戏文件夹置于同一硬盘上。", 200, 600)
+        Dim b As Integer = a.ShowDialog(Form1)
+        Select Case b
+            Case -1
+                Exit Sub
+            Case 0
+                UIMessageTip.Show("如要取消选择，直接关闭选择器窗口即可返回上一步",, 5000)
+                Dim str1 As String = ""
+                If DirEx.SelectDirEx("选择一个空文件夹，它将作为你的新数据仓库", str1) Then
+                    Dim c As New 多项单选对话框("确认使用此文件夹作为你的模组数据仓库？", {"确定", "取消"}, str1, 100, 500)
+                    Dim d As Integer = c.ShowDialog(Form1)
+                    Select Case d
+                        Case -1
+                            Exit Sub
+                        Case 0
+                            If My.Computer.FileSystem.DirectoryExists(str1 & "\Default Sub Library") = False Then
+                                My.Computer.FileSystem.CreateDirectory(str1 & "\Default Sub Library")
+                            End If
+                            If My.Computer.FileSystem.DirectoryExists(str1 & "\.DOWNLOAD") = False Then
+                                My.Computer.FileSystem.CreateDirectory(str1 & "\.DOWNLOAD")
+                            End If
+                            If My.Computer.FileSystem.FileExists(str1 & "\MANIFEST") = False Then
+                                My.Computer.FileSystem.WriteAllText(str1 & "\MANIFEST", "This is your Mod Repository root path.", False, Encoding.UTF8)
+                            End If
+                            Form1.UiTextBox3.Text = str1
+                        Case 1
+                            GoTo R1
+                    End Select
+                Else
+                    GoTo R1
+                End If
+            Case Else
+                If My.Computer.FileSystem.DirectoryExists(a1(b) & "\.DOWNLOAD") = False Then
+                    My.Computer.FileSystem.CreateDirectory(a1(b) & "\.DOWNLOAD")
+                End If
+                Form1.UiTextBox3.Text = a1(b)
+        End Select
     End Sub
 
 
