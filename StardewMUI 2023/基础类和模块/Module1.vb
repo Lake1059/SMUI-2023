@@ -68,15 +68,36 @@ Module Module1
         Using g As Graphics = Form1.CreateGraphics()
             dpiScaleFactor = g.DpiX / 96.0F
         End Using
-
         Dim systemScrollBarWidth As Integer = SystemInformation.VerticalScrollBarWidth
         Dim scaledScrollBarWidth As Integer = systemScrollBarWidth * dpiScaleFactor
-
         Return scaledScrollBarWidth
     End Function
 
     <DllImport("shell32.dll")>
     Public Function ShellExecute(hwnd As IntPtr, lpOperation As String, lpFile As String, lpParameters As String, lpDirectory As String, nShowCmd As Integer) As IntPtr
+    End Function
+
+    <StructLayout(LayoutKind.Sequential)>
+    Public Structure DISPLAY_DEVICE
+        Public cb As Integer
+        <MarshalAs(UnmanagedType.ByValTStr, SizeConst:=32)>
+        Public DeviceName As String
+        <MarshalAs(UnmanagedType.ByValTStr, SizeConst:=128)>
+        Public DeviceString As String
+        Public StateFlags As Integer
+        <MarshalAs(UnmanagedType.ByValTStr, SizeConst:=128)>
+        Public DeviceID As String
+        <MarshalAs(UnmanagedType.ByValTStr, SizeConst:=128)>
+        Public DeviceKey As String
+    End Structure
+
+    <DllImport("User32.dll")>
+    Public Function EnumDisplayDevices(
+            ByVal lpDevice As String,
+            ByVal iDevNum As UInteger,
+            ByRef lpDisplayDevice As DISPLAY_DEVICE,
+            ByVal dwFlags As UInteger
+        ) As Boolean
     End Function
 
     Public Sub 显示模式窗体(哪个窗口 As Form, 以谁为基准显示 As Form)

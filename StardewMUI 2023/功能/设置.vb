@@ -1,10 +1,13 @@
 ﻿
 Imports System.Drawing.Text
 Imports System.IO
+Imports System.Net
 Imports System.Reflection
+Imports System.Runtime.InteropServices
 Imports System.Text
-Imports System.Windows.Forms.VisualStyles.VisualStyleElement
 Imports System.Xml
+Imports Newtonsoft.Json
+Imports Newtonsoft.Json.Linq
 Imports Sunny.UI
 
 Public Class 设置
@@ -375,6 +378,109 @@ R1:
         If a.FileName = "" Then Exit Sub
         Form1.UiTextBox8.Text = a.FileName
     End Sub
+
+    Public Shared Sub 发送用户统计()
+        If 全局设置数据("UploadUserInfo") = "True" Then Exit Sub
+        If My.Settings.上次发送用户统计的日期 = Now.Year & "/" & Now.Month & "/" & Now.Day Then Exit Sub
+        If My.Computer.Network.IsAvailable = False Then Exit Sub
+        DebugPrint("正在连接到用户统计服务器", Form1.ForeColor)
+        Dim 服务器发送 As New ComponentModel.BackgroundWorker With {.WorkerReportsProgress = True}
+        AddHandler 服务器发送.DoWork,
+           Sub(sender As Object, e As ComponentModel.DoWorkEventArgs)
+               Try
+                   Dim 软件版本 As String = "appver=" & Application.ProductVersion
+                   Dim 系统名称 As String = "&sysname=" & My.Computer.Info.OSFullName
+                   Dim MyReg As Microsoft.Win32.RegistryKey = Microsoft.Win32.Registry.LocalMachine.OpenSubKey("HARDWARE\DESCRIPTION\SYSTEM\CentralProcessor\0")
+                   Dim 处理器名称 As String = "&cpuname=" & MyReg.GetValue("ProcessorNameString").ToString()
+                   Dim 内存大小 As String = "&ram=" & Math.Round(My.Computer.Info.TotalPhysicalMemory / 1024 / 1024 / 1024) & "GB"
+
+                   Dim 显卡列表 As String = ""
+                   Dim i As UInteger = 0
+                   Dim displayDevice As New DISPLAY_DEVICE()
+                   displayDevice.cb = Marshal.SizeOf(displayDevice)
+                   Do While EnumDisplayDevices(Nothing, i, displayDevice, 0)
+                       If displayDevice.DeviceName.Length > 0 Then
+                           If displayDevice.DeviceName.ToLower.Contains("intel") Or displayDevice.DeviceName.ToLower.Contains("nvidia") Or displayDevice.DeviceName.ToLower.Contains("amd") Then
+                               If 显卡列表 = "" Then
+                                   显卡列表 = $"&gpulist={displayDevice.DeviceName}"
+                               Else
+                                   显卡列表 &= $" | {displayDevice.DeviceName}"
+                               End If
+                           End If
+                       End If
+                       i += 1
+                       displayDevice.cb = Marshal.SizeOf(displayDevice)
+                   Loop
+
+
+                   Dim 显示器分辨率 As String = Screen.PrimaryScreen.Bounds.Size.Width & "x" & Screen.PrimaryScreen.Bounds.Size.Height
+                   Dim g1 As Graphics = Form1.CreateGraphics
+                   Dim 屏幕DPI As String = g1.DpiX & "x" & g1.DpiY
+                   Dim 显示器信息 As String = "&screen=" & 显示器分辨率 & " " & 屏幕DPI & "DPI"
+                   Dim 用户语言 As String = "&lang=" & System.Globalization.CultureInfo.CurrentCulture.Name
+
+                   Dim 输出1 As String = "report"
+                   输出1 &= vbCrLf & "SYSTEM: " & 系统名称.Replace("&sysname=", "")
+                   输出1 &= vbCrLf & "CPU: " & 处理器名称.Replace("&cpuname=", "")
+                   输出1 &= vbCrLf & "RAM: " & 内存大小.Replace("&ram=", "")
+                   输出1 &= vbCrLf & "GPU: " & 显卡列表.Replace("&gpulist=", "")
+                   输出1 &= vbCrLf & "SCREEN: " & 显示器信息.Replace("&screen=", "")
+                   服务器发送.ReportProgress(1, 输出1)
+
+                   Dim 地址传递 As String = "http://47.94.89.191:30003/user?" & 软件版本 & 系统名称 & 处理器名称 & 内存大小 & 显卡列表 & 显示器信息 & 用户语言
+
+
+
+                   Dim 画个圈圈诅咒那些攻击服务器的弱智孤儿 As Boolean = True
+jx1:
+                   Dim uri As New Uri(地址传递)
+                   Dim myReq As HttpWebRequest = DirectCast(WebRequest.Create(uri), HttpWebRequest)
+                   myReq.ContinueTimeout = 5000
+                   myReq.UserAgent = "StardewMUI 5 Official Application"
+                   myReq.Accept = "application/text"
+                   myReq.MediaType = "text"
+                   myReq.Method = "GET"
+                   myReq.KeepAlive = False
+                   'myReq.Headers.Add("content-type", "application/text")
+                   Dim result As HttpWebResponse = DirectCast(myReq.GetResponse, HttpWebResponse)
+                   Dim receviceStream As Stream = result.GetResponseStream()
+                   Dim readerOfStream As New StreamReader(receviceStream, Text.Encoding.GetEncoding("utf-8"))
+                   Dim strHTML As String = readerOfStream.ReadToEnd()
+                   readerOfStream.Close()
+                   receviceStream.Close()
+                   result.Close()
+                   e.Result = strHTML
+               Catch ex As Exception
+                   e.Result = ex.Message
+               End Try
+           End Sub
+        AddHandler 服务器发送.ProgressChanged,
+           Sub(sender As Object, e As System.ComponentModel.ProgressChangedEventArgs)
+               DebugPrint(e.UserState, Form1.ForeColor)
+           End Sub
+
+        AddHandler 服务器发送.RunWorkerCompleted,
+           Sub(sender As Object, e As System.ComponentModel.RunWorkerCompletedEventArgs)
+               If InStr(e.Result, "{") > 0 Then
+                   Dim JsonData As Object = CType(JsonConvert.DeserializeObject(e.Result), JObject)
+                   If JsonData.item("code") IsNot Nothing Then
+                       If JsonData.item("code").ToString = "100" Then
+                           DebugPrint("成功发送了用户统计", Form1.ForeColor)
+                           My.Settings.上次发送用户统计的日期 = Now.Year & "/" & Now.Month & "/" & Now.Day
+                           My.Settings.Save()
+                       Else
+                           DebugPrint("Error " & JsonData.item("code").ToString & "：" & JsonData.item("msg").ToString, Color.OrangeRed)
+                       End If
+                   Else
+                       DebugPrint(e.Result, Color.OrangeRed)
+                   End If
+               Else
+                   DebugPrint(e.Result, Color.OrangeRed)
+               End If
+           End Sub
+        服务器发送.RunWorkerAsync()
+    End Sub
+
 
 
 End Class
