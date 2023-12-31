@@ -72,6 +72,11 @@ Public Class 界面控制
         管理模组的菜单.添加菜单的触发()
 
 
+        AddHandler Form1.UiRichTextBox4.LinkClicked,
+            Sub()
+                设置.全局设置数据("AgreementSigned") = "True"
+                Application.Restart()
+            End Sub
 
 
 

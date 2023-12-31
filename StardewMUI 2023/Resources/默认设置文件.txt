@@ -34,3 +34,4 @@ UploadRAM=True
 UploadCDiskCapacity=True
 UploadGPU=True
 UploadScreen=True
+AgreementSigned=False

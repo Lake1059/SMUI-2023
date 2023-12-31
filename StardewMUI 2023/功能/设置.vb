@@ -89,6 +89,20 @@ Public Class 设置
         刷新字体显示(Form1)
         刷新设置显示()
         UIMessageTip.DefaultStyle = New TipStyle With {.TextFont = New Font(Form1.Font.Name, 10), .BackColor = ColorTranslator.FromWin32(RGB(24, 24, 24)), .TextColor = Form1.ForeColor, .Padding = New Padding(15)}
+        发送用户统计()
+        If 设置.全局设置数据("AgreementSigned") <> "True" Then
+            Form1.UiTabControl1.RemovePage(1)
+            Form1.UiTabControl1.RemovePage(2)
+            Form1.UiTabControl1.RemovePage(3)
+            Form1.UiTabControl1.RemovePage(4)
+            Form1.UiTabControl1.RemovePage(5)
+            Form1.UiTabControl1.RemovePage(6)
+            Form1.UiTabControlMenu1.SelectedIndex = 6
+            Form1.TabPage扩展内容.Parent = Nothing
+            Form1.TabPage最新模组.Parent = Nothing
+            Form1.TabPage集成工具.Parent = Nothing
+            Form1.TabPage创作者面板.Parent = Nothing
+        End If
     End Sub
 
     Public Shared Sub 启动时检查用户文件夹()
@@ -381,6 +395,7 @@ R1:
 
     Public Shared Sub 发送用户统计()
         If 全局设置数据("UploadUserInfo") = "True" Then Exit Sub
+        If 全局设置数据("AgreementSigned") = "False" Then Exit Sub
         If My.Settings.上次发送用户统计的日期 = Now.Year & "/" & Now.Month & "/" & Now.Day Then Exit Sub
         If My.Computer.Network.IsAvailable = False Then Exit Sub
         DebugPrint("正在连接到用户统计服务器", Form1.ForeColor)
@@ -388,7 +403,8 @@ R1:
         AddHandler 服务器发送.DoWork,
            Sub(sender As Object, e As ComponentModel.DoWorkEventArgs)
                Try
-                   Dim 软件版本 As String = "appver=" & Application.ProductVersion
+                   Dim version As Version = Assembly.GetEntryAssembly().GetName().Version
+                   Dim 软件版本 As String = "appver=" & $"{version.Major}.{version.Minor}.{version.Build}"
                    Dim 系统名称 As String = "&sysname=" & My.Computer.Info.OSFullName
                    Dim MyReg As Microsoft.Win32.RegistryKey = Microsoft.Win32.Registry.LocalMachine.OpenSubKey("HARDWARE\DESCRIPTION\SYSTEM\CentralProcessor\0")
                    Dim 处理器名称 As String = "&cpuname=" & MyReg.GetValue("ProcessorNameString").ToString()
@@ -419,19 +435,37 @@ R1:
                    Dim 显示器信息 As String = "&screen=" & 显示器分辨率 & " " & 屏幕DPI & "DPI"
                    Dim 用户语言 As String = "&lang=" & System.Globalization.CultureInfo.CurrentCulture.Name
 
+                   Dim cDrive As New DriveInfo("C")
+                   Dim C盘大小 As String = "&cdc=" & Math.Round(cDrive.TotalSize / (1024 ^ 3))
+
                    Dim 输出1 As String = "report"
+
                    输出1 &= vbCrLf & "SYSTEM: " & 系统名称.Replace("&sysname=", "")
+                   服务器发送.ReportProgress(11, 系统名称.Replace("&sysname=", ""))
+
                    输出1 &= vbCrLf & "CPU: " & 处理器名称.Replace("&cpuname=", "")
+                   服务器发送.ReportProgress(12, 处理器名称.Replace("&cpuname=", ""))
+
                    输出1 &= vbCrLf & "RAM: " & 内存大小.Replace("&ram=", "")
+                   服务器发送.ReportProgress(13, 内存大小.Replace("&ram=", ""))
+                   服务器发送.ReportProgress(14, C盘大小.Replace("&cdc=", ""))
+
                    输出1 &= vbCrLf & "GPU: " & 显卡列表.Replace("&gpulist=", "")
+                   服务器发送.ReportProgress(15, C盘大小.Replace("&gpulist=", ""))
+
                    输出1 &= vbCrLf & "SCREEN: " & 显示器信息.Replace("&screen=", "")
+                   服务器发送.ReportProgress(16, C盘大小.Replace("&screen=", ""))
+
                    服务器发送.ReportProgress(1, 输出1)
 
-                   Dim 地址传递 As String = "http://47.94.89.191:30003/user?" & 软件版本 & 系统名称 & 处理器名称 & 内存大小 & 显卡列表 & 显示器信息 & 用户语言
-
-
-
-                   Dim 画个圈圈诅咒那些攻击服务器的弱智孤儿 As Boolean = True
+                   '服务器好玩吗，玩累了就直接睡，我的房子还蛮大的，欢迎来我家VAN
+                   Dim 地址传递 As String = "http://47.94.89.191:30003/user?" & 软件版本 & 用户语言
+                   If 全局设置数据("UploadWindowsVer") = "True" Then 地址传递 &= 系统名称
+                   If 全局设置数据("UploadCPU0") = "True" Then 地址传递 &= 处理器名称
+                   If 全局设置数据("UploadRAM") = "True" Then 地址传递 &= 内存大小
+                   If 全局设置数据("UploadCDiskCapacity") = "True" Then 地址传递 &= C盘大小
+                   If 全局设置数据("UploadGPU") = "True" Then 地址传递 &= 显卡列表
+                   If 全局设置数据("UploadScreen") = "True" Then 地址传递 &= $"&sbs={显示器分辨率}&dpi={屏幕DPI}"
 jx1:
                    Dim uri As New Uri(地址传递)
                    Dim myReq As HttpWebRequest = DirectCast(WebRequest.Create(uri), HttpWebRequest)
@@ -456,7 +490,23 @@ jx1:
            End Sub
         AddHandler 服务器发送.ProgressChanged,
            Sub(sender As Object, e As System.ComponentModel.ProgressChangedEventArgs)
-               DebugPrint(e.UserState, Form1.ForeColor)
+               Select Case e.ProgressPercentage
+                   Case 1
+                       DebugPrint(e.UserState, Form1.ForeColor)
+                   Case 11
+                       Form1.UiTextBox14.Text = e.UserState
+                   Case 12
+                       Form1.UiTextBox15.Text = e.UserState
+                   Case 13
+                       Form1.UiTextBox18.Text = e.UserState
+                   Case 14
+                       Form1.UiTextBox19.Text = e.UserState
+                   Case 15
+                       Form1.UiTextBox16.Text = e.UserState
+                   Case 16
+                       Form1.UiTextBox17.Text = e.UserState
+               End Select
+
            End Sub
 
         AddHandler 服务器发送.RunWorkerCompleted,
