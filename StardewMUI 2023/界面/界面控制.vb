@@ -71,17 +71,20 @@ Public Class 界面控制
         主界面元素尺寸动态调整()
         管理模组的菜单.添加菜单的触发()
 
-
         AddHandler Form1.UiRichTextBox4.LinkClicked,
             Sub()
                 设置.全局设置数据("AgreementSigned") = "True"
-                Application.Restart()
+                Dim a As New 多项单选对话框("已签署", {"OK"}, "签署已保存到设置，正常退出软件时才会将设置写入文件，现在可以正常使用了。", 100, 500)
+                a.ShowDialog(Form1)
+                设置.恢复选项卡显示()
             End Sub
 
 
 
 
     End Sub
+
+
 
     Public Shared Sub 设置富文本框行高(RichTextBoxObject As Control, LineHeight As Integer)
         Dim fmt As New PARAFORMAT2()

@@ -44,5 +44,9 @@ Namespace My
             '    MsgBox(a)
             'End If
         End Sub
+
+        Private Sub MyApplication_Shutdown(sender As Object, e As EventArgs) Handles Me.Shutdown
+
+        End Sub
     End Class
 End Namespace

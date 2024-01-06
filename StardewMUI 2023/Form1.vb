@@ -10,6 +10,8 @@ Public Class Form1
 
     Private Sub Form1_Shown(sender As Object, e As EventArgs) Handles MyBase.Shown
         If 设置.全局设置数据("AutoCheckUpdate") Then 检查更新.运行后台服务器检查更新()
+        Dim a As New 多项单选对话框("早期测试", {"OK"}, "当前版本还无法满足日常需求，请继续用五代产品。", 100, 500)
+        a.ShowDialog(Me)
     End Sub
 
     Private Sub Form1_ResizeEnd(sender As Object, e As EventArgs) Handles MyBase.ResizeEnd

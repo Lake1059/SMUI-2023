@@ -91,12 +91,12 @@ Public Class 设置
         UIMessageTip.DefaultStyle = New TipStyle With {.TextFont = New Font(Form1.Font.Name, 10), .BackColor = ColorTranslator.FromWin32(RGB(24, 24, 24)), .TextColor = Form1.ForeColor, .Padding = New Padding(15)}
         发送用户统计()
         If 设置.全局设置数据("AgreementSigned") <> "True" Then
-            Form1.UiTabControl1.RemovePage(1)
-            Form1.UiTabControl1.RemovePage(2)
-            Form1.UiTabControl1.RemovePage(3)
-            Form1.UiTabControl1.RemovePage(4)
-            Form1.UiTabControl1.RemovePage(5)
-            Form1.UiTabControl1.RemovePage(6)
+            Form1.TabPage管理模组.Parent = Nothing
+            Form1.TabPage配置队列.Parent = Nothing
+            Form1.TabPage下载管理.Parent = Nothing
+            Form1.TabPage检查更新.Parent = Nothing
+            Form1.TabPageCEF浏览器.Parent = Nothing
+            Form1.TabPage调试输出.Parent = Nothing
             Form1.UiTabControlMenu1.SelectedIndex = 6
             Form1.TabPage扩展内容.Parent = Nothing
             Form1.TabPage最新模组.Parent = Nothing
@@ -104,6 +104,21 @@ Public Class 设置
             Form1.TabPage创作者面板.Parent = Nothing
         End If
     End Sub
+
+    Public Shared Sub 恢复选项卡显示()
+        Form1.TabPage管理模组.Parent = Form1.UiTabControl1
+        Form1.TabPage配置队列.Parent = Form1.UiTabControl1
+        Form1.TabPage下载管理.Parent = Form1.UiTabControl1
+        Form1.TabPage检查更新.Parent = Form1.UiTabControl1
+        Form1.TabPageCEF浏览器.Parent = Form1.UiTabControl1
+        Form1.TabPage调试输出.Parent = Form1.UiTabControl1
+        Form1.TabPage扩展内容.Parent = Form1.UiTabControlMenu1
+        Form1.TabPage最新模组.Parent = Form1.UiTabControlMenu1
+        Form1.TabPage集成工具.Parent = Form1.UiTabControlMenu1
+        Form1.TabPage创作者面板.Parent = Form1.UiTabControlMenu1
+        Form1.UiTabControlMenu1.SelectedIndex = 0
+    End Sub
+
 
     Public Shared Sub 启动时检查用户文件夹()
         If FileIO.FileSystem.DirectoryExists(用户数据文件夹路径) = False Then FileIO.FileSystem.CreateDirectory(用户数据文件夹路径)
@@ -440,22 +455,13 @@ R1:
 
                    Dim 输出1 As String = "report"
 
-                   输出1 &= vbCrLf & "SYSTEM: " & 系统名称.Replace("&sysname=", "")
-                   服务器发送.ReportProgress(11, 系统名称.Replace("&sysname=", ""))
-
-                   输出1 &= vbCrLf & "CPU: " & 处理器名称.Replace("&cpuname=", "")
-                   服务器发送.ReportProgress(12, 处理器名称.Replace("&cpuname=", ""))
-
-                   输出1 &= vbCrLf & "RAM: " & 内存大小.Replace("&ram=", "")
-                   服务器发送.ReportProgress(13, 内存大小.Replace("&ram=", ""))
-                   服务器发送.ReportProgress(14, C盘大小.Replace("&cdc=", ""))
-
-                   输出1 &= vbCrLf & "GPU: " & 显卡列表.Replace("&gpulist=", "")
-                   服务器发送.ReportProgress(15, C盘大小.Replace("&gpulist=", ""))
-
-                   输出1 &= vbCrLf & "SCREEN: " & 显示器信息.Replace("&screen=", "")
-                   服务器发送.ReportProgress(16, C盘大小.Replace("&screen=", ""))
-
+                   If 全局设置数据("UploadWindowsVer") = "True" Then 输出1 &= vbCrLf & "SYSTEM: " & 系统名称.Replace("&sysname=", "")
+                   If 全局设置数据("UploadCPU0") = "True" Then 输出1 &= vbCrLf & "CPU: " & 处理器名称.Replace("&cpuname=", "")
+                   If 全局设置数据("UploadRAM") = "True" Then 输出1 &= vbCrLf & "RAM: " & 内存大小.Replace("&ram=", "")
+                   If 全局设置数据("UploadCDiskCapacity") = "True" Then 输出1 &= vbCrLf & "C Disk: " & C盘大小.Replace("&cdc=", "")
+                   If 全局设置数据("UploadRAM") = "True" Then 输出1 &= vbCrLf & "RAM: " & 内存大小.Replace("&ram=", "")
+                   If 全局设置数据("UploadGPU") = "True" Then 输出1 &= vbCrLf & "GPU: " & 显卡列表.Replace("&gpulist=", "")
+                   If 全局设置数据("UploadScreen") = "True" Then 输出1 &= vbCrLf & "SCREEN: " & 显示器信息.Replace("&screen=", "")
                    服务器发送.ReportProgress(1, 输出1)
 
                    '服务器好玩吗，玩累了就直接睡，我的房子还蛮大的，欢迎来我家VAN
@@ -470,7 +476,7 @@ jx1:
                    Dim uri As New Uri(地址传递)
                    Dim myReq As HttpWebRequest = DirectCast(WebRequest.Create(uri), HttpWebRequest)
                    myReq.ContinueTimeout = 5000
-                   myReq.UserAgent = "StardewMUI 5 Official Application"
+                   myReq.UserAgent = "SMUI 6"
                    myReq.Accept = "application/text"
                    myReq.MediaType = "text"
                    myReq.Method = "GET"
@@ -493,18 +499,6 @@ jx1:
                Select Case e.ProgressPercentage
                    Case 1
                        DebugPrint(e.UserState, Form1.ForeColor)
-                   Case 11
-                       Form1.UiTextBox14.Text = e.UserState
-                   Case 12
-                       Form1.UiTextBox15.Text = e.UserState
-                   Case 13
-                       Form1.UiTextBox18.Text = e.UserState
-                   Case 14
-                       Form1.UiTextBox19.Text = e.UserState
-                   Case 15
-                       Form1.UiTextBox16.Text = e.UserState
-                   Case 16
-                       Form1.UiTextBox17.Text = e.UserState
                End Select
 
            End Sub

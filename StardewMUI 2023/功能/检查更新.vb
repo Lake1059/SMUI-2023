@@ -61,7 +61,7 @@ Public Class 检查更新
                 更新_发布时间 = a.发布时间
                 更新_内容描述 = a.发布描述
                 For i = 0 To a.可供下载的文件.Count - 1
-                    If a.可供下载的文件(i).Key = "SMUI 6 Installer.exe" Or a.可供下载的文件(i).Key = "SMUI.6.Installer.exe" Then
+                    If a.可供下载的文件(i).Key = "SMUI 6 Installer.exe" Or a.可供下载的文件(i).Key = "SMUI.6.Installer.exe" Or a.可供下载的文件(i).Key = "SMUI 6 Web Installer.exe" Then
                         更新_下载地址 = a.可供下载的文件(i).Value
                         Exit For
                     End If
