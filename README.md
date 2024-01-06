@@ -1,5 +1,5 @@
 ## StardewMUI 2023 / SMUI 6
-由 1059 Studio 再度打造的 SMUI 系列 第六代 星露谷模组管理器，正在持续开发中。基于 .NET 7 运行框架，使用 SunnyUI 设计的全新现代化交互界面，重新编写的更高性能的核心处理，更好的视觉效果，更高的集成度，全新的特性以及更多。
+由 1059 Studio 再度打造的 SMUI 系列 第六代 星露谷模组管理器，正在持续开发中。基于 .NET 8 运行框架，使用 SunnyUI 设计的全新现代化交互界面，重新编写的更高性能的核心处理，更好的视觉效果，更高的集成度，全新的特性以及更多。
 
 | 地址 | 状态和用途 |
 | --- | --- |
@@ -30,7 +30,7 @@
 |  | SMUI 6 | SMUI 5 | Vortex | 传统管理器 | 手动 |
 | --- | --- | --- | --- | --- | --- |
 | 生态 | 离线为主<br>联网为辅 | 离线为主<br>联网为辅 | 在线为主<br>网站依赖 | 纯本地 | 累死 |
-| 开发框架 | .NET 7 | .NET F 4.8 | Script | Electron<br>Java 等 | 无 |
+| 开发框架 | .NET 8 独立 | .NET F 4.8 | Script | Electron<br>Java 等 | 无 |
 | 批量管理 | 高速批量 | 高速批量 | 又累又慢 | 一般 | 累死 |
 | 类型支持 | 全部支持 | 全部支持 | 仅标准 | 仅标准 | 累死 |
 | 信息分析 | 全面读取 | 全面读取 | 仅基本 | 可能没有 | 无 |
@@ -44,9 +44,9 @@
 ## Git
 写给我自己的，我懒得记 Git 代码所以就直接写这里方便复制了
 
-设置全局代理
-<code>git config --global http.proxy http://127.0.0.1:7890</code>
+设置全局代理  
+<code>git config --global http.proxy http://127.0.0.1:7890</code>  
 <code>git config --global https.proxy https://127.0.0.1:7890</code>
 
-同步仓库到 Github
+同步仓库到 Github  
 <code>git push --mirror github</code>

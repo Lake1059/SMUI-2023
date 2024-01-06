@@ -23,6 +23,29 @@ Public Class 检查更新
             Exit Sub
         End If
 
+        Using key As Microsoft.Win32.RegistryKey = Microsoft.Win32.Registry.CurrentUser.OpenSubKey("SOFTWARE\1059 Studio\SMUI 2023")
+            If key Is Nothing Then
+                Form1.UiListBox3.Items(0) = "便携版禁用检查更新"
+                Form1.UiListBox3.Items(1) = ""
+                Form1.UiListBox3.Items(2) = ""
+                Exit Sub
+            End If
+            Dim value As Object = key.GetValue("Path")
+            If value IsNot Nothing AndAlso TypeOf value Is String Then
+                If value.ToString <> Application.StartupPath Then
+                    Form1.UiListBox3.Items(0) = "便携版禁用检查更新"
+                    Form1.UiListBox3.Items(1) = ""
+                    Form1.UiListBox3.Items(2) = ""
+                    Exit Sub
+                End If
+            Else
+                Form1.UiListBox3.Items(0) = "便携版禁用检查更新"
+                Form1.UiListBox3.Items(1) = ""
+                Form1.UiListBox3.Items(2) = ""
+                Exit Sub
+            End If
+        End Using
+
         获取到的版本号 = ""
         获取到的下载地址 = ""
         Form1.UiListBox3.Items(0) = "正在连接到服务器"
