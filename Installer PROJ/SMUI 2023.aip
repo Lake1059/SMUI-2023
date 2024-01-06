@@ -788,7 +788,7 @@
     <ROW Dialog_="AdminWelcomeDlg" Control="Description" Type="Text" X="16" Y="94" Width="454" Height="60" Attributes="196611" Text="[Wizard]将在指定的网络位置创建 [ProductName] 的服务器映像。单击 &quot;[Text_Next]&quot; 继续，或者单击 &quot;取消&quot; 退出[Wizard]。" TextStyle="[ManufacturerFont]" Order="800" TextLocId="Control.Text.AdminWelcomeDlg#Description" MsiKey="AdminWelcomeDlg#Description"/>
     <ROW Dialog_="AdminWelcomeDlg" Control="AboutBtn" Type="ImageButton" X="1" Y="382" Width="18" Height="18" Attributes="3" Text="[AboutBtnIcon]" TextStyle="[ManufacturerFont]" Order="900" MsiKey="AdminWelcomeDlg#AboutBtn" Options="1" ExtType="ImageButton"/>
     <ROW Dialog_="ExitDialog" Control="Finish" Type="ImageButton" X="379" Y="354" Width="95" Height="28" Attributes="3" Text="[ButtonImage]" TextStyle="[ImageBtnFont]" Order="300" MsiKey="ExitDialog#Finish" Options="1" ExtType="ImageButton" ExtData="[ButtonText_Finish] " ExtDataLocId="Metro.Control.ExtData.ExitDialog#Finish"/>
-    <ROW Dialog_="ExitDialog" Control="ProductNameTitle" Type="Text" X="15" Y="17" Width="364" Height="32" Attributes="196611" Text="[Setup]完成" TextStyle="[ProductNameTitleFont]" Order="400" MsiKey="ExitDialog#ProductNameTitle"/>
+    <ROW Dialog_="ExitDialog" Control="ProductNameTitle" Type="Text" X="15" Y="17" Width="364" Height="32" Attributes="196611" Text="完成" TextStyle="[ProductNameTitleFont]" Order="400" MsiKey="ExitDialog#ProductNameTitle"/>
     <ROW Dialog_="ExitDialog" Control="ProductLogo" Type="Bitmap" X="404" Y="15" Width="70" Height="70" Attributes="1" Text="[AppLogoIcon]" Order="500" MsiKey="ExitDialog#ProductLogo"/>
     <ROW Dialog_="ExitDialog" Control="LaunchBtn" Type="ImageButton" X="280" Y="354" Width="95" Height="28" Attributes="3" Text="[ButtonImage]" TextStyle="[ImageBtnFont]" Order="600" MsiKey="ExitDialog#LaunchBtn" ExtType="ImageButton" ExtData="启动" ExtDataLocId="AppInstaller.Control.Text.LaunchBtn"/>
     <ROW Dialog_="ExitDialog" Control="ProducVersionText" Type="Text" X="16" Y="60" Width="362" Height="15" Attributes="196611" Text="版本: [ProductVersion]" TextStyle="[ManufacturerFont]" Order="700" TextLocId="AppInstaller.Control.Text.ProductVersion" MsiKey="ExitDialog#ProducVersionText"/>
@@ -1350,14 +1350,14 @@
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiInstallUISequenceComponent">
     <ROW Action="AI_PRESERVE_INSTALL_TYPE" Sequence="199"/>
-    <ROW Action="AI_ResolveKnownFolders" Sequence="55"/>
+    <ROW Action="AI_ResolveKnownFolders" Sequence="56"/>
     <ROW Action="AI_DpiContentScale" Sequence="51"/>
     <ROW Action="AI_EnableDebugLog" Sequence="53"/>
     <ROW Action="AI_BACKUP_AI_SETUPEXEPATH" Sequence="99"/>
     <ROW Action="AI_RESTORE_AI_SETUPEXEPATH" Condition="AI_SETUPEXEPATH_ORIGINAL" Sequence="101"/>
     <ROW Action="AI_FinishActions" Condition="AI_INSTALL AND AiSkipExitDlg" Sequence="1301"/>
     <ROW Action="AI_CloseBtnBaseC" Condition="DarkTheme" Sequence="52" MsiKey="AI_CloseBtnBaseC"/>
-    <ROW Action="AI_CloseBtnC" Condition="DarkTheme" Sequence="54" MsiKey="AI_CloseBtnC"/>
+    <ROW Action="AI_CloseBtnC" Condition="DarkTheme" Sequence="55" MsiKey="AI_CloseBtnC"/>
     <ROW Action="AI_MinBtnBaseC" Condition="DarkTheme" Sequence="55" MsiKey="AI_MinBtnBaseC"/>
     <ROW Action="AI_MinBtnBorderC" Condition="DarkTheme" Sequence="56" MsiKey="AI_MinBtnBorderC"/>
     <ROW Action="AI_MinBtnC" Condition="DarkTheme" Sequence="57" MsiKey="AI_MinBtnC"/>
@@ -1370,9 +1370,9 @@
     <ROW Action="AI_AboutBtnImg" Condition="DarkTheme" Sequence="64" MsiKey="AI_AboutBtnImg"/>
     <ROW Action="AI_BkgImg" Condition="DarkTheme" Sequence="65" MsiKey="AI_BkgImg"/>
     <ROW Action="AI_AppLogoIc" Condition="DarkTheme" Sequence="66" MsiKey="AI_AppLogoIc"/>
-    <ROW Action="AI_CheckBoxImg" Condition="DarkTheme" Sequence="68" MsiKey="AI_CheckBoxImg"/>
+    <ROW Action="AI_CheckBoxImg" Condition="DarkTheme" Sequence="69" MsiKey="AI_CheckBoxImg"/>
     <ROW Action="AI_ControlVisualStyleExDark" Condition="DarkTheme" Sequence="69" MsiKey="AI_ControlVisualStyleExDark"/>
-    <ROW Action="AI_CustomFrameType" Condition="VersionNT64&gt;=1100" Sequence="69" MsiKey="AI_CustomFrameType"/>
+    <ROW Action="AI_CustomFrameType" Condition="VersionNT64&gt;=1100" Sequence="70" MsiKey="AI_CustomFrameType"/>
     <ROW Action="AI_ChooseTextStyles" Sequence="74"/>
     <ROW Action="AI_CloseBtnBorderC" Condition="DarkTheme" Sequence="54" MsiKey="AI_CloseBtnBorderC"/>
     <ROW Action="AI_ControlVisualStyleDark" Condition="DarkTheme" Sequence="67" MsiKey="AI_ControlVisualStyleDark"/>

@@ -409,7 +409,7 @@ R1:
     End Sub
 
     Public Shared Sub 发送用户统计()
-        If 全局设置数据("UploadUserInfo") = "True" Then Exit Sub
+        If 全局设置数据("UploadUserInfo") = "False" Then Exit Sub
         If 全局设置数据("AgreementSigned") = "False" Then Exit Sub
         If My.Settings.上次发送用户统计的日期 = Now.Year & "/" & Now.Month & "/" & Now.Day Then Exit Sub
         If My.Computer.Network.IsAvailable = False Then Exit Sub
@@ -423,20 +423,26 @@ R1:
                    Dim 系统名称 As String = "&sysname=" & My.Computer.Info.OSFullName
                    Dim MyReg As Microsoft.Win32.RegistryKey = Microsoft.Win32.Registry.LocalMachine.OpenSubKey("HARDWARE\DESCRIPTION\SYSTEM\CentralProcessor\0")
                    Dim 处理器名称 As String = "&cpuname=" & MyReg.GetValue("ProcessorNameString").ToString()
-                   Dim 内存大小 As String = "&ram=" & Math.Round(My.Computer.Info.TotalPhysicalMemory / 1024 / 1024 / 1024) & "GB"
+                   Dim 内存大小 As String = "&ram=" & Math.Round(My.Computer.Info.TotalPhysicalMemory / 1024 / 1024 / 1024) & " GB"
 
                    Dim 显卡列表 As String = ""
+                   Dim 显卡列表防止重复 As New List(Of String)
                    Dim i As UInteger = 0
                    Dim displayDevice As New DISPLAY_DEVICE()
                    displayDevice.cb = Marshal.SizeOf(displayDevice)
                    Do While EnumDisplayDevices(Nothing, i, displayDevice, 0)
-                       If displayDevice.DeviceName.Length > 0 Then
-                           If displayDevice.DeviceName.ToLower.Contains("intel") Or displayDevice.DeviceName.ToLower.Contains("nvidia") Or displayDevice.DeviceName.ToLower.Contains("amd") Then
-                               If 显卡列表 = "" Then
-                                   显卡列表 = $"&gpulist={displayDevice.DeviceName}"
-                               Else
-                                   显卡列表 &= $" | {displayDevice.DeviceName}"
+                       If displayDevice.DeviceString.Length > 0 Then
+                           If displayDevice.DeviceString.ToLower.Contains("intel") Or displayDevice.DeviceString.ToLower.Contains("nvidia") Or displayDevice.DeviceString.ToLower.Contains("amd") Then
+                               If 显卡列表防止重复.Contains(displayDevice.DeviceString) Then
+                                   i += 1
+                                   Continue Do
                                End If
+                               If 显卡列表 = "" Then
+                                   显卡列表 = $"&gpulist={displayDevice.DeviceString}"
+                               Else
+                                   显卡列表 &= $" | {displayDevice.DeviceString}"
+                               End If
+                               显卡列表防止重复.Add(displayDevice.DeviceString)
                            End If
                        End If
                        i += 1
@@ -451,7 +457,7 @@ R1:
                    Dim 用户语言 As String = "&lang=" & System.Globalization.CultureInfo.CurrentCulture.Name
 
                    Dim cDrive As New DriveInfo("C")
-                   Dim C盘大小 As String = "&cdc=" & Math.Round(cDrive.TotalSize / (1024 ^ 3))
+                   Dim C盘大小 As String = "&cdc=" & Math.Round(cDrive.TotalSize / (1024 ^ 3)) & " GB"
 
                    Dim 输出1 As String = "report"
 
@@ -459,7 +465,6 @@ R1:
                    If 全局设置数据("UploadCPU0") = "True" Then 输出1 &= vbCrLf & "CPU: " & 处理器名称.Replace("&cpuname=", "")
                    If 全局设置数据("UploadRAM") = "True" Then 输出1 &= vbCrLf & "RAM: " & 内存大小.Replace("&ram=", "")
                    If 全局设置数据("UploadCDiskCapacity") = "True" Then 输出1 &= vbCrLf & "C Disk: " & C盘大小.Replace("&cdc=", "")
-                   If 全局设置数据("UploadRAM") = "True" Then 输出1 &= vbCrLf & "RAM: " & 内存大小.Replace("&ram=", "")
                    If 全局设置数据("UploadGPU") = "True" Then 输出1 &= vbCrLf & "GPU: " & 显卡列表.Replace("&gpulist=", "")
                    If 全局设置数据("UploadScreen") = "True" Then 输出1 &= vbCrLf & "SCREEN: " & 显示器信息.Replace("&screen=", "")
                    服务器发送.ReportProgress(1, 输出1)
