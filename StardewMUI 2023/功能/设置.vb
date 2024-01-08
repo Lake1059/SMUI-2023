@@ -4,6 +4,7 @@ Imports System.IO
 Imports System.Net
 Imports System.Reflection
 Imports System.Runtime.InteropServices
+Imports System.Security.Policy
 Imports System.Text
 Imports System.Xml
 Imports Newtonsoft.Json
@@ -48,6 +49,15 @@ Public Class 设置
         AddHandler Form1.UiButton27.Click, AddressOf 选择游戏备份路径
         AddHandler Form1.UiButton29.Click, AddressOf 选择VSC路径
         AddHandler Form1.UiButton30.Click, AddressOf 选择VS路径
+
+        AddHandler Form1.UiButton33.Click, AddressOf 检测NEXUS密钥是否可用
+        AddHandler Form1.UiButton39.Click, AddressOf 切换密钥密文显示
+        AddHandler Form1.UiButton58.Click, Sub() ShellExecute(IntPtr.Zero, "open", "https://www.nexusmods.com/users/myaccount?tab=api", Nothing, Nothing, 1)
+        AddHandler Form1.UiButton59.Click, AddressOf 去内置浏览器管理密钥
+        AddHandler Form1.UiButton55.Click, AddressOf 让非N网会员去内置浏览器登录
+        AddHandler Form1.UiButton56.Click, Sub() ShellExecute(IntPtr.Zero, "open", "https://gitee.com/profile/personal_access_tokens", Nothing, Nothing, 1)
+        AddHandler Form1.UiButton57.Click, Sub() ShellExecute(IntPtr.Zero, "open", "https://github.com/settings/tokens", Nothing, Nothing, 1)
+
     End Sub
 
     Public Shared Sub 启动时加载设置()
@@ -210,12 +220,14 @@ Public Class 设置
         全局设置数据("NewsSever") = Form1.UiComboBox2.Text
         全局设置数据("UpdateSever") = Form1.UiComboBox3.Text
         全局设置数据("AlternativeUpdateSever") = Form1.UiComboBox7.Text
+        UIMessageTip.Show("更改已写入内存，正常退出时写入文件",, 2500)
     End Sub
 
     Public Shared Sub 保存网络API设置()
         全局设置数据("NexusAPI") = Form1.UiTextBox9.Text
         全局设置数据("GiteeToken") = Form1.UiTextBox11.Text
         全局设置数据("GithubToken") = Form1.UiTextBox10.Text
+        UIMessageTip.Show("更改已写入内存，正常退出时写入文件",, 2500)
     End Sub
 
     Public Shared Sub 保存启动项设置()
@@ -224,6 +236,7 @@ Public Class 设置
         Else
             全局设置数据("LaunchSelection") = "2"
         End If
+        UIMessageTip.Show("更改已写入内存，正常退出时写入文件",, 2500)
     End Sub
 
     Public Shared Sub 保存数值和开关设置()
@@ -236,11 +249,13 @@ Public Class 设置
         全局设置数据("AutoSelectFirstNexusDownloadSever") = Form1.UiCheckBox4.Checked
         全局设置数据("AutoConvertWebpToPng") = Form1.UiCheckBox5.Checked
         全局设置数据("SendDeletedDataToRecycleBin") = Form1.UiCheckBox6.Checked
+        UIMessageTip.Show("更改已写入内存，正常退出时写入文件",, 2500)
     End Sub
 
     Public Shared Sub 保存字体设置()
         全局设置数据("FontName") = Form1.UiComboBox5.Text
         刷新字体显示(Form1)
+        UIMessageTip.Show("更改已写入内存，正常退出时写入文件",, 2500)
     End Sub
 
     Private Shared Sub 刷新字体显示(parentControl As Control)
@@ -270,6 +285,7 @@ Public Class 设置
         全局设置数据("UploadCDiskCapacity") = Form1.UiCheckBox15.Checked
         全局设置数据("UploadGPU") = Form1.UiCheckBox12.Checked
         全局设置数据("UploadScreen") = Form1.UiCheckBox13.Checked
+        UIMessageTip.Show("更改已写入内存，正常退出时写入文件",, 2500)
     End Sub
 
     Public Shared Sub 选择游戏文件夹路径()
@@ -408,6 +424,53 @@ R1:
         Form1.UiTextBox8.Text = a.FileName
     End Sub
 
+    Public Shared Sub 检测NEXUS密钥是否可用()
+        Dim a As New NEXUS.GetUserInfo With {
+        .ST_ApiKey = Form1.UiTextBox9.Text
+    }
+        Dim x As String = a.StartGet()
+        If x <> "" Then
+            'Form1.Label7.Text = 获取动态多语言文本("data/DynamicText/LogInFailed")
+            MsgBox(x, MsgBoxStyle.Critical)
+        Else
+            Dim c As String = ""
+            c &= "User Name: " & a.name & vbCrLf
+            c &= "User ID: " & a.user_id & vbCrLf
+            c &= "User Email: " & a.email & vbCrLf
+            c &= "Is Premium: " & a.is_premium & vbCrLf
+            c &= "Is Supporter: " & a.is_supporter & vbCrLf
+            c &= "Hour Limit: " & a.hourly_remaining & "/" & a.hourly_limit & vbCrLf
+            c &= "Daily Limit: " & a.daily_remaining & "/" & a.daily_limit
+            'Form1.Label7.Text = 获取动态多语言文本("data/DynamicText/LoggedNexusWebApi") & vbCrLf & 获取动态多语言文本("data/DynamicText/UserName") & a.name
+            Dim m As New 多项单选对话框("NEXUS WEB API", {"OK"}, c, 200)
+            m.ShowDialog(Form1)
+        End If
+    End Sub
+
+    Public Shared Sub 切换密钥密文显示()
+        Select Case Form1.UiTextBox9.PasswordChar
+            Case "●"
+                Form1.UiTextBox9.PasswordChar = ""
+            Case ""
+                Form1.UiTextBox9.PasswordChar = "●"
+        End Select
+    End Sub
+
+    Public Shared Sub 让非N网会员去内置浏览器登录()
+        If 全局设置数据("AgreementSigned") = "False" Then Exit Sub
+        Form1.UiTabControl1.SelectedTab = Form1.TabPageCEF浏览器
+        Form1.UiButton49.PerformClick()
+    End Sub
+
+    Public Shared Sub 去内置浏览器管理密钥()
+        If 全局设置数据("AgreementSigned") = "False" Then Exit Sub
+        Form1.UiTextBox5.Text = "https://www.nexusmods.com/users/myaccount?tab=api"
+        Form1.UiTabControl1.SelectedTab = Form1.TabPageCEF浏览器
+        Form1.UiButton53.PerformClick()
+    End Sub
+
+
+
     Public Shared Sub 发送用户统计()
         If 全局设置数据("UploadUserInfo") = "False" Then Exit Sub
         If 全局设置数据("AgreementSigned") = "False" Then Exit Sub
@@ -529,6 +592,10 @@ jx1:
            End Sub
         服务器发送.RunWorkerAsync()
     End Sub
+
+
+
+
 
 
 

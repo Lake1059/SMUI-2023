@@ -1,6 +1,6 @@
-﻿Imports System.Reflection.Metadata
+﻿Imports System.IO
 Imports CefSharp
-Imports CefSharp.DevTools
+
 
 Public Class 浏览器控制
 
@@ -59,8 +59,8 @@ Public Class 浏览器控制
                 Dim processes() As Process = Process.GetProcessesByName("CefSharp.BrowserSubprocess")
                 If processes.Length > 0 Then
                     For Each proc As Process In processes
-                        DebugPrint(proc.MainModule.FileName, Form1.ForeColor)
-                        If proc.MainModule.FileName = Application.StartupPath & "runtimes\win-x64\native\CefSharp.BrowserSubprocess.exe" Then proc.Kill(True)
+                        'DebugPrint(proc.MainModule.FileName, Form1.ForeColor)
+                        If proc.MainModule.FileName = Path.Combine(Application.StartupPath, "CefSharp.BrowserSubprocess.exe") Then proc.Kill(True)
                     Next
                 End If
             End Sub
