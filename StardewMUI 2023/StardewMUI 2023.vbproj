@@ -43,6 +43,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Include="..\.editorconfig" Link=".editorconfig" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="CefSharp.WinForms.NETCore" Version="120.1.110" />
     <PackageReference Include="Imazen.WebP" Version="10.0.1" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />

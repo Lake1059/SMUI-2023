@@ -13,10 +13,6 @@ Public Class 浏览器控制
     Public Shared Property 界面刷新计时器 As New Timer With {.Interval = 500, .Enabled = False}
     Public Shared Property 计算额外参数计时器 As New Timer With {.Interval = 500, .Enabled = False}
     Public Shared Sub 初始化功能()
-
-
-
-
         AddHandler Form1.UiTabControl1.SelectedIndexChanged,
             Sub(sender, e)
                 If Form1.UiTabControl1.SelectedIndex = 5 Then

@@ -36,6 +36,7 @@ Public Class 界面控制
         Form1.ListView7.DoubleBuffered(True)
         Form1.ListView8.DoubleBuffered(True)
         Form1.ListView9.DoubleBuffered(True)
+        Form1.ListView10.DoubleBuffered(True)
         AddHandler Form1.ListView1.DrawSubItem, Sub(sender, e) 暗黑列表视图自绘制.绑定绘制子项事件(sender, e, 暗黑主题资源.分类列包含的图标字典)
         AddHandler Form1.ListView1.SelectedIndexChanged, Sub(sender, e) sender.Invalidate(sender.ClientRectangle)
         AddHandler Form1.ListView1.ItemMouseHover, Sub(sender, e) sender.Invalidate(sender.ClientRectangle)
@@ -63,6 +64,9 @@ Public Class 界面控制
         AddHandler Form1.ListView9.DrawSubItem, Sub(sender, e) 暗黑列表视图自绘制.绑定绘制子项事件(sender, e, New Dictionary(Of String, Image))
         AddHandler Form1.ListView9.SelectedIndexChanged, Sub(sender, e) sender.Invalidate(sender.ClientRectangle)
         AddHandler Form1.ListView9.ItemMouseHover, Sub(sender, e) sender.Invalidate(sender.ClientRectangle)
+        AddHandler Form1.ListView10.DrawSubItem, Sub(sender, e) 暗黑列表视图自绘制.绑定绘制子项事件(sender, e, New Dictionary(Of String, Image))
+        AddHandler Form1.ListView10.SelectedIndexChanged, Sub(sender, e) sender.Invalidate(sender.ClientRectangle)
+        AddHandler Form1.ListView10.ItemMouseHover, Sub(sender, e) sender.Invalidate(sender.ClientRectangle)
 
         多项单选对话框.GlobalDpixRatio = X轴DPI比率
 
@@ -71,13 +75,7 @@ Public Class 界面控制
         主界面元素尺寸动态调整()
         管理模组的菜单.添加菜单的触发()
 
-        AddHandler Form1.UiRichTextBox4.LinkClicked,
-            Sub()
-                设置.全局设置数据("AgreementSigned") = "True"
-                Dim a As New 多项单选对话框("已签署", {"OK"}, "签署已保存到设置，正常退出软件时才会将设置写入文件，现在可以正常使用了。", 100, 500)
-                a.ShowDialog(Form1)
-                设置.恢复选项卡显示()
-            End Sub
+        AddHandler Form1.UiRichTextBox4.LinkClicked, AddressOf 许可协议签署执行
 
 
 
@@ -140,7 +138,12 @@ Public Class 界面控制
         Form1.UiComboBox7.ItemHeight = 30 * Y轴DPI比率
     End Sub
 
-
+    Public Shared Sub 许可协议签署执行()
+        设置.全局设置数据("AgreementSigned") = "True"
+        Dim a As New 多项单选对话框("已签署", {"OK"}, "签署已保存到设置，正常退出软件时才会将设置写入文件，现在可以正常使用了。", 100, 500)
+        a.ShowDialog(Form1)
+        设置.恢复选项卡显示()
+    End Sub
 
 
 End Class
