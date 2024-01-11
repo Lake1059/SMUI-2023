@@ -1,11 +1,11 @@
 ﻿Imports System.ComponentModel
+Imports System.IO
 
 Public Class Form1
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         SevenZip.SevenZipBase.SetLibraryPath(Application.StartupPath & "\7zFull64.dll")
         界面控制.初始化界面()
         设置.启动时加载设置()
-
     End Sub
 
     Private Sub Form1_Shown(sender As Object, e As EventArgs) Handles MyBase.Shown
@@ -26,11 +26,12 @@ Public Class Form1
         键值对IO操作.从字典键值对写入文件(设置.全局设置数据, 设置.设置文件存储路径)
         If 检查更新.在退出后安装更新 = True Then
             If FileIO.FileSystem.FileExists(设置.安装程序更新下载文件路径) = True Then
-                ShellExecute(Nothing, "", 设置.安装程序更新下载文件路径, "/qb", IO.Path.GetDirectoryName(设置.安装程序更新下载文件路径), Nothing)
+                ShellExecute(Nothing, "", 设置.安装程序更新下载文件路径, "/qb", Path.GetDirectoryName(设置.安装程序更新下载文件路径), Nothing)
             Else
                 MsgBox("找不到下载的安装程序文件！", MsgBoxStyle.Critical)
             End If
         End If
+
     End Sub
 
     Private Sub Form1_Closed(sender As Object, e As EventArgs) Handles MyBase.Closed
@@ -39,6 +40,6 @@ Public Class Form1
 
     Private Sub Form1_DpiChanged(sender As Object, e As DpiChangedEventArgs) Handles MyBase.DpiChanged
         Dim a As New 多项单选对话框("DPI 变化", {"了解"}, "SMUI 6 的高 DPI 支持被设计为仅在启动时计算，当中途更改 DPI 时会导致界面错位以及破碎，此时继续使用可能会导致无法预知的故障，请及时重新启动应用程序。", 150, 500)
-        If a.ShowDialog = 0 Then Application.Restart()
+        a.ShowDialog(Me)
     End Sub
 End Class

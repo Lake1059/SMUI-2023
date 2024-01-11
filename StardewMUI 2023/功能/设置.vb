@@ -58,6 +58,10 @@ Public Class 设置
         AddHandler Form1.UiButton56.Click, Sub() ShellExecute(IntPtr.Zero, "open", "https://gitee.com/profile/personal_access_tokens", Nothing, Nothing, 1)
         AddHandler Form1.UiButton57.Click, Sub() ShellExecute(IntPtr.Zero, "open", "https://github.com/settings/tokens", Nothing, Nothing, 1)
 
+        AddHandler Form1.UiButton60.Click, AddressOf 清理空间.刷新存储信息
+        AddHandler Form1.UiButton62.Click, AddressOf 清理空间.清理选中项
+        AddHandler Form1.UiButton61.Click, AddressOf 清理空间.删除谷歌浏览器全部缓存
+
     End Sub
 
     Public Shared Sub 启动时加载设置()
@@ -375,8 +379,11 @@ R1:
                             If My.Computer.FileSystem.DirectoryExists(str1 & "\Default Sub Library") = False Then
                                 My.Computer.FileSystem.CreateDirectory(str1 & "\Default Sub Library")
                             End If
-                            If My.Computer.FileSystem.DirectoryExists(str1 & "\.DOWNLOAD") = False Then
-                                My.Computer.FileSystem.CreateDirectory(str1 & "\.DOWNLOAD")
+                            If My.Computer.FileSystem.DirectoryExists(str1 & "\.Download") = False Then
+                                My.Computer.FileSystem.CreateDirectory(str1 & "\.Download")
+                            End If
+                            If My.Computer.FileSystem.DirectoryExists(str1 & "\.Decompress") = False Then
+                                My.Computer.FileSystem.CreateDirectory(str1 & "\.Decompress")
                             End If
                             If My.Computer.FileSystem.FileExists(str1 & "\MANIFEST") = False Then
                                 My.Computer.FileSystem.WriteAllText(str1 & "\MANIFEST", "This is your Mod Repository root path.", False, Encoding.UTF8)

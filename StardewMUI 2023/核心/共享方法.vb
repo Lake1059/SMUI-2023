@@ -1,4 +1,5 @@
-﻿Imports System.Security.Cryptography
+﻿Imports System.IO
+Imports System.Security.Cryptography
 Imports System.Text
 
 Public Class 共享方法
@@ -97,12 +98,49 @@ Public Class 共享方法
     Public Shared Function SearchFolderWithoutSub(Path As String) As String()
         Dim mDir As System.IO.DirectoryInfo
         Dim mDirInfo As New System.IO.DirectoryInfo(Path)
-        Dim a As String() = {}
+        Dim a As String() = Array.Empty(Of String)()
         For Each mDir In mDirInfo.GetDirectories
             ReDim Preserve a(a.Length)
             a(a.Length - 1) = mDir.Name
         Next
         Return a
+    End Function
+
+    Public Shared Function GetDirectorySizeWithSub(folderPath As String) As Long
+        Dim size As Long = 0
+        Try
+            Dim di As New DirectoryInfo(folderPath)
+            Dim files As FileInfo() = di.GetFiles()
+            For Each file As FileInfo In files
+                size += file.Length
+            Next
+            Dim subDirectories As DirectoryInfo() = di.GetDirectories()
+            For Each subDirectory As DirectoryInfo In subDirectories
+                size += GetDirectorySizeWithSub(subDirectory.FullName)
+            Next
+        Catch ex As Exception
+            Return -1
+        End Try
+        Return size
+    End Function
+
+    Public Shared Function GetDirectorySizeWithSub(folderPath As String, EX_FolderName As String()) As Long
+        Dim size As Long = 0
+        Try
+            Dim di As New DirectoryInfo(folderPath)
+            Dim files As FileInfo() = di.GetFiles()
+            For Each file As FileInfo In files
+                size += file.Length
+            Next
+            Dim subDirectories As DirectoryInfo() = di.GetDirectories()
+            For Each subDirectory As DirectoryInfo In subDirectories
+                If EX_FolderName.Contains(subDirectory.Name) Then Continue For
+                size += GetDirectorySizeWithSub(subDirectory.FullName)
+            Next
+        Catch ex As Exception
+            Return -1
+        End Try
+        Return size
     End Function
 
 
