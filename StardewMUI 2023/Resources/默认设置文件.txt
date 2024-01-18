@@ -34,3 +34,6 @@ UploadCDiskCapacity=True
 UploadGPU=True
 UploadScreen=True
 AgreementSigned=False
+DateOfGetNews=
+ProcessMonitor=False
+PerformanceMonitor=False

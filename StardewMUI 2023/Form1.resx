@@ -117,26 +117,6 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Label15.Text" xml:space="preserve">
-    <value>根据不同的设置提供不同的下载内容：
-
-选择 GitHub 下载源（国际）
-将下载离线安装程序
-大小：&gt; 135 MB
-
-选择 Gitee 下载源（中国大陆）
-将下载在线安装程序
-大小：≈ 4 MB
-后续数据从 Bitbucket 获取
-
-选择 Bitbucket 备选下载源（国际）
-将尝试下载离线安装程序
-大小：&gt; 135 MB
-
-不支持断点续传，请确保网络稳定
-
-两种安装程序无法混用，更换需卸载重装，请尽可能维持下载源设置</value>
-  </data>
   <metadata name="ImageList1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>

@@ -61,6 +61,46 @@ Namespace My.Resources
         End Property
         
         '''<summary>
+        '''  查找 System.Drawing.Bitmap 类型的本地化资源。
+        '''</summary>
+        Friend ReadOnly Property _me() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("me", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  查找 System.Drawing.Bitmap 类型的本地化资源。
+        '''</summary>
+        Friend ReadOnly Property CEF() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("CEF", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  查找 System.Drawing.Bitmap 类型的本地化资源。
+        '''</summary>
+        Friend ReadOnly Property ChatGPT() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("ChatGPT", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  查找 System.Drawing.Bitmap 类型的本地化资源。
+        '''</summary>
+        Friend ReadOnly Property DarkUI() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("DarkUI", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        '''<summary>
         '''  查找类似于 (图标) 的 System.Drawing.Icon 类型的本地化资源。
         '''</summary>
         Friend ReadOnly Property dropbox() As System.Drawing.Icon
@@ -76,6 +116,16 @@ Namespace My.Resources
         Friend ReadOnly Property dropbox1() As System.Drawing.Bitmap
             Get
                 Dim obj As Object = ResourceManager.GetObject("dropbox1", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  查找 System.Drawing.Bitmap 类型的本地化资源。
+        '''</summary>
+        Friend ReadOnly Property SunnyUI() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("SunnyUI", resourceCulture)
                 Return CType(obj,System.Drawing.Bitmap)
             End Get
         End Property
@@ -291,6 +341,17 @@ Namespace My.Resources
         End Property
         
         '''<summary>
+        '''  查找类似 {\rtf1\adeflang1025\ansi\ansicpg936\uc2\adeff0\deff0\stshfdbch31505\stshfloch31506\stshfhich31506\stshfbi0\deflang1033\deflangfe2052\themelang1033\themelangfe2052\themelangcs0{\fonttbl{\f0\fbidi \froman\fcharset0\fprq2{\*\panose 02020603050405020304}Times New Roman;}
+        '''{\f13\fbidi \fnil\fcharset134\fprq2{\*\panose 02010600030101010101}\&apos;cb\&apos;ce\&apos;cc\&apos;e5{\*\falt SimSun};}{\f34\fbidi \froman\fcharset0\fprq2{\*\panose 02040503050406030204}Cambria Math;}
+        '''{\f36\fbidi \fnil\fcharset134\fprq2{\*\panose 0201060003010 [字符串的其余部分被截断]&quot;; 的本地化字符串。
+        '''</summary>
+        Friend ReadOnly Property 更新记录() As String
+            Get
+                Return ResourceManager.GetString("更新记录", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
         '''  查找 System.Drawing.Bitmap 类型的本地化资源。
         '''</summary>
         Friend ReadOnly Property 添加带圆圈() As System.Drawing.Bitmap
@@ -302,8 +363,8 @@ Namespace My.Resources
         
         '''<summary>
         '''  查找类似 {\rtf1\adeflang1025\ansi\ansicpg936\uc2\adeff0\deff0\stshfdbch31505\stshfloch31506\stshfhich31506\stshfbi0\deflang1033\deflangfe2052\themelang1033\themelangfe2052\themelangcs0{\fonttbl{\f0\fbidi \froman\fcharset0\fprq2{\*\panose 02020603050405020304}Times New Roman;}
-        '''{\f12\fbidi \froman\fcharset129\fprq2{\*\panose 02030600000101010101}Batang{\*\falt ??};}{\f13\fbidi \fnil\fcharset134\fprq2{\*\panose 02010600030101010101}\&apos;cb\&apos;ce\&apos;cc\&apos;e5{\*\falt SimSun};}
-        '''{\f34\fbidi \froman\fcharset0\fprq2{\*\panose 02040 [字符串的其余部分被截断]&quot;; 的本地化字符串。
+        '''{\f13\fbidi \fnil\fcharset134\fprq2{\*\panose 02010600030101010101}\&apos;cb\&apos;ce\&apos;cc\&apos;e5{\*\falt SimSun};}{\f15\fbidi \fmodern\fcharset128\fprq1{\*\panose 020b0609070205080204}MS Gothic{\*\falt \&apos;95\&apos;55? \&apos;8b\&apos;a1???};}
+        '''{\f34\fbidi \froman\fcharset [字符串的其余部分被截断]&quot;; 的本地化字符串。
         '''</summary>
         Friend ReadOnly Property 用户许可协议() As String
             Get
@@ -351,12 +412,13 @@ Namespace My.Resources
         '''NewsLanguage=
         '''NewsSever=
         '''UpdateSever=
-        '''AlternativeUpdateSever=
+        '''AlternativeUpdateSever=No Use
         '''NexusAPI=
         '''GiteeToken=
         '''GithubToken=
         '''LaunchSelection=1
         '''LaunchParameters=
+        '''CustomLaunchCMD=
         '''SaveUserWindowSize=True
         '''MainWindowWidth=1280
         '''MainWindowHeight=720
@@ -365,8 +427,7 @@ Namespace My.Resources
         '''AutoCheckUpdate=True
         '''AutoStartDownloadUpdate=True
         '''AdminDragDropPatch=True
-        '''AutoSelectFirstNexusDownloadSever=False
-        '''AutoC [字符串的其余部分被截断]&quot;; 的本地化字符串。
+        '''AutoSelectFirstNexusDo [字符串的其余部分被截断]&quot;; 的本地化字符串。
         '''</summary>
         Friend ReadOnly Property 默认设置文件() As String
             Get

@@ -1,14 +1,9 @@
 ﻿
 Imports System.Drawing.Text
 Imports System.IO
-Imports System.Net
 Imports System.Reflection
-Imports System.Runtime.InteropServices
-Imports System.Security.Policy
 Imports System.Text
 Imports System.Xml
-Imports Newtonsoft.Json
-Imports Newtonsoft.Json.Linq
 Imports Sunny.UI
 
 Public Class 设置
@@ -61,6 +56,9 @@ Public Class 设置
         AddHandler Form1.UiButton60.Click, AddressOf 清理空间.刷新存储信息
         AddHandler Form1.UiButton62.Click, AddressOf 清理空间.清理选中项
         AddHandler Form1.UiButton61.Click, AddressOf 清理空间.删除谷歌浏览器全部缓存
+
+        AddHandler Form1.UiSwitch2.ActiveChanged, AddressOf 控制进程监控功能开关
+        AddHandler Form1.UiSwitch3.ActiveChanged, AddressOf 控制性能监控功能开关
 
     End Sub
 
@@ -146,6 +144,7 @@ Public Class 设置
 
     Public Shared ReadOnly 设置文件存储路径 As String = Application.StartupPath & "\UserData\Settings"
     Public Shared ReadOnly 安装程序更新下载文件路径 As String = Application.StartupPath & "\UserData\SMUI 6 Installer.exe"
+    Public Shared ReadOnly 当日新闻列表文件路径 As String = Application.StartupPath & "\UserData\TodayNews"
 
     Public Shared ReadOnly DLC文件夹路径 As String = Application.StartupPath & "\UserData\DLC"
     Public Shared ReadOnly 插件文件夹路径 As String = Application.StartupPath & "\UserData\Plugin"
@@ -207,6 +206,10 @@ Public Class 设置
         Form1.UiCheckBox15.Checked = 全局设置数据("UploadCDiskCapacity")
         Form1.UiCheckBox12.Checked = 全局设置数据("UploadGPU")
         Form1.UiCheckBox13.Checked = 全局设置数据("UploadScreen")
+
+        Form1.UiSwitch2.Active = 全局设置数据("ProcessMonitor")
+        Form1.UiSwitch3.Active = 全局设置数据("PerformanceMonitor")
+
     End Sub
 
     Public Shared Sub 保存路径设置()
@@ -216,6 +219,7 @@ Public Class 设置
         全局设置数据("VisualStudioCodeEXE") = Form1.UiTextBox7.Text
         全局设置数据("VisualStudioEXE") = Form1.UiTextBox8.Text
         UIMessageTip.Show("更改已写入内存，正常退出时写入文件",, 2500)
+        状态信息.刷新起始页面状态信息()
     End Sub
 
     Public Shared Sub 保存语言和服务器设置()
@@ -265,6 +269,7 @@ Public Class 设置
     Private Shared Sub 刷新字体显示(parentControl As Control)
         For Each ctrl As Control In parentControl.Controls
             If ctrl Is Form1.UiRichTextBox4 Then Continue For
+            If ctrl Is Form1.UiRichTextBox3 Then Continue For
             刷新字体显示_检查属性(ctrl)
             If ctrl.HasChildren Then 刷新字体显示(ctrl)
         Next
@@ -476,11 +481,30 @@ R1:
         Form1.UiButton53.PerformClick()
     End Sub
 
+    Public Shared Sub 控制进程监控功能开关()
+        If Form1.UiSwitch2.Active Then
 
+            状态信息.SMAPI运行态定时器.Enabled = True
+        Else
+            状态信息.SMAPI运行态定时器.Enabled = False
+            Form1.UiButton45.Text = "RUN SMAPI"
+        End If
+        全局设置数据("ProcessMonitor") = Form1.UiSwitch2.Active
+    End Sub
 
-
-
-
+    Public Shared Sub 控制性能监控功能开关()
+        If Form1.UiSwitch3.Active Then
+            If 状态信息.CPU性能计数器 Is Nothing Then
+                Form1.UiListBox1.Items(4) = "正在初始化性能计数器，这需要几秒钟时间"
+                状态信息.等待初始化性能计数器()
+            End If
+            状态信息.性能计数定时器.Enabled = True
+        Else
+            状态信息.性能计数定时器.Enabled = False
+            Form1.UiListBox1.Items(4) = "启用性能监控功能以统计性能信息"
+        End If
+        全局设置数据("PerformanceMonitor") = Form1.UiSwitch3.Active
+    End Sub
 
 
 

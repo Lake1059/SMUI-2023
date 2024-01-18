@@ -14,12 +14,20 @@ Public Class 清理空间
         s1 += 共享方法.GetDirectorySizeWithSub(IO.Path.Combine(Application.StartupPath, "UserData", "Plugin"))
         Form1.ListView10.Items(2).SubItems(2).Text = Format(s1 / 1024, "0.0") & " KB"
 
+
         If FileIO.FileSystem.FileExists(设置.安装程序更新下载文件路径) Then
             s1 = FileIO.FileSystem.GetFileInfo(设置.安装程序更新下载文件路径).Length
-            Form1.ListView10.Items(3).SubItems(2).Text = Format(s1 / 1024 / 1024, "0") & " MB"
-        Else
-            Form1.ListView10.Items(3).SubItems(2).Text = "无数据"
         End If
+        If FileIO.FileSystem.FileExists(IO.Path.Combine(设置.安装程序更新下载文件路径, "SMUI 6 Installer.7z.001")) Then
+            s1 += FileIO.FileSystem.GetFileInfo(IO.Path.Combine(设置.安装程序更新下载文件路径, "SMUI 6 Installer.7z.001")).Length
+        End If
+        If FileIO.FileSystem.FileExists(IO.Path.Combine(设置.安装程序更新下载文件路径, "SMUI 6 Installer.7z.002")) Then
+            s1 += FileIO.FileSystem.GetFileInfo(IO.Path.Combine(设置.安装程序更新下载文件路径, "SMUI 6 Installer.7z.002")).Length
+        End If
+        If FileIO.FileSystem.FileExists(IO.Path.Combine(设置.安装程序更新下载文件路径, "SMUI 6 Installer.7z.003")) Then
+            s1 += FileIO.FileSystem.GetFileInfo(IO.Path.Combine(设置.安装程序更新下载文件路径, "SMUI 6 Installer.7z.003")).Length
+        End If
+        Form1.ListView10.Items(3).SubItems(2).Text = Format(s1 / 1024 / 1024, "0") & " MB"
 
         If FileIO.FileSystem.FileExists(IO.Path.Combine(设置.全局设置数据("LocalRepositoryPath"), ".Download")) Then
             s1 = 共享方法.GetDirectorySizeWithSub(IO.Path.Combine(设置.全局设置数据("LocalRepositoryPath"), ".Download"))
@@ -130,14 +138,23 @@ Public Class 清理空间
             Select Case i
                 Case 3
                     If FileIO.FileSystem.FileExists(设置.安装程序更新下载文件路径) Then
-                        FileIO.FileSystem.DeleteFile(设置.安装程序更新下载文件路径, FileIO.UIOption.AllDialogs, FileIO.RecycleOption.DeletePermanently)
-                        Form1.ListView10.Items(3).SubItems(2).Text = "已清理"
+                        FileIO.FileSystem.DeleteFile(设置.安装程序更新下载文件路径)
                     End If
+                    If FileIO.FileSystem.FileExists(IO.Path.Combine(设置.安装程序更新下载文件路径, "SMUI 6 Installer.7z.001")) Then
+                        FileIO.FileSystem.DeleteFile(IO.Path.Combine(设置.安装程序更新下载文件路径, "SMUI 6 Installer.7z.001"))
+                    End If
+                    If FileIO.FileSystem.FileExists(IO.Path.Combine(设置.安装程序更新下载文件路径, "SMUI 6 Installer.7z.002")) Then
+                        FileIO.FileSystem.DeleteFile(IO.Path.Combine(设置.安装程序更新下载文件路径, "SMUI 6 Installer.7z.002"))
+                    End If
+                    If FileIO.FileSystem.FileExists(IO.Path.Combine(设置.安装程序更新下载文件路径, "SMUI 6 Installer.7z.003")) Then
+                        FileIO.FileSystem.DeleteFile(IO.Path.Combine(设置.安装程序更新下载文件路径, "SMUI 6 Installer.7z.003"))
+                    End If
+                    Form1.ListView10.Items(3).SubItems(2).Text = "已清理"
                 Case 4
                     If FileIO.FileSystem.FileExists(IO.Path.Combine(设置.全局设置数据("LocalRepositoryPath"), ".Download")) Then
                         FileIO.FileSystem.DeleteDirectory(IO.Path.Combine(设置.全局设置数据("LocalRepositoryPath"), ".Download"), FileIO.UIOption.AllDialogs, FileIO.RecycleOption.DeletePermanently)
-                        Form1.ListView10.Items(4).SubItems(2).Text = "已清理"
                     End If
+                    Form1.ListView10.Items(4).SubItems(2).Text = "已清理"
                 Case 5
                     If FileIO.FileSystem.FileExists(IO.Path.Combine(设置.全局设置数据("LocalRepositoryPath"), ".Decompress")) Then
                         FileIO.FileSystem.DeleteDirectory(IO.Path.Combine(设置.全局设置数据("LocalRepositoryPath"), ".Decompress"), FileIO.UIOption.AllDialogs, FileIO.RecycleOption.DeletePermanently)

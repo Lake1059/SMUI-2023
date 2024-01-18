@@ -100,6 +100,10 @@ Module Module1
         ) As Boolean
     End Function
 
+    <DllImport("kernel32.dll", SetLastError:=True)>
+    Public Function TerminateProcess(hProcess As IntPtr, uExitCode As UInteger) As Boolean
+    End Function
+
     Public Sub 显示模式窗体(哪个窗口 As Form, 以谁为基准显示 As Form)
         哪个窗口.Left = (以谁为基准显示.Width - 哪个窗口.Width) * 0.5 + 以谁为基准显示.Left
         哪个窗口.Top = (以谁为基准显示.Height - 哪个窗口.Height) * 0.5 + 以谁为基准显示.Top

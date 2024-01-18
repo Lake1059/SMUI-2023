@@ -25,6 +25,7 @@ Namespace My
 
     Partial Friend Class MyApplication
         Private Sub MyApplication_Startup(sender As Object, e As StartupEventArgs) Handles Me.Startup
+
             'If e.CommandLine.Count > 0 Then
             '    Dim a As String = "接收到的命令行"
             '    For i = 0 To e.CommandLine.Count - 1

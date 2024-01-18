@@ -4,12 +4,18 @@ Imports System.IO
 Public Class Form1
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         SevenZip.SevenZipBase.SetLibraryPath(Application.StartupPath & "\7zFull64.dll")
+        状态信息.判断应用程序启动模式()
+        状态信息.初始化性能计数定时器()
+        状态信息.初始化SMAPI运行态定时器()
         界面控制.初始化界面()
         设置.启动时加载设置()
+
     End Sub
 
     Private Sub Form1_Shown(sender As Object, e As EventArgs) Handles MyBase.Shown
-        If 设置.全局设置数据("AutoCheckUpdate") Then 检查更新.运行后台服务器检查更新()
+        If 设置.全局设置数据("AutoCheckUpdate") = "True" Then 检查更新.运行后台服务器检查更新()
+        If 设置.全局设置数据("AutoGetNews") = "True" Then 新闻列表.获取新闻()
+        状态信息.刷新起始页面状态信息()
         Dim a As New 多项单选对话框("早期测试", {"OK"}, "当前版本还无法满足日常需求，请继续用五代产品。", 100, 500)
         a.ShowDialog(Me)
     End Sub

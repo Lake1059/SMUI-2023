@@ -7,18 +7,12 @@ Public Class 界面控制
     Public Shared Property X轴DPI比率 As Single = A.DpiX / 96
     Public Shared Property Y轴DPI比率 As Single = A.DpiY / 96
     Public Shared Property 程序DPI_垂直滚动条宽度 As Integer = GetScrollBarWidth()
-    Public Shared Property CEF浏览器控件 As New ChromiumWebBrowser With {.Dock = DockStyle.Fill, .ActivateBrowserOnCreation = False}
+    Public Shared Property CEF浏览器控件 As ChromiumWebBrowser
 
     Public Shared Sub 初始化界面()
-        Form1.TabPageCEF浏览器.Controls.Add(CEF浏览器控件)
-        CEF浏览器控件.BringToFront()
-        Dim settings As New CefSettings() With {.PersistSessionCookies = True, .CachePath = 设置.浏览器缓存路径}
-        settings.CefCommandLineArgs.Add("enable-media-stream", "1") ' 启用媒体流支持
-        settings.CefCommandLineArgs.Add("enable-system-flash", "1") ' 启用系统 Flash 支持（如果需要）
-        CefSharp.Cef.Initialize(settings)
         浏览器控制.初始化功能()
-
         Form1.UiRichTextBox4.Rtf = My.Resources.用户许可协议
+        Form1.UiRichTextBox3.Rtf = My.Resources.更新记录
 
         设置富文本框行高(Form1.UiRichTextBox1, 30)
         Form1.UiRichTextBox1.AutoWordSelection = False
@@ -74,12 +68,11 @@ Public Class 界面控制
         主界面高DPI兼容()
         主界面元素尺寸动态调整()
         管理模组的菜单.添加菜单的触发()
+        新闻列表.绑定新闻列表操作()
+
+
 
         AddHandler Form1.UiRichTextBox4.LinkClicked, AddressOf 许可协议签署执行
-
-
-
-
     End Sub
 
 

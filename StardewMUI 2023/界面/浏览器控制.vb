@@ -1,5 +1,6 @@
 ﻿Imports System.IO
 Imports CefSharp
+Imports CefSharp.WinForms
 
 
 Public Class 浏览器控制
@@ -12,42 +13,61 @@ Public Class 浏览器控制
     Public Shared Property 上一次获取到的地址 As String = ""
     Public Shared Property 界面刷新计时器 As New Timer With {.Interval = 500, .Enabled = False}
     Public Shared Property 计算额外参数计时器 As New Timer With {.Interval = 500, .Enabled = False}
+
+    Public Shared Sub 初始化浏览器控件()
+        Dim settings As New CefSettings() With {.PersistSessionCookies = True, .CachePath = 设置.浏览器缓存路径}
+        settings.CefCommandLineArgs.Add("enable-media-stream", "1")
+        settings.CefCommandLineArgs.Add("enable-system-flash", "1")
+        settings.LogSeverity = CefSharp.LogSeverity.Disable
+        CefSharp.Cef.Initialize(settings)
+        界面控制.CEF浏览器控件 = New ChromiumWebBrowser With {.Dock = DockStyle.Fill, .ActivateBrowserOnCreation = False}
+        Form1.TabPageCEF浏览器.Controls.Add(界面控制.CEF浏览器控件)
+        界面控制.CEF浏览器控件.BringToFront()
+    End Sub
+
     Public Shared Sub 初始化功能()
-        AddHandler Form1.UiTabControl1.SelectedIndexChanged,
-            Sub(sender, e)
-                If Form1.UiTabControl1.SelectedIndex = 5 Then
-                    If Form1.UiTextBox5.Text = "" Then
-                        界面控制.CEF浏览器控件.LoadUrl("https://users.nexusmods.com/auth/sign_in")
-                    End If
-                End If
-            End Sub
+        'AddHandler Form1.UiTabControl1.SelectedIndexChanged,
+        '    Sub(sender, e)
+        '        If Form1.UiTabControl1.SelectedIndex = 5 Then
+        '            If Form1.UiTextBox5.Text = "" Then
+        '                界面控制.CEF浏览器控件.LoadUrl("https://users.nexusmods.com/auth/sign_in")
+        '            End If
+        '        End If
+        '    End Sub
         AddHandler Form1.UiButton49.Click,
             Sub()
+                If 界面控制.CEF浏览器控件 Is Nothing Then 初始化浏览器控件()
                 界面控制.CEF浏览器控件.LoadUrl("https://users.nexusmods.com/auth/sign_in")
                 获取到的HTML数据 = ""
             End Sub
         AddHandler Form1.UiButton40.Click,
             Sub()
+                If 界面控制.CEF浏览器控件 Is Nothing Then Exit Sub
                 界面控制.CEF浏览器控件.Reload()
             End Sub
         AddHandler Form1.UiButton50.Click,
             Sub()
+                If 界面控制.CEF浏览器控件 Is Nothing Then Exit Sub
                 界面控制.CEF浏览器控件.Back()
             End Sub
         AddHandler Form1.UiButton51.Click,
             Sub()
+                If 界面控制.CEF浏览器控件 Is Nothing Then Exit Sub
                 界面控制.CEF浏览器控件.Forward()
             End Sub
         AddHandler Form1.UiButton52.Click,
             Sub()
+                If 界面控制.CEF浏览器控件 Is Nothing Then Exit Sub
                 界面控制.CEF浏览器控件.Stop()
             End Sub
         AddHandler Form1.UiButton53.Click,
             Sub()
+                If 界面控制.CEF浏览器控件 Is Nothing Then 初始化浏览器控件()
                 界面控制.CEF浏览器控件.LoadUrl(Form1.UiTextBox5.Text)
             End Sub
         AddHandler Form1.UiTextBox5.KeyDown,
             Sub(sender, e)
+                If 界面控制.CEF浏览器控件 Is Nothing Then 初始化浏览器控件()
                 If e.KeyCode = Keys.Enter Then 界面控制.CEF浏览器控件.LoadUrl(Form1.UiTextBox5.Text)
             End Sub
         AddHandler Form1.UiButton54.Click,
@@ -56,12 +76,15 @@ Public Class 浏览器控制
                 If processes.Length > 0 Then
                     For Each proc As Process In processes
                         'DebugPrint(proc.MainModule.FileName, Form1.ForeColor)
-                        If proc.MainModule.FileName = Path.Combine(Application.StartupPath, "CefSharp.BrowserSubprocess.exe") Then proc.Kill(True)
+                        If proc.MainModule.FileName = Path.Combine(Application.StartupPath, "CefSharp.BrowserSubprocess.exe") Then
+                            proc.Kill(True)
+                        End If
                     Next
                 End If
             End Sub
         AddHandler 界面刷新计时器.Tick,
             Sub()
+                If 界面控制.CEF浏览器控件 Is Nothing Then Exit Sub
                 If Form1.UiTabControl1.SelectedIndex <> 5 Then Exit Sub
                 If 当前地址 <> 上一次获取到的地址 Then
                     Form1.UiTextBox5.Text = 当前地址
@@ -70,9 +93,11 @@ Public Class 浏览器控制
             End Sub
         界面刷新计时器.Enabled = True
 
-        AddHandler 界面控制.CEF浏览器控件.LoadingStateChanged, AddressOf CEF_LoadingStateChanged
-        AddHandler 界面控制.CEF浏览器控件.AddressChanged, AddressOf CEF_AddressChanged
-        AddHandler 计算额外参数计时器.Tick, AddressOf 计算额外参数
+        If 界面控制.CEF浏览器控件 IsNot Nothing Then
+            AddHandler 界面控制.CEF浏览器控件.LoadingStateChanged, AddressOf CEF_LoadingStateChanged
+            AddHandler 界面控制.CEF浏览器控件.AddressChanged, AddressOf CEF_AddressChanged
+            AddHandler 计算额外参数计时器.Tick, AddressOf 计算额外参数
+        End If
 
     End Sub
 
