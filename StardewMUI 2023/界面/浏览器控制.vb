@@ -20,25 +20,24 @@ Public Class 浏览器控制
         settings.CefCommandLineArgs.Add("enable-system-flash", "1")
         settings.LogSeverity = CefSharp.LogSeverity.Disable
         CefSharp.Cef.Initialize(settings)
+        Form1.Label15.Dispose()
         界面控制.CEF浏览器控件 = New ChromiumWebBrowser With {.Dock = DockStyle.Fill, .ActivateBrowserOnCreation = False}
         Form1.TabPageCEF浏览器.Controls.Add(界面控制.CEF浏览器控件)
         界面控制.CEF浏览器控件.BringToFront()
+        AddHandler 界面控制.CEF浏览器控件.LoadingStateChanged, AddressOf CEF_LoadingStateChanged
+        AddHandler 界面控制.CEF浏览器控件.AddressChanged, AddressOf CEF_AddressChanged
+        AddHandler 计算额外参数计时器.Tick, AddressOf 计算额外参数
+        界面刷新计时器.Enabled = True
     End Sub
 
     Public Shared Sub 初始化功能()
-        'AddHandler Form1.UiTabControl1.SelectedIndexChanged,
-        '    Sub(sender, e)
-        '        If Form1.UiTabControl1.SelectedIndex = 5 Then
-        '            If Form1.UiTextBox5.Text = "" Then
-        '                界面控制.CEF浏览器控件.LoadUrl("https://users.nexusmods.com/auth/sign_in")
-        '            End If
-        '        End If
-        '    End Sub
+
         AddHandler Form1.UiButton49.Click,
             Sub()
                 If 界面控制.CEF浏览器控件 Is Nothing Then 初始化浏览器控件()
                 界面控制.CEF浏览器控件.LoadUrl("https://users.nexusmods.com/auth/sign_in")
                 获取到的HTML数据 = ""
+                界面刷新计时器.Enabled = True
             End Sub
         AddHandler Form1.UiButton40.Click,
             Sub()
@@ -64,23 +63,28 @@ Public Class 浏览器控制
             Sub()
                 If 界面控制.CEF浏览器控件 Is Nothing Then 初始化浏览器控件()
                 界面控制.CEF浏览器控件.LoadUrl(Form1.UiTextBox5.Text)
+                界面刷新计时器.Enabled = True
             End Sub
         AddHandler Form1.UiTextBox5.KeyDown,
             Sub(sender, e)
-                If 界面控制.CEF浏览器控件 Is Nothing Then 初始化浏览器控件()
-                If e.KeyCode = Keys.Enter Then 界面控制.CEF浏览器控件.LoadUrl(Form1.UiTextBox5.Text)
+                If e.KeyCode = Keys.Enter Then
+                    If 界面控制.CEF浏览器控件 Is Nothing Then 初始化浏览器控件()
+                    界面控制.CEF浏览器控件.LoadUrl(Form1.UiTextBox5.Text)
+                    界面刷新计时器.Enabled = True
+                End If
             End Sub
         AddHandler Form1.UiButton54.Click,
             Sub()
                 Dim processes() As Process = Process.GetProcessesByName("CefSharp.BrowserSubprocess")
                 If processes.Length > 0 Then
                     For Each proc As Process In processes
-                        'DebugPrint(proc.MainModule.FileName, Form1.ForeColor)
                         If proc.MainModule.FileName = Path.Combine(Application.StartupPath, "CefSharp.BrowserSubprocess.exe") Then
                             proc.Kill(True)
                         End If
                     Next
                 End If
+                界面刷新计时器.Enabled = False
+                Form1.UiTextBox5.Text = "地址刷新定时器已停止运行，打开新的网页以继续运行"
             End Sub
         AddHandler 界面刷新计时器.Tick,
             Sub()
@@ -91,14 +95,6 @@ Public Class 浏览器控制
                 End If
                 上一次获取到的地址 = 当前地址
             End Sub
-        界面刷新计时器.Enabled = True
-
-        If 界面控制.CEF浏览器控件 IsNot Nothing Then
-            AddHandler 界面控制.CEF浏览器控件.LoadingStateChanged, AddressOf CEF_LoadingStateChanged
-            AddHandler 界面控制.CEF浏览器控件.AddressChanged, AddressOf CEF_AddressChanged
-            AddHandler 计算额外参数计时器.Tick, AddressOf 计算额外参数
-        End If
-
     End Sub
 
     Public Shared Property HideAdsScript As String = "
@@ -128,7 +124,7 @@ Public Class 浏览器控制
     End Sub
 
     Public Shared Sub CEF_AddressChanged(sender As Object, e As CefSharp.AddressChangedEventArgs)
-
+        当前地址 = e.Address
     End Sub
 
     Public Delegate Sub str_Delegate(str As String)

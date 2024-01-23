@@ -29,20 +29,20 @@ Partial Class Form1
         Dim ListViewItem4 As ListViewItem = New ListViewItem(New String() {"检查更新下载的安装包", "可以清理", ""}, -1)
         Dim ListViewItem5 As ListViewItem = New ListViewItem(New String() {"下载的模组压缩包", "可以清理", ""}, -1)
         Dim ListViewItem6 As ListViewItem = New ListViewItem(New String() {"临时解压", "可以清理", ""}, -1)
-        Dim ListViewItem7 As ListViewItem = New ListViewItem(New String() {"模组数据库总数据", "不可在此清理", ""}, -1, Color.DarkOrange, Color.Empty, Nothing)
-        Dim ListViewItem8 As ListViewItem = New ListViewItem(New String() {"Chromium 网页和代码缓存", "可以清理", ""}, -1)
-        Dim ListViewItem9 As ListViewItem = New ListViewItem(New String() {"Chromium 数据库", "可以清理", ""}, -1)
-        Dim ListViewItem10 As ListViewItem = New ListViewItem(New String() {"Chromium 渲染相关缓存", "可以清理", ""}, -1)
-        Dim ListViewItem11 As ListViewItem = New ListViewItem(New String() {"Chromium 网站存储", "可以清理", ""}, -1)
-        Dim ListViewItem12 As ListViewItem = New ListViewItem(New String() {"Chromium Cookies", "可以清理", ""}, -1)
-        Dim ListViewItem13 As ListViewItem = New ListViewItem(New String() {"Chromium Service Worker", "可以清理", ""}, -1)
-        Dim ListViewItem14 As ListViewItem = New ListViewItem(New String() {"Chromium 其他缓存", "可以清理", ""}, -1)
-        Dim ListViewItem15 As ListViewItem = New ListViewItem(New String() {"DLC 1 - 自定义输入扩展", "未启用"}, -1)
-        Dim ListViewItem16 As ListViewItem = New ListViewItem(New String() {"DLC 2 - 自定义皮肤加载器", "未启用"}, -1)
-        Dim ListViewItem17 As ListViewItem = New ListViewItem(New String() {"DLC 3 - 新项扩展", "未启用"}, -1)
-        Dim ListViewItem18 As ListViewItem = New ListViewItem(New String() {"DLC 4 - 检查更新扩展", "未启用"}, -1)
-        Dim ListViewItem19 As ListViewItem = New ListViewItem(New String() {"Season Pass 2023 - 基础扩展四件套", "未启用"}, -1, Color.MediumOrchid, Color.Empty, Nothing)
-        Dim ListViewItem20 As ListViewItem = New ListViewItem(New String() {"DLC 5 - 分发扩展", "未启用"}, -1)
+        Dim ListViewItem27 As ListViewItem = New ListViewItem(New String() {"模组数据库总数据", "不可在此清理", ""}, -1, Color.DarkOrange, Color.Empty, Nothing)
+        Dim ListViewItem28 As ListViewItem = New ListViewItem(New String() {"Chromium 网页和代码缓存", "可以清理", ""}, -1)
+        Dim ListViewItem29 As ListViewItem = New ListViewItem(New String() {"Chromium 数据库", "可以清理", ""}, -1)
+        Dim ListViewItem30 As ListViewItem = New ListViewItem(New String() {"Chromium 渲染相关缓存", "可以清理", ""}, -1)
+        Dim ListViewItem31 As ListViewItem = New ListViewItem(New String() {"Chromium 网站存储", "可以清理", ""}, -1)
+        Dim ListViewItem32 As ListViewItem = New ListViewItem(New String() {"Chromium Cookies", "可以清理", ""}, -1)
+        Dim ListViewItem33 As ListViewItem = New ListViewItem(New String() {"Chromium Service Worker", "可以清理", ""}, -1)
+        Dim ListViewItem34 As ListViewItem = New ListViewItem(New String() {"Chromium 其他缓存", "可以清理", ""}, -1)
+        Dim ListViewItem7 As ListViewItem = New ListViewItem(New String() {"DLC 1 - 自定义输入扩展", "未启用"}, -1)
+        Dim ListViewItem8 As ListViewItem = New ListViewItem(New String() {"DLC 2 - 自定义皮肤加载器", "未启用"}, -1)
+        Dim ListViewItem9 As ListViewItem = New ListViewItem(New String() {"DLC 3 - 新项扩展", "未启用"}, -1)
+        Dim ListViewItem10 As ListViewItem = New ListViewItem(New String() {"DLC 4 - 检查更新扩展", "未启用"}, -1)
+        Dim ListViewItem11 As ListViewItem = New ListViewItem(New String() {"Season Pass 2023 - 基础扩展四件套", "未启用"}, -1, Color.MediumOrchid, Color.Empty, Nothing)
+        Dim ListViewItem12 As ListViewItem = New ListViewItem(New String() {"DLC 5 - 分发扩展", "未启用"}, -1)
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Form1))
         UiTabControl1 = New Sunny.UI.UITabControl()
         TabPage起始页面 = New TabPage()
@@ -352,6 +352,7 @@ Partial Class Form1
         TabPage26 = New TabPage()
         TabPage27 = New TabPage()
         TabPageCEF浏览器 = New TabPage()
+        Label15 = New Label()
         Panel49 = New Panel()
         UiTextBox5 = New Sunny.UI.UITextBox()
         UiButton53 = New Sunny.UI.UIButton()
@@ -3106,7 +3107,7 @@ Partial Class Form1
         ListView10.ForeColor = Color.FromArgb(CByte(224), CByte(224), CByte(224))
         ListView10.FullRowSelect = True
         ListView10.HeaderStyle = ColumnHeaderStyle.None
-        ListView10.Items.AddRange(New ListViewItem() {ListViewItem1, ListViewItem2, ListViewItem3, ListViewItem4, ListViewItem5, ListViewItem6, ListViewItem7, ListViewItem8, ListViewItem9, ListViewItem10, ListViewItem11, ListViewItem12, ListViewItem13, ListViewItem14})
+        ListView10.Items.AddRange(New ListViewItem() {ListViewItem1, ListViewItem2, ListViewItem3, ListViewItem4, ListViewItem5, ListViewItem6, ListViewItem27, ListViewItem28, ListViewItem29, ListViewItem30, ListViewItem31, ListViewItem32, ListViewItem33, ListViewItem34})
         ListView10.Location = New Point(10, 10)
         ListView10.Name = "ListView10"
         ListView10.OwnerDraw = True
@@ -3167,7 +3168,7 @@ Partial Class Form1
         ListView9.ForeColor = Color.FromArgb(CByte(224), CByte(224), CByte(224))
         ListView9.FullRowSelect = True
         ListView9.HeaderStyle = ColumnHeaderStyle.None
-        ListView9.Items.AddRange(New ListViewItem() {ListViewItem15, ListViewItem16, ListViewItem17, ListViewItem18, ListViewItem19, ListViewItem20})
+        ListView9.Items.AddRange(New ListViewItem() {ListViewItem7, ListViewItem8, ListViewItem9, ListViewItem10, ListViewItem11, ListViewItem12})
         ListView9.Location = New Point(10, 10)
         ListView9.Name = "ListView9"
         ListView9.OwnerDraw = True
@@ -3669,7 +3670,7 @@ Partial Class Form1
         Label69.Name = "Label69"
         Label69.Size = New Size(1044, 58)
         Label69.TabIndex = 41
-        Label69.Text = "其他引用：SevenZipSharp（LGPL-3.0）、来自 7zip 软件的 7zFull64.dll 文件（原文件名：7z.dll），来自 7zip 官方的 7za.dll,7za.exe,7zxa.dll 文件、Newtonsoft.Json（MIT）、libwebp-net（MIT）、来自 Google 的 libwebp.dll 文件"
+        Label69.Text = "其他引用：SevenZipSharp（LGPL-3.0）、来自 7zip 软件的 7zFull64.dll 文件（原文件名：7z.dll）、来自 7zip 官方的 7za 组件、Newtonsoft.Json（MIT）、libwebp-net（MIT）、来自 Google 的 libwebp.dll 文件"
         ' 
         ' PictureBox7
         ' 
@@ -3691,7 +3692,7 @@ Partial Class Form1
         Label68.Name = "Label68"
         Label68.Size = New Size(965, 64)
         Label68.TabIndex = 39
-        Label68.Text = "图标来自 IconPark（Apache-2.0）© ByteDance" & vbCrLf & "自定义 免费商用"
+        Label68.Text = "内置图标来自 IconPark（Apache-2.0）© ByteDance" & vbCrLf & "自定义 免费商用"
         Label68.TextAlign = ContentAlignment.MiddleLeft
         ' 
         ' PictureBox6
@@ -3714,7 +3715,7 @@ Partial Class Form1
         Label56.Name = "Label56"
         Label56.Size = New Size(965, 64)
         Label56.TabIndex = 37
-        Label56.Text = "ChatGPT 3.5 by OpenAI" & vbCrLf & "提供了多项关键技术原型和指导"
+        Label56.Text = "ChatGPT 3.5 / ChatGPT 4 by OpenAI" & vbCrLf & "提供了多项关键技术原型和指导"
         Label56.TextAlign = ContentAlignment.MiddleLeft
         ' 
         ' PictureBox5
@@ -3817,9 +3818,9 @@ Partial Class Form1
         TabPage管理模组.Controls.Add(Panel3)
         TabPage管理模组.Controls.Add(Panel2)
         TabPage管理模组.Controls.Add(Panel1)
-        TabPage管理模组.Location = New Point(0, 40)
+        TabPage管理模组.Location = New Point(0, 50)
         TabPage管理模组.Name = "TabPage管理模组"
-        TabPage管理模组.Size = New Size(200, 60)
+        TabPage管理模组.Size = New Size(1264, 631)
         TabPage管理模组.TabIndex = 1
         TabPage管理模组.Text = "管理模组"
         ' 
@@ -3831,7 +3832,7 @@ Partial Class Form1
         Panel4.Dock = DockStyle.Fill
         Panel4.Location = New Point(250, 0)
         Panel4.Name = "Panel4"
-        Panel4.Size = New Size(0, 20)
+        Panel4.Size = New Size(714, 591)
         Panel4.TabIndex = 3
         ' 
         ' Panel12
@@ -3841,7 +3842,7 @@ Partial Class Form1
         Panel12.Location = New Point(0, 40)
         Panel12.Name = "Panel12"
         Panel12.Padding = New Padding(10)
-        Panel12.Size = New Size(0, 0)
+        Panel12.Size = New Size(714, 551)
         Panel12.TabIndex = 4
         ' 
         ' ListView2
@@ -3856,7 +3857,7 @@ Partial Class Form1
         ListView2.Location = New Point(10, 10)
         ListView2.Name = "ListView2"
         ListView2.OwnerDraw = True
-        ListView2.Size = New Size(0, 0)
+        ListView2.Size = New Size(694, 531)
         ListView2.TabIndex = 3
         ListView2.TabStop = False
         ListView2.UseCompatibleStateImageBehavior = False
@@ -3886,14 +3887,14 @@ Partial Class Form1
         Panel6.Dock = DockStyle.Top
         Panel6.Location = New Point(0, 0)
         Panel6.Name = "Panel6"
-        Panel6.Size = New Size(0, 40)
+        Panel6.Size = New Size(714, 40)
         Panel6.TabIndex = 3
         ' 
         ' Label51
         ' 
         Label51.Dock = DockStyle.Right
         Label51.Font = New Font("微软雅黑", 11.25F)
-        Label51.Location = New Point(-140, 0)
+        Label51.Location = New Point(574, 0)
         Label51.Name = "Label51"
         Label51.Size = New Size(40, 40)
         Label51.TabIndex = 16
@@ -4048,7 +4049,7 @@ Partial Class Form1
         UiButton44.ForeHoverColor = Color.FromArgb(CByte(244), CByte(244), CByte(244))
         UiButton44.ForePressColor = Color.FromArgb(CByte(244), CByte(244), CByte(244))
         UiButton44.ForeSelectedColor = Color.FromArgb(CByte(244), CByte(244), CByte(244))
-        UiButton44.Location = New Point(-100, 0)
+        UiButton44.Location = New Point(614, 0)
         UiButton44.MinimumSize = New Size(1, 1)
         UiButton44.Name = "UiButton44"
         UiButton44.Radius = 10
@@ -4074,9 +4075,9 @@ Partial Class Form1
         Panel3.Controls.Add(Panel7)
         Panel3.Controls.Add(Panel9)
         Panel3.Dock = DockStyle.Right
-        Panel3.Location = New Point(-100, 0)
+        Panel3.Location = New Point(964, 0)
         Panel3.Name = "Panel3"
-        Panel3.Size = New Size(300, 20)
+        Panel3.Size = New Size(300, 591)
         Panel3.TabIndex = 2
         ' 
         ' UiRichTextBox1
@@ -4098,7 +4099,7 @@ Partial Class Form1
         UiRichTextBox1.ScrollBarColor = Color.FromArgb(CByte(46), CByte(46), CByte(46))
         UiRichTextBox1.ScrollBarStyleInherited = False
         UiRichTextBox1.ShowText = False
-        UiRichTextBox1.Size = New Size(300, 1)
+        UiRichTextBox1.Size = New Size(300, 300)
         UiRichTextBox1.Style = Sunny.UI.UIStyle.Custom
         UiRichTextBox1.TabIndex = 0
         UiRichTextBox1.Text = "字体样式"
@@ -4110,7 +4111,7 @@ Partial Class Form1
         Panel8.Controls.Add(Label2)
         Panel8.Controls.Add(Label1)
         Panel8.Dock = DockStyle.Bottom
-        Panel8.Location = New Point(0, -231)
+        Panel8.Location = New Point(0, 340)
         Panel8.Name = "Panel8"
         Panel8.Size = New Size(300, 50)
         Panel8.TabIndex = 4
@@ -4223,7 +4224,7 @@ Partial Class Form1
         Panel9.Controls.Add(PictureBox1)
         Panel9.Controls.Add(Panel10)
         Panel9.Dock = DockStyle.Bottom
-        Panel9.Location = New Point(0, -181)
+        Panel9.Location = New Point(0, 390)
         Panel9.Name = "Panel9"
         Panel9.Size = New Size(300, 201)
         Panel9.TabIndex = 5
@@ -4324,7 +4325,7 @@ Partial Class Form1
         Panel2.Dock = DockStyle.Left
         Panel2.Location = New Point(0, 0)
         Panel2.Name = "Panel2"
-        Panel2.Size = New Size(250, 20)
+        Panel2.Size = New Size(250, 591)
         Panel2.TabIndex = 1
         ' 
         ' Panel11
@@ -4334,7 +4335,7 @@ Partial Class Form1
         Panel11.Location = New Point(0, 40)
         Panel11.Name = "Panel11"
         Panel11.Padding = New Padding(10)
-        Panel11.Size = New Size(250, 0)
+        Panel11.Size = New Size(250, 551)
         Panel11.TabIndex = 3
         ' 
         ' ListView1
@@ -4349,7 +4350,7 @@ Partial Class Form1
         ListView1.Location = New Point(10, 10)
         ListView1.Name = "ListView1"
         ListView1.OwnerDraw = True
-        ListView1.Size = New Size(227, 0)
+        ListView1.Size = New Size(227, 531)
         ListView1.TabIndex = 3
         ListView1.TabStop = False
         ListView1.UseCompatibleStateImageBehavior = False
@@ -4420,9 +4421,9 @@ Partial Class Form1
         Panel1.Controls.Add(UiButton7)
         Panel1.Controls.Add(UiButton6)
         Panel1.Dock = DockStyle.Bottom
-        Panel1.Location = New Point(0, 20)
+        Panel1.Location = New Point(0, 591)
         Panel1.Name = "Panel1"
-        Panel1.Size = New Size(200, 40)
+        Panel1.Size = New Size(1264, 40)
         Panel1.TabIndex = 0
         ' 
         ' UiButton9
@@ -4450,7 +4451,7 @@ Partial Class Form1
         UiButton9.RectHoverColor = Color.FromArgb(CByte(64), CByte(64), CByte(64))
         UiButton9.RectPressColor = Color.FromArgb(CByte(80), CByte(80), CByte(80))
         UiButton9.RectSelectedColor = Color.FromArgb(CByte(42), CByte(42), CByte(42))
-        UiButton9.Size = New Size(1, 40)
+        UiButton9.Size = New Size(240, 40)
         UiButton9.Style = Sunny.UI.UIStyle.Custom
         UiButton9.TabIndex = 14
         UiButton9.TabStop = False
@@ -4474,7 +4475,7 @@ Partial Class Form1
         UiButton14.ForeHoverColor = Color.FromArgb(CByte(244), CByte(244), CByte(244))
         UiButton14.ForePressColor = Color.FromArgb(CByte(244), CByte(244), CByte(244))
         UiButton14.ForeSelectedColor = Color.FromArgb(CByte(244), CByte(244), CByte(244))
-        UiButton14.Location = New Point(140, 0)
+        UiButton14.Location = New Point(1204, 0)
         UiButton14.MinimumSize = New Size(1, 1)
         UiButton14.Name = "UiButton14"
         UiButton14.Radius = 10
@@ -5884,12 +5885,24 @@ Partial Class Form1
         ' TabPageCEF浏览器
         ' 
         TabPageCEF浏览器.BackColor = Color.FromArgb(CByte(24), CByte(24), CByte(24))
+        TabPageCEF浏览器.Controls.Add(Label15)
         TabPageCEF浏览器.Controls.Add(Panel49)
         TabPageCEF浏览器.Location = New Point(0, 40)
         TabPageCEF浏览器.Name = "TabPageCEF浏览器"
         TabPageCEF浏览器.Size = New Size(200, 60)
         TabPageCEF浏览器.TabIndex = 5
         TabPageCEF浏览器.Text = "CEF 浏览器"
+        ' 
+        ' Label15
+        ' 
+        Label15.Dock = DockStyle.Fill
+        Label15.Font = New Font("微软雅黑", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(134))
+        Label15.Location = New Point(0, 40)
+        Label15.Name = "Label15"
+        Label15.Size = New Size(200, 20)
+        Label15.TabIndex = 1
+        Label15.Text = resources.GetString("Label15.Text")
+        Label15.TextAlign = ContentAlignment.MiddleCenter
         ' 
         ' Panel49
         ' 
@@ -6691,4 +6704,5 @@ Partial Class Form1
     Friend WithEvents Label68 As Label
     Friend WithEvents Label69 As Label
     Friend WithEvents UiSwitch3 As Sunny.UI.UISwitch
+    Friend WithEvents Label15 As Label
 End Class
