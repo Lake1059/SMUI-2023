@@ -357,14 +357,14 @@ Public Class 项信息读取类
 
             Next
 
-            Dim 导出的其他依赖项列表 As New List(Of String)(其他依赖项.ToList)
-            For i = 0 To 导出的其他依赖项列表.Count - 1
+        Dim 导出的其他依赖项列表 As New List(Of String)(其他依赖项.Keys.ToList)
+        For i = 0 To 导出的其他依赖项列表.Count - 1
                 其他依赖项.Remove(导出的其他依赖项列表(i))
             Next
 
             错误信息 = ""
         Catch ex As Exception
-            错误信息 = ex.Message
+        错误信息 = ex.Message
         End Try
 
     End Sub

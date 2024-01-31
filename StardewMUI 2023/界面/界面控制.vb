@@ -63,10 +63,10 @@ Public Class 界面控制
         AddHandler Form1.ListView10.ItemMouseHover, Sub(sender, e) sender.Invalidate(sender.ClientRectangle)
 
         多项单选对话框.GlobalDpixRatio = X轴DPI比率
+        Form1.ImageList1.ImageSize = New Size(1, Form1.ImageList1.ImageSize.Height * Y轴DPI比率)
 
 
         主界面高DPI兼容()
-        主界面元素尺寸动态调整()
         管理模组的菜单.添加菜单的触发()
         新闻列表.绑定新闻列表操作()
 
@@ -96,8 +96,11 @@ Public Class 界面控制
         Form1.Panel48.Left = Form1.Panel47.Width + Form1.Panel47.Left * 2
 
         Form1.ListView1.Width = Form1.ListView1.Parent.Width - Form1.ListView1.Parent.Padding.Left + 程序DPI_垂直滚动条宽度
-
-
+        Form1.ColumnHeader1.Width = Form1.ListView1.Parent.Width - Form1.ListView1.Parent.Padding.Left * 2
+        Form1.ColumnHeader2.Width = (Form1.ListView2.Width - 程序DPI_垂直滚动条宽度 * 2) * 0.65
+        Form1.ColumnHeader3.Width = (Form1.ListView2.Width - 程序DPI_垂直滚动条宽度 * 2) * 0.15
+        Form1.ColumnHeader4.Width = (Form1.ListView2.Width - 程序DPI_垂直滚动条宽度 * 2) * 0.2
+        'Form1.ColumnHeader17.Width = (Form1.ListView2.Parent.Width - 程序DPI_垂直滚动条宽度) * 0.1
     End Sub
 
     Public Shared Sub 主界面高DPI兼容()
@@ -137,6 +140,5 @@ Public Class 界面控制
         a.ShowDialog(Form1)
         设置.恢复选项卡显示()
     End Sub
-
 
 End Class

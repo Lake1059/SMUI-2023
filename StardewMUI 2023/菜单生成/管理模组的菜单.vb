@@ -27,6 +27,9 @@ Public Class 管理模组的菜单
     Public Shared Property 菜单项_更多分类操作_清除Config缓存 As New ToolStripMenuItem With {.Text = "清除 Config 缓存", .Image = My.Resources.删除}
     Public Shared Property 菜单项_更多分类操作_删除分类排序 As New ToolStripMenuItem With {.Text = "删除排序数据以重置顺序", .Image = My.Resources.删除}
 
+    Public Shared Property 子库列表_选择 As New 暗黑菜单条控件本体 With {.ImageScalingSize = New Size(25 * 界面控制.X轴DPI比率, 25 * 界面控制.Y轴DPI比率)}
+    Public Shared Property 子库列表_删除 As New 暗黑菜单条控件本体 With {.ImageScalingSize = New Size(25 * 界面控制.X轴DPI比率, 25 * 界面控制.Y轴DPI比率)}
+
     Public Shared Sub 添加分类和子库菜单的所有菜单项()
         分类和子库菜单.Items.Add(菜单项_刷新分类)
         分类和子库菜单.Items.Add(New ToolStripSeparator)
@@ -34,6 +37,7 @@ Public Class 管理模组的菜单
 
         菜单项_子库菜单.DropDown = 数据子库操作菜单
         数据子库操作菜单.Items.Add(菜单项_切换数据子库)
+        菜单项_切换数据子库.DropDown = 子库列表_选择
         数据子库操作菜单.Items.Add(New ToolStripSeparator)
         数据子库操作菜单.Items.Add(菜单项_刷新数据子库)
         数据子库操作菜单.Items.Add(菜单项_新建数据子库)
@@ -42,6 +46,7 @@ Public Class 管理模组的菜单
         数据子库操作菜单.Items.Add(菜单项_导出数据子库)
         数据子库操作菜单.Items.Add(New ToolStripSeparator)
         数据子库操作菜单.Items.Add(菜单项_删除数据子库)
+        菜单项_删除数据子库.DropDown = 子库列表_删除
 
         分类和子库菜单.Items.Add(New ToolStripSeparator)
         分类和子库菜单.Items.Add(菜单项_新建分类)
@@ -66,8 +71,8 @@ Public Class 管理模组的菜单
 
     Public Shared Property 菜单项_分类上下移动菜单 As New ToolStripMenuItem With {.Text = "排序", .Image = My.Resources.移动}
     Public Shared Property 分类上下移动菜单 As New 暗黑菜单条控件本体 With {.ImageScalingSize = New Size(25 * 界面控制.X轴DPI比率, 25 * 界面控制.Y轴DPI比率)}
-    Public Shared Property 菜单项_将分类上移 As New ToolStripMenuItem With {.Text = "上移", .Image = My.Resources.上箭头, .ShortcutKeys = Keys.F3}
-    Public Shared Property 菜单项_将分类下移 As New ToolStripMenuItem With {.Text = "下移", .Image = My.Resources.下箭头, .ShortcutKeys = Keys.F4}
+    Public Shared Property 菜单项_将分类上移 As New ToolStripMenuItem With {.Text = "上移（F3）", .Image = My.Resources.上箭头}
+    Public Shared Property 菜单项_将分类下移 As New ToolStripMenuItem With {.Text = "下移（F4）", .Image = My.Resources.下箭头}
     Public Shared Property 菜单项_删除选中分类中的项排序 As New ToolStripMenuItem With {.Text = "删除其中的项排序", .Image = My.Resources.删除}
 
     Public Shared Property 菜单项_设置分类的颜色 As New ToolStripMenuItem With {.Text = "设置颜色", .Image = My.Resources.颜色滤镜}
@@ -146,8 +151,8 @@ Public Class 管理模组的菜单
     Public Shared Property 菜单项_编辑项_清除Config缓存 As New ToolStripMenuItem With {.Text = "清除 Config 缓存", .Image = My.Resources.删除}
     Public Shared Property 菜单项_编辑项_转换安装命令到安装规划 As New ToolStripMenuItem With {.Text = "转换安装命令到安装规划", .Image = My.Resources.试验}
     Public Shared Property 菜单项_编辑项_转换安装规划到安装命令 As New ToolStripMenuItem With {.Text = "转换安装规划到安装命令", .Image = My.Resources.试验}
-    Public Shared Property 菜单项_将项上移 As New ToolStripMenuItem With {.Text = "上移", .Image = My.Resources.上箭头, .ShortcutKeys = Keys.F3}
-    Public Shared Property 菜单项_将项下移 As New ToolStripMenuItem With {.Text = "下移", .Image = My.Resources.下箭头, .ShortcutKeys = Keys.F4}
+    Public Shared Property 菜单项_将项上移 As New ToolStripMenuItem With {.Text = "上移（F3）", .Image = My.Resources.上箭头}
+    Public Shared Property 菜单项_将项下移 As New ToolStripMenuItem With {.Text = "下移（F4）", .Image = My.Resources.下箭头}
 
     Public Shared Property 菜单项_设置虚拟组 As New ToolStripMenuItem With {.Text = "设置虚拟组", .Image = My.Resources.六个点}
 

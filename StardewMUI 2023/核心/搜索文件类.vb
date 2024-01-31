@@ -1,5 +1,5 @@
 ﻿Public Class 搜索文件类
-    Public 文件绝对路径集合 As List(Of String)
+    Public 文件绝对路径集合 As New List(Of String)
     Public 错误信息 As String
 
     Dim 设置_要扫描的路径 As String

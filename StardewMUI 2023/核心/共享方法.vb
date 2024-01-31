@@ -4,21 +4,6 @@ Imports System.Text
 
 Public Class 共享方法
 
-    Public Shared Function CalculateSHA256(filePath As String, chunkSizeByte As Long) As String
-        Using sha256 As SHA256 = SHA256.Create()
-            Using fileStream As IO.FileStream = IO.File.OpenRead(filePath)
-                Dim buffer(chunkSizeByte - 1) As Byte
-                Dim bytesRead As Integer = fileStream.Read(buffer, 0, chunkSizeByte)
-                Dim hashBytes() As Byte = sha256.ComputeHash(buffer, 0, bytesRead)
-                Dim stringBuilder As New StringBuilder()
-                For Each hashByte As Byte In hashBytes
-                    stringBuilder.Append(hashByte.ToString("x2"))
-                Next
-                Return stringBuilder.ToString()
-            End Using
-        End Using
-    End Function
-
     Public Shared Function CalculateSHA256(filePath As String) As String
         Using sha256 As SHA256 = SHA256.Create()
             Using fileStream As IO.FileStream = IO.File.OpenRead(filePath)
@@ -90,11 +75,6 @@ Public Class 共享方法
         Exit Function
     End Function
 
-    ''' <summary>
-    ''' 只返回此目录下的文件夹名称
-    ''' </summary>
-    ''' <param name="Path"></param>
-    ''' <returns></returns>
     Public Shared Function SearchFolderWithoutSub(Path As String) As String()
         Dim mDir As System.IO.DirectoryInfo
         Dim mDirInfo As New System.IO.DirectoryInfo(Path)
@@ -102,6 +82,27 @@ Public Class 共享方法
         For Each mDir In mDirInfo.GetDirectories
             ReDim Preserve a(a.Length)
             a(a.Length - 1) = mDir.Name
+        Next
+        Return a
+    End Function
+
+    Public Shared Function 扫描文件夹不包含子目录(路径 As String) As List(Of String)
+        Dim mDir As System.IO.DirectoryInfo
+        Dim mDirInfo As New System.IO.DirectoryInfo(路径)
+        Dim a As New List(Of String)
+        For Each mDir In mDirInfo.GetDirectories
+            a.Add(mDir.Name)
+        Next
+        Return a
+    End Function
+
+    Public Shared Function 扫描子库(路径 As String) As List(Of String)
+        Dim mDir As System.IO.DirectoryInfo
+        Dim mDirInfo As New System.IO.DirectoryInfo(路径)
+        Dim a As New List(Of String)
+        For Each mDir In mDirInfo.GetDirectories
+            If InStrRev(mDir.Name, ".") = 1 Then Continue For
+            a.Add(mDir.Name)
         Next
         Return a
     End Function
