@@ -88,12 +88,12 @@ Public Class 界面控制
 
     Public Shared Sub 主界面元素尺寸动态调整()
         Form1.Panel13.Width = Form1.Panel13.Parent.Width * 0.5
-        Form1.Panel45.Width = (Form1.Panel45.Parent.Width - Form1.Panel45.Left * 3) * 0.5
-        Form1.Panel46.Width = Form1.Panel45.Width
-        Form1.Panel47.Width = Form1.Panel45.Width
-        Form1.Panel48.Width = Form1.Panel45.Width
-        Form1.Panel46.Left = Form1.Panel45.Width + Form1.Panel45.Left * 2
-        Form1.Panel48.Left = Form1.Panel47.Width + Form1.Panel47.Left * 2
+        'Form1.Panel45.Width = (Form1.Panel45.Parent.Width - Form1.Panel45.Left * 3) * 0.5
+        'Form1.Panel46.Width = Form1.Panel45.Width
+        'Form1.Panel47.Width = Form1.Panel45.Width
+        'Form1.Panel48.Width = Form1.Panel45.Width
+        'Form1.Panel46.Left = Form1.Panel45.Width + Form1.Panel45.Left * 2
+        'Form1.Panel48.Left = Form1.Panel47.Width + Form1.Panel47.Left * 2
 
         Form1.ListView1.Width = Form1.ListView1.Parent.Width - Form1.ListView1.Parent.Padding.Left + 程序DPI_垂直滚动条宽度
         Form1.ColumnHeader1.Width = Form1.ListView1.Parent.Width - Form1.ListView1.Parent.Padding.Left * 2
