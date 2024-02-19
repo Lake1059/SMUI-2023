@@ -49,6 +49,7 @@
   <ItemGroup>
     <PackageReference Include="CefSharp.WinForms.NETCore" Version="120.1.110" />
     <PackageReference Include="Imazen.WebP" Version="10.0.1" />
+    <PackageReference Include="Microsoft.Web.WebView2" Version="1.0.2277.86" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
     <PackageReference Include="SunnyUI" Version="3.6.3" />
     <PackageReference Include="SevenZipSharp" Version="0.64.0" />

@@ -1,5 +1,6 @@
 ﻿Imports System.Runtime.InteropServices
 Imports CefSharp.WinForms
+Imports Microsoft.Web.WebView2.WinForms
 Imports Sunny.UI
 
 Public Class 界面控制
@@ -8,6 +9,8 @@ Public Class 界面控制
     Public Shared Property Y轴DPI比率 As Single = A.DpiY / 96
     Public Shared Property 程序DPI_垂直滚动条宽度 As Integer = GetScrollBarWidth()
     Public Shared Property CEF浏览器控件 As ChromiumWebBrowser
+    Public Shared Property WebView2浏览器控件 As WebView2
+
 
     Public Shared Sub 初始化界面()
         浏览器控制.初始化功能()
@@ -31,34 +34,34 @@ Public Class 界面控制
         Form1.ListView8.DoubleBuffered(True)
         Form1.ListView9.DoubleBuffered(True)
         Form1.ListView10.DoubleBuffered(True)
-        AddHandler Form1.ListView1.DrawSubItem, Sub(sender, e) 暗黑列表视图自绘制.绑定绘制子项事件(sender, e, 暗黑主题资源.分类列包含的图标字典)
+        AddHandler Form1.ListView1.DrawSubItem, Sub(sender, e) 暗黑列表视图自绘制.绘制子项(sender, e, 暗黑主题资源.分类列包含的图标字典)
         AddHandler Form1.ListView1.SelectedIndexChanged, Sub(sender, e) sender.Invalidate(sender.ClientRectangle)
         AddHandler Form1.ListView1.ItemMouseHover, Sub(sender, e) sender.Invalidate(sender.ClientRectangle)
-        AddHandler Form1.ListView2.DrawSubItem, Sub(sender, e) 暗黑列表视图自绘制.绑定绘制子项事件(sender, e, New Dictionary(Of String, Image))
+        AddHandler Form1.ListView2.DrawSubItem, Sub(sender, e) 暗黑列表视图自绘制.绘制子项(sender, e, New Dictionary(Of String, Image))
         AddHandler Form1.ListView2.SelectedIndexChanged, Sub(sender, e) sender.Invalidate(sender.ClientRectangle)
         AddHandler Form1.ListView2.ItemMouseHover, Sub(sender, e) sender.Invalidate(sender.ClientRectangle)
-        AddHandler Form1.ListView3.DrawSubItem, Sub(sender, e) 暗黑列表视图自绘制.绑定绘制子项事件(sender, e, New Dictionary(Of String, Image))
+        AddHandler Form1.ListView3.DrawSubItem, Sub(sender, e) 暗黑列表视图自绘制.绘制子项(sender, e, New Dictionary(Of String, Image))
         AddHandler Form1.ListView3.SelectedIndexChanged, Sub(sender, e) sender.Invalidate(sender.ClientRectangle)
         AddHandler Form1.ListView3.ItemMouseHover, Sub(sender, e) sender.Invalidate(sender.ClientRectangle)
-        AddHandler Form1.ListView4.DrawSubItem, Sub(sender, e) 暗黑列表视图自绘制.绑定绘制子项事件(sender, e, New Dictionary(Of String, Image))
+        AddHandler Form1.ListView4.DrawSubItem, Sub(sender, e) 暗黑列表视图自绘制.绘制子项(sender, e, New Dictionary(Of String, Image))
         AddHandler Form1.ListView4.SelectedIndexChanged, Sub(sender, e) sender.Invalidate(sender.ClientRectangle)
         AddHandler Form1.ListView4.ItemMouseHover, Sub(sender, e) sender.Invalidate(sender.ClientRectangle)
-        AddHandler Form1.ListView5.DrawSubItem, Sub(sender, e) 暗黑列表视图自绘制.绑定绘制子项事件(sender, e, New Dictionary(Of String, Image))
+        AddHandler Form1.ListView5.DrawSubItem, Sub(sender, e) 暗黑列表视图自绘制.绘制子项(sender, e, New Dictionary(Of String, Image))
         AddHandler Form1.ListView5.SelectedIndexChanged, Sub(sender, e) sender.Invalidate(sender.ClientRectangle)
         AddHandler Form1.ListView5.ItemMouseHover, Sub(sender, e) sender.Invalidate(sender.ClientRectangle)
-        AddHandler Form1.ListView6.DrawSubItem, Sub(sender, e) 暗黑列表视图自绘制.绑定绘制子项事件(sender, e, New Dictionary(Of String, Image))
+        AddHandler Form1.ListView6.DrawSubItem, Sub(sender, e) 暗黑列表视图自绘制.绘制子项(sender, e, New Dictionary(Of String, Image))
         AddHandler Form1.ListView6.SelectedIndexChanged, Sub(sender, e) sender.Invalidate(sender.ClientRectangle)
         AddHandler Form1.ListView6.ItemMouseHover, Sub(sender, e) sender.Invalidate(sender.ClientRectangle)
-        AddHandler Form1.ListView7.DrawSubItem, Sub(sender, e) 暗黑列表视图自绘制.绑定绘制子项事件(sender, e, New Dictionary(Of String, Image))
+        AddHandler Form1.ListView7.DrawSubItem, Sub(sender, e) 暗黑列表视图自绘制.绘制子项(sender, e, New Dictionary(Of String, Image))
         AddHandler Form1.ListView7.SelectedIndexChanged, Sub(sender, e) sender.Invalidate(sender.ClientRectangle)
         AddHandler Form1.ListView7.ItemMouseHover, Sub(sender, e) sender.Invalidate(sender.ClientRectangle)
-        AddHandler Form1.ListView8.DrawSubItem, Sub(sender, e) 暗黑列表视图自绘制.绑定绘制子项事件(sender, e, New Dictionary(Of String, Image))
+        AddHandler Form1.ListView8.DrawSubItem, Sub(sender, e) 暗黑列表视图自绘制.绘制子项(sender, e, New Dictionary(Of String, Image))
         AddHandler Form1.ListView8.SelectedIndexChanged, Sub(sender, e) sender.Invalidate(sender.ClientRectangle)
         AddHandler Form1.ListView8.ItemMouseHover, Sub(sender, e) sender.Invalidate(sender.ClientRectangle)
-        AddHandler Form1.ListView9.DrawSubItem, Sub(sender, e) 暗黑列表视图自绘制.绑定绘制子项事件(sender, e, New Dictionary(Of String, Image))
+        AddHandler Form1.ListView9.DrawSubItem, Sub(sender, e) 暗黑列表视图自绘制.绘制子项(sender, e, New Dictionary(Of String, Image))
         AddHandler Form1.ListView9.SelectedIndexChanged, Sub(sender, e) sender.Invalidate(sender.ClientRectangle)
         AddHandler Form1.ListView9.ItemMouseHover, Sub(sender, e) sender.Invalidate(sender.ClientRectangle)
-        AddHandler Form1.ListView10.DrawSubItem, Sub(sender, e) 暗黑列表视图自绘制.绑定绘制子项事件(sender, e, New Dictionary(Of String, Image))
+        AddHandler Form1.ListView10.DrawSubItem, Sub(sender, e) 暗黑列表视图自绘制.绘制子项(sender, e, New Dictionary(Of String, Image))
         AddHandler Form1.ListView10.SelectedIndexChanged, Sub(sender, e) sender.Invalidate(sender.ClientRectangle)
         AddHandler Form1.ListView10.ItemMouseHover, Sub(sender, e) sender.Invalidate(sender.ClientRectangle)
 
