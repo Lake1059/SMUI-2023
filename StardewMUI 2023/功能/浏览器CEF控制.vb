@@ -3,9 +3,8 @@ Imports CefSharp
 Imports CefSharp.WinForms
 
 
-Public Class 浏览器控制
+Public Class 浏览器CEF控制
 
-    Public Shared Property 当前是否在更新或下载模组 As Boolean = False
     Public Shared Property 获取到的HTML数据 As String = ""
     Public Shared Property 获取到的key As String = ""
     Public Shared Property 获取到的expires As String = ""
@@ -22,7 +21,7 @@ Public Class 浏览器控制
         CefSharp.Cef.Initialize(settings)
         Form1.Label15.Dispose()
         界面控制.CEF浏览器控件 = New ChromiumWebBrowser With {.Dock = DockStyle.Fill, .ActivateBrowserOnCreation = False}
-        Form1.TabPageCEF浏览器.Controls.Add(界面控制.CEF浏览器控件)
+        Form1.TabPage浏览器.Controls.Add(界面控制.CEF浏览器控件)
         界面控制.CEF浏览器控件.BringToFront()
         AddHandler 界面控制.CEF浏览器控件.LoadingStateChanged, AddressOf CEF_LoadingStateChanged
         AddHandler 界面控制.CEF浏览器控件.AddressChanged, AddressOf CEF_AddressChanged
@@ -110,7 +109,7 @@ Public Class 浏览器控制
             界面控制.CEF浏览器控件.ExecuteScriptAsync("document.documentElement.setAttribute('data-theme', 'dark');")
             界面控制.CEF浏览器控件.ExecuteScriptAsync(HideAdsScript)
         End If
-        If e.IsLoading = False And 当前是否在更新或下载模组 = True Then
+        If e.IsLoading = False And 浏览器同步数据.当前是否在更新或下载模组 = True Then
             Dim task02 = e.Browser.GetSourceAsync()
             task02.ContinueWith(
                 Function(t)

@@ -60,6 +60,11 @@ Public Class 设置
         AddHandler Form1.UiSwitch2.ActiveChanged, AddressOf 控制进程监控功能开关
         AddHandler Form1.UiSwitch3.ActiveChanged, AddressOf 控制性能监控功能开关
 
+        AddHandler Form1.UiRadioButton7.Click, Sub() 全局设置数据("UseWhichBrowser") = "Edge"
+        AddHandler Form1.UiRadioButton8.Click, Sub() 全局设置数据("UseWhichBrowser") = "CEF"
+
+
+
     End Sub
 
     Public Shared Sub 启动时加载设置()
@@ -107,7 +112,7 @@ Public Class 设置
             Form1.TabPage配置队列.Parent = Nothing
             Form1.TabPage下载管理.Parent = Nothing
             Form1.TabPage检查更新.Parent = Nothing
-            Form1.TabPageCEF浏览器.Parent = Nothing
+            Form1.TabPage浏览器.Parent = Nothing
             Form1.TabPage调试输出.Parent = Nothing
             Form1.UiTabControlMenu1.SelectedIndex = 6
             Form1.TabPage扩展内容.Parent = Nothing
@@ -122,7 +127,7 @@ Public Class 设置
         Form1.TabPage配置队列.Parent = Form1.UiTabControl1
         Form1.TabPage下载管理.Parent = Form1.UiTabControl1
         Form1.TabPage检查更新.Parent = Form1.UiTabControl1
-        Form1.TabPageCEF浏览器.Parent = Form1.UiTabControl1
+        Form1.TabPage浏览器.Parent = Form1.UiTabControl1
         Form1.TabPage调试输出.Parent = Form1.UiTabControl1
         Form1.TabPage扩展内容.Parent = Form1.UiTabControlMenu1
         Form1.TabPage最新模组.Parent = Form1.UiTabControlMenu1
@@ -209,6 +214,15 @@ Public Class 设置
 
         Form1.UiSwitch2.Active = 全局设置数据("ProcessMonitor")
         Form1.UiSwitch3.Active = 全局设置数据("PerformanceMonitor")
+        Select Case 全局设置数据("UseWhichBrowser")
+            Case "Edge"
+                Form1.UiRadioButton7.Checked = True
+                Form1.UiRadioButton8.Checked = False
+            Case Else
+                Form1.UiRadioButton7.Checked = False
+                Form1.UiRadioButton8.Checked = True
+        End Select
+
 
     End Sub
 
@@ -470,14 +484,14 @@ R1:
 
     Public Shared Sub 让非N网会员去内置浏览器登录()
         If 全局设置数据("AgreementSigned") = "False" Then Exit Sub
-        Form1.UiTabControl1.SelectedTab = Form1.TabPageCEF浏览器
+        Form1.UiTabControl1.SelectedTab = Form1.TabPage浏览器
         Form1.UiButton49.PerformClick()
     End Sub
 
     Public Shared Sub 去内置浏览器管理密钥()
         If 全局设置数据("AgreementSigned") = "False" Then Exit Sub
         Form1.UiTextBox5.Text = "https://www.nexusmods.com/users/myaccount?tab=api"
-        Form1.UiTabControl1.SelectedTab = Form1.TabPageCEF浏览器
+        Form1.UiTabControl1.SelectedTab = Form1.TabPage浏览器
         Form1.UiButton53.PerformClick()
     End Sub
 

@@ -13,7 +13,11 @@ Public Class 界面控制
 
 
     Public Shared Sub 初始化界面()
-        浏览器控制.初始化功能()
+        If 设置.全局设置数据("UseWhichBrowser") = "Edge" Then
+            浏览器WebView2控制.初始化功能()
+        Else
+            浏览器CEF控制.初始化功能()
+        End If
         Form1.UiRichTextBox4.Rtf = My.Resources.用户许可协议
         Form1.UiRichTextBox3.Rtf = My.Resources.更新记录
 

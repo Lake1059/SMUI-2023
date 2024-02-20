@@ -38,3 +38,4 @@ DateOfGetNews=
 ProcessMonitor=False
 PerformanceMonitor=False
 LastUsedSubLibraryName=
+UseWhichBrowser=Edge
