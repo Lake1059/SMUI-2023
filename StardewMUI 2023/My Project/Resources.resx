@@ -118,6 +118,9 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="7zip" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\7zip.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="CEF" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\CEF.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -127,17 +130,26 @@
   <data name="DarkUI" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\DarkUI.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="default-package-icon1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\default-package-icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="dropbox" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\dropbox.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="dropbox1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\dropbox.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="Jsonnet" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Jsonnet.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="me" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\me.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="SunnyUI" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\SunnyUI.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="WebView2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\WebView2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="上传" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\上传.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -204,6 +216,9 @@
   </data>
   <data name="更新记录" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\更新记录.rtf;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="浏览器脚本" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\浏览器脚本.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;gb2312</value>
   </data>
   <data name="添加带圆圈" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\添加带圆圈.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>

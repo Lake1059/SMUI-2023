@@ -1,0 +1,51 @@
+    (function() {
+        document.addEventListener('DOMContentLoaded', (event) => {
+            // 检测暗黑模式
+            function detectDarkMode() {
+                if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                    return true;
+                }
+                return false;
+            }
+
+            // 应用通用暗黑模式样式
+            function applyGenericDarkMode() {
+                const style = document.createElement('style');
+                style.type = 'text/css';
+                style.innerHTML = `
+                    body { 
+                        background-color: #121212; 
+                        color: #ffffff; 
+                    }
+                    /* 可以添加更多通用暗黑模式样式 */
+                `;
+                document.head.appendChild(style);
+            }
+
+            // 切换暗黑模式
+            function toggleDarkMode() {
+                if (detectDarkMode()) {
+                    // 网页原生支持暗黑模式
+                    document.documentElement.classList.toggle('dark-mode');
+                } else {
+                    // 应用通用暗黑模式
+                    applyGenericDarkMode();
+                }
+            }
+
+            // 屏蔽指定class的广告
+            function blockAds(className) {
+                const ads = document.querySelectorAll('.' + className.replace(/ /g, '.'));
+                ads.forEach(ad => {
+                    ad.style.display = 'none';
+                });
+            }
+
+            // 执行功能
+            toggleDarkMode();
+            blockAds('.ad-report.ad-floor-exp');
+            blockAds('.pop-live-small-mode.part-undefined');
+            blockAds('.ad-report.video-card-ad-small');
+
+        });
+    })();

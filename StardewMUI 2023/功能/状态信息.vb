@@ -78,6 +78,7 @@ Public Class 状态信息
 
 
     Public Shared Property CPU性能计数器 As PerformanceCounter
+
     Public Shared ReadOnly 性能计数定时器 As New Timer With {.Enabled = False, .Interval = 2000}
 
     Public Shared Sub 初始化性能计数定时器()
@@ -85,24 +86,35 @@ Public Class 状态信息
             Sub()
                 If CPU性能计数器 Is Nothing Then Exit Sub
                 Try
-                    Form1.UiListBox1.Items(4) = $"CPU {Format(CPU性能计数器.NextValue, "0.0")}%"
+                    Form1.UiListBox1.Items(4) = $"CPU {Math.Truncate(CPU性能计数器.NextValue)}%"
                 Catch ex As Exception
                     Form1.UiListBox1.Items(4) = "无数据"
                 End Try
                 Dim b1 = Process.GetCurrentProcess().WorkingSet64 / 1024 / 1024
                 Dim b2 = Process.GetCurrentProcess().PrivateMemorySize64 / 1024 / 1024
-                Dim processes() As Process = Process.GetProcessesByName("CefSharp.BrowserSubprocess")
-                If processes.Length > 0 Then
-                    For Each proc As Process In processes
-                        If proc.MainModule.FileName = Path.Combine(Application.StartupPath, "CefSharp.BrowserSubprocess.exe") Then
+
+                If 设置.全局设置数据("UseWhichBrowser") = "Edge" Then
+                    Dim EdgeProcess() As Process = Process.GetProcessesByName("msedgewebview2")
+                    If EdgeProcess.Length > 0 Then
+                        For Each proc As Process In EdgeProcess
                             b1 += proc.WorkingSet64 / 1024 / 1024
                             b2 += proc.PrivateMemorySize64 / 1024 / 1024
-
-                        End If
-                    Next
+                        Next
+                    End If
+                ElseIf 设置.全局设置数据("UseWhichBrowser") = "CEF" Then
+                    Dim CEFProcess() As Process = Process.GetProcessesByName("CefSharp.BrowserSubprocess")
+                    If CEFProcess.Length > 0 Then
+                        For Each proc As Process In CEFProcess
+                            If proc.MainModule.FileName = Path.Combine(Application.StartupPath, "CefSharp.BrowserSubprocess.exe") Then
+                                b1 += proc.WorkingSet64 / 1024 / 1024
+                                b2 += proc.PrivateMemorySize64 / 1024 / 1024
+                            End If
+                        Next
+                    End If
                 End If
-                Form1.UiListBox1.Items(4) &= $" - 总物理 {Format(b1, "0.0")} MB"
-                Form1.UiListBox1.Items(4) &= $" - 专用 {Format(b2, "0.0")} MB"
+
+                Form1.UiListBox1.Items(4) &= $" - 总物理 {Math.Truncate(b1)} MB"
+                Form1.UiListBox1.Items(4) &= $" - 专用 {Math.Truncate(b2)} MB"
             End Sub
     End Sub
 

@@ -120,17 +120,6 @@
   <metadata name="ImageList1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
-  <data name="Label15.Text" xml:space="preserve">
-    <value>Chromium Embedded Framework 还未初始化，控件也还未创建
-
-只有当需要使用内置浏览器时才会完成初始化并创建控件，这样可以在平时不需要使用时降低内存使用
-
-请注意：一旦开始使用便无法彻底释放 CEF 的部分内存占用，直到退出应用程序为止
-
-操作提示：要在内置浏览器中访问其他地址，可以直接在顶部菜单栏空白处输入并转到
-
-清理浏览器缓存请在【起始页面】/【设置】/【存储管理】选项卡中进行操作</value>
-  </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>

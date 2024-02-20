@@ -8,7 +8,7 @@
     ''' <param name="哪个列表视图控件"></param>
     ''' <param name="e"></param>
     ''' <param name="项图标字典">键是主项文本，值是 Image，如果有对应的图片不要忘记在变动主项文本的同时修改字典里的键名称</param>
-    Public Shared Sub 绘制子项(哪个列表视图控件 As ListView, e As DrawListViewSubItemEventArgs, 项图标字典 As Dictionary(Of String, Image))
+    Public Shared Sub 绘制子项(哪个列表视图控件 As ListView, e As DrawListViewSubItemEventArgs, 项图标字典 As Dictionary(Of String, Image), Optional 图像边长 As Integer = 16)
         e.DrawDefault = False
         If Not e.Bounds.IntersectsWith(哪个列表视图控件.ClientRectangle) Then Exit Sub
         Dim 项背景色 As Color = If(哪个列表视图控件.SelectedIndices.Contains(e.ItemIndex), 项被选中时的背景颜色, 哪个列表视图控件.BackColor)
@@ -16,11 +16,11 @@
         Dim 文本高度修正 As Integer = (e.Bounds.Height - TextRenderer.MeasureText(e.SubItem.Text, e.SubItem.Font).Height) \ 2
         Dim 文本绘制区 As New Rectangle(e.Bounds.X + 5, e.Bounds.Y + 文本高度修正, e.Bounds.Width - 5, e.Bounds.Height)
         If e.ColumnIndex = 0 Then
-            If 项图标字典.ContainsKey(e.Item.Name) Then
+            If 项图标字典.ContainsKey(e.Item.Text) Then
                 文本绘制区.X += 5 : 文本绘制区.Width -= 5
-                If e.ColumnIndex = 0 Then 文本绘制区.X += 16 * 界面控制.X轴DPI比率 : 文本绘制区.Width -= 16 * 界面控制.X轴DPI比率
-                Dim 图标绘制区 As New Rectangle(e.Bounds.X + 5, e.Bounds.Y + (e.Bounds.Height - 16 * 界面控制.Y轴DPI比率) \ 2, 16 * 界面控制.X轴DPI比率, 16 * 界面控制.Y轴DPI比率)
-                e.Graphics.DrawImage(项图标字典(e.ItemIndex), 图标绘制区)
+                If e.ColumnIndex = 0 Then 文本绘制区.X += 图像边长 * 界面控制.X轴DPI比率 : 文本绘制区.Width -= 图像边长 * 界面控制.X轴DPI比率
+                Dim 图标绘制区 As New Rectangle(e.Bounds.X + 5, e.Bounds.Y + (e.Bounds.Height - 图像边长 * 界面控制.Y轴DPI比率) \ 2, 图像边长 * 界面控制.X轴DPI比率, 图像边长 * 界面控制.Y轴DPI比率)
+                e.Graphics.DrawImage(项图标字典(e.Item.Text), 图标绘制区)
             End If
         End If
         Dim 文字显示所需尺寸 As Size = TextRenderer.MeasureText(e.SubItem.Text, e.SubItem.Font)

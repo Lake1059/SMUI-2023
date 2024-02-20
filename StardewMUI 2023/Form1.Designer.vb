@@ -23,26 +23,39 @@ Partial Class Form1
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         components = New ComponentModel.Container()
-        Dim ListViewItem21 As ListViewItem = New ListViewItem(New String() {"SMUI 中间型解释代码和二进制本体", "不可清理", ""}, -1, Color.FromArgb(CByte(0), CByte(192), CByte(0)), Color.Empty, Nothing)
-        Dim ListViewItem22 As ListViewItem = New ListViewItem(New String() {"SMUI 所有组件完整容量", "不可清理", ""}, -1, Color.FromArgb(CByte(0), CByte(192), CByte(0)), Color.Empty, Nothing)
-        Dim ListViewItem23 As ListViewItem = New ListViewItem(New String() {"已安装的 DLC 和插件", "不可清理", ""}, -1, Color.FromArgb(CByte(128), CByte(128), CByte(255)), Color.Empty, Nothing)
-        Dim ListViewItem24 As ListViewItem = New ListViewItem(New String() {"检查更新下载的安装包", "可以清理", ""}, -1)
-        Dim ListViewItem25 As ListViewItem = New ListViewItem(New String() {"下载的模组压缩包", "可以清理", ""}, -1)
-        Dim ListViewItem26 As ListViewItem = New ListViewItem(New String() {"临时解压", "可以清理", ""}, -1)
-        Dim ListViewItem27 As ListViewItem = New ListViewItem(New String() {"模组数据库总数据", "不可在此清理", ""}, -1, Color.DarkOrange, Color.Empty, Nothing)
-        Dim ListViewItem28 As ListViewItem = New ListViewItem(New String() {"Chromium 网页和代码缓存", "可以清理", ""}, -1)
-        Dim ListViewItem29 As ListViewItem = New ListViewItem(New String() {"Chromium 数据库", "可以清理", ""}, -1)
-        Dim ListViewItem30 As ListViewItem = New ListViewItem(New String() {"Chromium 渲染相关缓存", "可以清理", ""}, -1)
-        Dim ListViewItem31 As ListViewItem = New ListViewItem(New String() {"Chromium 网站存储", "可以清理", ""}, -1)
-        Dim ListViewItem32 As ListViewItem = New ListViewItem(New String() {"Chromium Cookies", "可以清理", ""}, -1)
-        Dim ListViewItem33 As ListViewItem = New ListViewItem(New String() {"Chromium Service Worker", "可以清理", ""}, -1)
-        Dim ListViewItem34 As ListViewItem = New ListViewItem(New String() {"Chromium 其他缓存", "可以清理", ""}, -1)
-        Dim ListViewItem1 As ListViewItem = New ListViewItem(New String() {"DLC 1 - 自定义输入扩展", "未启用"}, -1)
-        Dim ListViewItem2 As ListViewItem = New ListViewItem(New String() {"DLC 2 - 自定义皮肤加载器", "未启用"}, -1)
-        Dim ListViewItem3 As ListViewItem = New ListViewItem(New String() {"DLC 3 - 新项扩展", "未启用"}, -1)
-        Dim ListViewItem4 As ListViewItem = New ListViewItem(New String() {"DLC 4 - 检查更新扩展", "未启用"}, -1)
-        Dim ListViewItem5 As ListViewItem = New ListViewItem(New String() {"Season Pass 2023 - 基础扩展四件套", "未启用"}, -1, Color.MediumOrchid, Color.Empty, Nothing)
-        Dim ListViewItem6 As ListViewItem = New ListViewItem(New String() {"DLC 5 - 分发扩展", "未启用"}, -1)
+        Dim ListViewItem1 As ListViewItem = New ListViewItem(New String() {"SMUI 中间型解释代码和二进制本体", "不可清理", ""}, -1, Color.FromArgb(CByte(0), CByte(192), CByte(0)), Color.Empty, Nothing)
+        Dim ListViewItem2 As ListViewItem = New ListViewItem(New String() {"SMUI 所有组件完整容量", "不可清理", ""}, -1, Color.FromArgb(CByte(0), CByte(192), CByte(0)), Color.Empty, Nothing)
+        Dim ListViewItem3 As ListViewItem = New ListViewItem(New String() {"已安装的 DLC 和插件", "不可清理", ""}, -1, Color.FromArgb(CByte(128), CByte(128), CByte(255)), Color.Empty, Nothing)
+        Dim ListViewItem4 As ListViewItem = New ListViewItem(New String() {"检查更新下载的安装包", "可以清理", ""}, -1)
+        Dim ListViewItem5 As ListViewItem = New ListViewItem(New String() {"下载的模组压缩包", "可以清理", ""}, -1)
+        Dim ListViewItem6 As ListViewItem = New ListViewItem(New String() {"临时解压", "可以清理", ""}, -1)
+        Dim ListViewItem7 As ListViewItem = New ListViewItem(New String() {"模组数据库总数据", "不可在此清理", ""}, -1, Color.DarkOrange, Color.Empty, Nothing)
+        Dim ListViewItem8 As ListViewItem = New ListViewItem(New String() {"Chromium 网页和代码缓存", "可以清理", ""}, -1)
+        Dim ListViewItem9 As ListViewItem = New ListViewItem(New String() {"Chromium 数据库", "可以清理", ""}, -1)
+        Dim ListViewItem10 As ListViewItem = New ListViewItem(New String() {"Chromium 渲染相关缓存", "可以清理", ""}, -1)
+        Dim ListViewItem11 As ListViewItem = New ListViewItem(New String() {"Chromium 网站存储", "可以清理", ""}, -1)
+        Dim ListViewItem12 As ListViewItem = New ListViewItem(New String() {"Chromium Cookies", "可以清理", ""}, -1)
+        Dim ListViewItem13 As ListViewItem = New ListViewItem(New String() {"Chromium Service Worker", "可以清理", ""}, -1)
+        Dim ListViewItem14 As ListViewItem = New ListViewItem(New String() {"Chromium 其他缓存", "可以清理", ""}, -1)
+        Dim ListViewItem15 As ListViewItem = New ListViewItem(New String() {"DLC 1 - 自定义输入扩展", "未启用"}, -1)
+        Dim ListViewItem16 As ListViewItem = New ListViewItem(New String() {"DLC 2 - 自定义皮肤加载器", "未启用"}, -1)
+        Dim ListViewItem17 As ListViewItem = New ListViewItem(New String() {"DLC 3 - 新项扩展", "未启用"}, -1)
+        Dim ListViewItem18 As ListViewItem = New ListViewItem(New String() {"DLC 4 - 检查更新扩展", "未启用"}, -1)
+        Dim ListViewItem19 As ListViewItem = New ListViewItem(New String() {"Season Pass 2023 - 基础扩展四件套", "未启用"}, -1, Color.MediumOrchid, Color.Empty, Nothing)
+        Dim ListViewItem20 As ListViewItem = New ListViewItem(New String() {"DLC 5 - 分发扩展", "未启用"}, -1)
+        Dim ListViewItem21 As ListViewItem = New ListViewItem(New String() {"湖边的稻草 / 1059 Studio / Lake1059", "开发者，著作权所有，SMUI 管理模式版权所有"}, -1)
+        Dim ListViewItem22 As ListViewItem = New ListViewItem(New String() {"ChatGPT 3.5 / 4 by OpenAI", "提供了多项关键技术原型和指导"}, -1)
+        Dim ListViewItem23 As ListViewItem = New ListViewItem(New String() {"内置图标来自 IconPark", "© ByteDance Apache-2.0"}, -1)
+        Dim ListViewItem24 As ListViewItem = New ListViewItem(New String() {"SunnyUI 商业许可证：PVIP2023080201", "GPL-3.0-only 界面元素主框架"}, -1)
+        Dim ListViewItem25 As ListViewItem = New ListViewItem(New String() {"DarkUI", "MIT 源代码定制用于菜单绘制"}, -1)
+        Dim ListViewItem26 As ListViewItem = New ListViewItem(New String() {"Microsoft.Web.WebView2", "微软软件许可证"}, -1)
+        Dim ListViewItem27 As ListViewItem = New ListViewItem(New String() {"Chromium Embedded Framework", "Copyright © The CefSharp Authors. All rights reserved."}, -1)
+        Dim ListViewItem28 As ListViewItem = New ListViewItem(New String() {"Newtonsoft.Json", "MIT"}, -1)
+        Dim ListViewItem29 As ListViewItem = New ListViewItem(New String() {"SevenZipSharp", "LGPL-3.0"}, -1)
+        Dim ListViewItem30 As ListViewItem = New ListViewItem(New String() {"来自 7zip 软件的 7zFull64.dll 文件", "原文件名：7z.dll"}, -1)
+        Dim ListViewItem31 As ListViewItem = New ListViewItem(New String() {"来自 7zip 官方的 7za 组件", "7za.dll、7za.exe、7zxa.dll"}, -1)
+        Dim ListViewItem32 As ListViewItem = New ListViewItem(New String() {"libwebp-net", "MIT"}, -1)
+        Dim ListViewItem33 As ListViewItem = New ListViewItem("来自 Google 的 libwebp.dll 文件")
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Form1))
         UiTabControl1 = New Sunny.UI.UITabControl()
         TabPage起始页面 = New TabPage()
@@ -167,6 +180,7 @@ Partial Class Form1
         UiRadioButton3 = New Sunny.UI.UIRadioButton()
         Label37 = New Label()
         TabPage7 = New TabPage()
+        UiButton67 = New Sunny.UI.UIButton()
         UiButton62 = New Sunny.UI.UIButton()
         UiButton61 = New Sunny.UI.UIButton()
         UiButton60 = New Sunny.UI.UIButton()
@@ -220,19 +234,9 @@ Partial Class Form1
         TabPage更新记录 = New TabPage()
         UiRichTextBox3 = New Sunny.UI.UIRichTextBox()
         TabPage关于 = New TabPage()
-        Label69 = New Label()
-        PictureBox7 = New PictureBox()
-        Label68 = New Label()
-        PictureBox6 = New PictureBox()
-        Label56 = New Label()
-        PictureBox5 = New PictureBox()
-        Label67 = New Label()
-        PictureBox4 = New PictureBox()
-        Label59 = New Label()
-        PictureBox3 = New PictureBox()
-        Label58 = New Label()
-        PictureBox2 = New PictureBox()
-        Label57 = New Label()
+        ListView11 = New ListView()
+        ColumnHeader18 = New ColumnHeader()
+        ColumnHeader19 = New ColumnHeader()
         TabPage管理模组 = New TabPage()
         Panel4 = New Panel()
         Panel12 = New Panel()
@@ -408,12 +412,6 @@ Partial Class Form1
         TabPage许可协议.SuspendLayout()
         TabPage更新记录.SuspendLayout()
         TabPage关于.SuspendLayout()
-        CType(PictureBox7, ComponentModel.ISupportInitialize).BeginInit()
-        CType(PictureBox6, ComponentModel.ISupportInitialize).BeginInit()
-        CType(PictureBox5, ComponentModel.ISupportInitialize).BeginInit()
-        CType(PictureBox4, ComponentModel.ISupportInitialize).BeginInit()
-        CType(PictureBox3, ComponentModel.ISupportInitialize).BeginInit()
-        CType(PictureBox2, ComponentModel.ISupportInitialize).BeginInit()
         TabPage管理模组.SuspendLayout()
         Panel4.SuspendLayout()
         Panel12.SuspendLayout()
@@ -3062,6 +3060,7 @@ Partial Class Form1
         ' TabPage7
         ' 
         TabPage7.BackColor = Color.FromArgb(CByte(24), CByte(24), CByte(24))
+        TabPage7.Controls.Add(UiButton67)
         TabPage7.Controls.Add(UiButton62)
         TabPage7.Controls.Add(UiButton61)
         TabPage7.Controls.Add(UiButton60)
@@ -3072,6 +3071,39 @@ Partial Class Form1
         TabPage7.Size = New Size(912, 700)
         TabPage7.TabIndex = 7
         TabPage7.Text = "存储管理"
+        ' 
+        ' UiButton67
+        ' 
+        UiButton67.FillColor = Color.FromArgb(CByte(48), CByte(48), CByte(48))
+        UiButton67.FillColor2 = Color.FromArgb(CByte(48), CByte(48), CByte(48))
+        UiButton67.FillDisableColor = Color.FromArgb(CByte(48), CByte(48), CByte(48))
+        UiButton67.FillHoverColor = Color.FromArgb(CByte(64), CByte(64), CByte(64))
+        UiButton67.FillPressColor = Color.FromArgb(CByte(80), CByte(80), CByte(80))
+        UiButton67.FillSelectedColor = Color.FromArgb(CByte(48), CByte(48), CByte(48))
+        UiButton67.Font = New Font("微软雅黑", 9.75F)
+        UiButton67.ForeColor = Color.FromArgb(CByte(224), CByte(224), CByte(224))
+        UiButton67.ForeDisableColor = Color.Gray
+        UiButton67.ForeHoverColor = Color.FromArgb(CByte(244), CByte(244), CByte(244))
+        UiButton67.ForePressColor = Color.FromArgb(CByte(244), CByte(244), CByte(244))
+        UiButton67.ForeSelectedColor = Color.FromArgb(CByte(244), CByte(244), CByte(244))
+        UiButton67.Location = New Point(630, 61)
+        UiButton67.Margin = New Padding(0, 20, 20, 0)
+        UiButton67.MinimumSize = New Size(1, 1)
+        UiButton67.Name = "UiButton67"
+        UiButton67.Radius = 10
+        UiButton67.RadiusSides = Sunny.UI.UICornerRadiusSides.None
+        UiButton67.RectColor = Color.FromArgb(CByte(48), CByte(48), CByte(48))
+        UiButton67.RectDisableColor = Color.FromArgb(CByte(48), CByte(48), CByte(48))
+        UiButton67.RectHoverColor = Color.FromArgb(CByte(64), CByte(64), CByte(64))
+        UiButton67.RectPressColor = Color.FromArgb(CByte(80), CByte(80), CByte(80))
+        UiButton67.RectSelectedColor = Color.FromArgb(CByte(48), CByte(48), CByte(48))
+        UiButton67.Size = New Size(250, 30)
+        UiButton67.Style = Sunny.UI.UIStyle.Custom
+        UiButton67.TabIndex = 66
+        UiButton67.TabStop = False
+        UiButton67.Text = "删除 Webview2 全部缓存"
+        UiButton67.TipsColor = Color.Gray
+        UiButton67.TipsFont = New Font("微软雅黑", 9F)
         ' 
         ' UiButton62
         ' 
@@ -3204,7 +3236,7 @@ Partial Class Form1
         ListView10.ForeColor = Color.FromArgb(CByte(224), CByte(224), CByte(224))
         ListView10.FullRowSelect = True
         ListView10.HeaderStyle = ColumnHeaderStyle.None
-        ListView10.Items.AddRange(New ListViewItem() {ListViewItem21, ListViewItem22, ListViewItem23, ListViewItem24, ListViewItem25, ListViewItem26, ListViewItem27, ListViewItem28, ListViewItem29, ListViewItem30, ListViewItem31, ListViewItem32, ListViewItem33, ListViewItem34})
+        ListView10.Items.AddRange(New ListViewItem() {ListViewItem1, ListViewItem2, ListViewItem3, ListViewItem4, ListViewItem5, ListViewItem6, ListViewItem7, ListViewItem8, ListViewItem9, ListViewItem10, ListViewItem11, ListViewItem12, ListViewItem13, ListViewItem14})
         ListView10.Location = New Point(10, 10)
         ListView10.Name = "ListView10"
         ListView10.OwnerDraw = True
@@ -3253,9 +3285,9 @@ Partial Class Form1
         Label70.Location = New Point(50, 362)
         Label70.Margin = New Padding(10, 10, 10, 0)
         Label70.Name = "Label70"
-        Label70.Size = New Size(577, 126)
+        Label70.Size = New Size(577, 147)
         Label70.TabIndex = 65
-        Label70.Text = "调用集成的 CEF 组件，一旦开始使用则部分内存占用直到应用程序退出才能释放" & vbCrLf & vbCrLf & "❌ 没有调试工具" & vbCrLf & "❌ 仅限 Youtube 视频" & vbCrLf & "❌ 不能登录谷歌账号" & vbCrLf & "✔ 不受系统环境影响"
+        Label70.Text = "调用集成的 CEF 组件，一旦开始使用则部分内存占用直到应用程序退出才能释放" & vbCrLf & vbCrLf & "❌ 没有调试工具" & vbCrLf & "❌ 仅限 YouTube 视频" & vbCrLf & "❌ 不能登录谷歌账号" & vbCrLf & "✔ 不受系统环境影响" & vbCrLf & ChrW(55357) & ChrW(57313) & " 需要 C++ 2019-2022 运行库"
         ' 
         ' Label55
         ' 
@@ -3266,7 +3298,7 @@ Partial Class Form1
         Label55.Name = "Label55"
         Label55.Size = New Size(490, 147)
         Label55.TabIndex = 64
-        Label55.Text = "调用系统的 Edge 浏览器显示网页，内存占用可以在运行时完全释放" & vbCrLf & vbCrLf & "✔ 可打开 Edge 原生开发人员工具" & vbCrLf & "✔ 可以播放 H264 视频" & vbCrLf & "✔ 可以登录谷歌账号" & vbCrLf & "✔ 部分功能继承 Edge 本体的体验" & vbCrLf & "❌ 受系统环境影响"
+        Label55.Text = "调用系统的 Edge 浏览器显示网页，内存占用可以在运行时完全释放" & vbCrLf & vbCrLf & "✔ 开发人员调试工具" & vbCrLf & "✔ 可以播放 H.264 视频" & vbCrLf & "✔ 可以登录谷歌账号" & vbCrLf & "✔ 部分功能继承 Edge 本体的体验" & vbCrLf & "❌ 受系统环境影响"
         ' 
         ' Label38
         ' 
@@ -3341,7 +3373,7 @@ Partial Class Form1
         ListView9.ForeColor = Color.FromArgb(CByte(224), CByte(224), CByte(224))
         ListView9.FullRowSelect = True
         ListView9.HeaderStyle = ColumnHeaderStyle.None
-        ListView9.Items.AddRange(New ListViewItem() {ListViewItem1, ListViewItem2, ListViewItem3, ListViewItem4, ListViewItem5, ListViewItem6})
+        ListView9.Items.AddRange(New ListViewItem() {ListViewItem15, ListViewItem16, ListViewItem17, ListViewItem18, ListViewItem19, ListViewItem20})
         ListView9.Location = New Point(10, 10)
         ListView9.Name = "ListView9"
         ListView9.OwnerDraw = True
@@ -3815,174 +3847,39 @@ Partial Class Form1
         ' TabPage关于
         ' 
         TabPage关于.BackColor = Color.FromArgb(CByte(24), CByte(24), CByte(24))
-        TabPage关于.Controls.Add(Label69)
-        TabPage关于.Controls.Add(PictureBox7)
-        TabPage关于.Controls.Add(Label68)
-        TabPage关于.Controls.Add(PictureBox6)
-        TabPage关于.Controls.Add(Label56)
-        TabPage关于.Controls.Add(PictureBox5)
-        TabPage关于.Controls.Add(Label67)
-        TabPage关于.Controls.Add(PictureBox4)
-        TabPage关于.Controls.Add(Label59)
-        TabPage关于.Controls.Add(PictureBox3)
-        TabPage关于.Controls.Add(Label58)
-        TabPage关于.Controls.Add(PictureBox2)
-        TabPage关于.Controls.Add(Label57)
+        TabPage关于.Controls.Add(ListView11)
         TabPage关于.Location = New Point(151, 0)
         TabPage关于.Name = "TabPage关于"
         TabPage关于.Size = New Size(1113, 700)
         TabPage关于.TabIndex = 6
         TabPage关于.Text = "关于"
         ' 
-        ' Label69
+        ' ListView11
         ' 
-        Label69.AutoEllipsis = True
-        Label69.Font = New Font("微软雅黑", 12F)
-        Label69.Location = New Point(40, 544)
-        Label69.Margin = New Padding(20)
-        Label69.Name = "Label69"
-        Label69.Size = New Size(1044, 58)
-        Label69.TabIndex = 41
-        Label69.Text = "其他引用：SevenZipSharp（LGPL-3.0）、来自 7zip 软件的 7zFull64.dll 文件（原文件名：7z.dll）、来自 7zip 官方的 7za 组件、Newtonsoft.Json（MIT）、libwebp-net（MIT）、来自 Google 的 libwebp.dll 文件"
+        ListView11.BackColor = Color.FromArgb(CByte(24), CByte(24), CByte(24))
+        ListView11.BorderStyle = BorderStyle.None
+        ListView11.Columns.AddRange(New ColumnHeader() {ColumnHeader18, ColumnHeader19})
+        ListView11.Dock = DockStyle.Fill
+        ListView11.ForeColor = Color.FromArgb(CByte(224), CByte(224), CByte(224))
+        ListView11.FullRowSelect = True
+        ListView11.HeaderStyle = ColumnHeaderStyle.None
+        ListView11.Items.AddRange(New ListViewItem() {ListViewItem21, ListViewItem22, ListViewItem23, ListViewItem24, ListViewItem25, ListViewItem26, ListViewItem27, ListViewItem28, ListViewItem29, ListViewItem30, ListViewItem31, ListViewItem32, ListViewItem33})
+        ListView11.Location = New Point(0, 0)
+        ListView11.Name = "ListView11"
+        ListView11.OwnerDraw = True
+        ListView11.ShowItemToolTips = True
+        ListView11.Size = New Size(1113, 700)
+        ListView11.TabIndex = 42
+        ListView11.UseCompatibleStateImageBehavior = False
+        ListView11.View = View.Details
         ' 
-        ' PictureBox7
+        ' ColumnHeader18
         ' 
-        PictureBox7.Image = My.Resources.Resources.dropbox1
-        PictureBox7.Location = New Point(40, 460)
-        PictureBox7.Margin = New Padding(40, 20, 0, 0)
-        PictureBox7.Name = "PictureBox7"
-        PictureBox7.Size = New Size(64, 64)
-        PictureBox7.SizeMode = PictureBoxSizeMode.Zoom
-        PictureBox7.TabIndex = 40
-        PictureBox7.TabStop = False
+        ColumnHeader18.Width = 400
         ' 
-        ' Label68
+        ' ColumnHeader19
         ' 
-        Label68.AutoEllipsis = True
-        Label68.Font = New Font("微软雅黑", 12F)
-        Label68.Location = New Point(119, 460)
-        Label68.Margin = New Padding(15, 20, 20, 0)
-        Label68.Name = "Label68"
-        Label68.Size = New Size(965, 64)
-        Label68.TabIndex = 39
-        Label68.Text = "内置图标来自 IconPark（Apache-2.0）© ByteDance" & vbCrLf & "自定义 免费商用"
-        Label68.TextAlign = ContentAlignment.MiddleLeft
-        ' 
-        ' PictureBox6
-        ' 
-        PictureBox6.Image = My.Resources.Resources.ChatGPT
-        PictureBox6.Location = New Point(40, 376)
-        PictureBox6.Margin = New Padding(40, 20, 0, 0)
-        PictureBox6.Name = "PictureBox6"
-        PictureBox6.Size = New Size(64, 64)
-        PictureBox6.SizeMode = PictureBoxSizeMode.Zoom
-        PictureBox6.TabIndex = 38
-        PictureBox6.TabStop = False
-        ' 
-        ' Label56
-        ' 
-        Label56.AutoEllipsis = True
-        Label56.Font = New Font("微软雅黑", 12F)
-        Label56.Location = New Point(119, 376)
-        Label56.Margin = New Padding(15, 20, 20, 0)
-        Label56.Name = "Label56"
-        Label56.Size = New Size(965, 64)
-        Label56.TabIndex = 37
-        Label56.Text = "ChatGPT 3.5 / ChatGPT 4 by OpenAI" & vbCrLf & "提供了多项关键技术原型和指导"
-        Label56.TextAlign = ContentAlignment.MiddleLeft
-        ' 
-        ' PictureBox5
-        ' 
-        PictureBox5.BackColor = Color.FromArgb(CByte(48), CByte(48), CByte(48))
-        PictureBox5.Image = My.Resources.Resources.CEF
-        PictureBox5.Location = New Point(40, 292)
-        PictureBox5.Margin = New Padding(40, 20, 0, 0)
-        PictureBox5.Name = "PictureBox5"
-        PictureBox5.Size = New Size(64, 64)
-        PictureBox5.SizeMode = PictureBoxSizeMode.Zoom
-        PictureBox5.TabIndex = 36
-        PictureBox5.TabStop = False
-        ' 
-        ' Label67
-        ' 
-        Label67.AutoEllipsis = True
-        Label67.Font = New Font("微软雅黑", 12F)
-        Label67.Location = New Point(119, 292)
-        Label67.Margin = New Padding(15, 20, 20, 0)
-        Label67.Name = "Label67"
-        Label67.Size = New Size(965, 64)
-        Label67.TabIndex = 35
-        Label67.Text = "Chromium Embedded Framework" & vbCrLf & "Copyright © The CefSharp Authors. All rights reserved." & vbCrLf & "内置浏览器主要用于让非 NEXUS 会员获取额外参数来直接下载模组"
-        Label67.TextAlign = ContentAlignment.MiddleLeft
-        ' 
-        ' PictureBox4
-        ' 
-        PictureBox4.Image = My.Resources.Resources.DarkUI
-        PictureBox4.Location = New Point(40, 208)
-        PictureBox4.Margin = New Padding(40, 20, 0, 0)
-        PictureBox4.Name = "PictureBox4"
-        PictureBox4.Size = New Size(64, 64)
-        PictureBox4.SizeMode = PictureBoxSizeMode.Zoom
-        PictureBox4.TabIndex = 34
-        PictureBox4.TabStop = False
-        ' 
-        ' Label59
-        ' 
-        Label59.AutoEllipsis = True
-        Label59.Font = New Font("微软雅黑", 12F)
-        Label59.Location = New Point(119, 208)
-        Label59.Margin = New Padding(15, 20, 20, 0)
-        Label59.Name = "Label59"
-        Label59.Size = New Size(965, 64)
-        Label59.TabIndex = 33
-        Label59.Text = "DarkUI - MIT" & vbCrLf & "源代码定制用于菜单绘制"
-        Label59.TextAlign = ContentAlignment.MiddleLeft
-        ' 
-        ' PictureBox3
-        ' 
-        PictureBox3.Image = My.Resources.Resources.SunnyUI
-        PictureBox3.Location = New Point(40, 124)
-        PictureBox3.Margin = New Padding(40, 20, 0, 0)
-        PictureBox3.Name = "PictureBox3"
-        PictureBox3.Size = New Size(64, 64)
-        PictureBox3.SizeMode = PictureBoxSizeMode.Zoom
-        PictureBox3.TabIndex = 32
-        PictureBox3.TabStop = False
-        ' 
-        ' Label58
-        ' 
-        Label58.AutoEllipsis = True
-        Label58.Font = New Font("微软雅黑", 12F)
-        Label58.Location = New Point(119, 124)
-        Label58.Margin = New Padding(15, 20, 20, 0)
-        Label58.Name = "Label58"
-        Label58.Size = New Size(965, 64)
-        Label58.TabIndex = 31
-        Label58.Text = "SunnyUI - GPL-3.0-only" & vbCrLf & "界面元素主框架" & vbCrLf & "商业许可证：PVIP2023080201"
-        Label58.TextAlign = ContentAlignment.MiddleLeft
-        ' 
-        ' PictureBox2
-        ' 
-        PictureBox2.Image = My.Resources.Resources._me
-        PictureBox2.Location = New Point(40, 40)
-        PictureBox2.Margin = New Padding(40, 40, 0, 0)
-        PictureBox2.Name = "PictureBox2"
-        PictureBox2.Size = New Size(64, 64)
-        PictureBox2.SizeMode = PictureBoxSizeMode.Zoom
-        PictureBox2.TabIndex = 30
-        PictureBox2.TabStop = False
-        ' 
-        ' Label57
-        ' 
-        Label57.AutoEllipsis = True
-        Label57.Font = New Font("微软雅黑", 12F)
-        Label57.Location = New Point(119, 40)
-        Label57.Margin = New Padding(15, 20, 20, 0)
-        Label57.Name = "Label57"
-        Label57.Size = New Size(965, 64)
-        Label57.TabIndex = 29
-        Label57.Text = "湖边的稻草 \ 1059 Studio \ Lake1059" & vbCrLf & "开发者，著作权所有" & vbCrLf & "SMUI 管理模式版权所有"
-        Label57.TextAlign = ContentAlignment.MiddleLeft
+        ColumnHeader19.Width = 600
         ' 
         ' TabPage管理模组
         ' 
@@ -6080,7 +5977,7 @@ Partial Class Form1
         Label15.Name = "Label15"
         Label15.Size = New Size(200, 20)
         Label15.TabIndex = 1
-        Label15.Text = resources.GetString("Label15.Text")
+        Label15.Text = "=====   使用提示   =====" & vbCrLf & vbCrLf & "为节省日常使用的内存占用，只有当需要使用内置浏览器时才会完成初始化并创建控件" & vbCrLf & vbCrLf & "要在内置浏览器中访问其他地址，可以直接在顶部菜单栏空白处输入并转到" & vbCrLf & vbCrLf & "Edge 和 CEF 组件各有优劣，默认选择 Edge，如需使用 CEF 请在设置中调整并重启" & vbCrLf & vbCrLf & "不要忘记定期清理浏览器缓存"
         Label15.TextAlign = ContentAlignment.MiddleCenter
         ' 
         ' Panel49
@@ -6102,6 +5999,7 @@ Partial Class Form1
         ' 
         ' UiTextBox5
         ' 
+        UiTextBox5.AllowDrop = True
         UiTextBox5.ButtonSymbolOffset = New Point(0, 0)
         UiTextBox5.Dock = DockStyle.Fill
         UiTextBox5.FillColor = Color.FromArgb(CByte(36), CByte(36), CByte(36))
@@ -6502,12 +6400,6 @@ Partial Class Form1
         TabPage许可协议.ResumeLayout(False)
         TabPage更新记录.ResumeLayout(False)
         TabPage关于.ResumeLayout(False)
-        CType(PictureBox7, ComponentModel.ISupportInitialize).EndInit()
-        CType(PictureBox6, ComponentModel.ISupportInitialize).EndInit()
-        CType(PictureBox5, ComponentModel.ISupportInitialize).EndInit()
-        CType(PictureBox4, ComponentModel.ISupportInitialize).EndInit()
-        CType(PictureBox3, ComponentModel.ISupportInitialize).EndInit()
-        CType(PictureBox2, ComponentModel.ISupportInitialize).EndInit()
         TabPage管理模组.ResumeLayout(False)
         Panel4.ResumeLayout(False)
         Panel12.ResumeLayout(False)
@@ -6868,19 +6760,6 @@ Partial Class Form1
     Friend WithEvents UiButton61 As Sunny.UI.UIButton
     Friend WithEvents UiButton62 As Sunny.UI.UIButton
     Friend WithEvents UiRichTextBox3 As Sunny.UI.UIRichTextBox
-    Friend WithEvents Label57 As Label
-    Friend WithEvents PictureBox2 As PictureBox
-    Friend WithEvents PictureBox3 As PictureBox
-    Friend WithEvents Label58 As Label
-    Friend WithEvents PictureBox4 As PictureBox
-    Friend WithEvents Label59 As Label
-    Friend WithEvents PictureBox5 As PictureBox
-    Friend WithEvents Label67 As Label
-    Friend WithEvents PictureBox6 As PictureBox
-    Friend WithEvents Label56 As Label
-    Friend WithEvents PictureBox7 As PictureBox
-    Friend WithEvents Label68 As Label
-    Friend WithEvents Label69 As Label
     Friend WithEvents UiSwitch3 As Sunny.UI.UISwitch
     Friend WithEvents Label15 As Label
     Friend WithEvents ColumnHeader17 As ColumnHeader
@@ -6894,4 +6773,8 @@ Partial Class Form1
     Friend WithEvents UiButton64 As Sunny.UI.UIButton
     Friend WithEvents UiButton66 As Sunny.UI.UIButton
     Friend WithEvents UiButton65 As Sunny.UI.UIButton
+    Friend WithEvents UiButton67 As Sunny.UI.UIButton
+    Friend WithEvents ListView11 As ListView
+    Friend WithEvents ColumnHeader18 As ColumnHeader
+    Friend WithEvents ColumnHeader19 As ColumnHeader
 End Class

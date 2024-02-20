@@ -63,6 +63,16 @@ Namespace My.Resources
         '''<summary>
         '''  查找 System.Drawing.Bitmap 类型的本地化资源。
         '''</summary>
+        Friend ReadOnly Property _7zip() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("7zip", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  查找 System.Drawing.Bitmap 类型的本地化资源。
+        '''</summary>
         Friend ReadOnly Property _me() As System.Drawing.Bitmap
             Get
                 Dim obj As Object = ResourceManager.GetObject("me", resourceCulture)
@@ -101,6 +111,16 @@ Namespace My.Resources
         End Property
         
         '''<summary>
+        '''  查找 System.Drawing.Bitmap 类型的本地化资源。
+        '''</summary>
+        Friend ReadOnly Property default_package_icon1() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("default-package-icon1", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        '''<summary>
         '''  查找类似于 (图标) 的 System.Drawing.Icon 类型的本地化资源。
         '''</summary>
         Friend ReadOnly Property dropbox() As System.Drawing.Icon
@@ -123,9 +143,29 @@ Namespace My.Resources
         '''<summary>
         '''  查找 System.Drawing.Bitmap 类型的本地化资源。
         '''</summary>
+        Friend ReadOnly Property Jsonnet() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("Jsonnet", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  查找 System.Drawing.Bitmap 类型的本地化资源。
+        '''</summary>
         Friend ReadOnly Property SunnyUI() As System.Drawing.Bitmap
             Get
                 Dim obj As Object = ResourceManager.GetObject("SunnyUI", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  查找 System.Drawing.Bitmap 类型的本地化资源。
+        '''</summary>
+        Friend ReadOnly Property WebView2() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("WebView2", resourceCulture)
                 Return CType(obj,System.Drawing.Bitmap)
             End Get
         End Property
@@ -348,6 +388,28 @@ Namespace My.Resources
         Friend ReadOnly Property 更新记录() As String
             Get
                 Return ResourceManager.GetString("更新记录", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  查找类似     (function() {
+        '''        document.addEventListener(&apos;DOMContentLoaded&apos;, (event) =&gt; {
+        '''            // 检测暗黑模式
+        '''            function detectDarkMode() {
+        '''                if (window.matchMedia &amp;&amp; window.matchMedia(&apos;(prefers-color-scheme: dark)&apos;).matches) {
+        '''                    return true;
+        '''                }
+        '''                return false;
+        '''            }
+        '''
+        '''            // 应用通用暗黑模式样式
+        '''            function applyGenericDarkMode() {
+        '''                const style = document.createElement(&apos;style&apos;);
+        '''                sty [字符串的其余部分被截断]&quot;; 的本地化字符串。
+        '''</summary>
+        Friend ReadOnly Property 浏览器脚本() As String
+            Get
+                Return ResourceManager.GetString("浏览器脚本", resourceCulture)
             End Get
         End Property
         
