@@ -1,4 +1,6 @@
 ﻿
+Imports System.IO
+
 Public Class 清理空间
 
     Public Shared Sub 刷新存储信息()
@@ -7,7 +9,7 @@ Public Class 清理空间
         s1 += FileIO.FileSystem.GetFileInfo(IO.Path.Combine(Application.StartupPath, "SMUI6.dll")).Length
         Form1.ListView10.Items(0).SubItems(2).Text = Format(s1 / 1024, "0") & " KB"
 
-        s1 = 共享方法.GetDirectorySizeWithSub(Application.StartupPath, {"UserData"})
+        s1 = 共享方法.GetDirectorySizeWithSub(Application.StartupPath, {"UserData", "SMUI6.exe.WebView2"})
         Form1.ListView10.Items(1).SubItems(2).Text = Format(s1 / 1024 / 1024, "0.0") & " MB"
 
         s1 = 共享方法.GetDirectorySizeWithSub(IO.Path.Combine(Application.StartupPath, "UserData", "DLC"))
@@ -51,23 +53,59 @@ Public Class 清理空间
         End If
 
         s1 = 0
-        Dim t1 As String = IO.Path.Combine(Application.StartupPath, "UserData", "WebCache")
+        Dim edge1 As String = IO.Path.Combine(Application.StartupPath, "SMUI6.exe.WebView2", "EBWebView", "Default")
+        Dim edge2 As String = IO.Path.Combine(Application.StartupPath, "SMUI6.exe.WebView2", "EBWebView")
+        If FileIO.FileSystem.DirectoryExists(IO.Path.Combine(edge1, "Cache")) Then
+            s1 += 共享方法.GetDirectorySizeWithSub(IO.Path.Combine(edge1, "Cache"))
+        End If
+        If FileIO.FileSystem.DirectoryExists(IO.Path.Combine(edge1, "Code Cache")) Then
+            s1 += 共享方法.GetDirectorySizeWithSub(IO.Path.Combine(edge1, "Code Cache"))
+        End If
+        If FileIO.FileSystem.DirectoryExists(IO.Path.Combine(edge1, "DawnCache")) Then
+            s1 += 共享方法.GetDirectorySizeWithSub(IO.Path.Combine(edge1, "DawnCache"))
+        End If
+        If FileIO.FileSystem.DirectoryExists(IO.Path.Combine(edge1, "GPUCache")) Then
+            s1 += 共享方法.GetDirectorySizeWithSub(IO.Path.Combine(edge1, "GPUCache"))
+        End If
+        If FileIO.FileSystem.DirectoryExists(IO.Path.Combine(edge1, "IndexedDB")) Then
+            s1 += 共享方法.GetDirectorySizeWithSub(IO.Path.Combine(edge1, "IndexedDB"))
+        End If
 
+        Form1.ListView10.Items(7).SubItems(2).Text = Format(s1 / 1024 / 1024, "0.0") & " MB"
+
+        s1 = 0
+        If FileIO.FileSystem.DirectoryExists(IO.Path.Combine(edge1, "Network")) Then
+            s1 += 共享方法.GetDirectorySizeWithSub(IO.Path.Combine(edge1, "Network"))
+        End If
+        Form1.ListView10.Items(8).SubItems(2).Text = Format(s1 / 1024 / 1024, "0.0") & " MB"
+
+        s1 = 0
+        If FileIO.FileSystem.DirectoryExists(IO.Path.Combine(edge1, "Service Worker")) Then
+            s1 += 共享方法.GetDirectorySizeWithSub(IO.Path.Combine(edge1, "Service Worker"))
+        End If
+        Form1.ListView10.Items(9).SubItems(2).Text = Format(s1 / 1024 / 1024, "0.0") & " MB"
+
+        s1 = 0
+        If FileIO.FileSystem.DirectoryExists(edge1) Then
+            s1 += 共享方法.GetDirectorySizeWithSub(edge1, {"Cache", "Code Cache", "DawnCache", "GPUCache", "IndexedDB", "Network", "Service Worker"})
+        End If
+        If FileIO.FileSystem.DirectoryExists(edge2) Then
+            s1 += 共享方法.GetDirectorySizeWithSub(edge2, {"Default"})
+        End If
+        Form1.ListView10.Items(10).SubItems(2).Text = Format(s1 / 1024 / 1024, "0.0") & " MB"
+
+
+        s1 = 0
+        Dim t1 As String = IO.Path.Combine(Application.StartupPath, "UserData", "WebCache")
         If FileIO.FileSystem.DirectoryExists(IO.Path.Combine(t1, "Cache")) Then
             s1 += 共享方法.GetDirectorySizeWithSub(IO.Path.Combine(t1, "Cache"))
         End If
         If FileIO.FileSystem.DirectoryExists(IO.Path.Combine(t1, "Code Cache")) Then
             s1 += 共享方法.GetDirectorySizeWithSub(IO.Path.Combine(t1, "Code Cache"))
         End If
-        Form1.ListView10.Items(7).SubItems(2).Text = Format(s1 / 1024 / 1024, "0.0") & " MB"
-
-        s1 = 0
         If FileIO.FileSystem.DirectoryExists(IO.Path.Combine(t1, "databases")) Then
             s1 += 共享方法.GetDirectorySizeWithSub(IO.Path.Combine(t1, "databases"))
         End If
-        Form1.ListView10.Items(8).SubItems(2).Text = Format(s1 / 1024 / 1024, "0.0") & " MB"
-
-        s1 = 0
         If FileIO.FileSystem.DirectoryExists(IO.Path.Combine(t1, "DawnCache")) Then
             s1 += 共享方法.GetDirectorySizeWithSub(IO.Path.Combine(t1, "DawnCache"))
         End If
@@ -80,31 +118,25 @@ Public Class 清理空间
         If FileIO.FileSystem.DirectoryExists(IO.Path.Combine(t1, "GrShaderCache")) Then
             s1 += 共享方法.GetDirectorySizeWithSub(IO.Path.Combine(t1, "GrShaderCache"))
         End If
-        Form1.ListView10.Items(9).SubItems(2).Text = Format(s1 / 1024 / 1024, "0.0") & " MB"
-
-        s1 = 0
         If FileIO.FileSystem.DirectoryExists(IO.Path.Combine(t1, "IndexedDB")) Then
             s1 += 共享方法.GetDirectorySizeWithSub(IO.Path.Combine(t1, "IndexedDB"))
         End If
         If FileIO.FileSystem.DirectoryExists(IO.Path.Combine(t1, "WebStorage")) Then
             s1 += 共享方法.GetDirectorySizeWithSub(IO.Path.Combine(t1, "WebStorage"))
         End If
-        Form1.ListView10.Items(10).SubItems(2).Text = Format(s1 / 1024 / 1024, "0.0") & " MB"
+        Form1.ListView10.Items(11).SubItems(2).Text = Format(s1 / 1024 / 1024, "0.0") & " MB"
 
         s1 = 0
-        If FileIO.FileSystem.FileExists(IO.Path.Combine(t1, "Network", "Cookies")) Then
-            s1 += FileIO.FileSystem.GetFileInfo(IO.Path.Combine(t1, "Network", "Cookies")).Length
+        If FileIO.FileSystem.DirectoryExists(IO.Path.Combine(t1, "Network")) Then
+            s1 += 共享方法.GetDirectorySizeWithSub(IO.Path.Combine(t1, "Network"))
         End If
-        If FileIO.FileSystem.FileExists(IO.Path.Combine(t1, "Network", "Cookies-journal")) Then
-            s1 += FileIO.FileSystem.GetFileInfo(IO.Path.Combine(t1, "Network", "Cookies-journal")).Length
-        End If
-        Form1.ListView10.Items(11).SubItems(2).Text = Format(s1 / 1024 / 1024, "0.0") & " MB"
+        Form1.ListView10.Items(12).SubItems(2).Text = Format(s1 / 1024 / 1024, "0.0") & " MB"
 
         s1 = 0
         If FileIO.FileSystem.DirectoryExists(IO.Path.Combine(t1, "Service Worker")) Then
             s1 += 共享方法.GetDirectorySizeWithSub(IO.Path.Combine(t1, "Service Worker"))
         End If
-        Form1.ListView10.Items(12).SubItems(2).Text = Format(s1 / 1024 / 1024, "0.0") & " MB"
+        Form1.ListView10.Items(13).SubItems(2).Text = Format(s1 / 1024 / 1024, "0.0") & " MB"
 
         s1 = 0
         If FileIO.FileSystem.DirectoryExists(IO.Path.Combine(t1, "blob_storage")) Then
@@ -125,13 +157,15 @@ Public Class 清理空间
         If FileIO.FileSystem.FileExists(IO.Path.Combine(t1, "Visited Links")) Then
             s1 += FileIO.FileSystem.GetFileInfo(IO.Path.Combine(t1, "Visited Links")).Length
         End If
-        Form1.ListView10.Items(13).SubItems(2).Text = Format(s1 / 1024 / 1024, "0.0") & " MB"
+        Form1.ListView10.Items(14).SubItems(2).Text = Format(s1 / 1024 / 1024, "0.0") & " MB"
 
     End Sub
 
 
     Public Shared Sub 清理选中项()
         On Error Resume Next
+        Dim edge1 As String = IO.Path.Combine(Application.StartupPath, "SMUI6.exe.WebView2", "EBWebView", "Default")
+        Dim edge2 As String = IO.Path.Combine(Application.StartupPath, "SMUI6.exe.WebView2", "EBWebView")
         Dim t1 As String = IO.Path.Combine(Application.StartupPath, "UserData", "WebCache")
         For i = 0 To Form1.ListView10.Items.Count - 1
             If Not Form1.ListView10.Items(i).Selected Then Continue For
@@ -151,83 +185,124 @@ Public Class 清理空间
                     End If
                     Form1.ListView10.Items(3).SubItems(2).Text = "已清理"
                 Case 4
-                    If FileIO.FileSystem.FileExists(IO.Path.Combine(设置.全局设置数据("LocalRepositoryPath"), ".Download")) Then
-                        FileIO.FileSystem.DeleteDirectory(IO.Path.Combine(设置.全局设置数据("LocalRepositoryPath"), ".Download"), FileIO.UIOption.AllDialogs, FileIO.RecycleOption.DeletePermanently)
+                    If FileIO.FileSystem.DirectoryExists(IO.Path.Combine(设置.全局设置数据("LocalRepositoryPath"), ".Download")) Then
+                        FileIO.FileSystem.DeleteDirectory(IO.Path.Combine(设置.全局设置数据("LocalRepositoryPath"), ".Download"), FileIO.DeleteDirectoryOption.DeleteAllContents)
                     End If
                     Form1.ListView10.Items(4).SubItems(2).Text = "已清理"
                 Case 5
-                    If FileIO.FileSystem.FileExists(IO.Path.Combine(设置.全局设置数据("LocalRepositoryPath"), ".Decompress")) Then
-                        FileIO.FileSystem.DeleteDirectory(IO.Path.Combine(设置.全局设置数据("LocalRepositoryPath"), ".Decompress"), FileIO.UIOption.AllDialogs, FileIO.RecycleOption.DeletePermanently)
+                    If FileIO.FileSystem.DirectoryExists(IO.Path.Combine(设置.全局设置数据("LocalRepositoryPath"), ".Decompress")) Then
+                        FileIO.FileSystem.DeleteDirectory(IO.Path.Combine(设置.全局设置数据("LocalRepositoryPath"), ".Decompress"), FileIO.DeleteDirectoryOption.DeleteAllContents)
                         Form1.ListView10.Items(5).SubItems(2).Text = "已清理"
                     End If
                 Case 7
-                    If FileIO.FileSystem.DirectoryExists(IO.Path.Combine(t1, "Cache")) Then
-                        FileIO.FileSystem.DeleteDirectory(IO.Path.Combine(t1, "Cache"), FileIO.UIOption.AllDialogs, FileIO.RecycleOption.DeletePermanently)
+
+                    If FileIO.FileSystem.DirectoryExists(IO.Path.Combine(edge1, "Cache")) Then
+                        FileIO.FileSystem.DeleteDirectory(IO.Path.Combine(edge1, "Cache"), FileIO.DeleteDirectoryOption.DeleteAllContents)
                     End If
-                    If FileIO.FileSystem.DirectoryExists(IO.Path.Combine(t1, "Code Cache")) Then
-                        FileIO.FileSystem.DeleteDirectory(IO.Path.Combine(t1, "Code Cache"), FileIO.UIOption.AllDialogs, FileIO.RecycleOption.DeletePermanently)
+                    If FileIO.FileSystem.DirectoryExists(IO.Path.Combine(edge1, "Code Cache")) Then
+                        FileIO.FileSystem.DeleteDirectory(IO.Path.Combine(edge1, "Code Cache"), FileIO.DeleteDirectoryOption.DeleteAllContents)
+                    End If
+                    If FileIO.FileSystem.DirectoryExists(IO.Path.Combine(edge1, "DawnCache")) Then
+                        FileIO.FileSystem.DeleteDirectory(IO.Path.Combine(edge1, "DawnCache"), FileIO.DeleteDirectoryOption.DeleteAllContents)
+                    End If
+                    If FileIO.FileSystem.DirectoryExists(IO.Path.Combine(edge1, "GPUCache")) Then
+                        FileIO.FileSystem.DeleteDirectory(IO.Path.Combine(edge1, "GPUCache"), FileIO.DeleteDirectoryOption.DeleteAllContents)
+                    End If
+                    If FileIO.FileSystem.DirectoryExists(IO.Path.Combine(edge1, "IndexedDB")) Then
+                        FileIO.FileSystem.DeleteDirectory(IO.Path.Combine(edge1, "IndexedDB"), FileIO.DeleteDirectoryOption.DeleteAllContents)
                     End If
                     Form1.ListView10.Items(7).SubItems(2).Text = "已清理"
                 Case 8
-                    If FileIO.FileSystem.DirectoryExists(IO.Path.Combine(t1, "databases")) Then
-                        FileIO.FileSystem.DeleteDirectory(IO.Path.Combine(t1, "databases"), FileIO.UIOption.AllDialogs, FileIO.RecycleOption.DeletePermanently)
+                    If FileIO.FileSystem.DirectoryExists(IO.Path.Combine(edge1, "Network")) Then
+                        FileIO.FileSystem.DeleteDirectory(IO.Path.Combine(edge1, "Network"), FileIO.DeleteDirectoryOption.DeleteAllContents)
                     End If
                     Form1.ListView10.Items(8).SubItems(2).Text = "已清理"
                 Case 9
-                    If FileIO.FileSystem.DirectoryExists(IO.Path.Combine(t1, "DawnCache")) Then
-                        FileIO.FileSystem.DeleteDirectory(IO.Path.Combine(t1, "DawnCache"), FileIO.UIOption.AllDialogs, FileIO.RecycleOption.DeletePermanently)
-                    End If
-                    If FileIO.FileSystem.DirectoryExists(IO.Path.Combine(t1, "GPUCache")) Then
-                        FileIO.FileSystem.DeleteDirectory(IO.Path.Combine(t1, "GPUCache"), FileIO.UIOption.AllDialogs, FileIO.RecycleOption.DeletePermanently)
-                    End If
-                    If FileIO.FileSystem.DirectoryExists(IO.Path.Combine(t1, "GraphiteDawnCache")) Then
-                        FileIO.FileSystem.DeleteDirectory(IO.Path.Combine(t1, "GraphiteDawnCache"), FileIO.UIOption.AllDialogs, FileIO.RecycleOption.DeletePermanently)
-                    End If
-                    If FileIO.FileSystem.DirectoryExists(IO.Path.Combine(t1, "GrShaderCache")) Then
-                        FileIO.FileSystem.DeleteDirectory(IO.Path.Combine(t1, "GrShaderCache"), FileIO.UIOption.AllDialogs, FileIO.RecycleOption.DeletePermanently)
+                    If FileIO.FileSystem.DirectoryExists(IO.Path.Combine(edge1, "Service Worker")) Then
+                        FileIO.FileSystem.DeleteDirectory(IO.Path.Combine(edge1, "Service Worker"), FileIO.DeleteDirectoryOption.DeleteAllContents)
                     End If
                     Form1.ListView10.Items(9).SubItems(2).Text = "已清理"
                 Case 10
+                    Dim whitelist As New List(Of String)({"Default", "Cache", "Code Cache", "DawnCache", "GPUCache", "IndexedDB", "Network", "Service Worker"})
+                    For Each filePath In Directory.GetFiles(edge1)
+                        If Not whitelist.Contains(Path.GetFileName(filePath)) Then File.Delete(filePath)
+                    Next
+                    For Each dirPath In Directory.GetDirectories(edge1)
+                        If Not whitelist.Contains(New DirectoryInfo(dirPath).Name) Then Directory.Delete(dirPath, True)
+                    Next
+                    For Each filePath In Directory.GetFiles(edge2)
+                        If Not whitelist.Contains(Path.GetFileName(filePath)) Then File.Delete(filePath)
+                    Next
+                    For Each dirPath In Directory.GetDirectories(edge2)
+                        If Not whitelist.Contains(New DirectoryInfo(dirPath).Name) Then Directory.Delete(dirPath, True)
+                    Next
+                    Form1.ListView10.Items(10).SubItems(2).Text = "已清理"
+
+                Case 11
+                    If FileIO.FileSystem.DirectoryExists(IO.Path.Combine(t1, "Cache")) Then
+                        Directory.Delete(IO.Path.Combine(t1, "Cache"), True)
+                    End If
+                    If FileIO.FileSystem.DirectoryExists(IO.Path.Combine(t1, "Code Cache")) Then
+                        FileIO.FileSystem.DeleteDirectory(IO.Path.Combine(t1, "Code Cache"), FileIO.DeleteDirectoryOption.DeleteAllContents)
+                    End If
+                    If FileIO.FileSystem.DirectoryExists(IO.Path.Combine(t1, "databases")) Then
+                        FileIO.FileSystem.DeleteDirectory(IO.Path.Combine(t1, "databases"), FileIO.DeleteDirectoryOption.DeleteAllContents)
+                    End If
+                    If FileIO.FileSystem.DirectoryExists(IO.Path.Combine(t1, "DawnCache")) Then
+                        FileIO.FileSystem.DeleteDirectory(IO.Path.Combine(t1, "DawnCache"), FileIO.DeleteDirectoryOption.DeleteAllContents)
+                    End If
+                    If FileIO.FileSystem.DirectoryExists(IO.Path.Combine(t1, "GPUCache")) Then
+                        FileIO.FileSystem.DeleteDirectory(IO.Path.Combine(t1, "GPUCache"), FileIO.DeleteDirectoryOption.DeleteAllContents)
+                    End If
+                    If FileIO.FileSystem.DirectoryExists(IO.Path.Combine(t1, "GraphiteDawnCache")) Then
+                        FileIO.FileSystem.DeleteDirectory(IO.Path.Combine(t1, "GraphiteDawnCache"), FileIO.DeleteDirectoryOption.DeleteAllContents)
+                    End If
+                    If FileIO.FileSystem.DirectoryExists(IO.Path.Combine(t1, "GrShaderCache")) Then
+                        FileIO.FileSystem.DeleteDirectory(IO.Path.Combine(t1, "GrShaderCache"), FileIO.DeleteDirectoryOption.DeleteAllContents)
+                    End If
                     If FileIO.FileSystem.DirectoryExists(IO.Path.Combine(t1, "IndexedDB")) Then
-                        FileIO.FileSystem.DeleteDirectory(IO.Path.Combine(t1, "IndexedDB"), FileIO.UIOption.AllDialogs, FileIO.RecycleOption.DeletePermanently)
+                        FileIO.FileSystem.DeleteDirectory(IO.Path.Combine(t1, "IndexedDB"), FileIO.DeleteDirectoryOption.DeleteAllContents)
                     End If
                     If FileIO.FileSystem.DirectoryExists(IO.Path.Combine(t1, "WebStorage")) Then
-                        FileIO.FileSystem.DeleteDirectory(IO.Path.Combine(t1, "WebStorage"), FileIO.UIOption.AllDialogs, FileIO.RecycleOption.DeletePermanently)
-                    End If
-                    Form1.ListView10.Items(10).SubItems(2).Text = "已清理"
-                Case 11
-                    If FileIO.FileSystem.FileExists(IO.Path.Combine(t1, "Network", "Cookies")) Then
-                        FileIO.FileSystem.DeleteFile(IO.Path.Combine(t1, "Network", "Cookies"), FileIO.UIOption.AllDialogs, FileIO.RecycleOption.DeletePermanently)
-                    End If
-                    If FileIO.FileSystem.FileExists(IO.Path.Combine(t1, "Network", "Cookies-journal")) Then
-                        FileIO.FileSystem.DeleteFile(IO.Path.Combine(t1, "Network", "Cookies-journal"), FileIO.UIOption.AllDialogs, FileIO.RecycleOption.DeletePermanently)
+                        FileIO.FileSystem.DeleteDirectory(IO.Path.Combine(t1, "WebStorage"), FileIO.DeleteDirectoryOption.DeleteAllContents)
                     End If
                     Form1.ListView10.Items(11).SubItems(2).Text = "已清理"
+
                 Case 12
-                    If FileIO.FileSystem.DirectoryExists(IO.Path.Combine(t1, "Service Worker")) Then
-                        FileIO.FileSystem.DeleteDirectory(IO.Path.Combine(t1, "Service Worker"), FileIO.UIOption.AllDialogs, FileIO.RecycleOption.DeletePermanently)
+                    If FileIO.FileSystem.DirectoryExists(IO.Path.Combine(t1, "Network")) Then
+                        FileIO.FileSystem.DeleteDirectory(IO.Path.Combine(t1, "Network"), FileIO.DeleteDirectoryOption.DeleteAllContents)
                     End If
                     Form1.ListView10.Items(12).SubItems(2).Text = "已清理"
+
                 Case 13
-                    If FileIO.FileSystem.DirectoryExists(IO.Path.Combine(t1, "blob_storage")) Then
-                        FileIO.FileSystem.DeleteDirectory(IO.Path.Combine(t1, "blob_storage"), FileIO.UIOption.AllDialogs, FileIO.RecycleOption.DeletePermanently)
-                    End If
-                    If FileIO.FileSystem.DirectoryExists(IO.Path.Combine(t1, "component_crx_cache")) Then
-                        FileIO.FileSystem.DeleteDirectory(IO.Path.Combine(t1, "component_crx_cache"), FileIO.UIOption.AllDialogs, FileIO.RecycleOption.DeletePermanently)
-                    End If
-                    If FileIO.FileSystem.DirectoryExists(IO.Path.Combine(t1, "Dictionaries")) Then
-                        FileIO.FileSystem.DeleteDirectory(IO.Path.Combine(t1, "Dictionaries"), FileIO.UIOption.AllDialogs, FileIO.RecycleOption.DeletePermanently)
-                    End If
-                    If FileIO.FileSystem.DirectoryExists(IO.Path.Combine(t1, "shared_proto_db")) Then
-                        FileIO.FileSystem.DeleteDirectory(IO.Path.Combine(t1, "shared_proto_db"), FileIO.UIOption.AllDialogs, FileIO.RecycleOption.DeletePermanently)
-                    End If
-                    If FileIO.FileSystem.DirectoryExists(IO.Path.Combine(t1, "VideoDecodeStats")) Then
-                        FileIO.FileSystem.DeleteDirectory(IO.Path.Combine(t1, "VideoDecodeStats"), FileIO.UIOption.AllDialogs, FileIO.RecycleOption.DeletePermanently)
-                    End If
-                    If FileIO.FileSystem.FileExists(IO.Path.Combine(t1, "Visited Links")) Then
-                        FileIO.FileSystem.DeleteFile(IO.Path.Combine(t1, "Visited Links"), FileIO.UIOption.AllDialogs, FileIO.RecycleOption.DeletePermanently)
+                    If FileIO.FileSystem.DirectoryExists(IO.Path.Combine(t1, "Service Worker")) Then
+                        FileIO.FileSystem.DeleteDirectory(IO.Path.Combine(t1, "Service Worker"), FileIO.DeleteDirectoryOption.DeleteAllContents)
                     End If
                     Form1.ListView10.Items(13).SubItems(2).Text = "已清理"
+
+                Case 14
+                    If FileIO.FileSystem.DirectoryExists(IO.Path.Combine(t1, "Service Worker")) Then
+                        FileIO.FileSystem.DeleteDirectory(IO.Path.Combine(t1, "Service Worker"), FileIO.DeleteDirectoryOption.DeleteAllContents)
+                    End If
+                    If FileIO.FileSystem.DirectoryExists(IO.Path.Combine(t1, "blob_storage")) Then
+                        FileIO.FileSystem.DeleteDirectory(IO.Path.Combine(t1, "blob_storage"), FileIO.DeleteDirectoryOption.DeleteAllContents)
+                    End If
+                    If FileIO.FileSystem.DirectoryExists(IO.Path.Combine(t1, "component_crx_cache")) Then
+                        FileIO.FileSystem.DeleteDirectory(IO.Path.Combine(t1, "component_crx_cache"), FileIO.DeleteDirectoryOption.DeleteAllContents)
+                    End If
+                    If FileIO.FileSystem.DirectoryExists(IO.Path.Combine(t1, "Dictionaries")) Then
+                        FileIO.FileSystem.DeleteDirectory(IO.Path.Combine(t1, "Dictionaries"), FileIO.DeleteDirectoryOption.DeleteAllContents)
+                    End If
+                    If FileIO.FileSystem.DirectoryExists(IO.Path.Combine(t1, "shared_proto_db")) Then
+                        FileIO.FileSystem.DeleteDirectory(IO.Path.Combine(t1, "shared_proto_db"), FileIO.DeleteDirectoryOption.DeleteAllContents)
+                    End If
+                    If FileIO.FileSystem.DirectoryExists(IO.Path.Combine(t1, "VideoDecodeStats")) Then
+                        FileIO.FileSystem.DeleteDirectory(IO.Path.Combine(t1, "VideoDecodeStats"), FileIO.DeleteDirectoryOption.DeleteAllContents)
+                    End If
+                    If FileIO.FileSystem.FileExists(IO.Path.Combine(t1, "Visited Links")) Then
+                        File.Delete(IO.Path.Combine(t1, "Visited Links"))
+                    End If
+                    Form1.ListView10.Items(14).SubItems(2).Text = "已清理"
             End Select
 
         Next
@@ -239,7 +314,7 @@ Public Class 清理空间
         If a.ShowDialog(Form1) = 0 Then
             On Error Resume Next
             Dim t1 As String = IO.Path.Combine(Application.StartupPath, "UserData", "WebCache")
-            FileIO.FileSystem.DeleteDirectory(t1, FileIO.UIOption.AllDialogs, FileIO.RecycleOption.DeletePermanently)
+            FileIO.FileSystem.DeleteDirectory(t1, FileIO.DeleteDirectoryOption.DeleteAllContents)
             Dim b As New 多项单选对话框("删除完成", {"OK"}, "已全部删除")
             b.ShowDialog(Form1)
         End If
