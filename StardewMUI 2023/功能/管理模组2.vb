@@ -49,6 +49,7 @@ Public Class 管理模组2
         End If
         Return 设置.全局设置数据("LocalRepositoryPath") & "\" & 设置.全局设置数据("LastUsedSubLibraryName")
     End Function
+
     Public Shared Function 检查并返回当前模组数据仓库路径(Optional 显示不可用对话框 As Boolean = True) As String
         If FileIO.FileSystem.DirectoryExists(设置.全局设置数据("LocalRepositoryPath")) = False Then
             If 显示不可用对话框 = False Then Return "" : Exit Function

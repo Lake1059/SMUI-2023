@@ -96,17 +96,20 @@ Public Class 管理模组
             End Using
         End If
 
-        For i = 0 To 分类排序.Count - 1
-            If 分类文件夹列表.Contains(分类排序(i)) Then
-                Form1.ListView1.Items.Add(分类排序(i))
-                实时分类排序.Add(分类排序(i))
-                分类文件夹列表.Remove(分类排序(i))
+        Dim 排序索引总数 As Integer = 分类排序.Count - 1
+        Dim 排序索引实时 As Integer = 0
+        Do Until 排序索引实时 = 排序索引总数 + 1
+            If 分类文件夹列表.Contains(分类排序(排序索引实时)) Then
+                Form1.ListView1.Items.Add(分类排序(排序索引实时))
+                实时分类排序.Add(分类排序(排序索引实时))
+                分类文件夹列表.Remove(分类排序(排序索引实时))
+                排序索引实时 += 1
             Else
-                分类排序.Remove(分类排序(i))
-                i -= 1
-                Continue For
+                分类排序.Remove(分类排序(排序索引实时))
+                实时分类排序是否经过修改 = True
+                排序索引总数 -= 1
             End If
-        Next
+        Loop
 
         If 分类文件夹列表.Count > 0 Then
             For i = 0 To 分类文件夹列表.Count - 1
@@ -251,17 +254,20 @@ Public Class 管理模组
             End Using
         End If
 
-        For i = 0 To 模组项排序.Count - 1
-            If 模组项文件夹列表.Contains(模组项排序(i)) Then
-                Form1.ListView2.Items.Add(模组项排序(i))
-                实时模组项排序.Add(模组项排序(i))
-                模组项文件夹列表.Remove(模组项排序(i))
+        Dim 排序索引总数 As Integer = 模组项排序.Count - 1
+        Dim 排序索引实时 As Integer = 0
+        Do Until 排序索引实时 = 排序索引总数 + 1
+            If 模组项文件夹列表.Contains(模组项排序(排序索引实时)) Then
+                Form1.ListView2.Items.Add(模组项排序(排序索引实时))
+                实时分类排序.Add(模组项排序(排序索引实时))
+                模组项文件夹列表.Remove(模组项排序(排序索引实时))
+                排序索引实时 += 1
             Else
-                模组项排序.Remove(模组项排序(i))
-                i -= 1
-                Continue For
+                模组项排序.Remove(模组项排序(排序索引实时))
+                实时模组项排序是否经过修改 = True
+                排序索引总数 -= 1
             End If
-        Next
+        Loop
 
         If 模组项文件夹列表.Count > 0 Then
             For i = 0 To 模组项文件夹列表.Count - 1
@@ -282,11 +288,9 @@ Public Class 管理模组
             End If
             a.读取项信息(正在计算信息的模组项路径, ct, 设置.全局设置数据("StardewValleyGamePath"))
             If a.错误信息 = "" Then
-                If Form1.ListView2.Items(i).SubItems.Count <= 4 Then
-                    Form1.ListView2.Items(i).SubItems.Add("")
-                    Form1.ListView2.Items(i).SubItems.Add("")
-                    Form1.ListView2.Items(i).SubItems.Add(Form1.ListView1.Items(Form1.ListView1.SelectedIndices(0)).Text)
-                End If
+                Form1.ListView2.Items(i).SubItems.Add("")
+                Form1.ListView2.Items(i).SubItems.Add("")
+                Form1.ListView2.Items(i).SubItems.Add(Form1.ListView1.Items(Form1.ListView1.SelectedIndices(0)).Text)
                 If a.版本.Count > 0 And a.已安装版本.Count > 0 Then
                     If a.版本(0) <> a.已安装版本(0) Then
                         If a.安装状态 = 公共对象.安装状态枚举.安装不完整 Then
@@ -323,7 +327,7 @@ Public Class 管理模组
             Else
                 Form1.ListView2.Items(i).SubItems.Add("核心错误")
                 Form1.ListView2.Items(i).SubItems.Add(a.错误信息)
-                Form1.ListView2.Items(i).ForeColor = Color.Red
+                Form1.ListView2.Items(i).ForeColor = Color1.红色
                 DebugPrint(a.错误信息, Color1.红色)
             End If
 
@@ -459,8 +463,48 @@ Public Class 管理模组
         End If
     End Sub
 
+    Public 当前项信息_N网ID列表 As New List(Of String)
+    Public 当前项信息_呵呵鱼ID列表 As New List(Of String)
+    Public 当前项信息_Github仓库列表 As New List(Of String)
+    Public 当前项信息_ModDropID列表 As New List(Of String)
+    Public 当前项信息_内容包列表 As New List(Of String)
+    Public 当前项信息_依赖项列表 As New List(Of 依赖项单片数据结构)
+    Public 当前项信息_UniqueID列表 As New List(Of String)
+    Public 当前项信息_作者列表 As New List(Of String)
+    Public 当前项信息_预览图文件表 As New List(Of String)
+
+    Structure 依赖项单片数据结构
+        Public 依赖项名称 As String
+        Public 依赖项必须性 As Boolean
+    End Structure
+
+
     Public Shared Sub 重置模组项信息显示()
 
+
+
+
     End Sub
+
+
+
+    Public Shared Sub 读取项信息并显示()
+        If Form1.ListView2.SelectedItems.Count <> 1 Then
+            重置模组项信息显示()
+            Exit Sub
+        End If
+
+
+
+
+
+
+
+
+
+
+    End Sub
+
+
 
 End Class
