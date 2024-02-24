@@ -1,4 +1,7 @@
-﻿Imports System.IO
+﻿Imports System.Drawing.Imaging
+Imports System.IO
+Imports SMUI6.项信息读取类
+Imports Sunny.UI
 
 Public Class 管理模组
 
@@ -16,6 +19,8 @@ Public Class 管理模组
         AddHandler Form1.ListView1.SelectedIndexChanged, Sub(sender, e) 扫描模组项()
         AddHandler Form1.UiButton3.Click, Sub(sender, e) 扫描模组项(True)
         AddHandler Form1.ListView2.KeyDown, Sub(sender, e) 模组项列表键盘按下事件(sender, e)
+        AddHandler Form1.ListView2.SelectedIndexChanged, AddressOf 项列表计数显示
+        AddHandler Form1.ListView2.SelectedIndexChanged, AddressOf 读取项信息并显示
 
         初始化安装状态显示词字典()
         扫描数据子库()
@@ -327,6 +332,7 @@ Public Class 管理模组
             Else
                 Form1.ListView2.Items(i).SubItems.Add("核心错误")
                 Form1.ListView2.Items(i).SubItems.Add(a.错误信息)
+                Form1.ListView2.Items(i).SubItems.Add(Form1.ListView1.Items(Form1.ListView1.SelectedIndices(0)).Text)
                 Form1.ListView2.Items(i).ForeColor = Color1.红色
                 DebugPrint(a.错误信息, Color1.红色)
             End If
@@ -463,46 +469,212 @@ Public Class 管理模组
         End If
     End Sub
 
-    Public 当前项信息_N网ID列表 As New List(Of String)
-    Public 当前项信息_呵呵鱼ID列表 As New List(Of String)
-    Public 当前项信息_Github仓库列表 As New List(Of String)
-    Public 当前项信息_ModDropID列表 As New List(Of String)
-    Public 当前项信息_内容包列表 As New List(Of String)
-    Public 当前项信息_依赖项列表 As New List(Of 依赖项单片数据结构)
-    Public 当前项信息_UniqueID列表 As New List(Of String)
-    Public 当前项信息_作者列表 As New List(Of String)
-    Public 当前项信息_预览图文件表 As New List(Of String)
-
-    Structure 依赖项单片数据结构
-        Public 依赖项名称 As String
-        Public 依赖项必须性 As Boolean
-    End Structure
-
+    Public Shared Property 当前项信息_N网ID列表 As New List(Of String)
+    Public Shared Property 当前项信息_呵呵鱼ID列表 As New List(Of String)
+    Public Shared Property 当前项信息_Github仓库列表 As New List(Of String)
+    Public Shared Property 当前项信息_ModDropID列表 As New List(Of String)
+    Public Shared Property 当前项信息_内容包列表 As New Dictionary(Of String, 内容包依赖类型单片结构)
+    Public Shared Property 当前项信息_依赖项列表 As New Dictionary(Of String, 其他依赖项类型单片结构)
+    Public Shared Property 当前项信息_UniqueID列表 As New List(Of String)
+    Public Shared Property 当前项信息_作者列表 As New List(Of String)
+    Public Shared Property 当前项信息_预览图文件表 As New List(Of String)
+    Public Shared Property 当前正在显示的预览图索引 As Integer = 0
 
     Public Shared Sub 重置模组项信息显示()
-
-
-
-
+        Form1.UiButton11.Text = "TYPE"
+        Form1.UiRichTextBox1.Clear()
+        Form1.Panel8.Visible = False
+        Form1.Label1.Text = ""
+        Form1.Label2.Text = ""
+        Form1.UiButton12.Text = 0
+        Form1.Panel9.Visible = False
+        Form1.UiButton6.Text = "   更新键"
+        Form1.UiButton7.Text = "   依赖项表"
+        Form1.UiButton8.Text = "   UniqueID 表"
+        Form1.UiButton9.Text = "   作者表"
+        If Form依赖项表.Visible = True Then
+            Form依赖项表.Text = "依赖项表"
+            Form依赖项表.ListView1.Items.Clear()
+        End If
     End Sub
-
-
 
     Public Shared Sub 读取项信息并显示()
         If Form1.ListView2.SelectedItems.Count <> 1 Then
             重置模组项信息显示()
             Exit Sub
         End If
+        Dim 项路径 As String = Path.Combine(管理模组2.检查并返回当前所选子库路径(False), Form1.ListView2.Items(Form1.ListView2.SelectedIndices(0)).SubItems(3).Text, Form1.ListView2.Items(Form1.ListView2.SelectedIndices(0)).Text)
+        Dim a As New 项信息读取类
+        a.读取项信息(项路径, New 公共对象.项数据计算类型结构 With {.全部 = True}, 设置.全局设置数据("StardewValleyGamePath"))
+        If a.错误信息 <> "" Then
+            UIMessageTip.Show(a.错误信息,, 2500)
+            Exit Sub
+        End If
+        If FileIO.FileSystem.FileExists(项路径 & "\README.rtf") = True Then
+            Form1.UiRichTextBox1.LoadFile(项路径 & "\README.rtf")
+            Form1.UiButton11.Text = "RTF"
+        ElseIf My.Computer.FileSystem.FileExists(项路径 & "\README") = True Then
+            Form1.UiRichTextBox1.Text = My.Computer.FileSystem.ReadAllText(项路径 & "\README")
+            Form1.UiButton11.Text = "TXT"
+        ElseIf a.描述.Count > 0 Then
+            For i = 0 To a.描述.Count - 1
+                If i = 0 Then
+                    Form1.UiRichTextBox1.Text = a.描述(0)
+                Else
+                    Form1.UiRichTextBox1.Text &= vbCrLf & vbCrLf & a.描述(i)
+                End If
+            Next
+            Form1.UiButton11.Text = "JSON"
+        Else
+            Form1.UiButton11.Text = "None"
+        End If
+        当前项信息_N网ID列表 = a.NexusID
+        当前项信息_呵呵鱼ID列表 = a.ChuckleFishID
+        当前项信息_Github仓库列表 = a.GitHub
+        当前项信息_ModDropID列表 = a.ModDrop
+        If a.NexusID.Count > 0 And a.ModDrop.Count > 0 Then
+            Form1.UiButton6.Text = " NEXUS: " & a.NexusID(0) & "  ModDrop"
+        ElseIf a.NexusID.Count > 0 Then
+            Form1.UiButton6.Text = " NEXUS: " & a.NexusID(0)
+        ElseIf a.ModDrop.Count > 0 Then
+            Form1.UiButton6.Text = " ModDrop: " & a.ModDrop(0)
+        ElseIf a.GitHub.Count > 0 Then
+            Form1.UiButton6.Text = " GitHub"
+        Else
+            Form1.UiButton6.Text = " No Update Keys"
+        End If
+        当前项信息_内容包列表 = a.内容包依赖
+        当前项信息_依赖项列表 = a.其他依赖项
+        If a.内容包依赖.Count + a.其他依赖项.Count > 0 Then
+            Form1.UiButton7.Text = " Requirements: C" & a.内容包依赖.Count & " + R" & a.其他依赖项.Count
+        Else
+            Form1.UiButton7.Text = " No Requirements"
+        End If
+        当前项信息_UniqueID列表 = a.UniqueID
+        Select Case a.UniqueID.Count
+            Case > 1
+                Form1.UiButton8.Text = " [" & a.UniqueID.Count & "] UniqueID: " & a.UniqueID(0)
+            Case 1
+                Form1.UiButton8.Text = " UniqueID: " & a.UniqueID(0)
+            Case 0
+                Form1.UiButton8.Text = " No UniqueID"
+        End Select
+        当前项信息_作者列表 = a.作者
+        Select Case a.作者.Count
+            Case > 1
+                Form1.UiButton9.Text = 在指定的宽度内显示文本(Form1.UiButton9.Width, " [" & a.作者.Count & "] " & a.作者(0), Form1.UiButton9.Font)
+            Case 1
+                Form1.UiButton9.Text = 在指定的宽度内显示文本(Form1.UiButton9.Width, " Author: " & a.作者(0), Form1.UiButton9.Font)
+            Case 0
+                Form1.UiButton9.Text = " No Author"
+        End Select
+        If a.版本.Count > 0 And a.已安装版本.Count > 0 Then
+            If 共享方法.CompareVersion(a.版本(0), a.已安装版本(0)) <> 0 Then
+                Form1.Label1.Text = a.版本(0)
+                Form1.Label2.Text = a.已安装版本(0)
+                Form1.Panel8.Visible = True
+            End If
+        End If
+        If My.Computer.FileSystem.DirectoryExists(项路径 & "\Screenshot") = True Then
+            当前项信息_预览图文件表.Clear()
+            当前正在显示的预览图索引 = Nothing
+            Dim 文件 As System.IO.FileInfo
+            Dim 目录 As New System.IO.DirectoryInfo(项路径 & "\Screenshot")
+            For Each 文件 In 目录.GetFiles("*.*")
+                当前项信息_预览图文件表.Add(文件.FullName)
+            Next
+            If 当前项信息_预览图文件表.Count > 0 Then
+                加载预览图(当前项信息_预览图文件表(0))
+                当前正在显示的预览图索引 = 0
+                Form1.UiButton12.Text = 当前项信息_预览图文件表.Count & " "
+            End If
+        End If
 
 
+    End Sub
+
+    Public Shared Sub 项列表计数显示()
+        If Form1.ListView2.Items.Count = 0 Then
+            Form1.Label51.Text = "0 "
+            Exit Sub
+        End If
+        If Form1.ListView2.SelectedItems.Count > 1 Then
+            Form1.Label51.Text = Form1.ListView2.SelectedItems.Count & "/" & Form1.ListView2.Items.Count & " "
+        Else
+            Form1.Label51.Text = Form1.ListView2.Items.Count & " "
+        End If
+    End Sub
+
+    Public Shared Function 在指定的宽度内显示文本(最大宽度 As Integer, 你的文本 As String, 使用的字体 As Font) As String
+        Dim textSize As Size = TextRenderer.MeasureText(你的文本, 使用的字体)
+        If textSize.Width > 最大宽度 Then
+            Dim ellipsisWidth As Integer = TextRenderer.MeasureText("...", 使用的字体).Width
+            Dim availableWidth As Integer = 最大宽度 - ellipsisWidth
+            Dim truncatedText As String = 你的文本
+            While TextRenderer.MeasureText(truncatedText, 使用的字体).Width > availableWidth AndAlso truncatedText.Length > 0
+                truncatedText = truncatedText.Substring(0, truncatedText.Length - 1)
+            End While
+            truncatedText &= "..."
+            Return truncatedText
+        Else
+            Return 你的文本
+        End If
+    End Function
 
 
-
-
-
-
-
-
+    Public Shared Sub 加载预览图(文件 As String)
+        Select Case IO.Path.GetExtension(文件).ToLower
+            Case ".jpg", ".jpeg", ".png", ".bmp"
+                Using fs As New IO.FileStream(文件, IO.FileMode.Open, IO.FileAccess.Read)
+                    Form1.Panel9.Visible = True
+                    Form1.PictureBox1.Image = Image.FromStream(fs)
+                    fs.Close()
+                End Using
+            Case ".gif"
+                Using img As Image = Image.FromFile(文件)
+                    Dim mstr As New IO.MemoryStream()
+                    img.Save(mstr, Imaging.ImageFormat.Gif)
+                    Form1.Panel9.Visible = True
+                    Form1.PictureBox1.Image = Image.FromStream(mstr)
+                    img.Dispose()
+                End Using
+            Case ".webp"
+                'Imazen.WebP.Extern.LoadLibrary.LoadByPath(Application.StartupPath & "\libwebp.dll", False)
+                Try
+                    Dim bytes As Byte() = IO.File.ReadAllBytes(文件)
+                    Using img As Bitmap = New Imazen.WebP.SimpleDecoder().DecodeFromBytes(bytes, bytes.Length)
+                        Dim s As Integer = img.GetFrameCount(FrameDimension.Page)
+                        Dim mstr As New IO.MemoryStream()
+                        If s = 1 Then
+                            img.Save(mstr, Imaging.ImageFormat.Png)
+                            Dim newImagePath As String = IO.Path.GetDirectoryName(文件) & "\" & IO.Path.GetFileNameWithoutExtension(文件) & ".png"
+                            Using fs As New FileStream(newImagePath, FileMode.Create)
+                                mstr.WriteTo(fs)
+                            End Using
+                            If FileIO.FileSystem.FileExists(文件) = True Then FileIO.FileSystem.DeleteFile(文件)
+                            当前项信息_预览图文件表(当前正在显示的预览图索引) = newImagePath
+                        ElseIf s > 1 Then
+                            img.Save(mstr, Imaging.ImageFormat.Gif)
+                            Dim newImagePath As String = IO.Path.GetDirectoryName(文件) & "\" & IO.Path.GetFileNameWithoutExtension(文件) & ".gif"
+                            Using fs As New FileStream(newImagePath, FileMode.Create)
+                                mstr.WriteTo(fs)
+                            End Using
+                            If FileIO.FileSystem.FileExists(文件) = True Then FileIO.FileSystem.DeleteFile(文件)
+                            当前项信息_预览图文件表(当前正在显示的预览图索引) = newImagePath
+                        Else
+                            Exit Try
+                        End If
+                        Form1.Panel9.Visible = True
+                        Form1.PictureBox1.Image = Image.FromStream(mstr)
+                        Application.DoEvents()
+                        mstr.Dispose()
+                    End Using
+                Catch ex As Exception
+                    Form1.Panel9.Visible = False
+                    Form1.PictureBox1.Image = Nothing
+                End Try
+        End Select
+        Form1.ToolTip1.SetToolTip(Form1.PictureBox1, 当前正在显示的预览图索引 + 1 & "/" & 当前项信息_预览图文件表.Count)
     End Sub
 
 

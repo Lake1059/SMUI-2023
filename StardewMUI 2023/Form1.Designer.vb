@@ -377,6 +377,7 @@ Partial Class Form1
         TabPage调试输出 = New TabPage()
         UiRichTextBox2 = New Sunny.UI.UIRichTextBox()
         UiButton45 = New Sunny.UI.UIButton()
+        ToolTip1 = New ToolTip(components)
         UiTabControl1.SuspendLayout()
         TabPage起始页面.SuspendLayout()
         Panel29.SuspendLayout()
@@ -4145,10 +4146,10 @@ Partial Class Form1
         UiRichTextBox1.Margin = New Padding(4, 5, 4, 5)
         UiRichTextBox1.MinimumSize = New Size(1, 1)
         UiRichTextBox1.Name = "UiRichTextBox1"
-        UiRichTextBox1.Padding = New Padding(8, 5, 1, 5)
+        UiRichTextBox1.Padding = New Padding(10, 10, 3, 10)
         UiRichTextBox1.RectSides = ToolStripStatusLabelBorderSides.None
-        UiRichTextBox1.ScrollBarBackColor = Color.FromArgb(CByte(32), CByte(32), CByte(32))
-        UiRichTextBox1.ScrollBarColor = Color.FromArgb(CByte(46), CByte(46), CByte(46))
+        UiRichTextBox1.ScrollBarBackColor = Color.FromArgb(CByte(64), CByte(64), CByte(64))
+        UiRichTextBox1.ScrollBarColor = Color.Gray
         UiRichTextBox1.ScrollBarStyleInherited = False
         UiRichTextBox1.ShowText = False
         UiRichTextBox1.Size = New Size(300, 369)
@@ -4288,6 +4289,7 @@ Partial Class Form1
         PictureBox1.Location = New Point(0, 40)
         PictureBox1.Name = "PictureBox1"
         PictureBox1.Size = New Size(300, 161)
+        PictureBox1.SizeMode = PictureBoxSizeMode.Zoom
         PictureBox1.TabIndex = 5
         PictureBox1.TabStop = False
         ' 
@@ -6754,4 +6756,5 @@ Partial Class Form1
     Friend WithEvents ColumnHeader18 As ColumnHeader
     Friend WithEvents ColumnHeader19 As ColumnHeader
     Friend WithEvents Label56 As Label
+    Friend WithEvents ToolTip1 As ToolTip
 End Class

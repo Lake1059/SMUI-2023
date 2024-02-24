@@ -21,9 +21,10 @@ Public Class 界面控制
         Form1.UiRichTextBox4.Rtf = My.Resources.用户许可协议
         Form1.UiRichTextBox3.Rtf = My.Resources.更新记录
 
-        设置富文本框行高(Form1.UiRichTextBox1, 30)
+        设置富文本框行高(Form1.UiRichTextBox1, 35)
         Form1.UiRichTextBox1.AutoWordSelection = False
         Form1.UiRichTextBox1.LanguageOption = RichTextBoxLanguageOptions.UIFonts
+        Form1.UiRichTextBox1.RightMargin = Form1.UiRichTextBox1.Width - 程序DPI_垂直滚动条宽度
 
 
         暗黑主题资源.初始化关于选项卡列表视图()
@@ -97,19 +98,12 @@ Public Class 界面控制
 
     Public Shared Sub 主界面元素尺寸动态调整()
         Form1.Panel13.Width = Form1.Panel13.Parent.Width * 0.5
-        'Form1.Panel45.Width = (Form1.Panel45.Parent.Width - Form1.Panel45.Left * 3) * 0.5
-        'Form1.Panel46.Width = Form1.Panel45.Width
-        'Form1.Panel47.Width = Form1.Panel45.Width
-        'Form1.Panel48.Width = Form1.Panel45.Width
-        'Form1.Panel46.Left = Form1.Panel45.Width + Form1.Panel45.Left * 2
-        'Form1.Panel48.Left = Form1.Panel47.Width + Form1.Panel47.Left * 2
 
         Form1.ListView1.Width = Form1.ListView1.Parent.Width - Form1.ListView1.Parent.Padding.Left + 程序DPI_垂直滚动条宽度
         Form1.ColumnHeader1.Width = Form1.ListView1.Parent.Width - Form1.ListView1.Parent.Padding.Left * 2
         Form1.ColumnHeader2.Width = (Form1.ListView2.Width - 程序DPI_垂直滚动条宽度 * 2) * 0.65
         Form1.ColumnHeader3.Width = (Form1.ListView2.Width - 程序DPI_垂直滚动条宽度 * 2) * 0.15
         Form1.ColumnHeader4.Width = (Form1.ListView2.Width - 程序DPI_垂直滚动条宽度 * 2) * 0.2
-        'Form1.ColumnHeader17.Width = (Form1.ListView2.Parent.Width - 程序DPI_垂直滚动条宽度) * 0.1
     End Sub
 
     Public Shared Sub 主界面高DPI兼容()
