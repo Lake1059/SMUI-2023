@@ -22,6 +22,10 @@ Public Class 管理模组
         AddHandler Form1.ListView2.SelectedIndexChanged, AddressOf 项列表计数显示
         AddHandler Form1.ListView2.SelectedIndexChanged, AddressOf 读取项信息并显示
 
+        AddHandler 管理模组的菜单.菜单项_更多分类操作_转换安装命令到安装规划.Click, AddressOf 管理模组3.更新选中分类_从安装命令到安装规划
+        AddHandler 管理模组的菜单.菜单项_更多分类操作_转换安装规划到安装命令.Click, AddressOf 管理模组3.更新选中分类_从安装规划到安装命令
+
+
         初始化安装状态显示词字典()
         扫描数据子库()
     End Sub

@@ -257,7 +257,7 @@ Public Class 项信息读取类
                         Dim x1, x2 As String
                         Dim x3 As String() = 安装规划数据(i).Value.Split("|")
                         x1 = x3(0) : x2 = x3(1)
-                        If FileExists(Path.Combine(游戏路径, x1)) = False Then
+                        If FileExists(Path.Combine(项路径, x1)) = False Then
                             安装状态 = 公共对象.安装状态枚举.源文件丢失
                             Continue For
                         End If
@@ -282,7 +282,7 @@ Public Class 项信息读取类
                         Dim x1, x2 As String
                         Dim x3 As String() = 安装规划数据(i).Value.Split("|")
                         x1 = x3(0) : x2 = x3(1)
-                        If FileExists(Path.Combine(游戏路径, x1)) = False Then
+                        If FileExists(Path.Combine(项路径, x1)) = False Then
                             安装状态 = 公共对象.安装状态枚举.源文件丢失
                             Continue For
                         End If
@@ -318,7 +318,7 @@ Public Class 项信息读取类
                         Dim x1, x2 As String
                         Dim x3 As String() = 安装规划数据(i).Value.Split("|")
                         x1 = x3(0) : x2 = x3(1)
-                        If FileExists(Path.Combine(游戏路径, x1)) = False Then
+                        If FileExists(Path.Combine(项路径, x1)) = False Then
                             安装状态 = 公共对象.安装状态枚举.源文件丢失
                             Continue For
                         End If
