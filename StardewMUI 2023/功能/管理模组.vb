@@ -21,6 +21,16 @@ Public Class 管理模组
         AddHandler Form1.ListView2.KeyDown, Sub(sender, e) 模组项列表键盘按下事件(sender, e)
         AddHandler Form1.ListView2.SelectedIndexChanged, AddressOf 项列表计数显示
         AddHandler Form1.ListView2.SelectedIndexChanged, AddressOf 读取项信息并显示
+        AddHandler Form1.UiButton7.Click,
+            Sub()
+                If Form依赖项表.Visible = False Then
+                    Form依赖项表.Left = Form1.Left + 7 + 15
+                    Form依赖项表.Top = Form1.Top + Form1.Height - Form依赖项表.Height - 38 - 15
+                    Form依赖项表.Show(Form1)
+                Else
+                    Form依赖项表.Close()
+                End If
+            End Sub
 
         AddHandler 管理模组的菜单.菜单项_更多分类操作_转换安装命令到安装规划.Click, AddressOf 管理模组3.更新选中分类_从安装命令到安装规划
         AddHandler 管理模组的菜单.菜单项_更多分类操作_转换安装规划到安装命令.Click, AddressOf 管理模组3.更新选中分类_从安装规划到安装命令
@@ -593,6 +603,7 @@ Public Class 管理模组
                 Form1.UiButton12.Text = 当前项信息_预览图文件表.Count & " "
             End If
         End If
+        If Form依赖项表.Visible = True Then Form依赖项表.刷新前置表项()
 
 
     End Sub

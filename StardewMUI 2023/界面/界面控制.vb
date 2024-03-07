@@ -40,6 +40,7 @@ Public Class 界面控制
         Form1.ListView9.DoubleBuffered(True)
         Form1.ListView10.DoubleBuffered(True)
         Form1.ListView11.DoubleBuffered(True)
+
         AddHandler Form1.ListView1.DrawSubItem, Sub(sender, e) 暗黑列表视图自绘制.绘制子项(sender, e, 暗黑主题资源.分类列包含的图标字典)
         AddHandler Form1.ListView1.SelectedIndexChanged, Sub(sender, e) sender.Invalidate(sender.ClientRectangle)
         AddHandler Form1.ListView1.ItemMouseHover, Sub(sender, e) sender.Invalidate(sender.ClientRectangle)
@@ -86,6 +87,16 @@ Public Class 界面控制
 
         AddHandler Form1.UiRichTextBox4.LinkClicked, AddressOf 许可协议签署执行
     End Sub
+
+    Public Shared Sub 初始化依赖项窗口()
+        Form依赖项表.ListView1.DoubleBuffered(True)
+        AddHandler Form依赖项表.ListView1.DrawSubItem, Sub(sender, e) 暗黑列表视图自绘制.绘制子项(sender, e, New Dictionary(Of String, Image))
+        AddHandler Form依赖项表.ListView1.SelectedIndexChanged, Sub(sender, e) sender.Invalidate(sender.ClientRectangle)
+        AddHandler Form依赖项表.ListView1.ItemMouseHover, Sub(sender, e) sender.Invalidate(sender.ClientRectangle)
+    End Sub
+
+
+
 
     Public Shared Sub 设置富文本框行高(RichTextBoxObject As Control, LineHeight As Integer)
         Dim fmt As New PARAFORMAT2()
