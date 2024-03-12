@@ -94,7 +94,12 @@ Public Class 界面控制
         AddHandler Form依赖项表.ListView1.SelectedIndexChanged, Sub(sender, e) sender.Invalidate(sender.ClientRectangle)
         AddHandler Form依赖项表.ListView1.ItemMouseHover, Sub(sender, e) sender.Invalidate(sender.ClientRectangle)
     End Sub
-
+    Public Shared Sub 初始化依赖项窗口(哪个依赖项窗口 As Form依赖项表)
+        哪个依赖项窗口.ListView1.DoubleBuffered(True)
+        AddHandler 哪个依赖项窗口.ListView1.DrawSubItem, Sub(sender, e) 暗黑列表视图自绘制.绘制子项(sender, e, New Dictionary(Of String, Image))
+        AddHandler 哪个依赖项窗口.ListView1.SelectedIndexChanged, Sub(sender, e) sender.Invalidate(sender.ClientRectangle)
+        AddHandler 哪个依赖项窗口.ListView1.ItemMouseHover, Sub(sender, e) sender.Invalidate(sender.ClientRectangle)
+    End Sub
 
 
 

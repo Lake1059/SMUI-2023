@@ -14,6 +14,17 @@ Public Class 任务队列
     Public Shared Property 是否允许标准SMAPI模组文件夹套娃放置 As Boolean = False
     Public Shared Property 是否取消了操作 As Boolean = False
 
+    Public Shared Sub 全部数据初始化()
+        项路径 = ""
+        游戏路径 = 设置.全局设置数据("StardewValleyGamePath")
+        游戏备份路径 = 设置.全局设置数据("StardewValleyGameBackupPath")
+        任务列表.Clear()
+        当前正在处理的索引 = Nothing
+        是否关闭config自动保留机制 = False
+        是否允许标准SMAPI模组文件夹套娃放置 = False
+        是否取消了操作 = False
+    End Sub
+
     Public Shared Sub 全部字典初始化()
         初始化队列键值匹配字典()
         初始化安装操作匹配字典()

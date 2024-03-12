@@ -24,7 +24,7 @@ Partial Class Form依赖项表
     Private Sub InitializeComponent()
         components = New ComponentModel.Container()
         Panel2 = New Panel()
-        UiButton1 = New Sunny.UI.UIButton()
+        UiButton克隆视图 = New Sunny.UI.UIButton()
         UiButton复制选中 = New Sunny.UI.UIButton()
         UiButton刷新 = New Sunny.UI.UIButton()
         UiButton检查 = New Sunny.UI.UIButton()
@@ -44,7 +44,7 @@ Partial Class Form依赖项表
         ' Panel2
         ' 
         Panel2.BackColor = Color.FromArgb(CByte(42), CByte(42), CByte(42))
-        Panel2.Controls.Add(UiButton1)
+        Panel2.Controls.Add(UiButton克隆视图)
         Panel2.Controls.Add(UiButton复制选中)
         Panel2.Controls.Add(UiButton刷新)
         Panel2.Controls.Add(UiButton检查)
@@ -56,38 +56,38 @@ Partial Class Form依赖项表
         Panel2.Size = New Size(684, 40)
         Panel2.TabIndex = 4
         ' 
-        ' UiButton1
+        ' UiButton克隆视图
         ' 
-        UiButton1.Dock = DockStyle.Left
-        UiButton1.FillColor = Color.FromArgb(CByte(42), CByte(42), CByte(42))
-        UiButton1.FillColor2 = Color.FromArgb(CByte(42), CByte(42), CByte(42))
-        UiButton1.FillDisableColor = Color.FromArgb(CByte(42), CByte(42), CByte(42))
-        UiButton1.FillHoverColor = Color.FromArgb(CByte(64), CByte(64), CByte(64))
-        UiButton1.FillPressColor = Color.FromArgb(CByte(80), CByte(80), CByte(80))
-        UiButton1.FillSelectedColor = Color.FromArgb(CByte(42), CByte(42), CByte(42))
-        UiButton1.Font = New Font("微软雅黑", 9.75F)
-        UiButton1.ForeColor = Color.FromArgb(CByte(224), CByte(224), CByte(224))
-        UiButton1.ForeDisableColor = Color.Gray
-        UiButton1.ForeHoverColor = Color.FromArgb(CByte(244), CByte(244), CByte(244))
-        UiButton1.ForePressColor = Color.FromArgb(CByte(244), CByte(244), CByte(244))
-        UiButton1.ForeSelectedColor = Color.FromArgb(CByte(244), CByte(244), CByte(244))
-        UiButton1.Location = New Point(200, 0)
-        UiButton1.MinimumSize = New Size(1, 1)
-        UiButton1.Name = "UiButton1"
-        UiButton1.Radius = 10
-        UiButton1.RadiusSides = Sunny.UI.UICornerRadiusSides.None
-        UiButton1.RectColor = Color.FromArgb(CByte(42), CByte(42), CByte(42))
-        UiButton1.RectDisableColor = Color.FromArgb(CByte(42), CByte(42), CByte(42))
-        UiButton1.RectHoverColor = Color.FromArgb(CByte(64), CByte(64), CByte(64))
-        UiButton1.RectPressColor = Color.FromArgb(CByte(80), CByte(80), CByte(80))
-        UiButton1.RectSelectedColor = Color.FromArgb(CByte(42), CByte(42), CByte(42))
-        UiButton1.Size = New Size(100, 40)
-        UiButton1.Style = Sunny.UI.UIStyle.Custom
-        UiButton1.TabIndex = 18
-        UiButton1.TabStop = False
-        UiButton1.Text = "克隆视图"
-        UiButton1.TipsColor = Color.Gray
-        UiButton1.TipsFont = New Font("微软雅黑", 9F)
+        UiButton克隆视图.Dock = DockStyle.Left
+        UiButton克隆视图.FillColor = Color.FromArgb(CByte(42), CByte(42), CByte(42))
+        UiButton克隆视图.FillColor2 = Color.FromArgb(CByte(42), CByte(42), CByte(42))
+        UiButton克隆视图.FillDisableColor = Color.FromArgb(CByte(42), CByte(42), CByte(42))
+        UiButton克隆视图.FillHoverColor = Color.FromArgb(CByte(64), CByte(64), CByte(64))
+        UiButton克隆视图.FillPressColor = Color.FromArgb(CByte(80), CByte(80), CByte(80))
+        UiButton克隆视图.FillSelectedColor = Color.FromArgb(CByte(42), CByte(42), CByte(42))
+        UiButton克隆视图.Font = New Font("微软雅黑", 9.75F)
+        UiButton克隆视图.ForeColor = Color.FromArgb(CByte(224), CByte(224), CByte(224))
+        UiButton克隆视图.ForeDisableColor = Color.Gray
+        UiButton克隆视图.ForeHoverColor = Color.FromArgb(CByte(244), CByte(244), CByte(244))
+        UiButton克隆视图.ForePressColor = Color.FromArgb(CByte(244), CByte(244), CByte(244))
+        UiButton克隆视图.ForeSelectedColor = Color.FromArgb(CByte(244), CByte(244), CByte(244))
+        UiButton克隆视图.Location = New Point(200, 0)
+        UiButton克隆视图.MinimumSize = New Size(1, 1)
+        UiButton克隆视图.Name = "UiButton克隆视图"
+        UiButton克隆视图.Radius = 10
+        UiButton克隆视图.RadiusSides = Sunny.UI.UICornerRadiusSides.None
+        UiButton克隆视图.RectColor = Color.FromArgb(CByte(42), CByte(42), CByte(42))
+        UiButton克隆视图.RectDisableColor = Color.FromArgb(CByte(42), CByte(42), CByte(42))
+        UiButton克隆视图.RectHoverColor = Color.FromArgb(CByte(64), CByte(64), CByte(64))
+        UiButton克隆视图.RectPressColor = Color.FromArgb(CByte(80), CByte(80), CByte(80))
+        UiButton克隆视图.RectSelectedColor = Color.FromArgb(CByte(42), CByte(42), CByte(42))
+        UiButton克隆视图.Size = New Size(100, 40)
+        UiButton克隆视图.Style = Sunny.UI.UIStyle.Custom
+        UiButton克隆视图.TabIndex = 18
+        UiButton克隆视图.TabStop = False
+        UiButton克隆视图.Text = "克隆视图"
+        UiButton克隆视图.TipsColor = Color.Gray
+        UiButton克隆视图.TipsFont = New Font("微软雅黑", 9F)
         ' 
         ' UiButton复制选中
         ' 
@@ -279,7 +279,7 @@ Partial Class Form依赖项表
         Panel1.Dock = DockStyle.Fill
         Panel1.Location = New Point(0, 40)
         Panel1.Name = "Panel1"
-        Panel1.Padding = New Padding(10, 10, 10, 10)
+        Panel1.Padding = New Padding(10)
         Panel1.Size = New Size(684, 171)
         Panel1.TabIndex = 6
         ' 
@@ -319,5 +319,5 @@ Partial Class Form依赖项表
     Friend WithEvents ColumnHeader4 As ColumnHeader
     Friend WithEvents ImageList1 As ImageList
     Friend WithEvents Panel1 As Panel
-    Friend WithEvents UiButton1 As Sunny.UI.UIButton
+    Friend WithEvents UiButton克隆视图 As Sunny.UI.UIButton
 End Class

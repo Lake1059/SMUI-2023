@@ -24,8 +24,8 @@ Public Class 管理模组
         AddHandler Form1.UiButton7.Click,
             Sub()
                 If Form依赖项表.Visible = False Then
-                    Form依赖项表.Left = Form1.Left + 7 + 15
-                    Form依赖项表.Top = Form1.Top + Form1.Height - Form依赖项表.Height - 38 - 15
+                    Form依赖项表.Left = Form1.Left + 30 * 界面控制.X轴DPI比率
+                    Form依赖项表.Top = Form1.Top + Form1.Height - Form依赖项表.Height - 60 * 界面控制.X轴DPI比率
                     Form依赖项表.Show(Form1)
                 Else
                     Form依赖项表.Close()
@@ -278,7 +278,7 @@ Public Class 管理模组
         Do Until 排序索引实时 = 排序索引总数 + 1
             If 模组项文件夹列表.Contains(模组项排序(排序索引实时)) Then
                 Form1.ListView2.Items.Add(模组项排序(排序索引实时))
-                实时分类排序.Add(模组项排序(排序索引实时))
+                实时模组项排序.Add(模组项排序(排序索引实时))
                 模组项文件夹列表.Remove(模组项排序(排序索引实时))
                 排序索引实时 += 1
             Else
@@ -452,10 +452,10 @@ Public Class 管理模组
                 If index > 0 Then
                     If Form1.ListView2.SelectedIndices.Contains(index - 1) Then Continue For
                     Dim 变动排序的列表视图项 As ListViewItem = Form1.ListView2.Items(index)
+                    Dim 变动排序的文本 As String = 实时模组项排序(index)
                     Form1.ListView2.Items.RemoveAt(index)
                     Form1.ListView2.Items.Insert(index - 1, 变动排序的列表视图项)
                     Form1.ListView2.Items(index - 1).Focused = True
-                    Dim 变动排序的文本 As String = 实时模组项排序(index)
                     实时模组项排序.RemoveAt(index)
                     实时模组项排序.Insert(index - 1, 变动排序的文本)
                     实时模组项排序是否经过修改 = True
@@ -471,10 +471,10 @@ Public Class 管理模组
                 If index < Form1.ListView2.Items.Count - 1 Then
                     If Form1.ListView2.SelectedIndices.Contains(index + 1) Then Continue For
                     Dim 变动排序的列表视图项 As ListViewItem = Form1.ListView2.Items(index)
+                    Dim 变动排序的文本 As String = 实时模组项排序(index)
                     Form1.ListView2.Items.RemoveAt(index)
                     Form1.ListView2.Items.Insert(index + 1, 变动排序的列表视图项)
                     Form1.ListView2.Items(index + 1).Focused = True
-                    Dim 变动排序的文本 As String = 实时模组项排序(index)
                     实时模组项排序.RemoveAt(index)
                     实时模组项排序.Insert(index + 1, 变动排序的文本)
                     实时模组项排序是否经过修改 = True

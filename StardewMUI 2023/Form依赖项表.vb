@@ -2,12 +2,19 @@
 Imports System.IO
 Imports Newtonsoft.Json
 Imports Newtonsoft.Json.Linq
-Imports System.Xml.Xsl
-Imports Windows.Win32.UI.Input
+Imports Sunny.UI
 
 Public Class Form依赖项表
+
+    Public 是否是数据克隆 As Boolean = False
+
     Private Sub Form依赖项表_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        界面控制.初始化依赖项窗口()
+        If Not 是否是数据克隆 Then
+            界面控制.初始化依赖项窗口()
+        Else
+            界面控制.初始化依赖项窗口(Me)
+        End If
+
     End Sub
 
     Private Sub Form依赖项表_Shown(sender As Object, e As EventArgs) Handles Me.Shown
@@ -51,10 +58,12 @@ Public Class Form依赖项表
     End Sub
 
     Private Sub UiButton检查_Click(sender As Object, e As EventArgs) Handles UiButton检查.Click
-        If Me.ListView1.Items.Count = 0 Then Exit Sub
-        For i = 0 To Me.ListView1.Items.Count - 1
-            Me.ListView1.Items.Item(i).SubItems(3).Text = ""
-        Next
+        If Not 是否是数据克隆 Then
+            If Me.ListView1.Items.Count = 0 Then Exit Sub
+            For i = 0 To Me.ListView1.Items.Count - 1
+                Me.ListView1.Items.Item(i).SubItems(3).Text = ""
+            Next
+        End If
         Dim x1 As New 搜索文件类
         x1.搜索清单文件(Path.Combine(设置.全局设置数据("StardewValleyGamePath"), "Mods"))
         If x1.错误信息 <> "" Then
@@ -86,6 +95,56 @@ Public Class Form依赖项表
                 End If
             End If
         Next
-        Me.Text = "依赖项表"
+        If Not 是否是数据克隆 Then
+            Me.Text = "依赖项表"
+        Else
+            Me.Text = "依赖项表（数据克隆）"
+        End If
+    End Sub
+
+    Private Sub UiButton克隆视图_Click(sender As Object, e As EventArgs) Handles UiButton克隆视图.Click
+        Dim a As New Form依赖项表
+        a.UiButton克隆视图.Visible = False
+        a.UiButton刷新.Visible = False
+        a.是否是数据克隆 = True
+        a.ShowInTaskbar = True
+        a.StartPosition = FormStartPosition.CenterScreen
+        a.Size = Me.Size
+        a.Text = "依赖项表（数据克隆）"
+        For i = 0 To Me.ListView1.Items.Count - 1
+            a.ListView1.Items.Add(Me.ListView1.Items(i).Text)
+            a.ListView1.Items(i).SubItems.Add(Me.ListView1.Items(i).SubItems(1).Text)
+            a.ListView1.Items(i).SubItems.Add(Me.ListView1.Items(i).SubItems(2).Text)
+            a.ListView1.Items(i).SubItems.Add("")
+        Next
+        Me.Label51.Text = Me.ListView1.Items.Count
+        显示窗体(a, Form1)
+    End Sub
+
+    Private Sub UiButton复制全部_Click(sender As Object, e As EventArgs) Handles UiButton复制全部.Click
+        Dim a As String = ""
+        For i = 0 To Me.ListView1.Items.Count - 1
+            If a = "" Then
+                a = Me.ListView1.Items(i).Text
+            Else
+                a &= vbCrLf & Me.ListView1.Items(i).Text
+            End If
+        Next
+        Clipboard.SetText(a)
+        UIMessageTip.Show("已复制全部 UniqueID 到剪贴板",, 2000)
+    End Sub
+
+    Private Sub UiButton复制选中_Click(sender As Object, e As EventArgs) Handles UiButton复制选中.Click
+        If Me.ListView1.SelectedItems.Count = 0 Then Exit Sub
+        Dim a As String = ""
+        For i = 0 To Me.ListView1.SelectedItems.Count - 1
+            If a = "" Then
+                a = Me.ListView1.SelectedItems(i).Text
+            Else
+                a &= vbCrLf & Me.ListView1.SelectedItems(i).Text
+            End If
+        Next
+        Clipboard.SetText(a)
+        UIMessageTip.Show("已复制选中 UniqueID 到剪贴板",, 2000)
     End Sub
 End Class
