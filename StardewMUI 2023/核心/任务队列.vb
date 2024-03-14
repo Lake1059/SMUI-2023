@@ -8,7 +8,7 @@ Public Class 任务队列
     Public Shared Property 游戏路径 As String
     Public Shared Property 游戏备份路径 As String
 
-    Public Shared Property 任务列表 As List(Of 任务列表结构)
+    Public Shared Property 任务列表 As New List(Of 任务列表结构)
     Public Shared Property 当前正在处理的索引 As Integer
     Public Shared Property 是否关闭config自动保留机制 As Boolean = False
     Public Shared Property 是否允许标准SMAPI模组文件夹套娃放置 As Boolean = False

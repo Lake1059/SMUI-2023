@@ -32,6 +32,9 @@ Public Class 管理模组
                 End If
             End Sub
 
+        AddHandler 管理模组的菜单.菜单项_安装.Click, Sub(sender, e) 安装卸载.执行操作(安装卸载.操作类型.安装)
+
+
         AddHandler 管理模组的菜单.菜单项_更多分类操作_转换安装命令到安装规划.Click, AddressOf 管理模组3.更新选中分类_从安装命令到安装规划
         AddHandler 管理模组的菜单.菜单项_更多分类操作_转换安装规划到安装命令.Click, AddressOf 管理模组3.更新选中分类_从安装规划到安装命令
 
@@ -50,8 +53,10 @@ Public Class 管理模组
         管理模组的菜单.子库列表_选择.Items.Clear()
         管理模组的菜单.子库列表_删除.Items.Clear()
         If Not FileIO.FileSystem.DirectoryExists(设置.全局设置数据("LocalRepositoryPath")) Then
-            Dim M1 As New 多项单选对话框("", {"OK"}, "模组数据库路径无效")
-            M1.ShowDialog(Form1)
+            If Form1.UiTabControl1.SelectedTab Is Form1.TabPage管理模组 Then
+                Dim M1 As New 多项单选对话框("", {"OK"}, "模组数据库路径无效")
+                M1.ShowDialog(Form1)
+            End If
             Exit Sub
         End If
         Dim 子库列表 As List(Of String) = 管理模组2.扫描子库(设置.全局设置数据("LocalRepositoryPath"))

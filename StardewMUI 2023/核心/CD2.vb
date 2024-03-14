@@ -8,6 +8,11 @@ Public Class CD2
 
     Public Shared Sub 匹配到_复制文件夹到Mods()
         Dim 参数列表 As New List(Of String)(任务队列.任务列表(任务队列.当前正在处理的索引).参数行.Split("|").ToList)
+
+
+        DebugPrint($"{安装卸载.正在工作的线程ID} 正在复制文件夹：{参数列表(0)}", Color1.白色)
+
+
         CopyDirectory(Path.Combine(任务队列.项路径, 参数列表(0)), Path.Combine(任务队列.游戏路径, "Mods", 参数列表(0)), True)
         If 任务队列.是否关闭config自动保留机制 = False Then
             Dim a1 As String = Path.Combine(任务队列.项路径, ".config", 参数列表(0), "config.json")
