@@ -78,6 +78,7 @@ Public Class 任务队列
             For i = 0 To 安装规划原文本列表对象.Count - 1
                 Dim value As DE1 = Nothing
                 If 队列键值匹配字典.TryGetValue(安装规划原文本列表对象(i).Key, value) Then
+                    当前正在处理的索引 = i
                     Dim operation As DE1 = value
                     operation.Invoke()
                 Else

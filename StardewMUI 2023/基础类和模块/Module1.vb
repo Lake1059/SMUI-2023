@@ -122,4 +122,17 @@ Module Module1
         End If
     End Sub
 
+    Public Delegate Sub Delegate_DebugPrint(文本 As String, 颜色 As Color, 是否需要转到调试选项卡 As Boolean)
+
+    Public Sub DebugPrintInvoke(文本 As String, 颜色 As Color, Optional 是否需要转到调试选项卡 As Boolean = False)
+        If Form1.InvokeRequired Then
+            Dim d As New Delegate_DebugPrint(AddressOf DebugPrintInvoke)
+            Form1.Invoke(d, New Object() {文本, 颜色, 是否需要转到调试选项卡})
+        Else
+            DebugPrint(文本, 颜色, 是否需要转到调试选项卡)
+        End If
+    End Sub
+
+
+
 End Module

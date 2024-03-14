@@ -33,6 +33,7 @@ Public Class 管理模组
             End Sub
 
         AddHandler 管理模组的菜单.菜单项_安装.Click, Sub(sender, e) 安装卸载.执行操作(安装卸载.操作类型.安装)
+        AddHandler 管理模组的菜单.菜单项_卸载.Click, Sub(sender, e) 安装卸载.执行操作(安装卸载.操作类型.卸载)
 
 
         AddHandler 管理模组的菜单.菜单项_更多分类操作_转换安装命令到安装规划.Click, AddressOf 管理模组3.更新选中分类_从安装命令到安装规划

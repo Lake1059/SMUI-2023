@@ -8,16 +8,15 @@ Public Class CD2
 
     Public Shared Sub 匹配到_复制文件夹到Mods()
         Dim 参数列表 As New List(Of String)(任务队列.任务列表(任务队列.当前正在处理的索引).参数行.Split("|").ToList)
-
-
-        DebugPrint($"{安装卸载.正在工作的线程ID} 正在复制文件夹：{参数列表(0)}", Color1.白色)
-
-
+        安装卸载.后台线程对象.ReportProgress(1, $"正在复制文件夹到 Mods 中：{参数列表(0)}")
         CopyDirectory(Path.Combine(任务队列.项路径, 参数列表(0)), Path.Combine(任务队列.游戏路径, "Mods", 参数列表(0)), True)
         If 任务队列.是否关闭config自动保留机制 = False Then
             Dim a1 As String = Path.Combine(任务队列.项路径, ".config", 参数列表(0), "config.json")
             Dim a2 As String = Path.Combine(任务队列.游戏路径, "Mods", 参数列表(0), "config.json")
-            If FileExists(a1) = True Then CopyFile(a1, a2, True)
+            If FileExists(a1) = True Then
+                CopyFile(a1, a2, True)
+                安装卸载.后台线程对象.ReportProgress(1, $"已还原 config.json")
+            End If
         End If
     End Sub
 
@@ -26,26 +25,31 @@ Public Class CD2
         If DirectoryExists(Path.Combine(任务队列.游戏路径, "Mods", 参数列表(0))) = False Then
             Err.Raise(10590202,, "在 Mods 找不到已安装的文件夹：" & 参数列表(0), Color.OrangeRed, True)
         Else
+            安装卸载.后台线程对象.ReportProgress(1, $"正在覆盖 Mods 内已存在文件夹：{参数列表(0)}")
             CopyDirectory(Path.Combine(任务队列.项路径, 参数列表(0)), Path.Combine(任务队列.游戏路径, "Mods", 参数列表(0)), True)
         End If
     End Sub
 
     Public Shared Sub 匹配到_复制文件夹()
         Dim 参数列表 As New List(Of String)(任务队列.任务列表(任务队列.当前正在处理的索引).参数行.Split("|").ToList)
+        安装卸载.后台线程对象.ReportProgress(1, $"正在复制文件夹：{参数列表(0)}")
         CopyDirectory(Path.Combine(任务队列.项路径, 参数列表(0)), Path.Combine(任务队列.游戏路径, 参数列表(0)), True)
     End Sub
 
     Public Shared Sub 匹配到_覆盖Content()
+        安装卸载.后台线程对象.ReportProgress(1, $"正在覆盖游戏 Content 文件夹")
         CopyDirectory(Path.Combine(任务队列.项路径, "Content"), Path.Combine(任务队列.游戏路径, "Content"), True)
     End Sub
 
     Public Shared Sub 匹配到_新增文件()
         Dim 参数列表 As New List(Of String)(任务队列.任务列表(任务队列.当前正在处理的索引).参数行.Split("|").ToList)
+        安装卸载.后台线程对象.ReportProgress(1, $"正在复制到目标文件：{参数列表(1)}")
         CopyFile(Path.Combine(任务队列.项路径, 参数列表(0)), Path.Combine(任务队列.游戏路径, 参数列表(1)), True)
     End Sub
 
     Public Shared Sub 匹配到_替换文件()
         Dim 参数列表 As New List(Of String)(任务队列.任务列表(任务队列.当前正在处理的索引).参数行.Split("|").ToList)
+        安装卸载.后台线程对象.ReportProgress(1, $"正在替换目标文件：{参数列表(1)}")
         CopyFile(Path.Combine(任务队列.项路径, 参数列表(0)), Path.Combine(任务队列.游戏路径, 参数列表(1)), True)
     End Sub
 
@@ -140,7 +144,10 @@ Public Class CD2
         a.StartInfo.FileName = Path.Combine(任务队列.项路径, 参数列表(0))
         a.StartInfo.Arguments = 参数列表(1)
         a.StartInfo.WindowStyle = ProcessWindowStyle.Normal
+        安装卸载.后台线程对象.ReportProgress(1, $"运行可执行文件：{参数列表(0)}")
         a.Start()
+        安装卸载.后台线程对象.ReportProgress(1, $"等待程序结束")
+        a.WaitForExitAsync()
     End Sub
 
     Public Shared Sub 匹配到_安装时弹窗()
