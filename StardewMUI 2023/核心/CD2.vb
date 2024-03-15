@@ -152,16 +152,24 @@ Public Class CD2
 
     Public Shared Sub 匹配到_安装时弹窗()
         Dim 参数列表 As New List(Of String)(任务队列.任务列表(任务队列.当前正在处理的索引).参数行.Split("|").ToList)
-
-
-
+        Dim 选项列表 As New List(Of String)
+        For i = 2 To 参数列表.Count - 1
+            选项列表.Add(参数列表(i))
+        Next
+        Dim a As New 多项单选对话框("安装对话框", 选项列表, 参数列表(0), 100, 500)
+        If a.ShowDialog(Form1) <> 参数列表(1) - 1 Then
+            Err.Raise(10590202,, "没有选择正确的选项")
+        End If
     End Sub
 
     Public Shared Sub 匹配到_声明各种核心功能的启停()
         Dim 参数列表 As New List(Of String)(任务队列.任务列表(任务队列.当前正在处理的索引).参数行.Split("|").ToList)
-
-
-
+        For i = 0 To 参数列表.Count - 1
+            Select Case 参数列表(i)
+                Case "CG-DB"
+                    任务队列.是否关闭config自动保留机制 = True
+            End Select
+        Next
     End Sub
 
 End Class
