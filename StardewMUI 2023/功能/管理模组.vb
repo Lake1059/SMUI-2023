@@ -144,6 +144,8 @@ Public Class 管理模组
             实时分类排序是否经过修改 = True
         End If
 
+        Form1.Label50.Text = Form1.ListView1.Items.Count
+
         For i = 0 To Form1.ListView1.Items.Count - 1
             Dim 分类颜色文件路径 As String = Path.Combine(设置.全局设置数据("LocalRepositoryPath"), 设置.全局设置数据("LastUsedSubLibraryName"), Form1.ListView1.Items(i).Text, "Color")
             If FileIO.FileSystem.FileExists(分类颜色文件路径) Then
@@ -606,7 +608,7 @@ Public Class 管理模组
             If 当前项信息_预览图文件表.Count > 0 Then
                 加载预览图(当前项信息_预览图文件表(0))
                 当前正在显示的预览图索引 = 0
-                Form1.UiButton12.Text = 当前项信息_预览图文件表.Count & " "
+                Form1.UiButton12.Text = 当前项信息_预览图文件表.Count
             End If
         End If
         If Form依赖项表.Visible = True Then Form依赖项表.刷新前置表项()

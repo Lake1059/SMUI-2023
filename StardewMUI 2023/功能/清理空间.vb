@@ -45,13 +45,6 @@ Public Class 清理空间
             Form1.ListView10.Items(5).SubItems(2).Text = "无数据"
         End If
 
-        If FileIO.FileSystem.DirectoryExists(设置.全局设置数据("LocalRepositoryPath")) Then
-            s1 = 共享方法.GetDirectorySizeWithSub(设置.全局设置数据("LocalRepositoryPath"), {".Download", ".Decompress"})
-            Form1.ListView10.Items(6).SubItems(2).Text = Format(s1 / 1024 / 1024, "0.0") & " MB"
-        Else
-            Form1.ListView10.Items(6).SubItems(2).Text = "无数据"
-        End If
-
         s1 = 0
         Dim edge1 As String = IO.Path.Combine(Application.StartupPath, "SMUI6.exe.WebView2", "EBWebView", "Default")
         Dim edge2 As String = IO.Path.Combine(Application.StartupPath, "SMUI6.exe.WebView2", "EBWebView")
@@ -71,19 +64,19 @@ Public Class 清理空间
             s1 += 共享方法.GetDirectorySizeWithSub(IO.Path.Combine(edge1, "IndexedDB"))
         End If
 
-        Form1.ListView10.Items(7).SubItems(2).Text = Format(s1 / 1024 / 1024, "0.0") & " MB"
+        Form1.ListView10.Items(6).SubItems(2).Text = Format(s1 / 1024 / 1024, "0.0") & " MB"
 
         s1 = 0
         If FileIO.FileSystem.DirectoryExists(IO.Path.Combine(edge1, "Network")) Then
             s1 += 共享方法.GetDirectorySizeWithSub(IO.Path.Combine(edge1, "Network"))
         End If
-        Form1.ListView10.Items(8).SubItems(2).Text = Format(s1 / 1024 / 1024, "0.0") & " MB"
+        Form1.ListView10.Items(7).SubItems(2).Text = Format(s1 / 1024 / 1024, "0.0") & " MB"
 
         s1 = 0
         If FileIO.FileSystem.DirectoryExists(IO.Path.Combine(edge1, "Service Worker")) Then
             s1 += 共享方法.GetDirectorySizeWithSub(IO.Path.Combine(edge1, "Service Worker"))
         End If
-        Form1.ListView10.Items(9).SubItems(2).Text = Format(s1 / 1024 / 1024, "0.0") & " MB"
+        Form1.ListView10.Items(8).SubItems(2).Text = Format(s1 / 1024 / 1024, "0.0") & " MB"
 
         s1 = 0
         If FileIO.FileSystem.DirectoryExists(edge1) Then
@@ -92,7 +85,7 @@ Public Class 清理空间
         If FileIO.FileSystem.DirectoryExists(edge2) Then
             s1 += 共享方法.GetDirectorySizeWithSub(edge2, {"Default"})
         End If
-        Form1.ListView10.Items(10).SubItems(2).Text = Format(s1 / 1024 / 1024, "0.0") & " MB"
+        Form1.ListView10.Items(9).SubItems(2).Text = Format(s1 / 1024 / 1024, "0.0") & " MB"
 
 
         s1 = 0
@@ -124,19 +117,19 @@ Public Class 清理空间
         If FileIO.FileSystem.DirectoryExists(IO.Path.Combine(t1, "WebStorage")) Then
             s1 += 共享方法.GetDirectorySizeWithSub(IO.Path.Combine(t1, "WebStorage"))
         End If
-        Form1.ListView10.Items(11).SubItems(2).Text = Format(s1 / 1024 / 1024, "0.0") & " MB"
+        Form1.ListView10.Items(10).SubItems(2).Text = Format(s1 / 1024 / 1024, "0.0") & " MB"
 
         s1 = 0
         If FileIO.FileSystem.DirectoryExists(IO.Path.Combine(t1, "Network")) Then
             s1 += 共享方法.GetDirectorySizeWithSub(IO.Path.Combine(t1, "Network"))
         End If
-        Form1.ListView10.Items(12).SubItems(2).Text = Format(s1 / 1024 / 1024, "0.0") & " MB"
+        Form1.ListView10.Items(11).SubItems(2).Text = Format(s1 / 1024 / 1024, "0.0") & " MB"
 
         s1 = 0
         If FileIO.FileSystem.DirectoryExists(IO.Path.Combine(t1, "Service Worker")) Then
             s1 += 共享方法.GetDirectorySizeWithSub(IO.Path.Combine(t1, "Service Worker"))
         End If
-        Form1.ListView10.Items(13).SubItems(2).Text = Format(s1 / 1024 / 1024, "0.0") & " MB"
+        Form1.ListView10.Items(12).SubItems(2).Text = Format(s1 / 1024 / 1024, "0.0") & " MB"
 
         s1 = 0
         If FileIO.FileSystem.DirectoryExists(IO.Path.Combine(t1, "blob_storage")) Then
@@ -157,7 +150,7 @@ Public Class 清理空间
         If FileIO.FileSystem.FileExists(IO.Path.Combine(t1, "Visited Links")) Then
             s1 += FileIO.FileSystem.GetFileInfo(IO.Path.Combine(t1, "Visited Links")).Length
         End If
-        Form1.ListView10.Items(14).SubItems(2).Text = Format(s1 / 1024 / 1024, "0.0") & " MB"
+        Form1.ListView10.Items(13).SubItems(2).Text = Format(s1 / 1024 / 1024, "0.0") & " MB"
 
     End Sub
 
@@ -194,7 +187,7 @@ Public Class 清理空间
                         FileIO.FileSystem.DeleteDirectory(IO.Path.Combine(设置.全局设置数据("LocalRepositoryPath"), ".Decompress"), FileIO.DeleteDirectoryOption.DeleteAllContents)
                         Form1.ListView10.Items(5).SubItems(2).Text = "已清理"
                     End If
-                Case 7
+                Case 6
 
                     If FileIO.FileSystem.DirectoryExists(IO.Path.Combine(edge1, "Cache")) Then
                         FileIO.FileSystem.DeleteDirectory(IO.Path.Combine(edge1, "Cache"), FileIO.DeleteDirectoryOption.DeleteAllContents)
@@ -211,18 +204,18 @@ Public Class 清理空间
                     If FileIO.FileSystem.DirectoryExists(IO.Path.Combine(edge1, "IndexedDB")) Then
                         FileIO.FileSystem.DeleteDirectory(IO.Path.Combine(edge1, "IndexedDB"), FileIO.DeleteDirectoryOption.DeleteAllContents)
                     End If
-                    Form1.ListView10.Items(7).SubItems(2).Text = "已清理"
-                Case 8
+                    Form1.ListView10.Items(6).SubItems(2).Text = "已清理"
+                Case 7
                     If FileIO.FileSystem.DirectoryExists(IO.Path.Combine(edge1, "Network")) Then
                         FileIO.FileSystem.DeleteDirectory(IO.Path.Combine(edge1, "Network"), FileIO.DeleteDirectoryOption.DeleteAllContents)
                     End If
-                    Form1.ListView10.Items(8).SubItems(2).Text = "已清理"
-                Case 9
+                    Form1.ListView10.Items(7).SubItems(2).Text = "已清理"
+                Case 8
                     If FileIO.FileSystem.DirectoryExists(IO.Path.Combine(edge1, "Service Worker")) Then
                         FileIO.FileSystem.DeleteDirectory(IO.Path.Combine(edge1, "Service Worker"), FileIO.DeleteDirectoryOption.DeleteAllContents)
                     End If
-                    Form1.ListView10.Items(9).SubItems(2).Text = "已清理"
-                Case 10
+                    Form1.ListView10.Items(8).SubItems(2).Text = "已清理"
+                Case 9
                     Dim whitelist As New List(Of String)({"Default", "Cache", "Code Cache", "DawnCache", "GPUCache", "IndexedDB", "Network", "Service Worker"})
                     For Each filePath In Directory.GetFiles(edge1)
                         If Not whitelist.Contains(Path.GetFileName(filePath)) Then File.Delete(filePath)
@@ -236,9 +229,9 @@ Public Class 清理空间
                     For Each dirPath In Directory.GetDirectories(edge2)
                         If Not whitelist.Contains(New DirectoryInfo(dirPath).Name) Then Directory.Delete(dirPath, True)
                     Next
-                    Form1.ListView10.Items(10).SubItems(2).Text = "已清理"
+                    Form1.ListView10.Items(9).SubItems(2).Text = "已清理"
 
-                Case 11
+                Case 10
                     If FileIO.FileSystem.DirectoryExists(IO.Path.Combine(t1, "Cache")) Then
                         Directory.Delete(IO.Path.Combine(t1, "Cache"), True)
                     End If
@@ -266,21 +259,21 @@ Public Class 清理空间
                     If FileIO.FileSystem.DirectoryExists(IO.Path.Combine(t1, "WebStorage")) Then
                         FileIO.FileSystem.DeleteDirectory(IO.Path.Combine(t1, "WebStorage"), FileIO.DeleteDirectoryOption.DeleteAllContents)
                     End If
+                    Form1.ListView10.Items(10).SubItems(2).Text = "已清理"
+
+                Case 11
+                    If FileIO.FileSystem.DirectoryExists(IO.Path.Combine(t1, "Network")) Then
+                        FileIO.FileSystem.DeleteDirectory(IO.Path.Combine(t1, "Network"), FileIO.DeleteDirectoryOption.DeleteAllContents)
+                    End If
                     Form1.ListView10.Items(11).SubItems(2).Text = "已清理"
 
                 Case 12
-                    If FileIO.FileSystem.DirectoryExists(IO.Path.Combine(t1, "Network")) Then
-                        FileIO.FileSystem.DeleteDirectory(IO.Path.Combine(t1, "Network"), FileIO.DeleteDirectoryOption.DeleteAllContents)
+                    If FileIO.FileSystem.DirectoryExists(IO.Path.Combine(t1, "Service Worker")) Then
+                        FileIO.FileSystem.DeleteDirectory(IO.Path.Combine(t1, "Service Worker"), FileIO.DeleteDirectoryOption.DeleteAllContents)
                     End If
                     Form1.ListView10.Items(12).SubItems(2).Text = "已清理"
 
                 Case 13
-                    If FileIO.FileSystem.DirectoryExists(IO.Path.Combine(t1, "Service Worker")) Then
-                        FileIO.FileSystem.DeleteDirectory(IO.Path.Combine(t1, "Service Worker"), FileIO.DeleteDirectoryOption.DeleteAllContents)
-                    End If
-                    Form1.ListView10.Items(13).SubItems(2).Text = "已清理"
-
-                Case 14
                     If FileIO.FileSystem.DirectoryExists(IO.Path.Combine(t1, "Service Worker")) Then
                         FileIO.FileSystem.DeleteDirectory(IO.Path.Combine(t1, "Service Worker"), FileIO.DeleteDirectoryOption.DeleteAllContents)
                     End If
@@ -302,7 +295,7 @@ Public Class 清理空间
                     If FileIO.FileSystem.FileExists(IO.Path.Combine(t1, "Visited Links")) Then
                         File.Delete(IO.Path.Combine(t1, "Visited Links"))
                     End If
-                    Form1.ListView10.Items(14).SubItems(2).Text = "已清理"
+                    Form1.ListView10.Items(13).SubItems(2).Text = "已清理"
             End Select
 
         Next
@@ -320,7 +313,15 @@ Public Class 清理空间
         End If
     End Sub
 
-
+    Public Shared Sub 计算模组数据库总数据大小()
+        Dim s1 As Integer
+        If FileIO.FileSystem.DirectoryExists(设置.全局设置数据("LocalRepositoryPath")) Then
+            s1 = 共享方法.GetDirectorySizeWithSub(设置.全局设置数据("LocalRepositoryPath"), {".Download", ".Decompress"})
+            Form1.UiButton67.Text = "模组数据库总数据大小：" & Format(s1 / 1024 / 1024, "0.0") & " MB"
+        Else
+            Form1.UiButton67.Text = "无数据"
+        End If
+    End Sub
 
 
 End Class

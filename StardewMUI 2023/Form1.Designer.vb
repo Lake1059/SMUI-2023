@@ -29,34 +29,33 @@ Partial Class Form1
         Dim ListViewItem4 As ListViewItem = New ListViewItem(New String() {"检查更新下载的安装包", "可以清理", ""}, -1)
         Dim ListViewItem5 As ListViewItem = New ListViewItem(New String() {"下载的模组压缩包", "可以清理", ""}, -1)
         Dim ListViewItem6 As ListViewItem = New ListViewItem(New String() {"临时解压", "可以清理", ""}, -1)
-        Dim ListViewItem7 As ListViewItem = New ListViewItem(New String() {"模组数据库总数据", "模组占用", ""}, -1, Color.DarkOrange, Color.Empty, Nothing)
-        Dim ListViewItem8 As ListViewItem = New ListViewItem(New String() {"WebView2 主要缓存", "可以清理", ""}, -1)
-        Dim ListViewItem9 As ListViewItem = New ListViewItem(New String() {"WebView2 Cookies", "可以清理", ""}, -1)
-        Dim ListViewItem10 As ListViewItem = New ListViewItem(New String() {"WebView2 Service Worker", "可以清理", ""}, -1)
-        Dim ListViewItem11 As ListViewItem = New ListViewItem(New String() {"WebView2 其他全部缓存", "可以清理", ""}, -1)
-        Dim ListViewItem12 As ListViewItem = New ListViewItem(New String() {"Chromium 主要缓存", "可以清理", ""}, -1)
-        Dim ListViewItem13 As ListViewItem = New ListViewItem(New String() {"Chromium Cookies", "可以清理", ""}, -1)
-        Dim ListViewItem14 As ListViewItem = New ListViewItem(New String() {"Chromium Service Worker", "可以清理", ""}, -1)
-        Dim ListViewItem15 As ListViewItem = New ListViewItem(New String() {"Chromium 其他缓存", "可以清理", ""}, -1)
-        Dim ListViewItem16 As ListViewItem = New ListViewItem(New String() {"DLC 1 - 自定义输入扩展", "未启用"}, -1)
-        Dim ListViewItem17 As ListViewItem = New ListViewItem(New String() {"DLC 2 - 自定义皮肤加载器", "未启用"}, -1)
-        Dim ListViewItem18 As ListViewItem = New ListViewItem(New String() {"DLC 3 - 新项扩展", "未启用"}, -1)
-        Dim ListViewItem19 As ListViewItem = New ListViewItem(New String() {"DLC 4 - 检查更新扩展", "未启用"}, -1)
-        Dim ListViewItem20 As ListViewItem = New ListViewItem(New String() {"Season Pass 2023 - 基础扩展四件套", "未启用"}, -1, Color.MediumOrchid, Color.Empty, Nothing)
-        Dim ListViewItem21 As ListViewItem = New ListViewItem(New String() {"DLC 5 - 分发扩展", "未启用"}, -1)
-        Dim ListViewItem22 As ListViewItem = New ListViewItem(New String() {"湖边的稻草 / 1059 Studio / Lake1059", "开发者，著作权所有，SMUI 管理模式版权所有"}, -1)
-        Dim ListViewItem23 As ListViewItem = New ListViewItem(New String() {"ChatGPT 3.5 / 4 by OpenAI", "提供了多项关键技术原型和指导"}, -1)
-        Dim ListViewItem24 As ListViewItem = New ListViewItem(New String() {"内置图标来自 IconPark", "© ByteDance Apache-2.0"}, -1)
-        Dim ListViewItem25 As ListViewItem = New ListViewItem(New String() {"SunnyUI 商业许可证：PVIP2023080201", "GPL-3.0-only 界面元素主框架"}, -1)
-        Dim ListViewItem26 As ListViewItem = New ListViewItem(New String() {"DarkUI", "MIT 源代码定制用于菜单绘制"}, -1)
-        Dim ListViewItem27 As ListViewItem = New ListViewItem(New String() {"Microsoft.Web.WebView2", "微软软件许可证"}, -1)
-        Dim ListViewItem28 As ListViewItem = New ListViewItem(New String() {"Chromium Embedded Framework", "Copyright © The CefSharp Authors. All rights reserved."}, -1)
-        Dim ListViewItem29 As ListViewItem = New ListViewItem(New String() {"Newtonsoft.Json", "MIT"}, -1)
-        Dim ListViewItem30 As ListViewItem = New ListViewItem(New String() {"SevenZipSharp", "LGPL-3.0"}, -1)
-        Dim ListViewItem31 As ListViewItem = New ListViewItem(New String() {"来自 7zip 软件的 7zFull64.dll 文件", "原文件名：7z.dll"}, -1)
-        Dim ListViewItem32 As ListViewItem = New ListViewItem(New String() {"来自 7zip 官方的 7za 组件", "7za.dll、7za.exe、7zxa.dll"}, -1)
-        Dim ListViewItem33 As ListViewItem = New ListViewItem(New String() {"libwebp-net", "MIT"}, -1)
-        Dim ListViewItem34 As ListViewItem = New ListViewItem("来自 Google 的 libwebp.dll 文件")
+        Dim ListViewItem7 As ListViewItem = New ListViewItem(New String() {"WebView2 主要缓存", "可以清理", ""}, -1)
+        Dim ListViewItem8 As ListViewItem = New ListViewItem(New String() {"WebView2 Cookies", "可以清理", ""}, -1)
+        Dim ListViewItem9 As ListViewItem = New ListViewItem(New String() {"WebView2 Service Worker", "可以清理", ""}, -1)
+        Dim ListViewItem10 As ListViewItem = New ListViewItem(New String() {"WebView2 其他全部缓存", "可以清理", ""}, -1)
+        Dim ListViewItem11 As ListViewItem = New ListViewItem(New String() {"Chromium 主要缓存", "可以清理", ""}, -1)
+        Dim ListViewItem12 As ListViewItem = New ListViewItem(New String() {"Chromium Cookies", "可以清理", ""}, -1)
+        Dim ListViewItem13 As ListViewItem = New ListViewItem(New String() {"Chromium Service Worker", "可以清理", ""}, -1)
+        Dim ListViewItem14 As ListViewItem = New ListViewItem(New String() {"Chromium 其他缓存", "可以清理", ""}, -1)
+        Dim ListViewItem15 As ListViewItem = New ListViewItem(New String() {"DLC 1 - 自定义输入扩展", "未启用"}, -1)
+        Dim ListViewItem16 As ListViewItem = New ListViewItem(New String() {"DLC 2 - 自定义皮肤加载器", "未启用"}, -1)
+        Dim ListViewItem17 As ListViewItem = New ListViewItem(New String() {"DLC 3 - 新项扩展", "未启用"}, -1)
+        Dim ListViewItem18 As ListViewItem = New ListViewItem(New String() {"DLC 4 - 检查更新扩展", "未启用"}, -1)
+        Dim ListViewItem19 As ListViewItem = New ListViewItem(New String() {"Season Pass 2023 - 基础扩展四件套", "未启用"}, -1, Color.MediumOrchid, Color.Empty, Nothing)
+        Dim ListViewItem20 As ListViewItem = New ListViewItem(New String() {"DLC 5 - 分发扩展", "未启用"}, -1)
+        Dim ListViewItem21 As ListViewItem = New ListViewItem(New String() {"湖边的稻草 / 1059 Studio / Lake1059", "开发者，著作权所有，SMUI 管理模式版权所有"}, -1)
+        Dim ListViewItem22 As ListViewItem = New ListViewItem(New String() {"ChatGPT 3.5 / 4 by OpenAI", "提供了多项关键技术原型和指导"}, -1)
+        Dim ListViewItem23 As ListViewItem = New ListViewItem(New String() {"内置图标来自 IconPark", "© ByteDance Apache-2.0"}, -1)
+        Dim ListViewItem24 As ListViewItem = New ListViewItem(New String() {"SunnyUI 商业许可证：PVIP2023080201", "GPL-3.0-only 界面元素主框架"}, -1)
+        Dim ListViewItem25 As ListViewItem = New ListViewItem(New String() {"DarkUI", "MIT 源代码定制用于菜单绘制"}, -1)
+        Dim ListViewItem26 As ListViewItem = New ListViewItem(New String() {"Microsoft.Web.WebView2", "微软软件许可证"}, -1)
+        Dim ListViewItem27 As ListViewItem = New ListViewItem(New String() {"Chromium Embedded Framework", "Copyright © The CefSharp Authors. All rights reserved."}, -1)
+        Dim ListViewItem28 As ListViewItem = New ListViewItem(New String() {"Newtonsoft.Json", "MIT"}, -1)
+        Dim ListViewItem29 As ListViewItem = New ListViewItem(New String() {"SevenZipSharp", "LGPL-3.0"}, -1)
+        Dim ListViewItem30 As ListViewItem = New ListViewItem(New String() {"来自 7zip 软件的 7zFull64.dll 文件", "原文件名：7z.dll"}, -1)
+        Dim ListViewItem31 As ListViewItem = New ListViewItem(New String() {"来自 7zip 官方的 7za 组件", "7za.dll、7za.exe、7zxa.dll"}, -1)
+        Dim ListViewItem32 As ListViewItem = New ListViewItem(New String() {"libwebp-net", "MIT"}, -1)
+        Dim ListViewItem33 As ListViewItem = New ListViewItem("来自 Google 的 libwebp.dll 文件")
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Form1))
         UiTabControl1 = New Sunny.UI.UITabControl()
         TabPage起始页面 = New TabPage()
@@ -181,6 +180,7 @@ Partial Class Form1
         UiRadioButton3 = New Sunny.UI.UIRadioButton()
         Label37 = New Label()
         TabPage7 = New TabPage()
+        UiButton67 = New Sunny.UI.UIButton()
         UiButton62 = New Sunny.UI.UIButton()
         UiButton61 = New Sunny.UI.UIButton()
         UiButton60 = New Sunny.UI.UIButton()
@@ -3062,6 +3062,7 @@ Partial Class Form1
         ' TabPage7
         ' 
         TabPage7.BackColor = Color.FromArgb(CByte(24), CByte(24), CByte(24))
+        TabPage7.Controls.Add(UiButton67)
         TabPage7.Controls.Add(UiButton62)
         TabPage7.Controls.Add(UiButton61)
         TabPage7.Controls.Add(UiButton60)
@@ -3072,6 +3073,39 @@ Partial Class Form1
         TabPage7.Size = New Size(912, 700)
         TabPage7.TabIndex = 7
         TabPage7.Text = "存储管理"
+        ' 
+        ' UiButton67
+        ' 
+        UiButton67.FillColor = Color.FromArgb(CByte(48), CByte(48), CByte(48))
+        UiButton67.FillColor2 = Color.FromArgb(CByte(48), CByte(48), CByte(48))
+        UiButton67.FillDisableColor = Color.FromArgb(CByte(48), CByte(48), CByte(48))
+        UiButton67.FillHoverColor = Color.FromArgb(CByte(64), CByte(64), CByte(64))
+        UiButton67.FillPressColor = Color.FromArgb(CByte(80), CByte(80), CByte(80))
+        UiButton67.FillSelectedColor = Color.FromArgb(CByte(48), CByte(48), CByte(48))
+        UiButton67.Font = New Font("微软雅黑", 9.75F)
+        UiButton67.ForeColor = Color.FromArgb(CByte(224), CByte(224), CByte(224))
+        UiButton67.ForeDisableColor = Color.Gray
+        UiButton67.ForeHoverColor = Color.FromArgb(CByte(244), CByte(244), CByte(244))
+        UiButton67.ForePressColor = Color.FromArgb(CByte(244), CByte(244), CByte(244))
+        UiButton67.ForeSelectedColor = Color.FromArgb(CByte(244), CByte(244), CByte(244))
+        UiButton67.Location = New Point(20, 640)
+        UiButton67.Margin = New Padding(20, 0, 20, 20)
+        UiButton67.MinimumSize = New Size(1, 1)
+        UiButton67.Name = "UiButton67"
+        UiButton67.Radius = 10
+        UiButton67.RadiusSides = Sunny.UI.UICornerRadiusSides.None
+        UiButton67.RectColor = Color.FromArgb(CByte(48), CByte(48), CByte(48))
+        UiButton67.RectDisableColor = Color.FromArgb(CByte(48), CByte(48), CByte(48))
+        UiButton67.RectHoverColor = Color.FromArgb(CByte(64), CByte(64), CByte(64))
+        UiButton67.RectPressColor = Color.FromArgb(CByte(80), CByte(80), CByte(80))
+        UiButton67.RectSelectedColor = Color.FromArgb(CByte(48), CByte(48), CByte(48))
+        UiButton67.Size = New Size(872, 40)
+        UiButton67.Style = Sunny.UI.UIStyle.Custom
+        UiButton67.TabIndex = 66
+        UiButton67.TabStop = False
+        UiButton67.Text = "计算模组数据库总数据大小"
+        UiButton67.TipsColor = Color.Gray
+        UiButton67.TipsFont = New Font("微软雅黑", 9F)
         ' 
         ' UiButton62
         ' 
@@ -3185,14 +3219,13 @@ Partial Class Form1
         ' 
         ' Panel50
         ' 
-        Panel50.Anchor = AnchorStyles.Top Or AnchorStyles.Bottom Or AnchorStyles.Left Or AnchorStyles.Right
         Panel50.BackColor = Color.FromArgb(CByte(32), CByte(32), CByte(32))
         Panel50.Controls.Add(ListView10)
         Panel50.Location = New Point(20, 111)
         Panel50.Margin = New Padding(20)
         Panel50.Name = "Panel50"
         Panel50.Padding = New Padding(10)
-        Panel50.Size = New Size(872, 569)
+        Panel50.Size = New Size(872, 509)
         Panel50.TabIndex = 61
         ' 
         ' ListView10
@@ -3204,11 +3237,11 @@ Partial Class Form1
         ListView10.ForeColor = Color.FromArgb(CByte(224), CByte(224), CByte(224))
         ListView10.FullRowSelect = True
         ListView10.HeaderStyle = ColumnHeaderStyle.None
-        ListView10.Items.AddRange(New ListViewItem() {ListViewItem1, ListViewItem2, ListViewItem3, ListViewItem4, ListViewItem5, ListViewItem6, ListViewItem7, ListViewItem8, ListViewItem9, ListViewItem10, ListViewItem11, ListViewItem12, ListViewItem13, ListViewItem14, ListViewItem15})
+        ListView10.Items.AddRange(New ListViewItem() {ListViewItem1, ListViewItem2, ListViewItem3, ListViewItem4, ListViewItem5, ListViewItem6, ListViewItem7, ListViewItem8, ListViewItem9, ListViewItem10, ListViewItem11, ListViewItem12, ListViewItem13, ListViewItem14})
         ListView10.Location = New Point(10, 10)
         ListView10.Name = "ListView10"
         ListView10.OwnerDraw = True
-        ListView10.Size = New Size(852, 549)
+        ListView10.Size = New Size(852, 489)
         ListView10.SmallImageList = ImageList1
         ListView10.TabIndex = 1
         ListView10.UseCompatibleStateImageBehavior = False
@@ -3353,7 +3386,7 @@ Partial Class Form1
         ListView9.ForeColor = Color.FromArgb(CByte(224), CByte(224), CByte(224))
         ListView9.FullRowSelect = True
         ListView9.HeaderStyle = ColumnHeaderStyle.None
-        ListView9.Items.AddRange(New ListViewItem() {ListViewItem16, ListViewItem17, ListViewItem18, ListViewItem19, ListViewItem20, ListViewItem21})
+        ListView9.Items.AddRange(New ListViewItem() {ListViewItem15, ListViewItem16, ListViewItem17, ListViewItem18, ListViewItem19, ListViewItem20})
         ListView9.Location = New Point(10, 10)
         ListView9.Name = "ListView9"
         ListView9.OwnerDraw = True
@@ -3841,7 +3874,7 @@ Partial Class Form1
         ListView11.ForeColor = Color.FromArgb(CByte(224), CByte(224), CByte(224))
         ListView11.FullRowSelect = True
         ListView11.HeaderStyle = ColumnHeaderStyle.None
-        ListView11.Items.AddRange(New ListViewItem() {ListViewItem22, ListViewItem23, ListViewItem24, ListViewItem25, ListViewItem26, ListViewItem27, ListViewItem28, ListViewItem29, ListViewItem30, ListViewItem31, ListViewItem32, ListViewItem33, ListViewItem34})
+        ListView11.Items.AddRange(New ListViewItem() {ListViewItem21, ListViewItem22, ListViewItem23, ListViewItem24, ListViewItem25, ListViewItem26, ListViewItem27, ListViewItem28, ListViewItem29, ListViewItem30, ListViewItem31, ListViewItem32, ListViewItem33})
         ListView11.Location = New Point(0, 0)
         ListView11.Name = "ListView11"
         ListView11.OwnerDraw = True
@@ -6757,4 +6790,5 @@ Partial Class Form1
     Friend WithEvents ColumnHeader19 As ColumnHeader
     Friend WithEvents Label56 As Label
     Friend WithEvents ToolTip1 As ToolTip
+    Friend WithEvents UiButton67 As Sunny.UI.UIButton
 End Class

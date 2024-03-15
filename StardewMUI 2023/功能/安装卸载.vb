@@ -126,7 +126,7 @@ Public Class 安装卸载
                         Dim i As Integer = e.UserState
                         If Form1.ListView2.Items(当前在模组项列表中的索引列表(i)).Text = Path.GetFileName(模组项路径列表(i)) Then
                             Dim x As New 项信息读取类
-                            x.读取项信息(Path.Combine(管理模组2.检查并返回当前所选子库路径(False), Form1.ListView2.SelectedItems(i).SubItems(3).Text, Form1.ListView2.SelectedItems(i).Text), New 公共对象.项数据计算类型结构 With {.安装状态 = True}, 设置.全局设置数据("StardewValleyGamePath"))
+                            x.读取项信息(Path.Combine(管理模组2.检查并返回当前所选子库路径(False), Form1.ListView2.Items(当前在模组项列表中的索引列表(i)).SubItems(3).Text, Form1.ListView2.Items(当前在模组项列表中的索引列表(i)).Text), New 公共对象.项数据计算类型结构 With {.安装状态 = True}, 设置.全局设置数据("StardewValleyGamePath"))
                             If x.错误信息 = "" Then
                                 Form1.ListView2.SelectedItems(i).SubItems(2).Text = 管理模组.安装状态显示词字典(x.安装状态)
                                 管理模组.根据安装状态设置项的颜色标记(x.安装状态, Form1.ListView2.SelectedItems(i))

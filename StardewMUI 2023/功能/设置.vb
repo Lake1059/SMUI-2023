@@ -56,6 +56,8 @@ Public Class 设置
         AddHandler Form1.UiButton60.Click, AddressOf 清理空间.刷新存储信息
         AddHandler Form1.UiButton62.Click, AddressOf 清理空间.清理选中项
         AddHandler Form1.UiButton61.Click, AddressOf 清理空间.删除谷歌浏览器全部缓存
+        AddHandler Form1.UiButton67.Click, AddressOf 清理空间.计算模组数据库总数据大小
+
 
         AddHandler Form1.UiSwitch2.ActiveChanged, AddressOf 控制进程监控功能开关
         AddHandler Form1.UiSwitch3.ActiveChanged, AddressOf 控制性能监控功能开关
