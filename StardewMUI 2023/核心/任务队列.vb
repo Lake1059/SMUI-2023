@@ -11,10 +11,7 @@ Public Class 任务队列
     Public Shared Property 任务列表 As New List(Of 任务列表结构)
     Public Shared Property 当前正在处理的索引 As Integer
 
-
     Public Shared Property 是否关闭config自动保留机制 As Boolean = False
-    Public Shared Property 是否允许标准SMAPI模组文件夹套娃放置 As Boolean = False
-    Public Shared Property 是否允许特殊文件被添加到项的内容中 As Boolean = False
     Public Shared Property 是否取消了操作 As Boolean = False
 
     Public Shared Sub 全部数据初始化()
@@ -24,8 +21,6 @@ Public Class 任务队列
         任务列表.Clear()
         当前正在处理的索引 = Nothing
         是否关闭config自动保留机制 = False
-        是否允许标准SMAPI模组文件夹套娃放置 = False
-        是否允许特殊文件被添加到项的内容中 = False
         是否取消了操作 = False
     End Sub
 
@@ -77,7 +72,6 @@ Public Class 任务队列
             安装规划原文本列表对象.Clear()
             当前正在处理的索引 = 0
             是否关闭config自动保留机制 = False
-            是否允许标准SMAPI模组文件夹套娃放置 = False
             键值对IO操作.读取键值对文件到列表(安装规划原文本列表对象, CombinePath(项路径, "Code2"))
             For i = 0 To 安装规划原文本列表对象.Count - 1
                 Dim value As DE1 = Nothing
