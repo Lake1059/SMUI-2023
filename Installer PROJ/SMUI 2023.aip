@@ -99,10 +99,10 @@
     <ROW Property="AppLogoIconDark" Value="applogodark.png" MultiBuildValue="DefaultBuild:dropbox.ico" Type="1" MsiKey="AppLogoIconDark"/>
     <ROW Property="CTRLS" Value="2"/>
     <ROW Property="Manufacturer" Value="1059 Studio"/>
-    <ROW Property="ProductCode" Value="2052:{741CC7FC-44DE-496F-A0C8-DBC0CDD6F886} " Type="16"/>
+    <ROW Property="ProductCode" Value="2052:{44E135D3-550A-4789-92BA-A1D38B6D50D0} " Type="16"/>
     <ROW Property="ProductLanguage" Value="2052"/>
     <ROW Property="ProductName" Value="SMUI 2023"/>
-    <ROW Property="ProductVersion" Value="6.0.4" Options="32"/>
+    <ROW Property="ProductVersion" Value="6.0.5" Options="32"/>
     <ROW Property="REBOOT" MultiBuildValue="DefaultBuild:ReallySuppress"/>
     <ROW Property="SecureCustomProperties" Value="OLDPRODUCTS;AI_NEWERPRODUCTFOUND;AI_SETUPEXEPATH;SETUPEXEDIR"/>
     <ROW Property="UpgradeCode" Value="{349EDF0D-1EB2-4B52-B72A-0F3AEC12DAC8}"/>
@@ -127,7 +127,7 @@
     <ROW Directory="zhHans_Dir" Directory_Parent="APPDIR" DefaultDir="zh-Hans"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiCompsComponent">
-    <ROW Component="AI_CustomARPName" ComponentId="{6E86047C-E7C4-4E4F-BEAE-BC56FFE49D47}" Directory_="APPDIR" Attributes="260" KeyPath="DisplayName" Options="1"/>
+    <ROW Component="AI_CustomARPName" ComponentId="{466D6B27-F3E8-41C7-9E4A-A673827A8A76}" Directory_="APPDIR" Attributes="260" KeyPath="DisplayName" Options="1"/>
     <ROW Component="AI_ExePath" ComponentId="{CBAF2252-48D8-4146-9D8B-2E99237377E4}" Directory_="APPDIR" Attributes="260" KeyPath="AI_ExePath"/>
     <ROW Component="AI_SHORTCUTSREG" ComponentId="{171825E9-7E85-449B-B61B-FC6681D2DE8B}" Directory_="APPDIR" Attributes="260" KeyPath="AI_SHORTCUTSREG" Options="1"/>
     <ROW Component="APPDIR" ComponentId="{94CEB0EC-B9B4-444F-9BAB-40F57B9BEAC3}" Directory_="APPDIR" Attributes="0"/>
@@ -845,7 +845,7 @@
     <ROW Dialog_="NewDialog" Control="AboutBtn" Type="ImageButton" X="1" Y="382" Width="18" Height="18" Attributes="3" Text="[AboutBtnIcon]" TextStyle="[ManufacturerFont]" Order="600" Options="1" ExtType="ImageButton"/>
     <ROW Dialog_="NewDialog" Control="Text_1" Type="Text" X="15" Y="125" Width="458" Height="40" Attributes="196611" Text="开发者邮箱：vb1059@outlook.com" TextStyle="[ManufacturerFont]" Order="700"/>
     <ROW Dialog_="NewDialog" Control="Text_2" Type="Text" X="15" Y="164" Width="458" Height="20" Attributes="196611" Text="产品发布于：GitHub、Gitee、Bitbucket（备用）" TextStyle="[ManufacturerFont]" Order="800"/>
-    <ROW Dialog_="NewDialog" Control="Text_3" Type="Text" X="15" Y="183" Width="458" Height="20" Attributes="196611" Text="产品宣传于：BiliBili、小红书" TextStyle="[ManufacturerFont]" Order="900"/>
+    <ROW Dialog_="NewDialog" Control="Text_3" Type="Text" X="15" Y="183" Width="458" Height="20" Attributes="196611" Text="产品宣传于：BiliBili、小红书、小黑盒" TextStyle="[ManufacturerFont]" Order="900"/>
     <ROW Dialog_="NewDialog" Control="Text_4" Type="Text" X="15" Y="203" Width="458" Height="20" Attributes="196611" Text="可选付费内容销售于：爱发电、Payhip，除此之外无任何销售渠道，谨防诈骗" TextStyle="[ManufacturerFont]" Order="1000"/>
     <ROW Dialog_="NewDialog_1" Control="Cancel" Type="ImageButton" X="0" Y="0" Width="0" Height="0" Attributes="2" Text="[ButtonImage]" TextStyle="[ImageBtnFont]" Order="100" Options="1" ExtType="ImageButton" ExtData="[ButtonText_Cancel]" ExtDataLocId="-"/>
     <ROW Dialog_="NewDialog_1" Control="Next" Type="ImageButton" X="378" Y="354" Width="95" Height="28" Attributes="3" Text="[ButtonImage]" TextStyle="[ImageBtnFont]" Order="200" Options="1" ExtType="ImageButton" ExtData="[ButtonText_Next]" ExtDataLocId="-"/>
@@ -1362,7 +1362,7 @@
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiInstallUISequenceComponent">
     <ROW Action="AI_PRESERVE_INSTALL_TYPE" Sequence="199"/>
-    <ROW Action="AI_ResolveKnownFolders" Sequence="59"/>
+    <ROW Action="AI_ResolveKnownFolders" Sequence="61"/>
     <ROW Action="AI_DpiContentScale" Sequence="51"/>
     <ROW Action="AI_EnableDebugLog" Sequence="53"/>
     <ROW Action="AI_BACKUP_AI_SETUPEXEPATH" Sequence="99"/>
@@ -1373,8 +1373,8 @@
     <ROW Action="AI_MinBtnBaseC" Condition="DarkTheme" Sequence="56" MsiKey="AI_MinBtnBaseC"/>
     <ROW Action="AI_MinBtnBorderC" Condition="DarkTheme" Sequence="57" MsiKey="AI_MinBtnBorderC"/>
     <ROW Action="AI_MinBtnC" Condition="DarkTheme" Sequence="58" MsiKey="AI_MinBtnC"/>
-    <ROW Action="AI_FrameBaseC" Condition="DarkTheme" Sequence="58" MsiKey="AI_FrameBaseC"/>
-    <ROW Action="AI_FrameBorder1C" Condition="DarkTheme" Sequence="59" MsiKey="AI_FrameBorder1C"/>
+    <ROW Action="AI_FrameBaseC" Condition="DarkTheme" Sequence="59" MsiKey="AI_FrameBaseC"/>
+    <ROW Action="AI_FrameBorder1C" Condition="DarkTheme" Sequence="60" MsiKey="AI_FrameBorder1C"/>
     <ROW Action="AI_FrameBorder2C" Condition="DarkTheme" Sequence="60" MsiKey="AI_FrameBorder2C"/>
     <ROW Action="AI_FrameBorder3C" Condition="DarkTheme" Sequence="61" MsiKey="AI_FrameBorder3C"/>
     <ROW Action="AI_FrameCaption2C" Condition="DarkTheme" Sequence="62" MsiKey="AI_FrameCaption2C"/>
@@ -1461,5 +1461,8 @@
   <COMPONENT cid="caphyon.advinst.msicomp.MsiUpgradeComponent">
     <ROW UpgradeCode="[|UpgradeCode]" VersionMin="0.0.1" VersionMax="255.255.6555.6555" Attributes="257" ActionProperty="OLDPRODUCTS"/>
     <ROW UpgradeCode="[|UpgradeCode]" VersionMin="255.255.6555.6555" Attributes="2" ActionProperty="AI_NEWERPRODUCTFOUND"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.NotesComponent">
+    <ROW Type="2" DisplayString="文件, 文件夹和快捷方式" Note="{\rtf1\ansi\ansicpg936\deff0\deflang1033\deflangfe2052{\fonttbl{\f0\fnil\fcharset0 MS Shell Dlg 2;}}&#13;&#10;\viewkind4\uc1\pard\lang2052\f0\fs17\par&#13;&#10;}&#13;&#10;" ViewId="文件, 文件夹和快捷方式"/>
   </COMPONENT>
 </DOCUMENT>
