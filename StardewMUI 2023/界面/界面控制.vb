@@ -101,8 +101,6 @@ Public Class 界面控制
         AddHandler 哪个依赖项窗口.ListView1.ItemMouseHover, Sub(sender, e) sender.Invalidate(sender.ClientRectangle)
     End Sub
 
-
-
     Public Shared Sub 设置富文本框行高(RichTextBoxObject As Control, LineHeight As Integer)
         Dim fmt As New PARAFORMAT2()
         fmt.cbSize = Marshal.SizeOf(fmt)
@@ -120,6 +118,19 @@ Public Class 界面控制
         Form1.ColumnHeader2.Width = (Form1.ListView2.Width - 程序DPI_垂直滚动条宽度 * 2) * 0.65
         Form1.ColumnHeader3.Width = (Form1.ListView2.Width - 程序DPI_垂直滚动条宽度 * 2) * 0.15
         Form1.ColumnHeader4.Width = (Form1.ListView2.Width - 程序DPI_垂直滚动条宽度 * 2) * 0.2
+
+        Form1.Panel16.Width = Form1.Panel16.Parent.Width * 0.475
+
+        Form1.ColumnHeader5.Width = (Form1.ListView3.Width - 程序DPI_垂直滚动条宽度 * 2) * 0.7
+        Form1.ColumnHeader10.Width = (Form1.ListView3.Width - 程序DPI_垂直滚动条宽度 * 2) * 0.3
+
+        Form1.ColumnHeader6.Width = (Form1.ListView6.Width - 程序DPI_垂直滚动条宽度 * 2) * 0.8
+        Form1.ColumnHeader12.Width = (Form1.ListView6.Width - 程序DPI_垂直滚动条宽度 * 2) * 0.2
+
+        Form1.ColumnHeader7.Width = (Form1.ListView7.Width - 程序DPI_垂直滚动条宽度 * 2) * 0.3
+        Form1.ColumnHeader8.Width = (Form1.ListView7.Width - 程序DPI_垂直滚动条宽度 * 2) * 0.7
+
+
     End Sub
 
     Public Shared Sub 主界面高DPI兼容()

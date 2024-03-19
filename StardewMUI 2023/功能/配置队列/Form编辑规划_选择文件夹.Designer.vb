@@ -31,8 +31,8 @@ Partial Class Form编辑规划_选择文件夹
         ' Label1
         ' 
         Label1.AutoSize = True
-        Label1.Location = New Point(29, 29)
-        Label1.Margin = New Padding(20, 20, 20, 0)
+        Label1.Location = New Point(19, 19)
+        Label1.Margin = New Padding(10)
         Label1.Name = "Label1"
         Label1.Size = New Size(90, 21)
         Label1.TabIndex = 0
@@ -51,20 +51,20 @@ Partial Class Form编辑规划_选择文件夹
         UiListBox1.HoverColor = Color.FromArgb(CByte(56), CByte(56), CByte(56))
         UiListBox1.ItemHeight = 30
         UiListBox1.Items.AddRange(New Object() {"字体样式"})
-        UiListBox1.ItemSelectBackColor = Color.FromArgb(CByte(64), CByte(64), CByte(64))
+        UiListBox1.ItemSelectBackColor = Color.DimGray
         UiListBox1.ItemSelectForeColor = Color.FromArgb(CByte(224), CByte(224), CByte(224))
-        UiListBox1.Location = New Point(29, 70)
-        UiListBox1.Margin = New Padding(20, 20, 20, 0)
+        UiListBox1.Location = New Point(19, 60)
+        UiListBox1.Margin = New Padding(10, 10, 10, 5)
         UiListBox1.MinimumSize = New Size(1, 1)
         UiListBox1.Name = "UiListBox1"
-        UiListBox1.Padding = New Padding(10, 10, 1, 10)
+        UiListBox1.Padding = New Padding(10, 10, 2, 10)
         UiListBox1.RadiusSides = Sunny.UI.UICornerRadiusSides.None
         UiListBox1.RectSides = ToolStripStatusLabelBorderSides.None
         UiListBox1.ScrollBarBackColor = Color.FromArgb(CByte(48), CByte(48), CByte(48))
-        UiListBox1.ScrollBarColor = Color.DimGray
+        UiListBox1.ScrollBarColor = Color.FromArgb(CByte(80), CByte(80), CByte(80))
         UiListBox1.ScrollBarStyleInherited = False
         UiListBox1.ShowText = False
-        UiListBox1.Size = New Size(426, 207)
+        UiListBox1.Size = New Size(446, 232)
         UiListBox1.Style = Sunny.UI.UIStyle.Custom
         UiListBox1.TabIndex = 40
         UiListBox1.Text = "UiListBox3"
@@ -84,8 +84,8 @@ Partial Class Form编辑规划_选择文件夹
         UiButton1.ForeHoverColor = Color.FromArgb(CByte(244), CByte(244), CByte(244))
         UiButton1.ForePressColor = Color.FromArgb(CByte(244), CByte(244), CByte(244))
         UiButton1.ForeSelectedColor = Color.FromArgb(CByte(244), CByte(244), CByte(244))
-        UiButton1.Location = New Point(330, 297)
-        UiButton1.Margin = New Padding(20)
+        UiButton1.Location = New Point(340, 307)
+        UiButton1.Margin = New Padding(10)
         UiButton1.MinimumSize = New Size(1, 1)
         UiButton1.Name = "UiButton1"
         UiButton1.Radius = 10
@@ -118,8 +118,8 @@ Partial Class Form编辑规划_选择文件夹
         UiButton2.ForeHoverColor = Color.FromArgb(CByte(244), CByte(244), CByte(244))
         UiButton2.ForePressColor = Color.FromArgb(CByte(244), CByte(244), CByte(244))
         UiButton2.ForeSelectedColor = Color.FromArgb(CByte(244), CByte(244), CByte(244))
-        UiButton2.Location = New Point(29, 297)
-        UiButton2.Margin = New Padding(20)
+        UiButton2.Location = New Point(19, 307)
+        UiButton2.Margin = New Padding(10)
         UiButton2.MinimumSize = New Size(1, 1)
         UiButton2.Name = "UiButton2"
         UiButton2.Radius = 10
@@ -137,7 +137,7 @@ Partial Class Form编辑规划_选择文件夹
         UiButton2.TipsColor = Color.Gray
         UiButton2.TipsFont = New Font("微软雅黑", 9F)
         ' 
-        ' Form_CD_D_MODS
+        ' Form编辑规划_选择文件夹
         ' 
         AutoScaleDimensions = New SizeF(96F, 96F)
         AutoScaleMode = AutoScaleMode.Dpi
@@ -153,7 +153,7 @@ Partial Class Form编辑规划_选择文件夹
         MaximizeBox = False
         MinimizeBox = False
         MinimumSize = New Size(500, 400)
-        Name = "Form_CD_D_MODS"
+        Name = "Form编辑规划_选择文件夹"
         ShowIcon = False
         ShowInTaskbar = False
         StartPosition = FormStartPosition.Manual
