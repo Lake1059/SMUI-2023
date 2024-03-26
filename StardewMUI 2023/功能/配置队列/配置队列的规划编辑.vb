@@ -26,8 +26,20 @@ Public Class 配置队列的规划编辑
     End Sub
 
     Public Shared Sub 匹配到_覆盖文件夹到Mods()
-
-
+        Dim a As New Form编辑规划_选择文件夹 With {.Text = 配置队列.规划显示名称字典(任务队列操作类型枚举.覆盖文件夹到Mods)}
+        For Each mDir As DirectoryInfo In New DirectoryInfo(配置队列.正在编辑规划的项路径).GetDirectories
+            a.UiListBox1.Items.Add(mDir.Name)
+        Next
+        If Form1.ListView7.SelectedItems(0).SubItems(1).Text <> "" Then
+            If a.UiListBox1.Items.Contains(Form1.ListView7.SelectedItems(0).SubItems(1).Text) Then
+                a.UiListBox1.SelectedIndex = a.UiListBox1.Items.IndexOf(Form1.ListView7.SelectedItems(0).SubItems(1).Text)
+            End If
+        End If
+        显示模式窗体(a, Form1)
+        If 来自_选择文件夹_所选的文件夹 <> "" Then
+            Form1.ListView7.SelectedItems(0).SubItems(1).Text = 来自_选择文件夹_所选的文件夹
+        End If
+        a.Dispose()
     End Sub
 
     Public Shared Sub 匹配到_复制文件夹()

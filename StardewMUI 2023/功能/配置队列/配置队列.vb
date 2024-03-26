@@ -1,9 +1,31 @@
 ﻿Imports System.IO
 Imports SMUI6.公共对象
+Imports Sunny.UI
 
 Public Class 配置队列
 
-
+    Public Shared Property 保存规划代码字典 As New Dictionary(Of 任务队列操作类型枚举, String)
+    Public Shared Sub 初始化保存规划代码字典()
+        保存规划代码字典.Add(任务队列操作类型枚举.复制文件夹到Mods, "CD-D-MODS")
+        保存规划代码字典.Add(任务队列操作类型枚举.覆盖文件夹到Mods, "CD-D-MODS-COVER")
+        保存规划代码字典.Add(任务队列操作类型枚举.复制文件夹, "CD-D-ROOT")
+        保存规划代码字典.Add(任务队列操作类型枚举.覆盖Content, "CD-D-CONTENT")
+        保存规划代码字典.Add(任务队列操作类型枚举.新增文件, "CD-F-ADD")
+        保存规划代码字典.Add(任务队列操作类型枚举.新增文件并验证, "CD-F-ADD-SHA")
+        保存规划代码字典.Add(任务队列操作类型枚举.替换文件, "CD-F-REP")
+        保存规划代码字典.Add(任务队列操作类型枚举.替换文件且无检测, "CD-F-NULL")
+        保存规划代码字典.Add(任务队列操作类型枚举.安装时检查文件夹的存在, "CR-IN-D-CHECK")
+        保存规划代码字典.Add(任务队列操作类型枚举.安装时检查文件的存在, "CR-IN-F-CHECK")
+        保存规划代码字典.Add(任务队列操作类型枚举.安装时检查Mods中已安装模组的版本, "CR-IN-MODS-VER")
+        保存规划代码字典.Add(任务队列操作类型枚举.安装时运行可执行文件, "CR-IN-SHELL")
+        保存规划代码字典.Add(任务队列操作类型枚举.安装时弹窗, "CR-IN-MSGBOX")
+        保存规划代码字典.Add(任务队列操作类型枚举.卸载时检查文件夹的存在, "CR-UN-D-CHECK")
+        保存规划代码字典.Add(任务队列操作类型枚举.卸载时检查文件的存在, "CR-UN-F-CHECK")
+        保存规划代码字典.Add(任务队列操作类型枚举.卸载时取消操作, "CR-UN")
+        保存规划代码字典.Add(任务队列操作类型枚举.卸载时运行可执行文件, "CR-UN-SHELL")
+        保存规划代码字典.Add(任务队列操作类型枚举.卸载时弹窗, "CR-UN-MSGBOX")
+        保存规划代码字典.Add(任务队列操作类型枚举.声明各种核心功能的启停, "CORE-CLASS")
+    End Sub
 
     Public Shared Property 识别规划操作字典 As New Dictionary(Of String, 任务队列操作类型枚举)()
     Public Shared Sub 初始化识别规划操作字典()
@@ -28,11 +50,11 @@ Public Class 配置队列
         识别规划操作字典.Add("CORE-CLASS", 任务队列操作类型枚举.声明各种核心功能的启停)
     End Sub
 
-    Public Shared Property 编辑规划操作字典 As New Dictionary(Of 任务队列操作类型枚举, DE1)()
+    Public Shared Property 编辑规划操作字典 As New Dictionary(Of 任务队列操作类型枚举, DE1)
     Delegate Sub DE1()
     Public Shared Sub 初始化编辑规划操作字典()
         编辑规划操作字典.Add(任务队列操作类型枚举.复制文件夹到Mods, AddressOf 配置队列的规划编辑.匹配到_复制文件夹到Mods)
-
+        编辑规划操作字典.Add(任务队列操作类型枚举.覆盖文件夹到Mods, AddressOf 配置队列的规划编辑.匹配到_覆盖文件夹到Mods)
 
 
 
@@ -40,7 +62,7 @@ Public Class 配置队列
 
     End Sub
 
-    Public Shared Property 规划显示名称字典 As New Dictionary(Of 任务队列操作类型枚举, String)()
+    Public Shared Property 规划显示名称字典 As New Dictionary(Of 任务队列操作类型枚举, String)
     Public Shared Sub 初始化规划显示名称字典()
         规划显示名称字典.Add(任务队列操作类型枚举.复制文件夹到Mods, "安装标准 SMAPI 模组")
         规划显示名称字典.Add(任务队列操作类型枚举.覆盖文件夹到Mods, "覆盖 Mods 中的文件夹")
@@ -64,12 +86,18 @@ Public Class 配置队列
     End Sub
 
     Public Shared Sub 初始化()
+        初始化保存规划代码字典()
         初始化识别规划操作字典()
         初始化编辑规划操作字典()
         初始化规划显示名称字典()
         AddHandler Form1.UiButton19.Click, AddressOf 移除全部
         AddHandler Form1.UiButton16.Click, AddressOf 移除选中
+        AddHandler Form1.UiButton17.Click, AddressOf 保存改动并移除
+        AddHandler Form1.UiButton15.Click, AddressOf 仅保存
         AddHandler Form1.UiButton23.Click, AddressOf 重新扫描项的数据内容
+
+
+
         AddHandler 管理模组的菜单.菜单项_配置项.Click, AddressOf 添加到配置队列
         AddHandler Form1.ListView3.SelectedIndexChanged,
             Sub()
@@ -80,6 +108,7 @@ Public Class 配置队列
                 End If
             End Sub
         AddHandler Form1.ListView7.DoubleClick, AddressOf 编辑选中的规划
+        AddHandler Form1.ListView7.KeyDown, Sub(sender, e) 规划列表键盘按下事件(sender, e)
     End Sub
 
     Public Shared Property 正在编辑规划的项路径 As String
@@ -210,6 +239,83 @@ jx1:
         Form1.ListView3.Items.Clear()
         Form1.UiTabControl1.SelectedTab = Form1.TabPage管理模组
     End Sub
+
+    Public Shared Sub 保存改动并移除()
+        仅保存()
+        重置配置队列()
+        Form1.ListView3.SelectedItems(0).Remove()
+        If Form1.ListView3.Items.Count = 0 Then Form1.UiTabControl1.SelectedTab = Form1.TabPage管理模组
+    End Sub
+
+    Public Shared Sub 仅保存()
+        If Form1.ListView3.SelectedItems.Count <> 1 Then Exit Sub
+        If 正在编辑规划的项路径 = "" Then Exit Sub
+        If Not FileIO.FileSystem.DirectoryExists(正在编辑规划的项路径) Then
+            UIMessageTip.Show($"{Path.GetFileName(正在编辑规划的项路径)} 此项已不存在，无法保存",, 2000)
+        End If
+        If Form1.ListView3.SelectedItems(0).Text <> Form1.UiTextBox6.Text Then
+            FileIO.FileSystem.RenameDirectory(正在编辑规划的项路径, Path.Combine(Path.GetDirectoryName(正在编辑规划的项路径), Form1.UiTextBox6.Text))
+            正在编辑规划的项路径 = Path.Combine(Path.GetDirectoryName(正在编辑规划的项路径), Form1.UiTextBox6.Text)
+        End If
+        If Form1.UiTextBox1.Text = "" Then
+            If FileIO.FileSystem.FileExists(Path.Combine(正在编辑规划的项路径, "Version")) Then
+                FileIO.FileSystem.DeleteFile(Path.Combine(正在编辑规划的项路径, "Version"))
+            End If
+        Else
+            FileIO.FileSystem.WriteAllText(Path.Combine(正在编辑规划的项路径, "Version"), Form1.UiTextBox1.Text, False)
+        End If
+        Dim code As New List(Of KeyValuePair(Of String, String))
+        For i = 0 To Form1.ListView7.Items.Count - 1
+            code.Add(New KeyValuePair(Of String, String)(保存规划代码字典(当前项的规划操作列表(i)), Form1.ListView7.Items(i).SubItems(1).Text))
+        Next
+        键值对IO操作.从列表键值对写入文件(code, Path.Combine(正在编辑规划的项路径, "Code2"))
+        UIMessageTip.Show("已保存",, 1200)
+    End Sub
+
+    Public Shared Sub 规划列表键盘按下事件(sender As Object, e As KeyEventArgs)
+        Select Case e.KeyCode
+            Case Keys.F3
+                上移规划()
+            Case Keys.F4
+                下移规划()
+        End Select
+    End Sub
+
+    Public Shared Sub 上移规划()
+        If Form1.ListView7.SelectedIndices.Count > 0 Then
+            For i = 0 To Form1.ListView7.SelectedIndices.Count - 1
+                Dim index As Integer = Form1.ListView7.SelectedIndices(i)
+                If index <= 0 Then Continue For
+                If Form1.ListView7.SelectedIndices.Contains(index - 1) Then Continue For
+                Dim 变动排序的列表视图项 As ListViewItem = Form1.ListView7.Items(index)
+                Form1.ListView7.Items.RemoveAt(index)
+                Form1.ListView7.Items.Insert(index - 1, 变动排序的列表视图项)
+                Form1.ListView7.Items(index - 1).Focused = True
+                Dim 变动排序的安装规划类型 As 任务队列操作类型枚举 = 当前项的规划操作列表(index)
+                当前项的规划操作列表.RemoveAt(index)
+                当前项的规划操作列表.Insert(index - 1, 变动排序的安装规划类型)
+            Next
+        End If
+    End Sub
+
+    Public Shared Sub 下移规划()
+        If Form1.ListView7.SelectedIndices.Count > 0 Then
+            For i = Form1.ListView7.SelectedIndices.Count - 1 To 0 Step -1
+                Dim index As Integer = Form1.ListView7.SelectedIndices(i)
+                If index >= Form1.ListView7.Items.Count - 1 Then Continue For
+                If Form1.ListView7.SelectedIndices.Contains(index + 1) Then Continue For
+                Dim 变动排序的列表视图项 As ListViewItem = Form1.ListView7.Items(index)
+                Form1.ListView7.Items.RemoveAt(index)
+                Form1.ListView7.Items.Insert(index + 1, 变动排序的列表视图项)
+                Form1.ListView7.Items(index + 1).Focused = True
+                Dim 变动排序的安装规划类型 As 任务队列操作类型枚举 = 当前项的规划操作列表(index)
+                当前项的规划操作列表.RemoveAt(index)
+                当前项的规划操作列表.Insert(index + 1, 变动排序的安装规划类型)
+            Next
+        End If
+    End Sub
+
+
 
 
 End Class

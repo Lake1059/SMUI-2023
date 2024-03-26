@@ -322,22 +322,22 @@ Public Class 设置
         '这届的小白真是日了狗了，连个游戏文件夹都找不到，就TM这技术还玩单机游戏
         Dim AllDrives() As DriveInfo = DriveInfo.GetDrives()
         For Each D1 As DriveInfo In AllDrives
-            If My.Computer.FileSystem.FileExists(Path.Combine(D1.Name, "Program Files\Steam\steamapps\common\Stardew Valley\Stardew Valley.exe")) = True Then
+            If FileIO.FileSystem.FileExists(Path.Combine(D1.Name, "Program Files\Steam\steamapps\common\Stardew Valley\Stardew Valley.exe")) = True Then
                 If Not p1.Contains(Path.Combine(D1.Name, "Program Files\Steam\steamapps\common\Stardew Valley\Stardew Valley.exe")) Then
                     p1.Add(Path.Combine(D1.Name, "Program Files\Steam\steamapps\common\Stardew Valley"))
                 End If
             End If
-            If My.Computer.FileSystem.FileExists(Path.Combine(D1.Name, "Program Files (x86)\Steam\steamapps\common\Stardew Valley\Stardew Valley.exe")) = True Then
+            If FileIO.FileSystem.FileExists(Path.Combine(D1.Name, "Program Files (x86)\Steam\steamapps\common\Stardew Valley\Stardew Valley.exe")) = True Then
                 If Not p1.Contains(Path.Combine(D1.Name, "Program Files (x86)\Steam\steamapps\common\Stardew Valley\Stardew Valley.exe")) Then
                     p1.Add(Path.Combine(D1.Name, "Program Files (x86)\Steam\steamapps\common\Stardew Valley"))
                 End If
             End If
-            If My.Computer.FileSystem.FileExists(Path.Combine(D1.Name, "SteamLibrary\steamapps\common\Stardew Valley\Stardew Valley.exe")) = True Then
+            If FileIO.FileSystem.FileExists(Path.Combine(D1.Name, "SteamLibrary\steamapps\common\Stardew Valley\Stardew Valley.exe")) = True Then
                 If Not p1.Contains(Path.Combine(D1.Name, "SteamLibrary\steamapps\common\Stardew Valley\Stardew Valley.exe")) Then
                     p1.Add(Path.Combine(D1.Name, "SteamLibrary\steamapps\common\Stardew Valley"))
                 End If
             End If
-            If My.Computer.FileSystem.FileExists(Path.Combine(D1.Name, "Program Files\ModifiableWindowsApps\Stardew Valley\Stardew Valley.exe")) = True Then
+            If FileIO.FileSystem.FileExists(Path.Combine(D1.Name, "Program Files\ModifiableWindowsApps\Stardew Valley\Stardew Valley.exe")) = True Then
                 If Not p1.Contains(Path.Combine(D1.Name, "Program Files\ModifiableWindowsApps\Stardew Valley\Stardew Valley.exe")) Then
                     p1.Add(Path.Combine(D1.Name, "Program Files\ModifiableWindowsApps\Stardew Valley"))
                 End If
@@ -353,7 +353,7 @@ R1:
                 UIMessageTip.Show("如要取消选择，直接关闭选择器窗口即可返回上一步",, 5000)
                 Dim str1 As String = ""
                 If DirEx.SelectDirEx("选择你的星露谷游戏文件夹", str1) Then
-                    If My.Computer.FileSystem.FileExists(str1 & "\Stardew Valley.exe") = True Or My.Computer.FileSystem.FileExists(str1 & "\StardewValley.exe") = True Then
+                    If FileIO.FileSystem.FileExists(str1 & "\Stardew Valley.exe") = True Or FileIO.FileSystem.FileExists(str1 & "\StardewValley.exe") = True Then
                         Form1.UiTextBox2.Text = str1
                     Else
                         Dim c As New 多项单选对话框("选择错误", {"返回"}, "此文件夹路径下不包含星露谷的可执行文件：Stardew Valley.exe", 100, 500)
@@ -397,17 +397,17 @@ R1:
                         Case -1
                             Exit Sub
                         Case 0
-                            If My.Computer.FileSystem.DirectoryExists(str1 & "\Default Sub Library") = False Then
-                                My.Computer.FileSystem.CreateDirectory(str1 & "\Default Sub Library")
+                            If FileIO.FileSystem.DirectoryExists(str1 & "\Default Sub Library") = False Then
+                                FileIO.FileSystem.CreateDirectory(str1 & "\Default Sub Library")
                             End If
-                            If My.Computer.FileSystem.DirectoryExists(str1 & "\.Download") = False Then
-                                My.Computer.FileSystem.CreateDirectory(str1 & "\.Download")
+                            If FileIO.FileSystem.DirectoryExists(str1 & "\.Download") = False Then
+                                FileIO.FileSystem.CreateDirectory(str1 & "\.Download")
                             End If
-                            If My.Computer.FileSystem.DirectoryExists(str1 & "\.Decompress") = False Then
-                                My.Computer.FileSystem.CreateDirectory(str1 & "\.Decompress")
+                            If FileIO.FileSystem.DirectoryExists(str1 & "\.Decompress") = False Then
+                                FileIO.FileSystem.CreateDirectory(str1 & "\.Decompress")
                             End If
-                            If My.Computer.FileSystem.FileExists(str1 & "\MANIFEST") = False Then
-                                My.Computer.FileSystem.WriteAllText(str1 & "\MANIFEST", "This is your Mod Repository root path.", False, Encoding.UTF8)
+                            If FileIO.FileSystem.FileExists(str1 & "\MANIFEST") = False Then
+                                FileIO.FileSystem.WriteAllText(str1 & "\MANIFEST", "This is your Mod Repository root path.", False, Encoding.UTF8)
                             End If
                             Form1.UiTextBox3.Text = str1
                         Case 1
@@ -417,8 +417,8 @@ R1:
                     GoTo R1
                 End If
             Case Else
-                If My.Computer.FileSystem.DirectoryExists(a1(b) & "\.DOWNLOAD") = False Then
-                    My.Computer.FileSystem.CreateDirectory(a1(b) & "\.DOWNLOAD")
+                If FileIO.FileSystem.DirectoryExists(a1(b) & "\.DOWNLOAD") = False Then
+                    FileIO.FileSystem.CreateDirectory(a1(b) & "\.DOWNLOAD")
                 End If
                 Form1.UiTextBox3.Text = a1(b)
         End Select
@@ -434,7 +434,7 @@ R1:
 
     Public Shared Sub 选择VSC路径()
         Dim a As New OpenFileDialog With {.Filter = "Code.exe|Code.exe"}
-        If My.Computer.FileSystem.DirectoryExists($"C:\Users\{Environment.UserName}\AppData\Local\Programs\Microsoft VS Code") = True Then
+        If FileIO.FileSystem.DirectoryExists($"C:\Users\{Environment.UserName}\AppData\Local\Programs\Microsoft VS Code") = True Then
             a.InitialDirectory = $"C:\Users\{Environment.UserName}\AppData\Local\Programs\Microsoft VS Code"
         End If
         a.ShowDialog(Form1)
@@ -444,7 +444,7 @@ R1:
 
     Public Shared Sub 选择VS路径()
         Dim a As New OpenFileDialog With {.Filter = "devenv.exe|devenv.exe"}
-        If My.Computer.FileSystem.DirectoryExists("C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE") = True Then
+        If FileIO.FileSystem.DirectoryExists("C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE") = True Then
             a.InitialDirectory = "C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE"
         End If
         a.ShowDialog(Form1)
@@ -453,9 +453,7 @@ R1:
     End Sub
 
     Public Shared Sub 检测NEXUS密钥是否可用()
-        Dim a As New NEXUS.GetUserInfo With {
-        .ST_ApiKey = Form1.UiTextBox9.Text
-    }
+        Dim a As New NEXUS.GetUserInfo With {.ST_ApiKey = Form1.UiTextBox9.Text}
         Dim x As String = a.StartGet()
         If x <> "" Then
             'Form1.Label7.Text = 获取动态多语言文本("data/DynamicText/LogInFailed")
@@ -499,7 +497,6 @@ R1:
 
     Public Shared Sub 控制进程监控功能开关()
         If Form1.UiSwitch2.Active Then
-
             状态信息.SMAPI运行态定时器.Enabled = True
         Else
             状态信息.SMAPI运行态定时器.Enabled = False

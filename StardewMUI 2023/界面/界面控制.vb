@@ -1,16 +1,16 @@
-﻿Imports System.Runtime.InteropServices
+﻿Imports System.Reflection
+Imports System.Runtime.InteropServices
 Imports CefSharp.WinForms
 Imports Microsoft.Web.WebView2.WinForms
 Imports Sunny.UI
 
 Public Class 界面控制
-    Public Shared Property A As Graphics = Form1.CreateGraphics
-    Public Shared Property X轴DPI比率 As Single = A.DpiX / 96
-    Public Shared Property Y轴DPI比率 As Single = A.DpiY / 96
+    Public Shared Property DPI As Single = 1
+    Public Shared Property X轴DPI比率 As Single = 1
+    Public Shared Property Y轴DPI比率 As Single = 1
     Public Shared Property 程序DPI_垂直滚动条宽度 As Integer = GetScrollBarWidth()
     Public Shared Property CEF浏览器控件 As ChromiumWebBrowser
     Public Shared Property WebView2浏览器控件 As WebView2
-
 
     Public Shared Sub 初始化界面()
         If 设置.全局设置数据("UseWhichBrowser") = "Edge" Then
@@ -77,15 +77,18 @@ Public Class 界面控制
 
 
 
-
         多项单选对话框.GlobalDpixRatio = X轴DPI比率
         Form1.ImageList1.ImageSize = New Size(1, Form1.ImageList1.ImageSize.Height * Y轴DPI比率)
 
-        主界面高DPI兼容()
         管理模组的菜单.添加菜单的触发()
         新闻列表.绑定新闻列表操作()
 
         AddHandler Form1.UiRichTextBox4.LinkClicked, AddressOf 许可协议签署执行
+        主界面高DPI兼容()
+
+
+
+
     End Sub
 
     Public Shared Sub 初始化依赖项窗口()
@@ -130,41 +133,55 @@ Public Class 界面控制
         Form1.ColumnHeader7.Width = (Form1.ListView7.Width - 程序DPI_垂直滚动条宽度 * 2) * 0.3
         Form1.ColumnHeader8.Width = (Form1.ListView7.Width - 程序DPI_垂直滚动条宽度 * 2) * 0.7
 
+        Form1.UiButton45.Height = Form1.UiTabControl1.ItemSize.Height : Form1.UiButton45.Width = Form1.UiTabControl1.Width - Form1.UiTabControl1.ItemSize.Width * 7
+        Form1.UiButton45.Left = Form1.UiTabControl1.Width - Form1.UiButton45.Width : Form1.UiButton45.Top = 0
 
     End Sub
 
     Public Shared Sub 主界面高DPI兼容()
-        If X轴DPI比率 = 1 And Y轴DPI比率 = 1 Then Exit Sub
-        DebugPrint("X DPI：" & A.DpiX & " - " & X轴DPI比率 * 100 & "%" & "   Y DPI：" & A.DpiY & " - " & Y轴DPI比率 * 100 & "%", Form1.ForeColor)
-        Form1.MinimumSize = New Size(1280 * X轴DPI比率, 720 * Y轴DPI比率)
+        DebugPrint("DPI：" & DPI & " - " & DPI * 100 & "%", Form1.ForeColor)
+        Form1.MinimumSize = New Size(1280 * DPI, 789 * DPI)
         Form1.Size = Form1.MinimumSize
+        DebugPrint(Form1.Size.ToString, Form1.ForeColor)
 
-        Form1.UiTabControl1.ItemSize = New Size((Form1.UiTabControl1.ItemSize.Width - 1) * X轴DPI比率, (Form1.UiTabControl1.ItemSize.Height - 1) * Y轴DPI比率)
+        Form1.UiTabControl1.ItemSize = New Size(151 * DPI, 50 * DPI)
 
-        Form1.UiButton45.Height = Form1.UiTabControl1.ItemSize.Height : Form1.UiButton45.Width -= Form1.UiTabControl1.TabCount * 0.5
-        Form1.UiButton45.Left = Form1.UiTabControl1.Width - Form1.UiButton45.Width
-        Form1.UiTabControlMenu1.ItemSize = New Size(Form1.UiTabControl1.ItemSize.Width - 1, (Form1.UiTabControlMenu1.ItemSize.Height - 1) * Y轴DPI比率)
-        Form1.UiTabControlMenu2.ItemSize = New Size(Form1.UiTabControlMenu2.ItemSize.Width - 1 * X轴DPI比率 - X轴DPI比率, (Form1.UiTabControlMenu2.ItemSize.Height - 1) * Y轴DPI比率)
-        Form1.UiTabControlMenu3.ItemSize = New Size(Form1.UiTabControlMenu3.ItemSize.Width - 1 * X轴DPI比率, (Form1.UiTabControlMenu3.ItemSize.Height - 1) * Y轴DPI比率)
-        Form1.UiTabControlMenu4.ItemSize = New Size(Form1.UiTabControlMenu4.ItemSize.Width - 1 * X轴DPI比率, (Form1.UiTabControlMenu4.ItemSize.Height - 1) * Y轴DPI比率)
+        Form1.UiTabControlMenu1.ItemSize = New Size(150 * DPI, 40 * DPI)
+        Form1.UiTabControlMenu2.ItemSize = New Size(200 * DPI, 40 * DPI)
+        Form1.UiTabControlMenu3.ItemSize = New Size(300 * DPI, 50 * DPI)
+        Form1.UiTabControlMenu4.ItemSize = New Size(200 * DPI, 40 * DPI)
+        Form1.UiTabControl2.ItemSize = New Size(302 * DPI, 40 * DPI)
 
-        Form1.UiTabControl2.ItemSize = New Size((Form1.UiTabControl2.ItemSize.Width - 1) * X轴DPI比率, (Form1.UiTabControl2.ItemSize.Height - 1) * Y轴DPI比率)
+        Form1.UiListBox1.Left = 23 * DPI : Form1.UiListBox1.Top = 61 * DPI : Form1.UiListBox1.Width = 470 * DPI : Form1.UiListBox1.Height = 171 * DPI
+        Form1.UiListBox1.ItemHeight = 30 * DPI
+        Form1.UiListBox1.Padding = New Padding(10 * DPI)
 
-        Form1.UiListBox1.ItemHeight = (Form1.UiListBox1.Height - Form1.UiListBox1.Padding.Top - Form1.UiListBox1.Padding.Bottom) / Form1.UiListBox1.Items.Count
-        Form1.UiListBox2.ItemHeight = Form1.UiListBox1.ItemHeight
-        Form1.UiListBox3.ItemHeight = Form1.UiListBox1.ItemHeight
-        Form1.UiListBox4.ItemHeight = Form1.UiListBox1.ItemHeight
+        Form1.UiListBox2.Left = 23 * DPI : Form1.UiListBox2.Top = 292 * DPI : Form1.UiListBox2.Width = 470 * DPI : Form1.UiListBox2.Height = 387 * DPI
+        Form1.UiListBox2.ItemHeight = 30 * DPI
+        Form1.UiListBox2.Padding = New Padding(10 * DPI)
 
-        Form1.UiComboBox1.ItemHeight = 30 * Y轴DPI比率
-        Form1.UiComboBox2.ItemHeight = 30 * Y轴DPI比率
-        Form1.UiComboBox3.ItemHeight = 30 * Y轴DPI比率
-        Form1.UiComboBox4.ItemHeight = 30 * Y轴DPI比率
-        Form1.UiComboBox5.ItemHeight = 30 * Y轴DPI比率
-        Form1.UiComboBox6.ItemHeight = 30 * Y轴DPI比率
-        Form1.UiComboBox7.ItemHeight = 30 * Y轴DPI比率
+        Form1.UiListBox3.Left = 20 * DPI : Form1.UiListBox3.Top = 570 * DPI : Form1.UiListBox3.Width = 560 * DPI : Form1.UiListBox3.Height = 110 * DPI
+        Form1.UiListBox3.ItemHeight = 30 * DPI
+        Form1.UiListBox3.Padding = New Padding(10 * DPI)
+
+        Form1.UiComboBox1.ItemHeight = 30 * DPI
+        Form1.UiComboBox2.ItemHeight = 30 * DPI
+        Form1.UiComboBox3.ItemHeight = 30 * DPI
+        Form1.UiComboBox4.ItemHeight = 30 * DPI
+        Form1.UiComboBox5.ItemHeight = 30 * DPI
+        Form1.UiComboBox6.ItemHeight = 30 * DPI
+        Form1.UiComboBox7.ItemHeight = 30 * DPI
+
+        Form1.ImageList1.ImageSize = New Size(1, 29 * DPI)
+        管理模组的菜单.调整DPI()
+
+
     End Sub
 
+
+
     Public Shared Sub 许可协议签署执行()
+        If 设置.全局设置数据("AgreementSigned") = "True" Then Exit Sub
         设置.全局设置数据("AgreementSigned") = "True"
         Dim a As New 多项单选对话框("已签署", {"OK"}, "签署已保存到设置，正常退出软件时才会将设置写入文件，现在可以正常使用了。", 100, 500)
         a.ShowDialog(Form1)

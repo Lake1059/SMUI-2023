@@ -6,10 +6,20 @@
 
         ' 在 InitializeComponent() 调用之后添加任何初始化。
         Me.UiListBox1.Items.Clear()
+        Me.UiListBox1.ItemHeight *= 界面控制.DPI
     End Sub
 
 
     Private Sub Form编辑规划_选择文件夹_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        调整界面()
+    End Sub
+
+    Private Sub Form编辑规划_选择文件夹_Shown(sender As Object, e As EventArgs) Handles Me.Shown
+
+    End Sub
+
+    Private Sub Form编辑规划_选择文件夹_ResizeEnd(sender As Object, e As EventArgs) Handles Me.ResizeEnd
+        If Me.WindowState = FormWindowState.Minimized Then Exit Sub
         调整界面()
     End Sub
 
@@ -26,13 +36,9 @@
         UiButton1.PerformClick()
     End Sub
 
-    Private Sub Form编辑规划_选择文件夹_SizeChanged(sender As Object, e As EventArgs) Handles Me.SizeChanged
-        If Me.WindowState = FormWindowState.Minimized Then Exit Sub
-        调整界面()
-        Me.UiListBox1.Refresh()
-    End Sub
-
     Public Sub 调整界面()
+        Me.UiListBox1.Left = 19 * 界面控制.DPI : Me.UiListBox1.Top = 60 * 界面控制.DPI : Me.UiListBox1.Width = 466 * 界面控制.DPI : Me.UiListBox1.Height = 232 * 界面控制.DPI
+
         If Me.UiListBox1.ItemHeight * Me.UiListBox1.Items.Count + Me.UiListBox1.Padding.Top + Me.UiListBox1.Padding.Bottom <= Me.UiListBox1.Height Then
             Me.UiListBox1.Padding = New Padding(10)
         Else

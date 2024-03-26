@@ -4,6 +4,7 @@ Imports System.IO
 Public Class Form1
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         SevenZip.SevenZipBase.SetLibraryPath(Application.StartupPath & "\7zFull64.dll")
+        界面控制.DPI = Me.CreateGraphics().DpiX / 96
         状态信息.判断应用程序启动模式()
         状态信息.初始化性能计数定时器()
         状态信息.初始化SMAPI运行态定时器()
@@ -15,6 +16,7 @@ Public Class Form1
     End Sub
 
     Private Sub Form1_Shown(sender As Object, e As EventArgs) Handles MyBase.Shown
+        If 界面控制.DPI <> 1 Then 界面控制.主界面高DPI兼容()
         界面控制.主界面元素尺寸动态调整()
         If 设置.全局设置数据("AutoCheckUpdate") = "True" Then 检查更新.运行后台服务器检查更新()
         If 设置.全局设置数据("AutoGetNews") = "True" Then 新闻列表.获取新闻()
@@ -51,8 +53,8 @@ Public Class Form1
     End Sub
 
     Private Sub Form1_DpiChanged(sender As Object, e As DpiChangedEventArgs) Handles MyBase.DpiChanged
-        Dim a As New 多项单选对话框("DPI 变化", {"了解"}, "SMUI 6 的高 DPI 支持被设计为仅在启动时计算，当中途更改 DPI 时会导致界面错位以及破碎，此时继续使用可能会导致无法预知的故障，请及时重新启动应用程序。", 150, 500)
-        a.ShowDialog(Me)
+        界面控制.DPI = e.DeviceDpiNew / 96
+        界面控制.主界面高DPI兼容()
     End Sub
 
 End Class
