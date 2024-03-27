@@ -37,7 +37,8 @@
     End Sub
 
     Public Sub 调整界面()
-        Me.UiListBox1.Left = 19 * 界面控制.DPI : Me.UiListBox1.Top = 60 * 界面控制.DPI : Me.UiListBox1.Width = 466 * 界面控制.DPI : Me.UiListBox1.Height = 232 * 界面控制.DPI
+        Me.UiListBox1.Left = 19 * 界面控制.DPI : Me.UiListBox1.Top = 60 * 界面控制.DPI
+        Me.UiListBox1.Width = 466 * 界面控制.DPI : Me.UiListBox1.Height = 232 * 界面控制.DPI
 
         If Me.UiListBox1.ItemHeight * Me.UiListBox1.Items.Count + Me.UiListBox1.Padding.Top + Me.UiListBox1.Padding.Bottom <= Me.UiListBox1.Height Then
             Me.UiListBox1.Padding = New Padding(10)

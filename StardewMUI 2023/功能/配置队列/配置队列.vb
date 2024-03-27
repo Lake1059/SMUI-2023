@@ -107,8 +107,10 @@ Public Class 配置队列
                     读取选中项()
                 End If
             End Sub
+        AddHandler Form1.ListView6.KeyDown, Sub(sender, e) 内容列表键盘按下事件(sender, e)
         AddHandler Form1.ListView7.DoubleClick, AddressOf 编辑选中的规划
         AddHandler Form1.ListView7.KeyDown, Sub(sender, e) 规划列表键盘按下事件(sender, e)
+
     End Sub
 
     Public Shared Property 正在编辑规划的项路径 As String
@@ -270,6 +272,44 @@ jx1:
         Next
         键值对IO操作.从列表键值对写入文件(code, Path.Combine(正在编辑规划的项路径, "Code2"))
         UIMessageTip.Show("已保存",, 1200)
+    End Sub
+
+
+    Public Shared Sub 内容列表键盘按下事件(sender As Object, e As KeyEventArgs)
+        Select Case e.KeyCode
+            Case Keys.F3
+                上移内容()
+            Case Keys.F4
+                下移内容()
+        End Select
+    End Sub
+
+    Public Shared Sub 上移内容()
+        If Form1.ListView6.SelectedIndices.Count > 0 Then
+            For i = 0 To Form1.ListView6.SelectedIndices.Count - 1
+                Dim index As Integer = Form1.ListView6.SelectedIndices(i)
+                If index <= 0 Then Continue For
+                If Form1.ListView6.SelectedIndices.Contains(index - 1) Then Continue For
+                Dim 变动排序的列表视图项 As ListViewItem = Form1.ListView6.Items(index)
+                Form1.ListView6.Items.RemoveAt(index)
+                Form1.ListView6.Items.Insert(index - 1, 变动排序的列表视图项)
+                Form1.ListView6.Items(index - 1).Focused = True
+            Next
+        End If
+    End Sub
+
+    Public Shared Sub 下移内容()
+        If Form1.ListView6.SelectedIndices.Count > 0 Then
+            For i = Form1.ListView6.SelectedIndices.Count - 1 To 0 Step -1
+                Dim index As Integer = Form1.ListView6.SelectedIndices(i)
+                If index >= Form1.ListView6.Items.Count - 1 Then Continue For
+                If Form1.ListView6.SelectedIndices.Contains(index + 1) Then Continue For
+                Dim 变动排序的列表视图项 As ListViewItem = Form1.ListView6.Items(index)
+                Form1.ListView6.Items.RemoveAt(index)
+                Form1.ListView6.Items.Insert(index + 1, 变动排序的列表视图项)
+                Form1.ListView6.Items(index + 1).Focused = True
+            Next
+        End If
     End Sub
 
     Public Shared Sub 规划列表键盘按下事件(sender As Object, e As KeyEventArgs)
