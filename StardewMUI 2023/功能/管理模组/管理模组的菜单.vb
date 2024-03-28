@@ -1,4 +1,6 @@
 ﻿
+Imports Sunny.UI
+
 Public Class 管理模组的菜单
 
     Public Shared Property 分类和子库菜单 As New 暗黑菜单条控件本体 With {.ImageScalingSize = New Size(25 * 界面控制.DPI, 25 * 界面控制.DPI)}
@@ -238,6 +240,20 @@ Public Class 管理模组的菜单
         描述菜单.Items.Add(菜单项_清除所有格式)
     End Sub
 
+    Public Shared Property 预览图菜单 As New 暗黑菜单条控件本体 With {.ImageScalingSize = New Size(25 * 界面控制.DPI, 25 * 界面控制.DPI)}
+    Public Shared Property 菜单项_打开截图文件夹 As New ToolStripMenuItem With {.Text = "预览图文件夹", .Image = My.Resources.文件夹}
+    Public Shared Property 菜单项_复制当前预览图 As New ToolStripMenuItem With {.Text = "复制"}
+    Public Shared Property 菜单项_删除当前预览图 As New ToolStripMenuItem With {.Text = "删除此图", .Image = My.Resources.删除}
+    Public Shared Property 菜单项_删除全部预览图 As New ToolStripMenuItem With {.Text = "删除全部图", .Image = My.Resources.删除}
+
+    Public Shared Sub 添加预览图菜单的所有菜单项()
+        预览图菜单.Items.Add(菜单项_打开截图文件夹)
+        预览图菜单.Items.Add(菜单项_复制当前预览图)
+        预览图菜单.Items.Add(New ToolStripSeparator)
+        预览图菜单.Items.Add(菜单项_删除当前预览图)
+        预览图菜单.Items.Add(菜单项_删除全部预览图)
+    End Sub
+
 
 
 
@@ -248,12 +264,18 @@ Public Class 管理模组的菜单
         添加项右键菜单的所有菜单项()
         添加项筛选菜单的所有菜单项()
         添加描述菜单的所有菜单项()
+        添加预览图菜单的所有菜单项()
         AddHandler Form1.UiButton1.MouseDown, Sub(sender, e) 分类和子库菜单.Show(sender, New Point(sender.Width - 分类和子库菜单.Width, sender.Height))
         AddHandler Form1.UiButton2.MouseDown, Sub(sender, e) 项菜单.Show(sender, New Point(0, sender.Height))
         AddHandler Form1.ListView1.MouseDown, Sub(sender, e) If e.Button = MouseButtons.Right Then 分类右键菜单.Show(sender, e.X, e.Y)
         AddHandler Form1.ListView2.MouseDown, Sub(sender, e) If e.Button = MouseButtons.Right Then 项右键菜单.Show(sender, e.X, e.Y)
         AddHandler Form1.UiButton5.MouseDown, Sub(sender, e) 项筛选菜单.Show(sender, New Point(0, sender.Height))
         AddHandler Form1.UiButton10.MouseDown, Sub(sender, e) 描述菜单.Show(sender, New Point(0, sender.Height))
+        预览图菜单.DropShadowEnabled = False
+        AddHandler Form1.UiButton13.MouseDown, Sub(sender, e) 预览图菜单.Show(sender, New Point(0, sender.Height))
+        AddHandler Form1.UiButton14.MouseDown, Sub(sender, e) 预览图菜单.Show(sender, New Point(sender.Width - 预览图菜单.Width, 0 - 预览图菜单.Height))
+
+
     End Sub
 
     Public Shared Sub 设置字体()
@@ -268,6 +290,7 @@ Public Class 管理模组的菜单
         编辑项功能菜单.Font = New Font(设置.全局设置数据("FontName"), Form1.Font.Size)
         项筛选菜单.Font = New Font(设置.全局设置数据("FontName"), Form1.Font.Size)
         描述菜单.Font = New Font(设置.全局设置数据("FontName"), Form1.Font.Size)
+        预览图菜单.Font = New Font(设置.全局设置数据("FontName"), Form1.Font.Size)
     End Sub
 
     Public Shared Sub 调整DPI()
