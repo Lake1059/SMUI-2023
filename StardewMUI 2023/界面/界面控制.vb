@@ -103,6 +103,12 @@ Public Class 界面控制
         AddHandler 哪个依赖项窗口.ListView1.SelectedIndexChanged, Sub(sender, e) sender.Invalidate(sender.ClientRectangle)
         AddHandler 哪个依赖项窗口.ListView1.ItemMouseHover, Sub(sender, e) sender.Invalidate(sender.ClientRectangle)
     End Sub
+    Public Shared Sub 初始化其他列表视图(哪个列表视图 As ListView)
+        哪个列表视图.DoubleBuffered(True)
+        AddHandler 哪个列表视图.DrawSubItem, Sub(sender, e) 暗黑列表视图自绘制.绘制子项(sender, e, New Dictionary(Of String, Image))
+        AddHandler 哪个列表视图.SelectedIndexChanged, Sub(sender, e) sender.Invalidate(sender.ClientRectangle)
+        AddHandler 哪个列表视图.ItemMouseHover, Sub(sender, e) sender.Invalidate(sender.ClientRectangle)
+    End Sub
 
     Public Shared Sub 设置富文本框行高(RichTextBoxObject As Control, LineHeight As Integer)
         Dim fmt As New PARAFORMAT2()

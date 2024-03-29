@@ -22,10 +22,15 @@ Partial Class Form编辑规划_选择文件夹
     '不要使用代码编辑器修改它。
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        components = New ComponentModel.Container()
         Label1 = New Label()
-        UiListBox1 = New Sunny.UI.UIListBox()
         UiButton1 = New Sunny.UI.UIButton()
         UiButton2 = New Sunny.UI.UIButton()
+        Panel1 = New Panel()
+        ListView1 = New ListView()
+        ColumnHeader1 = New ColumnHeader()
+        ImageList1 = New ImageList(components)
+        Panel1.SuspendLayout()
         SuspendLayout()
         ' 
         ' Label1
@@ -37,37 +42,6 @@ Partial Class Form编辑规划_选择文件夹
         Label1.Size = New Size(90, 21)
         Label1.TabIndex = 0
         Label1.Text = "选择文件夹"
-        ' 
-        ' UiListBox1
-        ' 
-        UiListBox1.Anchor = AnchorStyles.Top Or AnchorStyles.Bottom Or AnchorStyles.Left Or AnchorStyles.Right
-        UiListBox1.BackColor = Color.FromArgb(CByte(32), CByte(32), CByte(32))
-        UiListBox1.FillColor = Color.FromArgb(CByte(36), CByte(36), CByte(36))
-        UiListBox1.FillColor2 = Color.FromArgb(CByte(36), CByte(36), CByte(36))
-        UiListBox1.FillDisableColor = Color.FromArgb(CByte(32), CByte(32), CByte(32))
-        UiListBox1.Font = New Font("微软雅黑", 9.75F)
-        UiListBox1.ForeColor = Color.FromArgb(CByte(224), CByte(224), CByte(224))
-        UiListBox1.ForeDisableColor = Color.FromArgb(CByte(224), CByte(224), CByte(224))
-        UiListBox1.HoverColor = Color.FromArgb(CByte(56), CByte(56), CByte(56))
-        UiListBox1.ItemHeight = 30
-        UiListBox1.Items.AddRange(New Object() {"字体样式"})
-        UiListBox1.ItemSelectBackColor = Color.DimGray
-        UiListBox1.ItemSelectForeColor = Color.FromArgb(CByte(224), CByte(224), CByte(224))
-        UiListBox1.Location = New Point(19, 60)
-        UiListBox1.Margin = New Padding(10, 10, 10, 5)
-        UiListBox1.MinimumSize = New Size(1, 1)
-        UiListBox1.Name = "UiListBox1"
-        UiListBox1.Padding = New Padding(10, 10, 2, 10)
-        UiListBox1.RadiusSides = Sunny.UI.UICornerRadiusSides.None
-        UiListBox1.RectSides = ToolStripStatusLabelBorderSides.None
-        UiListBox1.ScrollBarBackColor = Color.FromArgb(CByte(48), CByte(48), CByte(48))
-        UiListBox1.ScrollBarColor = Color.FromArgb(CByte(80), CByte(80), CByte(80))
-        UiListBox1.ScrollBarStyleInherited = False
-        UiListBox1.ShowText = False
-        UiListBox1.Size = New Size(446, 232)
-        UiListBox1.Style = Sunny.UI.UIStyle.Custom
-        UiListBox1.TabIndex = 40
-        UiListBox1.Text = "UiListBox3"
         ' 
         ' UiButton1
         ' 
@@ -137,6 +111,45 @@ Partial Class Form编辑规划_选择文件夹
         UiButton2.TipsColor = Color.Gray
         UiButton2.TipsFont = New Font("微软雅黑", 9F)
         ' 
+        ' Panel1
+        ' 
+        Panel1.Anchor = AnchorStyles.Top Or AnchorStyles.Bottom Or AnchorStyles.Left Or AnchorStyles.Right
+        Panel1.BackColor = Color.FromArgb(CByte(32), CByte(32), CByte(32))
+        Panel1.Controls.Add(ListView1)
+        Panel1.Location = New Point(19, 60)
+        Panel1.Margin = New Padding(10, 10, 10, 5)
+        Panel1.Name = "Panel1"
+        Panel1.Padding = New Padding(10)
+        Panel1.Size = New Size(446, 232)
+        Panel1.TabIndex = 45
+        ' 
+        ' ListView1
+        ' 
+        ListView1.BackColor = Color.FromArgb(CByte(32), CByte(32), CByte(32))
+        ListView1.BorderStyle = BorderStyle.None
+        ListView1.Columns.AddRange(New ColumnHeader() {ColumnHeader1})
+        ListView1.Dock = DockStyle.Left
+        ListView1.Font = New Font("微软雅黑", 9.75F, FontStyle.Regular, GraphicsUnit.Point, CByte(134))
+        ListView1.ForeColor = Color.FromArgb(CByte(224), CByte(224), CByte(224))
+        ListView1.FullRowSelect = True
+        ListView1.HeaderStyle = ColumnHeaderStyle.None
+        ListView1.Location = New Point(10, 10)
+        ListView1.MultiSelect = False
+        ListView1.Name = "ListView1"
+        ListView1.OwnerDraw = True
+        ListView1.ShowItemToolTips = True
+        ListView1.Size = New Size(368, 212)
+        ListView1.StateImageList = ImageList1
+        ListView1.TabIndex = 1
+        ListView1.UseCompatibleStateImageBehavior = False
+        ListView1.View = View.Details
+        ' 
+        ' ImageList1
+        ' 
+        ImageList1.ColorDepth = ColorDepth.Depth32Bit
+        ImageList1.ImageSize = New Size(1, 29)
+        ImageList1.TransparentColor = Color.Transparent
+        ' 
         ' Form编辑规划_选择文件夹
         ' 
         AutoScaleDimensions = New SizeF(96F, 96F)
@@ -144,9 +157,9 @@ Partial Class Form编辑规划_选择文件夹
         BackColor = Color.FromArgb(CByte(24), CByte(24), CByte(24))
         CancelButton = UiButton2
         ClientSize = New Size(484, 361)
+        Controls.Add(Panel1)
         Controls.Add(UiButton2)
         Controls.Add(UiButton1)
-        Controls.Add(UiListBox1)
         Controls.Add(Label1)
         Font = New Font("微软雅黑", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(134))
         ForeColor = Color.FromArgb(CByte(224), CByte(224), CByte(224))
@@ -158,12 +171,16 @@ Partial Class Form编辑规划_选择文件夹
         ShowInTaskbar = False
         StartPosition = FormStartPosition.Manual
         Text = "编辑规划"
+        Panel1.ResumeLayout(False)
         ResumeLayout(False)
         PerformLayout()
     End Sub
 
     Friend WithEvents Label1 As Label
-    Friend WithEvents UiListBox1 As Sunny.UI.UIListBox
     Friend WithEvents UiButton1 As Sunny.UI.UIButton
     Friend WithEvents UiButton2 As Sunny.UI.UIButton
+    Friend WithEvents Panel1 As Panel
+    Friend WithEvents ListView1 As ListView
+    Friend WithEvents ColumnHeader1 As ColumnHeader
+    Friend WithEvents ImageList1 As ImageList
 End Class
