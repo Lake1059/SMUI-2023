@@ -121,6 +121,9 @@
   <data name="7zip" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\7zip.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="BetterFolderBrowser" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\BetterFolderBrowser.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="CEF" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\CEF.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>

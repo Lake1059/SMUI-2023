@@ -17,11 +17,12 @@
         关于选项卡列表视图所使用的图片字典(Form1.ListView11.Items(5).Text) = My.Resources.WebView2
         关于选项卡列表视图所使用的图片字典(Form1.ListView11.Items(6).Text) = My.Resources.CEF
         关于选项卡列表视图所使用的图片字典(Form1.ListView11.Items(7).Text) = My.Resources.Jsonnet
-        关于选项卡列表视图所使用的图片字典(Form1.ListView11.Items(8).Text) = My.Resources._7zip
+        关于选项卡列表视图所使用的图片字典(Form1.ListView11.Items(8).Text) = My.Resources.BetterFolderBrowser
         关于选项卡列表视图所使用的图片字典(Form1.ListView11.Items(9).Text) = My.Resources._7zip
         关于选项卡列表视图所使用的图片字典(Form1.ListView11.Items(10).Text) = My.Resources._7zip
-        关于选项卡列表视图所使用的图片字典(Form1.ListView11.Items(11).Text) = My.Resources.default_package_icon1
+        关于选项卡列表视图所使用的图片字典(Form1.ListView11.Items(11).Text) = My.Resources._7zip
         关于选项卡列表视图所使用的图片字典(Form1.ListView11.Items(12).Text) = My.Resources.default_package_icon1
+        关于选项卡列表视图所使用的图片字典(Form1.ListView11.Items(13).Text) = My.Resources.default_package_icon1
     End Sub
 
 

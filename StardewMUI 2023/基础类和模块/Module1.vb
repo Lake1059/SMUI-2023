@@ -56,7 +56,7 @@ Module Module1
         Form1.UiRichTextBox2.Select(Form1.UiRichTextBox2.TextLength, 0)
         Form1.UiRichTextBox2.ScrollToCaret()
         If 是否需要转到调试选项卡 = True Then
-            Form1.UiTabControl2.SelectedTab = Form1.TabPage调试输出
+            Form1.UiTabControl1.SelectedTab = Form1.TabPage调试输出
         End If
     End Sub
 

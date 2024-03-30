@@ -32,8 +32,11 @@ Public Class 管理模组
                 End If
             End Sub
 
+        AddHandler 管理模组的菜单.菜单项_打开分类的文件夹.Click, AddressOf 打开分类文件夹
+
         AddHandler 管理模组的菜单.菜单项_安装.Click, Sub(sender, e) 安装卸载.执行操作(安装卸载.操作类型.安装)
         AddHandler 管理模组的菜单.菜单项_卸载.Click, Sub(sender, e) 安装卸载.执行操作(安装卸载.操作类型.卸载)
+        AddHandler 管理模组的菜单.菜单项_打开项的文件夹.Click, AddressOf 打开模组项文件夹
 
 
         AddHandler 管理模组的菜单.菜单项_更多分类操作_转换安装命令到安装规划.Click, AddressOf 管理模组3.更新选中分类_从安装命令到安装规划
@@ -700,6 +703,16 @@ Public Class 管理模组
         Form1.ToolTip1.SetToolTip(Form1.PictureBox1, 当前正在显示的预览图索引 + 1 & "/" & 当前项信息_预览图文件表.Count)
     End Sub
 
+    Public Shared Sub 打开分类文件夹()
+        If Form1.ListView1.SelectedItems.Count = 0 Then
+            Process.Start(Path.Combine(管理模组2.检查并返回当前所选子库路径(False), Form1.ListView1.SelectedItems(0).Text))
+        End If
+    End Sub
 
+    Public Shared Sub 打开模组项文件夹()
+        If Form1.ListView2.SelectedItems.Count = 0 Then
+            Process.Start(Path.Combine(管理模组2.检查并返回当前所选子库路径(False), Form1.ListView2.SelectedItems(0).SubItems(3).Text, Form1.ListView2.SelectedItems(0).Text))
+        End If
+    End Sub
 
 End Class

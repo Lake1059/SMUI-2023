@@ -1,8 +1,11 @@
 ﻿Public Class Form编辑规划_选择文件夹
 
+    Dim MyDPI As Integer = Me.CreateGraphics.DpiX / 96
+
     Private Sub Form编辑规划_选择文件夹_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         界面控制.初始化其他列表视图(Me.ListView1)
         调整界面()
+        If MyDPI <> 1 Then DPI兼容调整()
     End Sub
 
     Private Sub Form编辑规划_选择文件夹_Shown(sender As Object, e As EventArgs) Handles Me.Shown
@@ -31,5 +34,16 @@
 
     Private Sub ListView1_DoubleClick(sender As Object, e As EventArgs) Handles ListView1.DoubleClick
         UiButton1.PerformClick()
+    End Sub
+
+    Private Sub Form编辑规划_选择文件夹_DpiChanged(sender As Object, e As DpiChangedEventArgs) Handles Me.DpiChanged
+        MyDPI = e.DeviceDpiNew / 96
+        DPI兼容调整()
+    End Sub
+
+    Public Sub DPI兼容调整()
+        Me.MinimumSize = New Size(500 * MyDPI, 400 * MyDPI)
+        Me.Size = Me.MinimumSize
+        Me.ImageList1.ImageSize = New Size(1, 29 * MyDPI)
     End Sub
 End Class

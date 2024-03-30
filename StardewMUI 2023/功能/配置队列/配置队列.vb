@@ -55,9 +55,12 @@ Public Class 配置队列
     Public Shared Sub 初始化编辑规划操作字典()
         编辑规划操作字典.Add(任务队列操作类型枚举.复制文件夹到Mods, AddressOf 配置队列的规划编辑.匹配到_复制文件夹到Mods)
         编辑规划操作字典.Add(任务队列操作类型枚举.覆盖文件夹到Mods, AddressOf 配置队列的规划编辑.匹配到_覆盖文件夹到Mods)
-
-
-
+        编辑规划操作字典.Add(任务队列操作类型枚举.复制文件夹, AddressOf 配置队列的规划编辑.匹配到_复制文件夹)
+        编辑规划操作字典.Add(任务队列操作类型枚举.覆盖Content, AddressOf 配置队列的规划编辑.匹配到_覆盖Content)
+        编辑规划操作字典.Add(任务队列操作类型枚举.新增文件, AddressOf 配置队列的规划编辑.匹配到_新增文件)
+        编辑规划操作字典.Add(任务队列操作类型枚举.新增文件并验证, AddressOf 配置队列的规划编辑.匹配到_新增文件并验证)
+        编辑规划操作字典.Add(任务队列操作类型枚举.替换文件, AddressOf 配置队列的规划编辑.匹配到_替换文件)
+        编辑规划操作字典.Add(任务队列操作类型枚举.替换文件且无检测, AddressOf 配置队列的规划编辑.匹配到_替换文件且无检测)
 
 
     End Sub
@@ -66,7 +69,7 @@ Public Class 配置队列
     Public Shared Sub 初始化规划显示名称字典()
         规划显示名称字典.Add(任务队列操作类型枚举.复制文件夹到Mods, "安装标准 SMAPI 模组")
         规划显示名称字典.Add(任务队列操作类型枚举.覆盖文件夹到Mods, "覆盖 Mods 中的文件夹")
-        规划显示名称字典.Add(任务队列操作类型枚举.复制文件夹, "复制文件夹到根位置")
+        规划显示名称字典.Add(任务队列操作类型枚举.复制文件夹, "复制文件夹")
         规划显示名称字典.Add(任务队列操作类型枚举.覆盖Content, "覆盖 Content 文件夹")
         规划显示名称字典.Add(任务队列操作类型枚举.新增文件, "新增文件")
         规划显示名称字典.Add(任务队列操作类型枚举.新增文件并验证, "新增文件并验证")
@@ -95,8 +98,9 @@ Public Class 配置队列
         AddHandler Form1.UiButton17.Click, AddressOf 保存改动并移除
         AddHandler Form1.UiButton15.Click, AddressOf 仅保存
         AddHandler Form1.UiButton23.Click, AddressOf 重新扫描项的数据内容
-
-
+        AddHandler Form1.UiButton18.Click, AddressOf 添加文件
+        AddHandler Form1.UiButton21.Click, AddressOf 添加文件夹
+        AddHandler Form1.UiButton24.Click, AddressOf 自动完成
 
         AddHandler 管理模组的菜单.菜单项_配置项.Click, AddressOf 添加到配置队列
         AddHandler Form1.ListView3.SelectedIndexChanged,
@@ -108,6 +112,8 @@ Public Class 配置队列
                 End If
             End Sub
         AddHandler Form1.ListView6.KeyDown, Sub(sender, e) 内容列表键盘按下事件(sender, e)
+        AddHandler Form1.ListView6.DragEnter, Sub(sender, e) 内容列表视图DragEnter(sender, e)
+        AddHandler Form1.ListView6.DragDrop, Sub(sender, e) 内容列表视图DragDrop(sender, e)
         AddHandler Form1.ListView7.DoubleClick, AddressOf 编辑选中的规划
         AddHandler Form1.ListView7.KeyDown, Sub(sender, e) 规划列表键盘按下事件(sender, e)
 
@@ -178,6 +184,7 @@ jx1:
     End Sub
 
     Public Shared Sub 重新扫描项的数据内容()
+        If Form1.ListView3.SelectedItems.Count <> 1 Then Exit Sub
         Form1.ListView6.Items.Clear()
         Dim mDir As System.IO.DirectoryInfo
         Dim mDirInfo As New System.IO.DirectoryInfo(正在编辑规划的项路径)
@@ -312,6 +319,158 @@ jx1:
         End If
     End Sub
 
+    Public Shared Sub 内容列表视图DragEnter(sender As Object, e As DragEventArgs)
+        If Form1.ListView3.SelectedItems.Count <> 1 Then Exit Sub
+        e.Effect = DragDropEffects.Copy
+    End Sub
+
+    Public Shared Sub 内容列表视图DragDrop(sender As Object, e As DragEventArgs)
+        If Form1.ListView3.SelectedItems.Count <> 1 Then Exit Sub
+        If e.Data.GetDataPresent(DataFormats.FileDrop) Then
+            Dim 要复制的文件和文件夹列表 As String() = e.Data.GetData(DataFormats.FileDrop)
+            For i = 0 To 要复制的文件和文件夹列表.Length - 1
+                Dim a As String = 要复制的文件和文件夹列表(i)
+                If Directory.Exists(a) = True Then
+                    FileIO.FileSystem.CopyDirectory(a, Path.Combine(正在编辑规划的项路径, Path.GetFileName(a)), FileIO.UIOption.AllDialogs)
+                Else
+                    FileIO.FileSystem.CopyFile(a, Path.Combine(正在编辑规划的项路径, Path.GetFileName(a)), FileIO.UIOption.AllDialogs)
+                End If
+            Next
+            重新扫描项的数据内容()
+        End If
+    End Sub
+
+    Public Shared Sub 添加文件()
+        If Form1.ListView3.SelectedItems.Count <> 1 Then Exit Sub
+        Dim x As New OpenFileDialog With {.Multiselect = True}
+        x.ShowDialog(Form1)
+        If x.FileNames.Length = 0 Then Exit Sub
+        For i = 0 To x.FileNames.Length - 1
+            Dim a As String = x.FileNames(i)
+            FileIO.FileSystem.CopyFile(a, Path.Combine(正在编辑规划的项路径, Path.GetFileName(a)), FileIO.UIOption.AllDialogs)
+        Next
+        重新扫描项的数据内容()
+    End Sub
+
+    Public Shared Sub 添加文件夹()
+        If Form1.ListView3.SelectedItems.Count <> 1 Then Exit Sub
+        Dim x As New WK.Libraries.BetterFolderBrowserNS.BetterFolderBrowser With {.Multiselect = True}
+        x.ShowDialog(Form1)
+        If x.SelectedPaths.Length = 0 Then Exit Sub
+        For i = 0 To x.SelectedPaths.Length - 1
+            Dim a As String = x.SelectedPaths(i)
+            FileIO.FileSystem.CopyDirectory(a, Path.Combine(正在编辑规划的项路径, Path.GetFileName(a)), FileIO.UIOption.AllDialogs)
+        Next
+        重新扫描项的数据内容()
+    End Sub
+
+
+    Public Shared Sub 重命名内容()
+        If Form1.ListView6.SelectedItems.Count <> 1 Then Exit Sub
+        Select Case Form1.ListView6.SelectedItems(0).SubItems(1).Text
+            Case "文件夹"
+                Dim a As New 输入对话框("", "重命名文件夹", Form1.ListView6.SelectedItems(0).Text)
+                a.TranslateButtonText("确定", "取消")
+返回1:
+                Dim x As String = a.ShowDialog(Form1)
+                If x = "" Then Exit Sub
+                If FileIO.FileSystem.DirectoryExists(Path.Combine(正在编辑规划的项路径, x)) Then
+                    Dim b As New 多项单选对话框("", {"确定"}, "目标文件夹已存在")
+                    b.ShowDialog(Form1)
+                    GoTo 返回1
+                Else
+                    FileIO.FileSystem.RenameDirectory(Path.Combine(正在编辑规划的项路径, Form1.ListView6.SelectedItems(0).Text), x)
+                    Form1.ListView6.SelectedItems(0).Text = x
+                End If
+            Case "文件"
+                Dim a As New 输入对话框("", "重命名文件", Form1.ListView4.SelectedItems(0).Text)
+                a.TranslateButtonText("确定", "取消")
+返回2:
+                Dim x As String = a.ShowDialog(Form1)
+                If x = "" Then Exit Sub
+                If FileIO.FileSystem.FileExists(Path.Combine(正在编辑规划的项路径, x)) Then
+                    Dim b As New 多项单选对话框("", {"确定"}, "目标文件已存在")
+                    b.ShowDialog(Form1)
+                    GoTo 返回2
+                Else
+                    FileIO.FileSystem.RenameFile(Path.Combine(正在编辑规划的项路径, Form1.ListView6.SelectedItems(0).Text), x)
+                    Form1.ListView6.SelectedItems(0).Text = x
+                End If
+        End Select
+
+    End Sub
+
+    Public Shared Sub 删除内容()
+        If Form1.ListView6.SelectedItems.Count = 0 Then Exit Sub
+        Dim i As Integer = 0
+        Do Until i = Form1.ListView6.Items.Count
+            If Form1.ListView6.Items(i).Selected Then
+                Select Case Form1.ListView6.Items(i).SubItems(1).Text
+                    Case "文件夹"
+                        FileIO.FileSystem.DeleteDirectory(Path.Combine(正在编辑规划的项路径, Form1.ListView6.Items(i).Text), FileIO.UIOption.AllDialogs, FileIO.RecycleOption.SendToRecycleBin)
+                        Application.DoEvents()
+                        Form1.ListView6.Items(i).Remove()
+                        i -= 1
+                    Case "文件"
+                        FileIO.FileSystem.DeleteFile(Path.Combine(正在编辑规划的项路径, Form1.ListView6.Items(i).Text), FileIO.UIOption.AllDialogs, FileIO.RecycleOption.SendToRecycleBin)
+                        Application.DoEvents()
+                        Form1.ListView6.Items(i).Remove()
+                        i -= 1
+                End Select
+            End If
+            i += 1
+        Loop
+    End Sub
+
+    Public Shared Sub 提取压缩包()
+        If Form1.ListView6.SelectedItems.Count <> 1 Then Exit Sub
+        If Form1.ListView6.SelectedItems(0).SubItems(1).Text <> "文件" Then Exit Sub
+        Dim 压缩包路径 As String = Path.Combine(正在编辑规划的项路径, Form1.ListView6.SelectedItems(0).Text)
+        Select Case IO.Path.GetExtension(压缩包路径)
+            Case ".7z", ".zip"
+                Dim zip1 As New SevenZip.SevenZipExtractor(压缩包路径)
+                For i As Integer = 0 To zip1.ArchiveFileData.Count - 1
+                    zip1.ExtractFiles(正在编辑规划的项路径 & "\", zip1.ArchiveFileData(i).Index)
+                Next
+                zip1.Dispose()
+        End Select
+        重新扫描项的数据内容()
+    End Sub
+
+    Public Shared Sub 拿出内容()
+        If Form1.ListView6.SelectedItems.Count <> 1 Then Exit Sub
+        If Form1.ListView6.SelectedItems(0).SubItems(1).Text <> "文件夹" Then Exit Sub
+        Dim 文件夹路径 As String = Path.Combine(正在编辑规划的项路径, Form1.ListView6.SelectedItems(0).Text)
+        Dim mFileInfo As System.IO.FileInfo
+        Dim mDir As System.IO.DirectoryInfo
+        Dim mDirInfo As New System.IO.DirectoryInfo(文件夹路径)
+        For Each mDir In mDirInfo.GetDirectories
+            FileIO.FileSystem.MoveDirectory(mDir.FullName, Path.Combine(正在编辑规划的项路径, mDir.Name), True)
+        Next
+        For Each mFileInfo In mDirInfo.GetFiles("*.*")
+            FileIO.FileSystem.MoveFile(mFileInfo.FullName, Path.Combine(正在编辑规划的项路径, mFileInfo.Name), True)
+        Next
+        重新扫描项的数据内容()
+    End Sub
+
+    Public Shared Sub 内容套层()
+        If Form1.ListView6.SelectedItems.Count <> 1 Then Exit Sub
+        Dim a As New 输入对话框("", "新建文件夹名称")
+        Dim b As String = a.ShowDialog(Form1)
+        If b = "" Then Exit Sub
+        Dim 新文件夹路径 As String = Path.Combine(正在编辑规划的项路径, b)
+        If Not FileIO.FileSystem.DirectoryExists(新文件夹路径) Then FileIO.FileSystem.CreateDirectory(新文件夹路径)
+        For i = 0 To Form1.ListView6.SelectedItems.Count - 1
+            Select Case Form1.ListView6.SelectedItems(i).SubItems(1).Text
+                Case "文件夹"
+                    FileIO.FileSystem.MoveDirectory(Path.Combine(正在编辑规划的项路径, Form1.ListView6.SelectedItems(i).Text), Path.Combine(新文件夹路径, Form1.ListView6.SelectedItems(i).Text), True)
+                Case "文件"
+                    FileIO.FileSystem.MoveFile(Path.Combine(正在编辑规划的项路径, Form1.ListView6.SelectedItems(i).Text), Path.Combine(新文件夹路径, Form1.ListView6.SelectedItems(i).Text), True)
+            End Select
+        Next
+        重新扫描项的数据内容()
+    End Sub
+
     Public Shared Sub 规划列表键盘按下事件(sender As Object, e As KeyEventArgs)
         Select Case e.KeyCode
             Case Keys.F3
@@ -354,6 +513,41 @@ jx1:
             Next
         End If
     End Sub
+
+    Public Shared Sub 自动完成()
+        If Form1.ListView3.SelectedItems.Count <> 1 Then Exit Sub
+        If Form1.ListView7.Items.Count <> 0 Then
+            Dim msg1 As New 多项单选对话框("", {"放弃已有规划，继续执行自动规划", "万万不可"}, "自动规划功能需要清除现有规划数据，是否继续？",, 500)
+            If msg1.ShowDialog(Form1) <> 0 Then Exit Sub
+        End If
+        Form1.ListView7.Items.Clear() : 当前项的规划操作列表.Clear()
+        Dim 是否有对象未生成规划 As Boolean = False
+        For i = 0 To Form1.ListView6.Items.Count - 1
+            Select Case Form1.ListView6.Items(i).SubItems(1).Text
+                Case "文件夹"
+                    Select Case Form1.ListView6.Items(i).Text
+                        Case "Content"
+                            配置队列的菜单.添加新规划通用调用(任务队列操作类型枚举.覆盖Content, "0")
+                        Case Else
+                            If FileIO.FileSystem.FileExists(Path.Combine(正在编辑规划的项路径, Form1.ListView6.Items(i).Text, "manifest.json")) Then
+                                配置队列的菜单.添加新规划通用调用(任务队列操作类型枚举.复制文件夹到Mods, Form1.ListView6.Items(i).Text)
+                            Else
+                                是否有对象未生成规划 = True
+                            End If
+                    End Select
+                Case Else
+                    是否有对象未生成规划 = True
+            End Select
+        Next
+
+        If 是否有对象未生成规划 Then
+            Dim msg2 As New 多项单选对话框("", {"确定"}, "自动规划已完成，还存在未生成规划的对象，请手动完成那些",, 500)
+            msg2.ShowDialog(Form1)
+        End If
+
+    End Sub
+
+
 
 
 

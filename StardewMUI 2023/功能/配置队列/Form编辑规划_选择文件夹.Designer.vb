@@ -45,7 +45,6 @@ Partial Class Form编辑规划_选择文件夹
         ' 
         ' UiButton1
         ' 
-        UiButton1.Anchor = AnchorStyles.Bottom Or AnchorStyles.Right
         UiButton1.FillColor = Color.FromArgb(CByte(48), CByte(48), CByte(48))
         UiButton1.FillColor2 = Color.FromArgb(CByte(48), CByte(48), CByte(48))
         UiButton1.FillDisableColor = Color.FromArgb(CByte(48), CByte(48), CByte(48))
@@ -79,7 +78,6 @@ Partial Class Form编辑规划_选择文件夹
         ' 
         ' UiButton2
         ' 
-        UiButton2.Anchor = AnchorStyles.Bottom Or AnchorStyles.Left
         UiButton2.FillColor = Color.FromArgb(CByte(48), CByte(48), CByte(48))
         UiButton2.FillColor2 = Color.FromArgb(CByte(48), CByte(48), CByte(48))
         UiButton2.FillDisableColor = Color.FromArgb(CByte(48), CByte(48), CByte(48))
@@ -113,7 +111,6 @@ Partial Class Form编辑规划_选择文件夹
         ' 
         ' Panel1
         ' 
-        Panel1.Anchor = AnchorStyles.Top Or AnchorStyles.Bottom Or AnchorStyles.Left Or AnchorStyles.Right
         Panel1.BackColor = Color.FromArgb(CByte(32), CByte(32), CByte(32))
         Panel1.Controls.Add(ListView1)
         Panel1.Location = New Point(19, 60)

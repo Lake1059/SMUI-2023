@@ -26,19 +26,18 @@ Partial Class Form编辑规划_复制文件夹
         Panel1 = New Panel()
         ListView1 = New ListView()
         ColumnHeader1 = New ColumnHeader()
+        ImageList1 = New ImageList(components)
         UiButton2 = New Sunny.UI.UIButton()
         UiButton1 = New Sunny.UI.UIButton()
         Label1 = New Label()
         Label2 = New Label()
         UiTextBox1 = New Sunny.UI.UITextBox()
         UiButton3 = New Sunny.UI.UIButton()
-        ImageList1 = New ImageList(components)
         Panel1.SuspendLayout()
         SuspendLayout()
         ' 
         ' Panel1
         ' 
-        Panel1.Anchor = AnchorStyles.Top Or AnchorStyles.Bottom Or AnchorStyles.Left Or AnchorStyles.Right
         Panel1.BackColor = Color.FromArgb(CByte(32), CByte(32), CByte(32))
         Panel1.Controls.Add(ListView1)
         Panel1.Location = New Point(19, 60)
@@ -64,13 +63,19 @@ Partial Class Form编辑规划_复制文件夹
         ListView1.OwnerDraw = True
         ListView1.ShowItemToolTips = True
         ListView1.Size = New Size(368, 212)
+        ListView1.StateImageList = ImageList1
         ListView1.TabIndex = 1
         ListView1.UseCompatibleStateImageBehavior = False
         ListView1.View = View.Details
         ' 
+        ' ImageList1
+        ' 
+        ImageList1.ColorDepth = ColorDepth.Depth32Bit
+        ImageList1.ImageSize = New Size(1, 29)
+        ImageList1.TransparentColor = Color.Transparent
+        ' 
         ' UiButton2
         ' 
-        UiButton2.Anchor = AnchorStyles.Bottom Or AnchorStyles.Left
         UiButton2.FillColor = Color.FromArgb(CByte(48), CByte(48), CByte(48))
         UiButton2.FillColor2 = Color.FromArgb(CByte(48), CByte(48), CByte(48))
         UiButton2.FillDisableColor = Color.FromArgb(CByte(48), CByte(48), CByte(48))
@@ -104,7 +109,6 @@ Partial Class Form编辑规划_复制文件夹
         ' 
         ' UiButton1
         ' 
-        UiButton1.Anchor = AnchorStyles.Bottom Or AnchorStyles.Right
         UiButton1.FillColor = Color.FromArgb(CByte(48), CByte(48), CByte(48))
         UiButton1.FillColor2 = Color.FromArgb(CByte(48), CByte(48), CByte(48))
         UiButton1.FillDisableColor = Color.FromArgb(CByte(48), CByte(48), CByte(48))
@@ -190,7 +194,6 @@ Partial Class Form编辑规划_复制文件夹
         ' 
         ' UiButton3
         ' 
-        UiButton3.Anchor = AnchorStyles.Bottom Or AnchorStyles.Right
         UiButton3.FillColor = Color.FromArgb(CByte(48), CByte(48), CByte(48))
         UiButton3.FillColor2 = Color.FromArgb(CByte(48), CByte(48), CByte(48))
         UiButton3.FillDisableColor = Color.FromArgb(CByte(48), CByte(48), CByte(48))
@@ -221,12 +224,6 @@ Partial Class Form编辑规划_复制文件夹
         UiButton3.Text = "插入选中"
         UiButton3.TipsColor = Color.Gray
         UiButton3.TipsFont = New Font("微软雅黑", 9F)
-        ' 
-        ' ImageList1
-        ' 
-        ImageList1.ColorDepth = ColorDepth.Depth32Bit
-        ImageList1.ImageSize = New Size(16, 16)
-        ImageList1.TransparentColor = Color.Transparent
         ' 
         ' Form编辑规划_复制文件夹
         ' 

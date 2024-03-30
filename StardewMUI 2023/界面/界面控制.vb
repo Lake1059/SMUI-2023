@@ -1,5 +1,4 @@
-﻿Imports System.Reflection
-Imports System.Runtime.InteropServices
+﻿Imports System.Runtime.InteropServices
 Imports CefSharp.WinForms
 Imports Microsoft.Web.WebView2.WinForms
 Imports Sunny.UI
@@ -77,10 +76,11 @@ Public Class 界面控制
 
 
 
-        多项单选对话框.GlobalDpixRatio = X轴DPI比率
-        Form1.ImageList1.ImageSize = New Size(1, Form1.ImageList1.ImageSize.Height * Y轴DPI比率)
+        多项单选对话框.GlobalDpixRatio = DPI
+        Form1.ImageList1.ImageSize = New Size(1, Form1.ImageList1.ImageSize.Height * DPI)
 
         管理模组的菜单.添加菜单的触发()
+        配置队列的菜单.添加菜单的触发()
         新闻列表.绑定新闻列表操作()
 
         AddHandler Form1.UiRichTextBox4.LinkClicked, AddressOf 许可协议签署执行
