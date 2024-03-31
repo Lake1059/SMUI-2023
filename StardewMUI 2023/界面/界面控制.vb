@@ -83,6 +83,7 @@ Public Class 界面控制
         配置队列的菜单.添加菜单的触发()
         新闻列表.绑定新闻列表操作()
 
+        AddHandler Form1.UiButton42.Click, Sub() 显示窗体(Form离线教程, Form1)
         AddHandler Form1.UiRichTextBox4.LinkClicked, AddressOf 许可协议签署执行
         主界面高DPI兼容()
 
