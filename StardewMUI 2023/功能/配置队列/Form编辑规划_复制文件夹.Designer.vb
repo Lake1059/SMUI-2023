@@ -31,9 +31,11 @@ Partial Class Form编辑规划_复制文件夹
         UiButton1 = New Sunny.UI.UIButton()
         Label1 = New Label()
         Label2 = New Label()
-        UiTextBox1 = New Sunny.UI.UITextBox()
         UiButton3 = New Sunny.UI.UIButton()
+        Panel2 = New Panel()
+        TextBox1 = New TextBox()
         Panel1.SuspendLayout()
+        Panel2.SuspendLayout()
         SuspendLayout()
         ' 
         ' Panel1
@@ -44,7 +46,7 @@ Partial Class Form编辑规划_复制文件夹
         Panel1.Margin = New Padding(10)
         Panel1.Name = "Panel1"
         Panel1.Padding = New Padding(10)
-        Panel1.Size = New Size(446, 232)
+        Panel1.Size = New Size(446, 241)
         Panel1.TabIndex = 49
         ' 
         ' ListView1
@@ -62,7 +64,7 @@ Partial Class Form编辑规划_复制文件夹
         ListView1.Name = "ListView1"
         ListView1.OwnerDraw = True
         ListView1.ShowItemToolTips = True
-        ListView1.Size = New Size(368, 212)
+        ListView1.Size = New Size(368, 221)
         ListView1.StateImageList = ImageList1
         ListView1.TabIndex = 1
         ListView1.UseCompatibleStateImageBehavior = False
@@ -153,44 +155,12 @@ Partial Class Form编辑规划_复制文件夹
         ' Label2
         ' 
         Label2.AutoSize = True
-        Label2.Location = New Point(19, 312)
+        Label2.Location = New Point(19, 321)
         Label2.Margin = New Padding(10)
         Label2.Name = "Label2"
         Label2.Size = New Size(282, 21)
         Label2.TabIndex = 50
         Label2.Text = "复制到目标位置（从游戏根目录算起）"
-        ' 
-        ' UiTextBox1
-        ' 
-        UiTextBox1.ButtonSymbolOffset = New Point(0, 0)
-        UiTextBox1.FillColor = Color.FromArgb(CByte(48), CByte(48), CByte(48))
-        UiTextBox1.FillColor2 = Color.FromArgb(CByte(48), CByte(48), CByte(48))
-        UiTextBox1.FillDisableColor = Color.FromArgb(CByte(64), CByte(64), CByte(64))
-        UiTextBox1.FillReadOnlyColor = Color.FromArgb(CByte(64), CByte(64), CByte(64))
-        UiTextBox1.Font = New Font("微软雅黑", 9.75F)
-        UiTextBox1.ForeColor = Color.FromArgb(CByte(224), CByte(224), CByte(224))
-        UiTextBox1.ForeDisableColor = Color.Gray
-        UiTextBox1.ForeReadOnlyColor = Color.Gray
-        UiTextBox1.Location = New Point(19, 353)
-        UiTextBox1.Margin = New Padding(10, 10, 10, 5)
-        UiTextBox1.MinimumSize = New Size(1, 16)
-        UiTextBox1.Name = "UiTextBox1"
-        UiTextBox1.Padding = New Padding(5)
-        UiTextBox1.RadiusSides = Sunny.UI.UICornerRadiusSides.None
-        UiTextBox1.RectColor = Color.Gray
-        UiTextBox1.RectDisableColor = Color.Gray
-        UiTextBox1.RectReadOnlyColor = Color.Gray
-        UiTextBox1.RectSides = ToolStripStatusLabelBorderSides.None
-        UiTextBox1.ScrollBarBackColor = Color.FromArgb(CByte(64), CByte(64), CByte(64))
-        UiTextBox1.ScrollBarColor = Color.Gray
-        UiTextBox1.ScrollBarStyleInherited = False
-        UiTextBox1.ShowText = False
-        UiTextBox1.Size = New Size(446, 30)
-        UiTextBox1.Style = Sunny.UI.UIStyle.Custom
-        UiTextBox1.TabIndex = 51
-        UiTextBox1.TabStop = False
-        UiTextBox1.TextAlignment = ContentAlignment.MiddleLeft
-        UiTextBox1.Watermark = ""
         ' 
         ' UiButton3
         ' 
@@ -225,6 +195,26 @@ Partial Class Form编辑规划_复制文件夹
         UiButton3.TipsColor = Color.Gray
         UiButton3.TipsFont = New Font("微软雅黑", 9F)
         ' 
+        ' Panel2
+        ' 
+        Panel2.BackColor = Color.FromArgb(CByte(48), CByte(48), CByte(48))
+        Panel2.Controls.Add(TextBox1)
+        Panel2.Location = New Point(19, 355)
+        Panel2.Name = "Panel2"
+        Panel2.Size = New Size(446, 30)
+        Panel2.TabIndex = 53
+        ' 
+        ' TextBox1
+        ' 
+        TextBox1.BackColor = Color.FromArgb(CByte(48), CByte(48), CByte(48))
+        TextBox1.BorderStyle = BorderStyle.None
+        TextBox1.Dock = DockStyle.Top
+        TextBox1.ForeColor = Color.Silver
+        TextBox1.Location = New Point(0, 0)
+        TextBox1.Name = "TextBox1"
+        TextBox1.Size = New Size(446, 22)
+        TextBox1.TabIndex = 0
+        ' 
         ' Form编辑规划_复制文件夹
         ' 
         AutoScaleDimensions = New SizeF(96F, 96F)
@@ -232,8 +222,8 @@ Partial Class Form编辑规划_复制文件夹
         BackColor = Color.FromArgb(CByte(24), CByte(24), CByte(24))
         CancelButton = UiButton2
         ClientSize = New Size(484, 461)
+        Controls.Add(Panel2)
         Controls.Add(UiButton3)
-        Controls.Add(UiTextBox1)
         Controls.Add(Label2)
         Controls.Add(Panel1)
         Controls.Add(UiButton2)
@@ -250,6 +240,8 @@ Partial Class Form编辑规划_复制文件夹
         StartPosition = FormStartPosition.Manual
         Text = "编辑规划"
         Panel1.ResumeLayout(False)
+        Panel2.ResumeLayout(False)
+        Panel2.PerformLayout()
         ResumeLayout(False)
         PerformLayout()
     End Sub
@@ -261,7 +253,8 @@ Partial Class Form编辑规划_复制文件夹
     Friend WithEvents UiButton1 As Sunny.UI.UIButton
     Friend WithEvents Label1 As Label
     Friend WithEvents Label2 As Label
-    Friend WithEvents UiTextBox1 As Sunny.UI.UITextBox
     Friend WithEvents UiButton3 As Sunny.UI.UIButton
     Friend WithEvents ImageList1 As ImageList
+    Friend WithEvents Panel2 As Panel
+    Friend WithEvents TextBox1 As TextBox
 End Class

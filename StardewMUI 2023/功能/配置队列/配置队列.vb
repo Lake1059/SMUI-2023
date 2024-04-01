@@ -355,7 +355,7 @@ jx1:
     Public Shared Sub 添加文件夹()
         If Form1.ListView3.SelectedItems.Count <> 1 Then Exit Sub
         Dim x As New WK.Libraries.BetterFolderBrowserNS.BetterFolderBrowser With {.Multiselect = True}
-        x.ShowDialog(Form1)
+        If x.ShowDialog() <> DialogResult.OK Then Exit Sub
         If x.SelectedPaths.Length = 0 Then Exit Sub
         For i = 0 To x.SelectedPaths.Length - 1
             Dim a As String = x.SelectedPaths(i)

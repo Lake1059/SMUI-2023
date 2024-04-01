@@ -79,7 +79,7 @@ Public Class 配置队列的规划编辑
                 End If
             Next
         End If
-        a.UiTextBox1.Text = 参数列表(1)
+        a.TextBox1.Text = 参数列表(1)
         显示模式窗体(a, Form1)
         If 来自_复制文件夹_所选的文件夹 <> "" Then
             Form1.ListView7.SelectedItems(0).SubItems(1).Text = $"{来自_复制文件夹_所选的文件夹}|{来自_复制文件夹_目标文件夹相对路径}"
