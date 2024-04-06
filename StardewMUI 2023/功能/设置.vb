@@ -160,11 +160,11 @@ Public Class 设置
 
 
     Public Shared Sub 刷新设置显示()
-        Form1.UiTextBox2.Text = 全局设置数据("StardewValleyGamePath")
-        Form1.UiTextBox3.Text = 全局设置数据("LocalRepositoryPath")
-        Form1.UiTextBox4.Text = 全局设置数据("StardewValleyGameBackupPath")
-        Form1.UiTextBox7.Text = 全局设置数据("VisualStudioCodeEXE")
-        Form1.UiTextBox8.Text = 全局设置数据("VisualStudioEXE")
+        Form1.暗黑文本框1.Text = 全局设置数据("StardewValleyGamePath")
+        Form1.暗黑文本框2.Text = 全局设置数据("LocalRepositoryPath")
+        Form1.暗黑文本框3.Text = 全局设置数据("StardewValleyGameBackupPath")
+        Form1.暗黑文本框4.Text = 全局设置数据("VisualStudioCodeEXE")
+        Form1.暗黑文本框5.Text = 全局设置数据("VisualStudioEXE")
 
         Form1.UiComboBox4.Text = 全局设置数据("DisplayLanguage")
         Form1.UiComboBox1.Text = 全局设置数据("NewsLanguage")
@@ -172,9 +172,9 @@ Public Class 设置
         Form1.UiComboBox3.Text = 全局设置数据("UpdateSever")
         Form1.UiComboBox7.Text = 全局设置数据("AlternativeUpdateSever")
 
-        Form1.UiTextBox9.Text = 全局设置数据("NexusAPI")
-        Form1.UiTextBox11.Text = 全局设置数据("GiteeToken")
-        Form1.UiTextBox10.Text = 全局设置数据("GithubToken")
+        Form1.TextBox1.Text = 全局设置数据("NexusAPI")
+        Form1.暗黑文本框6.Text = 全局设置数据("GiteeToken")
+        Form1.暗黑文本框7.Text = 全局设置数据("GithubToken")
 
         Select Case 全局设置数据("LaunchSelection")
             Case "1"
@@ -184,8 +184,8 @@ Public Class 设置
                 Form1.UiRadioButton1.Checked = False
                 Form1.UiRadioButton2.Checked = True
         End Select
-        Form1.UiTextBox12.Text = 全局设置数据("LaunchParameters")
-        Form1.UiTextBox13.Text = 全局设置数据("CustomLaunchCMD")
+        Form1.暗黑文本框8.Text = 全局设置数据("LaunchParameters")
+        Form1.暗黑文本框9.Text = 全局设置数据("CustomLaunchCMD")
 
         Form1.UiCheckBox1.Checked = 全局设置数据("SaveUserWindowSize")
         Form1.UiCheckBox7.Checked = 全局设置数据("AutoGetNews")
@@ -229,11 +229,11 @@ Public Class 设置
     End Sub
 
     Public Shared Sub 保存路径设置()
-        全局设置数据("StardewValleyGamePath") = Form1.UiTextBox2.Text
-        全局设置数据("LocalRepositoryPath") = Form1.UiTextBox3.Text
-        全局设置数据("StardewValleyGameBackupPath") = Form1.UiTextBox4.Text
-        全局设置数据("VisualStudioCodeEXE") = Form1.UiTextBox7.Text
-        全局设置数据("VisualStudioEXE") = Form1.UiTextBox8.Text
+        全局设置数据("StardewValleyGamePath") = Form1.暗黑文本框1.Text
+        全局设置数据("LocalRepositoryPath") = Form1.暗黑文本框2.Text
+        全局设置数据("StardewValleyGameBackupPath") = Form1.暗黑文本框3.Text
+        全局设置数据("VisualStudioCodeEXE") = Form1.暗黑文本框4.Text
+        全局设置数据("VisualStudioEXE") = Form1.暗黑文本框5.Text
         UIMessageTip.Show("更改已写入内存，正常退出时写入文件",, 2500)
         状态信息.刷新起始页面状态信息()
     End Sub
@@ -248,9 +248,9 @@ Public Class 设置
     End Sub
 
     Public Shared Sub 保存网络API设置()
-        全局设置数据("NexusAPI") = Form1.UiTextBox9.Text
-        全局设置数据("GiteeToken") = Form1.UiTextBox11.Text
-        全局设置数据("GithubToken") = Form1.UiTextBox10.Text
+        全局设置数据("NexusAPI") = Form1.TextBox1.Text
+        全局设置数据("GiteeToken") = Form1.暗黑文本框6.Text
+        全局设置数据("GithubToken") = Form1.暗黑文本框7.Text
         UIMessageTip.Show("更改已写入内存，正常退出时写入文件",, 2500)
     End Sub
 
@@ -354,7 +354,7 @@ R1:
                 Dim str1 As String = ""
                 If DirEx.SelectDirEx("选择你的星露谷游戏文件夹", str1) Then
                     If FileIO.FileSystem.FileExists(str1 & "\Stardew Valley.exe") = True Or FileIO.FileSystem.FileExists(str1 & "\StardewValley.exe") = True Then
-                        Form1.UiTextBox2.Text = str1
+                        Form1.暗黑文本框1.Text = str1
                     Else
                         Dim c As New 多项单选对话框("选择错误", {"返回"}, "此文件夹路径下不包含星露谷的可执行文件：Stardew Valley.exe", 100, 500)
                         c.ShowDialog(Form1)
@@ -364,7 +364,7 @@ R1:
                     GoTo R1
                 End If
             Case Else
-                Form1.UiTextBox2.Text = p1(b)
+                Form1.暗黑文本框1.Text = p1(b)
         End Select
     End Sub
 
@@ -409,7 +409,7 @@ R1:
                             If FileIO.FileSystem.FileExists(str1 & "\MANIFEST") = False Then
                                 FileIO.FileSystem.WriteAllText(str1 & "\MANIFEST", "This is your Mod Repository root path.", False, Encoding.UTF8)
                             End If
-                            Form1.UiTextBox3.Text = str1
+                            Form1.暗黑文本框2.Text = str1
                         Case 1
                             GoTo R1
                     End Select
@@ -417,10 +417,10 @@ R1:
                     GoTo R1
                 End If
             Case Else
-                If FileIO.FileSystem.DirectoryExists(a1(b) & "\.DOWNLOAD") = False Then
-                    FileIO.FileSystem.CreateDirectory(a1(b) & "\.DOWNLOAD")
+                If FileIO.FileSystem.DirectoryExists(a1(b) & "\.Download") = False Then
+                    FileIO.FileSystem.CreateDirectory(a1(b) & "\.Download")
                 End If
-                Form1.UiTextBox3.Text = a1(b)
+                Form1.暗黑文本框2.Text = a1(b)
         End Select
     End Sub
 
@@ -428,7 +428,7 @@ R1:
         UIMessageTip.Show("要实现文件替换的卸载自动还原，需要手动备份对应文件",, 5000)
         Dim str1 As String = ""
         If DirEx.SelectDirEx("选择游戏文件备份路径（如果要使用文件替换类命令，则是必须的，否则程序会删除游戏文件）", str1) Then
-            Form1.UiTextBox4.Text = str1
+            Form1.暗黑文本框3.Text = str1
         End If
     End Sub
 
@@ -439,7 +439,7 @@ R1:
         End If
         a.ShowDialog(Form1)
         If a.FileName = "" Then Exit Sub
-        Form1.UiTextBox7.Text = a.FileName
+        Form1.暗黑文本框4.Text = a.FileName
     End Sub
 
     Public Shared Sub 选择VS路径()
@@ -449,11 +449,11 @@ R1:
         End If
         a.ShowDialog(Form1)
         If a.FileName = "" Then Exit Sub
-        Form1.UiTextBox8.Text = a.FileName
+        Form1.暗黑文本框5.Text = a.FileName
     End Sub
 
     Public Shared Sub 检测NEXUS密钥是否可用()
-        Dim a As New NEXUS.GetUserInfo With {.ST_ApiKey = Form1.UiTextBox9.Text}
+        Dim a As New NEXUS.GetUserInfo With {.ST_ApiKey = Form1.TextBox1.Text}
         Dim x As String = a.StartGet()
         If x <> "" Then
             'Form1.Label7.Text = 获取动态多语言文本("data/DynamicText/LogInFailed")
@@ -474,11 +474,11 @@ R1:
     End Sub
 
     Public Shared Sub 切换密钥密文显示()
-        Select Case Form1.UiTextBox9.PasswordChar
+        Select Case Form1.TextBox1.PasswordChar
             Case "●"
-                Form1.UiTextBox9.PasswordChar = ""
+                Form1.TextBox1.PasswordChar = ""
             Case ""
-                Form1.UiTextBox9.PasswordChar = "●"
+                Form1.TextBox1.PasswordChar = "●"
         End Select
     End Sub
 
