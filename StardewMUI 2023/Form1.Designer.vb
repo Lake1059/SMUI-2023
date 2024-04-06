@@ -23,40 +23,40 @@ Partial Class Form1
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         components = New ComponentModel.Container()
-        Dim ListViewItem1 As ListViewItem = New ListViewItem(New String() {"SMUI 中间型解释代码和二进制本体", "不可清理", ""}, -1, Color.FromArgb(CByte(0), CByte(192), CByte(0)), Color.Empty, Nothing)
-        Dim ListViewItem2 As ListViewItem = New ListViewItem(New String() {"SMUI 所有组件完整容量", "不可清理", ""}, -1, Color.FromArgb(CByte(0), CByte(192), CByte(0)), Color.Empty, Nothing)
-        Dim ListViewItem3 As ListViewItem = New ListViewItem(New String() {"已安装的 DLC 和插件", "不可清理", ""}, -1, Color.FromArgb(CByte(128), CByte(128), CByte(255)), Color.Empty, Nothing)
-        Dim ListViewItem4 As ListViewItem = New ListViewItem(New String() {"检查更新下载的安装包", "可以清理", ""}, -1)
-        Dim ListViewItem5 As ListViewItem = New ListViewItem(New String() {"下载的模组压缩包", "可以清理", ""}, -1)
-        Dim ListViewItem6 As ListViewItem = New ListViewItem(New String() {"临时解压", "可以清理", ""}, -1)
-        Dim ListViewItem7 As ListViewItem = New ListViewItem(New String() {"WebView2 主要缓存", "可以清理", ""}, -1)
-        Dim ListViewItem8 As ListViewItem = New ListViewItem(New String() {"WebView2 Cookies", "可以清理", ""}, -1)
-        Dim ListViewItem9 As ListViewItem = New ListViewItem(New String() {"WebView2 Service Worker", "可以清理", ""}, -1)
-        Dim ListViewItem10 As ListViewItem = New ListViewItem(New String() {"WebView2 其他全部缓存", "可以清理", ""}, -1)
-        Dim ListViewItem11 As ListViewItem = New ListViewItem(New String() {"Chromium 主要缓存", "可以清理", ""}, -1)
-        Dim ListViewItem12 As ListViewItem = New ListViewItem(New String() {"Chromium Cookies", "可以清理", ""}, -1)
-        Dim ListViewItem13 As ListViewItem = New ListViewItem(New String() {"Chromium Service Worker", "可以清理", ""}, -1)
-        Dim ListViewItem14 As ListViewItem = New ListViewItem(New String() {"Chromium 其他缓存", "可以清理", ""}, -1)
-        Dim ListViewItem15 As ListViewItem = New ListViewItem(New String() {"DLC 1 - 自定义输入扩展", "未启用"}, -1)
-        Dim ListViewItem16 As ListViewItem = New ListViewItem(New String() {"DLC 2 - 自定义皮肤加载器", "未启用"}, -1)
-        Dim ListViewItem17 As ListViewItem = New ListViewItem(New String() {"DLC 3 - 新项扩展", "未启用"}, -1)
-        Dim ListViewItem18 As ListViewItem = New ListViewItem(New String() {"DLC 4 - 检查更新扩展", "未启用"}, -1)
-        Dim ListViewItem19 As ListViewItem = New ListViewItem(New String() {"Season Pass 2023 - 基础扩展四件套", "未启用"}, -1, Color.MediumOrchid, Color.Empty, Nothing)
-        Dim ListViewItem20 As ListViewItem = New ListViewItem(New String() {"DLC 5 - 分发扩展", "未启用"}, -1)
-        Dim ListViewItem21 As ListViewItem = New ListViewItem(New String() {"湖边的稻草 / 1059 Studio / Lake1059", "开发者，著作权所有，SMUI 管理模式版权所有"}, -1)
-        Dim ListViewItem22 As ListViewItem = New ListViewItem(New String() {"ChatGPT 3.5 / 4 by OpenAI", "提供了多项关键技术原型和指导"}, -1)
-        Dim ListViewItem23 As ListViewItem = New ListViewItem(New String() {"内置图标来自 IconPark", "© ByteDance Apache-2.0"}, -1)
-        Dim ListViewItem24 As ListViewItem = New ListViewItem(New String() {"SunnyUI 商业许可证：PVIP2023080201", "许可证 GPL-3.0-only | 界面元素主框架"}, -1)
-        Dim ListViewItem25 As ListViewItem = New ListViewItem(New String() {"DarkUI", "许可证 MIT | 源代码定制用于菜单绘制"}, -1)
-        Dim ListViewItem26 As ListViewItem = New ListViewItem(New String() {"Microsoft.Web.WebView2", "微软软件许可证"}, -1)
-        Dim ListViewItem27 As ListViewItem = New ListViewItem(New String() {"Chromium Embedded Framework", "Copyright © The CefSharp Authors. All rights reserved."}, -1)
-        Dim ListViewItem28 As ListViewItem = New ListViewItem(New String() {"Newtonsoft.Json", "许可证 MIT | Json 解析库"}, -1)
-        Dim ListViewItem29 As ListViewItem = New ListViewItem(New String() {"BetterFolderBrowser", "许可证 MIT | 更好的文件夹选择窗口"}, -1)
-        Dim ListViewItem30 As ListViewItem = New ListViewItem(New String() {"SevenZipSharp", "许可证 LGPL-3.0"}, -1)
-        Dim ListViewItem31 As ListViewItem = New ListViewItem(New String() {"来自 7zip 软件的 7zFull64.dll 文件", "原文件名：7z.dll"}, -1)
-        Dim ListViewItem32 As ListViewItem = New ListViewItem(New String() {"来自 7zip 官方的 7za 组件", "7za.dll、7za.exe、7zxa.dll"}, -1)
-        Dim ListViewItem33 As ListViewItem = New ListViewItem(New String() {"libwebp-net", "许可证 MIT"}, -1)
-        Dim ListViewItem34 As ListViewItem = New ListViewItem("来自 Google 的 libwebp.dll 文件")
+        Dim ListViewItem35 As ListViewItem = New ListViewItem(New String() {"SMUI 中间型解释代码和二进制本体", "不可清理", ""}, -1, Color.FromArgb(CByte(0), CByte(192), CByte(0)), Color.Empty, Nothing)
+        Dim ListViewItem36 As ListViewItem = New ListViewItem(New String() {"SMUI 所有组件完整容量", "不可清理", ""}, -1, Color.FromArgb(CByte(0), CByte(192), CByte(0)), Color.Empty, Nothing)
+        Dim ListViewItem37 As ListViewItem = New ListViewItem(New String() {"已安装的 DLC 和插件", "不可清理", ""}, -1, Color.FromArgb(CByte(128), CByte(128), CByte(255)), Color.Empty, Nothing)
+        Dim ListViewItem38 As ListViewItem = New ListViewItem(New String() {"检查更新下载的安装包", "可以清理", ""}, -1)
+        Dim ListViewItem39 As ListViewItem = New ListViewItem(New String() {"下载的模组压缩包", "可以清理", ""}, -1)
+        Dim ListViewItem40 As ListViewItem = New ListViewItem(New String() {"临时解压", "可以清理", ""}, -1)
+        Dim ListViewItem41 As ListViewItem = New ListViewItem(New String() {"WebView2 主要缓存", "可以清理", ""}, -1)
+        Dim ListViewItem42 As ListViewItem = New ListViewItem(New String() {"WebView2 Cookies", "可以清理", ""}, -1)
+        Dim ListViewItem43 As ListViewItem = New ListViewItem(New String() {"WebView2 Service Worker", "可以清理", ""}, -1)
+        Dim ListViewItem44 As ListViewItem = New ListViewItem(New String() {"WebView2 其他全部缓存", "可以清理", ""}, -1)
+        Dim ListViewItem45 As ListViewItem = New ListViewItem(New String() {"Chromium 主要缓存", "可以清理", ""}, -1)
+        Dim ListViewItem46 As ListViewItem = New ListViewItem(New String() {"Chromium Cookies", "可以清理", ""}, -1)
+        Dim ListViewItem47 As ListViewItem = New ListViewItem(New String() {"Chromium Service Worker", "可以清理", ""}, -1)
+        Dim ListViewItem48 As ListViewItem = New ListViewItem(New String() {"Chromium 其他缓存", "可以清理", ""}, -1)
+        Dim ListViewItem1 As ListViewItem = New ListViewItem(New String() {"DLC 1 - 自定义输入扩展", "未启用"}, -1)
+        Dim ListViewItem2 As ListViewItem = New ListViewItem(New String() {"DLC 2 - 自定义皮肤加载器", "未启用"}, -1)
+        Dim ListViewItem3 As ListViewItem = New ListViewItem(New String() {"DLC 3 - 新项扩展", "未启用"}, -1)
+        Dim ListViewItem4 As ListViewItem = New ListViewItem(New String() {"DLC 4 - 检查更新扩展", "未启用"}, -1)
+        Dim ListViewItem5 As ListViewItem = New ListViewItem(New String() {"Season Pass 2023 - 基础扩展四件套", "未启用"}, -1, Color.MediumOrchid, Color.Empty, Nothing)
+        Dim ListViewItem6 As ListViewItem = New ListViewItem(New String() {"DLC 5 - 分发扩展", "未启用"}, -1)
+        Dim ListViewItem7 As ListViewItem = New ListViewItem(New String() {"湖边的稻草 / 1059 Studio / Lake1059", "开发者，著作权所有，SMUI 管理模式版权所有"}, -1)
+        Dim ListViewItem8 As ListViewItem = New ListViewItem(New String() {"ChatGPT 3.5 / 4 by OpenAI", "提供了多项关键技术原型和指导"}, -1)
+        Dim ListViewItem9 As ListViewItem = New ListViewItem(New String() {"内置图标来自 IconPark", "© ByteDance Apache-2.0"}, -1)
+        Dim ListViewItem10 As ListViewItem = New ListViewItem(New String() {"SunnyUI 商业许可证：PVIP2023080201", "许可证 GPL-3.0-only | 界面元素主框架"}, -1)
+        Dim ListViewItem11 As ListViewItem = New ListViewItem(New String() {"DarkUI", "许可证 MIT | 源代码定制用于菜单绘制"}, -1)
+        Dim ListViewItem12 As ListViewItem = New ListViewItem(New String() {"Microsoft.Web.WebView2", "微软软件许可证"}, -1)
+        Dim ListViewItem13 As ListViewItem = New ListViewItem(New String() {"Chromium Embedded Framework", "Copyright © The CefSharp Authors. All rights reserved."}, -1)
+        Dim ListViewItem14 As ListViewItem = New ListViewItem(New String() {"Newtonsoft.Json", "许可证 MIT | Json 解析库"}, -1)
+        Dim ListViewItem15 As ListViewItem = New ListViewItem(New String() {"BetterFolderBrowser", "许可证 MIT | 更好的文件夹选择窗口"}, -1)
+        Dim ListViewItem16 As ListViewItem = New ListViewItem(New String() {"SevenZipSharp", "许可证 LGPL-3.0"}, -1)
+        Dim ListViewItem17 As ListViewItem = New ListViewItem(New String() {"来自 7zip 软件的 7zFull64.dll 文件", "原文件名：7z.dll"}, -1)
+        Dim ListViewItem18 As ListViewItem = New ListViewItem(New String() {"来自 7zip 官方的 7za 组件", "7za.dll、7za.exe、7zxa.dll"}, -1)
+        Dim ListViewItem19 As ListViewItem = New ListViewItem(New String() {"libwebp-net", "许可证 MIT"}, -1)
+        Dim ListViewItem20 As ListViewItem = New ListViewItem("来自 Google 的 libwebp.dll 文件")
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Form1))
         UiTabControl1 = New Sunny.UI.UITabControl()
         TabPage起始页面 = New TabPage()
@@ -115,7 +115,7 @@ Partial Class Form1
         Label12 = New Label()
         TabPage15 = New TabPage()
         UiButton28 = New Sunny.UI.UIButton()
-        UiComboBox7 = New Sunny.UI.UIComboBox()
+        UiComboBox5 = New Sunny.UI.UIComboBox()
         Label66 = New Label()
         UiComboBox3 = New Sunny.UI.UIComboBox()
         Label21 = New Label()
@@ -126,6 +126,9 @@ Partial Class Form1
         UiComboBox4 = New Sunny.UI.UIComboBox()
         Label18 = New Label()
         TabPage16 = New TabPage()
+        暗黑文本框7 = New 暗黑文本框()
+        暗黑文本框6 = New 暗黑文本框()
+        TextBox1 = New TextBox()
         UiButton59 = New Sunny.UI.UIButton()
         UiButton58 = New Sunny.UI.UIButton()
         UiButton57 = New Sunny.UI.UIButton()
@@ -138,6 +141,8 @@ Partial Class Form1
         Label24 = New Label()
         Label22 = New Label()
         TabPage17 = New TabPage()
+        暗黑文本框9 = New 暗黑文本框()
+        暗黑文本框8 = New 暗黑文本框()
         UiButton31 = New Sunny.UI.UIButton()
         Label25 = New Label()
         UiRadioButton2 = New Sunny.UI.UIRadioButton()
@@ -162,7 +167,7 @@ Partial Class Form1
         Label29 = New Label()
         Label27 = New Label()
         Label5 = New Label()
-        UiComboBox5 = New Sunny.UI.UIComboBox()
+        UiComboBox8 = New Sunny.UI.UIComboBox()
         Label26 = New Label()
         TabPage20 = New TabPage()
         Label84 = New Label()
@@ -364,11 +369,6 @@ Partial Class Form1
         UiRichTextBox2 = New Sunny.UI.UIRichTextBox()
         UiButton45 = New Sunny.UI.UIButton()
         ToolTip1 = New ToolTip(components)
-        TextBox1 = New TextBox()
-        暗黑文本框6 = New 暗黑文本框()
-        暗黑文本框7 = New 暗黑文本框()
-        暗黑文本框8 = New 暗黑文本框()
-        暗黑文本框9 = New 暗黑文本框()
         UiTabControl1.SuspendLayout()
         TabPage起始页面.SuspendLayout()
         Panel29.SuspendLayout()
@@ -1563,7 +1563,7 @@ Partial Class Form1
         ' 
         TabPage15.BackColor = Color.FromArgb(CByte(24), CByte(24), CByte(24))
         TabPage15.Controls.Add(UiButton28)
-        TabPage15.Controls.Add(UiComboBox7)
+        TabPage15.Controls.Add(UiComboBox5)
         TabPage15.Controls.Add(Label66)
         TabPage15.Controls.Add(UiComboBox3)
         TabPage15.Controls.Add(Label21)
@@ -1612,43 +1612,43 @@ Partial Class Form1
         UiButton28.TipsColor = Color.Gray
         UiButton28.TipsFont = New Font("微软雅黑", 9F)
         ' 
-        ' UiComboBox7
+        ' UiComboBox5
         ' 
-        UiComboBox7.DataSource = Nothing
-        UiComboBox7.DropDownStyle = Sunny.UI.UIDropDownStyle.DropDownList
-        UiComboBox7.FillColor = Color.FromArgb(CByte(48), CByte(48), CByte(48))
-        UiComboBox7.FillColor2 = Color.FromArgb(CByte(48), CByte(48), CByte(48))
-        UiComboBox7.FillDisableColor = Color.FromArgb(CByte(48), CByte(48), CByte(48))
-        UiComboBox7.Font = New Font("微软雅黑", 9.75F)
-        UiComboBox7.ForeColor = Color.FromArgb(CByte(224), CByte(224), CByte(224))
-        UiComboBox7.ForeDisableColor = Color.Gray
-        UiComboBox7.ItemFillColor = Color.FromArgb(CByte(48), CByte(48), CByte(48))
-        UiComboBox7.ItemForeColor = Color.FromArgb(CByte(224), CByte(224), CByte(224))
-        UiComboBox7.ItemHeight = 30
-        UiComboBox7.ItemHoverColor = Color.FromArgb(CByte(64), CByte(64), CByte(64))
-        UiComboBox7.ItemRectColor = Color.FromArgb(CByte(48), CByte(48), CByte(48))
-        UiComboBox7.Items.AddRange(New Object() {"No Use", "BitBucket"})
-        UiComboBox7.ItemSelectBackColor = Color.DimGray
-        UiComboBox7.ItemSelectForeColor = Color.FromArgb(CByte(224), CByte(224), CByte(224))
-        UiComboBox7.Location = New Point(20, 475)
-        UiComboBox7.Margin = New Padding(20, 0, 0, 0)
-        UiComboBox7.MaxDropDownItems = 10
-        UiComboBox7.MinimumSize = New Size(63, 0)
-        UiComboBox7.Name = "UiComboBox7"
-        UiComboBox7.Padding = New Padding(0, 0, 30, 2)
-        UiComboBox7.Radius = 0
-        UiComboBox7.RadiusSides = Sunny.UI.UICornerRadiusSides.None
-        UiComboBox7.RectColor = Color.Silver
-        UiComboBox7.RectDisableColor = Color.Silver
-        UiComboBox7.RectSides = ToolStripStatusLabelBorderSides.None
-        UiComboBox7.Size = New Size(300, 30)
-        UiComboBox7.Style = Sunny.UI.UIStyle.Custom
-        UiComboBox7.SymbolSize = 24
-        UiComboBox7.TabIndex = 31
-        UiComboBox7.TabStop = False
-        UiComboBox7.TextAlignment = ContentAlignment.MiddleLeft
-        UiComboBox7.TrimFilter = True
-        UiComboBox7.Watermark = ""
+        UiComboBox5.DataSource = Nothing
+        UiComboBox5.DropDownStyle = Sunny.UI.UIDropDownStyle.DropDownList
+        UiComboBox5.FillColor = Color.FromArgb(CByte(48), CByte(48), CByte(48))
+        UiComboBox5.FillColor2 = Color.FromArgb(CByte(48), CByte(48), CByte(48))
+        UiComboBox5.FillDisableColor = Color.FromArgb(CByte(48), CByte(48), CByte(48))
+        UiComboBox5.Font = New Font("微软雅黑", 9.75F)
+        UiComboBox5.ForeColor = Color.FromArgb(CByte(224), CByte(224), CByte(224))
+        UiComboBox5.ForeDisableColor = Color.Gray
+        UiComboBox5.ItemFillColor = Color.FromArgb(CByte(48), CByte(48), CByte(48))
+        UiComboBox5.ItemForeColor = Color.FromArgb(CByte(224), CByte(224), CByte(224))
+        UiComboBox5.ItemHeight = 30
+        UiComboBox5.ItemHoverColor = Color.FromArgb(CByte(64), CByte(64), CByte(64))
+        UiComboBox5.ItemRectColor = Color.FromArgb(CByte(48), CByte(48), CByte(48))
+        UiComboBox5.Items.AddRange(New Object() {"No Use", "BitBucket"})
+        UiComboBox5.ItemSelectBackColor = Color.DimGray
+        UiComboBox5.ItemSelectForeColor = Color.FromArgb(CByte(224), CByte(224), CByte(224))
+        UiComboBox5.Location = New Point(20, 475)
+        UiComboBox5.Margin = New Padding(20, 0, 0, 0)
+        UiComboBox5.MaxDropDownItems = 10
+        UiComboBox5.MinimumSize = New Size(63, 0)
+        UiComboBox5.Name = "UiComboBox5"
+        UiComboBox5.Padding = New Padding(0, 0, 30, 2)
+        UiComboBox5.Radius = 0
+        UiComboBox5.RadiusSides = Sunny.UI.UICornerRadiusSides.None
+        UiComboBox5.RectColor = Color.Silver
+        UiComboBox5.RectDisableColor = Color.Silver
+        UiComboBox5.RectSides = ToolStripStatusLabelBorderSides.None
+        UiComboBox5.Size = New Size(300, 30)
+        UiComboBox5.Style = Sunny.UI.UIStyle.Custom
+        UiComboBox5.SymbolSize = 24
+        UiComboBox5.TabIndex = 31
+        UiComboBox5.TabStop = False
+        UiComboBox5.TextAlignment = ContentAlignment.MiddleLeft
+        UiComboBox5.TrimFilter = True
+        UiComboBox5.Watermark = ""
         ' 
         ' Label66
         ' 
@@ -1879,6 +1879,43 @@ Partial Class Form1
         TabPage16.Size = New Size(912, 700)
         TabPage16.TabIndex = 2
         TabPage16.Text = "在线服务"
+        ' 
+        ' 暗黑文本框7
+        ' 
+        暗黑文本框7.BackColor = Color.FromArgb(CByte(48), CByte(48), CByte(48))
+        暗黑文本框7.ForeColor = Color.FromArgb(CByte(224), CByte(224), CByte(224))
+        暗黑文本框7.Location = New Point(20, 463)
+        暗黑文本框7.Margin = New Padding(20, 0, 0, 0)
+        暗黑文本框7.Name = "暗黑文本框7"
+        暗黑文本框7.Padding = New Padding(7, 6, 7, 0)
+        暗黑文本框7.PasswordChar = vbNullChar
+        暗黑文本框7.Size = New Size(500, 30)
+        暗黑文本框7.TabIndex = 47
+        ' 
+        ' 暗黑文本框6
+        ' 
+        暗黑文本框6.BackColor = Color.FromArgb(CByte(48), CByte(48), CByte(48))
+        暗黑文本框6.ForeColor = Color.FromArgb(CByte(224), CByte(224), CByte(224))
+        暗黑文本框6.Location = New Point(20, 372)
+        暗黑文本框6.Margin = New Padding(20, 0, 0, 0)
+        暗黑文本框6.Name = "暗黑文本框6"
+        暗黑文本框6.Padding = New Padding(7, 6, 7, 0)
+        暗黑文本框6.PasswordChar = vbNullChar
+        暗黑文本框6.Size = New Size(500, 30)
+        暗黑文本框6.TabIndex = 46
+        ' 
+        ' TextBox1
+        ' 
+        TextBox1.BackColor = Color.FromArgb(CByte(48), CByte(48), CByte(48))
+        TextBox1.BorderStyle = BorderStyle.None
+        TextBox1.ForeColor = Color.FromArgb(CByte(224), CByte(224), CByte(224))
+        TextBox1.Location = New Point(20, 111)
+        TextBox1.Margin = New Padding(20, 0, 0, 0)
+        TextBox1.Multiline = True
+        TextBox1.Name = "TextBox1"
+        TextBox1.PasswordChar = "●"c
+        TextBox1.Size = New Size(500, 150)
+        TextBox1.TabIndex = 45
         ' 
         ' UiButton59
         ' 
@@ -2199,6 +2236,30 @@ Partial Class Form1
         TabPage17.TabIndex = 3
         TabPage17.Text = "启动项"
         ' 
+        ' 暗黑文本框9
+        ' 
+        暗黑文本框9.BackColor = Color.FromArgb(CByte(48), CByte(48), CByte(48))
+        暗黑文本框9.ForeColor = Color.FromArgb(CByte(224), CByte(224), CByte(224))
+        暗黑文本框9.Location = New Point(20, 264)
+        暗黑文本框9.Margin = New Padding(20, 0, 0, 0)
+        暗黑文本框9.Name = "暗黑文本框9"
+        暗黑文本框9.Padding = New Padding(7, 6, 7, 0)
+        暗黑文本框9.PasswordChar = vbNullChar
+        暗黑文本框9.Size = New Size(500, 30)
+        暗黑文本框9.TabIndex = 49
+        ' 
+        ' 暗黑文本框8
+        ' 
+        暗黑文本框8.BackColor = Color.FromArgb(CByte(48), CByte(48), CByte(48))
+        暗黑文本框8.ForeColor = Color.FromArgb(CByte(224), CByte(224), CByte(224))
+        暗黑文本框8.Location = New Point(20, 155)
+        暗黑文本框8.Margin = New Padding(20, 0, 0, 0)
+        暗黑文本框8.Name = "暗黑文本框8"
+        暗黑文本框8.Padding = New Padding(7, 6, 7, 0)
+        暗黑文本框8.PasswordChar = vbNullChar
+        暗黑文本框8.Size = New Size(500, 30)
+        暗黑文本框8.TabIndex = 48
+        ' 
         ' UiButton31
         ' 
         UiButton31.FillColor = Color.FromArgb(CByte(48), CByte(48), CByte(48))
@@ -2456,7 +2517,7 @@ Partial Class Form1
         TabPage19.Controls.Add(Label29)
         TabPage19.Controls.Add(Label27)
         TabPage19.Controls.Add(Label5)
-        TabPage19.Controls.Add(UiComboBox5)
+        TabPage19.Controls.Add(UiComboBox8)
         TabPage19.Controls.Add(Label26)
         TabPage19.Location = New Point(201, 0)
         TabPage19.Name = "TabPage19"
@@ -2584,42 +2645,42 @@ Partial Class Form1
         Label5.TabIndex = 26
         Label5.Text = "一只敏捷的棕色狐狸跳过一只懒惰的狗。"
         ' 
-        ' UiComboBox5
+        ' UiComboBox8
         ' 
-        UiComboBox5.DataSource = Nothing
-        UiComboBox5.DropDownStyle = Sunny.UI.UIDropDownStyle.DropDownList
-        UiComboBox5.FillColor = Color.FromArgb(CByte(48), CByte(48), CByte(48))
-        UiComboBox5.FillColor2 = Color.FromArgb(CByte(48), CByte(48), CByte(48))
-        UiComboBox5.FillDisableColor = Color.FromArgb(CByte(48), CByte(48), CByte(48))
-        UiComboBox5.Font = New Font("微软雅黑", 9.75F)
-        UiComboBox5.ForeColor = Color.FromArgb(CByte(224), CByte(224), CByte(224))
-        UiComboBox5.ForeDisableColor = Color.Gray
-        UiComboBox5.ItemFillColor = Color.FromArgb(CByte(48), CByte(48), CByte(48))
-        UiComboBox5.ItemForeColor = Color.FromArgb(CByte(224), CByte(224), CByte(224))
-        UiComboBox5.ItemHeight = 30
-        UiComboBox5.ItemHoverColor = Color.FromArgb(CByte(64), CByte(64), CByte(64))
-        UiComboBox5.ItemRectColor = Color.FromArgb(CByte(48), CByte(48), CByte(48))
-        UiComboBox5.ItemSelectBackColor = Color.DimGray
-        UiComboBox5.ItemSelectForeColor = Color.FromArgb(CByte(224), CByte(224), CByte(224))
-        UiComboBox5.Location = New Point(20, 61)
-        UiComboBox5.Margin = New Padding(20, 0, 0, 0)
-        UiComboBox5.MaxDropDownItems = 15
-        UiComboBox5.MinimumSize = New Size(63, 0)
-        UiComboBox5.Name = "UiComboBox5"
-        UiComboBox5.Padding = New Padding(0, 0, 30, 2)
-        UiComboBox5.Radius = 0
-        UiComboBox5.RadiusSides = Sunny.UI.UICornerRadiusSides.None
-        UiComboBox5.RectColor = Color.Silver
-        UiComboBox5.RectDisableColor = Color.Silver
-        UiComboBox5.RectSides = ToolStripStatusLabelBorderSides.None
-        UiComboBox5.Size = New Size(300, 30)
-        UiComboBox5.Style = Sunny.UI.UIStyle.Custom
-        UiComboBox5.SymbolSize = 24
-        UiComboBox5.TabIndex = 25
-        UiComboBox5.TabStop = False
-        UiComboBox5.TextAlignment = ContentAlignment.MiddleLeft
-        UiComboBox5.TrimFilter = True
-        UiComboBox5.Watermark = ""
+        UiComboBox8.DataSource = Nothing
+        UiComboBox8.DropDownStyle = Sunny.UI.UIDropDownStyle.DropDownList
+        UiComboBox8.FillColor = Color.FromArgb(CByte(48), CByte(48), CByte(48))
+        UiComboBox8.FillColor2 = Color.FromArgb(CByte(48), CByte(48), CByte(48))
+        UiComboBox8.FillDisableColor = Color.FromArgb(CByte(48), CByte(48), CByte(48))
+        UiComboBox8.Font = New Font("微软雅黑", 9.75F)
+        UiComboBox8.ForeColor = Color.FromArgb(CByte(224), CByte(224), CByte(224))
+        UiComboBox8.ForeDisableColor = Color.Gray
+        UiComboBox8.ItemFillColor = Color.FromArgb(CByte(48), CByte(48), CByte(48))
+        UiComboBox8.ItemForeColor = Color.FromArgb(CByte(224), CByte(224), CByte(224))
+        UiComboBox8.ItemHeight = 30
+        UiComboBox8.ItemHoverColor = Color.FromArgb(CByte(64), CByte(64), CByte(64))
+        UiComboBox8.ItemRectColor = Color.FromArgb(CByte(48), CByte(48), CByte(48))
+        UiComboBox8.ItemSelectBackColor = Color.DimGray
+        UiComboBox8.ItemSelectForeColor = Color.FromArgb(CByte(224), CByte(224), CByte(224))
+        UiComboBox8.Location = New Point(20, 61)
+        UiComboBox8.Margin = New Padding(20, 0, 0, 0)
+        UiComboBox8.MaxDropDownItems = 15
+        UiComboBox8.MinimumSize = New Size(63, 0)
+        UiComboBox8.Name = "UiComboBox8"
+        UiComboBox8.Padding = New Padding(0, 0, 30, 2)
+        UiComboBox8.Radius = 0
+        UiComboBox8.RadiusSides = Sunny.UI.UICornerRadiusSides.None
+        UiComboBox8.RectColor = Color.Silver
+        UiComboBox8.RectDisableColor = Color.Silver
+        UiComboBox8.RectSides = ToolStripStatusLabelBorderSides.None
+        UiComboBox8.Size = New Size(300, 30)
+        UiComboBox8.Style = Sunny.UI.UIStyle.Custom
+        UiComboBox8.SymbolSize = 24
+        UiComboBox8.TabIndex = 25
+        UiComboBox8.TabStop = False
+        UiComboBox8.TextAlignment = ContentAlignment.MiddleLeft
+        UiComboBox8.TrimFilter = True
+        UiComboBox8.Watermark = ""
         ' 
         ' Label26
         ' 
@@ -2996,7 +3057,7 @@ Partial Class Form1
         ListView10.ForeColor = Color.FromArgb(CByte(224), CByte(224), CByte(224))
         ListView10.FullRowSelect = True
         ListView10.HeaderStyle = ColumnHeaderStyle.None
-        ListView10.Items.AddRange(New ListViewItem() {ListViewItem1, ListViewItem2, ListViewItem3, ListViewItem4, ListViewItem5, ListViewItem6, ListViewItem7, ListViewItem8, ListViewItem9, ListViewItem10, ListViewItem11, ListViewItem12, ListViewItem13, ListViewItem14})
+        ListView10.Items.AddRange(New ListViewItem() {ListViewItem35, ListViewItem36, ListViewItem37, ListViewItem38, ListViewItem39, ListViewItem40, ListViewItem41, ListViewItem42, ListViewItem43, ListViewItem44, ListViewItem45, ListViewItem46, ListViewItem47, ListViewItem48})
         ListView10.Location = New Point(10, 10)
         ListView10.Name = "ListView10"
         ListView10.OwnerDraw = True
@@ -3145,7 +3206,7 @@ Partial Class Form1
         ListView9.ForeColor = Color.FromArgb(CByte(224), CByte(224), CByte(224))
         ListView9.FullRowSelect = True
         ListView9.HeaderStyle = ColumnHeaderStyle.None
-        ListView9.Items.AddRange(New ListViewItem() {ListViewItem15, ListViewItem16, ListViewItem17, ListViewItem18, ListViewItem19, ListViewItem20})
+        ListView9.Items.AddRange(New ListViewItem() {ListViewItem1, ListViewItem2, ListViewItem3, ListViewItem4, ListViewItem5, ListViewItem6})
         ListView9.Location = New Point(10, 10)
         ListView9.Name = "ListView9"
         ListView9.OwnerDraw = True
@@ -3623,7 +3684,7 @@ Partial Class Form1
         ListView11.ForeColor = Color.FromArgb(CByte(224), CByte(224), CByte(224))
         ListView11.FullRowSelect = True
         ListView11.HeaderStyle = ColumnHeaderStyle.None
-        ListView11.Items.AddRange(New ListViewItem() {ListViewItem21, ListViewItem22, ListViewItem23, ListViewItem24, ListViewItem25, ListViewItem26, ListViewItem27, ListViewItem28, ListViewItem29, ListViewItem30, ListViewItem31, ListViewItem32, ListViewItem33, ListViewItem34})
+        ListView11.Items.AddRange(New ListViewItem() {ListViewItem7, ListViewItem8, ListViewItem9, ListViewItem10, ListViewItem11, ListViewItem12, ListViewItem13, ListViewItem14, ListViewItem15, ListViewItem16, ListViewItem17, ListViewItem18, ListViewItem19, ListViewItem20})
         ListView11.Location = New Point(0, 0)
         ListView11.Name = "ListView11"
         ListView11.OwnerDraw = True
@@ -5877,67 +5938,6 @@ Partial Class Form1
         UiButton45.TipsColor = Color.Gray
         UiButton45.TipsFont = New Font("微软雅黑", 9F)
         ' 
-        ' TextBox1
-        ' 
-        TextBox1.BackColor = Color.FromArgb(CByte(48), CByte(48), CByte(48))
-        TextBox1.BorderStyle = BorderStyle.None
-        TextBox1.ForeColor = Color.FromArgb(CByte(224), CByte(224), CByte(224))
-        TextBox1.Location = New Point(20, 111)
-        TextBox1.Margin = New Padding(20, 0, 0, 0)
-        TextBox1.Multiline = True
-        TextBox1.Name = "TextBox1"
-        TextBox1.PasswordChar = "●"c
-        TextBox1.Size = New Size(500, 150)
-        TextBox1.TabIndex = 45
-        ' 
-        ' 暗黑文本框6
-        ' 
-        暗黑文本框6.BackColor = Color.FromArgb(CByte(48), CByte(48), CByte(48))
-        暗黑文本框6.ForeColor = Color.FromArgb(CByte(224), CByte(224), CByte(224))
-        暗黑文本框6.Location = New Point(20, 372)
-        暗黑文本框6.Margin = New Padding(20, 0, 0, 0)
-        暗黑文本框6.Name = "暗黑文本框6"
-        暗黑文本框6.Padding = New Padding(7, 6, 7, 0)
-        暗黑文本框6.PasswordChar = vbNullChar
-        暗黑文本框6.Size = New Size(500, 30)
-        暗黑文本框6.TabIndex = 46
-        ' 
-        ' 暗黑文本框7
-        ' 
-        暗黑文本框7.BackColor = Color.FromArgb(CByte(48), CByte(48), CByte(48))
-        暗黑文本框7.ForeColor = Color.FromArgb(CByte(224), CByte(224), CByte(224))
-        暗黑文本框7.Location = New Point(20, 463)
-        暗黑文本框7.Margin = New Padding(20, 0, 0, 0)
-        暗黑文本框7.Name = "暗黑文本框7"
-        暗黑文本框7.Padding = New Padding(7, 6, 7, 0)
-        暗黑文本框7.PasswordChar = vbNullChar
-        暗黑文本框7.Size = New Size(500, 30)
-        暗黑文本框7.TabIndex = 47
-        ' 
-        ' 暗黑文本框8
-        ' 
-        暗黑文本框8.BackColor = Color.FromArgb(CByte(48), CByte(48), CByte(48))
-        暗黑文本框8.ForeColor = Color.FromArgb(CByte(224), CByte(224), CByte(224))
-        暗黑文本框8.Location = New Point(20, 155)
-        暗黑文本框8.Margin = New Padding(20, 0, 0, 0)
-        暗黑文本框8.Name = "暗黑文本框8"
-        暗黑文本框8.Padding = New Padding(7, 6, 7, 0)
-        暗黑文本框8.PasswordChar = vbNullChar
-        暗黑文本框8.Size = New Size(500, 30)
-        暗黑文本框8.TabIndex = 48
-        ' 
-        ' 暗黑文本框9
-        ' 
-        暗黑文本框9.BackColor = Color.FromArgb(CByte(48), CByte(48), CByte(48))
-        暗黑文本框9.ForeColor = Color.FromArgb(CByte(224), CByte(224), CByte(224))
-        暗黑文本框9.Location = New Point(20, 264)
-        暗黑文本框9.Margin = New Padding(20, 0, 0, 0)
-        暗黑文本框9.Name = "暗黑文本框9"
-        暗黑文本框9.Padding = New Padding(7, 6, 7, 0)
-        暗黑文本框9.PasswordChar = vbNullChar
-        暗黑文本框9.Size = New Size(500, 30)
-        暗黑文本框9.TabIndex = 49
-        ' 
         ' Form1
         ' 
         AutoScaleDimensions = New SizeF(96F, 96F)
@@ -6167,7 +6167,7 @@ Partial Class Form1
     Friend WithEvents UiRadioButton2 As Sunny.UI.UIRadioButton
     Friend WithEvents UiRadioButton1 As Sunny.UI.UIRadioButton
     Friend WithEvents Label25 As Label
-    Friend WithEvents UiComboBox5 As Sunny.UI.UIComboBox
+    Friend WithEvents UiComboBox8 As Sunny.UI.UIComboBox
     Friend WithEvents Label26 As Label
     Friend WithEvents TabPage关于 As TabPage
     Friend WithEvents UiTabControlMenu3 As Sunny.UI.UITabControlMenu
@@ -6238,7 +6238,7 @@ Partial Class Form1
     Friend WithEvents Label65 As Label
     Friend WithEvents LinkLabel2 As LinkLabel
     Friend WithEvents LinkLabel3 As LinkLabel
-    Friend WithEvents UiComboBox7 As Sunny.UI.UIComboBox
+    Friend WithEvents UiComboBox5 As Sunny.UI.UIComboBox
     Friend WithEvents Label66 As Label
     Friend WithEvents Panel42 As Panel
     Friend WithEvents ListView7 As ListView

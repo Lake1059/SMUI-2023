@@ -14,23 +14,23 @@ Public Class 设置
         AddHandler Form1.UiTabControlMenu2.SelectedIndexChanged,
            Sub(sender, e)
                If Form1.UiTabControlMenu2.SelectedTab Is Form1.TabPage19 Then
-                   If Form1.UiComboBox5.Items.Count < 2 Then
+                   If Form1.UiComboBox8.Items.Count < 2 Then
                        Dim installedFonts As New InstalledFontCollection()
                        Dim fontsArray() As FontFamily = installedFonts.Families
                        For Each font As FontFamily In fontsArray
-                           Form1.UiComboBox5.Items.Add(font.Name)
+                           Form1.UiComboBox8.Items.Add(font.Name)
                        Next
                    End If
                End If
            End Sub
-        AddHandler Form1.UiComboBox5.SelectedIndexChanged,
+        AddHandler Form1.UiComboBox8.SelectedIndexChanged,
             Sub(sender, e)
-                Form1.Label5.Font = New Font(Form1.UiComboBox5.Text, Form1.Label5.Font.Size)
-                Form1.Label27.Font = New Font(Form1.UiComboBox5.Text, Form1.Label27.Font.Size)
-                Form1.Label29.Font = New Font(Form1.UiComboBox5.Text, Form1.Label29.Font.Size)
-                Form1.Label28.Font = New Font(Form1.UiComboBox5.Text, Form1.Label28.Font.Size)
-                Form1.Label31.Font = New Font(Form1.UiComboBox5.Text, Form1.Label31.Font.Size)
-                Form1.Label30.Font = New Font(Form1.UiComboBox5.Text, Form1.Label30.Font.Size)
+                Form1.Label5.Font = New Font(Form1.UiComboBox8.Text, Form1.Label5.Font.Size)
+                Form1.Label27.Font = New Font(Form1.UiComboBox8.Text, Form1.Label27.Font.Size)
+                Form1.Label29.Font = New Font(Form1.UiComboBox8.Text, Form1.Label29.Font.Size)
+                Form1.Label28.Font = New Font(Form1.UiComboBox8.Text, Form1.Label28.Font.Size)
+                Form1.Label31.Font = New Font(Form1.UiComboBox8.Text, Form1.Label31.Font.Size)
+                Form1.Label30.Font = New Font(Form1.UiComboBox8.Text, Form1.Label30.Font.Size)
             End Sub
         AddHandler Form1.UiButton34.Click, AddressOf 保存路径设置
         AddHandler Form1.UiButton28.Click, AddressOf 保存语言和服务器设置
@@ -170,7 +170,7 @@ Public Class 设置
         Form1.UiComboBox1.Text = 全局设置数据("NewsLanguage")
         Form1.UiComboBox2.Text = 全局设置数据("NewsSever")
         Form1.UiComboBox3.Text = 全局设置数据("UpdateSever")
-        Form1.UiComboBox7.Text = 全局设置数据("AlternativeUpdateSever")
+        Form1.UiComboBox5.Text = 全局设置数据("AlternativeUpdateSever")
 
         Form1.TextBox1.Text = 全局设置数据("NexusAPI")
         Form1.暗黑文本框6.Text = 全局设置数据("GiteeToken")
@@ -197,7 +197,7 @@ Public Class 设置
         Form1.UiCheckBox5.Checked = 全局设置数据("AutoConvertWebpToPng")
         Form1.UiCheckBox6.Checked = 全局设置数据("SendDeletedDataToRecycleBin")
 
-        Form1.UiComboBox5.Text = 全局设置数据("FontName")
+        Form1.UiComboBox8.Text = 全局设置数据("FontName")
 
         Select Case 全局设置数据("UploadUserInfo")
             Case "True"
@@ -243,7 +243,7 @@ Public Class 设置
         全局设置数据("NewsLanguage") = Form1.UiComboBox1.Text
         全局设置数据("NewsSever") = Form1.UiComboBox2.Text
         全局设置数据("UpdateSever") = Form1.UiComboBox3.Text
-        全局设置数据("AlternativeUpdateSever") = Form1.UiComboBox7.Text
+        全局设置数据("AlternativeUpdateSever") = Form1.UiComboBox5.Text
         UIMessageTip.Show("更改已写入内存，正常退出时写入文件",, 2500)
     End Sub
 
@@ -277,7 +277,7 @@ Public Class 设置
     End Sub
 
     Public Shared Sub 保存字体设置()
-        全局设置数据("FontName") = Form1.UiComboBox5.Text
+        全局设置数据("FontName") = Form1.UiComboBox8.Text
         刷新字体显示(Form1)
         UIMessageTip.Show("更改已写入内存，正常退出时写入文件",, 2500)
     End Sub

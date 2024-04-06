@@ -175,9 +175,9 @@ Public Class 界面控制
         Form1.UiComboBox2.ItemHeight = 30 * DPI
         Form1.UiComboBox3.ItemHeight = 30 * DPI
         Form1.UiComboBox4.ItemHeight = 30 * DPI
-        Form1.UiComboBox5.ItemHeight = 30 * DPI
+        Form1.UiComboBox8.ItemHeight = 30 * DPI
         Form1.UiComboBox6.ItemHeight = 30 * DPI
-        Form1.UiComboBox7.ItemHeight = 30 * DPI
+        Form1.UiComboBox5.ItemHeight = 30 * DPI
 
         Form1.ImageList1.ImageSize = New Size(1, 29 * DPI)
         管理模组的菜单.调整DPI()
