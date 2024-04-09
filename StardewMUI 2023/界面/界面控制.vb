@@ -1,4 +1,5 @@
-﻿Imports System.Runtime.InteropServices
+﻿Imports System.Reflection
+Imports System.Runtime.InteropServices
 Imports CefSharp.WinForms
 Imports Microsoft.Web.WebView2.WinForms
 Imports Sunny.UI
@@ -143,6 +144,10 @@ Public Class 界面控制
         Form1.UiButton45.Height = Form1.UiTabControl1.ItemSize.Height : Form1.UiButton45.Width = Form1.UiTabControl1.Width - Form1.UiTabControl1.ItemSize.Width * 7
         Form1.UiButton45.Left = Form1.UiTabControl1.Width - Form1.UiButton45.Width : Form1.UiButton45.Top = 0
 
+        Form1.ColumnHeader14.Width = (Form1.ListView10.Width - 程序DPI_垂直滚动条宽度 * 2) * 0.6
+        Form1.ColumnHeader15.Width = (Form1.ListView10.Width - 程序DPI_垂直滚动条宽度 * 2) * 0.2
+        Form1.ColumnHeader16.Width = (Form1.ListView10.Width - 程序DPI_垂直滚动条宽度 * 2) * 0.2
+
     End Sub
 
     Public Shared Sub 主界面高DPI兼容()
@@ -178,6 +183,18 @@ Public Class 界面控制
         Form1.UiComboBox8.ItemHeight = 30 * DPI
         Form1.UiComboBox6.ItemHeight = 30 * DPI
         Form1.UiComboBox5.ItemHeight = 30 * DPI
+
+        Form1.UiComboBox4.Left = 20 * DPI : Form1.UiComboBox4.Top = 111 * DPI : Form1.UiComboBox4.Width = 300 * DPI : Form1.UiComboBox4.Height = 30 * DPI
+        Form1.UiComboBox1.Left = 20 * DPI : Form1.UiComboBox1.Top = 202 * DPI : Form1.UiComboBox1.Width = 300 * DPI : Form1.UiComboBox1.Height = 30 * DPI
+        Form1.UiComboBox2.Left = 20 * DPI : Form1.UiComboBox2.Top = 293 * DPI : Form1.UiComboBox2.Width = 300 * DPI : Form1.UiComboBox2.Height = 30 * DPI
+        Form1.UiComboBox3.Left = 20 * DPI : Form1.UiComboBox3.Top = 384 * DPI : Form1.UiComboBox3.Width = 300 * DPI : Form1.UiComboBox3.Height = 30 * DPI
+        Form1.UiComboBox5.Left = 20 * DPI : Form1.UiComboBox5.Top = 475 * DPI : Form1.UiComboBox5.Width = 300 * DPI : Form1.UiComboBox5.Height = 30 * DPI
+        Form1.UiComboBox8.Left = 20 * DPI : Form1.UiComboBox8.Top = 61 * DPI : Form1.UiComboBox8.Width = 300 * DPI : Form1.UiComboBox8.Height = 30 * DPI
+
+
+
+
+
 
         Form1.ImageList1.ImageSize = New Size(1, 29 * DPI)
         管理模组的菜单.调整DPI()

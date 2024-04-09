@@ -57,4 +57,7 @@ Public Class Form1
         界面控制.主界面高DPI兼容()
     End Sub
 
+    Private Sub UiTabControlMenu2_SelectedIndexChanged(sender As Object, e As EventArgs) Handles UiTabControlMenu2.SelectedIndexChanged
+
+    End Sub
 End Class
