@@ -1,4 +1,5 @@
-﻿Imports System.Xml.Xsl
+﻿Imports System.IO
+Imports System.Xml.Xsl
 Imports Microsoft.VisualBasic.Devices
 Imports Sunny.UI
 
@@ -24,34 +25,57 @@ Line1:
     End Sub
 
     Public Shared Sub 转移分类()
-        Dim x As New 暗黑菜单条控件本体 With {.ShowCheckMargin = False, .ImageScalingSize = New Size(20 * 界面控制.DPI, 20 * 界面控制.DPI)}
-        Dim a As New List(Of String)(共享方法.SearchFolderWithoutSub(管理模组2.检查并返回当前所选子库路径).ToList)
+        Dim newWindow As New Form With {
+            .Text = "选择目标分类",
+            .BackColor = Form1.BackColor,
+            .ForeColor = Form1.ForeColor,
+            .AutoScroll = True,
+            .StartPosition = FormStartPosition.Manual,
+            .Size = New Size(300, 500),
+            .Padding = New Padding(10),
+            .MinimizeBox = False,
+            .MaximizeBox = False,
+            .SizeGripStyle = False
+        }
+        Dim a As New List(Of String)(共享方法.SearchFolderWithoutSub(管理模组2.检查并返回当前模组数据仓库路径))
         a.Remove(".Download")
-        x.Items.Add(New ToolStripMenuItem With {.Text = "选择目标分类", .Enabled = False, .Image = My.Resources.文件夹})
-        x.Items.Add(New ToolStripSeparator)
-            For i = 0 To a.Count - 1
-                Dim m As New ToolStripMenuItem With {.Text = a(i)}
-                x.Items.Add(m)
-                AddHandler m.Click,
-                Sub(s1 As Object, e1 As EventArgs)
-                    Dim i2 As Integer = 0
-                    Do Until i2 = Form1.ListView1.Items.Count
-                        If Form1.ListView1.Items(i2).Selected Then
-                            Dim 当前选择的目标子库 As String = s1.Text
-                            Dim 原路径 As String = 管理模组2.检查并返回当前所选子库路径(False) & "\" & Form1.ListView1.Items(i2).Text
-                            Dim 目标路径 As String = 管理模组2.检查并返回当前模组数据仓库路径(False) & "\" & 当前选择的目标子库 & "\" & Form1.ListView1.Items(i2).Text
-                            If Not FileIO.FileSystem.DirectoryExists(目标路径) Then
-                                FileIO.FileSystem.MoveDirectory(原路径, 目标路径)
-                                Form1.ListView1.Items(i2).Remove()
-                                i2 -= 1
-                            End If
-                        End If
-                        i2 += 1
-                    Loop
-                    Form1.Label50.Text = Form1.ListView1.Items.Count
-                End Sub
-            Next
-            x.Show(Control.MousePosition)
+        a.Remove(".Decompress")
+        For i = 0 To a.Count - 1
+            Dim b1 As New Label With {
+                .AutoSize = False,
+                .Height = 30,
+                .Text = a(i),
+                .TextAlign = ContentAlignment.MiddleLeft,
+                .Dock = DockStyle.Top,
+                .Padding = New Padding(3, 0, 3, 0)
+            }
+            AddHandler b1.MouseEnter, Sub(sender, e) sender.BackColor = ColorTranslator.FromWin32(RGB(48, 48, 48))
+            AddHandler b1.MouseLeave, Sub(sender, e) sender.BackColor = newWindow.BackColor
+            AddHandler b1.MouseDown, Sub(sender, e) sender.BackColor = ColorTranslator.FromWin32(RGB(64, 64, 64))
+            AddHandler b1.Click, Sub(sender, e)
+                                     管理模组.重置模组项信息显示()
+                                     管理模组.清除模组项列表()
+                                     Dim i2 As Integer = 0
+                                     Do Until i2 = Form1.ListView1.Items.Count
+                                         If Form1.ListView1.Items(i2).Selected Then
+                                             Dim 当前选择的目标子库 As String = sender.Text
+                                             Dim 原路径 As String = Path.Combine(管理模组2.检查并返回当前所选子库路径(False), Form1.ListView1.Items(i2).Text)
+                                             Dim 目标路径 As String = Path.Combine(管理模组2.检查并返回当前模组数据仓库路径(False), 当前选择的目标子库, Form1.ListView1.Items(i2).Text)
+                                             If Not FileIO.FileSystem.DirectoryExists(目标路径) Then
+                                                 FileIO.FileSystem.MoveDirectory(原路径, 目标路径)
+                                                 Form1.ListView1.Items(i2).Remove()
+                                                 i2 -= 1
+                                             End If
+                                         End If
+                                         i2 += 1
+                                     Loop
+                                     Form1.Label50.Text = Form1.ListView1.Items.Count
+                                     newWindow.Dispose()
+                                     sender.Dispose()
+                                 End Sub
+            newWindow.Controls.Add(b1)
+        Next
+        显示模式窗体(newWindow, Form1)
     End Sub
 
     Public Shared Sub 重命名分类()

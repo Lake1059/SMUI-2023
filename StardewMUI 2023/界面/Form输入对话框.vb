@@ -17,7 +17,7 @@
     End Sub
 
     Private Sub Label确定_Click(sender As Object, e As EventArgs) Handles Label确定.Click
-        输入的内容 = Me.TextBox1.Text
+        输入的内容 = Me.暗黑文本框1.Text
         是否点击了确定 = True
         Me.Close()
     End Sub
@@ -32,16 +32,16 @@
         If 是否点击了确定 = False Then 输入的内容 = ""
     End Sub
 
-    Private Sub TextBox1_TextChanged(sender As Object, e As EventArgs) Handles TextBox1.TextChanged
+    Private Sub 暗黑文本框1_TextChanged(sender As Object, e As EventArgs) Handles 暗黑文本框1.TextChanged
 
     End Sub
 
-    Private Sub TextBox1_KeyDown(sender As Object, e As KeyEventArgs) Handles TextBox1.KeyDown
+    Private Sub 暗黑文本框1_KeyDown(sender As Object, e As KeyEventArgs) Handles 暗黑文本框1.KeyDown
         Select Case e.KeyData
             Case Keys.Enter
-                Label确定_Click(Me.Label确定, New EventArgs)
+                Label确定_Click(Label确定, New EventArgs)
             Case Keys.Escape
-                Label取消_Click(Me.Label取消, New EventArgs)
+                Label取消_Click(Label取消, New EventArgs)
         End Select
     End Sub
 End Class

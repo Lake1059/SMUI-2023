@@ -5,7 +5,7 @@
     Public Sub New(Title As String, Message As String, Optional defaultText As String = "", Optional WindowWidth As Integer = 450, Optional WindowHeight As Integer = 200)
         newDialog.Text = Title
         newDialog.Label1.Text = Message
-        newDialog.TextBox1.Text = defaultText
+        newDialog.暗黑文本框1.Text = defaultText
         newDialog.Width = WindowWidth
         newDialog.Height = WindowHeight
     End Sub
@@ -16,7 +16,7 @@
     End Sub
 
     Public Sub SetTextBoxForeColor(yourColor As Color)
-        newDialog.TextBox1.ForeColor = yourColor
+        newDialog.暗黑文本框1.ForeColor = yourColor
     End Sub
 
     Public Function ShowDialog(owner As Form) As String

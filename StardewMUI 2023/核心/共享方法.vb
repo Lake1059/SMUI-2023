@@ -75,13 +75,12 @@ Public Class 共享方法
         Exit Function
     End Function
 
-    Public Shared Function SearchFolderWithoutSub(Path As String) As String()
+    Public Shared Function SearchFolderWithoutSub(Path As String) As List(Of String)
         Dim mDir As System.IO.DirectoryInfo
         Dim mDirInfo As New System.IO.DirectoryInfo(Path)
-        Dim a As String() = Array.Empty(Of String)()
+        Dim a As New List(Of String)
         For Each mDir In mDirInfo.GetDirectories
-            ReDim Preserve a(a.Length)
-            a(a.Length - 1) = mDir.Name
+            a.Add(mDir.Name)
         Next
         Return a
     End Function

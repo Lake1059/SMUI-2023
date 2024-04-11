@@ -15,6 +15,7 @@ Public Class 管理模组
     Public Shared Sub 初始化()
         AddHandler 管理模组的菜单.菜单项_刷新数据子库.Click, AddressOf 扫描数据子库
         AddHandler 管理模组的菜单.菜单项_刷新分类.Click, AddressOf 扫描分类
+        AddHandler 管理模组的菜单.菜单项_新建数据子库.Click, AddressOf 新建数据子库
         AddHandler 管理模组的菜单.菜单项_新建分类.Click, AddressOf 分类操作.新建分类
         AddHandler 管理模组的菜单.菜单项_转移分类.Click, AddressOf 分类操作.转移分类
         AddHandler 管理模组的菜单.菜单项_重命名分类.Click, AddressOf 分类操作.重命名分类
@@ -103,6 +104,25 @@ Public Class 管理模组
 
         Next
     End Sub
+
+    Public Shared Sub 新建数据子库()
+        Dim s1 As String = 管理模组2.检查并返回当前模组数据仓库路径()
+        If s1 = "" Then Exit Sub
+        Dim a As New 输入对话框("", "新建数据子库名称")
+        a.TranslateButtonText("确认", "取消")
+Line1:
+        Dim s2 As String = a.ShowDialog(Form1)
+        If s2 = "" Then Exit Sub
+        If FileIO.FileSystem.DirectoryExists(Path.Combine(s1, s2)) Then
+            Dim b As New 多项单选对话框("", {"确认"}, "目标文件夹已存在" & vbCrLf & vbCrLf & s1 & "\" & s2,, 500)
+            b.ShowDialog(Form1)
+            GoTo Line1
+        Else
+            FileIO.FileSystem.CreateDirectory(Path.Combine(s1, s2))
+            扫描数据子库()
+        End If
+    End Sub
+
 
     Public Shared Sub 清除分类列表()
         清除模组项列表()
