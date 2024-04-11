@@ -15,6 +15,11 @@ Public Class 管理模组
     Public Shared Sub 初始化()
         AddHandler 管理模组的菜单.菜单项_刷新数据子库.Click, AddressOf 扫描数据子库
         AddHandler 管理模组的菜单.菜单项_刷新分类.Click, AddressOf 扫描分类
+        AddHandler 管理模组的菜单.菜单项_新建分类.Click, AddressOf 分类操作.新建分类
+        AddHandler 管理模组的菜单.菜单项_转移分类.Click, AddressOf 分类操作.转移分类
+        AddHandler 管理模组的菜单.菜单项_重命名分类.Click, AddressOf 分类操作.重命名分类
+        AddHandler 管理模组的菜单.菜单项_删除分类.Click, AddressOf 分类操作.删除分类
+
         AddHandler Form1.ListView1.KeyDown, Sub(sender, e) 分类列表键盘按下事件(sender, e)
         AddHandler Form1.ListView1.SelectedIndexChanged, Sub(sender, e) 扫描模组项()
         AddHandler Form1.UiButton3.Click, Sub(sender, e) 扫描模组项(True)
@@ -32,12 +37,12 @@ Public Class 管理模组
                 End If
             End Sub
 
+
         AddHandler 管理模组的菜单.菜单项_打开分类的文件夹.Click, AddressOf 打开分类文件夹
 
         AddHandler 管理模组的菜单.菜单项_安装.Click, Sub(sender, e) 安装卸载.执行操作(安装卸载.操作类型.安装)
         AddHandler 管理模组的菜单.菜单项_卸载.Click, Sub(sender, e) 安装卸载.执行操作(安装卸载.操作类型.卸载)
         AddHandler 管理模组的菜单.菜单项_打开项的文件夹.Click, AddressOf 打开模组项文件夹
-
 
         AddHandler 管理模组的菜单.菜单项_更多分类操作_转换安装命令到安装规划.Click, AddressOf 管理模组3.更新选中分类_从安装命令到安装规划
         AddHandler 管理模组的菜单.菜单项_更多分类操作_转换安装规划到安装命令.Click, AddressOf 管理模组3.更新选中分类_从安装规划到安装命令
@@ -714,5 +719,7 @@ Public Class 管理模组
             Process.Start(Path.Combine(管理模组2.检查并返回当前所选子库路径(False), Form1.ListView2.SelectedItems(0).SubItems(3).Text, Form1.ListView2.SelectedItems(0).Text))
         End If
     End Sub
+
+
 
 End Class

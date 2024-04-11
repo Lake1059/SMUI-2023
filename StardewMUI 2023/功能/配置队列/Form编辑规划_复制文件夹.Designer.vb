@@ -32,14 +32,13 @@ Partial Class Form编辑规划_复制文件夹
         Label1 = New Label()
         Label2 = New Label()
         UiButton3 = New Sunny.UI.UIButton()
-        Panel2 = New Panel()
-        TextBox1 = New TextBox()
+        暗黑文本框1 = New 暗黑文本框()
         Panel1.SuspendLayout()
-        Panel2.SuspendLayout()
         SuspendLayout()
         ' 
         ' Panel1
         ' 
+        Panel1.Anchor = AnchorStyles.Top Or AnchorStyles.Left Or AnchorStyles.Right
         Panel1.BackColor = Color.FromArgb(CByte(32), CByte(32), CByte(32))
         Panel1.Controls.Add(ListView1)
         Panel1.Location = New Point(19, 60)
@@ -195,25 +194,18 @@ Partial Class Form编辑规划_复制文件夹
         UiButton3.TipsColor = Color.Gray
         UiButton3.TipsFont = New Font("微软雅黑", 9F)
         ' 
-        ' Panel2
+        ' 暗黑文本框1
         ' 
-        Panel2.BackColor = Color.FromArgb(CByte(48), CByte(48), CByte(48))
-        Panel2.Controls.Add(TextBox1)
-        Panel2.Location = New Point(19, 355)
-        Panel2.Name = "Panel2"
-        Panel2.Size = New Size(446, 30)
-        Panel2.TabIndex = 53
-        ' 
-        ' TextBox1
-        ' 
-        TextBox1.BackColor = Color.FromArgb(CByte(48), CByte(48), CByte(48))
-        TextBox1.BorderStyle = BorderStyle.None
-        TextBox1.Dock = DockStyle.Top
-        TextBox1.ForeColor = Color.Silver
-        TextBox1.Location = New Point(0, 0)
-        TextBox1.Name = "TextBox1"
-        TextBox1.Size = New Size(446, 22)
-        TextBox1.TabIndex = 0
+        暗黑文本框1.Anchor = AnchorStyles.Top Or AnchorStyles.Left Or AnchorStyles.Right
+        暗黑文本框1.BackColor = Color.FromArgb(CByte(48), CByte(48), CByte(48))
+        暗黑文本框1.ForeColor = Color.FromArgb(CByte(224), CByte(224), CByte(224))
+        暗黑文本框1.Location = New Point(19, 357)
+        暗黑文本框1.Margin = New Padding(5)
+        暗黑文本框1.Name = "暗黑文本框1"
+        暗黑文本框1.Padding = New Padding(5, 6, 5, 0)
+        暗黑文本框1.PasswordChar = vbNullChar
+        暗黑文本框1.Size = New Size(446, 30)
+        暗黑文本框1.TabIndex = 53
         ' 
         ' Form编辑规划_复制文件夹
         ' 
@@ -222,7 +214,7 @@ Partial Class Form编辑规划_复制文件夹
         BackColor = Color.FromArgb(CByte(24), CByte(24), CByte(24))
         CancelButton = UiButton2
         ClientSize = New Size(484, 461)
-        Controls.Add(Panel2)
+        Controls.Add(暗黑文本框1)
         Controls.Add(UiButton3)
         Controls.Add(Label2)
         Controls.Add(Panel1)
@@ -240,8 +232,6 @@ Partial Class Form编辑规划_复制文件夹
         StartPosition = FormStartPosition.Manual
         Text = "编辑规划"
         Panel1.ResumeLayout(False)
-        Panel2.ResumeLayout(False)
-        Panel2.PerformLayout()
         ResumeLayout(False)
         PerformLayout()
     End Sub
@@ -255,6 +245,5 @@ Partial Class Form编辑规划_复制文件夹
     Friend WithEvents Label2 As Label
     Friend WithEvents UiButton3 As Sunny.UI.UIButton
     Friend WithEvents ImageList1 As ImageList
-    Friend WithEvents Panel2 As Panel
-    Friend WithEvents TextBox1 As TextBox
+    Friend WithEvents 暗黑文本框1 As 暗黑文本框
 End Class
