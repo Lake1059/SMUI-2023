@@ -151,20 +151,53 @@ Public Class 配置队列的规划编辑
         来自_复制文件夹_通用调用(配置队列.规划显示名称字典(任务队列操作类型枚举.替换文件且无检测), "选择文件", "替换到目标位置（从游戏根目录算起）", L1)
     End Sub
 
-    Public Shared Sub 匹配到_安装时检查文件夹的存在()
 
+
+
+    Public Shared Property 来自_检查存在性_填写的相对路径 As String
+    Public Shared Property 来自_检查存在性_要存在还是不存在 As Boolean
+
+    Public Shared Sub 来自_检查存在性_通用调用(标题栏 As String, 窗体上文本1 As String, 对应操作类型 As 任务队列操作类型枚举)
+        来自_检查存在性_填写的相对路径 = ""
+        来自_检查存在性_要存在还是不存在 = True
+        Dim a As New Form编辑规划_检查存在性 With {.Text = 标题栏}
+        a.Label1.Text = 窗体上文本1
+        Dim 参数列表 As New List(Of String)(Form1.ListView7.SelectedItems(0).SubItems(1).Text.Split("|").ToList)
+        a.暗黑文本框1.Text = 参数列表(0)
+        If 参数列表(1).ToLower.Trim = "true" Then
+            a.UiRadioButton1.Checked = True
+            a.UiRadioButton2.Checked = False
+        Else
+            a.UiRadioButton1.Checked = False
+            a.UiRadioButton2.Checked = True
+        End If
+        Select Case 对应操作类型
+            Case 任务队列操作类型枚举.安装时检查文件夹的存在, 任务队列操作类型枚举.卸载时检查文件夹的存在
+                a.正在判断文件夹还是文件 = "文件夹"
+            Case 任务队列操作类型枚举.安装时检查文件的存在, 任务队列操作类型枚举.卸载时检查文件的存在
+                a.正在判断文件夹还是文件 = "文件"
+        End Select
+        显示模式窗体(a, Form1)
+        If 来自_检查存在性_填写的相对路径 <> "" Then
+            Form1.ListView7.SelectedItems(0).SubItems(1).Text = $"{来自_检查存在性_填写的相对路径}|{If(来自_检查存在性_要存在还是不存在, "True", "False")}"
+        End If
+        a.Dispose()
+    End Sub
+
+    Public Shared Sub 匹配到_安装时检查文件夹的存在()
+        来自_检查存在性_通用调用(配置队列.规划显示名称字典(任务队列操作类型枚举.安装时检查文件夹的存在), "要进行判断的文件夹（从游戏根目录算起）", 任务队列操作类型枚举.安装时检查文件夹的存在)
     End Sub
 
     Public Shared Sub 匹配到_卸载时检查文件夹的存在()
-
+        来自_检查存在性_通用调用(配置队列.规划显示名称字典(任务队列操作类型枚举.卸载时检查文件夹的存在), "要进行判断的文件夹（从游戏根目录算起）", 任务队列操作类型枚举.卸载时检查文件夹的存在)
     End Sub
 
     Public Shared Sub 匹配到_安装时检查文件的存在()
-
+        来自_检查存在性_通用调用(配置队列.规划显示名称字典(任务队列操作类型枚举.安装时检查文件的存在), "要进行判断的文件（从游戏根目录算起）", 任务队列操作类型枚举.安装时检查文件的存在)
     End Sub
 
     Public Shared Sub 匹配到_卸载时检查文件的存在()
-
+        来自_检查存在性_通用调用(配置队列.规划显示名称字典(任务队列操作类型枚举.卸载时检查文件的存在), "要进行判断的文件（从游戏根目录算起）", 任务队列操作类型枚举.卸载时检查文件的存在)
     End Sub
 
     Public Shared Sub 匹配到_安装时检查Mods中已安装模组的版本()

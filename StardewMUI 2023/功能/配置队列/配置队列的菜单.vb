@@ -60,13 +60,18 @@ Public Class 配置队列的菜单
 
     Public Shared Property 添加规划菜单 As New 暗黑菜单条控件本体 With {.ImageScalingSize = New Size(25 * 界面控制.DPI, 25 * 界面控制.DPI), .DropShadowEnabled = False}
     Public Shared Property 菜单项_复制文件夹到Mods As New ToolStripMenuItem With {.Text = "复制文件夹到 Mods", .Image = My.Resources.试验}
-    Public Shared Property 菜单项_覆盖Mods中的文件夹 As New ToolStripMenuItem With {.Text = "覆盖 Mods 中的文件夹", .Image = My.Resources.试验}
-    Public Shared Property 菜单项_复制文件夹到根位置 As New ToolStripMenuItem With {.Text = "复制文件夹", .Image = My.Resources.试验}
-    Public Shared Property 菜单项_覆盖Content文件夹 As New ToolStripMenuItem With {.Text = "覆盖 Content 文件夹", .Image = My.Resources.试验}
-    Public Shared Property 菜单项_新增文件 As New ToolStripMenuItem With {.Text = "新增文件", .Image = My.Resources.试验}
-    Public Shared Property 菜单项_新增文件并验证 As New ToolStripMenuItem With {.Text = "新增文件并验证", .Image = My.Resources.试验}
-    Public Shared Property 菜单项_替换文件 As New ToolStripMenuItem With {.Text = "替换文件", .Image = My.Resources.试验}
-    Public Shared Property 菜单项_替换文件且无检测 As New ToolStripMenuItem With {.Text = "替换文件且无检测", .Image = My.Resources.试验}
+    Public Shared Property 菜单项_覆盖Mods中的文件夹 As New ToolStripMenuItem With {.Text = "覆盖 Mods 中的文件夹"}
+    Public Shared Property 菜单项_复制文件夹到根位置 As New ToolStripMenuItem With {.Text = "复制文件夹"}
+    Public Shared Property 菜单项_覆盖Content文件夹 As New ToolStripMenuItem With {.Text = "覆盖 Content 文件夹"}
+    Public Shared Property 菜单项_新增文件 As New ToolStripMenuItem With {.Text = "新增文件"}
+    Public Shared Property 菜单项_新增文件并验证 As New ToolStripMenuItem With {.Text = "新增文件并验证"}
+    Public Shared Property 菜单项_替换文件 As New ToolStripMenuItem With {.Text = "替换文件"}
+    Public Shared Property 菜单项_替换文件且无检测 As New ToolStripMenuItem With {.Text = "替换文件且无检测"}
+
+    Public Shared Property 菜单项_安装时检查文件夹的存在 As New ToolStripMenuItem With {.Text = "安装时检查文件夹的存在", .Image = My.Resources.试验}
+    Public Shared Property 菜单项_卸载时检查文件夹的存在 As New ToolStripMenuItem With {.Text = "卸载时检查文件夹的存在"}
+    Public Shared Property 菜单项_安装时检查文件的存在 As New ToolStripMenuItem With {.Text = "安装时检查文件的存在"}
+    Public Shared Property 菜单项_卸载时检查文件的存在 As New ToolStripMenuItem With {.Text = "卸载时检查文件的存在"}
 
     Public Shared Sub 添加添加规划菜单的所有菜单项()
         添加规划菜单.Items.Add(菜单项_复制文件夹到Mods)
@@ -85,6 +90,17 @@ Public Class 配置队列的菜单
         AddHandler 菜单项_替换文件.Click, Sub() 添加新规划通用调用(任务队列操作类型枚举.替换文件, "<参数：文件>|<参数：目标位置>")
         添加规划菜单.Items.Add(菜单项_替换文件且无检测)
         AddHandler 菜单项_替换文件且无检测.Click, Sub() 添加新规划通用调用(任务队列操作类型枚举.替换文件且无检测, "<参数：文件>|<参数：目标位置>")
+
+        添加规划菜单.Items.Add(New ToolStripSeparator)
+        添加规划菜单.Items.Add(菜单项_安装时检查文件夹的存在)
+        AddHandler 菜单项_安装时检查文件夹的存在.Click, Sub() 添加新规划通用调用(任务队列操作类型枚举.安装时检查文件夹的存在, "<参数：文件夹>|True")
+        添加规划菜单.Items.Add(菜单项_卸载时检查文件夹的存在)
+        AddHandler 菜单项_卸载时检查文件夹的存在.Click, Sub() 添加新规划通用调用(任务队列操作类型枚举.卸载时检查文件夹的存在, "<参数：文件夹>|True")
+        添加规划菜单.Items.Add(菜单项_安装时检查文件的存在)
+        AddHandler 菜单项_安装时检查文件的存在.Click, Sub() 添加新规划通用调用(任务队列操作类型枚举.安装时检查文件的存在, "<参数：文件>|True")
+        添加规划菜单.Items.Add(菜单项_卸载时检查文件的存在)
+        AddHandler 菜单项_卸载时检查文件的存在.Click, Sub() 添加新规划通用调用(任务队列操作类型枚举.卸载时检查文件的存在, "<参数：文件>|True")
+
 
     End Sub
 

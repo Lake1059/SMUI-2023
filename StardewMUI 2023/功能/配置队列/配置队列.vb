@@ -61,6 +61,16 @@ Public Class 配置队列
         编辑规划操作字典.Add(任务队列操作类型枚举.新增文件并验证, AddressOf 配置队列的规划编辑.匹配到_新增文件并验证)
         编辑规划操作字典.Add(任务队列操作类型枚举.替换文件, AddressOf 配置队列的规划编辑.匹配到_替换文件)
         编辑规划操作字典.Add(任务队列操作类型枚举.替换文件且无检测, AddressOf 配置队列的规划编辑.匹配到_替换文件且无检测)
+        编辑规划操作字典.Add(任务队列操作类型枚举.安装时检查文件夹的存在, AddressOf 配置队列的规划编辑.匹配到_安装时检查文件夹的存在)
+        编辑规划操作字典.Add(任务队列操作类型枚举.卸载时检查文件夹的存在, AddressOf 配置队列的规划编辑.匹配到_卸载时检查文件夹的存在)
+        编辑规划操作字典.Add(任务队列操作类型枚举.安装时检查文件的存在, AddressOf 配置队列的规划编辑.匹配到_安装时检查文件的存在)
+        编辑规划操作字典.Add(任务队列操作类型枚举.卸载时检查文件的存在, AddressOf 配置队列的规划编辑.匹配到_卸载时检查文件的存在)
+
+
+
+
+
+
 
 
     End Sub
@@ -354,16 +364,11 @@ jx1:
 
     Public Shared Sub 添加文件夹()
         If Form1.ListView3.SelectedItems.Count <> 1 Then Exit Sub
-        Dim x As New WK.Libraries.BetterFolderBrowserNS.BetterFolderBrowser With {.Multiselect = True}
-        If x.ShowDialog() <> DialogResult.OK Then Exit Sub
-        If x.SelectedPaths.Length = 0 Then Exit Sub
-        For i = 0 To x.SelectedPaths.Length - 1
-            Dim a As String = x.SelectedPaths(i)
-            FileIO.FileSystem.CopyDirectory(a, Path.Combine(正在编辑规划的项路径, Path.GetFileName(a)), FileIO.UIOption.AllDialogs)
-        Next
+        Dim str1 As String = ""
+        If Not DirEx.SelectDirEx("选择要添加的文件夹（由于五代相关组件无法在这里正常运行，所以目前无法批量选择）", str1) Then Exit Sub
+        FileIO.FileSystem.CopyDirectory(str1, Path.Combine(正在编辑规划的项路径, Path.GetFileName(str1)), FileIO.UIOption.AllDialogs)
         重新扫描项的数据内容()
     End Sub
-
 
     Public Shared Sub 重命名内容()
         If Form1.ListView6.SelectedItems.Count <> 1 Then Exit Sub
