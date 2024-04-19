@@ -3,24 +3,45 @@ Public Class 新闻列表
 
     Public Shared Property 列表数据 As New List(Of KeyValuePair(Of String, String))
 
-    Public Shared Sub 绑定新闻列表操作()
-        AddHandler Form1.UiListBox2.DoubleClick,
-            Sub()
-                If Form1.UiListBox2.SelectedItems.Count <> 1 Then Exit Sub
-                Select Case 列表数据(Form1.UiListBox2.SelectedIndex).Value.Split("|")(0)
-                    Case "msgbox"
-                        Dim c As New 多项单选对话框("新闻公告", {"OK"}, 列表数据(Form1.UiListBox2.SelectedIndex).Value.Split("|")(1).Replace("{vbCrLf}", vbCrLf), 200, 500)
-                        c.ShowDialog(Form1)
-                    Case "link"
-                        ShellExecute(IntPtr.Zero, "open", 列表数据(Form1.UiListBox2.SelectedIndex).Value.Split("|")(1), Nothing, Nothing, 1)
-                End Select
-            End Sub
-    End Sub
-
     Public Shared Sub 显示新闻列表()
-        Form1.UiListBox2.Items.Clear()
+        Form1.Panel35.Controls.Clear()
+        GC.Collect(1, GCCollectionMode.Forced, False, True)
+
         For i = 0 To 列表数据.Count - 1
-            Form1.UiListBox2.Items.Add(列表数据(i).Key)
+            Dim c1 As New Label With {.AutoSize = False, .Dock = DockStyle.Top, .Height = 30 * 界面控制.DPI, .TextAlign = ContentAlignment.MiddleLeft, .Padding = New Padding(5, 0, 0, 0), .Text = 列表数据(i).Key, .Tag = i}
+            AddHandler c1.MouseEnter, Sub(sender, e) sender.BackColor = ColorTranslator.FromWin32(RGB(56, 56, 56))
+            AddHandler c1.MouseDown, Sub(sender, e) sender.BackColor = ColorTranslator.FromWin32(RGB(64, 64, 64))
+            AddHandler c1.MouseLeave, Sub(sender, e) sender.BackColor = sender.Parent.BackColor
+            AddHandler c1.Click, Sub(sender, e)
+                                     Select Case 列表数据(sender.Tag).Value.Split("|")(0)
+                                         Case "msgbox"
+                                             Dim c As New 多项单选对话框("新闻公告", {"OK"}, 列表数据(sender.Tag).Value.Split("|")(1).Replace("{vbCrLf}", vbCrLf), 200, 500)
+                                             c.ShowDialog(Form1)
+                                         Case "link"
+                                             ShellExecute(IntPtr.Zero, "open", 列表数据(sender.Tag).Value.Split("|")(1), Nothing, Nothing, 1)
+                                     End Select
+                                 End Sub
+            If 列表数据(i).Value.Split("|").Length >= 3 Then
+                Select Case 列表数据(i).Value.Split("|")(2)
+                    Case "red"
+                        c1.ForeColor = Color1.红色
+                    Case "orange"
+                        c1.ForeColor = Color1.橙色
+                    Case "yellow"
+                        c1.ForeColor = Color1.黄色
+                    Case "green"
+                        c1.ForeColor = Color1.绿色
+                    Case "blue"
+                        c1.ForeColor = Color1.蓝色
+                    Case "aqua"
+                        c1.ForeColor = Color1.青色
+                    Case "purple"
+                        c1.ForeColor = Color1.紫色
+                End Select
+            End If
+
+            Form1.Panel35.Controls.Add(c1)
+            c1.BringToFront()
         Next
     End Sub
 
@@ -66,6 +87,7 @@ jx1:
                 Else
                     e.Result = ""
                 End If
+                列表数据.Clear()
                 键值对IO操作.读取键值对文本到列表(列表数据, a.网页返回字符串)
             End Sub
         AddHandler 服务器获取_新闻.RunWorkerCompleted,

@@ -44,4 +44,8 @@
                 Label取消_Click(Label取消, New EventArgs)
         End Select
     End Sub
+
+    Private Sub 暗黑文本框1_Load(sender As Object, e As EventArgs) Handles 暗黑文本框1.Load
+
+    End Sub
 End Class

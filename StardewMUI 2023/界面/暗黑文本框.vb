@@ -52,4 +52,15 @@ Public Class 暗黑文本框
     Private Sub 暗黑文本框控件本体_DpiChangedAfterParent(sender As Object, e As EventArgs) Handles Me.DpiChangedAfterParent
         调整()
     End Sub
+
+    Private Sub TextBox1_TextChanged(sender As Object, e As EventArgs) Handles TextBox1.TextChanged
+
+    End Sub
+
+    Private Sub TextBox1_KeyDown(sender As Object, e As KeyEventArgs) Handles TextBox1.KeyDown
+        RaiseEvent KeyDown(sender, e)
+    End Sub
+
+    Public Shadows Event KeyDown(sender As Object, e As KeyEventArgs)
+
 End Class

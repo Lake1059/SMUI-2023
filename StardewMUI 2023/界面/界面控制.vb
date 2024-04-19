@@ -82,7 +82,7 @@ Public Class 界面控制
 
         管理模组的菜单.添加菜单的触发()
         配置队列的菜单.添加菜单的触发()
-        新闻列表.绑定新闻列表操作()
+        AddHandler Form1.UiButton48.Click, Sub() 新闻列表.获取新闻(True)
 
         AddHandler Form1.UiButton42.Click, Sub() 显示窗体(Form离线教程, Form1)
         AddHandler Form1.UiRichTextBox4.LinkClicked, AddressOf 许可协议签署执行
@@ -167,10 +167,6 @@ Public Class 界面控制
         Form1.UiListBox1.Left = 23 * DPI : Form1.UiListBox1.Top = 61 * DPI : Form1.UiListBox1.Width = 470 * DPI : Form1.UiListBox1.Height = 171 * DPI
         Form1.UiListBox1.ItemHeight = 30 * DPI
         Form1.UiListBox1.Padding = New Padding(10 * DPI)
-
-        Form1.UiListBox2.Left = 23 * DPI : Form1.UiListBox2.Top = 292 * DPI : Form1.UiListBox2.Width = 470 * DPI : Form1.UiListBox2.Height = 387 * DPI
-        Form1.UiListBox2.ItemHeight = 30 * DPI
-        Form1.UiListBox2.Padding = New Padding(10 * DPI)
 
         Form1.UiListBox3.Left = 20 * DPI : Form1.UiListBox3.Top = 570 * DPI : Form1.UiListBox3.Width = 560 * DPI : Form1.UiListBox3.Height = 110 * DPI
         Form1.UiListBox3.ItemHeight = 30 * DPI

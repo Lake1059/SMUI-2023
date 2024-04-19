@@ -730,13 +730,15 @@ Line1:
 
     Public Shared Sub 打开分类文件夹()
         If Form1.ListView1.SelectedItems.Count = 1 Then
-            Process.Start(Path.Combine(管理模组2.检查并返回当前所选子库路径(False), Form1.ListView1.SelectedItems(0).Text))
+            Dim 路径 As String = Path.Combine(管理模组2.检查并返回当前所选子库路径(False), Form1.ListView1.SelectedItems(0).Text)
+            Process.Start("explorer.exe", 路径)
         End If
     End Sub
 
     Public Shared Sub 打开模组项文件夹()
         If Form1.ListView2.SelectedItems.Count = 1 Then
-            Process.Start(Path.Combine(管理模组2.检查并返回当前所选子库路径(False), Form1.ListView2.SelectedItems(0).SubItems(3).Text, Form1.ListView2.SelectedItems(0).Text))
+            Dim 路径 As String = Path.Combine(管理模组2.检查并返回当前所选子库路径(False), Form1.ListView2.SelectedItems(0).SubItems(3).Text, Form1.ListView2.SelectedItems(0).Text).Replace("\\", "\")
+            Process.Start("explorer.exe", 路径)
         End If
     End Sub
 

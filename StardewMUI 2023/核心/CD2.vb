@@ -140,14 +140,16 @@ Public Class CD2
             Exit Sub
         End If
         Dim a As New Process
-        a.StartInfo.WorkingDirectory = Path.GetDirectoryName(Path.Combine(任务队列.项路径, 参数列表(0)))
-        a.StartInfo.FileName = Path.Combine(任务队列.项路径, 参数列表(0))
+        a.StartInfo.UseShellExecute = False
+        a.StartInfo.WorkingDirectory = Path.GetDirectoryName(Path.Combine(任务队列.游戏路径, 参数列表(0)))
+        a.StartInfo.FileName = Path.Combine(任务队列.游戏路径, 参数列表(0))
         a.StartInfo.Arguments = 参数列表(1)
         a.StartInfo.WindowStyle = ProcessWindowStyle.Normal
         安装卸载.后台线程对象.ReportProgress(1, $"运行可执行文件：{参数列表(0)}")
         a.Start()
         安装卸载.后台线程对象.ReportProgress(1, $"等待程序结束")
-        a.WaitForExitAsync()
+        a.WaitForExit()
+        安装卸载.后台线程对象.ReportProgress(1, $"程序结束")
     End Sub
 
     Public Shared Sub 匹配到_安装时弹窗()

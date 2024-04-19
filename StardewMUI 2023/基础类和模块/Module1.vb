@@ -1,4 +1,5 @@
 ﻿Imports System.Runtime.InteropServices
+Imports Windows.UI.Input
 
 Module Module1
     'Win32 API

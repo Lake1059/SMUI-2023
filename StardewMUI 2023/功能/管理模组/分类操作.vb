@@ -87,23 +87,43 @@ Line1:
 Line1:
         Dim s1 As String = a.ShowDialog(Form1)
         If s1 = "" Then Exit Sub
-        If FileIO.FileSystem.DirectoryExists(管理模组2.检查并返回当前所选子库路径(False) & "\" & s1) Then
+        If FileIO.FileSystem.DirectoryExists(Path.Combine(管理模组2.检查并返回当前所选子库路径(False), s1)) Then
             Dim b As New 多项单选对话框("", {"确定"}, "已经存在目标分类：" & vbCrLf & vbCrLf & s1,, 500)
             b.ShowDialog(Form1)
             GoTo Line1
         Else
             Dim x As String = Form1.ListView1.SelectedItems(0).Text
-            FileIO.FileSystem.RenameDirectory(管理模组2.检查并返回当前所选子库路径(False) & "\" & x, s1)
+            FileIO.FileSystem.RenameDirectory(Path.Combine(管理模组2.检查并返回当前所选子库路径(False), x), s1)
             Form1.ListView1.SelectedItems(0).Text = s1
             For i = 0 To Form1.ListView2.Items.Count - 1
                 If Form1.ListView2.Items(i).SubItems(3).Text = x Then Form1.ListView2.Items(i).SubItems(3).Text = s1
             Next
-
         End If
     End Sub
 
     Public Shared Sub 删除分类()
-
+        Dim a As New 多项单选对话框("", {"移至回收站", "彻底删除", "万万不可"}, "确认删除所选择的分类？",, 500)
+        Dim s1 As String = a.ShowDialog(Form1)
+        If s1 = -1 Or s1 = 2 Then Exit Sub
+        Dim i As Integer = 0
+        Do Until i = Form1.ListView1.Items.Count
+            If Form1.ListView1.Items(i).Selected Then
+                Select Case s1
+                    Case 0
+                        FileIO.FileSystem.DeleteDirectory(Path.Combine(管理模组2.检查并返回当前所选子库路径(False), Form1.ListView1.Items(i).Text), FileIO.UIOption.AllDialogs, FileIO.RecycleOption.SendToRecycleBin)
+                    Case 1
+                        FileIO.FileSystem.DeleteDirectory(Path.Combine(管理模组2.检查并返回当前所选子库路径(False), Form1.ListView1.Items(i).Text), FileIO.UIOption.AllDialogs, FileIO.RecycleOption.DeletePermanently)
+                End Select
+                If FileIO.FileSystem.DirectoryExists(Path.Combine(管理模组2.检查并返回当前所选子库路径(False), Form1.ListView1.Items(i).Text)) Then
+                    i += 1
+                    Continue Do
+                End If
+                Form1.ListView1.Items(i).Remove()
+                i -= 1
+            End If
+            i += 1
+        Loop
+        Form1.Label50.Text = Form1.ListView1.Items.Count
     End Sub
 
 

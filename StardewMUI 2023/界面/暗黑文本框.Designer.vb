@@ -37,14 +37,14 @@ Partial Class 暗黑文本框
         TextBox1.Size = New Size(192, 18)
         TextBox1.TabIndex = 0
         ' 
-        ' 暗黑文本框控件本体
+        ' 暗黑文本框
         ' 
         AutoScaleDimensions = New SizeF(96F, 96F)
         AutoScaleMode = AutoScaleMode.Dpi
         BackColor = Color.FromArgb(CByte(48), CByte(48), CByte(48))
         Controls.Add(TextBox1)
         ForeColor = Color.FromArgb(CByte(224), CByte(224), CByte(224))
-        Name = "暗黑文本框控件本体"
+        Name = "暗黑文本框"
         Padding = New Padding(5, 5, 5, 0)
         Size = New Size(202, 30)
         ResumeLayout(False)
