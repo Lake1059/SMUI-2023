@@ -5369,9 +5369,9 @@ Partial Class Form1
         TabPage下载管理.BackColor = Color.FromArgb(CByte(24), CByte(24), CByte(24))
         TabPage下载管理.Controls.Add(Panel31)
         TabPage下载管理.ForeColor = Color.FromArgb(CByte(224), CByte(224), CByte(224))
-        TabPage下载管理.Location = New Point(0, 40)
+        TabPage下载管理.Location = New Point(0, 50)
         TabPage下载管理.Name = "TabPage下载管理"
-        TabPage下载管理.Size = New Size(200, 60)
+        TabPage下载管理.Size = New Size(1264, 700)
         TabPage下载管理.TabIndex = 3
         TabPage下载管理.Text = "下载管理"
         ' 
@@ -5381,7 +5381,7 @@ Partial Class Form1
         Panel31.Dock = DockStyle.Fill
         Panel31.Location = New Point(0, 0)
         Panel31.Name = "Panel31"
-        Panel31.Size = New Size(200, 60)
+        Panel31.Size = New Size(1264, 700)
         Panel31.TabIndex = 2
         ' 
         ' UiTabControlMenu3
@@ -5401,7 +5401,7 @@ Partial Class Form1
         UiTabControlMenu3.Multiline = True
         UiTabControlMenu3.Name = "UiTabControlMenu3"
         UiTabControlMenu3.SelectedIndex = 0
-        UiTabControlMenu3.Size = New Size(200, 60)
+        UiTabControlMenu3.Size = New Size(1264, 700)
         UiTabControlMenu3.SizeMode = TabSizeMode.Fixed
         UiTabControlMenu3.Style = Sunny.UI.UIStyle.Custom
         UiTabControlMenu3.TabBackColor = Color.FromArgb(CByte(48), CByte(48), CByte(48))
@@ -5413,9 +5413,9 @@ Partial Class Form1
         TabPage22.BackColor = Color.FromArgb(CByte(24), CByte(24), CByte(24))
         TabPage22.Controls.Add(Panel34)
         TabPage22.Controls.Add(Panel33)
-        TabPage22.Location = New Point(1201, 0)
+        TabPage22.Location = New Point(301, 0)
         TabPage22.Name = "TabPage22"
-        TabPage22.Size = New Size(0, 60)
+        TabPage22.Size = New Size(963, 700)
         TabPage22.TabIndex = 0
         TabPage22.Text = "选择要下载的文件"
         ' 
@@ -5426,7 +5426,7 @@ Partial Class Form1
         Panel34.Location = New Point(0, 54)
         Panel34.Name = "Panel34"
         Panel34.Padding = New Padding(30)
-        Panel34.Size = New Size(0, 6)
+        Panel34.Size = New Size(963, 646)
         Panel34.TabIndex = 2
         ' 
         ' Panel33
@@ -5436,7 +5436,7 @@ Partial Class Form1
         Panel33.Dock = DockStyle.Top
         Panel33.Location = New Point(0, 0)
         Panel33.Name = "Panel33"
-        Panel33.Size = New Size(0, 54)
+        Panel33.Size = New Size(963, 54)
         Panel33.TabIndex = 1
         ' 
         ' Label34
@@ -5444,7 +5444,7 @@ Partial Class Form1
         Label34.Dock = DockStyle.Fill
         Label34.Location = New Point(0, 0)
         Label34.Name = "Label34"
-        Label34.Size = New Size(0, 54)
+        Label34.Size = New Size(963, 54)
         Label34.TabIndex = 0
         Label34.Text = "   当前下载要在后续进行的操作：更新到项 / 新建项"
         Label34.TextAlign = ContentAlignment.MiddleLeft
@@ -5453,9 +5453,9 @@ Partial Class Form1
         ' 
         TabPage23.BackColor = Color.FromArgb(CByte(24), CByte(24), CByte(24))
         TabPage23.Controls.Add(Panel37)
-        TabPage23.Location = New Point(1201, 0)
+        TabPage23.Location = New Point(301, 0)
         TabPage23.Name = "TabPage23"
-        TabPage23.Size = New Size(0, 60)
+        TabPage23.Size = New Size(963, 700)
         TabPage23.TabIndex = 1
         TabPage23.Text = "下载和更新队列"
         ' 
@@ -5465,15 +5465,15 @@ Partial Class Form1
         Panel37.Location = New Point(0, 0)
         Panel37.Name = "Panel37"
         Panel37.Padding = New Padding(30)
-        Panel37.Size = New Size(0, 60)
+        Panel37.Size = New Size(963, 700)
         Panel37.TabIndex = 1
         ' 
         ' TabPage24
         ' 
         TabPage24.BackColor = Color.FromArgb(CByte(24), CByte(24), CByte(24))
-        TabPage24.Location = New Point(1201, 0)
+        TabPage24.Location = New Point(301, 0)
         TabPage24.Name = "TabPage24"
-        TabPage24.Size = New Size(0, 60)
+        TabPage24.Size = New Size(963, 700)
         TabPage24.TabIndex = 2
         TabPage24.Text = "管理下载的文件"
         ' 
@@ -5486,9 +5486,9 @@ Partial Class Form1
         TabPage1.Controls.Add(UiRadioButton9)
         TabPage1.Controls.Add(UiRadioButton10)
         TabPage1.Controls.Add(Panel51)
-        TabPage1.Location = New Point(1201, 0)
+        TabPage1.Location = New Point(301, 0)
         TabPage1.Name = "TabPage1"
-        TabPage1.Size = New Size(0, 60)
+        TabPage1.Size = New Size(963, 700)
         TabPage1.TabIndex = 3
         TabPage1.Text = "当前使用免费下载"
         ' 
@@ -5561,7 +5561,7 @@ Partial Class Form1
         Panel51.Dock = DockStyle.Top
         Panel51.Location = New Point(0, 0)
         Panel51.Name = "Panel51"
-        Panel51.Size = New Size(0, 54)
+        Panel51.Size = New Size(963, 54)
         Panel51.TabIndex = 2
         ' 
         ' Label39
@@ -5569,7 +5569,7 @@ Partial Class Form1
         Label39.Dock = DockStyle.Fill
         Label39.Location = New Point(0, 0)
         Label39.Name = "Label39"
-        Label39.Size = New Size(0, 54)
+        Label39.Size = New Size(963, 54)
         Label39.TabIndex = 0
         Label39.Text = "   设置自动保存，下一次选择下载文件时生效"
         Label39.TextAlign = ContentAlignment.MiddleLeft

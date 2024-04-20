@@ -760,11 +760,11 @@ Line1:
             AddHandler a.Items.Add("从 NEXUS API 更新", My.Resources.NEXUS).Click, Sub(s, e) Return
         Next
         If DLC.DLC解锁标记.CustomInputExtension = True Then
-            a.Items.Add(New ToolStripSeparator)
+            If a.Items.Count <> 0 Then a.Items.Add(New ToolStripSeparator)
             AddHandler a.Items.Add("自由输入 NEXUS ID", My.Resources.NEXUS).Click, Sub(s, e) Return
         End If
 
-        If a.Items.Count <> 0 And 当前项信息_ModDropID列表.Count <> 0 Then a.Items.Add(New ToolStripSeparator)
+        If a.Items.Count <> 0 Then a.Items.Add(New ToolStripSeparator)
         For i = 0 To 当前项信息_ModDropID列表.Count - 1
             AddHandler a.Items.Add("ModDrop: " & 当前项信息_ModDropID列表(i), My.Resources.ModDrop_White32).Click, Sub(s, e) Process.Start("https://www.moddrop.com/stardew-valley/mods/" & Mid(s.Text, 10))
             Dim s2 As String = 当前项信息_ModDropID列表(i)
@@ -776,7 +776,7 @@ Line1:
             AddHandler a.Items.Add("自由输入 ModDrop ID", My.Resources.ModDrop_White32).Click, Sub(s, e) Return
         End If
 
-        If a.Items.Count <> 0 And 当前项信息_Github仓库列表.Count <> 0 Then a.Items.Add(New ToolStripSeparator)
+        If a.Items.Count <> 0 Then a.Items.Add(New ToolStripSeparator)
         For i = 0 To 当前项信息_Github仓库列表.Count - 1
             AddHandler a.Items.Add(当前项信息_Github仓库列表(i), My.Resources.Github).Click, Sub(s, e) Process.Start("https://github.com/" & s.Text)
             Dim s2 As String = 当前项信息_Github仓库列表(i)
