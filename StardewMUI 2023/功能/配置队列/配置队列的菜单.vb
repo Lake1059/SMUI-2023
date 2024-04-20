@@ -49,6 +49,7 @@ Public Class 配置队列的菜单
                                                Dim a As Integer = Form1.ListView7.SelectedIndices(i)
                                                Form1.ListView7.Items(a).Remove() : 配置队列.当前项的规划操作列表.RemoveAt(a)
                                            End If
+                                           i += 1
                                        Loop
                                    End Sub
         规划右键菜单.Items.Add(New ToolStripSeparator)

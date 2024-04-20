@@ -11,6 +11,7 @@
     Public Shared Sub 绘制子项(哪个列表视图控件 As ListView, e As DrawListViewSubItemEventArgs, 项图标字典 As Dictionary(Of String, Image), Optional 图像边长 As Integer = 16)
         e.DrawDefault = False
         If Not e.Bounds.IntersectsWith(哪个列表视图控件.ClientRectangle) Then Exit Sub
+        If e.Bounds.Width = 0 Then Exit Sub
         Dim 项背景色 As Color = If(哪个列表视图控件.SelectedIndices.Contains(e.ItemIndex), 项被选中时的背景颜色, 哪个列表视图控件.BackColor)
         e.Graphics.FillRectangle(New SolidBrush(项背景色), e.Bounds)
         Dim 文本高度修正 As Integer = (e.Bounds.Height - TextRenderer.MeasureText(e.SubItem.Text, e.SubItem.Font).Height) \ 2
@@ -46,6 +47,7 @@
     Public Shared Sub 绘制子项(哪个列表视图控件 As ListView, e As DrawListViewSubItemEventArgs)
         e.DrawDefault = False
         If Not e.Bounds.IntersectsWith(哪个列表视图控件.ClientRectangle) Then Exit Sub
+        If e.Bounds.Width = 0 Then Exit Sub
         Dim 项背景色 As Color = If(哪个列表视图控件.SelectedIndices.Contains(e.ItemIndex), 项被选中时的背景颜色, 哪个列表视图控件.BackColor)
         e.Graphics.FillRectangle(New SolidBrush(项背景色), e.Bounds)
         Dim 文本高度修正 As Integer = (e.Bounds.Height - TextRenderer.MeasureText(e.SubItem.Text, e.SubItem.Font).Height) \ 2

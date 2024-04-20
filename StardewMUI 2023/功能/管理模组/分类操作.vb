@@ -23,6 +23,10 @@ Line1:
     End Sub
 
     Public Shared Sub 转移分类()
+        If Form1.ListView1.SelectedItems.Count <> 1 Then Exit Sub
+        Dim d1 As String = 管理模组2.检查并返回当前模组数据仓库路径
+        If d1 = "" Then Exit Sub
+
         Dim newWindow As New Form With {
             .Text = "选择目标子库",
             .BackColor = Form1.BackColor,
@@ -38,7 +42,7 @@ Line1:
             .ShowInTaskbar = False,
             .ShowIcon = False
         }
-        Dim a As New List(Of String)(共享方法.SearchFolderWithoutSub(管理模组2.检查并返回当前模组数据仓库路径))
+        Dim a As New List(Of String)(共享方法.SearchFolderWithoutSub(d1))
         a.Remove(".Download")
         a.Remove(".Decompress")
         For i = 0 To a.Count - 1
@@ -97,6 +101,11 @@ Line1:
             Form1.ListView1.SelectedItems(0).Text = s1
             For i = 0 To Form1.ListView2.Items.Count - 1
                 If Form1.ListView2.Items(i).SubItems(3).Text = x Then Form1.ListView2.Items(i).SubItems(3).Text = s1
+            Next
+            For i = 0 To Form1.ListView3.Items.Count - 1
+                If Form1.ListView3.Items(i).SubItems(1).Text = x Then
+                    Form1.ListView3.Items(i).SubItems(1).Text = s1
+                End If
             Next
         End If
     End Sub

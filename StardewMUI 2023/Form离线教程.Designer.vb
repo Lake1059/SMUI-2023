@@ -34,7 +34,21 @@ Partial Class Form离线教程
         Label1 = New Label()
         Label4 = New Label()
         TabPage2 = New TabPage()
+        Label13 = New Label()
+        Label12 = New Label()
+        Label11 = New Label()
+        Label10 = New Label()
+        Label9 = New Label()
+        Label8 = New Label()
         TabPage3 = New TabPage()
+        Label21 = New Label()
+        Label20 = New Label()
+        Label19 = New Label()
+        Label18 = New Label()
+        Label17 = New Label()
+        Label16 = New Label()
+        Label15 = New Label()
+        Label14 = New Label()
         TabPage4 = New TabPage()
         TabPage5 = New TabPage()
         TabPage6 = New TabPage()
@@ -46,15 +60,10 @@ Partial Class Form离线教程
         TabPage12 = New TabPage()
         TabPage13 = New TabPage()
         TabPage14 = New TabPage()
-        Label8 = New Label()
-        Label9 = New Label()
-        Label10 = New Label()
-        Label11 = New Label()
-        Label12 = New Label()
-        Label13 = New Label()
         UiTabControlMenu1.SuspendLayout()
         TabPage1.SuspendLayout()
         TabPage2.SuspendLayout()
+        TabPage3.SuspendLayout()
         SuspendLayout()
         ' 
         ' UiTabControlMenu1
@@ -234,14 +243,184 @@ Partial Class Form离线教程
         TabPage2.TabIndex = 1
         TabPage2.Text = "初始设置"
         ' 
+        ' Label13
+        ' 
+        Label13.AutoSize = True
+        Label13.Font = New Font("微软雅黑", 9.75F, FontStyle.Regular, GraphicsUnit.Point, CByte(134))
+        Label13.Location = New Point(20, 468)
+        Label13.Margin = New Padding(20, 20, 20, 0)
+        Label13.Name = "Label13"
+        Label13.Size = New Size(412, 95)
+        Label13.TabIndex = 9
+        Label13.Text = "NEXUS 要求非会员从接口下载文件需要提供额外参数" & vbCrLf & "塞浏览器的作用就在这里，这是最稳定且合法的解决方法" & vbCrLf & "所以如果你的账号没有会员，则这一步必须做" & vbCrLf & "该处下方有一个很长的按钮，点击它转到内置浏览器页面完成账号登录" & vbCrLf & "注意你填写的密钥和登录的账号必须是同一账号"
+        ' 
+        ' Label12
+        ' 
+        Label12.AutoSize = True
+        Label12.Font = New Font("微软雅黑", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(134))
+        Label12.ForeColor = Color.Gold
+        Label12.Location = New Point(20, 427)
+        Label12.Margin = New Padding(20, 20, 20, 0)
+        Label12.Name = "Label12"
+        Label12.Size = New Size(249, 21)
+        Label12.TabIndex = 8
+        Label12.Text = "在内置浏览器中登录 NEXUS 账号"
+        ' 
+        ' Label11
+        ' 
+        Label11.AutoSize = True
+        Label11.Font = New Font("微软雅黑", 9.75F, FontStyle.Regular, GraphicsUnit.Point, CByte(134))
+        Label11.Location = New Point(20, 331)
+        Label11.Margin = New Padding(20, 20, 20, 0)
+        Label11.Name = "Label11"
+        Label11.Size = New Size(399, 76)
+        Label11.TabIndex = 7
+        Label11.Text = "要使用在线更新模组功能，必须填写来自 NEXUS 的账户个人密钥" & vbCrLf & "转到【在线服务】选项卡" & vbCrLf & "如果你不知道怎么获取密钥，点击旁边的【前往管理】可以直达网页" & vbCrLf & "（当然要登录账号）在该网页最底下找到 Personal API Key"
+        ' 
+        ' Label10
+        ' 
+        Label10.AutoSize = True
+        Label10.Font = New Font("微软雅黑", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(134))
+        Label10.ForeColor = Color.Gold
+        Label10.Location = New Point(20, 290)
+        Label10.Margin = New Padding(20, 20, 20, 0)
+        Label10.Name = "Label10"
+        Label10.Size = New Size(283, 21)
+        Label10.TabIndex = 6
+        Label10.Text = "设置 NEXUSMODS Personal API Key"
+        ' 
+        ' Label9
+        ' 
+        Label9.AutoSize = True
+        Label9.Font = New Font("微软雅黑", 9.75F, FontStyle.Regular, GraphicsUnit.Point, CByte(134))
+        Label9.Location = New Point(20, 61)
+        Label9.Margin = New Padding(20, 20, 20, 0)
+        Label9.Name = "Label9"
+        Label9.Size = New Size(412, 209)
+        Label9.TabIndex = 5
+        Label9.Text = resources.GetString("Label9.Text")
+        ' 
+        ' Label8
+        ' 
+        Label8.AutoSize = True
+        Label8.Font = New Font("微软雅黑", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(134))
+        Label8.ForeColor = Color.Gold
+        Label8.Location = New Point(20, 20)
+        Label8.Margin = New Padding(20, 20, 20, 0)
+        Label8.Name = "Label8"
+        Label8.Size = New Size(74, 21)
+        Label8.TabIndex = 4
+        Label8.Text = "设置路径"
+        ' 
         ' TabPage3
         ' 
+        TabPage3.AutoScroll = True
         TabPage3.BackColor = Color.FromArgb(CByte(24), CByte(24), CByte(24))
+        TabPage3.Controls.Add(Label21)
+        TabPage3.Controls.Add(Label20)
+        TabPage3.Controls.Add(Label19)
+        TabPage3.Controls.Add(Label18)
+        TabPage3.Controls.Add(Label17)
+        TabPage3.Controls.Add(Label16)
+        TabPage3.Controls.Add(Label15)
+        TabPage3.Controls.Add(Label14)
         TabPage3.Location = New Point(201, 0)
         TabPage3.Name = "TabPage3"
         TabPage3.Size = New Size(783, 661)
         TabPage3.TabIndex = 2
-        TabPage3.Text = "数据迁移"
+        TabPage3.Text = "基础知识"
+        ' 
+        ' Label21
+        ' 
+        Label21.AutoSize = True
+        Label21.Font = New Font("微软雅黑", 9.75F, FontStyle.Regular, GraphicsUnit.Point, CByte(134))
+        Label21.Location = New Point(20, 605)
+        Label21.Margin = New Padding(20, 20, 20, 0)
+        Label21.Name = "Label21"
+        Label21.Size = New Size(360, 209)
+        Label21.TabIndex = 12
+        Label21.Text = resources.GetString("Label21.Text")
+        ' 
+        ' Label20
+        ' 
+        Label20.AutoSize = True
+        Label20.Font = New Font("微软雅黑", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(134))
+        Label20.ForeColor = Color.Gold
+        Label20.Location = New Point(20, 564)
+        Label20.Margin = New Padding(20, 20, 20, 0)
+        Label20.Name = "Label20"
+        Label20.Size = New Size(74, 21)
+        Label20.TabIndex = 11
+        Label20.Text = "软件机制"
+        ' 
+        ' Label19
+        ' 
+        Label19.AutoSize = True
+        Label19.Font = New Font("微软雅黑", 9.75F, FontStyle.Regular, GraphicsUnit.Point, CByte(134))
+        Label19.Location = New Point(20, 335)
+        Label19.Margin = New Padding(20, 20, 20, 0)
+        Label19.Name = "Label19"
+        Label19.Size = New Size(334, 209)
+        Label19.TabIndex = 10
+        Label19.Text = "本地模组数据仓库是用于存放所有模组数据的文件夹" & vbCrLf & "所有的模组都存放于此，需要为其准备足够的硬盘空间" & vbCrLf & vbCrLf & "子库是从五代加入的一个分支，为了应对巨量模组而存在" & vbCrLf & "只能在同一时间操作一个子库" & vbCrLf & vbCrLf & "分类就是你认为的模组分类，由你主动安排归类" & vbCrLf & "就像是图书馆里的书籍索引" & vbCrLf & vbCrLf & "模组项一词是专门定义的，我们日常称为模组或者项" & vbCrLf & "一个模组项包含一个模组的完整内容但不包含它的依赖项"
+        ' 
+        ' Label18
+        ' 
+        Label18.AutoSize = True
+        Label18.Font = New Font("微软雅黑", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(134))
+        Label18.ForeColor = Color.Gold
+        Label18.Location = New Point(20, 294)
+        Label18.Margin = New Padding(20, 20, 20, 0)
+        Label18.Name = "Label18"
+        Label18.Size = New Size(410, 21)
+        Label18.TabIndex = 9
+        Label18.Text = "什么是【本地模组数据库】【子库】【分类】【模组项】"
+        ' 
+        ' Label17
+        ' 
+        Label17.AutoSize = True
+        Label17.Font = New Font("微软雅黑", 9.75F, FontStyle.Regular, GraphicsUnit.Point, CByte(134))
+        Label17.Location = New Point(20, 236)
+        Label17.Margin = New Padding(20, 20, 20, 0)
+        Label17.Name = "Label17"
+        Label17.Size = New Size(373, 38)
+        Label17.TabIndex = 8
+        Label17.Text = "程序不会凭空知道要如何安装卸载模组" & vbCrLf & "程序需要通过读取用户编写的安装规划才能知道要如何进行操作"
+        ' 
+        ' Label16
+        ' 
+        Label16.AutoSize = True
+        Label16.Font = New Font("微软雅黑", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(134))
+        Label16.ForeColor = Color.Gold
+        Label16.Location = New Point(20, 195)
+        Label16.Margin = New Padding(20, 20, 20, 0)
+        Label16.Name = "Label16"
+        Label16.Size = New Size(154, 21)
+        Label16.TabIndex = 7
+        Label16.Text = "什么是【安装规划】"
+        ' 
+        ' Label15
+        ' 
+        Label15.AutoSize = True
+        Label15.Font = New Font("微软雅黑", 9.75F, FontStyle.Regular, GraphicsUnit.Point, CByte(134))
+        Label15.Location = New Point(20, 61)
+        Label15.Margin = New Padding(20, 20, 20, 0)
+        Label15.Name = "Label15"
+        Label15.Size = New Size(438, 114)
+        Label15.TabIndex = 6
+        Label15.Text = "SMUI 与传统模组管理器有很大不同，因此你不能用传统思维去思考问题" & vbCrLf & "SMUI 以用户编程来实现支持所有安装方法的模组，而不是简单的启用禁用" & vbCrLf & vbCrLf & "如果你是全新上手，那么你是幸运的" & vbCrLf & "因为在历代产品中还需要人力编写像代码一样的【安装命令】" & vbCrLf & "而在第六代中，这些代码全部以可视化编辑呈现，极易上手" & vbCrLf
+        ' 
+        ' Label14
+        ' 
+        Label14.AutoSize = True
+        Label14.Font = New Font("微软雅黑", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(134))
+        Label14.ForeColor = Color.Gold
+        Label14.Location = New Point(20, 20)
+        Label14.Margin = New Padding(20, 20, 20, 0)
+        Label14.Name = "Label14"
+        Label14.Size = New Size(74, 21)
+        Label14.TabIndex = 4
+        Label14.Text = "核心设计"
         ' 
         ' TabPage4
         ' 
@@ -342,75 +521,6 @@ Partial Class Form离线教程
         TabPage14.TabIndex = 13
         TabPage14.Text = "翻译"
         ' 
-        ' Label8
-        ' 
-        Label8.AutoSize = True
-        Label8.Font = New Font("微软雅黑", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(134))
-        Label8.ForeColor = Color.Gold
-        Label8.Location = New Point(20, 20)
-        Label8.Margin = New Padding(20, 20, 20, 0)
-        Label8.Name = "Label8"
-        Label8.Size = New Size(74, 21)
-        Label8.TabIndex = 4
-        Label8.Text = "设置路径"
-        ' 
-        ' Label9
-        ' 
-        Label9.AutoSize = True
-        Label9.Font = New Font("微软雅黑", 9.75F, FontStyle.Regular, GraphicsUnit.Point, CByte(134))
-        Label9.Location = New Point(20, 61)
-        Label9.Margin = New Padding(20, 20, 20, 0)
-        Label9.Name = "Label9"
-        Label9.Size = New Size(412, 209)
-        Label9.TabIndex = 5
-        Label9.Text = resources.GetString("Label9.Text")
-        ' 
-        ' Label10
-        ' 
-        Label10.AutoSize = True
-        Label10.Font = New Font("微软雅黑", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(134))
-        Label10.ForeColor = Color.Gold
-        Label10.Location = New Point(20, 290)
-        Label10.Margin = New Padding(20, 20, 20, 0)
-        Label10.Name = "Label10"
-        Label10.Size = New Size(283, 21)
-        Label10.TabIndex = 6
-        Label10.Text = "设置 NEXUSMODS Personal API Key"
-        ' 
-        ' Label11
-        ' 
-        Label11.AutoSize = True
-        Label11.Font = New Font("微软雅黑", 9.75F, FontStyle.Regular, GraphicsUnit.Point, CByte(134))
-        Label11.Location = New Point(20, 331)
-        Label11.Margin = New Padding(20, 20, 20, 0)
-        Label11.Name = "Label11"
-        Label11.Size = New Size(399, 76)
-        Label11.TabIndex = 7
-        Label11.Text = "要使用在线更新模组功能，必须填写来自 NEXUS 的账户个人密钥" & vbCrLf & "转到【在线服务】选项卡" & vbCrLf & "如果你不知道怎么获取密钥，点击旁边的【前往管理】可以直达网页" & vbCrLf & "（当然要登录账号）在该网页最底下找到 Personal API Key"
-        ' 
-        ' Label12
-        ' 
-        Label12.AutoSize = True
-        Label12.Font = New Font("微软雅黑", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(134))
-        Label12.ForeColor = Color.Gold
-        Label12.Location = New Point(20, 427)
-        Label12.Margin = New Padding(20, 20, 20, 0)
-        Label12.Name = "Label12"
-        Label12.Size = New Size(249, 21)
-        Label12.TabIndex = 8
-        Label12.Text = "在内置浏览器中登录 NEXUS 账号"
-        ' 
-        ' Label13
-        ' 
-        Label13.AutoSize = True
-        Label13.Font = New Font("微软雅黑", 9.75F, FontStyle.Regular, GraphicsUnit.Point, CByte(134))
-        Label13.Location = New Point(20, 468)
-        Label13.Margin = New Padding(20, 20, 20, 0)
-        Label13.Name = "Label13"
-        Label13.Size = New Size(412, 95)
-        Label13.TabIndex = 9
-        Label13.Text = "NEXUS 要求非会员从接口下载文件需要提供额外参数" & vbCrLf & "塞浏览器的作用就在这里，这是最稳定且合法的解决方法" & vbCrLf & "所以如果你的账号没有会员，则这一步必须做" & vbCrLf & "该处下方有一个很长的按钮，点击它转到内置浏览器页面完成账号登录" & vbCrLf & "注意你填写的密钥和登录的账号必须是同一账号"
-        ' 
         ' Form离线教程
         ' 
         AutoScaleDimensions = New SizeF(96F, 96F)
@@ -433,6 +543,8 @@ Partial Class Form离线教程
         TabPage1.PerformLayout()
         TabPage2.ResumeLayout(False)
         TabPage2.PerformLayout()
+        TabPage3.ResumeLayout(False)
+        TabPage3.PerformLayout()
         ResumeLayout(False)
     End Sub
 
@@ -465,4 +577,12 @@ Partial Class Form离线教程
     Friend WithEvents Label11 As Label
     Friend WithEvents Label12 As Label
     Friend WithEvents Label13 As Label
+    Friend WithEvents Label15 As Label
+    Friend WithEvents Label14 As Label
+    Friend WithEvents Label18 As Label
+    Friend WithEvents Label17 As Label
+    Friend WithEvents Label16 As Label
+    Friend WithEvents Label19 As Label
+    Friend WithEvents Label21 As Label
+    Friend WithEvents Label20 As Label
 End Class

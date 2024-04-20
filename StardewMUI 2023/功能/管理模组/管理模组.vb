@@ -20,6 +20,11 @@ Public Class 管理模组
         AddHandler 管理模组的菜单.菜单项_转移分类.Click, AddressOf 分类操作.转移分类
         AddHandler 管理模组的菜单.菜单项_重命名分类.Click, AddressOf 分类操作.重命名分类
         AddHandler 管理模组的菜单.菜单项_删除分类.Click, AddressOf 分类操作.删除分类
+        AddHandler 管理模组的菜单.菜单项_新建项.Click, AddressOf 模组项操作.新建模组项
+        AddHandler 管理模组的菜单.菜单项_移动项.Click, AddressOf 模组项操作.转移模组项
+        AddHandler 管理模组的菜单.菜单项_重命名项.Click, AddressOf 模组项操作.重命名模组项
+        AddHandler 管理模组的菜单.菜单项_删除项.Click, AddressOf 模组项操作.删除模组项
+
 
         AddHandler Form1.ListView1.KeyDown, Sub(sender, e) 分类列表键盘按下事件(sender, e)
         AddHandler Form1.ListView1.SelectedIndexChanged, Sub(sender, e) 扫描模组项()

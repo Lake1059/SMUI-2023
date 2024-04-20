@@ -47,7 +47,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="BetterFolderBrowser" Version="1.2.0" />
     <PackageReference Include="CefSharp.WinForms.NETCore" Version="123.0.60" />
     <PackageReference Include="Imazen.WebP" Version="10.0.1" />
     <PackageReference Include="Microsoft.Web.WebView2" Version="1.0.2420.47" />
