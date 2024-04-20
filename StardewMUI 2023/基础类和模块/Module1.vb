@@ -52,7 +52,7 @@ Module Module1
     Public Sub DebugPrint(文本 As String, 颜色 As Color, Optional 是否需要转到调试选项卡 As Boolean = False)
         If 文本 = "" Then Exit Sub
         Form1.UiRichTextBox2.AppendText(vbCrLf & 文本)
-        Form1.UiRichTextBox2.Select(Form1.UiRichTextBox2.TextLength - 文本.Length, 文本.Length)
+        Form1.UiRichTextBox2.Select(Form1.UiRichTextBox2.TextLength - Len(文本), Len(文本))
         Form1.UiRichTextBox2.SelectionColor = 颜色
         Form1.UiRichTextBox2.Select(Form1.UiRichTextBox2.TextLength, 0)
         Form1.UiRichTextBox2.ScrollToCaret()

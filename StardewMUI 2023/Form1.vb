@@ -13,6 +13,7 @@ Public Class Form1
         管理模组.初始化()
         任务队列.全部字典初始化()
         配置队列.初始化()
+        DLC.初始化()
     End Sub
 
     Private Sub Form1_Shown(sender As Object, e As EventArgs) Handles MyBase.Shown

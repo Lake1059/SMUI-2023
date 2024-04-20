@@ -148,6 +148,8 @@ Public Class 界面控制
         Form1.ColumnHeader15.Width = (Form1.ListView10.Width - 程序DPI_垂直滚动条宽度 * 2) * 0.2
         Form1.ColumnHeader16.Width = (Form1.ListView10.Width - 程序DPI_垂直滚动条宽度 * 2) * 0.2
 
+        Form1.ColumnHeader9.Width = Form1.ListView9.Width * 0.7
+        Form1.ColumnHeader13.Width = Form1.ListView9.Width * 0.3
     End Sub
 
     Public Shared Sub 主界面高DPI兼容()

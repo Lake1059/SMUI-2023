@@ -121,9 +121,6 @@
   <data name="7zip" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\7zip.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="BetterFolderBrowser" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\BetterFolderBrowser.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="CEF" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\CEF.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -142,11 +139,44 @@
   <data name="dropbox1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\dropbox.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="fandom" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\fandom.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Gitee" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Gitee.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Github" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Github.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="Jsonnet" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Jsonnet.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="me" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\me.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ModDrop-White32" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ModDrop-White32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="NEXUS" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\NEXUS.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Outlook" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Outlook.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="payhip" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\payhip.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Paypal" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Paypal.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="SMAPI" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\SMAPI.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Stardew Valley" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Stardew Valley.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Steam" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Steam.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="SunnyUI" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\SunnyUI.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -184,6 +214,9 @@
   <data name="六个点" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\六个点.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="农场布局规划器" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\农场布局规划器.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="切换" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\切换.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -201,6 +234,18 @@
   </data>
   <data name="右箭头" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\右箭头.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="呵呵鱼MOD" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\呵呵鱼MOD.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="哔哩哔哩" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\哔哩哔哩.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="存档进度检查器" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\存档进度检查器.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="存档预测器" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\存档预测器.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="左箭头" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\左箭头.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -220,11 +265,17 @@
   <data name="更新记录" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\更新记录.rtf;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="模块" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\模块.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="浏览器脚本" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\浏览器脚本.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;gb2312</value>
   </data>
   <data name="添加带圆圈" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\添加带圆圈.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="爱发电" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\爱发电.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="用户许可协议" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\用户许可协议.rtf;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;gb2312</value>

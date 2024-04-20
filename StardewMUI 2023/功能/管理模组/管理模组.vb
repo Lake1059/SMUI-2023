@@ -26,6 +26,8 @@ Public Class 管理模组
         AddHandler 管理模组的菜单.菜单项_删除项.Click, AddressOf 模组项操作.删除模组项
 
 
+
+
         AddHandler Form1.ListView1.KeyDown, Sub(sender, e) 分类列表键盘按下事件(sender, e)
         AddHandler Form1.ListView1.SelectedIndexChanged, Sub(sender, e) 扫描模组项()
         AddHandler Form1.UiButton3.Click, Sub(sender, e) 扫描模组项(True)
@@ -42,7 +44,12 @@ Public Class 管理模组
                     Form依赖项表.Close()
                 End If
             End Sub
-
+        AddHandler Form1.UiButton6.MouseDown,
+            Sub(sender, e)
+                If Not Form1.ListView2.SelectedItems.Count = 1 Then Exit Sub
+                Dim a As 暗黑菜单条控件本体 = 生成更新地址表菜单()
+                a.Show(sender, New Point(0, 0 - a.Height - a.Items(0).Height))
+            End Sub
 
         AddHandler 管理模组的菜单.菜单项_打开分类的文件夹.Click, AddressOf 打开分类文件夹
 
@@ -733,6 +740,59 @@ Line1:
         Form1.ToolTip1.SetToolTip(Form1.PictureBox1, 当前正在显示的预览图索引 + 1 & "/" & 当前项信息_预览图文件表.Count)
     End Sub
 
+
+    Public Shared Function 生成更新地址表菜单() As 暗黑菜单条控件本体
+        Dim a As New 暗黑菜单条控件本体
+        If Form1.ListView2.SelectedItems.Count <> 1 Then
+            Return a
+            Exit Function
+        End If
+        a.ImageScalingSize = New Size(25, 25)
+        a.DropShadowEnabled = False
+        a.ShowCheckMargin = False
+        a.Font = Form1.Font
+
+        For i = 0 To 当前项信息_N网ID列表.Count - 1
+            If Len(当前项信息_N网ID列表(i)) <= 0 Then Continue For
+            AddHandler a.Items.Add("NEXUS: " & 当前项信息_N网ID列表(i), My.Resources.NEXUS).Click, Sub(s, e) Process.Start("https://www.nexusmods.com/stardewvalley/mods/" & Mid(s.Text, 8))
+            Dim s1 As String = 当前项信息_N网ID列表(i)
+            AddHandler a.Items.Add("复制链接").Click, Sub(s, e) Clipboard.SetText("https://www.nexusmods.com/stardewvalley/mods/" & s1)
+            AddHandler a.Items.Add("从 NEXUS API 更新", My.Resources.NEXUS).Click, Sub(s, e) Return
+        Next
+        If DLC.DLC解锁标记.CustomInputExtension = True Then
+            a.Items.Add(New ToolStripSeparator)
+            AddHandler a.Items.Add("自由输入 NEXUS ID", My.Resources.NEXUS).Click, Sub(s, e) Return
+        End If
+
+        If a.Items.Count <> 0 And 当前项信息_ModDropID列表.Count <> 0 Then a.Items.Add(New ToolStripSeparator)
+        For i = 0 To 当前项信息_ModDropID列表.Count - 1
+            AddHandler a.Items.Add("ModDrop: " & 当前项信息_ModDropID列表(i), My.Resources.ModDrop_White32).Click, Sub(s, e) Process.Start("https://www.moddrop.com/stardew-valley/mods/" & Mid(s.Text, 10))
+            Dim s2 As String = 当前项信息_ModDropID列表(i)
+            AddHandler a.Items.Add("复制链接").Click, Sub(s, e) Clipboard.SetText("https://www.moddrop.com/stardew-valley/mods/" & s2)
+            AddHandler a.Items.Add("从 ModDrop 更新", My.Resources.ModDrop_White32).Click, Sub(s, e) Return
+        Next
+        If DLC.DLC解锁标记.CustomInputExtension = True Then
+            a.Items.Add(New ToolStripSeparator)
+            AddHandler a.Items.Add("自由输入 ModDrop ID", My.Resources.ModDrop_White32).Click, Sub(s, e) Return
+        End If
+
+        If a.Items.Count <> 0 And 当前项信息_Github仓库列表.Count <> 0 Then a.Items.Add(New ToolStripSeparator)
+        For i = 0 To 当前项信息_Github仓库列表.Count - 1
+            AddHandler a.Items.Add(当前项信息_Github仓库列表(i), My.Resources.Github).Click, Sub(s, e) Process.Start("https://github.com/" & s.Text)
+            Dim s2 As String = 当前项信息_Github仓库列表(i)
+            AddHandler a.Items.Add("复制链接").Click, Sub(s, e) Clipboard.SetText("https://github.com/" & s2)
+            AddHandler a.Items.Add("从 GitHub 更新", My.Resources.Github).Click, Sub(s, e) Return
+        Next
+        If DLC.DLC解锁标记.CustomInputExtension = True Then
+            a.Items.Add(New ToolStripSeparator)
+            AddHandler a.Items.Add("自由输入 GitHub 仓库名", My.Resources.Github).Click, Sub(s, e) Return
+        End If
+
+        Return a
+    End Function
+
+
+
     Public Shared Sub 打开分类文件夹()
         If Form1.ListView1.SelectedItems.Count = 1 Then
             Dim 路径 As String = Path.Combine(管理模组2.检查并返回当前所选子库路径(False), Form1.ListView1.SelectedItems(0).Text)
@@ -746,7 +806,6 @@ Line1:
             Process.Start("explorer.exe", 路径)
         End If
     End Sub
-
 
 
 End Class
