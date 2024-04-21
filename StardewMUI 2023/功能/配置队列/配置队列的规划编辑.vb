@@ -163,8 +163,16 @@ Public Class 配置队列的规划编辑
         Dim a As New Form编辑规划_检查存在性 With {.Text = 标题栏}
         a.Label1.Text = 窗体上文本1
         Dim 参数列表 As New List(Of String)(Form1.ListView7.SelectedItems(0).SubItems(1).Text.Split("|").ToList)
-        a.暗黑文本框1.Text = 参数列表(0)
-        If 参数列表(1).ToLower.Trim = "true" Then
+
+        For i = 1 To 参数列表.Count - 1
+            If i = 1 Then
+                a.暗黑文本框1.Text = 参数列表(1)
+            Else
+                a.暗黑文本框1.Text &= "|" & 参数列表(i)
+            End If
+        Next
+
+        If 参数列表(0).ToLower.Trim = "true" Then
             a.UiRadioButton1.Checked = True
             a.UiRadioButton2.Checked = False
         Else
@@ -179,7 +187,7 @@ Public Class 配置队列的规划编辑
         End Select
         显示模式窗体(a, Form1)
         If 来自_检查存在性_填写的相对路径 <> "" Then
-            Form1.ListView7.SelectedItems(0).SubItems(1).Text = $"{来自_检查存在性_填写的相对路径}|{If(来自_检查存在性_要存在还是不存在, "True", "False")}"
+            Form1.ListView7.SelectedItems(0).SubItems(1).Text = $"{If(来自_检查存在性_要存在还是不存在, "True", "False")}|{来自_检查存在性_填写的相对路径}"
         End If
         a.Dispose()
     End Sub

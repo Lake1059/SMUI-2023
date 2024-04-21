@@ -46,8 +46,7 @@ Public Class 配置队列的菜单
                                        Dim i As Integer = 0
                                        Do Until i = Form1.ListView7.Items.Count
                                            If Form1.ListView7.Items(i).Selected Then
-                                               Dim a As Integer = Form1.ListView7.SelectedIndices(i)
-                                               Form1.ListView7.Items(a).Remove() : 配置队列.当前项的规划操作列表.RemoveAt(a)
+                                               Form1.ListView7.Items(i).Remove() : 配置队列.当前项的规划操作列表.RemoveAt(i)
                                            End If
                                            i += 1
                                        Loop
@@ -94,13 +93,13 @@ Public Class 配置队列的菜单
 
         添加规划菜单.Items.Add(New ToolStripSeparator)
         添加规划菜单.Items.Add(菜单项_安装时检查文件夹的存在)
-        AddHandler 菜单项_安装时检查文件夹的存在.Click, Sub() 添加新规划通用调用(任务队列操作类型枚举.安装时检查文件夹的存在, "<参数：文件夹>|True")
+        AddHandler 菜单项_安装时检查文件夹的存在.Click, Sub() 添加新规划通用调用(任务队列操作类型枚举.安装时检查文件夹的存在, "<布尔值>|<参数：文件夹>")
         添加规划菜单.Items.Add(菜单项_卸载时检查文件夹的存在)
-        AddHandler 菜单项_卸载时检查文件夹的存在.Click, Sub() 添加新规划通用调用(任务队列操作类型枚举.卸载时检查文件夹的存在, "<参数：文件夹>|True")
+        AddHandler 菜单项_卸载时检查文件夹的存在.Click, Sub() 添加新规划通用调用(任务队列操作类型枚举.卸载时检查文件夹的存在, "<布尔值>|<参数：文件夹>")
         添加规划菜单.Items.Add(菜单项_安装时检查文件的存在)
-        AddHandler 菜单项_安装时检查文件的存在.Click, Sub() 添加新规划通用调用(任务队列操作类型枚举.安装时检查文件的存在, "<参数：文件>|True")
+        AddHandler 菜单项_安装时检查文件的存在.Click, Sub() 添加新规划通用调用(任务队列操作类型枚举.安装时检查文件的存在, "<布尔值>|<参数：文件>")
         添加规划菜单.Items.Add(菜单项_卸载时检查文件的存在)
-        AddHandler 菜单项_卸载时检查文件的存在.Click, Sub() 添加新规划通用调用(任务队列操作类型枚举.卸载时检查文件的存在, "<参数：文件>|True")
+        AddHandler 菜单项_卸载时检查文件的存在.Click, Sub() 添加新规划通用调用(任务队列操作类型枚举.卸载时检查文件的存在, "<布尔值>|<参数：文件>")
 
 
     End Sub

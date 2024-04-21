@@ -2,6 +2,7 @@
 Imports System.IO
 Imports SMUI6.项信息读取类
 Imports Sunny.UI
+Imports Windows.System
 
 Public Class 管理模组
 
@@ -754,7 +755,7 @@ Line1:
 
         For i = 0 To 当前项信息_N网ID列表.Count - 1
             If Len(当前项信息_N网ID列表(i)) <= 0 Then Continue For
-            AddHandler a.Items.Add("NEXUS: " & 当前项信息_N网ID列表(i), My.Resources.NEXUS).Click, Sub(s, e) Process.Start("https://www.nexusmods.com/stardewvalley/mods/" & Mid(s.Text, 8))
+            AddHandler a.Items.Add("NEXUS: " & 当前项信息_N网ID列表(i), My.Resources.NEXUS).Click, Async Sub(s, e) Await Launcher.LaunchUriAsync(New Uri("https://www.nexusmods.com/stardewvalley/mods/" & Mid(s.Text, 8)))
             Dim s1 As String = 当前项信息_N网ID列表(i)
             AddHandler a.Items.Add("复制链接").Click, Sub(s, e) Clipboard.SetText("https://www.nexusmods.com/stardewvalley/mods/" & s1)
             AddHandler a.Items.Add("从 NEXUS API 更新", My.Resources.NEXUS).Click, Sub(s, e) Return
@@ -764,28 +765,32 @@ Line1:
             AddHandler a.Items.Add("自由输入 NEXUS ID", My.Resources.NEXUS).Click, Sub(s, e) Return
         End If
 
-        If a.Items.Count <> 0 Then a.Items.Add(New ToolStripSeparator)
+        If a.Items.Count <> 0 And 当前项信息_ModDropID列表.Count > 0 Then a.Items.Add(New ToolStripSeparator)
         For i = 0 To 当前项信息_ModDropID列表.Count - 1
-            AddHandler a.Items.Add("ModDrop: " & 当前项信息_ModDropID列表(i), My.Resources.ModDrop_White32).Click, Sub(s, e) Process.Start("https://www.moddrop.com/stardew-valley/mods/" & Mid(s.Text, 10))
+            AddHandler a.Items.Add("ModDrop: " & 当前项信息_ModDropID列表(i), My.Resources.ModDrop_White32).Click, Async Sub(s, e) Await Launcher.LaunchUriAsync(New Uri("https://www.moddrop.com/stardew-valley/mods/" & Mid(s.Text, 10)))
             Dim s2 As String = 当前项信息_ModDropID列表(i)
             AddHandler a.Items.Add("复制链接").Click, Sub(s, e) Clipboard.SetText("https://www.moddrop.com/stardew-valley/mods/" & s2)
             AddHandler a.Items.Add("从 ModDrop 更新", My.Resources.ModDrop_White32).Click, Sub(s, e) Return
         Next
         If DLC.DLC解锁标记.CustomInputExtension = True Then
-            a.Items.Add(New ToolStripSeparator)
+            If a.Items.Count <> 0 Then a.Items.Add(New ToolStripSeparator)
             AddHandler a.Items.Add("自由输入 ModDrop ID", My.Resources.ModDrop_White32).Click, Sub(s, e) Return
         End If
 
-        If a.Items.Count <> 0 Then a.Items.Add(New ToolStripSeparator)
+        If a.Items.Count <> 0 And 当前项信息_Github仓库列表.Count > 0 Then a.Items.Add(New ToolStripSeparator)
         For i = 0 To 当前项信息_Github仓库列表.Count - 1
-            AddHandler a.Items.Add(当前项信息_Github仓库列表(i), My.Resources.Github).Click, Sub(s, e) Process.Start("https://github.com/" & s.Text)
+            AddHandler a.Items.Add(当前项信息_Github仓库列表(i), My.Resources.Github).Click, Async Sub(s, e) Await Launcher.LaunchUriAsync(New Uri("https://github.com/" & s.Text))
             Dim s2 As String = 当前项信息_Github仓库列表(i)
             AddHandler a.Items.Add("复制链接").Click, Sub(s, e) Clipboard.SetText("https://github.com/" & s2)
             AddHandler a.Items.Add("从 GitHub 更新", My.Resources.Github).Click, Sub(s, e) Return
         Next
         If DLC.DLC解锁标记.CustomInputExtension = True Then
-            a.Items.Add(New ToolStripSeparator)
+            If a.Items.Count <> 0 Then a.Items.Add(New ToolStripSeparator)
             AddHandler a.Items.Add("自由输入 GitHub 仓库名", My.Resources.Github).Click, Sub(s, e) Return
+        End If
+
+        If a.Items.Count = 0 Then
+            AddHandler a.Items.Add("没有可用的选项", My.Resources.模块).Click, Sub(s, e) Return
         End If
 
         Return a
