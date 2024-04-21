@@ -52,7 +52,7 @@ Public Class CD3
         Dim 要存在还是不存在 As Boolean = 参数列表(0)
         For i = 1 To 参数列表.Count - 1
             If DirectoryExists(Path.Combine(任务队列.游戏路径, 参数列表(i))) <> 要存在还是不存在 Then
-                Err.Raise(10590202,, "要检查的文件夹的存在性应该为：" & 要存在还是不存在 & "：" & 参数列表(i))
+                Err.Raise(10592,, "要检查的文件夹的存在性应该为：" & 要存在还是不存在 & "：" & 参数列表(i))
                 Exit Sub
             End If
         Next
@@ -63,7 +63,7 @@ Public Class CD3
         Dim 要存在还是不存在 As Boolean = 参数列表(0)
         For i = 1 To 参数列表.Count - 1
             If FileExists(Path.Combine(任务队列.游戏路径, 参数列表(i))) <> 要存在还是不存在 Then
-                Err.Raise(10590202,, "要检查的文件的存在性应该为：" & 要存在还是不存在 & "：" & 参数列表(i))
+                Err.Raise(10592,, "要检查的文件的存在性应该为：" & 要存在还是不存在 & "：" & 参数列表(i))
                 Exit Sub
             End If
         Next
@@ -73,7 +73,7 @@ Public Class CD3
         Dim 参数列表 As New List(Of String)(任务队列.任务列表(任务队列.当前正在处理的索引).参数行.Split("|").ToList)
         Select Case 参数列表(0)
             Case "ERROR"
-                Err.Raise(10590204,, "此项禁止卸载")
+                Err.Raise(10594,, "此项禁止卸载")
             Case "CANCEL"
                 安装卸载.后台线程对象.ReportProgress(1, $"规划数据设定取消卸载操作")
                 任务队列.是否取消了操作 = True
@@ -83,7 +83,7 @@ Public Class CD3
     Public Shared Sub 匹配到_卸载时运行可执行文件()
         Dim 参数列表 As New List(Of String)(任务队列.任务列表(任务队列.当前正在处理的索引).参数行.Split("|").ToList)
         If FileExists(Path.Combine(任务队列.项路径, 参数列表(0))) = False Then
-            Err.Raise(10590202,, "指定的可执行文件不存在：" & 参数列表(0))
+            Err.Raise(10592,, "指定的可执行文件不存在：" & 参数列表(0))
             Exit Sub
         End If
         Dim a As New Process

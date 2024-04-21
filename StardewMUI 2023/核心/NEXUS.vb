@@ -260,27 +260,30 @@ jx1:
 
     Public Class GetModFileList
 
-
         Public ST_ApiKey As String = ""
         Public ErrorString As String = ""
 
-        Public uid As Long()
-        Public file_id As Long()
-        Public name As String()
-        Public version As String()
-        Public category_id As Integer()
-        Public category_name As String()
-        Public is_primary As String()
-        Public size As Long()
-        Public file_name As String()
-        Public uploaded_timestamp As Long()
-        Public uploaded_time As String()
-        Public mod_version As String()
-        Public external_virus_scan_url As String()
-        Public description As String()
-        Public size_kb As Long()
-        Public changelog_html As String()
-        Public content_preview_link As String()
+        Public Structure FileListDataOne
+            Public uid As Long
+            Public file_id As Long
+            Public name As String
+            Public version As String
+            Public category_id As Integer
+            Public category_name As String
+            Public is_primary As String
+            Public size As Long
+            Public file_name As String
+            Public uploaded_timestamp As Long
+            Public uploaded_time As String
+            Public mod_version As String
+            Public external_virus_scan_url As String
+            Public description As String
+            Public size_kb As Long
+            Public changelog_html As String
+            Public content_preview_link As String
+        End Structure
+
+        Public Property FileListData As New List(Of FileListDataOne)
 
         Public daily_limit As Integer
         Public daily_remaining As Integer
@@ -339,43 +342,27 @@ jx1:
                     Exit Try
                 End If
 
-                Dim int1 As Integer = JsonData.item("files").Count - 1
-                ReDim uid(int1)
-                ReDim file_id(int1)
-                ReDim name(int1)
-                ReDim version(int1)
-                ReDim category_id(int1)
-                ReDim category_name(int1)
-                ReDim is_primary(int1)
-                ReDim size(int1)
-                ReDim file_name(int1)
-                ReDim uploaded_timestamp(int1)
-                ReDim uploaded_time(int1)
-                ReDim mod_version(int1)
-                ReDim external_virus_scan_url(int1)
-                ReDim description(int1)
-                ReDim size_kb(int1)
-                ReDim changelog_html(int1)
-                ReDim content_preview_link(int1)
-
                 For i = 0 To JsonData.item("files").Count - 1
-                    uid(i) = JsonData.item("files").item(i)("uid").ToString
-                    file_id(i) = JsonData.item("files").item(i)("file_id").ToString
-                    name(i) = JsonData.item("files").item(i)("name").ToString
-                    version(i) = JsonData.item("files").item(i)("version").ToString
-                    category_id(i) = JsonData.item("files").item(i)("category_id").ToString
-                    category_name(i) = JsonData.item("files").item(i)("category_name").ToString
-                    is_primary(i) = JsonData.item("files").item(i)("is_primary").ToString
-                    size(i) = JsonData.item("files").item(i)("size").ToString
-                    file_name(i) = JsonData.item("files").item(i)("file_name").ToString
-                    uploaded_timestamp(i) = JsonData.item("files").item(i)("uploaded_timestamp").ToString
-                    uploaded_time(i) = JsonData.item("files").item(i)("uploaded_time").ToString
-                    mod_version(i) = JsonData.item("files").item(i)("mod_version").ToString
-                    external_virus_scan_url(i) = JsonData.item("files").item(i)("external_virus_scan_url").ToString
-                    description(i) = JsonData.item("files").item(i)("description").ToString
-                    size_kb(i) = JsonData.item("files").item(i)("size_kb").ToString
-                    changelog_html(i) = JsonData.item("files").item(i)("changelog_html").ToString
-                    content_preview_link(i) = JsonData.item("files").item(i)("content_preview_link").ToString
+                    Dim a As New FileListDataOne With {
+                        .uid = JsonData.item("files").item(i)("uid").ToString,
+                        .file_id = JsonData.item("files").item(i)("file_id").ToString,
+                        .name = JsonData.item("files").item(i)("name").ToString,
+                        .version = JsonData.item("files").item(i)("version").ToString,
+                        .category_id = JsonData.item("files").item(i)("category_id").ToString,
+                        .category_name = JsonData.item("files").item(i)("category_name").ToString,
+                        .is_primary = JsonData.item("files").item(i)("is_primary").ToString,
+                        .size = JsonData.item("files").item(i)("size").ToString,
+                        .file_name = JsonData.item("files").item(i)("file_name").ToString,
+                        .uploaded_timestamp = JsonData.item("files").item(i)("uploaded_timestamp").ToString,
+                        .uploaded_time = JsonData.item("files").item(i)("uploaded_time").ToString,
+                        .mod_version = JsonData.item("files").item(i)("mod_version").ToString,
+                        .external_virus_scan_url = JsonData.item("files").item(i)("external_virus_scan_url").ToString,
+                        .description = JsonData.item("files").item(i)("description").ToString,
+                        .size_kb = JsonData.item("files").item(i)("size_kb").ToString,
+                        .changelog_html = JsonData.item("files").item(i)("changelog_html").ToString,
+                        .content_preview_link = JsonData.item("files").item(i)("content_preview_link").ToString
+                    }
+                    FileListData.Add(a)
                 Next
 
                 Return ""

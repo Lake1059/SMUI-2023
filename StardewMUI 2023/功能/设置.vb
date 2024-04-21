@@ -112,7 +112,7 @@ Public Class 设置
         If 设置.全局设置数据("AgreementSigned") <> "True" Then
             Form1.TabPage管理模组.Parent = Nothing
             Form1.TabPage配置队列.Parent = Nothing
-            Form1.TabPage下载管理.Parent = Nothing
+            Form1.TabPage下载更新.Parent = Nothing
             Form1.TabPage检查更新.Parent = Nothing
             Form1.TabPage浏览器.Parent = Nothing
             Form1.TabPage调试输出.Parent = Nothing
@@ -127,7 +127,7 @@ Public Class 设置
     Public Shared Sub 恢复选项卡显示()
         Form1.TabPage管理模组.Parent = Form1.UiTabControl1
         Form1.TabPage配置队列.Parent = Form1.UiTabControl1
-        Form1.TabPage下载管理.Parent = Form1.UiTabControl1
+        Form1.TabPage下载更新.Parent = Form1.UiTabControl1
         Form1.TabPage检查更新.Parent = Form1.UiTabControl1
         Form1.TabPage浏览器.Parent = Form1.UiTabControl1
         Form1.TabPage调试输出.Parent = Form1.UiTabControl1
