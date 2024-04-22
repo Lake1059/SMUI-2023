@@ -151,6 +151,7 @@ Partial Class Form1
         UiRadioButton2 = New Sunny.UI.UIRadioButton()
         UiRadioButton1 = New Sunny.UI.UIRadioButton()
         TabPage18 = New TabPage()
+        UiCheckBox16 = New Sunny.UI.UICheckBox()
         UiButton35 = New Sunny.UI.UIButton()
         UiCheckBox10 = New Sunny.UI.UICheckBox()
         UiCheckBox9 = New Sunny.UI.UICheckBox()
@@ -2412,6 +2413,7 @@ Partial Class Form1
         ' TabPage18
         ' 
         TabPage18.BackColor = Color.FromArgb(CByte(24), CByte(24), CByte(24))
+        TabPage18.Controls.Add(UiCheckBox16)
         TabPage18.Controls.Add(UiButton35)
         TabPage18.Controls.Add(UiCheckBox10)
         TabPage18.Controls.Add(UiCheckBox9)
@@ -2427,6 +2429,19 @@ Partial Class Form1
         TabPage18.Size = New Size(912, 700)
         TabPage18.TabIndex = 4
         TabPage18.Text = "功能和数值"
+        ' 
+        ' UiCheckBox16
+        ' 
+        UiCheckBox16.Font = New Font("微软雅黑", 12F)
+        UiCheckBox16.ForeColor = SystemColors.ScrollBar
+        UiCheckBox16.Location = New Point(20, 412)
+        UiCheckBox16.Margin = New Padding(20, 15, 20, 0)
+        UiCheckBox16.MinimumSize = New Size(1, 1)
+        UiCheckBox16.Name = "UiCheckBox16"
+        UiCheckBox16.Size = New Size(285, 23)
+        UiCheckBox16.Style = Sunny.UI.UIStyle.Custom
+        UiCheckBox16.TabIndex = 38
+        UiCheckBox16.Text = "下载文件页面内使用五代的配色方案"
         ' 
         ' UiButton35
         ' 
@@ -5646,9 +5661,9 @@ Partial Class Form1
         TabPage浏览器.BackColor = Color.FromArgb(CByte(24), CByte(24), CByte(24))
         TabPage浏览器.Controls.Add(Label15)
         TabPage浏览器.Controls.Add(Panel49)
-        TabPage浏览器.Location = New Point(0, 40)
+        TabPage浏览器.Location = New Point(0, 50)
         TabPage浏览器.Name = "TabPage浏览器"
-        TabPage浏览器.Size = New Size(200, 60)
+        TabPage浏览器.Size = New Size(1264, 700)
         TabPage浏览器.TabIndex = 5
         TabPage浏览器.Text = "浏览器"
         ' 
@@ -5658,7 +5673,7 @@ Partial Class Form1
         Label15.Font = New Font("微软雅黑", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(134))
         Label15.Location = New Point(0, 40)
         Label15.Name = "Label15"
-        Label15.Size = New Size(200, 20)
+        Label15.Size = New Size(1264, 660)
         Label15.TabIndex = 1
         Label15.Text = "=====   使用提示   =====" & vbCrLf & vbCrLf & "为节省日常使用的内存占用，只有当需要使用内置浏览器时才会完成初始化并创建控件" & vbCrLf & vbCrLf & "要在内置浏览器中访问其他地址，可以直接在顶部菜单栏空白处输入并转到" & vbCrLf & vbCrLf & "Edge 和 CEF 组件各有优劣，默认选择 Edge，如需使用 CEF 请在设置中调整并重启" & vbCrLf & vbCrLf & "不要忘记定期清理浏览器缓存"
         Label15.TextAlign = ContentAlignment.MiddleCenter
@@ -5677,7 +5692,7 @@ Partial Class Form1
         Panel49.Dock = DockStyle.Top
         Panel49.Location = New Point(0, 0)
         Panel49.Name = "Panel49"
-        Panel49.Size = New Size(200, 40)
+        Panel49.Size = New Size(1264, 40)
         Panel49.TabIndex = 0
         ' 
         ' UiTextBox5
@@ -5707,7 +5722,7 @@ Partial Class Form1
         UiTextBox5.ScrollBarColor = Color.Gray
         UiTextBox5.ScrollBarStyleInherited = False
         UiTextBox5.ShowText = False
-        UiTextBox5.Size = New Size(1, 40)
+        UiTextBox5.Size = New Size(784, 40)
         UiTextBox5.Style = Sunny.UI.UIStyle.Custom
         UiTextBox5.TabIndex = 18
         UiTextBox5.TabStop = False
@@ -6446,4 +6461,5 @@ Partial Class Form1
     Friend WithEvents UiButton69 As Sunny.UI.UIButton
     Friend WithEvents UiButton66 As Sunny.UI.UIButton
     Friend WithEvents ListView9 As ListView
+    Friend WithEvents UiCheckBox16 As Sunny.UI.UICheckBox
 End Class

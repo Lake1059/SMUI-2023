@@ -196,6 +196,7 @@ Public Class 设置
         Form1.UiCheckBox4.Checked = 全局设置数据("AutoSelectFirstNexusDownloadSever")
         Form1.UiCheckBox5.Checked = 全局设置数据("AutoConvertWebpToPng")
         Form1.UiCheckBox6.Checked = 全局设置数据("SendDeletedDataToRecycleBin")
+        Form1.UiCheckBox16.Checked = 全局设置数据("DownloadFileUseSMUI5Color")
 
         Form1.UiComboBox8.Text = 全局设置数据("FontName")
 
@@ -273,6 +274,7 @@ Public Class 设置
         全局设置数据("AutoSelectFirstNexusDownloadSever") = Form1.UiCheckBox4.Checked
         全局设置数据("AutoConvertWebpToPng") = Form1.UiCheckBox5.Checked
         全局设置数据("SendDeletedDataToRecycleBin") = Form1.UiCheckBox6.Checked
+        全局设置数据("DownloadFileUseSMUI5Color") = Form1.UiCheckBox16.Checked
         UIMessageTip.Show("更改已写入内存，正常退出时写入文件",, 2500)
     End Sub
 

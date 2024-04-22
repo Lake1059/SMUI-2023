@@ -4,6 +4,26 @@ Imports Windows.System
 
 Public Class 更新模组
 
+    Public Shared Sub 初始化()
+        If 设置.全局设置数据("NexusPremium") = "True" Then
+            Form1.UiRadioButton10.Checked = False
+            Form1.UiRadioButton9.Checked = True
+            Form1.TabPageNEXUS下载模式.Text = "NEXUS 下载模式：Premium"
+        Else
+            Form1.UiRadioButton10.Checked = True
+            Form1.UiRadioButton9.Checked = False
+            Form1.TabPageNEXUS下载模式.Text = "NEXUS 下载模式：FREE"
+        End If
+        AddHandler Form1.UiRadioButton10.Click, Sub()
+                                                    设置.全局设置数据("NexusPremium") = "False"
+                                                    Form1.TabPageNEXUS下载模式.Text = "NEXUS 下载模式：FREE"
+                                                End Sub
+        AddHandler Form1.UiRadioButton9.Click, Sub()
+                                                   设置.全局设置数据("NexusPremium") = "True"
+                                                   Form1.TabPageNEXUS下载模式.Text = "NEXUS 下载模式：Premium"
+                                               End Sub
+    End Sub
+
     Public Shared Function 生成更新地址表菜单() As 暗黑菜单条控件本体
         Dim a As New 暗黑菜单条控件本体
         If Form1.ListView2.SelectedItems.Count <> 1 Then
@@ -69,6 +89,10 @@ Public Class 更新模组
         Form1.UiTabControlMenu3.SelectedTab = Form1.TabPage选择要下载的文件
     End Sub
 
+    Public Shared Property 正在处理的NEXUSID As String
+    Public Shared Property 选择的NEXUS文件ID As String
+    Public Shared Property 是否取消操作 As Boolean = False
+
 
     Public Shared Async Sub 获取NEXUS文件列表(模组ID As String, 模组项绝对路径 As String)
         If 设置.全局设置数据("NexusAPI") = "" Then
@@ -81,6 +105,8 @@ Public Class 更新模组
             Exit Sub
         End If
         转到下载文件页面()
+        正在处理的NEXUSID = 模组ID
+        是否取消操作 = False
         Form1.Label34.Text = "   正在连接到 NEXUS API 获取文件列表 ..."
         Form1.Panel34.Controls.Clear()
         Dim a As New NEXUS.GetModFileList With {.ST_ApiKey = 设置.全局设置数据("NexusAPI")}
@@ -95,43 +121,41 @@ Public Class 更新模组
 
         For i = a.FileListData.Count - 1 To 0 Step -1
             If a.FileListData(i).category_name.Equals("main", StringComparison.CurrentCultureIgnoreCase) Then
-                生成单个文件信息(a.FileListData(i))
+                生成NEXUS单个文件信息(a.FileListData(i), 模组项绝对路径)
             End If
         Next
         For i = a.FileListData.Count - 1 To 0 Step -1
             If a.FileListData(i).category_name.Equals("optional", StringComparison.CurrentCultureIgnoreCase) Then
-                生成单个文件信息(a.FileListData(i))
+                生成NEXUS单个文件信息(a.FileListData(i), 模组项绝对路径)
             End If
         Next
         For i = a.FileListData.Count - 1 To 0 Step -1
             If a.FileListData(i).category_name.Equals("miscellaneous", StringComparison.CurrentCultureIgnoreCase) Then
-                生成单个文件信息(a.FileListData(i))
+                生成NEXUS单个文件信息(a.FileListData(i), 模组项绝对路径)
             End If
         Next
         For i = a.FileListData.Count - 1 To 0 Step -1
             If a.FileListData(i).category_name.Equals("updateFile", StringComparison.CurrentCultureIgnoreCase) Then
-                生成单个文件信息(a.FileListData(i))
+                生成NEXUS单个文件信息(a.FileListData(i), 模组项绝对路径)
             End If
         Next
-
-
     End Sub
 
-    Public Shared Sub 生成单个文件信息(Data As FileListDataOne)
+    Public Shared Sub 生成NEXUS单个文件信息(Data As FileListDataOne, 模组项绝对路径 As String)
         Dim 独立容器 As New Panel With {.Dock = DockStyle.Top, .Padding = New Padding(30, 5, 30, 5), .Height = 100}
-        Dim 标题文字 As New LinkLabel With {.AutoSize = False, .Dock = DockStyle.Top, .Height = 26, .TextAlign = ContentAlignment.TopLeft, .Font = New Font(Form1.Font.Name, 12), .LinkColor = Color1.蓝色, .LinkBehavior = LinkBehavior.HoverUnderline, .Text = Data.name}
+        Dim 标题文字 As New LinkLabel With {.AutoSize = False, .Dock = DockStyle.Top, .Height = 26, .TextAlign = ContentAlignment.TopLeft, .Font = New Font(Form1.Font.Name, 12), .LinkColor = If(设置.全局设置数据("DownloadFileUseSMUI5Color") = True, Color1.绿色, Color1.蓝色), .LinkBehavior = LinkBehavior.HoverUnderline, .Text = Data.name}
         Select Case Data.category_name.ToLower.Trim
             Case "main"
-                标题文字.Text = "主要文件：" & 标题文字.Text
+                标题文字.Text = "[ 主要文件 ] " & 标题文字.Text
             Case "optional"
-                标题文字.Text = "可选文件：" & 标题文字.Text
+                标题文字.Text = "[ 可选文件 ] " & 标题文字.Text
             Case "miscellaneous"
-                标题文字.Text = "附加文件：" & 标题文字.Text
+                标题文字.Text = "[ 附加文件] " & 标题文字.Text
             Case "updateFile"
-                标题文字.Text = "更新文件：" & 标题文字.Text
+                标题文字.Text = "[ 更新文件 ] " & 标题文字.Text
         End Select
-        Dim 状态文字 As New Label With {.AutoSize = False, .Dock = DockStyle.Top, .Height = 21, .TextAlign = ContentAlignment.TopLeft, .Font = New Font(Form1.Font.Name, 10), .ForeColor = Color1.绿色}
-        Dim 简介文字 As New Label With {.AutoSize = False, .Dock = DockStyle.Fill, .Font = New Font(Form1.Font.Name, 10), .TextAlign = ContentAlignment.TopLeft, .ForeColor = Color.Gray, .AutoEllipsis = True, .Text = Data.description.Replace("<br/>", vbCrLf)}
+        Dim 状态文字 As New Label With {.AutoSize = False, .Dock = DockStyle.Top, .Height = 21, .TextAlign = ContentAlignment.TopLeft, .Font = New Font(Form1.Font.Name, 10), .ForeColor = If(设置.全局设置数据("DownloadFileUseSMUI5Color") = True, Color1.橙色, Color1.绿色)}
+        Dim 简介文字 As New Label With {.AutoSize = False, .Dock = DockStyle.Fill, .Font = New Font(Form1.Font.Name, 10), .TextAlign = ContentAlignment.TopLeft, .ForeColor = Color.Gray, .AutoEllipsis = True, .Text = Data.description.Replace("<br />", vbCrLf)}
 
         If Data.size_kb < 1024 Then
             状态文字.Text = "Ver " & Data.version & " | " & Data.size_kb & " KB | " & Data.uploaded_time & " | ID " & Data.file_id
@@ -139,27 +163,38 @@ Public Class 更新模组
             状态文字.Text = "Ver " & Data.version & " | " & Format(Data.size_kb / 1024, "0.0") & " MB | " & Data.uploaded_time & " | ID " & Data.file_id
         End If
 
-        'Dim 分隔间距 As New Label With {.AutoSize = False, .Dock = DockStyle.Left, .Width = 5}
-        '独立容器.Controls.Add(分隔间距)
         独立容器.Controls.Add(标题文字)
         独立容器.Controls.Add(状态文字)
         独立容器.Controls.Add(简介文字)
-        '分隔间距.SendToBack()
         状态文字.BringToFront()
         简介文字.BringToFront()
         Form1.Panel34.Controls.Add(独立容器)
         独立容器.BringToFront()
-        AddHandler 标题文字.LinkClicked, Sub(sender, e) Return
-
-
-
-
+        AddHandler 标题文字.LinkClicked, Sub(sender, e) 获取NEXUS文件下载地址(正在处理的NEXUSID, Data.file_id, 模组项绝对路径)
     End Sub
 
+    Public Shared Property Key As String
+    Public Shared Property Expires As String
+
+    Public Shared Sub 获取NEXUS文件下载地址(模组ID As String, 文件ID As String, 模组项绝对路径 As String)
+        If 设置.全局设置数据("NexusPremium") = "False" Then
+            If 设置.全局设置数据("UseWhichBrowser") = "Edge" Then
+                Key = "" : Expires = ""
+                浏览器WebView2控制.是否要获取HTML = True
+                浏览器WebView2控制.要进行更新或创建的模组项绝对路径 = 模组项绝对路径
+                Form1.UiTextBox5.Text = "https://www.nexusmods.com/stardewvalley/mods/" & 模组ID & "?tab=files&file_id=" & 文件ID & "&nmm=1"
+                Form1.UiButton53.PerformClick()
+                Form1.UiTabControl1.SelectedTab = Form1.TabPage浏览器
+            Else
 
 
+            End If
+        Else
 
 
+        End If
+
+    End Sub
 
 
 End Class

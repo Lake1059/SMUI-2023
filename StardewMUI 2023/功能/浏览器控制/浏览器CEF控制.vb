@@ -5,6 +5,8 @@ Imports CefSharp.WinForms
 
 Public Class 浏览器CEF控制
 
+    Public Shared Property 是否要获取HTML As Boolean = False
+    Public Shared Property 要进行更新或创建的模组项绝对路径 As String = ""
     Public Shared Property 获取到的HTML数据 As String = ""
     Public Shared Property 获取到的key As String = ""
     Public Shared Property 获取到的expires As String = ""
@@ -25,6 +27,7 @@ Public Class 浏览器CEF控制
         界面控制.CEF浏览器控件.BringToFront()
         AddHandler 界面控制.CEF浏览器控件.LoadingStateChanged, AddressOf CEF_LoadingStateChanged
         AddHandler 界面控制.CEF浏览器控件.AddressChanged, AddressOf CEF_AddressChanged
+        计算额外参数计时器 = New Timer With {.Interval = 500, .Enabled = False}
         AddHandler 计算额外参数计时器.Tick, AddressOf 计算额外参数
         界面刷新计时器.Enabled = True
     End Sub
@@ -74,6 +77,7 @@ Public Class 浏览器CEF控制
             End Sub
         AddHandler Form1.UiButton54.Click,
             Sub()
+                计算额外参数计时器.Dispose()
                 Dim processes() As Process = Process.GetProcessesByName("CefSharp.BrowserSubprocess")
                 If processes.Length > 0 Then
                     For Each proc As Process In processes

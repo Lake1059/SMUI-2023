@@ -39,3 +39,5 @@ ProcessMonitor=False
 PerformanceMonitor=False
 LastUsedSubLibraryName=
 UseWhichBrowser=Edge
+DownloadFileUseSMUI5Color=False
+NexusPremium=False
