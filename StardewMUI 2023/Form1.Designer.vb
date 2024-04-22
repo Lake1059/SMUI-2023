@@ -336,14 +336,14 @@ Partial Class Form1
         TabPage下载更新 = New TabPage()
         Panel31 = New Panel()
         UiTabControlMenu3 = New Sunny.UI.UITabControlMenu()
-        TabPage22 = New TabPage()
+        TabPage选择要下载的文件 = New TabPage()
         Panel34 = New Panel()
         Panel33 = New Panel()
         Label34 = New Label()
-        TabPage23 = New TabPage()
+        TabPage下载和更新队列 = New TabPage()
         Panel37 = New Panel()
-        TabPage24 = New TabPage()
-        TabPage1 = New TabPage()
+        TabPage管理下载的文件 = New TabPage()
+        TabPageNEXUS下载模式 = New TabPage()
         Label35 = New Label()
         Label36 = New Label()
         Label41 = New Label()
@@ -443,10 +443,10 @@ Partial Class Form1
         TabPage下载更新.SuspendLayout()
         Panel31.SuspendLayout()
         UiTabControlMenu3.SuspendLayout()
-        TabPage22.SuspendLayout()
+        TabPage选择要下载的文件.SuspendLayout()
         Panel33.SuspendLayout()
-        TabPage23.SuspendLayout()
-        TabPage1.SuspendLayout()
+        TabPage下载和更新队列.SuspendLayout()
+        TabPageNEXUS下载模式.SuspendLayout()
         Panel51.SuspendLayout()
         TabPage检查更新.SuspendLayout()
         Panel32.SuspendLayout()
@@ -3788,9 +3788,9 @@ Partial Class Form1
         TabPage管理模组.Controls.Add(Panel3)
         TabPage管理模组.Controls.Add(Panel2)
         TabPage管理模组.Controls.Add(Panel1)
-        TabPage管理模组.Location = New Point(0, 50)
+        TabPage管理模组.Location = New Point(0, 40)
         TabPage管理模组.Name = "TabPage管理模组"
-        TabPage管理模组.Size = New Size(1264, 700)
+        TabPage管理模组.Size = New Size(200, 60)
         TabPage管理模组.TabIndex = 1
         TabPage管理模组.Text = "管理模组"
         ' 
@@ -3802,7 +3802,7 @@ Partial Class Form1
         Panel4.Dock = DockStyle.Fill
         Panel4.Location = New Point(250, 0)
         Panel4.Name = "Panel4"
-        Panel4.Size = New Size(714, 660)
+        Panel4.Size = New Size(0, 20)
         Panel4.TabIndex = 3
         ' 
         ' Panel12
@@ -3812,7 +3812,7 @@ Partial Class Form1
         Panel12.Location = New Point(0, 40)
         Panel12.Name = "Panel12"
         Panel12.Padding = New Padding(10)
-        Panel12.Size = New Size(714, 620)
+        Panel12.Size = New Size(0, 0)
         Panel12.TabIndex = 4
         ' 
         ' ListView2
@@ -3828,7 +3828,7 @@ Partial Class Form1
         ListView2.Name = "ListView2"
         ListView2.OwnerDraw = True
         ListView2.ShowItemToolTips = True
-        ListView2.Size = New Size(694, 600)
+        ListView2.Size = New Size(0, 0)
         ListView2.StateImageList = ImageList1
         ListView2.TabIndex = 2
         ListView2.UseCompatibleStateImageBehavior = False
@@ -3862,14 +3862,14 @@ Partial Class Form1
         Panel6.Dock = DockStyle.Top
         Panel6.Location = New Point(0, 0)
         Panel6.Name = "Panel6"
-        Panel6.Size = New Size(714, 40)
+        Panel6.Size = New Size(0, 40)
         Panel6.TabIndex = 3
         ' 
         ' Label51
         ' 
         Label51.Dock = DockStyle.Right
         Label51.Font = New Font("微软雅黑", 11.25F)
-        Label51.Location = New Point(564, 0)
+        Label51.Location = New Point(-150, 0)
         Label51.Name = "Label51"
         Label51.Size = New Size(50, 40)
         Label51.TabIndex = 16
@@ -4024,7 +4024,7 @@ Partial Class Form1
         UiButton44.ForeHoverColor = Color.FromArgb(CByte(244), CByte(244), CByte(244))
         UiButton44.ForePressColor = Color.FromArgb(CByte(244), CByte(244), CByte(244))
         UiButton44.ForeSelectedColor = Color.FromArgb(CByte(244), CByte(244), CByte(244))
-        UiButton44.Location = New Point(614, 0)
+        UiButton44.Location = New Point(-100, 0)
         UiButton44.MinimumSize = New Size(1, 1)
         UiButton44.Name = "UiButton44"
         UiButton44.Radius = 10
@@ -4050,9 +4050,9 @@ Partial Class Form1
         Panel3.Controls.Add(Panel7)
         Panel3.Controls.Add(Panel9)
         Panel3.Dock = DockStyle.Right
-        Panel3.Location = New Point(964, 0)
+        Panel3.Location = New Point(-100, 0)
         Panel3.Name = "Panel3"
-        Panel3.Size = New Size(300, 660)
+        Panel3.Size = New Size(300, 20)
         Panel3.TabIndex = 2
         ' 
         ' UiRichTextBox1
@@ -4074,7 +4074,7 @@ Partial Class Form1
         UiRichTextBox1.ScrollBarColor = Color.Gray
         UiRichTextBox1.ScrollBarStyleInherited = False
         UiRichTextBox1.ShowText = False
-        UiRichTextBox1.Size = New Size(300, 369)
+        UiRichTextBox1.Size = New Size(300, 1)
         UiRichTextBox1.Style = Sunny.UI.UIStyle.Custom
         UiRichTextBox1.TabIndex = 0
         UiRichTextBox1.Text = "字体样式"
@@ -4086,7 +4086,7 @@ Partial Class Form1
         Panel8.Controls.Add(Label2)
         Panel8.Controls.Add(Label1)
         Panel8.Dock = DockStyle.Bottom
-        Panel8.Location = New Point(0, 409)
+        Panel8.Location = New Point(0, -231)
         Panel8.Name = "Panel8"
         Panel8.Size = New Size(300, 50)
         Panel8.TabIndex = 4
@@ -4199,7 +4199,7 @@ Partial Class Form1
         Panel9.Controls.Add(PictureBox1)
         Panel9.Controls.Add(Panel10)
         Panel9.Dock = DockStyle.Bottom
-        Panel9.Location = New Point(0, 459)
+        Panel9.Location = New Point(0, -181)
         Panel9.Name = "Panel9"
         Panel9.Size = New Size(300, 201)
         Panel9.TabIndex = 5
@@ -4301,7 +4301,7 @@ Partial Class Form1
         Panel2.Dock = DockStyle.Left
         Panel2.Location = New Point(0, 0)
         Panel2.Name = "Panel2"
-        Panel2.Size = New Size(250, 660)
+        Panel2.Size = New Size(250, 20)
         Panel2.TabIndex = 1
         ' 
         ' Panel11
@@ -4311,7 +4311,7 @@ Partial Class Form1
         Panel11.Location = New Point(0, 40)
         Panel11.Name = "Panel11"
         Panel11.Padding = New Padding(10)
-        Panel11.Size = New Size(250, 620)
+        Panel11.Size = New Size(250, 0)
         Panel11.TabIndex = 3
         ' 
         ' ListView1
@@ -4327,7 +4327,7 @@ Partial Class Form1
         ListView1.Name = "ListView1"
         ListView1.OwnerDraw = True
         ListView1.ShowItemToolTips = True
-        ListView1.Size = New Size(227, 600)
+        ListView1.Size = New Size(227, 0)
         ListView1.StateImageList = ImageList1
         ListView1.TabIndex = 1
         ListView1.UseCompatibleStateImageBehavior = False
@@ -4398,9 +4398,9 @@ Partial Class Form1
         Panel1.Controls.Add(UiButton7)
         Panel1.Controls.Add(UiButton6)
         Panel1.Dock = DockStyle.Bottom
-        Panel1.Location = New Point(0, 660)
+        Panel1.Location = New Point(0, 20)
         Panel1.Name = "Panel1"
-        Panel1.Size = New Size(1264, 40)
+        Panel1.Size = New Size(200, 40)
         Panel1.TabIndex = 0
         ' 
         ' UiButton9
@@ -4428,7 +4428,7 @@ Partial Class Form1
         UiButton9.RectHoverColor = Color.FromArgb(CByte(64), CByte(64), CByte(64))
         UiButton9.RectPressColor = Color.FromArgb(CByte(80), CByte(80), CByte(80))
         UiButton9.RectSelectedColor = Color.FromArgb(CByte(42), CByte(42), CByte(42))
-        UiButton9.Size = New Size(240, 40)
+        UiButton9.Size = New Size(1, 40)
         UiButton9.Style = Sunny.UI.UIStyle.Custom
         UiButton9.TabIndex = 14
         UiButton9.TabStop = False
@@ -4452,7 +4452,7 @@ Partial Class Form1
         UiButton14.ForeHoverColor = Color.FromArgb(CByte(244), CByte(244), CByte(244))
         UiButton14.ForePressColor = Color.FromArgb(CByte(244), CByte(244), CByte(244))
         UiButton14.ForeSelectedColor = Color.FromArgb(CByte(244), CByte(244), CByte(244))
-        UiButton14.Location = New Point(1204, 0)
+        UiButton14.Location = New Point(140, 0)
         UiButton14.MinimumSize = New Size(1, 1)
         UiButton14.Name = "UiButton14"
         UiButton14.Radius = 10
@@ -4579,9 +4579,9 @@ Partial Class Form1
         TabPage配置队列.Controls.Add(Panel16)
         TabPage配置队列.Controls.Add(Panel26)
         TabPage配置队列.ForeColor = Color.FromArgb(CByte(224), CByte(224), CByte(224))
-        TabPage配置队列.Location = New Point(0, 50)
+        TabPage配置队列.Location = New Point(0, 40)
         TabPage配置队列.Name = "TabPage配置队列"
-        TabPage配置队列.Size = New Size(1264, 700)
+        TabPage配置队列.Size = New Size(200, 60)
         TabPage配置队列.TabIndex = 2
         TabPage配置队列.Text = "配置队列"
         ' 
@@ -4592,7 +4592,7 @@ Partial Class Form1
         Panel21.Dock = DockStyle.Fill
         Panel21.Location = New Point(600, 40)
         Panel21.Name = "Panel21"
-        Panel21.Size = New Size(664, 660)
+        Panel21.Size = New Size(0, 20)
         Panel21.TabIndex = 1
         ' 
         ' Panel22
@@ -4602,7 +4602,7 @@ Partial Class Form1
         Panel22.Dock = DockStyle.Fill
         Panel22.Location = New Point(0, 200)
         Panel22.Name = "Panel22"
-        Panel22.Size = New Size(664, 460)
+        Panel22.Size = New Size(0, 0)
         Panel22.TabIndex = 1
         ' 
         ' Panel42
@@ -4612,7 +4612,7 @@ Partial Class Form1
         Panel42.Location = New Point(0, 40)
         Panel42.Name = "Panel42"
         Panel42.Padding = New Padding(10)
-        Panel42.Size = New Size(664, 420)
+        Panel42.Size = New Size(0, 0)
         Panel42.TabIndex = 5
         ' 
         ' ListView7
@@ -4627,7 +4627,7 @@ Partial Class Form1
         ListView7.Location = New Point(10, 10)
         ListView7.Name = "ListView7"
         ListView7.OwnerDraw = True
-        ListView7.Size = New Size(644, 400)
+        ListView7.Size = New Size(0, 0)
         ListView7.SmallImageList = ImageList1
         ListView7.TabIndex = 3
         ListView7.TabStop = False
@@ -4652,7 +4652,7 @@ Partial Class Form1
         Panel23.Dock = DockStyle.Top
         Panel23.Location = New Point(0, 0)
         Panel23.Name = "Panel23"
-        Panel23.Size = New Size(664, 40)
+        Panel23.Size = New Size(0, 40)
         Panel23.TabIndex = 3
         ' 
         ' Label8
@@ -4661,7 +4661,7 @@ Partial Class Form1
         Label8.ForeColor = Color.Orange
         Label8.Location = New Point(0, 0)
         Label8.Name = "Label8"
-        Label8.Size = New Size(424, 40)
+        Label8.Size = New Size(0, 40)
         Label8.TabIndex = 12
         Label8.Text = "   设置安装规划"
         Label8.TextAlign = ContentAlignment.MiddleLeft
@@ -4681,7 +4681,7 @@ Partial Class Form1
         UiButton41.ForeHoverColor = Color.FromArgb(CByte(244), CByte(244), CByte(244))
         UiButton41.ForePressColor = Color.FromArgb(CByte(244), CByte(244), CByte(244))
         UiButton41.ForeSelectedColor = Color.FromArgb(CByte(244), CByte(244), CByte(244))
-        UiButton41.Location = New Point(424, 0)
+        UiButton41.Location = New Point(-240, 0)
         UiButton41.MinimumSize = New Size(1, 1)
         UiButton41.Name = "UiButton41"
         UiButton41.Radius = 10
@@ -4714,7 +4714,7 @@ Partial Class Form1
         UiButton24.ForeHoverColor = Color.FromArgb(CByte(244), CByte(244), CByte(244))
         UiButton24.ForePressColor = Color.FromArgb(CByte(244), CByte(244), CByte(244))
         UiButton24.ForeSelectedColor = Color.FromArgb(CByte(244), CByte(244), CByte(244))
-        UiButton24.Location = New Point(504, 0)
+        UiButton24.Location = New Point(-160, 0)
         UiButton24.MinimumSize = New Size(1, 1)
         UiButton24.Name = "UiButton24"
         UiButton24.Radius = 10
@@ -4747,7 +4747,7 @@ Partial Class Form1
         UiButton20.ForeHoverColor = Color.FromArgb(CByte(244), CByte(244), CByte(244))
         UiButton20.ForePressColor = Color.FromArgb(CByte(244), CByte(244), CByte(244))
         UiButton20.ForeSelectedColor = Color.FromArgb(CByte(244), CByte(244), CByte(244))
-        UiButton20.Location = New Point(584, 0)
+        UiButton20.Location = New Point(-80, 0)
         UiButton20.MinimumSize = New Size(1, 1)
         UiButton20.Name = "UiButton20"
         UiButton20.Radius = 10
@@ -4772,7 +4772,7 @@ Partial Class Form1
         Panel24.Dock = DockStyle.Top
         Panel24.Location = New Point(0, 0)
         Panel24.Name = "Panel24"
-        Panel24.Size = New Size(664, 200)
+        Panel24.Size = New Size(0, 200)
         Panel24.TabIndex = 2
         ' 
         ' Panel43
@@ -4782,7 +4782,7 @@ Partial Class Form1
         Panel43.Location = New Point(0, 40)
         Panel43.Name = "Panel43"
         Panel43.Padding = New Padding(10)
-        Panel43.Size = New Size(664, 160)
+        Panel43.Size = New Size(0, 160)
         Panel43.TabIndex = 6
         ' 
         ' ListView8
@@ -4797,7 +4797,7 @@ Partial Class Form1
         ListView8.Location = New Point(10, 10)
         ListView8.Name = "ListView8"
         ListView8.OwnerDraw = True
-        ListView8.Size = New Size(644, 140)
+        ListView8.Size = New Size(0, 140)
         ListView8.SmallImageList = ImageList1
         ListView8.TabIndex = 4
         ListView8.UseCompatibleStateImageBehavior = False
@@ -4815,7 +4815,7 @@ Partial Class Form1
         Panel25.Dock = DockStyle.Top
         Panel25.Location = New Point(0, 0)
         Panel25.Name = "Panel25"
-        Panel25.Size = New Size(664, 40)
+        Panel25.Size = New Size(0, 40)
         Panel25.TabIndex = 4
         ' 
         ' Label9
@@ -4824,7 +4824,7 @@ Partial Class Form1
         Label9.ForeColor = Color.Orange
         Label9.Location = New Point(0, 0)
         Label9.Name = "Label9"
-        Label9.Size = New Size(584, 40)
+        Label9.Size = New Size(0, 40)
         Label9.TabIndex = 13
         Label9.Text = "   规划评估器"
         Label9.TextAlign = ContentAlignment.MiddleLeft
@@ -4844,7 +4844,7 @@ Partial Class Form1
         UiButton22.ForeHoverColor = Color.FromArgb(CByte(244), CByte(244), CByte(244))
         UiButton22.ForePressColor = Color.FromArgb(CByte(244), CByte(244), CByte(244))
         UiButton22.ForeSelectedColor = Color.FromArgb(CByte(244), CByte(244), CByte(244))
-        UiButton22.Location = New Point(584, 0)
+        UiButton22.Location = New Point(-80, 0)
         UiButton22.MinimumSize = New Size(1, 1)
         UiButton22.Name = "UiButton22"
         UiButton22.Radius = 10
@@ -4870,7 +4870,7 @@ Partial Class Form1
         Panel16.Dock = DockStyle.Left
         Panel16.Location = New Point(0, 40)
         Panel16.Name = "Panel16"
-        Panel16.Size = New Size(600, 660)
+        Panel16.Size = New Size(600, 20)
         Panel16.TabIndex = 0
         ' 
         ' Panel19
@@ -4880,7 +4880,7 @@ Partial Class Form1
         Panel19.Dock = DockStyle.Fill
         Panel19.Location = New Point(0, 200)
         Panel19.Name = "Panel19"
-        Panel19.Size = New Size(600, 460)
+        Panel19.Size = New Size(600, 0)
         Panel19.TabIndex = 1
         ' 
         ' Panel41
@@ -4890,7 +4890,7 @@ Partial Class Form1
         Panel41.Location = New Point(0, 40)
         Panel41.Name = "Panel41"
         Panel41.Padding = New Padding(10)
-        Panel41.Size = New Size(600, 420)
+        Panel41.Size = New Size(600, 0)
         Panel41.TabIndex = 5
         ' 
         ' ListView6
@@ -4906,7 +4906,7 @@ Partial Class Form1
         ListView6.Location = New Point(10, 10)
         ListView6.Name = "ListView6"
         ListView6.OwnerDraw = True
-        ListView6.Size = New Size(580, 400)
+        ListView6.Size = New Size(580, 0)
         ListView6.SmallImageList = ImageList1
         ListView6.TabIndex = 3
         ListView6.TabStop = False
@@ -5187,7 +5187,7 @@ Partial Class Form1
         Panel26.Dock = DockStyle.Top
         Panel26.Location = New Point(0, 0)
         Panel26.Name = "Panel26"
-        Panel26.Size = New Size(1264, 40)
+        Panel26.Size = New Size(200, 40)
         Panel26.TabIndex = 2
         ' 
         ' UiButton17
@@ -5205,7 +5205,7 @@ Partial Class Form1
         UiButton17.ForeHoverColor = Color.FromArgb(CByte(244), CByte(244), CByte(244))
         UiButton17.ForePressColor = Color.FromArgb(CByte(244), CByte(244), CByte(244))
         UiButton17.ForeSelectedColor = Color.FromArgb(CByte(244), CByte(244), CByte(244))
-        UiButton17.Location = New Point(1057, 0)
+        UiButton17.Location = New Point(-7, 0)
         UiButton17.MinimumSize = New Size(1, 1)
         UiButton17.Name = "UiButton17"
         UiButton17.Radius = 10
@@ -5238,7 +5238,7 @@ Partial Class Form1
         UiButton15.ForeHoverColor = Color.FromArgb(CByte(244), CByte(244), CByte(244))
         UiButton15.ForePressColor = Color.FromArgb(CByte(244), CByte(244), CByte(244))
         UiButton15.ForeSelectedColor = Color.FromArgb(CByte(244), CByte(244), CByte(244))
-        UiButton15.Location = New Point(1184, 0)
+        UiButton15.Location = New Point(120, 0)
         UiButton15.MinimumSize = New Size(1, 1)
         UiButton15.Name = "UiButton15"
         UiButton15.Radius = 10
@@ -5387,10 +5387,10 @@ Partial Class Form1
         ' UiTabControlMenu3
         ' 
         UiTabControlMenu3.Alignment = TabAlignment.Left
-        UiTabControlMenu3.Controls.Add(TabPage22)
-        UiTabControlMenu3.Controls.Add(TabPage23)
-        UiTabControlMenu3.Controls.Add(TabPage24)
-        UiTabControlMenu3.Controls.Add(TabPage1)
+        UiTabControlMenu3.Controls.Add(TabPage选择要下载的文件)
+        UiTabControlMenu3.Controls.Add(TabPage下载和更新队列)
+        UiTabControlMenu3.Controls.Add(TabPage管理下载的文件)
+        UiTabControlMenu3.Controls.Add(TabPageNEXUS下载模式)
         UiTabControlMenu3.Dock = DockStyle.Fill
         UiTabControlMenu3.DrawMode = TabDrawMode.OwnerDrawFixed
         UiTabControlMenu3.FillColor = Color.FromArgb(CByte(24), CByte(24), CByte(24))
@@ -5408,16 +5408,16 @@ Partial Class Form1
         UiTabControlMenu3.TabIndex = 1
         UiTabControlMenu3.TextAlignment = HorizontalAlignment.Left
         ' 
-        ' TabPage22
+        ' TabPage选择要下载的文件
         ' 
-        TabPage22.BackColor = Color.FromArgb(CByte(24), CByte(24), CByte(24))
-        TabPage22.Controls.Add(Panel34)
-        TabPage22.Controls.Add(Panel33)
-        TabPage22.Location = New Point(301, 0)
-        TabPage22.Name = "TabPage22"
-        TabPage22.Size = New Size(963, 700)
-        TabPage22.TabIndex = 0
-        TabPage22.Text = "选择要下载的文件"
+        TabPage选择要下载的文件.BackColor = Color.FromArgb(CByte(24), CByte(24), CByte(24))
+        TabPage选择要下载的文件.Controls.Add(Panel34)
+        TabPage选择要下载的文件.Controls.Add(Panel33)
+        TabPage选择要下载的文件.Location = New Point(301, 0)
+        TabPage选择要下载的文件.Name = "TabPage选择要下载的文件"
+        TabPage选择要下载的文件.Size = New Size(963, 700)
+        TabPage选择要下载的文件.TabIndex = 0
+        TabPage选择要下载的文件.Text = "选择要下载的文件"
         ' 
         ' Panel34
         ' 
@@ -5446,18 +5446,18 @@ Partial Class Form1
         Label34.Name = "Label34"
         Label34.Size = New Size(963, 54)
         Label34.TabIndex = 0
-        Label34.Text = "   当前下载要在后续进行的操作：更新到项 / 新建项"
+        Label34.Text = "   接下来要在进行的操作：更新到项 / 新建项"
         Label34.TextAlign = ContentAlignment.MiddleLeft
         ' 
-        ' TabPage23
+        ' TabPage下载和更新队列
         ' 
-        TabPage23.BackColor = Color.FromArgb(CByte(24), CByte(24), CByte(24))
-        TabPage23.Controls.Add(Panel37)
-        TabPage23.Location = New Point(301, 0)
-        TabPage23.Name = "TabPage23"
-        TabPage23.Size = New Size(963, 700)
-        TabPage23.TabIndex = 1
-        TabPage23.Text = "下载和更新队列"
+        TabPage下载和更新队列.BackColor = Color.FromArgb(CByte(24), CByte(24), CByte(24))
+        TabPage下载和更新队列.Controls.Add(Panel37)
+        TabPage下载和更新队列.Location = New Point(301, 0)
+        TabPage下载和更新队列.Name = "TabPage下载和更新队列"
+        TabPage下载和更新队列.Size = New Size(963, 700)
+        TabPage下载和更新队列.TabIndex = 1
+        TabPage下载和更新队列.Text = "下载和更新队列"
         ' 
         ' Panel37
         ' 
@@ -5468,29 +5468,29 @@ Partial Class Form1
         Panel37.Size = New Size(963, 700)
         Panel37.TabIndex = 1
         ' 
-        ' TabPage24
+        ' TabPage管理下载的文件
         ' 
-        TabPage24.BackColor = Color.FromArgb(CByte(24), CByte(24), CByte(24))
-        TabPage24.Location = New Point(301, 0)
-        TabPage24.Name = "TabPage24"
-        TabPage24.Size = New Size(963, 700)
-        TabPage24.TabIndex = 2
-        TabPage24.Text = "管理下载的文件"
+        TabPage管理下载的文件.BackColor = Color.FromArgb(CByte(24), CByte(24), CByte(24))
+        TabPage管理下载的文件.Location = New Point(301, 0)
+        TabPage管理下载的文件.Name = "TabPage管理下载的文件"
+        TabPage管理下载的文件.Size = New Size(963, 700)
+        TabPage管理下载的文件.TabIndex = 2
+        TabPage管理下载的文件.Text = "管理下载的文件"
         ' 
-        ' TabPage1
+        ' TabPageNEXUS下载模式
         ' 
-        TabPage1.BackColor = Color.FromArgb(CByte(24), CByte(24), CByte(24))
-        TabPage1.Controls.Add(Label35)
-        TabPage1.Controls.Add(Label36)
-        TabPage1.Controls.Add(Label41)
-        TabPage1.Controls.Add(UiRadioButton9)
-        TabPage1.Controls.Add(UiRadioButton10)
-        TabPage1.Controls.Add(Panel51)
-        TabPage1.Location = New Point(301, 0)
-        TabPage1.Name = "TabPage1"
-        TabPage1.Size = New Size(963, 700)
-        TabPage1.TabIndex = 3
-        TabPage1.Text = "当前使用免费下载"
+        TabPageNEXUS下载模式.BackColor = Color.FromArgb(CByte(24), CByte(24), CByte(24))
+        TabPageNEXUS下载模式.Controls.Add(Label35)
+        TabPageNEXUS下载模式.Controls.Add(Label36)
+        TabPageNEXUS下载模式.Controls.Add(Label41)
+        TabPageNEXUS下载模式.Controls.Add(UiRadioButton9)
+        TabPageNEXUS下载模式.Controls.Add(UiRadioButton10)
+        TabPageNEXUS下载模式.Controls.Add(Panel51)
+        TabPageNEXUS下载模式.Location = New Point(301, 0)
+        TabPageNEXUS下载模式.Name = "TabPageNEXUS下载模式"
+        TabPageNEXUS下载模式.Size = New Size(963, 700)
+        TabPageNEXUS下载模式.TabIndex = 3
+        TabPageNEXUS下载模式.Text = "NEXUS 下载模式：FREE"
         ' 
         ' Label35
         ' 
@@ -5578,9 +5578,9 @@ Partial Class Form1
         ' 
         TabPage检查更新.BackColor = Color.FromArgb(CByte(24), CByte(24), CByte(24))
         TabPage检查更新.Controls.Add(Panel32)
-        TabPage检查更新.Location = New Point(0, 50)
+        TabPage检查更新.Location = New Point(0, 40)
         TabPage检查更新.Name = "TabPage检查更新"
-        TabPage检查更新.Size = New Size(1264, 700)
+        TabPage检查更新.Size = New Size(200, 60)
         TabPage检查更新.TabIndex = 4
         TabPage检查更新.Text = "检查更新"
         ' 
@@ -5590,7 +5590,7 @@ Partial Class Form1
         Panel32.Dock = DockStyle.Fill
         Panel32.Location = New Point(0, 0)
         Panel32.Name = "Panel32"
-        Panel32.Size = New Size(1264, 700)
+        Panel32.Size = New Size(200, 60)
         Panel32.TabIndex = 0
         ' 
         ' UiTabControl2
@@ -5607,7 +5607,7 @@ Partial Class Form1
         UiTabControl2.MainPage = ""
         UiTabControl2.Name = "UiTabControl2"
         UiTabControl2.SelectedIndex = 0
-        UiTabControl2.Size = New Size(1264, 700)
+        UiTabControl2.Size = New Size(200, 60)
         UiTabControl2.SizeMode = TabSizeMode.Fixed
         UiTabControl2.Style = Sunny.UI.UIStyle.Custom
         UiTabControl2.TabIndex = 0
@@ -5619,7 +5619,7 @@ Partial Class Form1
         TabPage25.BackColor = Color.FromArgb(CByte(24), CByte(24), CByte(24))
         TabPage25.Location = New Point(0, 40)
         TabPage25.Name = "TabPage25"
-        TabPage25.Size = New Size(1264, 660)
+        TabPage25.Size = New Size(200, 20)
         TabPage25.TabIndex = 0
         TabPage25.Text = "步骤一：向 smapi.io 发送数据"
         ' 
@@ -5646,9 +5646,9 @@ Partial Class Form1
         TabPage浏览器.BackColor = Color.FromArgb(CByte(24), CByte(24), CByte(24))
         TabPage浏览器.Controls.Add(Label15)
         TabPage浏览器.Controls.Add(Panel49)
-        TabPage浏览器.Location = New Point(0, 50)
+        TabPage浏览器.Location = New Point(0, 40)
         TabPage浏览器.Name = "TabPage浏览器"
-        TabPage浏览器.Size = New Size(1264, 700)
+        TabPage浏览器.Size = New Size(200, 60)
         TabPage浏览器.TabIndex = 5
         TabPage浏览器.Text = "浏览器"
         ' 
@@ -5658,7 +5658,7 @@ Partial Class Form1
         Label15.Font = New Font("微软雅黑", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(134))
         Label15.Location = New Point(0, 40)
         Label15.Name = "Label15"
-        Label15.Size = New Size(1264, 660)
+        Label15.Size = New Size(200, 20)
         Label15.TabIndex = 1
         Label15.Text = "=====   使用提示   =====" & vbCrLf & vbCrLf & "为节省日常使用的内存占用，只有当需要使用内置浏览器时才会完成初始化并创建控件" & vbCrLf & vbCrLf & "要在内置浏览器中访问其他地址，可以直接在顶部菜单栏空白处输入并转到" & vbCrLf & vbCrLf & "Edge 和 CEF 组件各有优劣，默认选择 Edge，如需使用 CEF 请在设置中调整并重启" & vbCrLf & vbCrLf & "不要忘记定期清理浏览器缓存"
         Label15.TextAlign = ContentAlignment.MiddleCenter
@@ -5677,7 +5677,7 @@ Partial Class Form1
         Panel49.Dock = DockStyle.Top
         Panel49.Location = New Point(0, 0)
         Panel49.Name = "Panel49"
-        Panel49.Size = New Size(1264, 40)
+        Panel49.Size = New Size(200, 40)
         Panel49.TabIndex = 0
         ' 
         ' UiTextBox5
@@ -5707,7 +5707,7 @@ Partial Class Form1
         UiTextBox5.ScrollBarColor = Color.Gray
         UiTextBox5.ScrollBarStyleInherited = False
         UiTextBox5.ShowText = False
-        UiTextBox5.Size = New Size(784, 40)
+        UiTextBox5.Size = New Size(1, 40)
         UiTextBox5.Style = Sunny.UI.UIStyle.Custom
         UiTextBox5.TabIndex = 18
         UiTextBox5.TabStop = False
@@ -5949,9 +5949,9 @@ Partial Class Form1
         ' 
         TabPage调试输出.BackColor = Color.FromArgb(CByte(24), CByte(24), CByte(24))
         TabPage调试输出.Controls.Add(UiRichTextBox2)
-        TabPage调试输出.Location = New Point(0, 50)
+        TabPage调试输出.Location = New Point(0, 40)
         TabPage调试输出.Name = "TabPage调试输出"
-        TabPage调试输出.Size = New Size(1264, 700)
+        TabPage调试输出.Size = New Size(200, 60)
         TabPage调试输出.TabIndex = 6
         TabPage调试输出.Text = "调试输出"
         ' 
@@ -5978,7 +5978,7 @@ Partial Class Form1
         UiRichTextBox2.ScrollBarStyleInherited = False
         UiRichTextBox2.ScrollBarWidth = 20
         UiRichTextBox2.ShowText = False
-        UiRichTextBox2.Size = New Size(1264, 700)
+        UiRichTextBox2.Size = New Size(200, 60)
         UiRichTextBox2.Style = Sunny.UI.UIStyle.Custom
         UiRichTextBox2.TabIndex = 2
         UiRichTextBox2.Text = "调试信息"
@@ -6117,11 +6117,11 @@ Partial Class Form1
         TabPage下载更新.ResumeLayout(False)
         Panel31.ResumeLayout(False)
         UiTabControlMenu3.ResumeLayout(False)
-        TabPage22.ResumeLayout(False)
+        TabPage选择要下载的文件.ResumeLayout(False)
         Panel33.ResumeLayout(False)
-        TabPage23.ResumeLayout(False)
-        TabPage1.ResumeLayout(False)
-        TabPage1.PerformLayout()
+        TabPage下载和更新队列.ResumeLayout(False)
+        TabPageNEXUS下载模式.ResumeLayout(False)
+        TabPageNEXUS下载模式.PerformLayout()
         Panel51.ResumeLayout(False)
         TabPage检查更新.ResumeLayout(False)
         Panel32.ResumeLayout(False)
@@ -6250,9 +6250,9 @@ Partial Class Form1
     Friend WithEvents Label26 As Label
     Friend WithEvents TabPage关于 As TabPage
     Friend WithEvents UiTabControlMenu3 As Sunny.UI.UITabControlMenu
-    Friend WithEvents TabPage22 As TabPage
-    Friend WithEvents TabPage23 As TabPage
-    Friend WithEvents TabPage24 As TabPage
+    Friend WithEvents TabPage选择要下载的文件 As TabPage
+    Friend WithEvents TabPage下载和更新队列 As TabPage
+    Friend WithEvents TabPage管理下载的文件 As TabPage
     Friend WithEvents Panel29 As Panel
     Friend WithEvents Panel30 As Panel
     Friend WithEvents Panel31 As Panel
@@ -6395,7 +6395,7 @@ Partial Class Form1
     Friend WithEvents ColumnHeader14 As ColumnHeader
     Friend WithEvents ColumnHeader15 As ColumnHeader
     Friend WithEvents ColumnHeader16 As ColumnHeader
-    Friend WithEvents TabPage1 As TabPage
+    Friend WithEvents TabPageNEXUS下载模式 As TabPage
     Friend WithEvents Panel51 As Panel
     Friend WithEvents Label39 As Label
     Friend WithEvents UiButton60 As Sunny.UI.UIButton

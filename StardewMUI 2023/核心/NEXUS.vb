@@ -318,7 +318,9 @@ jx1:
                 Dim uri As New Uri(str1)
                 System.Net.ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12
                 Dim myReq As HttpWebRequest = DirectCast(WebRequest.Create(uri), HttpWebRequest)
-                myReq.ContinueTimeout = 1000
+                myReq.ContinueTimeout = 10000
+                myReq.Timeout = 10000
+                myReq.ReadWriteTimeout = 10000
                 myReq.UserAgent = GlobalUserAgent
                 myReq.Method = "GET"
                 myReq.KeepAlive = False
