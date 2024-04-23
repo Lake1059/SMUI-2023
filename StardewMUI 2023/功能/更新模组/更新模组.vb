@@ -109,6 +109,7 @@ Public Class 更新模组
         是否取消操作 = False
         Form1.Label34.Text = "   正在连接到 NEXUS API 获取文件列表 ..."
         Form1.Panel34.Controls.Clear()
+        Form1.Panel34.Enabled = True
         Dim a As New NEXUS.GetModFileList With {.ST_ApiKey = 设置.全局设置数据("NexusAPI")}
         Dim str1 As String = Await Task.Run(Function() a.StartGet("stardewvalley", 模组ID, NEXUS.FileType.main_optional_updateFile_miscellaneous))
         Form1.Label34.Text = "   当前操作接下来要更新到项：" & Path.GetFileName(模组项绝对路径)
@@ -170,31 +171,64 @@ Public Class 更新模组
         简介文字.BringToFront()
         Form1.Panel34.Controls.Add(独立容器)
         独立容器.BringToFront()
-        AddHandler 标题文字.LinkClicked, Sub(sender, e) 获取NEXUS文件下载地址(正在处理的NEXUSID, Data.file_id, 模组项绝对路径)
+        AddHandler 标题文字.LinkClicked, Sub(sender, e)
+                                         If 设置.全局设置数据("NexusPremium") = "False" Then
+                                             转到浏览器获取额外参数(正在处理的NEXUSID, Data.file_id, 模组项绝对路径)
+                                         Else
+                                             获取服务器列表(正在处理的NEXUSID, Data.file_id, 模组项绝对路径)
+                                         End If
+                                     End Sub
     End Sub
 
-    Public Shared Property Key As String
-    Public Shared Property Expires As String
-
-    Public Shared Sub 获取NEXUS文件下载地址(模组ID As String, 文件ID As String, 模组项绝对路径 As String)
-        If 设置.全局设置数据("NexusPremium") = "False" Then
-            If 设置.全局设置数据("UseWhichBrowser") = "Edge" Then
-                Key = "" : Expires = ""
-                浏览器WebView2控制.是否要获取HTML = True
-                浏览器WebView2控制.要进行更新或创建的模组项绝对路径 = 模组项绝对路径
-                Form1.UiTextBox5.Text = "https://www.nexusmods.com/stardewvalley/mods/" & 模组ID & "?tab=files&file_id=" & 文件ID & "&nmm=1"
-                Form1.UiButton53.PerformClick()
-                Form1.UiTabControl1.SelectedTab = Form1.TabPage浏览器
+    Public Shared Sub 转到浏览器获取额外参数(模组ID As String, 文件ID As String, 模组项绝对路径 As String)
+        If 设置.全局设置数据("UseWhichBrowser") = "Edge" Then
+            浏览器WebView2控制.是否要获取HTML = True
+            浏览器WebView2控制.要进行更新或创建的模组项绝对路径 = 模组项绝对路径
+            Form1.UiTextBox5.Text = "https://www.nexusmods.com/stardewvalley/mods/" & 模组ID & "?tab=files&file_id=" & 文件ID & "&nmm=1"
+            If 界面控制.WebView2浏览器控件 Is Nothing Then
+                浏览器WebView2控制.初始化浏览器控件()
             Else
-
-
+                界面控制.WebView2浏览器控件.CoreWebView2.Navigate(Form1.UiTextBox5.Text)
             End If
+            Form1.UiTabControl1.SelectedTab = Form1.TabPage浏览器
         Else
 
 
-        End If
 
+        End If
     End Sub
 
+    Public Shared Async Sub 获取服务器列表(模组ID As String, 文件ID As String, 模组项绝对路径 As String, Optional key As String = "", Optional expires As String = "")
+        Form1.Label34.Text = "   正在连接到 NEXUS API 获取服务器列表 ..."
+        Form1.Panel34.Enabled = False
+        Dim a As New NEXUS.GetModFileDownloadURL With {.ST_ApiKey = 设置.全局设置数据("NexusAPI")}
+        Dim str1 As String = Await Task.Run(Function() a.StartGet("stardewvalley", 模组ID, 文件ID, key, expires))
+        If str1 <> "" Then
+            DebugPrint(str1, Color1.红色)
+            Form1.Label34.Text = "   获取失败，到调试选项卡查看详情"
+            Form1.Panel34.Enabled = True
+            Exit Sub
+        End If
+        If a.name.Length = 0 Then
+            Form1.Label34.Text = "   获取成功但 NEXUS API 没有返回任何可用的服务器"
+            Form1.Panel34.Enabled = True
+            Exit Sub
+        End If
+        Form1.Panel34.Enabled = True
+        If 设置.全局设置数据("AutoSelectFirstNexusDownloadSever") = "True" Then
+
+
+
+        End If
+        Dim m1 As New 多项单选对话框("选择要从哪个服务器下载文件", a.name, "如果你无法高速下载，请自行使用代理，记得添加域名规则：cf-files.nexusmods.com" & vbCrLf & vbCrLf & "可以在设置中打开自动选择首个，首位是什么取决于账户设置", 100, 500)
+        Select Case m1.ShowDialog(Form1)
+            Case -1
+            Case Else
+
+
+
+        End Select
+
+    End Sub
 
 End Class

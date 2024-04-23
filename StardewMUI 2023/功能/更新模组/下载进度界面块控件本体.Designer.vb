@@ -27,30 +27,30 @@ Partial Class 下载进度界面块控件本体
         Panel1 = New Panel()
         Panel2 = New Panel()
         Panel3 = New Panel()
+        BackgroundWorker1 = New ComponentModel.BackgroundWorker()
+        BackgroundWorker2 = New ComponentModel.BackgroundWorker()
         Panel1.SuspendLayout()
         Panel2.SuspendLayout()
         SuspendLayout()
         ' 
         ' Label1
         ' 
-        Label1.AutoSize = True
         Label1.Dock = DockStyle.Top
         Label1.Font = New Font("微软雅黑", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(134))
         Label1.Location = New Point(10, 10)
         Label1.Name = "Label1"
         Label1.Padding = New Padding(0, 0, 0, 10)
-        Label1.Size = New Size(154, 31)
+        Label1.Size = New Size(480, 31)
         Label1.TabIndex = 0
-        Label1.Text = "正在下载的压缩文件"
+        Label1.Text = "正在对模组项操作下载的文件"
         ' 
         ' Label2
         ' 
-        Label2.AutoSize = True
         Label2.Dock = DockStyle.Top
         Label2.Location = New Point(10, 41)
         Label2.Name = "Label2"
         Label2.Padding = New Padding(0, 0, 0, 10)
-        Label2.Size = New Size(100, 29)
+        Label2.Size = New Size(480, 29)
         Label2.TabIndex = 1
         Label2.Text = "容量速度和状态"
         ' 
@@ -83,6 +83,16 @@ Partial Class 下载进度界面块控件本体
         Panel3.Size = New Size(187, 13)
         Panel3.TabIndex = 0
         ' 
+        ' BackgroundWorker1
+        ' 
+        BackgroundWorker1.WorkerReportsProgress = True
+        BackgroundWorker1.WorkerSupportsCancellation = True
+        ' 
+        ' BackgroundWorker2
+        ' 
+        BackgroundWorker2.WorkerReportsProgress = True
+        BackgroundWorker2.WorkerSupportsCancellation = True
+        ' 
         ' 下载进度界面块控件本体
         ' 
         AutoScaleDimensions = New SizeF(96F, 96F)
@@ -100,7 +110,6 @@ Partial Class 下载进度界面块控件本体
         Panel1.ResumeLayout(False)
         Panel2.ResumeLayout(False)
         ResumeLayout(False)
-        PerformLayout()
     End Sub
 
     Friend WithEvents Label1 As Label
@@ -108,5 +117,7 @@ Partial Class 下载进度界面块控件本体
     Friend WithEvents Panel1 As Panel
     Friend WithEvents Panel2 As Panel
     Friend WithEvents Panel3 As Panel
+    Friend WithEvents BackgroundWorker1 As System.ComponentModel.BackgroundWorker
+    Friend WithEvents BackgroundWorker2 As System.ComponentModel.BackgroundWorker
 
 End Class
