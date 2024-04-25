@@ -95,6 +95,10 @@ Public Class 更新模组
 
 
     Public Shared Async Sub 获取NEXUS文件列表(模组ID As String, 模组项绝对路径 As String)
+
+        Dim dx As New 多项单选对话框("", {"取消", "让我康康"}, "这个功能还没有做完，运行到获取参数和下载地址时就无法再继续，确定要继续执行吗？", 100, 500)
+        If dx.ShowDialog(Form1) <> 1 Then Exit Sub
+
         If 设置.全局设置数据("NexusAPI") = "" Then
             Dim d1 As New 多项单选对话框("", {"前往设置", "确定"}, "要访问 NEXUS API 进行更新模组，需要填写个人密钥")
             If d1.ShowDialog() = 0 Then
