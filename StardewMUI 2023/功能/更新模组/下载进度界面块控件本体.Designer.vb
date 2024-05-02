@@ -22,13 +22,14 @@ Partial Class 下载进度界面块控件本体
     '不要使用代码编辑器修改它。
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        components = New ComponentModel.Container()
         Label1 = New Label()
         Label2 = New Label()
         Panel1 = New Panel()
         Panel2 = New Panel()
         Panel3 = New Panel()
-        BackgroundWorker1 = New ComponentModel.BackgroundWorker()
-        BackgroundWorker2 = New ComponentModel.BackgroundWorker()
+        暗黑菜单条控件本体1 = New 暗黑菜单条控件本体()
+        Timer1 = New Timer(components)
         Panel1.SuspendLayout()
         Panel2.SuspendLayout()
         SuspendLayout()
@@ -83,15 +84,16 @@ Partial Class 下载进度界面块控件本体
         Panel3.Size = New Size(187, 13)
         Panel3.TabIndex = 0
         ' 
-        ' BackgroundWorker1
+        ' 暗黑菜单条控件本体1
         ' 
-        BackgroundWorker1.WorkerReportsProgress = True
-        BackgroundWorker1.WorkerSupportsCancellation = True
+        暗黑菜单条控件本体1.BackColor = Color.FromArgb(CByte(48), CByte(48), CByte(48))
+        暗黑菜单条控件本体1.ForeColor = Color.Gainsboro
+        暗黑菜单条控件本体1.Name = "暗黑菜单条控件本体1"
+        暗黑菜单条控件本体1.Size = New Size(61, 4)
         ' 
-        ' BackgroundWorker2
+        ' Timer1
         ' 
-        BackgroundWorker2.WorkerReportsProgress = True
-        BackgroundWorker2.WorkerSupportsCancellation = True
+        Timer1.Interval = 1000
         ' 
         ' 下载进度界面块控件本体
         ' 
@@ -117,7 +119,7 @@ Partial Class 下载进度界面块控件本体
     Friend WithEvents Panel1 As Panel
     Friend WithEvents Panel2 As Panel
     Friend WithEvents Panel3 As Panel
-    Friend WithEvents BackgroundWorker1 As System.ComponentModel.BackgroundWorker
-    Friend WithEvents BackgroundWorker2 As System.ComponentModel.BackgroundWorker
+    Friend WithEvents 暗黑菜单条控件本体1 As 暗黑菜单条控件本体
+    Friend WithEvents Timer1 As Timer
 
 End Class

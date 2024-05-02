@@ -161,6 +161,22 @@ jx1:
         End If
     End Sub
 
+    Public Shared Sub 添加到配置队列(分类 As String, 模组项 As String)
+        Dim 是否要转到配置队列 As Boolean = Form1.ListView3.Items.Count = 0
+        For i2 = 0 To Form1.ListView3.Items.Count - 1
+            If 模组项 = Form1.ListView3.Items(i2).Text And 分类 = Form1.ListView3.Items(i2).SubItems(1).Text Then
+                Exit Sub
+            End If
+        Next
+        Form1.ListView3.Items.Add(模组项)
+        Form1.ListView3.Items(Form1.ListView3.Items.Count - 1).SubItems.Add(分类)
+
+        If 是否要转到配置队列 = True Then
+            Form1.UiTabControl1.SelectedTab = Form1.TabPage配置队列
+            Form1.ListView3.Items(0).Selected = True
+        End If
+    End Sub
+
     Public Shared Sub 读取选中项()
         正在编辑规划的项路径 = Path.Combine(管理模组2.检查并返回当前所选子库路径(False), Form1.ListView3.SelectedItems(0).SubItems(1).Text, Form1.ListView3.SelectedItems(0).Text)
         重新扫描项的数据内容()
@@ -189,7 +205,7 @@ jx1:
             Dim operation As DE1 = value
             operation.Invoke()
         Else
-            DebugPrint("意外故障，无法在字典中匹配到操作，这在理论上不可能发生", Color1.红色, True)
+            DebugPrint("意外故障，无法在字典中匹配到操作，这在理论上不可能发生，除非我还没做对应的规划编辑", Color1.红色, True)
         End If
     End Sub
 

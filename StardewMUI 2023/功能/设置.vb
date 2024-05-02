@@ -158,6 +158,21 @@ Public Class 设置
     Public Shared ReadOnly 浏览器缓存路径 As String = Application.StartupPath & "\UserData\WebCache"
     Public Shared ReadOnly 自定义语言包路径 As String = Application.StartupPath & "\UserData\Language"
 
+    Public Shared Function 检查并返回数据库下载文件夹路径() As String
+        If Not FileIO.FileSystem.DirectoryExists(Path.Combine(全局设置数据("LocalRepositoryPath"), ".Download")) Then
+            FileIO.FileSystem.CreateDirectory(Path.Combine(全局设置数据("LocalRepositoryPath"), ".Download"))
+        End If
+        Return Path.Combine(全局设置数据("LocalRepositoryPath"), ".Download")
+    End Function
+
+    Public Shared Function 检查并返回数据库解压文件夹路径() As String
+        If Not FileIO.FileSystem.DirectoryExists(Path.Combine(全局设置数据("LocalRepositoryPath"), ".Decompress")) Then
+            FileIO.FileSystem.CreateDirectory(Path.Combine(全局设置数据("LocalRepositoryPath"), ".Decompress"))
+        End If
+        Return Path.Combine(全局设置数据("LocalRepositoryPath"), ".Decompress")
+    End Function
+
+
 
     Public Shared Sub 刷新设置显示()
         Form1.暗黑文本框1.Text = 全局设置数据("StardewValleyGamePath")
@@ -197,6 +212,7 @@ Public Class 设置
         Form1.UiCheckBox5.Checked = 全局设置数据("AutoConvertWebpToPng")
         Form1.UiCheckBox6.Checked = 全局设置数据("SendDeletedDataToRecycleBin")
         Form1.UiCheckBox16.Checked = 全局设置数据("DownloadFileUseSMUI5Color")
+        Form1.UiCheckBox17.Checked = 全局设置数据("DownloadFileUseBigBuffer")
 
         Form1.UiComboBox8.Text = 全局设置数据("FontName")
 
@@ -275,6 +291,7 @@ Public Class 设置
         全局设置数据("AutoConvertWebpToPng") = Form1.UiCheckBox5.Checked
         全局设置数据("SendDeletedDataToRecycleBin") = Form1.UiCheckBox6.Checked
         全局设置数据("DownloadFileUseSMUI5Color") = Form1.UiCheckBox16.Checked
+        全局设置数据("DownloadFileUseBigBuffer") = Form1.UiCheckBox17.Checked
         UIMessageTip.Show("更改已写入内存，正常退出时写入文件",, 2500)
     End Sub
 

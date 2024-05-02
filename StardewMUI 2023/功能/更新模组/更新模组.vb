@@ -5,6 +5,7 @@ Imports Windows.System
 Public Class 更新模组
 
     Public Shared Sub 初始化()
+        Form1.Panel37.Padding = New Padding(30)
         If 设置.全局设置数据("NexusPremium") = "True" Then
             Form1.UiRadioButton10.Checked = False
             Form1.UiRadioButton9.Checked = True
@@ -96,8 +97,8 @@ Public Class 更新模组
 
     Public Shared Async Sub 获取NEXUS文件列表(模组ID As String, 模组项绝对路径 As String)
 
-        Dim dx As New 多项单选对话框("", {"取消", "让我康康"}, "这个功能还没有做完，运行到获取参数和下载地址时就无法再继续，确定要继续执行吗？", 100, 500)
-        If dx.ShowDialog(Form1) <> 1 Then Exit Sub
+        'Dim dx As New 多项单选对话框("", {"取消", "让我康康"}, "这个功能还没有做完，运行到获取参数和下载地址时就无法再继续，确定要继续执行吗？", 100, 500)
+        'If dx.ShowDialog(Form1) <> 1 Then Exit Sub
 
         If 设置.全局设置数据("NexusAPI") = "" Then
             Dim d1 As New 多项单选对话框("", {"前往设置", "确定"}, "要访问 NEXUS API 进行更新模组，需要填写个人密钥")
@@ -186,8 +187,12 @@ Public Class 更新模组
 
     Public Shared Sub 转到浏览器获取额外参数(模组ID As String, 文件ID As String, 模组项绝对路径 As String)
         If 设置.全局设置数据("UseWhichBrowser") = "Edge" Then
-            浏览器WebView2控制.是否要获取HTML = True
-            浏览器WebView2控制.要进行更新或创建的模组项绝对路径 = 模组项绝对路径
+            浏览器WebView2控制.是否要获取HTML来进行NEXUSAPI更新 = True
+            浏览器同步数据.用于更新模组项的模组项绝对路径 = 模组项绝对路径
+            浏览器同步数据.用于更新模组项的NEXUS模组ID = 模组ID
+            浏览器同步数据.用于更新模组项的NEXUS文件ID = 文件ID
+            Form1.UiButton70.Visible = True
+            Form1.Label42.Visible = True
             Form1.UiTextBox5.Text = "https://www.nexusmods.com/stardewvalley/mods/" & 模组ID & "?tab=files&file_id=" & 文件ID & "&nmm=1"
             If 界面控制.WebView2浏览器控件 Is Nothing Then
                 浏览器WebView2控制.初始化浏览器控件()
@@ -220,18 +225,35 @@ Public Class 更新模组
         End If
         Form1.Panel34.Enabled = True
         If 设置.全局设置数据("AutoSelectFirstNexusDownloadSever") = "True" Then
-
-
-
+            添加到下载队列(a.URI(0), 模组项绝对路径, "nexus")
+        Else
+            Dim m1 As New 多项单选对话框("选择要从哪个服务器下载文件", a.name, "如果你无法高速下载，请自行使用代理，记得添加域名规则：cf-files.nexusmods.com" & vbCrLf & vbCrLf & "可以在设置中打开自动选择首个，首位是什么取决于账户设置", 100, 500)
+            Dim int1 = m1.ShowDialog(Form1)
+            Select Case int1
+                Case -1
+                    Form1.Label34.Text = "   当前操作接下来要更新到项：" & Path.GetFileName(模组项绝对路径)
+                Case Else
+                    添加到下载队列(a.URI(int1), 模组项绝对路径, "nexus")
+            End Select
         End If
-        Dim m1 As New 多项单选对话框("选择要从哪个服务器下载文件", a.name, "如果你无法高速下载，请自行使用代理，记得添加域名规则：cf-files.nexusmods.com" & vbCrLf & vbCrLf & "可以在设置中打开自动选择首个，首位是什么取决于账户设置", 100, 500)
-        Select Case m1.ShowDialog(Form1)
-            Case -1
-            Case Else
+    End Sub
 
+    Public Shared Sub 添加到下载队列(下载地址 As String, 模组项绝对路径 As String, Optional 来源 As String = "nexus")
+        Form1.UiTabControlMenu3.SelectedTab = Form1.TabPage下载和更新队列
+        Dim DW As New 下载进度界面块控件本体 With {.设置_下载来源 = 来源, .设置_下载地址 = 下载地址, .设置_模组项绝对路径 = 模组项绝对路径, .设置_N网模组ID = 正在处理的NEXUSID, .Dock = DockStyle.Top}
 
+        If Form1.Panel37.Controls.Count <> 0 Then
+            Dim L1 As New Label With {.AutoSize = False, .Dock = DockStyle.Top, .Height = 20}
+            Form1.Panel37.Controls.Add(L1)
+            L1.BringToFront()
+            DW.设置_结束后自动释放的控件.Add(L1)
+        End If
+        Form1.Panel37.Controls.Add(DW)
+        DW.BringToFront()
+        DW.开始下载()
 
-        End Select
+        Form1.Label34.Text = "   在管理模组选项卡中发起更新来获取文件列表"
+        Form1.Panel34.Controls.Clear()
 
     End Sub
 

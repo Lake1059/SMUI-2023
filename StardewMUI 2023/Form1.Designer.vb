@@ -151,6 +151,7 @@ Partial Class Form1
         UiRadioButton2 = New Sunny.UI.UIRadioButton()
         UiRadioButton1 = New Sunny.UI.UIRadioButton()
         TabPage18 = New TabPage()
+        UiCheckBox17 = New Sunny.UI.UICheckBox()
         UiCheckBox16 = New Sunny.UI.UICheckBox()
         UiButton35 = New Sunny.UI.UIButton()
         UiCheckBox10 = New Sunny.UI.UICheckBox()
@@ -359,9 +360,11 @@ Partial Class Form1
         TabPage26 = New TabPage()
         TabPage27 = New TabPage()
         TabPage浏览器 = New TabPage()
+        Label42 = New Label()
         Label15 = New Label()
         Panel49 = New Panel()
         UiTextBox5 = New Sunny.UI.UITextBox()
+        UiButton70 = New Sunny.UI.UIButton()
         UiButton53 = New Sunny.UI.UIButton()
         UiButton52 = New Sunny.UI.UIButton()
         UiButton51 = New Sunny.UI.UIButton()
@@ -824,6 +827,7 @@ Partial Class Form1
         ' Label49
         ' 
         Label49.Font = New Font("微软雅黑", 9.75F)
+        Label49.ForeColor = Color.Silver
         Label49.Location = New Point(0, 30)
         Label49.Margin = New Padding(0)
         Label49.Name = "Label49"
@@ -914,6 +918,7 @@ Partial Class Form1
         ' Label48
         ' 
         Label48.Font = New Font("微软雅黑", 9.75F)
+        Label48.ForeColor = Color.Silver
         Label48.Location = New Point(0, 30)
         Label48.Margin = New Padding(0)
         Label48.Name = "Label48"
@@ -970,6 +975,7 @@ Partial Class Form1
         ' Label33
         ' 
         Label33.Font = New Font("微软雅黑", 9.75F)
+        Label33.ForeColor = Color.Silver
         Label33.Location = New Point(0, 30)
         Label33.Margin = New Padding(0)
         Label33.Name = "Label33"
@@ -1112,6 +1118,7 @@ Partial Class Form1
         ' Label47
         ' 
         Label47.Font = New Font("微软雅黑", 9.75F)
+        Label47.ForeColor = Color.Silver
         Label47.Location = New Point(0, 30)
         Label47.Margin = New Padding(0)
         Label47.Name = "Label47"
@@ -2413,6 +2420,7 @@ Partial Class Form1
         ' TabPage18
         ' 
         TabPage18.BackColor = Color.FromArgb(CByte(24), CByte(24), CByte(24))
+        TabPage18.Controls.Add(UiCheckBox17)
         TabPage18.Controls.Add(UiCheckBox16)
         TabPage18.Controls.Add(UiButton35)
         TabPage18.Controls.Add(UiCheckBox10)
@@ -2429,6 +2437,19 @@ Partial Class Form1
         TabPage18.Size = New Size(912, 700)
         TabPage18.TabIndex = 4
         TabPage18.Text = "功能和数值"
+        ' 
+        ' UiCheckBox17
+        ' 
+        UiCheckBox17.Font = New Font("微软雅黑", 12F)
+        UiCheckBox17.ForeColor = SystemColors.ScrollBar
+        UiCheckBox17.Location = New Point(20, 450)
+        UiCheckBox17.Margin = New Padding(20, 15, 20, 0)
+        UiCheckBox17.MinimumSize = New Size(1, 1)
+        UiCheckBox17.Name = "UiCheckBox17"
+        UiCheckBox17.Size = New Size(333, 23)
+        UiCheckBox17.Style = Sunny.UI.UIStyle.Custom
+        UiCheckBox17.TabIndex = 39
+        UiCheckBox17.Text = "下载文件使用更大内存缓冲来缓解性能占用"
         ' 
         ' UiCheckBox16
         ' 
@@ -5461,16 +5482,16 @@ Partial Class Form1
         Label34.Name = "Label34"
         Label34.Size = New Size(963, 54)
         Label34.TabIndex = 0
-        Label34.Text = "   接下来要在进行的操作：更新到项 / 新建项"
+        Label34.Text = "   在管理模组选项卡中发起更新来获取文件列表"
         Label34.TextAlign = ContentAlignment.MiddleLeft
         ' 
         ' TabPage下载和更新队列
         ' 
         TabPage下载和更新队列.BackColor = Color.FromArgb(CByte(24), CByte(24), CByte(24))
         TabPage下载和更新队列.Controls.Add(Panel37)
-        TabPage下载和更新队列.Location = New Point(301, 0)
+        TabPage下载和更新队列.Location = New Point(1201, 0)
         TabPage下载和更新队列.Name = "TabPage下载和更新队列"
-        TabPage下载和更新队列.Size = New Size(963, 700)
+        TabPage下载和更新队列.Size = New Size(0, 60)
         TabPage下载和更新队列.TabIndex = 1
         TabPage下载和更新队列.Text = "下载和更新队列"
         ' 
@@ -5480,15 +5501,15 @@ Partial Class Form1
         Panel37.Location = New Point(0, 0)
         Panel37.Name = "Panel37"
         Panel37.Padding = New Padding(30)
-        Panel37.Size = New Size(963, 700)
+        Panel37.Size = New Size(0, 60)
         Panel37.TabIndex = 1
         ' 
         ' TabPage管理下载的文件
         ' 
         TabPage管理下载的文件.BackColor = Color.FromArgb(CByte(24), CByte(24), CByte(24))
-        TabPage管理下载的文件.Location = New Point(301, 0)
+        TabPage管理下载的文件.Location = New Point(1201, 0)
         TabPage管理下载的文件.Name = "TabPage管理下载的文件"
-        TabPage管理下载的文件.Size = New Size(963, 700)
+        TabPage管理下载的文件.Size = New Size(0, 60)
         TabPage管理下载的文件.TabIndex = 2
         TabPage管理下载的文件.Text = "管理下载的文件"
         ' 
@@ -5501,9 +5522,9 @@ Partial Class Form1
         TabPageNEXUS下载模式.Controls.Add(UiRadioButton9)
         TabPageNEXUS下载模式.Controls.Add(UiRadioButton10)
         TabPageNEXUS下载模式.Controls.Add(Panel51)
-        TabPageNEXUS下载模式.Location = New Point(301, 0)
+        TabPageNEXUS下载模式.Location = New Point(1201, 0)
         TabPageNEXUS下载模式.Name = "TabPageNEXUS下载模式"
-        TabPageNEXUS下载模式.Size = New Size(963, 700)
+        TabPageNEXUS下载模式.Size = New Size(0, 60)
         TabPageNEXUS下载模式.TabIndex = 3
         TabPageNEXUS下载模式.Text = "NEXUS 下载模式：FREE"
         ' 
@@ -5576,7 +5597,7 @@ Partial Class Form1
         Panel51.Dock = DockStyle.Top
         Panel51.Location = New Point(0, 0)
         Panel51.Name = "Panel51"
-        Panel51.Size = New Size(963, 54)
+        Panel51.Size = New Size(0, 54)
         Panel51.TabIndex = 2
         ' 
         ' Label39
@@ -5584,7 +5605,7 @@ Partial Class Form1
         Label39.Dock = DockStyle.Fill
         Label39.Location = New Point(0, 0)
         Label39.Name = "Label39"
-        Label39.Size = New Size(963, 54)
+        Label39.Size = New Size(0, 54)
         Label39.TabIndex = 0
         Label39.Text = "   设置自动保存，下一次选择下载文件时生效"
         Label39.TextAlign = ContentAlignment.MiddleLeft
@@ -5659,6 +5680,7 @@ Partial Class Form1
         ' TabPage浏览器
         ' 
         TabPage浏览器.BackColor = Color.FromArgb(CByte(24), CByte(24), CByte(24))
+        TabPage浏览器.Controls.Add(Label42)
         TabPage浏览器.Controls.Add(Label15)
         TabPage浏览器.Controls.Add(Panel49)
         TabPage浏览器.Location = New Point(0, 50)
@@ -5666,6 +5688,21 @@ Partial Class Form1
         TabPage浏览器.Size = New Size(1264, 700)
         TabPage浏览器.TabIndex = 5
         TabPage浏览器.Text = "浏览器"
+        ' 
+        ' Label42
+        ' 
+        Label42.BackColor = Color.FromArgb(CByte(36), CByte(36), CByte(36))
+        Label42.Dock = DockStyle.Bottom
+        Label42.Font = New Font("微软雅黑", 9.75F, FontStyle.Regular, GraphicsUnit.Point, CByte(134))
+        Label42.ForeColor = Color.DarkOrange
+        Label42.Location = New Point(0, 620)
+        Label42.Name = "Label42"
+        Label42.Padding = New Padding(10, 0, 0, 0)
+        Label42.Size = New Size(1264, 80)
+        Label42.TabIndex = 2
+        Label42.Text = "正在进行 NEXUS 非会员获取额外参数流程" & vbCrLf & "请勿点击下载按钮！不要点下载！！！并确保打开的网页中是已登录状态" & vbCrLf & "参数获取程序会一直运行，直到成功拿到参数或者手动点击右上角的取消"
+        Label42.TextAlign = ContentAlignment.MiddleLeft
+        Label42.Visible = False
         ' 
         ' Label15
         ' 
@@ -5682,6 +5719,7 @@ Partial Class Form1
         ' 
         Panel49.BackColor = Color.FromArgb(CByte(36), CByte(36), CByte(36))
         Panel49.Controls.Add(UiTextBox5)
+        Panel49.Controls.Add(UiButton70)
         Panel49.Controls.Add(UiButton53)
         Panel49.Controls.Add(UiButton52)
         Panel49.Controls.Add(UiButton51)
@@ -5722,12 +5760,46 @@ Partial Class Form1
         UiTextBox5.ScrollBarColor = Color.Gray
         UiTextBox5.ScrollBarStyleInherited = False
         UiTextBox5.ShowText = False
-        UiTextBox5.Size = New Size(784, 40)
+        UiTextBox5.Size = New Size(664, 40)
         UiTextBox5.Style = Sunny.UI.UIStyle.Custom
         UiTextBox5.TabIndex = 18
         UiTextBox5.TabStop = False
         UiTextBox5.TextAlignment = ContentAlignment.MiddleLeft
         UiTextBox5.Watermark = ""
+        ' 
+        ' UiButton70
+        ' 
+        UiButton70.Dock = DockStyle.Right
+        UiButton70.FillColor = Color.FromArgb(CByte(36), CByte(36), CByte(36))
+        UiButton70.FillColor2 = Color.FromArgb(CByte(36), CByte(36), CByte(36))
+        UiButton70.FillDisableColor = Color.FromArgb(CByte(36), CByte(36), CByte(36))
+        UiButton70.FillHoverColor = Color.FromArgb(CByte(64), CByte(64), CByte(64))
+        UiButton70.FillPressColor = Color.FromArgb(CByte(80), CByte(80), CByte(80))
+        UiButton70.FillSelectedColor = Color.FromArgb(CByte(36), CByte(36), CByte(36))
+        UiButton70.Font = New Font("微软雅黑", 9.75F)
+        UiButton70.ForeColor = Color.FromArgb(CByte(224), CByte(224), CByte(224))
+        UiButton70.ForeDisableColor = Color.Gray
+        UiButton70.ForeHoverColor = Color.FromArgb(CByte(244), CByte(244), CByte(244))
+        UiButton70.ForePressColor = Color.FromArgb(CByte(244), CByte(244), CByte(244))
+        UiButton70.ForeSelectedColor = Color.FromArgb(CByte(244), CByte(244), CByte(244))
+        UiButton70.Location = New Point(1144, 0)
+        UiButton70.MinimumSize = New Size(1, 1)
+        UiButton70.Name = "UiButton70"
+        UiButton70.Radius = 10
+        UiButton70.RadiusSides = Sunny.UI.UICornerRadiusSides.None
+        UiButton70.RectColor = Color.FromArgb(CByte(36), CByte(36), CByte(36))
+        UiButton70.RectDisableColor = Color.FromArgb(CByte(36), CByte(36), CByte(36))
+        UiButton70.RectHoverColor = Color.FromArgb(CByte(64), CByte(64), CByte(64))
+        UiButton70.RectPressColor = Color.FromArgb(CByte(80), CByte(80), CByte(80))
+        UiButton70.RectSelectedColor = Color.FromArgb(CByte(36), CByte(36), CByte(36))
+        UiButton70.Size = New Size(120, 40)
+        UiButton70.Style = Sunny.UI.UIStyle.Custom
+        UiButton70.TabIndex = 20
+        UiButton70.TabStop = False
+        UiButton70.Text = "取消获取参数"
+        UiButton70.TipsColor = Color.Gray
+        UiButton70.TipsFont = New Font("微软雅黑", 9F)
+        UiButton70.Visible = False
         ' 
         ' UiButton53
         ' 
@@ -6462,4 +6534,7 @@ Partial Class Form1
     Friend WithEvents UiButton66 As Sunny.UI.UIButton
     Friend WithEvents ListView9 As ListView
     Friend WithEvents UiCheckBox16 As Sunny.UI.UICheckBox
+    Friend WithEvents UiCheckBox17 As Sunny.UI.UICheckBox
+    Friend WithEvents Label42 As Label
+    Friend WithEvents UiButton70 As Sunny.UI.UIButton
 End Class

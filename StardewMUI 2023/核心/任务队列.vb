@@ -1,4 +1,5 @@
 ﻿
+Imports System.IO
 Imports Microsoft.VisualBasic.FileIO.FileSystem
 Imports SMUI6.公共对象
 
@@ -72,7 +73,7 @@ Public Class 任务队列
             安装规划原文本列表对象.Clear()
             当前正在处理的索引 = 0
             是否关闭config自动保留机制 = False
-            键值对IO操作.读取键值对文件到列表(安装规划原文本列表对象, CombinePath(项路径, "Code2"))
+            键值对IO操作.读取键值对文件到列表(安装规划原文本列表对象, Path.Combine(项路径, "Code2"))
             For i = 0 To 安装规划原文本列表对象.Count - 1
                 Dim value As DE1 = Nothing
                 If 队列键值匹配字典.TryGetValue(安装规划原文本列表对象(i).Key, value) Then

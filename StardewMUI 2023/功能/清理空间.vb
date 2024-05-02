@@ -31,14 +31,14 @@ Public Class 清理空间
         End If
         Form1.ListView10.Items(3).SubItems(2).Text = Format(s1 / 1024 / 1024, "0") & " MB"
 
-        If FileIO.FileSystem.FileExists(IO.Path.Combine(设置.全局设置数据("LocalRepositoryPath"), ".Download")) Then
+        If FileIO.FileSystem.DirectoryExists(IO.Path.Combine(设置.全局设置数据("LocalRepositoryPath"), ".Download")) Then
             s1 = 共享方法.GetDirectorySizeWithSub(IO.Path.Combine(设置.全局设置数据("LocalRepositoryPath"), ".Download"))
             Form1.ListView10.Items(4).SubItems(2).Text = Format(s1 / 1024 / 1024, "0") & " MB"
         Else
             Form1.ListView10.Items(4).SubItems(2).Text = "无数据"
         End If
 
-        If FileIO.FileSystem.FileExists(IO.Path.Combine(设置.全局设置数据("LocalRepositoryPath"), ".Decompress")) Then
+        If FileIO.FileSystem.DirectoryExists(IO.Path.Combine(设置.全局设置数据("LocalRepositoryPath"), ".Decompress")) Then
             s1 = 共享方法.GetDirectorySizeWithSub(IO.Path.Combine(设置.全局设置数据("LocalRepositoryPath"), ".Decompress"))
             Form1.ListView10.Items(5).SubItems(2).Text = Format(s1 / 1024 / 1024, "0") & " MB"
         Else

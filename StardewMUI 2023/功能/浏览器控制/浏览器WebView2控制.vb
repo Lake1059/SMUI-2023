@@ -4,21 +4,19 @@ Imports System.Windows
 
 Public Class 浏览器WebView2控制
 
-    Public Shared Property 是否要获取HTML As Boolean = False
-    Public Shared Property 要进行更新或创建的模组项绝对路径 As String = ""
+    Public Shared Property 是否要获取HTML来进行NEXUSAPI更新 As Boolean = False
     Public Shared Property 获取到的HTML数据 As String = ""
     Public Shared Property 获取到的key As String = ""
     Public Shared Property 获取到的expires As String = ""
     Public Shared Property 当前地址 As String = ""
     Public Shared Property 上一次获取到的地址 As String = ""
-    Public Shared Property 计算额外参数计时器 As New Timer With {.Interval = 500, .Enabled = False}
+    Public Shared Property 计算额外参数计时器 As New Timer With {.Interval = 1000, .Enabled = False}
 
     Public Shared Sub 初始化浏览器控件()
         Form1.Label15.Dispose()
         界面控制.WebView2浏览器控件 = New WebView2 With {.Dock = DockStyle.Fill}
         Form1.TabPage浏览器.Controls.Add(界面控制.WebView2浏览器控件)
         界面控制.WebView2浏览器控件.BringToFront()
-
         界面控制.WebView2浏览器控件.EnsureCoreWebView2Async()
 
         AddHandler 界面控制.WebView2浏览器控件.NavigationCompleted, AddressOf Edge_NavigationCompleted
@@ -26,9 +24,7 @@ Public Class 浏览器WebView2控制
         AddHandler 界面控制.WebView2浏览器控件.CoreWebView2InitializationCompleted, AddressOf Edge_CoreWebView2InitializationCompleted
         计算额外参数计时器 = New Timer With {.Interval = 500, .Enabled = False}
         AddHandler 计算额外参数计时器.Tick, AddressOf 计算额外参数
-        If 是否要获取HTML Then
-            计算额外参数计时器.Enabled = True
-        End If
+        If 是否要获取HTML来进行NEXUSAPI更新 Then 计算额外参数计时器.Enabled = True
     End Sub
 
     Public Shared Sub 初始化功能()
@@ -46,6 +42,7 @@ Public Class 浏览器WebView2控制
             Sub()
                 If 界面控制.WebView2浏览器控件 Is Nothing Then Exit Sub
                 界面控制.WebView2浏览器控件.CoreWebView2.Reload()
+                获取到的HTML数据 = ""
             End Sub
         AddHandler Form1.UiButton50.Click,
             Sub()
@@ -98,13 +95,20 @@ Public Class 浏览器WebView2控制
                  End If
              End Sub
 
-
         AddHandler Form1.UiButton54.Click,
             Sub()
                 界面控制.WebView2浏览器控件.Dispose()
                 界面控制.WebView2浏览器控件 = Nothing
                 Form1.UiTextBox5.Text = ""
                 计算额外参数计时器.Dispose()
+            End Sub
+
+        AddHandler Form1.UiButton70.Click,
+            Sub()
+                是否要获取HTML来进行NEXUSAPI更新 = False
+                计算额外参数计时器.Enabled = False
+                Form1.UiButton70.Visible = False
+                Form1.Label42.Visible = False
             End Sub
 
     End Sub
@@ -116,8 +120,8 @@ Public Class 浏览器WebView2控制
 
     Public Shared Async Sub Edge_NavigationCompleted(sender As Object, e As CoreWebView2NavigationCompletedEventArgs)
         '界面控制.WebView2浏览器控件.CoreWebView2.ExecuteScriptAsync(My.Resources.浏览器脚本)
-        If 是否要获取HTML Then
-            获取到的HTML数据 = Await 界面控制.WebView2浏览器控件.CoreWebView2.ExecuteScriptAsync("document.documentElement.outerHTML;")
+        If 是否要获取HTML来进行NEXUSAPI更新 Then
+            获取到的HTML数据 = Await 界面控制.WebView2浏览器控件.CoreWebView2.ExecuteScriptAsync("document.body.innerHTML")
         End If
     End Sub
 
@@ -153,9 +157,13 @@ Public Class 浏览器WebView2控制
         DebugPrint("key=" & extractedKey, Color.SkyBlue)
         DebugPrint("expires=" & extractedExpires, Color.SkyBlue)
 
+        更新模组.获取服务器列表(浏览器同步数据.用于更新模组项的NEXUS模组ID, 浏览器同步数据.用于更新模组项的NEXUS文件ID, 浏览器同步数据.用于更新模组项的模组项绝对路径, extractedKey, extractedExpires)
+        Form1.UiButton54.PerformClick()
+        Form1.UiButton70.PerformClick()
+        Form1.UiTabControl1.SelectedTab = Form1.TabPage下载更新
 
-
-
+        获取到的HTML数据 = ""
+        是否要获取HTML来进行NEXUSAPI更新 = False
         计算额外参数计时器.Enabled = False
     End Sub
 

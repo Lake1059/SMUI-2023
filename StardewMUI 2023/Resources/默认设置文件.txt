@@ -40,4 +40,5 @@ PerformanceMonitor=False
 LastUsedSubLibraryName=
 UseWhichBrowser=Edge
 DownloadFileUseSMUI5Color=False
+DownloadFileUseBigBuffer=False
 NexusPremium=False
