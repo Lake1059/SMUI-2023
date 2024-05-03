@@ -82,7 +82,9 @@ Public Class 界面控制
 
         管理模组的菜单.添加菜单的触发()
         配置队列的菜单.添加菜单的触发()
+        AddHandler Form1.UiButton45.Click, AddressOf 状态信息.启动SMAPI
         AddHandler Form1.UiButton48.Click, Sub() 新闻列表.获取新闻(True)
+
 
         AddHandler Form1.UiButton42.Click, Sub() 显示窗体(Form离线教程, Form1)
         AddHandler Form1.UiRichTextBox4.LinkClicked, AddressOf 许可协议签署执行

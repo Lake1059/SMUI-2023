@@ -136,6 +136,10 @@ Public Class 浏览器WebView2控制
         界面控制.WebView2浏览器控件.Source = New Uri(newUrl)
     End Sub
 
+
+
+
+
     Public Shared Sub 计算额外参数()
         If 获取到的HTML数据 = "" Then Exit Sub
         Dim dataStartString As String = "data-download-url=" & """"

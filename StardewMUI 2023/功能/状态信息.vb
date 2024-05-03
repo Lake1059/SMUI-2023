@@ -49,7 +49,7 @@ Public Class 状态信息
                 Dim fileVersionInfo As FileVersionInfo = FileVersionInfo.GetVersionInfo(Path.Combine(设置.全局设置数据("StardewValleyGamePath"), "StardewModdingAPI.exe"))
                 Form1.UiListBox1.Items(0) &= $" - SMAPI {fileVersionInfo.FileMajorPart}.{fileVersionInfo.FileMinorPart}.{fileVersionInfo.FileBuildPart}"
             Else
-                Form1.UiListBox1.Items(0) &= "未安装 SMAPI"
+                Form1.UiListBox1.Items(0) &= " 未安装 SMAPI"
             End If
             Form1.UiListBox1.Items(1) = 设置.全局设置数据("StardewValleyGamePath")
         Else
@@ -124,8 +124,8 @@ Public Class 状态信息
         longRunningTask.Join()
     End Sub
 
-    Public Shared Sub 执行初始化性能计数器()
-        CPU性能计数器 = New PerformanceCounter("Process", "% Processor Time", Process.GetCurrentProcess().ProcessName, True)
+    Public Shared Async Sub 执行初始化性能计数器()
+        Await Task.Run(Sub() CPU性能计数器 = New PerformanceCounter("Process", "% Processor Time", Process.GetCurrentProcess().ProcessName, True))
     End Sub
 
 
@@ -145,6 +145,20 @@ Public Class 状态信息
                         Form1.UiButton45.Text = $"{processes.Length} SMAPIs Are Running"
                 End Select
             End Sub
+    End Sub
+
+    Public Shared Sub 启动SMAPI()
+        Select Case 设置.全局设置数据("LaunchSelection")
+            Case "1"
+                Dim a As New Process
+                a.StartInfo.FileName = 设置.全局设置数据("StardewValleyGamePath") & "\StardewModdingAPI.exe"
+                a.StartInfo.WorkingDirectory = 设置.全局设置数据("StardewValleyGamePath")
+                a.StartInfo.UseShellExecute = True
+                a.StartInfo.Arguments = 设置.全局设置数据("LaunchParameters")
+                a.Start()
+            Case "2"
+                Shell(设置.全局设置数据("CustomLaunchCMD"), AppWinStyle.NormalFocus)
+        End Select
     End Sub
 
 End Class

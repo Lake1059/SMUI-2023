@@ -2,7 +2,6 @@
 Imports System.IO
 Imports SMUI6.项信息读取类
 Imports Sunny.UI
-Imports Windows.System
 
 Public Class 管理模组
 
@@ -53,6 +52,8 @@ Public Class 管理模组
             End Sub
 
         AddHandler 管理模组的菜单.菜单项_打开分类的文件夹.Click, AddressOf 打开分类文件夹
+        AddHandler 管理模组的菜单.菜单项_用VSC打开.Click, AddressOf 用VSC打开
+        AddHandler 管理模组的菜单.菜单项_用VS打开.Click, AddressOf 用VS打开
 
         AddHandler 管理模组的菜单.菜单项_安装.Click, Sub(sender, e) 安装卸载.执行操作(安装卸载.操作类型.安装)
         AddHandler 管理模组的菜单.菜单项_卸载.Click, Sub(sender, e) 安装卸载.执行操作(安装卸载.操作类型.卸载)
@@ -61,6 +62,9 @@ Public Class 管理模组
         AddHandler 管理模组的菜单.菜单项_更多分类操作_转换安装命令到安装规划.Click, AddressOf 管理模组3.更新选中分类_从安装命令到安装规划
         AddHandler 管理模组的菜单.菜单项_更多分类操作_转换安装规划到安装命令.Click, AddressOf 管理模组3.更新选中分类_从安装规划到安装命令
 
+        常驻主题.初始化()
+        自定义描述功能.初始化()
+        预览图功能.初始化()
 
         初始化安装状态显示词字典()
         扫描数据子库()
@@ -760,5 +764,16 @@ Line1:
         End If
     End Sub
 
+    Public Shared Sub 用VSC打开()
+        If Form1.ListView2.SelectedItems.Count <> 1 Then Exit Sub
+        If Not FileIO.FileSystem.FileExists(设置.全局设置数据("VisualStudioCodeEXE")) Then Exit Sub
+        Shell("""" & 设置.全局设置数据("VisualStudioCodeEXE") & """" & " " & """" & 管理模组2.检查并返回当前所选子库路径(False) & "\" & Form1.ListView2.SelectedItems(0).SubItems(3).Text & "\" & Form1.ListView2.SelectedItems(0).Text & """", AppWinStyle.NormalFocus)
+    End Sub
 
+    Public Shared Sub 用VS打开()
+        If Form1.ListView2.SelectedItems.Count <> 1 Then Exit Sub
+        If Not FileIO.FileSystem.FileExists(设置.全局设置数据("VisualStudioEXE")) Then Exit Sub
+        Shell("""" & 设置.全局设置数据("VisualStudioCodeEXE") & """" & " " & """" & 管理模组2.检查并返回当前所选子库路径(False) & "\" & Form1.ListView2.SelectedItems(0).SubItems(3).Text & "\" & Form1.ListView2.SelectedItems(0).Text & """", AppWinStyle.NormalFocus)
+
+    End Sub
 End Class
