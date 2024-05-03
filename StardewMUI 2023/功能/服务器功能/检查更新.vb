@@ -116,7 +116,8 @@ Dev1:
                     正在进行更新 = False
                 Else
                     DebugPrint("云端版本：" & 更新_版本 & " 本地版本：" & Application.ProductVersion, Form1.ForeColor)
-                    If 共享方法.CompareVersion(更新_版本, Application.ProductVersion) > 0 Then
+                    Dim F2 As FileVersionInfo = FileVersionInfo.GetVersionInfo(Application.ExecutablePath)
+                    If 共享方法.CompareVersion(更新_版本, $"{F2.FileMajorPart}.{F2.FileMinorPart}.{F2.FileBuildPart}") > 0 Then
                         获取到的版本号 = 更新_版本
                         获取到的下载地址 = 更新_下载地址
                         获取到的分卷下载 = 更新_分卷下载
