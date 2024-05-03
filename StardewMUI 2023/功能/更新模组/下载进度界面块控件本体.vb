@@ -11,7 +11,7 @@ Public Class 下载进度界面块控件本体
 
     Public Async Sub 开始下载()
         If 设置_下载来源 = "" Then Exit Sub
-        If 设置_下载地址 = "" Then Exit Sub
+        If 设置_下载地址 = "" And 设置_下载来源.Equals("nexus", StringComparison.CurrentCultureIgnoreCase) Then Exit Sub
         If 设置_模组项绝对路径 = "" Then Exit Sub
         Me.Timer1.Enabled = True
         Dim str1 As String
@@ -282,11 +282,11 @@ Public Class 下载进度界面块控件本体
     End Sub
 
     Public Sub 评估不通过操作(不能自动完成的原因 As String)
-        Dim msg1 As New 多项单选对话框("", {"确定"}, "存在验证不通过的内容，为了避免意外情况不能自动完成，请在配置队列中手动操作，程序将自动打开解压目录。以下是不能自动完成的因素：" & vbCrLf & vbCrLf & 不能自动完成的原因, 150, 500)
+        Dim msg1 As New 多项单选对话框("", {"确定"}, "存在验证不通过的内容，为了避免意外情况不能自动完成，请在配置队列中手动操作，程序将自动打开解压目录并添加到配置队列。以下是不能自动完成的因素：" & vbCrLf & vbCrLf & 不能自动完成的原因, 150, 500)
         msg1.ShowDialog(Form1)
         Process.Start("explorer.exe", 这份实例使用的临时解压目录)
         配置队列.添加到配置队列(Path.GetFileName(Path.GetDirectoryName(设置_模组项绝对路径)), Path.GetFileName(设置_模组项绝对路径))
-        结束()
+        结束(False)
     End Sub
 
     Public Async Sub 清理解压数据()
@@ -297,7 +297,7 @@ Public Class 下载进度界面块控件本体
         End If
     End Sub
 
-    Public Sub 结束()
+    Public Sub 结束(Optional 是否要转到管理模组选项卡 As Boolean = True)
         For i = 0 To 设置_结束后自动释放的控件.Count - 1
             设置_结束后自动释放的控件(i).Dispose()
         Next

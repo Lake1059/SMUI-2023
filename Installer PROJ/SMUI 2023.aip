@@ -99,10 +99,10 @@
     <ROW Property="AppLogoIconDark" Value="applogodark.png" MultiBuildValue="DefaultBuild:dropbox.ico" Type="1" MsiKey="AppLogoIconDark"/>
     <ROW Property="CTRLS" Value="2"/>
     <ROW Property="Manufacturer" Value="1059 Studio"/>
-    <ROW Property="ProductCode" Value="2052:{94327B38-FC85-4AA8-A94A-F2E3C7EC8DAB} " Type="16"/>
+    <ROW Property="ProductCode" Value="2052:{1D95EC9A-FA8D-446C-8699-976F91247CE6} " Type="16"/>
     <ROW Property="ProductLanguage" Value="2052"/>
     <ROW Property="ProductName" Value="SMUI 2023"/>
-    <ROW Property="ProductVersion" Value="6.0.10" Options="32"/>
+    <ROW Property="ProductVersion" Value="6.0.11" Options="32"/>
     <ROW Property="REBOOT" MultiBuildValue="DefaultBuild:ReallySuppress"/>
     <ROW Property="SecureCustomProperties" Value="OLDPRODUCTS;AI_NEWERPRODUCTFOUND;AI_SETUPEXEPATH;SETUPEXEDIR"/>
     <ROW Property="UpgradeCode" Value="{349EDF0D-1EB2-4B52-B72A-0F3AEC12DAC8}"/>
@@ -127,7 +127,7 @@
     <ROW Directory="zhHans_Dir" Directory_Parent="APPDIR" DefaultDir="zh-Hans"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiCompsComponent">
-    <ROW Component="AI_CustomARPName" ComponentId="{DE002F68-80B9-43BD-A24F-B02FC0FB3D7B}" Directory_="APPDIR" Attributes="260" KeyPath="DisplayName" Options="1"/>
+    <ROW Component="AI_CustomARPName" ComponentId="{8EA9B07C-885F-46CD-AEB8-A6EA7C47ACA8}" Directory_="APPDIR" Attributes="260" KeyPath="DisplayName" Options="1"/>
     <ROW Component="AI_ExePath" ComponentId="{CBAF2252-48D8-4146-9D8B-2E99237377E4}" Directory_="APPDIR" Attributes="260" KeyPath="AI_ExePath"/>
     <ROW Component="AI_SHORTCUTSREG" ComponentId="{171825E9-7E85-449B-B61B-FC6681D2DE8B}" Directory_="APPDIR" Attributes="260" KeyPath="AI_SHORTCUTSREG" Options="1"/>
     <ROW Component="APPDIR" ComponentId="{94CEB0EC-B9B4-444F-9BAB-40F57B9BEAC3}" Directory_="APPDIR" Attributes="0"/>
@@ -1369,7 +1369,7 @@
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiInstallUISequenceComponent">
     <ROW Action="AI_PRESERVE_INSTALL_TYPE" Sequence="199"/>
-    <ROW Action="AI_ResolveKnownFolders" Sequence="66"/>
+    <ROW Action="AI_ResolveKnownFolders" Sequence="67"/>
     <ROW Action="AI_DpiContentScale" Sequence="51"/>
     <ROW Action="AI_EnableDebugLog" Sequence="53"/>
     <ROW Action="AI_BACKUP_AI_SETUPEXEPATH" Sequence="99"/>
@@ -1384,7 +1384,7 @@
     <ROW Action="AI_FrameBorder1C" Condition="DarkTheme" Sequence="60" MsiKey="AI_FrameBorder1C"/>
     <ROW Action="AI_FrameBorder2C" Condition="DarkTheme" Sequence="61" MsiKey="AI_FrameBorder2C"/>
     <ROW Action="AI_FrameBorder3C" Condition="DarkTheme" Sequence="62" MsiKey="AI_FrameBorder3C"/>
-    <ROW Action="AI_FrameCaption2C" Condition="DarkTheme" Sequence="65" MsiKey="AI_FrameCaption2C"/>
+    <ROW Action="AI_FrameCaption2C" Condition="DarkTheme" Sequence="66" MsiKey="AI_FrameCaption2C"/>
     <ROW Action="AI_ButtonImg" Condition="DarkTheme" Sequence="63" MsiKey="AI_ButtonImg"/>
     <ROW Action="AI_AboutBtnImg" Condition="DarkTheme" Sequence="64" MsiKey="AI_AboutBtnImg"/>
     <ROW Action="AI_BkgImg" Condition="DarkTheme" Sequence="65" MsiKey="AI_BkgImg"/>

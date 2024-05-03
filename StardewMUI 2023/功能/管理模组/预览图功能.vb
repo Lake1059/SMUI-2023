@@ -94,7 +94,7 @@ Public Class 预览图功能
             Select Case Form1.PictureBox1.Cursor
                 Case Cursors.PanWest, Cursors.PanEast
                 Case Else
-                    Process.Start(管理模组.当前项信息_预览图文件表(管理模组.当前正在显示的预览图索引))
+                    Process.Start("explorer.exe", 管理模组.当前项信息_预览图文件表(管理模组.当前正在显示的预览图索引))
             End Select
         End If
     End Sub

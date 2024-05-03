@@ -1,10 +1,10 @@
 ﻿Imports Microsoft.Web.WebView2.WinForms
 Imports Microsoft.Web.WebView2.Core
-Imports System.Windows
 
 Public Class 浏览器WebView2控制
 
     Public Shared Property 是否要获取HTML来进行NEXUSAPI更新 As Boolean = False
+    Public Shared Property 是否要等待ModDrop发起下载文件 As Boolean = False
     Public Shared Property 获取到的HTML数据 As String = ""
     Public Shared Property 获取到的key As String = ""
     Public Shared Property 获取到的expires As String = ""
@@ -22,6 +22,8 @@ Public Class 浏览器WebView2控制
         AddHandler 界面控制.WebView2浏览器控件.NavigationCompleted, AddressOf Edge_NavigationCompleted
         AddHandler 界面控制.WebView2浏览器控件.SourceChanged, AddressOf Edge_SourceChanged
         AddHandler 界面控制.WebView2浏览器控件.CoreWebView2InitializationCompleted, AddressOf Edge_CoreWebView2InitializationCompleted
+        AddHandler 界面控制.WebView2浏览器控件.NavigationStarting, AddressOf WebViewNavigationStarting
+
         计算额外参数计时器 = New Timer With {.Interval = 500, .Enabled = False}
         AddHandler 计算额外参数计时器.Tick, AddressOf 计算额外参数
         If 是否要获取HTML来进行NEXUSAPI更新 Then 计算额外参数计时器.Enabled = True
@@ -109,6 +111,7 @@ Public Class 浏览器WebView2控制
                 计算额外参数计时器.Enabled = False
                 Form1.UiButton70.Visible = False
                 Form1.Label42.Visible = False
+                是否要等待ModDrop发起下载文件 = False
             End Sub
 
     End Sub
@@ -119,7 +122,6 @@ Public Class 浏览器WebView2控制
     End Sub
 
     Public Shared Async Sub Edge_NavigationCompleted(sender As Object, e As CoreWebView2NavigationCompletedEventArgs)
-        '界面控制.WebView2浏览器控件.CoreWebView2.ExecuteScriptAsync(My.Resources.浏览器脚本)
         If 是否要获取HTML来进行NEXUSAPI更新 Then
             获取到的HTML数据 = Await 界面控制.WebView2浏览器控件.CoreWebView2.ExecuteScriptAsync("document.body.innerHTML")
         End If
@@ -136,9 +138,8 @@ Public Class 浏览器WebView2控制
         界面控制.WebView2浏览器控件.Source = New Uri(newUrl)
     End Sub
 
-
-
-
+    Public Shared Sub WebViewNavigationStarting(sender As Object, e As CoreWebView2NavigationStartingEventArgs)
+    End Sub
 
     Public Shared Sub 计算额外参数()
         If 获取到的HTML数据 = "" Then Exit Sub
@@ -170,6 +171,22 @@ Public Class 浏览器WebView2控制
         是否要获取HTML来进行NEXUSAPI更新 = False
         计算额外参数计时器.Enabled = False
     End Sub
+
+    Public Shared Sub ModDrop文本DragEnter(sender As Object, e As DragEventArgs)
+        If Not 是否要等待ModDrop发起下载文件 Then Exit Sub
+        e.Effect = DragDropEffects.Link
+    End Sub
+
+    Public Shared Sub ModDrop文本DragDrop(sender As Object, e As DragEventArgs)
+        If Not 是否要等待ModDrop发起下载文件 Then Exit Sub
+        Dim file As String() = CType(e.Data.GetData(DataFormats.FileDrop), String())
+        更新模组.添加ModDrop解压环节到下载队列(浏览器同步数据.用于更新模组项的模组项绝对路径, file(0))
+        Form1.UiButton54.PerformClick()
+        Form1.UiButton70.PerformClick()
+        Form1.UiTabControl1.SelectedTab = Form1.TabPage下载更新
+    End Sub
+
+
 
 
 End Class

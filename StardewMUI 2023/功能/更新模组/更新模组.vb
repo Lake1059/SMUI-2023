@@ -58,11 +58,16 @@ Public Class 更新模组
             AddHandler a.Items.Add("ModDrop: " & 管理模组.当前项信息_ModDropID列表(i), My.Resources.ModDrop_White32).Click, Async Sub(s, e) Await Launcher.LaunchUriAsync(New Uri("https://www.moddrop.com/stardew-valley/mods/" & Mid(s.Text, 10)))
             Dim s2 As String = 管理模组.当前项信息_ModDropID列表(i)
             AddHandler a.Items.Add("复制链接").Click, Sub(s, e) Clipboard.SetText("https://www.moddrop.com/stardew-valley/mods/" & s2)
-            AddHandler a.Items.Add("从 ModDrop 更新", My.Resources.ModDrop_White32).Click, Sub(s, e) Return
+            AddHandler a.Items.Add("从 ModDrop 更新", My.Resources.ModDrop_White32).Click, Sub(s, e) 转到浏览器等待ModDrop下载链接(s2, Path.Combine(管理模组2.检查并返回当前所选子库路径(False), Form1.ListView2.SelectedItems(0).SubItems(3).Text, Form1.ListView2.SelectedItems(0).Text))
         Next
         If DLC.DLC解锁标记.CustomInputExtension Then
             If a.Items.Count <> 0 Then a.Items.Add(New ToolStripSeparator)
-            AddHandler a.Items.Add("自由输入 ModDrop ID", My.Resources.ModDrop_White32).Click, Sub(s, e) Return
+            AddHandler a.Items.Add("自由输入 ModDrop ID", My.Resources.ModDrop_White32).Click, Sub(s, e)
+                                                                                               Dim d1 As New 输入对话框("DLC1", "输入你要访问的 ModDrop 模组 ID")
+                                                                                               d1.TranslateButtonText("确定", "取消")
+                                                                                               Dim d1r As String = d1.ShowDialog(Form1)
+                                                                                               If d1r <> "" Then 转到浏览器等待ModDrop下载链接(d1r, Path.Combine(管理模组2.检查并返回当前所选子库路径(False), Form1.ListView2.SelectedItems(0).SubItems(3).Text, Form1.ListView2.SelectedItems(0).Text))
+                                                                                           End Sub
         End If
 
         If a.Items.Count <> 0 And 管理模组.当前项信息_Github仓库列表.Count > 0 Then a.Items.Add(New ToolStripSeparator)
@@ -193,6 +198,10 @@ Public Class 更新模组
             浏览器同步数据.用于更新模组项的NEXUS文件ID = 文件ID
             Form1.UiButton70.Visible = True
             Form1.Label42.Visible = True
+            Form1.Label42.ForeColor = Color1.橙色
+            Form1.Label42.Text = "正在进行 NEXUS 非会员获取额外参数流程
+请勿点击下载按钮！不要点下载！！！并确保打开的网页中是已登录状态
+参数获取程序会一直运行，直到成功拿到参数或者手动点击右上角的取消"
             Form1.UiTextBox5.Text = "https://www.nexusmods.com/stardewvalley/mods/" & 模组ID & "?tab=files&file_id=" & 文件ID & "&nmm=1"
             If 界面控制.WebView2浏览器控件 Is Nothing Then
                 浏览器WebView2控制.初始化浏览器控件()
@@ -201,8 +210,6 @@ Public Class 更新模组
             End If
             Form1.UiTabControl1.SelectedTab = Form1.TabPage浏览器
         Else
-
-
 
         End If
     End Sub
@@ -251,10 +258,46 @@ Public Class 更新模组
         Form1.Panel37.Controls.Add(DW)
         DW.BringToFront()
         DW.开始下载()
-
         Form1.Label34.Text = "   在管理模组选项卡中发起更新来获取文件列表"
         Form1.Panel34.Controls.Clear()
+    End Sub
 
+    Public Shared Sub 转到浏览器等待ModDrop下载链接(模组ID As String, 模组项绝对路径 As String)
+        If 设置.全局设置数据("UseWhichBrowser") = "Edge" Then
+            浏览器WebView2控制.是否要等待ModDrop发起下载文件 = True
+            浏览器同步数据.用于更新模组项的模组项绝对路径 = 模组项绝对路径
+            浏览器同步数据.用于更新模组项的NEXUS模组ID = 模组ID
+            Form1.UiButton70.Visible = True
+            Form1.Label42.Visible = True
+            Form1.Label42.ForeColor = Color1.蓝色
+            Form1.Label42.Text = "正在进行从 ModDrop 下载更新流程，下载操作由 Edge 浏览器处理
+请在网页上发起下载并等待下载完成，然后把文件从浏览器下载 UI 拖到这个区域来继续下一步
+此状态会一直保持，直到文件被拖入或者手动点击右上角的取消"
+            Form1.UiTextBox5.Text = "https://www.moddrop.com/stardew-valley/mods/" & 模组ID
+            If 界面控制.WebView2浏览器控件 Is Nothing Then
+                浏览器WebView2控制.初始化浏览器控件()
+            Else
+                界面控制.WebView2浏览器控件.CoreWebView2.Navigate(Form1.UiTextBox5.Text)
+            End If
+            Form1.UiTabControl1.SelectedTab = Form1.TabPage浏览器
+        Else
+            Dim m1 As New 多项单选对话框("此功能不支持 CEF 浏览器", {"确定"}, "从 ModDrop 直接更新模组项功能尚不支持使用 CEF 浏览器组件，请在设置中切换用 Edge 并重启。不会优先开发此功能", 100, 500)
+            m1.ShowDialog(Form1)
+        End If
+    End Sub
+
+    Public Shared Sub 添加ModDrop解压环节到下载队列(模组项绝对路径 As String, 下载的文件 As String)
+        Form1.UiTabControlMenu3.SelectedTab = Form1.TabPage下载和更新队列
+        Dim DW As New 下载进度界面块控件本体 With {.设置_模组项绝对路径 = 模组项绝对路径, .保存位置 = 下载的文件, .Dock = DockStyle.Top}
+        If Form1.Panel37.Controls.Count <> 0 Then
+            Dim L1 As New Label With {.AutoSize = False, .Dock = DockStyle.Top, .Height = 20}
+            Form1.Panel37.Controls.Add(L1)
+            L1.BringToFront()
+            DW.设置_结束后自动释放的控件.Add(L1)
+        End If
+        Form1.Panel37.Controls.Add(DW)
+        DW.BringToFront()
+        DW.开始解压()
     End Sub
 
 End Class
