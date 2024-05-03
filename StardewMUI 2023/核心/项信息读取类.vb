@@ -132,9 +132,10 @@ Public Class 项信息读取类
                             If 计算类型.已安装版本 Or 计算类型.全部 Then
                                 Dim p1 As String = Path.Combine(游戏路径, "Mods")
                                 Dim p2 As String = Path.Combine(p1, 安装规划数据(i).Value)
-                                Dim p3 As String = Path.Combine(p2, 清单文件对象.文件绝对路径集合(清单文件集合索引))
-                                If FileExists(p3) Then
-                                    Dim b As String = ReadAllText(p3)
+                                Dim p3 As String = 清单文件对象.文件绝对路径集合(清单文件集合索引).Replace(Path.Combine(项路径, 安装规划数据(i).Value), "")
+                                Dim p4 As String = p2 & p3
+                                If FileExists(p4) Then
+                                    Dim b As String = ReadAllText(p4)
                                     Dim JsonData2 As Object = CType(JsonConvert.DeserializeObject(b), JObject)
                                     Dim str1 As String = If(JsonData2.item("Version") IsNot Nothing, JsonData2.item("Version").ToString, "")
                                     If str1 <> "" Then If 已安装版本.Contains(str1) = False Then 已安装版本.Add(str1)

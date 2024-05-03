@@ -43,36 +43,26 @@ Public Class 共享方法
         End If
     End Function
 
-    Public Shared Function CompareVersion(Version1 As String, Version2 As String) As Long
-        Dim i As Long, iUbound As Long, iCha As Long
-        Dim arrVer1() As String, arrVer2() As String
-        arrVer1 = Split(Version1, ".")
-        arrVer2 = Split(Version2, ".")
-        If UBound(arrVer1) > UBound(arrVer2) Then
-            iUbound = UBound(arrVer2)
-        Else
-            iUbound = UBound(arrVer1)
-        End If
-        For i = LBound(arrVer1) To iUbound
-            If InStr(arrVer1(i), "beta") > 0 And InStr(arrVer2(i), "beta") <= 0 Then
+    Public Shared Function CompareVersion(Version1 As String, Version2 As String) As Integer
+        Dim cleanVersion1 As String = System.Text.RegularExpressions.Regex.Replace(Version1, "[^\d\.]", "")
+        Dim cleanVersion2 As String = System.Text.RegularExpressions.Regex.Replace(Version2, "[^\d\.]", "")
+        ' 将版本号拆分成数字数组
+        Dim arrVersion1() As String = cleanVersion1.Split("."c)
+        Dim arrVersion2() As String = cleanVersion2.Split("."c)
+        ' 获取较长的版本号的长度
+        Dim maxLength As Integer = Math.Max(arrVersion1.Length, arrVersion2.Length)
+        ' 逐位比较版本号
+        For i As Integer = 0 To maxLength - 1
+            Dim num1 As Integer = If(i < arrVersion1.Length, Integer.Parse(arrVersion1(i)), 0)
+            Dim num2 As Integer = If(i < arrVersion2.Length, Integer.Parse(arrVersion2(i)), 0)
+            If num1 < num2 Then
                 Return -1
-                Exit Function
-            End If
-            If InStr(arrVer1(i), "beta") <= 0 And InStr(arrVer2(i), "beta") > 0 Then
+            ElseIf num1 > num2 Then
                 Return 1
-                Exit Function
-            End If
-            iCha = Val(arrVer1(i)) - Val(arrVer2(i))
-            If iCha > 0 Then
-                Return 1
-                Exit Function
-            ElseIf iCha < 0 Then
-                Return -1
-                Exit Function
             End If
         Next
-        Return UBound(arrVer1) - UBound(arrVer2)
-        Exit Function
+        ' 如果所有位都相等，则版本号相等
+        Return 0
     End Function
 
     Public Shared Function SearchFolderWithoutSub(Path As String) As List(Of String)
