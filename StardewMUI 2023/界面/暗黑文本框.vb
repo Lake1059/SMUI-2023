@@ -50,7 +50,6 @@ Public Class 暗黑文本框
     End Sub
 
     Private Sub 暗黑文本框控件本体_DpiChangedAfterParent(sender As Object, e As EventArgs) Handles Me.DpiChangedAfterParent
-        调整()
     End Sub
 
     Private Sub TextBox1_TextChanged(sender As Object, e As EventArgs) Handles TextBox1.TextChanged

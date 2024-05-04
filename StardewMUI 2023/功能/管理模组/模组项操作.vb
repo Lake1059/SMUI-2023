@@ -11,12 +11,12 @@ Public Class 模组项操作
 Line1:
         Dim s1 As String = d1.ShowDialog(Form1)
         If s1 = "" Then Exit Sub
-        If FileIO.FileSystem.DirectoryExists(a & "\" & s1) Then
+        If FileIO.FileSystem.DirectoryExists(Path.Combine(a, s1)) Then
             Dim b As New 多项单选对话框("", {"确定"}, "已经存在目标模组项：" & vbCrLf & vbCrLf & a & "\" & s1,, 500)
             b.ShowDialog(Form1)
             GoTo Line1
         Else
-            FileIO.FileSystem.CreateDirectory(a & "\" & s1)
+            FileIO.FileSystem.CreateDirectory(Path.Combine(a, s1))
             Form1.ListView2.Items.Add(s1)
             Form1.ListView2.Items(Form1.ListView2.Items.Count - 1).ForeColor = Color1.橙色
             Form1.ListView2.Items(Form1.ListView2.Items.Count - 1).SubItems.Add("不可用")
@@ -32,6 +32,17 @@ Line1:
             Form1.Label51.Text = Form1.ListView2.Items.Count
         End If
     End Sub
+
+    Public Shared Sub 下载并新建项()
+        If Form下载并新建项.Visible = True Then Exit Sub
+        Dim a As String = 管理模组2.检查并返回当前所选子库路径
+        If a = "" Then Exit Sub
+        显示窗体(Form下载并新建项, Form1)
+    End Sub
+
+
+
+
 
     Public Shared Sub 转移模组项()
         If Form1.ListView2.SelectedItems.Count <> 1 Then Exit Sub

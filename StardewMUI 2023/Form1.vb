@@ -9,12 +9,13 @@ Public Class Form1
         状态信息.初始化性能计数定时器()
         状态信息.初始化SMAPI运行态定时器()
         设置.启动时加载设置()
+        DLC.初始化()
         界面控制.初始化界面()
         管理模组.初始化()
         任务队列.全部字典初始化()
         配置队列.初始化()
         更新模组.初始化()
-        DLC.初始化()
+
     End Sub
 
     Private Sub Form1_Shown(sender As Object, e As EventArgs) Handles MyBase.Shown

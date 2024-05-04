@@ -10,9 +10,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		.editorconfig = .editorconfig
 	EndProjectSection
 EndProject
-Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "SMUI6.DLC1.CustomInputExtension", "SMUI6.DLC1.CustomInputExtension\SMUI6.DLC1.CustomInputExtension.vbproj", "{06D66CD4-2A9E-4AD7-BBE5-9BE313AEFC8A}"
+Project("{778DAE3C-4631-46EA-AA77-85C1314464D9}") = "SMUI6.DLC1.CustomInputExtension", "SMUI6.DLC1.CustomInputExtension\SMUI6.DLC1.CustomInputExtension.vbproj", "{06D66CD4-2A9E-4AD7-BBE5-9BE313AEFC8A}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DLC", "DLC", "{F2C1CB46-2155-4218-A297-E965104D944E}"
+EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "SMUI6.DLC3.NewItemExtension", "SMUI6.DLC3.NewItemExtension\SMUI6.DLC3.NewItemExtension.vbproj", "{216B53F3-FBDF-492B-87B7-AC5B8C0AC23B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -28,12 +30,17 @@ Global
 		{06D66CD4-2A9E-4AD7-BBE5-9BE313AEFC8A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{06D66CD4-2A9E-4AD7-BBE5-9BE313AEFC8A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{06D66CD4-2A9E-4AD7-BBE5-9BE313AEFC8A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{216B53F3-FBDF-492B-87B7-AC5B8C0AC23B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{216B53F3-FBDF-492B-87B7-AC5B8C0AC23B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{216B53F3-FBDF-492B-87B7-AC5B8C0AC23B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{216B53F3-FBDF-492B-87B7-AC5B8C0AC23B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{06D66CD4-2A9E-4AD7-BBE5-9BE313AEFC8A} = {F2C1CB46-2155-4218-A297-E965104D944E}
+		{216B53F3-FBDF-492B-87B7-AC5B8C0AC23B} = {F2C1CB46-2155-4218-A297-E965104D944E}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {5E8639F4-CA3C-46A9-8F99-DB018A15F95B}

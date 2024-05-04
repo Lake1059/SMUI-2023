@@ -118,7 +118,7 @@ Public Class 管理模组的菜单
 
     Public Shared Sub 添加项菜单的所有菜单项()
         项菜单.Items.Add(菜单项_新建项)
-        项菜单.Items.Add(菜单项_下载并新建项)
+        If DLC.DLC解锁标记.NewItemExtension Then 项菜单.Items.Add(菜单项_下载并新建项)
         项菜单.Items.Add(New ToolStripSeparator)
         项菜单.Items.Add(菜单项_移动项)
         项菜单.Items.Add(菜单项_删除项)

@@ -19,13 +19,14 @@ Public Class 预览图功能
         If Form1.ListView2.SelectedItems.Count <> 1 Then Exit Sub
         Dim S1 As String = Path.Combine(管理模组2.检查并返回当前所选子库路径(False), Form1.ListView2.SelectedItems(0).SubItems(3).Text, Form1.ListView2.SelectedItems(0).Text)
 
-        If FileIO.FileSystem.DirectoryExists(S1 & "\Screenshot") Then
-            Process.Start(S1 & "\Screenshot")
+        Dim str1 As String = Path.Combine(S1, "Screenshot").Replace("\\", "\")
+        If FileIO.FileSystem.DirectoryExists(str1) Then
+            Process.Start("explorer.exe", str1)
         Else
             Dim a As New 多项单选对话框("", {"确认创建", "取消"}, "要创建截图文件夹吗？")
             If a.ShowDialog(Form1) = 0 Then
-                My.Computer.FileSystem.CreateDirectory(S1 & "\Screenshot")
-                Process.Start(S1 & "\Screenshot")
+                FileIO.FileSystem.CreateDirectory(str1)
+                Process.Start("explorer.exe", str1)
             End If
         End If
     End Sub

@@ -24,11 +24,15 @@ Public Class DLC
 
     Public Shared Sub 初始化()
         加载单个DLC("SMUI6.DLC1.CustomInputExtension.dll")
+        加载单个DLC("SMUI6.DLC3.NewItemExtension.dll")
         If DLC解锁标记.CustomInputExtension Then
             Form1.ListView9.Items(0).SubItems(1).Text = "已激活"
             Form1.ListView9.Items(0).ForeColor = Color1.绿色
         End If
-
+        If DLC解锁标记.NewItemExtension Then
+            Form1.ListView9.Items(2).SubItems(1).Text = "已激活"
+            Form1.ListView9.Items(2).ForeColor = Color1.绿色
+        End If
 
     End Sub
 

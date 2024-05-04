@@ -21,11 +21,10 @@ Public Class 管理模组
         AddHandler 管理模组的菜单.菜单项_重命名分类.Click, AddressOf 分类操作.重命名分类
         AddHandler 管理模组的菜单.菜单项_删除分类.Click, AddressOf 分类操作.删除分类
         AddHandler 管理模组的菜单.菜单项_新建项.Click, AddressOf 模组项操作.新建模组项
+        AddHandler 管理模组的菜单.菜单项_下载并新建项.Click, AddressOf 模组项操作.下载并新建项
         AddHandler 管理模组的菜单.菜单项_移动项.Click, AddressOf 模组项操作.转移模组项
         AddHandler 管理模组的菜单.菜单项_重命名项.Click, AddressOf 模组项操作.重命名模组项
         AddHandler 管理模组的菜单.菜单项_删除项.Click, AddressOf 模组项操作.删除模组项
-
-
 
 
         AddHandler Form1.ListView1.KeyDown, Sub(sender, e) 分类列表键盘按下事件(sender, e)
@@ -34,22 +33,11 @@ Public Class 管理模组
         AddHandler Form1.ListView2.KeyDown, Sub(sender, e) 模组项列表键盘按下事件(sender, e)
         AddHandler Form1.ListView2.SelectedIndexChanged, AddressOf 项列表计数显示
         AddHandler Form1.ListView2.SelectedIndexChanged, AddressOf 读取项信息并显示
-        AddHandler Form1.UiButton7.Click,
-            Sub()
-                If Form依赖项表.Visible = False Then
-                    Form依赖项表.Left = Form1.Left + 30 * 界面控制.X轴DPI比率
-                    Form依赖项表.Top = Form1.Top + Form1.Height - Form依赖项表.Height - 60 * 界面控制.X轴DPI比率
-                    Form依赖项表.Show(Form1)
-                Else
-                    Form依赖项表.Close()
-                End If
-            End Sub
-        AddHandler Form1.UiButton6.MouseDown,
-            Sub(sender, e)
-                If Not Form1.ListView2.SelectedItems.Count = 1 Then Exit Sub
-                Dim a As 暗黑菜单条控件本体 = 更新模组.生成更新地址表菜单()
-                a.Show(sender, New Point(0, 0 - a.Height - a.Items(0).Height))
-            End Sub
+        AddHandler Form1.ListView2.DragEnter, Sub(sender, e) e.Effect = DragDropEffects.Link
+        AddHandler Form1.ListView2.DragDrop, AddressOf Form下载并新建项.模组项列表视图DragDrop
+
+        AddHandler Form1.UiButton7.Click, AddressOf 显示依赖项表
+        AddHandler Form1.UiButton6.MouseDown, AddressOf 显示更新地址表
 
         AddHandler 管理模组的菜单.菜单项_打开分类的文件夹.Click, AddressOf 打开分类文件夹
         AddHandler 管理模组的菜单.菜单项_用VSC打开.Click, AddressOf 用VSC打开
@@ -745,10 +733,21 @@ Line1:
         Form1.ToolTip1.SetToolTip(Form1.PictureBox1, 当前正在显示的预览图索引 + 1 & "/" & 当前项信息_预览图文件表.Count)
     End Sub
 
+    Public Shared Sub 显示依赖项表()
+        If Form依赖项表.Visible = False Then
+            Form依赖项表.Left = Form1.Left + 30 * 界面控制.X轴DPI比率
+            Form依赖项表.Top = Form1.Top + Form1.Height - Form依赖项表.Height - 60 * 界面控制.X轴DPI比率
+            Form依赖项表.Show(Form1)
+        Else
+            Form依赖项表.Close()
+        End If
+    End Sub
 
-
-
-
+    Public Shared Sub 显示更新地址表(sender As Object, e As MouseEventArgs)
+        If Not Form1.ListView2.SelectedItems.Count = 1 Then Exit Sub
+        Dim a As 暗黑菜单条控件本体 = 更新模组.生成更新地址表菜单()
+        a.Show(sender, New Point(0, 0 - a.Height - a.Items(0).Height))
+    End Sub
 
     Public Shared Sub 打开分类文件夹()
         If Form1.ListView1.SelectedItems.Count = 1 Then

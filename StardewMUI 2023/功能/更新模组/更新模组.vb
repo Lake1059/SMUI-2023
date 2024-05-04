@@ -101,12 +101,8 @@ Public Class 更新模组
 
 
     Public Shared Async Sub 获取NEXUS文件列表(模组ID As String, 模组项绝对路径 As String)
-
-        'Dim dx As New 多项单选对话框("", {"取消", "让我康康"}, "这个功能还没有做完，运行到获取参数和下载地址时就无法再继续，确定要继续执行吗？", 100, 500)
-        'If dx.ShowDialog(Form1) <> 1 Then Exit Sub
-
         If 设置.全局设置数据("NexusAPI") = "" Then
-            Dim d1 As New 多项单选对话框("", {"前往设置", "确定"}, "要访问 NEXUS API 进行更新模组，需要填写个人密钥")
+            Dim d1 As New 多项单选对话框("", {"前往设置", "确定"}, "访问 NEXUS API 需要填写个人密钥")
             If d1.ShowDialog() = 0 Then
                 Form1.UiTabControl1.SelectedTab = Form1.TabPage起始页面
                 Form1.UiTabControlMenu1.SelectedTab = Form1.TabPage设置
@@ -122,7 +118,7 @@ Public Class 更新模组
         Form1.Panel34.Enabled = True
         Dim a As New NEXUS.GetModFileList With {.ST_ApiKey = 设置.全局设置数据("NexusAPI")}
         Dim str1 As String = Await Task.Run(Function() a.StartGet("stardewvalley", 模组ID, NEXUS.FileType.main_optional_updateFile_miscellaneous))
-        Form1.Label34.Text = "   当前操作接下来要更新到项：" & Path.GetFileName(模组项绝对路径)
+        Form1.Label34.Text = "   " & If(FileIO.FileSystem.FileExists(Path.Combine(模组项绝对路径, "Code2")), "更新到模组项：", "创建新模组项：") & Path.GetFileName(模组项绝对路径)
         If str1 <> "" Then
             Dim L1 As New Label With {.AutoSize = False, .Padding = New Padding(10), .Dock = DockStyle.Fill, .Text = str1}
             Form1.Panel34.Controls.Add(L1)

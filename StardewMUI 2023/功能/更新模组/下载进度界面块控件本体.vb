@@ -213,7 +213,8 @@ Public Class 下载进度界面块控件本体
     Dim 实际解压路径算起位置 As String
 
     Public Async Sub 开始处理更新()
-        Me.Label2.Text = "正在处理更新"
+        Me.Label2.Text = "正在评估下载的内容"
+        Application.DoEvents()
         Dim 实际新的文件夹列表 As New List(Of String)(共享方法.SearchFolderWithoutSub(实际解压路径算起位置))
 
         Dim 安装规划数据 As New List(Of KeyValuePair(Of String, String))
@@ -277,7 +278,71 @@ Public Class 下载进度界面块控件本体
 
     End Sub
 
-    Public Sub 开始处理新建()
+    Public Async Sub 开始处理新建()
+        Me.Label2.Text = "正在转移内容"
+        Application.DoEvents()
+
+        Dim 自动编写的安装规划 As String = ""
+
+        Dim 准备处理的文件夹列表 As New List(Of String)(共享方法.SearchFolderWithoutSub(实际解压路径算起位置))
+        Await Task.Run(Sub()
+                           For i = 0 To 准备处理的文件夹列表.Count - 1
+                               FileIO.FileSystem.MoveDirectory(实际解压路径算起位置 & "\" & 准备处理的文件夹列表(i), 设置_模组项绝对路径 & "\" & 准备处理的文件夹列表(i), True)
+                           Next
+                       End Sub)
+        Await Task.Run(Sub()
+                           For Each F1 As FileInfo In New System.IO.DirectoryInfo(实际解压路径算起位置).GetFiles("*.*")
+                               FileIO.FileSystem.MoveFile(实际解压路径算起位置 & "\" & F1.Name, 设置_模组项绝对路径 & "\" & F1.Name, True)
+                           Next
+                       End Sub)
+
+        Me.Label2.Text = "正在评估下载的内容"
+        Application.DoEvents()
+
+        If 准备处理的文件夹列表.Count = 0 Then
+            评估不通过操作("解压出的内容不包含文件夹或文件夹是空的")
+            DebugPrint("解压出的内容不包含文件夹或文件夹是空的", Color1.黄色)
+            Exit Sub
+        End If
+        If FileIO.FileSystem.FileExists(Path.Combine(设置_模组项绝对路径, "manifest.json")) Then
+            评估不通过操作("检测到 manifest.json 直接存在于解压出的根位置")
+            DebugPrint("检测到 manifest.json 直接存在于解压出的根位置", Color1.黄色)
+            Exit Sub
+        End If
+        For i = 0 To 准备处理的文件夹列表.Count - 1
+            If InStr(准备处理的文件夹列表(i), ".") > 0 Then Continue For
+            If Not FileIO.FileSystem.FileExists(Path.Combine(设置_模组项绝对路径, 准备处理的文件夹列表(i), "manifest.json")) Then
+                评估不通过操作("存在多重套娃或者非标准 SMAPI 模组")
+                DebugPrint("存在多重套娃或者非标准 SMAPI 模组", Color1.黄色)
+                Exit Sub
+            Else
+                If 自动编写的安装规划 = "" Then
+                    自动编写的安装规划 &= "CD-D-MODS=" & 准备处理的文件夹列表(i)
+                Else
+                    自动编写的安装规划 &= vbCrLf & "CD-D-MODS=" & 准备处理的文件夹列表(i)
+                End If
+            End If
+        Next
+        For Each F1 As FileInfo In New System.IO.DirectoryInfo(设置_模组项绝对路径).GetFiles("*.*")
+            Select Case F1.Name.Trim.ToLower
+                Case "README", "Version", "Code", "Code2", "README.rtf", "Font"
+                Case Else
+                    Select Case F1.Extension
+                        Case ".txt", ".md", ".log"
+                        Case Else
+                            评估不通过操作("存在单独的文件，需要用户处理")
+                            DebugPrint("存在单独的文件，需要用户处理", Color1.黄色)
+                            Exit Sub
+                    End Select
+            End Select
+        Next
+        Me.Label2.Text = "评估成功，正在写入规划文件"
+        Application.DoEvents()
+        FileIO.FileSystem.WriteAllText(Path.Combine(设置_模组项绝对路径, "Code2"), 自动编写的安装规划, False, System.Text.Encoding.UTF8)
+
+        清理解压数据()
+
+        结束()
 
     End Sub
 
