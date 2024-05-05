@@ -20,7 +20,7 @@ Public Class Form导出
                 If Form1.ListView1.SelectedItems.Count > 1 Then
                     a.FileName = Form1.ListView1.SelectedItems(0).Text & " etc. " & Form1.ListView1.SelectedItems.Count & " categories.smuicpak"
                 Else
-                    a.FileName = Form1.ListView2.SelectedItems(0).Text & ".smuicpak"
+                    a.FileName = Form1.ListView1.SelectedItems(0).Text & ".smuicpak"
                 End If
             Case "导出模组项"
                 a.Filter = "Item package file|*.smuimpak"

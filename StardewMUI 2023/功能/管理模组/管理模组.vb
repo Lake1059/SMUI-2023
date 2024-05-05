@@ -799,6 +799,7 @@ Line1:
     End Sub
 
     Public Shared Sub 导入模组项()
+        If Form1.ListView1.SelectedItems.Count <> 1 Then Exit Sub
         If Form导入.Visible = True Then Exit Sub
         Dim a As String = 管理模组2.检查并返回当前选择分类路径
         If a = "" Then Exit Sub
