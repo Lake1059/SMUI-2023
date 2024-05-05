@@ -8,6 +8,7 @@ Public Class 暗黑文本框
 
         ' 在 InitializeComponent() 调用之后添加任何初始化。
         调整()
+        Me.TextBox1.PasswordChar = PasswordChar
     End Sub
 
     <Browsable(True)>

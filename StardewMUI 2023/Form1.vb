@@ -9,6 +9,7 @@ Public Class Form1
         状态信息.初始化性能计数定时器()
         状态信息.初始化SMAPI运行态定时器()
         设置.启动时加载设置()
+        密码本.读取导入导出密码本()
         DLC.初始化()
         界面控制.初始化界面()
         管理模组.初始化()
@@ -40,6 +41,7 @@ Public Class Form1
     Private Sub Form1_Closing(sender As Object, e As CancelEventArgs) Handles MyBase.Closing
         键值对IO操作.从字典键值对写入文件(设置.全局设置数据, 设置.设置文件存储路径)
         管理模组.模块单元在关机时保存数据()
+        密码本.保存导入导出密码本()
 
         If 检查更新.在退出后安装更新 Then
             If FileIO.FileSystem.FileExists(设置.安装程序更新下载文件路径) Then

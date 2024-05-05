@@ -22,6 +22,8 @@ Line1:
             Form1.ListView2.Items(Form1.ListView2.Items.Count - 1).SubItems.Add("不可用")
             Form1.ListView2.Items(Form1.ListView2.Items.Count - 1).SubItems.Add("请完成配置")
             Form1.ListView2.Items(Form1.ListView2.Items.Count - 1).SubItems.Add(Form1.ListView1.Items(Form1.ListView1.SelectedIndices(0)).Text)
+            管理模组.实时模组项排序.Add(s1)
+            管理模组.实时模组项排序是否经过修改 = True
 
             Form1.ListView3.Items.Add(s1)
             Form1.ListView3.Items(Form1.ListView3.Items.Count - 1).SubItems.Add(Form1.ListView1.Items(Form1.ListView1.SelectedIndices(0)).Text)
@@ -40,12 +42,7 @@ Line1:
         显示窗体(Form下载并新建项, Form1)
     End Sub
 
-
-
-
-
     Public Shared Sub 转移模组项()
-        If Form1.ListView2.SelectedItems.Count <> 1 Then Exit Sub
         Dim d1 As String = 管理模组2.检查并返回当前所选子库路径
         If d1 = "" Then Exit Sub
 
@@ -90,6 +87,8 @@ Line1:
                                              If Not FileIO.FileSystem.DirectoryExists(目标路径) Then
                                                  FileIO.FileSystem.MoveDirectory(原路径, 目标路径)
                                                  Form1.ListView2.Items(i2).Remove()
+                                                 管理模组.实时模组项排序.RemoveAt(i2)
+                                                 管理模组.实时模组项排序是否经过修改 = True
                                                  i2 -= 1
                                              End If
                                          End If
@@ -120,6 +119,8 @@ Line1:
             Dim x As String = Form1.ListView2.SelectedItems(0).Text
             FileIO.FileSystem.RenameDirectory(Path.Combine(管理模组2.检查并返回当前选择分类路径(False), x), s1)
             Form1.ListView2.SelectedItems(0).Text = s1
+            管理模组.实时模组项排序.Item(Form1.ListView2.SelectedIndices(0)) = s1
+            管理模组.实时模组项排序是否经过修改 = True
             For i = 0 To Form1.ListView3.Items.Count - 1
                 If Form1.ListView3.Items(i).Text = x Then
                     Form1.ListView3.Items(i).Text = s1
@@ -148,6 +149,8 @@ Line1:
                     Continue Do
                 End If
                 Form1.ListView2.Items(i).Remove()
+                管理模组.实时模组项排序.RemoveAt(i)
+                管理模组.实时模组项排序是否经过修改 = True
                 i -= 1
             End If
             i += 1

@@ -324,8 +324,9 @@ Public Class 下载进度界面块控件本体
             End If
         Next
         For Each F1 As FileInfo In New System.IO.DirectoryInfo(设置_模组项绝对路径).GetFiles("*.*")
-            Select Case F1.Name.Trim.ToLower
+            Select Case F1.Name.Trim
                 Case "README", "Version", "Code", "Code2", "README.rtf", "Font"
+                Case ".DS_Store"
                 Case Else
                     Select Case F1.Extension
                         Case ".txt", ".md", ".log"

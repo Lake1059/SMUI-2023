@@ -26,6 +26,13 @@ Public Class 管理模组
         AddHandler 管理模组的菜单.菜单项_重命名项.Click, AddressOf 模组项操作.重命名模组项
         AddHandler 管理模组的菜单.菜单项_删除项.Click, AddressOf 模组项操作.删除模组项
 
+        AddHandler 管理模组的菜单.菜单项_导入数据子库.Click, AddressOf 导入数据子库
+        AddHandler 管理模组的菜单.菜单项_导入分类.Click, AddressOf 导入分类
+        AddHandler 管理模组的菜单.菜单项_导入项.Click, AddressOf 导入模组项
+
+        AddHandler 管理模组的菜单.菜单项_导出数据子库.Click, AddressOf 导出数据子库
+        AddHandler 管理模组的菜单.菜单项_导出分类.Click, AddressOf 导出分类
+        AddHandler 管理模组的菜单.菜单项_导出项.Click, AddressOf 导出模组项
 
         AddHandler Form1.ListView1.KeyDown, Sub(sender, e) 分类列表键盘按下事件(sender, e)
         AddHandler Form1.ListView1.SelectedIndexChanged, Sub(sender, e) 扫描模组项()
@@ -98,7 +105,7 @@ Public Class 管理模组
                     Dim 选择的子库 As String = 子库列表(子库索引)
                     Dim d2 As New 多项单选对话框("", {"确认", "取消"}, "是否确认删除当前子库，将发送到回收站以防止你反悔，同时将重置子库选择",, 500)
                     If d2.ShowDialog(Form1) = 0 Then
-                        My.Computer.FileSystem.DeleteDirectory(设置.全局设置数据("LocalRepositoryPath") & "\" & 选择的子库, FileIO.UIOption.AllDialogs, FileIO.RecycleOption.SendToRecycleBin, FileIO.UICancelOption.DoNothing)
+                        FileIO.FileSystem.DeleteDirectory(设置.全局设置数据("LocalRepositoryPath") & "\" & 选择的子库, FileIO.UIOption.AllDialogs, FileIO.RecycleOption.SendToRecycleBin, FileIO.UICancelOption.DoNothing)
                         管理模组的菜单.子库列表_选择.Items.Remove(删除子库单项)
                         管理模组的菜单.子库列表_删除.Items.Remove(删除子库单项)
                         删除子库单项.Dispose()
@@ -751,7 +758,7 @@ Line1:
 
     Public Shared Sub 打开分类文件夹()
         If Form1.ListView1.SelectedItems.Count = 1 Then
-            Dim 路径 As String = Path.Combine(管理模组2.检查并返回当前所选子库路径(False), Form1.ListView1.SelectedItems(0).Text)
+            Dim 路径 As String = Path.Combine(管理模组2.检查并返回当前所选子库路径(False), Form1.ListView1.SelectedItems(0).Text).Replace("\\", "\")
             Process.Start("explorer.exe", 路径)
         End If
     End Sub
@@ -773,6 +780,58 @@ Line1:
         If Form1.ListView2.SelectedItems.Count <> 1 Then Exit Sub
         If Not FileIO.FileSystem.FileExists(设置.全局设置数据("VisualStudioEXE")) Then Exit Sub
         Shell("""" & 设置.全局设置数据("VisualStudioCodeEXE") & """" & " " & """" & 管理模组2.检查并返回当前所选子库路径(False) & "\" & Form1.ListView2.SelectedItems(0).SubItems(3).Text & "\" & Form1.ListView2.SelectedItems(0).Text & """", AppWinStyle.NormalFocus)
-
     End Sub
+
+    Public Shared Sub 导入数据子库()
+        If Form导入.Visible = True Then Exit Sub
+        Dim a As String = 管理模组2.检查并返回当前模组数据仓库路径
+        If a = "" Then Exit Sub
+        Form导入.Text = "导入数据子库"
+        显示窗体(Form导入, Form1)
+    End Sub
+
+    Public Shared Sub 导入分类()
+        If Form导入.Visible = True Then Exit Sub
+        Dim a As String = 管理模组2.检查并返回当前所选子库路径
+        If a = "" Then Exit Sub
+        Form导入.Text = "导入分类"
+        显示窗体(Form导入, Form1)
+    End Sub
+
+    Public Shared Sub 导入模组项()
+        If Form导入.Visible = True Then Exit Sub
+        Dim a As String = 管理模组2.检查并返回当前选择分类路径
+        If a = "" Then Exit Sub
+        Form导入.Text = "导入模组项"
+        显示窗体(Form导入, Form1)
+    End Sub
+
+    Public Shared Sub 导出数据子库()
+        If Form导出.Visible = True Then Exit Sub
+        Dim a As String = 管理模组2.检查并返回当前所选子库路径
+        If a = "" Then Exit Sub
+        Form导出.Text = "导出数据子库"
+        显示窗体(Form导出, Form1)
+    End Sub
+
+    Public Shared Sub 导出分类()
+        If Form导出.Visible = True Then Exit Sub
+        If Form1.ListView1.SelectedItems.Count = 0 Then Exit Sub
+        Dim a As String = 管理模组2.检查并返回当前所选子库路径
+        If a = "" Then Exit Sub
+        Form导出.Text = "导出分类"
+        显示窗体(Form导出, Form1)
+    End Sub '
+
+    Public Shared Sub 导出模组项()
+        If Form导出.Visible = True Then Exit Sub
+        If Form1.ListView2.SelectedItems.Count = 0 Then Exit Sub
+        Dim a As String = 管理模组2.检查并返回当前选择分类路径
+        If a = "" Then Exit Sub
+        Form导出.Text = "导入模组项"
+        显示窗体(Form导出, Form1)
+    End Sub
+
+
+
 End Class

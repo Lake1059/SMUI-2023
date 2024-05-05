@@ -18,6 +18,8 @@ Line1:
         Else
             FileIO.FileSystem.CreateDirectory(a & "\" & s1)
             Form1.ListView1.Items.Add(s1)
+            管理模组.实时分类排序.Add(s1)
+            管理模组.实时分类排序是否经过修改 = True
             Form1.Label50.Text = Form1.ListView1.Items.Count
         End If
     End Sub
@@ -69,6 +71,8 @@ Line1:
                                              If Not FileIO.FileSystem.DirectoryExists(目标路径) Then
                                                  FileIO.FileSystem.MoveDirectory(原路径, 目标路径)
                                                  Form1.ListView1.Items(i2).Remove()
+                                                 管理模组.实时分类排序.RemoveAt(i2)
+                                                 管理模组.实时分类排序是否经过修改 = True
                                                  i2 -= 1
                                              End If
                                          End If
@@ -99,6 +103,8 @@ Line1:
             Dim x As String = Form1.ListView1.SelectedItems(0).Text
             FileIO.FileSystem.RenameDirectory(Path.Combine(管理模组2.检查并返回当前所选子库路径(False), x), s1)
             Form1.ListView1.SelectedItems(0).Text = s1
+            管理模组.实时分类排序.Item(Form1.ListView1.SelectedIndices(0)) = s1
+            管理模组.实时分类排序是否经过修改 = True
             For i = 0 To Form1.ListView2.Items.Count - 1
                 If Form1.ListView2.Items(i).SubItems(3).Text = x Then Form1.ListView2.Items(i).SubItems(3).Text = s1
             Next
@@ -128,6 +134,8 @@ Line1:
                     Continue Do
                 End If
                 Form1.ListView1.Items(i).Remove()
+                管理模组.实时分类排序.RemoveAt(i)
+                管理模组.实时分类排序是否经过修改 = True
                 i -= 1
             End If
             i += 1

@@ -9,6 +9,8 @@ Public Class DLC
         Public Shared Property NewItemExtension As Boolean = False
         Public Shared Property CheckUpdatesExtension As Boolean = False
         Public Shared Property DistributionExtension As Boolean = False
+        Public Shared Property SeasonPass2023 As Boolean = False
+
     End Class
 
     Public Shared Property 插件数据 As List(Of 插件数据单片结构)
@@ -25,6 +27,7 @@ Public Class DLC
     Public Shared Sub 初始化()
         加载单个DLC("SMUI6.DLC1.CustomInputExtension.dll")
         加载单个DLC("SMUI6.DLC3.NewItemExtension.dll")
+        加载单个DLC("SMUI6.SeasonPass2023.dll")
         If DLC解锁标记.CustomInputExtension Then
             Form1.ListView9.Items(0).SubItems(1).Text = "已激活"
             Form1.ListView9.Items(0).ForeColor = Color1.绿色
@@ -33,13 +36,27 @@ Public Class DLC
             Form1.ListView9.Items(2).SubItems(1).Text = "已激活"
             Form1.ListView9.Items(2).ForeColor = Color1.绿色
         End If
+        If DLC解锁标记.SeasonPass2023 Then
+            DLC解锁标记.CustomInputExtension = True
+            DLC解锁标记.SkinLoader = True
+            DLC解锁标记.NewItemExtension = True
+            DLC解锁标记.CheckUpdatesExtension = True
+            Form1.ListView9.Items(0).SubItems(1).Text = "已激活"
+            Form1.ListView9.Items(0).ForeColor = Color1.绿色
+            Form1.ListView9.Items(1).SubItems(1).Text = "已激活"
+            Form1.ListView9.Items(1).ForeColor = Color1.绿色
+            Form1.ListView9.Items(2).SubItems(1).Text = "已激活"
+            Form1.ListView9.Items(2).ForeColor = Color1.绿色
+            Form1.ListView9.Items(3).SubItems(1).Text = "已激活"
+            Form1.ListView9.Items(3).ForeColor = Color1.绿色
+            Form1.ListView9.Items(4).SubItems(1).Text = "已激活"
+        End If
 
     End Sub
 
     Public Shared Sub 加载单个DLC(文件名 As String)
         Try
             If Not FileIO.FileSystem.FileExists(Path.Combine(设置.DLC文件夹路径, 文件名)) Then
-                DebugPrint($"指定的 DLC 文件不存在：{文件名}", Color1.白色)
                 Exit Sub
             End If
             Dim 程序集 As Assembly = Assembly.LoadFile(Path.Combine(设置.DLC文件夹路径, 文件名))
