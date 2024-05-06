@@ -113,12 +113,12 @@ jx1:
 
     Private Sub UiButton4_Click(sender As Object, e As EventArgs) Handles UiButton4.Click
         Dim str As String = "$host.UI.RawUI.WindowTitle = " & """" & Me.Text & """"
-        str &= vbCrLf & "& " & """" & Path.Combine(Application.StartupPath, "7za64", "7za.exe") & """"
+        Dim 压缩程序路径 As String = "& " & """" & Application.StartupPath & "\7za64\7za.exe" & """"
 
         Select Case Me.Text
             Case "导入数据子库"
                 For i = 0 To Me.ListView1.Items.Count - 1
-                    str &= " x " & """" & Me.ListView1.Items(i).Text & """" & " -o" & """" & 管理模组2.检查并返回当前模组数据仓库路径(False) & """"
+                    str &= vbCrLf & 压缩程序路径 & " x " & """" & Me.ListView1.Items(i).Text & """" & " -o" & """" & 管理模组2.检查并返回当前模组数据仓库路径(False) & """"
                     If UiCheckBox1.Checked = True Then
                         密码本.添加导入导出密码到密码本中(Me.暗黑文本框1.Text)
                         str &= " -p" & Me.暗黑文本框1.Text & " -y"
@@ -126,7 +126,7 @@ jx1:
                 Next
             Case "导入分类"
                 For i = 0 To Me.ListView1.Items.Count - 1
-                    str &= " x " & """" & Me.ListView1.Items(i).Text & """" & " -o" & """" & 管理模组2.检查并返回当前所选子库路径(False) & """"
+                    str &= vbCrLf & 压缩程序路径 & " x " & """" & Me.ListView1.Items(i).Text & """" & " -o" & """" & 管理模组2.检查并返回当前所选子库路径(False) & """"
                     If UiCheckBox1.Checked = True Then
                         密码本.添加导入导出密码到密码本中(Me.暗黑文本框1.Text)
                         str &= " -p" & Me.暗黑文本框1.Text & " -y"
@@ -134,7 +134,7 @@ jx1:
                 Next
             Case "导入模组项"
                 For i = 0 To Me.ListView1.Items.Count - 1
-                    str &= " x " & """" & Me.ListView1.Items(i).Text & """" & " -o" & """" & 管理模组2.检查并返回当前所选子库路径(False) & "\" & Form1.ListView1.SelectedItems(0).Text & """"
+                    str &= vbCrLf & 压缩程序路径 & " x " & """" & Me.ListView1.Items(i).Text & """" & " -o" & """" & 管理模组2.检查并返回当前所选子库路径(False) & "\" & Form1.ListView1.SelectedItems(0).Text & """"
                     If UiCheckBox1.Checked = True Then
                         密码本.添加导入导出密码到密码本中(Me.暗黑文本框1.Text)
                         str &= " -p" & Me.暗黑文本框1.Text & " -y"

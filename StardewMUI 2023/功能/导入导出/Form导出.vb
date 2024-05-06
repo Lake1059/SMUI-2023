@@ -102,11 +102,11 @@ Public Class Form导出
                 str &= """" & 管理模组2.检查并返回当前所选子库路径(False) & "\" & """"
             Case "导出分类"
                 For i = 0 To Form1.ListView1.SelectedItems.Count - 1
-                    str &= """" & 管理模组2.检查并返回当前所选子库路径(False) & "\" & Form1.ListView1.SelectedItems(i).Text & "\" & """"
+                    str &= " " & """" & 管理模组2.检查并返回当前所选子库路径(False) & "\" & Form1.ListView1.SelectedItems(i).Text & "\" & """"
                 Next
             Case "导出模组项"
                 For i = 0 To Form1.ListView2.SelectedItems.Count - 1
-                    str &= """" & 管理模组2.检查并返回当前所选子库路径(False) & "\" & Form1.ListView2.SelectedItems(i).SubItems(3).Text & "\" & Form1.ListView2.SelectedItems(i).Text & "\" & """"
+                    str &= " " & """" & 管理模组2.检查并返回当前所选子库路径(False) & "\" & Form1.ListView2.SelectedItems(i).SubItems(3).Text & "\" & Form1.ListView2.SelectedItems(i).Text & "\" & """"
                 Next
         End Select
 

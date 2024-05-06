@@ -25,7 +25,7 @@ Line1:
     End Sub
 
     Public Shared Sub 转移分类()
-        If Form1.ListView1.SelectedItems.Count <> 1 Then Exit Sub
+        If Form1.ListView1.SelectedItems.Count = 0 Then Exit Sub
         Dim d1 As String = 管理模组2.检查并返回当前模组数据仓库路径
         If d1 = "" Then Exit Sub
 
