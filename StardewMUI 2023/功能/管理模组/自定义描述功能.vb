@@ -9,7 +9,6 @@ Public Class 自定义描述功能
         AddHandler 管理模组的菜单.菜单项_新建富文本文档.Click, AddressOf 保存到纯文本
         AddHandler 管理模组的菜单.菜单项_在写字板中编辑富文本.Click, AddressOf 用写字板编辑富文本
         AddHandler 管理模组的菜单.菜单项_删除所有自定义描述.Click, AddressOf 删除所有自定义描述
-        AddHandler 管理模组的菜单.菜单项_切换描述栏富文本框的滚动条显示.Click, AddressOf 切换滚动条显示
         AddHandler 管理模组的菜单.菜单项_设置选中内容的字体.Click, AddressOf 设置字体
         AddHandler 管理模组的菜单.菜单项_设置选中内容的文字颜色.Click, AddressOf 设置文字颜色
         AddHandler 管理模组的菜单.菜单项_设置选中内容的背景颜色.Click, AddressOf 设置文字背景颜色
@@ -78,12 +77,6 @@ Public Class 自定义描述功能
         If FileIO.FileSystem.FileExists(a & "\README.rtf") = True Then FileIO.FileSystem.DeleteFile(a & "\README.rtf", FileIO.UIOption.OnlyErrorDialogs, FileIO.RecycleOption.SendToRecycleBin)
         Form1.UiButton11.Text = "None"
         UIMessageTip.Show("已删除",, 1200)
-    End Sub
-
-
-    Public Shared Sub 切换滚动条显示()
-
-
     End Sub
 
     Public Shared Sub 设置字体()

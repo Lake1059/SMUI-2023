@@ -94,12 +94,27 @@ Public Class Form下载并新建项
         If match.Success Then
             Return match.Groups(1).Value
         End If
-        Dim match2 As Match = Regex.Match(原文本, "(?<=github\.com\/)[^\/]+\/[^\/]+")
+        Dim match2 As Match = Regex.Match(原文本, "github\.com\/([^\/]+\/[^\/]+)")
         If match2.Success Then
             Return match2.Groups(1).Value
         End If
         Return ""
     End Function
 
+    Private Sub UiButton2_Click(sender As Object, e As EventArgs) Handles UiButton2.Click
+        If Me.暗黑文本框1.Text = "" Then Exit Sub
+        If Me.暗黑文本框2.Text = "" Then Exit Sub
+        If Me.UiComboBox1.Text = "" Then Exit Sub
+        Dim a As String = Path.Combine(管理模组2.检查并返回当前所选子库路径(False), Me.UiComboBox1.Text, Me.暗黑文本框1.Text)
 
+        If FileIO.FileSystem.DirectoryExists(a) Then
+            Dim b As New 多项单选对话框("", {"确定"}, "目标模组项已存在，请重新取名",, 500)
+            b.ShowDialog(Me)
+            Exit Sub
+        End If
+
+        FileIO.FileSystem.CreateDirectory(a)
+        更新模组.获取Github文件列表(Me.暗黑文本框2.Text, a)
+        Me.Close()
+    End Sub
 End Class

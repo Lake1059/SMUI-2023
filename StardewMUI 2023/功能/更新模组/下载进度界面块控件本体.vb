@@ -25,11 +25,13 @@ Public Class 下载进度界面块控件本体
             str1 = Await DownloadFileAsync(设置_下载地址, Path.Combine(设置.检查并返回数据库下载文件夹路径, 设置_下载来源))
         End If
         If str1 <> "" Then
-            Me.Label1.Text = "下载失败"
+            是否下载成功 = False
+            Me.Label1.Text = "下载失败 - " & If(FileIO.FileSystem.FileExists(Path.Combine(设置_模组项绝对路径, "Code2")), "更新：", "创建：") & Path.GetFileName(设置_模组项绝对路径)
             Me.Label2.Text = str1
             Me.Panel3.BackColor = Color.DarkRed
             DebugPrint(str1, Color1.红色)
         Else
+            是否下载成功 = True
             Me.Label2.Text = "下载成功，等待开始解压"
             开始解压()
         End If
@@ -39,6 +41,7 @@ Public Class 下载进度界面块控件本体
     Public Property 已下载字节数 As Long = 0
     Public Property 总字节数 As Long = 0
     Public Property 是否终止下载 As Boolean = False
+    Public Property 是否下载成功 As Boolean = False
     Public Property 上一秒的已下载字节数 As Long = 0
 
     Public Async Function DownloadFileFromNexusAsync(URL As String, FileDir As String) As Task(Of String)
@@ -61,7 +64,10 @@ Public Class 下载进度界面块控件本体
                             Dim bytesRead As Integer
                             总字节数 = If(response.Content.Headers.ContentLength, 0)
                             Do
-                                If 是否终止下载 Then Exit Do
+                                If 是否终止下载 Then
+                                    Return $"User: Stop Download."
+                                    Exit Do
+                                End If
                                 bytesRead = Await responseStream.ReadAsync(buffer)
                                 If bytesRead = 0 Then Exit Do
                                 Await fileStream.WriteAsync(buffer.AsMemory(0, bytesRead))
@@ -101,7 +107,10 @@ Public Class 下载进度界面块控件本体
                             Dim bytesRead As Integer
                             总字节数 = If(response.Content.Headers.ContentLength, 0)
                             Do
-                                If 是否终止下载 Then Exit Do
+                                If 是否终止下载 Then
+                                    Return $"User: Stop Download."
+                                    Exit Do
+                                End If
                                 bytesRead = Await responseStream.ReadAsync(buffer)
                                 If bytesRead = 0 Then Exit Do
                                 Await fileStream.WriteAsync(buffer.AsMemory(0, bytesRead))
@@ -124,6 +133,10 @@ Public Class 下载进度界面块控件本体
     End Function
 
     Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
+        If 是否终止下载 = True Then
+            Me.Timer1.Enabled = False
+            Exit Sub
+        End If
         If 总字节数 = 0 Then Exit Sub
         If 已下载字节数 = 总字节数 And 总字节数 > 0 Then
             Me.Timer1.Enabled = False
@@ -172,10 +185,14 @@ Public Class 下载进度界面块控件本体
 
     Public 这份实例使用的临时解压目录 As String = Path.Combine(设置.检查并返回数据库解压文件夹路径, Now.Hour & Now.Minute & Now.Second & Now.Millisecond)
 
+    Public Property 是否取消解压 As Boolean = False
+
     Public Sub 开始解压()
+        If 是否取消解压 Then Exit Sub
         Try
             Dim zip1 As New SevenZip.SevenZipExtractor(保存位置)
             For i = 0 To zip1.ArchiveFileData.Count - 1
+                If 是否取消解压 Then Exit Sub
                 Me.Label2.Text = $"正在解压第 {i + 1} 个文件，总计 {zip1.ArchiveFileData.Count} 个文件"
                 Me.Panel3.Width = (i + 1) / zip1.ArchiveFileData.Count * Me.Panel3.Parent.Width
                 Application.DoEvents()
@@ -325,7 +342,7 @@ Public Class 下载进度界面块控件本体
         Next
         For Each F1 As FileInfo In New System.IO.DirectoryInfo(设置_模组项绝对路径).GetFiles("*.*")
             Select Case F1.Name.Trim
-                Case "README", "Version", "Code", "Code2", "README.rtf", "Font"
+                Case "README", "Version", "Code", "Code2", "README.rtf", "Font", "NexusFileName"
                 Case ".DS_Store"
                 Case Else
                     Select Case F1.Extension
@@ -365,13 +382,40 @@ Public Class 下载进度界面块控件本体
 
     Public Sub 结束(Optional 是否要转到管理模组选项卡 As Boolean = True)
         For i = 0 To 设置_结束后自动释放的控件.Count - 1
-            设置_结束后自动释放的控件(i).Dispose()
+            If 设置_结束后自动释放的控件(i) IsNot Nothing Then 设置_结束后自动释放的控件(i).Dispose()
         Next
+        If Form1.Panel37.Controls.Count >= 2 Then
+            If TypeOf Form1.Panel37.Controls.Item(1) Is Label Then
+                Form1.Panel37.Controls.Item(1).Dispose()
+            End If
+        End If
         If Form1.Panel37.Controls.Count <= 1 Then
             Form1.UiTabControl1.SelectedTab = Form1.TabPage管理模组
         End If
         Me.Dispose()
     End Sub
 
+    Private Sub 取消下载ToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles 取消下载ToolStripMenuItem.Click
+        If 是否下载成功 Then Exit Sub
+        If 设置_下载地址 = "" Then Exit Sub
+        是否终止下载 = True
+        是否下载成功 = False
+        Me.Label2.Text = "已标记取消下载，等待下载程序响应"
+    End Sub
+
+    Private Sub 开始下载ToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles 开始下载ToolStripMenuItem.Click
+        If 是否下载成功 Then Exit Sub
+        If 设置_下载地址 = "" Then Exit Sub
+        If 是否终止下载 = False Then Exit Sub
+        是否终止下载 = False
+        是否取消解压 = False
+        开始下载()
+    End Sub
+
+    Private Sub 取消操作ToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles 取消操作ToolStripMenuItem.Click
+        是否终止下载 = True
+        是否取消解压 = True
+        Me.Dispose(True)
+    End Sub
 
 End Class

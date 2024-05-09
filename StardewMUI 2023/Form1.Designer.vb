@@ -43,20 +43,21 @@ Partial Class Form1
         Dim ListViewItem18 As ListViewItem = New ListViewItem(New String() {"DLC 4 - 检查更新扩展", "未启用"}, -1)
         Dim ListViewItem19 As ListViewItem = New ListViewItem(New String() {"Season Pass 2023 - 基础扩展四件套", "未启用"}, -1, Color.MediumOrchid, Color.Empty, Nothing)
         Dim ListViewItem20 As ListViewItem = New ListViewItem(New String() {"DLC 5 - 分发扩展", "未启用"}, -1)
-        Dim ListViewItem21 As ListViewItem = New ListViewItem(New String() {"湖边的稻草 / 1059 Studio / Lake1059", "开发者，著作权所有，SMUI 管理模式版权所有"}, -1)
-        Dim ListViewItem22 As ListViewItem = New ListViewItem(New String() {"ChatGPT 3.5 / 4 by OpenAI", "提供了多项关键技术原型和指导"}, -1)
-        Dim ListViewItem23 As ListViewItem = New ListViewItem(New String() {"内置图标来自 IconPark", "© ByteDance Apache-2.0"}, -1)
-        Dim ListViewItem24 As ListViewItem = New ListViewItem(New String() {"SunnyUI 商业许可证：PVIP2023080201", "许可证 GPL-3.0-only | 界面元素主框架"}, -1)
-        Dim ListViewItem25 As ListViewItem = New ListViewItem(New String() {"DarkUI", "许可证 MIT | 源代码定制用于菜单绘制"}, -1)
-        Dim ListViewItem26 As ListViewItem = New ListViewItem(New String() {"Microsoft.Web.WebView2", "微软软件许可证 | 调用 Edge 浏览器"}, -1)
-        Dim ListViewItem27 As ListViewItem = New ListViewItem(New String() {"Chromium Embedded Framework", "Copyright © The CefSharp Authors. All rights reserved."}, -1)
-        Dim ListViewItem28 As ListViewItem = New ListViewItem(New String() {"Newtonsoft.Json", "许可证 MIT | Json 解析库"}, -1)
-        Dim ListViewItem29 As ListViewItem = New ListViewItem(New String() {"Microsoft-WindowsAPICodePack-Shell", "微软软件许可证 | rpastric,contre,dahall 原 Aybe | 实现 DLC 和插件"}, -1)
-        Dim ListViewItem30 As ListViewItem = New ListViewItem(New String() {"SevenZipSharp", "许可证 LGPL-3.0"}, -1)
-        Dim ListViewItem31 As ListViewItem = New ListViewItem(New String() {"来自 7zip 软件的 7zFull64.dll 文件", "原文件名：7z.dll"}, -1)
-        Dim ListViewItem32 As ListViewItem = New ListViewItem(New String() {"来自 7zip 官方的 7za 组件", "7za.dll、7za.exe、7zxa.dll"}, -1)
-        Dim ListViewItem33 As ListViewItem = New ListViewItem(New String() {"libwebp-net", "许可证 MIT"}, -1)
-        Dim ListViewItem34 As ListViewItem = New ListViewItem("来自 Google 的 libwebp.dll 文件")
+        Dim ListViewItem21 As ListViewItem = New ListViewItem(New String() {"DLC 6 - 更新模组项扩展", "未启用"}, -1)
+        Dim ListViewItem22 As ListViewItem = New ListViewItem(New String() {"湖边的稻草 / 1059 Studio / Lake1059", "开发者，著作权所有，SMUI 管理模式版权所有"}, -1)
+        Dim ListViewItem23 As ListViewItem = New ListViewItem(New String() {"ChatGPT 3.5 / 4 by OpenAI", "提供了多项关键技术原型和指导"}, -1)
+        Dim ListViewItem24 As ListViewItem = New ListViewItem(New String() {"内置图标来自 IconPark", "© ByteDance Apache-2.0"}, -1)
+        Dim ListViewItem25 As ListViewItem = New ListViewItem(New String() {"SunnyUI 商业许可证：PVIP2023080201", "许可证 GPL-3.0-only | 界面元素主框架"}, -1)
+        Dim ListViewItem26 As ListViewItem = New ListViewItem(New String() {"DarkUI", "许可证 MIT | 源代码定制用于菜单绘制"}, -1)
+        Dim ListViewItem27 As ListViewItem = New ListViewItem(New String() {"Microsoft.Web.WebView2", "微软软件许可证 | 调用 Edge 浏览器"}, -1)
+        Dim ListViewItem28 As ListViewItem = New ListViewItem(New String() {"Chromium Embedded Framework", "Copyright © The CefSharp Authors. All rights reserved."}, -1)
+        Dim ListViewItem29 As ListViewItem = New ListViewItem(New String() {"Newtonsoft.Json", "许可证 MIT | Json 解析库"}, -1)
+        Dim ListViewItem30 As ListViewItem = New ListViewItem(New String() {"Microsoft-WindowsAPICodePack-Shell", "微软软件许可证 | rpastric,contre,dahall 原 Aybe | 实现 DLC 和插件"}, -1)
+        Dim ListViewItem31 As ListViewItem = New ListViewItem(New String() {"SevenZipSharp", "许可证 LGPL-3.0"}, -1)
+        Dim ListViewItem32 As ListViewItem = New ListViewItem(New String() {"来自 7zip 软件的 7zFull64.dll 文件", "原文件名：7z.dll"}, -1)
+        Dim ListViewItem33 As ListViewItem = New ListViewItem(New String() {"来自 7zip 官方的 7za 组件", "7za.dll、7za.exe、7zxa.dll"}, -1)
+        Dim ListViewItem34 As ListViewItem = New ListViewItem(New String() {"libwebp-net", "许可证 MIT"}, -1)
+        Dim ListViewItem35 As ListViewItem = New ListViewItem("来自 Google 的 libwebp.dll 文件")
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Form1))
         UiTabControl1 = New Sunny.UI.UITabControl()
         TabPage起始页面 = New TabPage()
@@ -3321,7 +3322,7 @@ Partial Class Form1
         ListView9.ForeColor = Color.FromArgb(CByte(224), CByte(224), CByte(224))
         ListView9.FullRowSelect = True
         ListView9.HeaderStyle = ColumnHeaderStyle.None
-        ListView9.Items.AddRange(New ListViewItem() {ListViewItem15, ListViewItem16, ListViewItem17, ListViewItem18, ListViewItem19, ListViewItem20})
+        ListView9.Items.AddRange(New ListViewItem() {ListViewItem15, ListViewItem16, ListViewItem17, ListViewItem18, ListViewItem19, ListViewItem20, ListViewItem21})
         ListView9.Location = New Point(10, 10)
         ListView9.Name = "ListView9"
         ListView9.OwnerDraw = True
@@ -3799,7 +3800,7 @@ Partial Class Form1
         ListView11.ForeColor = Color.FromArgb(CByte(224), CByte(224), CByte(224))
         ListView11.FullRowSelect = True
         ListView11.HeaderStyle = ColumnHeaderStyle.None
-        ListView11.Items.AddRange(New ListViewItem() {ListViewItem21, ListViewItem22, ListViewItem23, ListViewItem24, ListViewItem25, ListViewItem26, ListViewItem27, ListViewItem28, ListViewItem29, ListViewItem30, ListViewItem31, ListViewItem32, ListViewItem33, ListViewItem34})
+        ListView11.Items.AddRange(New ListViewItem() {ListViewItem22, ListViewItem23, ListViewItem24, ListViewItem25, ListViewItem26, ListViewItem27, ListViewItem28, ListViewItem29, ListViewItem30, ListViewItem31, ListViewItem32, ListViewItem33, ListViewItem34, ListViewItem35})
         ListView11.Location = New Point(0, 0)
         ListView11.Name = "ListView11"
         ListView11.OwnerDraw = True
@@ -5685,9 +5686,9 @@ Partial Class Form1
         TabPage浏览器.Controls.Add(Label42)
         TabPage浏览器.Controls.Add(Label15)
         TabPage浏览器.Controls.Add(Panel49)
-        TabPage浏览器.Location = New Point(0, 50)
+        TabPage浏览器.Location = New Point(0, 40)
         TabPage浏览器.Name = "TabPage浏览器"
-        TabPage浏览器.Size = New Size(1264, 700)
+        TabPage浏览器.Size = New Size(200, 60)
         TabPage浏览器.TabIndex = 5
         TabPage浏览器.Text = "浏览器"
         ' 
@@ -5698,10 +5699,10 @@ Partial Class Form1
         Label42.Dock = DockStyle.Bottom
         Label42.Font = New Font("微软雅黑", 9.75F, FontStyle.Regular, GraphicsUnit.Point, CByte(134))
         Label42.ForeColor = Color.DarkOrange
-        Label42.Location = New Point(0, 620)
+        Label42.Location = New Point(0, -20)
         Label42.Name = "Label42"
         Label42.Padding = New Padding(10, 0, 0, 0)
-        Label42.Size = New Size(1264, 80)
+        Label42.Size = New Size(200, 80)
         Label42.TabIndex = 2
         Label42.Text = "正在进行 NEXUS 非会员获取额外参数流程" & vbCrLf & "请勿点击下载按钮！不要点下载！！！并确保打开的网页中是已登录状态" & vbCrLf & "参数获取程序会一直运行，直到成功拿到参数或者手动点击右上角的取消"
         Label42.TextAlign = ContentAlignment.MiddleLeft
@@ -5713,7 +5714,7 @@ Partial Class Form1
         Label15.Font = New Font("微软雅黑", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(134))
         Label15.Location = New Point(0, 40)
         Label15.Name = "Label15"
-        Label15.Size = New Size(1264, 660)
+        Label15.Size = New Size(200, 20)
         Label15.TabIndex = 1
         Label15.Text = "=====   使用提示   =====" & vbCrLf & vbCrLf & "为节省日常使用的内存占用，只有当需要使用内置浏览器时才会完成初始化并创建控件" & vbCrLf & vbCrLf & "要在内置浏览器中访问其他地址，可以直接在顶部菜单栏空白处输入并转到" & vbCrLf & vbCrLf & "Edge 和 CEF 组件各有优劣，默认选择 Edge，如需使用 CEF 请在设置中调整并重启" & vbCrLf & vbCrLf & "不要忘记定期清理浏览器缓存"
         Label15.TextAlign = ContentAlignment.MiddleCenter
@@ -5733,7 +5734,7 @@ Partial Class Form1
         Panel49.Dock = DockStyle.Top
         Panel49.Location = New Point(0, 0)
         Panel49.Name = "Panel49"
-        Panel49.Size = New Size(1264, 40)
+        Panel49.Size = New Size(200, 40)
         Panel49.TabIndex = 0
         ' 
         ' UiTextBox5
@@ -5763,7 +5764,7 @@ Partial Class Form1
         UiTextBox5.ScrollBarColor = Color.Gray
         UiTextBox5.ScrollBarStyleInherited = False
         UiTextBox5.ShowText = False
-        UiTextBox5.Size = New Size(664, 40)
+        UiTextBox5.Size = New Size(1, 40)
         UiTextBox5.Style = Sunny.UI.UIStyle.Custom
         UiTextBox5.TabIndex = 18
         UiTextBox5.TabStop = False
@@ -5785,7 +5786,7 @@ Partial Class Form1
         UiButton70.ForeHoverColor = Color.FromArgb(CByte(244), CByte(244), CByte(244))
         UiButton70.ForePressColor = Color.FromArgb(CByte(244), CByte(244), CByte(244))
         UiButton70.ForeSelectedColor = Color.FromArgb(CByte(244), CByte(244), CByte(244))
-        UiButton70.Location = New Point(1144, 0)
+        UiButton70.Location = New Point(80, 0)
         UiButton70.MinimumSize = New Size(1, 1)
         UiButton70.Name = "UiButton70"
         UiButton70.Radius = 10

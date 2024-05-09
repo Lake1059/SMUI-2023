@@ -237,7 +237,7 @@ jx1:
         Dim 目录 As New System.IO.DirectoryInfo(正在编辑规划的项路径)
         For Each 文件 In 目录.GetFiles("*.*")
             Select Case 文件.Name
-                Case "README", "Version", "Code", "Code2", "README.rtf", "Font"
+                Case "README", "Version", "Code", "Code2", "README.rtf", "Font", "NexusFileName"
                 Case Else
                     Form1.ListView6.Items.Add(文件.Name)
                     Form1.ListView6.Items.Item(Form1.ListView6.Items.Count - 1).SubItems.Add("文件")
@@ -289,7 +289,7 @@ jx1:
             UIMessageTip.Show($"{Path.GetFileName(正在编辑规划的项路径)} 此项已不存在，无法保存",, 2000)
         End If
         If Form1.ListView3.SelectedItems(0).Text <> Form1.UiTextBox6.Text Then
-            FileIO.FileSystem.RenameDirectory(正在编辑规划的项路径, Path.Combine(Path.GetDirectoryName(正在编辑规划的项路径), Form1.UiTextBox6.Text))
+            FileIO.FileSystem.RenameDirectory(正在编辑规划的项路径, Form1.UiTextBox6.Text)
             正在编辑规划的项路径 = Path.Combine(Path.GetDirectoryName(正在编辑规划的项路径), Form1.UiTextBox6.Text)
         End If
         If Form1.UiTextBox1.Text = "" Then

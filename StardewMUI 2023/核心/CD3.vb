@@ -8,7 +8,7 @@ Public Class CD3
         If 任务队列.是否关闭config自动保留机制 = False Then
             Dim a1 As String = Path.Combine(任务队列.项路径, ".config", 参数列表(0), "config.json")
             Dim a2 As String = Path.Combine(任务队列.游戏路径, "Mods", 参数列表(0), "config.json")
-            If FileExists(a1) = True Then
+            If FileExists(a2) = True Then
                 CopyFile(a2, a1, True)
                 安装卸载.后台线程对象.ReportProgress(1, $"已备份 config.json")
             End If

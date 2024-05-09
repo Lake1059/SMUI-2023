@@ -1,6 +1,4 @@
 ﻿
-Imports Sunny.UI
-
 Public Class 管理模组的菜单
 
     Public Shared Property 分类和子库菜单 As New 暗黑菜单条控件本体 With {.ImageScalingSize = New Size(25 * 界面控制.DPI, 25 * 界面控制.DPI)}
@@ -216,7 +214,6 @@ Public Class 管理模组的菜单
     Public Shared Property 菜单项_新建富文本文档 As New ToolStripMenuItem With {.Text = "新建富文本文档", .Image = My.Resources.添加带圆圈}
     Public Shared Property 菜单项_在写字板中编辑富文本 As New ToolStripMenuItem With {.Text = "用写字板编辑富文本"}
     Public Shared Property 菜单项_删除所有自定义描述 As New ToolStripMenuItem With {.Text = "删除所有自定义描述", .Image = My.Resources.删除}
-    Public Shared Property 菜单项_切换描述栏富文本框的滚动条显示 As New ToolStripMenuItem With {.Text = "切换滚动条显示", .Image = My.Resources.切换}
     Public Shared Property 菜单项_设置选中内容的字体 As New ToolStripMenuItem With {.Text = "设置字体", .Image = My.Resources.文字大小}
     Public Shared Property 菜单项_设置选中内容的文字颜色 As New ToolStripMenuItem With {.Text = "设置文字颜色", .Image = My.Resources.颜色滤镜}
     Public Shared Property 菜单项_设置选中内容的背景颜色 As New ToolStripMenuItem With {.Text = "设置文字背景颜色", .Image = My.Resources.颜色滤镜}
@@ -230,8 +227,6 @@ Public Class 管理模组的菜单
         描述菜单.Items.Add(菜单项_在写字板中编辑富文本)
         描述菜单.Items.Add(New ToolStripSeparator)
         描述菜单.Items.Add(菜单项_删除所有自定义描述)
-        描述菜单.Items.Add(New ToolStripSeparator)
-        描述菜单.Items.Add(菜单项_切换描述栏富文本框的滚动条显示)
         描述菜单.Items.Add(New ToolStripSeparator)
         描述菜单.Items.Add(菜单项_设置选中内容的字体)
         描述菜单.Items.Add(菜单项_设置选中内容的文字颜色)
@@ -254,8 +249,23 @@ Public Class 管理模组的菜单
         预览图菜单.Items.Add(菜单项_删除全部预览图)
     End Sub
 
+    Public Shared Property 链接菜单 As New 暗黑菜单条控件本体 With {.ImageScalingSize = New Size(25 * 界面控制.DPI, 25 * 界面控制.DPI)}
+    Public Shared Property 菜单项_打开链接 As New ToolStripMenuItem With {.Text = "打开链接", .Image = My.Resources.上传云}
+    Public Shared Property 菜单项_复制链接 As New ToolStripMenuItem With {.Text = "复制链接"}
+    Public Shared Property 菜单项_从此NEXUS链接更新 As New ToolStripMenuItem With {.Text = "从 NEXUS 更新", .Image = My.Resources.NEXUS}
+    Public Shared Property 菜单项_从此ModDrop链接更新 As New ToolStripMenuItem With {.Text = "从 ModDrop 更新", .Image = My.Resources.ModDrop_White32}
+    Public Shared Property 菜单项_从此GitHub链接更新 As New ToolStripMenuItem With {.Text = "从 GitHub 更新", .Image = My.Resources.Github}
 
-
+    Public Shared Sub 添加链接菜单的所有菜单项()
+        链接菜单.Items.Add(菜单项_打开链接)
+        链接菜单.Items.Add(菜单项_复制链接)
+        If DLC.DLC解锁标记.UpdateModItemExtension Then
+            链接菜单.Items.Add(New ToolStripSeparator)
+            链接菜单.Items.Add(菜单项_从此NEXUS链接更新)
+            链接菜单.Items.Add(菜单项_从此ModDrop链接更新)
+            链接菜单.Items.Add(菜单项_从此GitHub链接更新)
+        End If
+    End Sub
 
     Public Shared Sub 添加菜单的触发()
         添加分类和子库菜单的所有菜单项()
@@ -265,6 +275,7 @@ Public Class 管理模组的菜单
         添加项筛选菜单的所有菜单项()
         添加描述菜单的所有菜单项()
         添加预览图菜单的所有菜单项()
+        添加链接菜单的所有菜单项()
         AddHandler Form1.UiButton1.MouseDown, Sub(sender, e) 分类和子库菜单.Show(sender, New Point(sender.Width - 分类和子库菜单.Width, sender.Height))
         AddHandler Form1.UiButton2.MouseDown, Sub(sender, e) 项菜单.Show(sender, New Point(0, sender.Height))
         AddHandler Form1.ListView1.MouseDown, Sub(sender, e) If e.Button = MouseButtons.Right Then 分类右键菜单.Show(sender, e.X, e.Y)
@@ -274,8 +285,10 @@ Public Class 管理模组的菜单
         预览图菜单.DropShadowEnabled = False
         AddHandler Form1.UiButton13.MouseDown, Sub(sender, e) 预览图菜单.Show(sender, New Point(0, sender.Height))
         AddHandler Form1.UiButton14.MouseDown, Sub(sender, e) 预览图菜单.Show(sender, New Point(sender.Width - 预览图菜单.Width, 0 - 预览图菜单.Height))
-
-
+        AddHandler Form1.UiRichTextBox1.LinkClicked, Sub(sender, e)
+                                                         管理模组.点击的链接 = e.LinkText
+                                                         链接菜单.Show(Control.MousePosition)
+                                                     End Sub
     End Sub
 
     Public Shared Sub 设置字体()

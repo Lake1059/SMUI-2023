@@ -1,7 +1,9 @@
 ﻿Imports System.Drawing.Imaging
 Imports System.IO
+Imports System.Text.RegularExpressions
 Imports SMUI6.项信息读取类
 Imports Sunny.UI
+Imports Windows.System
 
 Public Class 管理模组
 
@@ -10,6 +12,8 @@ Public Class 管理模组
     Public Shared Property 实时模组项排序 As New List(Of String)
     Public Shared Property 实时模组项排序是否经过修改 As Boolean = False
     Public Shared Property 实时模组项列表内容归属的分类 As String = ""
+
+    Public Shared Property 点击的链接 As String = ""
 
 
     Public Shared Sub 初始化()
@@ -33,6 +37,11 @@ Public Class 管理模组
         AddHandler 管理模组的菜单.菜单项_导出数据子库.Click, AddressOf 导出数据子库
         AddHandler 管理模组的菜单.菜单项_导出分类.Click, AddressOf 导出分类
         AddHandler 管理模组的菜单.菜单项_导出项.Click, AddressOf 导出模组项
+
+        AddHandler 管理模组的菜单.菜单项_打开链接.Click, Async Sub() Await Launcher.LaunchUriAsync(New Uri(点击的链接))
+        AddHandler 管理模组的菜单.菜单项_复制链接.Click, Sub() Clipboard.SetText(点击的链接)
+        AddHandler 管理模组的菜单.菜单项_从此NEXUS链接更新.Click, AddressOf 从此NEXUS链接更新
+        AddHandler 管理模组的菜单.菜单项_从此ModDrop链接更新.Click, AddressOf 从此ModDrop链接更新
 
         AddHandler Form1.ListView1.KeyDown, Sub(sender, e) 分类列表键盘按下事件(sender, e)
         AddHandler Form1.ListView1.SelectedIndexChanged, Sub(sender, e) 扫描模组项()
@@ -833,6 +842,25 @@ Line1:
         显示窗体(Form导出, Form1)
     End Sub
 
+    Public Shared Sub 从此NEXUS链接更新()
+        Dim match As Match = Regex.Match(点击的链接, "mods/(\d+)")
+        If match.Success Then
+            更新模组.获取NEXUS文件列表(match.Groups(1).Value, Path.Combine(管理模组2.检查并返回当前所选子库路径(False), Form1.ListView2.SelectedItems(0).SubItems(3).Text, Form1.ListView2.SelectedItems(0).Text))
+        End If
+    End Sub
 
+    Public Shared Sub 从此ModDrop链接更新()
+        Dim match As Match = Regex.Match(点击的链接, "mods/(\d+)")
+        If match.Success Then
+            更新模组.转到浏览器等待ModDrop下载链接(match.Groups(1).Value, Path.Combine(管理模组2.检查并返回当前所选子库路径(False), Form1.ListView2.SelectedItems(0).SubItems(3).Text, Form1.ListView2.SelectedItems(0).Text))
+        End If
+    End Sub
+
+    Public Shared Sub 从此GitHub链接更新()
+        Dim match2 As Match = Regex.Match(点击的链接, "github\.com\/([^\/]+\/[^\/]+)")
+        If match2.Success Then
+            更新模组.获取Github文件列表(match2.Groups(1).Value, Path.Combine(管理模组2.检查并返回当前所选子库路径(False), Form1.ListView2.SelectedItems(0).SubItems(3).Text, Form1.ListView2.SelectedItems(0).Text))
+        End If
+    End Sub
 
 End Class

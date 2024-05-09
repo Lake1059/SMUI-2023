@@ -29,6 +29,7 @@ Public Class 界面控制
         Form1.UiRichTextBox1.LanguageOption = RichTextBoxLanguageOptions.UIFonts
         Form1.UiRichTextBox1.RightMargin = Form1.UiRichTextBox1.Width - 程序DPI_垂直滚动条宽度
 
+        AddHandler Form1.UiRichTextBox2.KeyDown, Sub(sender, e) If e.KeyData = Keys.Delete Then Form1.UiRichTextBox2.Clear()
 
         暗黑主题资源.初始化关于选项卡列表视图()
 

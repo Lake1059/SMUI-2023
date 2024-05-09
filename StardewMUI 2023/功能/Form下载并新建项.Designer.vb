@@ -234,6 +234,7 @@ Partial Class Form下载并新建项
         ' 
         ' UiButton3
         ' 
+        UiButton3.Enabled = False
         UiButton3.FillColor = Color.FromArgb(CByte(48), CByte(48), CByte(48))
         UiButton3.FillColor2 = Color.FromArgb(CByte(48), CByte(48), CByte(48))
         UiButton3.FillDisableColor = Color.FromArgb(CByte(48), CByte(48), CByte(48))

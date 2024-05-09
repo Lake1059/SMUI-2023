@@ -75,11 +75,16 @@ Public Class 更新模组
             AddHandler a.Items.Add(管理模组.当前项信息_Github仓库列表(i), My.Resources.Github).Click, Async Sub(s, e) Await Launcher.LaunchUriAsync(New Uri("https://github.com/" & s.Text))
             Dim s2 As String = 管理模组.当前项信息_Github仓库列表(i)
             AddHandler a.Items.Add("复制链接").Click, Sub(s, e) Clipboard.SetText("https://github.com/" & s2)
-            AddHandler a.Items.Add("从 GitHub 更新", My.Resources.Github).Click, Sub(s, e) Return
+            AddHandler a.Items.Add("从 GitHub 更新", My.Resources.Github).Click, Sub(s, e) 获取Github文件列表(s2, Path.Combine(管理模组2.检查并返回当前所选子库路径(False), Form1.ListView2.SelectedItems(0).SubItems(3).Text, Form1.ListView2.SelectedItems(0).Text))
         Next
         If DLC.DLC解锁标记.CustomInputExtension Then
             If a.Items.Count <> 0 Then a.Items.Add(New ToolStripSeparator)
-            AddHandler a.Items.Add("自由输入 GitHub 仓库名", My.Resources.Github).Click, Sub(s, e) Return
+            AddHandler a.Items.Add("自由输入 GitHub 仓库名", My.Resources.Github).Click, Sub(s, e)
+                                                                                      Dim d1 As New 输入对话框("DLC1", "输入你要访问的 GitHub 仓库名，格式：用户名/仓库名")
+                                                                                      d1.TranslateButtonText("确定", "取消")
+                                                                                      Dim d1r As String = d1.ShowDialog(Form1)
+                                                                                      If d1r <> "" Then 获取Github文件列表(d1r, Path.Combine(管理模组2.检查并返回当前所选子库路径(False), Form1.ListView2.SelectedItems(0).SubItems(3).Text, Form1.ListView2.SelectedItems(0).Text))
+                                                                                  End Sub
         End If
 
         If a.Items.Count = 0 Then
@@ -149,8 +154,15 @@ Public Class 更新模组
     End Sub
 
     Public Shared Sub 生成NEXUS单个文件信息(Data As FileListDataOne, 模组项绝对路径 As String)
-        Dim 独立容器 As New Panel With {.Dock = DockStyle.Top, .Padding = New Padding(30, 5, 30, 5), .Height = 100}
+        Dim 独立容器 As New Panel With {.Dock = DockStyle.Top, .Padding = New Padding(30, 10, 30, 7), .Height = 107}
         Dim 标题文字 As New LinkLabel With {.AutoSize = False, .Dock = DockStyle.Top, .Height = 26, .TextAlign = ContentAlignment.TopLeft, .Font = New Font(Form1.Font.Name, 12), .LinkColor = If(设置.全局设置数据("DownloadFileUseSMUI5Color") = True, Color1.绿色, Color1.蓝色), .LinkBehavior = LinkBehavior.HoverUnderline, .Text = Data.name}
+        If DLC.DLC解锁标记.UpdateModItemExtension Then
+            If FileIO.FileSystem.FileExists(Path.Combine(模组项绝对路径, "NexusFileName")) Then
+                If Data.name = FileIO.FileSystem.ReadAllText(Path.Combine(模组项绝对路径, "NexusFileName")) Then
+                    独立容器.BackColor = ColorTranslator.FromWin32(RGB(48, 48, 48))
+                End If
+            End If
+        End If
         Select Case Data.category_name.ToLower.Trim
             Case "main"
                 标题文字.Text = "[ 主要文件 ] " & 标题文字.Text
@@ -178,6 +190,7 @@ Public Class 更新模组
         Form1.Panel34.Controls.Add(独立容器)
         独立容器.BringToFront()
         AddHandler 标题文字.LinkClicked, Sub(sender, e)
+                                         If DLC.DLC解锁标记.UpdateModItemExtension Then FileIO.FileSystem.WriteAllText(Path.Combine(模组项绝对路径, "NexusFileName"), Data.name, False)
                                          If 设置.全局设置数据("NexusPremium") = "False" Then
                                              转到浏览器获取额外参数(正在处理的NEXUSID, Data.file_id, 模组项绝对路径)
                                          Else
@@ -294,6 +307,40 @@ Public Class 更新模组
         Form1.Panel37.Controls.Add(DW)
         DW.BringToFront()
         DW.开始解压()
+    End Sub
+
+    Public Shared Async Sub 获取Github文件列表(仓库作者和名称 As String, 模组项绝对路径 As String)
+        转到下载文件页面()
+        是否取消操作 = False
+        Form1.Label34.Text = "   正在连接到 GitHub 获取发行版 ..."
+        Form1.Panel34.Controls.Clear()
+        Form1.Panel34.Enabled = True
+        Dim a As New GitAPI.Release
+        Dim str1 As String = Await Task.Run(Function() a.获取仓库发布版信息(GitAPI.GitApiObject.开源代码平台.GitHub, 仓库作者和名称))
+        Form1.Label34.Text = "   " & If(FileIO.FileSystem.FileExists(Path.Combine(模组项绝对路径, "Code2")), "更新到模组项：", "创建新模组项：") & Path.GetFileName(模组项绝对路径)
+        If str1 <> "" Then
+            Dim L1 As New Label With {.AutoSize = False, .Padding = New Padding(10), .Dock = DockStyle.Fill, .Text = str1}
+            Form1.Panel34.Controls.Add(L1)
+            Form1.Label34.Text = "   获取失败"
+            Exit Sub
+        End If
+        Dim 标题文字 As New LinkLabel With {.AutoSize = False, .Dock = DockStyle.Top, .Height = 50, .TextAlign = ContentAlignment.TopLeft, .Font = New Font(Form1.Font.Name, 18), .LinkColor = Form1.ForeColor, .LinkBehavior = LinkBehavior.HoverUnderline, .Text = a.版本标签 & " - " & a.发布标题}
+        AddHandler 标题文字.LinkClicked, Async Sub() Await Launcher.LaunchUriAsync(New Uri("https://github.com/" & 仓库作者和名称 & "/releases/tag/" & a.版本标签))
+
+        Dim 描述文字 As New Label With {.AutoSize = False, .Dock = DockStyle.Top, .Height = 150, .AutoEllipsis = True, .TextAlign = ContentAlignment.TopLeft, .Padding = New Padding(0, 0, 0, 20), .Font = New Font(Form1.Font.Name, 10), .ForeColor = Color.Gray, .Text = a.发布描述}
+        Form1.Panel34.Controls.Add(标题文字)
+        Form1.Panel34.Controls.Add(描述文字)
+        描述文字.BringToFront()
+
+        For i = 0 To a.可供下载的文件.Count - 1
+            Dim 发行版文件文字 As New LinkLabel With {.AutoSize = False, .Dock = DockStyle.Top, .Height = 40, .TextAlign = ContentAlignment.MiddleLeft, .Font = New Font(Form1.Font.Name, 12), .LinkColor = If(设置.全局设置数据("DownloadFileUseSMUI5Color") = True, Color1.橙色, Color1.绿色), .LinkBehavior = LinkBehavior.HoverUnderline, .Text = a.可供下载的文件(i).Key}
+            Form1.Panel34.Controls.Add(发行版文件文字)
+            发行版文件文字.BringToFront()
+            Dim b As String = a.可供下载的文件(i).Value
+            AddHandler 发行版文件文字.LinkClicked, Sub(sender, e)
+                                                添加到下载队列(b, 模组项绝对路径, "git")
+                                            End Sub
+        Next
     End Sub
 
 End Class
