@@ -93,24 +93,12 @@ Public Class 状态信息
                 Dim b1 = Process.GetCurrentProcess().WorkingSet64 / 1024 / 1024
                 Dim b2 = Process.GetCurrentProcess().PrivateMemorySize64 / 1024 / 1024
 
-                If 设置.全局设置数据("UseWhichBrowser") = "Edge" Then
-                    Dim EdgeProcess() As Process = Process.GetProcessesByName("msedgewebview2")
-                    If EdgeProcess.Length > 0 Then
-                        For Each proc As Process In EdgeProcess
-                            b1 += proc.WorkingSet64 / 1024 / 1024
-                            b2 += proc.PrivateMemorySize64 / 1024 / 1024
-                        Next
-                    End If
-                ElseIf 设置.全局设置数据("UseWhichBrowser") = "CEF" Then
-                    Dim CEFProcess() As Process = Process.GetProcessesByName("CefSharp.BrowserSubprocess")
-                    If CEFProcess.Length > 0 Then
-                        For Each proc As Process In CEFProcess
-                            If proc.MainModule.FileName = Path.Combine(Application.StartupPath, "CefSharp.BrowserSubprocess.exe") Then
-                                b1 += proc.WorkingSet64 / 1024 / 1024
-                                b2 += proc.PrivateMemorySize64 / 1024 / 1024
-                            End If
-                        Next
-                    End If
+                Dim EdgeProcess() As Process = Process.GetProcessesByName("msedgewebview2")
+                If EdgeProcess.Length > 0 Then
+                    For Each proc As Process In EdgeProcess
+                        b1 += proc.WorkingSet64 / 1024 / 1024
+                        b2 += proc.PrivateMemorySize64 / 1024 / 1024
+                    Next
                 End If
 
                 Form1.UiListBox1.Items(4) &= $" - 总物理 {Math.Truncate(b1)} MB"

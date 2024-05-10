@@ -12,12 +12,16 @@ Public Class 浏览器WebView2控制
     Public Shared Property 上一次获取到的地址 As String = ""
     Public Shared Property 计算额外参数计时器 As New Timer With {.Interval = 1000, .Enabled = False}
 
-    Public Shared Sub 初始化浏览器控件()
+    Public Shared Async Sub 初始化浏览器控件()
         Form1.Label15.Dispose()
         界面控制.WebView2浏览器控件 = New WebView2 With {.Dock = DockStyle.Fill}
         Form1.TabPage浏览器.Controls.Add(界面控制.WebView2浏览器控件)
         界面控制.WebView2浏览器控件.BringToFront()
-        界面控制.WebView2浏览器控件.EnsureCoreWebView2Async()
+        Dim env As CoreWebView2Environment
+        env = Await CoreWebView2Environment.CreateAsync(If(设置.全局设置数据("UseStandaloneWebView2") = "True", 设置.全局设置数据("WebView2StandalonePath"), Nothing), "UserData\WebView2Cache\", If(设置.全局设置数据("AdditionalBuiltinParameters") = "True", New CoreWebView2EnvironmentOptions With {.AdditionalBrowserArguments = "--enable-gpu --enable-features=PlatformHEVCDecoderSupport"}, Nothing))
+#Disable Warning BC42358 ' 由于此调用不会等待，因此在调用完成前将继续执行当前方法
+        界面控制.WebView2浏览器控件.EnsureCoreWebView2Async(env)
+#Enable Warning BC42358 ' 由于此调用不会等待，因此在调用完成前将继续执行当前方法
 
         AddHandler 界面控制.WebView2浏览器控件.NavigationCompleted, AddressOf Edge_NavigationCompleted
         AddHandler 界面控制.WebView2浏览器控件.SourceChanged, AddressOf Edge_SourceChanged

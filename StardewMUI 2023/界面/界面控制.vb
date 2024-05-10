@@ -1,6 +1,5 @@
-﻿Imports System.Reflection
+﻿
 Imports System.Runtime.InteropServices
-Imports CefSharp.WinForms
 Imports Microsoft.Web.WebView2.WinForms
 Imports Sunny.UI
 
@@ -9,17 +8,17 @@ Public Class 界面控制
     Public Shared Property X轴DPI比率 As Single = 1
     Public Shared Property Y轴DPI比率 As Single = 1
     Public Shared Property 程序DPI_垂直滚动条宽度 As Integer = GetScrollBarWidth()
-    Public Shared Property CEF浏览器控件 As ChromiumWebBrowser
+    'Public Shared Property CEF浏览器控件 As ChromiumWebBrowser
     Public Shared Property WebView2浏览器控件 As WebView2
 
     Public Shared Sub 初始化界面()
-        If 设置.全局设置数据("UseWhichBrowser") = "Edge" Then
-            浏览器WebView2控制.初始化功能()
-            AddHandler Form1.Label42.DragEnter, Sub(s, e) 浏览器WebView2控制.ModDrop文本DragEnter(s, e)
-            AddHandler Form1.Label42.DragDrop, Sub(s, e) 浏览器WebView2控制.ModDrop文本DragDrop(s, e)
-        Else
-            浏览器CEF控制.初始化功能()
-        End If
+        'If 设置.全局设置数据("UseWhichBrowser") = "Edge" Then
+        浏览器WebView2控制.初始化功能()
+        AddHandler Form1.Label42.DragEnter, Sub(s, e) 浏览器WebView2控制.ModDrop文本DragEnter(s, e)
+        AddHandler Form1.Label42.DragDrop, Sub(s, e) 浏览器WebView2控制.ModDrop文本DragDrop(s, e)
+        'Else
+        '    浏览器CEF控制.初始化功能()
+        'End If
 
         Form1.UiRichTextBox4.Rtf = My.Resources.用户许可协议
         Form1.UiRichTextBox3.Rtf = My.Resources.更新记录
@@ -88,9 +87,6 @@ Public Class 界面控制
         配置队列的菜单.添加菜单的触发()
         AddHandler Form1.UiButton45.Click, AddressOf 状态信息.启动SMAPI
         AddHandler Form1.UiButton48.Click, Sub() 新闻列表.获取新闻(True)
-
-
-        AddHandler Form1.UiButton42.Click, Sub() 显示窗体(Form离线教程, Form1)
         AddHandler Form1.UiRichTextBox4.LinkClicked, AddressOf 许可协议签署执行
         主界面高DPI兼容()
 

@@ -200,27 +200,25 @@ Public Class 更新模组
     End Sub
 
     Public Shared Sub 转到浏览器获取额外参数(模组ID As String, 文件ID As String, 模组项绝对路径 As String)
-        If 设置.全局设置数据("UseWhichBrowser") = "Edge" Then
-            浏览器WebView2控制.是否要获取HTML来进行NEXUSAPI更新 = True
-            浏览器同步数据.用于更新模组项的模组项绝对路径 = 模组项绝对路径
-            浏览器同步数据.用于更新模组项的NEXUS模组ID = 模组ID
-            浏览器同步数据.用于更新模组项的NEXUS文件ID = 文件ID
-            Form1.UiButton70.Visible = True
-            Form1.Label42.Visible = True
-            Form1.Label42.ForeColor = Color1.橙色
-            Form1.Label42.Text = "正在进行 NEXUS 非会员获取额外参数流程
+
+        浏览器WebView2控制.是否要获取HTML来进行NEXUSAPI更新 = True
+        浏览器同步数据.用于更新模组项的模组项绝对路径 = 模组项绝对路径
+        浏览器同步数据.用于更新模组项的NEXUS模组ID = 模组ID
+        浏览器同步数据.用于更新模组项的NEXUS文件ID = 文件ID
+        Form1.UiButton70.Visible = True
+        Form1.Label42.Visible = True
+        Form1.Label42.ForeColor = Color1.橙色
+        Form1.Label42.Text = "正在进行 NEXUS 非会员获取额外参数流程
 请勿点击下载按钮！不要点下载！！！并确保打开的网页中是已登录状态
 参数获取程序会一直运行，直到成功拿到参数或者手动点击右上角的取消"
-            Form1.UiTextBox5.Text = "https://www.nexusmods.com/stardewvalley/mods/" & 模组ID & "?tab=files&file_id=" & 文件ID & "&nmm=1"
-            If 界面控制.WebView2浏览器控件 Is Nothing Then
-                浏览器WebView2控制.初始化浏览器控件()
-            Else
-                界面控制.WebView2浏览器控件.CoreWebView2.Navigate(Form1.UiTextBox5.Text)
-            End If
-            Form1.UiTabControl1.SelectedTab = Form1.TabPage浏览器
+        Form1.UiTextBox5.Text = "https://www.nexusmods.com/stardewvalley/mods/" & 模组ID & "?tab=files&file_id=" & 文件ID & "&nmm=1"
+        If 界面控制.WebView2浏览器控件 Is Nothing Then
+            浏览器WebView2控制.初始化浏览器控件()
         Else
-
+            界面控制.WebView2浏览器控件.CoreWebView2.Navigate(Form1.UiTextBox5.Text)
         End If
+        Form1.UiTabControl1.SelectedTab = Form1.TabPage浏览器
+
     End Sub
 
     Public Shared Async Sub 获取服务器列表(模组ID As String, 文件ID As String, 模组项绝对路径 As String, Optional key As String = "", Optional expires As String = "")
@@ -272,27 +270,22 @@ Public Class 更新模组
     End Sub
 
     Public Shared Sub 转到浏览器等待ModDrop下载链接(模组ID As String, 模组项绝对路径 As String)
-        If 设置.全局设置数据("UseWhichBrowser") = "Edge" Then
-            浏览器WebView2控制.是否要等待ModDrop发起下载文件 = True
-            浏览器同步数据.用于更新模组项的模组项绝对路径 = 模组项绝对路径
-            浏览器同步数据.用于更新模组项的NEXUS模组ID = 模组ID
-            Form1.UiButton70.Visible = True
-            Form1.Label42.Visible = True
-            Form1.Label42.ForeColor = Color1.蓝色
-            Form1.Label42.Text = "正在进行从 ModDrop 下载更新流程，下载操作由 Edge 浏览器处理
+        浏览器WebView2控制.是否要等待ModDrop发起下载文件 = True
+        浏览器同步数据.用于更新模组项的模组项绝对路径 = 模组项绝对路径
+        浏览器同步数据.用于更新模组项的NEXUS模组ID = 模组ID
+        Form1.UiButton70.Visible = True
+        Form1.Label42.Visible = True
+        Form1.Label42.ForeColor = Color1.蓝色
+        Form1.Label42.Text = "正在进行从 ModDrop 下载更新流程，下载操作由 Edge 浏览器处理
 请在网页上发起下载并等待下载完成，然后把文件从浏览器下载 UI 拖到这个区域来继续下一步
 此状态会一直保持，直到文件被拖入或者手动点击右上角的取消"
-            Form1.UiTextBox5.Text = "https://www.moddrop.com/stardew-valley/mods/" & 模组ID
-            If 界面控制.WebView2浏览器控件 Is Nothing Then
-                浏览器WebView2控制.初始化浏览器控件()
-            Else
-                界面控制.WebView2浏览器控件.CoreWebView2.Navigate(Form1.UiTextBox5.Text)
-            End If
-            Form1.UiTabControl1.SelectedTab = Form1.TabPage浏览器
+        Form1.UiTextBox5.Text = "https://www.moddrop.com/stardew-valley/mods/" & 模组ID
+        If 界面控制.WebView2浏览器控件 Is Nothing Then
+            浏览器WebView2控制.初始化浏览器控件()
         Else
-            Dim m1 As New 多项单选对话框("此功能不支持 CEF 浏览器", {"确定"}, "从 ModDrop 直接更新模组项功能尚不支持使用 CEF 浏览器组件，请在设置中切换用 Edge 并重启。不会优先开发此功能", 100, 500)
-            m1.ShowDialog(Form1)
+            界面控制.WebView2浏览器控件.CoreWebView2.Navigate(Form1.UiTextBox5.Text)
         End If
+        Form1.UiTabControl1.SelectedTab = Form1.TabPage浏览器
     End Sub
 
     Public Shared Sub 添加ModDrop解压环节到下载队列(模组项绝对路径 As String, 下载的文件 As String)

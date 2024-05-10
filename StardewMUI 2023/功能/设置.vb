@@ -5,6 +5,7 @@ Imports System.Reflection
 Imports System.Text
 Imports System.Xml
 Imports Sunny.UI
+Imports Windows.System
 
 Public Class 设置
 
@@ -47,25 +48,24 @@ Public Class 设置
 
         AddHandler Form1.UiButton33.Click, AddressOf 检测NEXUS密钥是否可用
         AddHandler Form1.UiButton39.Click, AddressOf 切换密钥密文显示
-        AddHandler Form1.UiButton58.Click, Sub() ShellExecute(IntPtr.Zero, "open", "https://www.nexusmods.com/users/myaccount?tab=api", Nothing, Nothing, 1)
+        AddHandler Form1.UiButton58.Click, Async Sub(s, e) Await Launcher.LaunchUriAsync(New Uri("https://www.nexusmods.com/users/myaccount?tab=api"))
         AddHandler Form1.UiButton59.Click, AddressOf 去内置浏览器管理密钥
         AddHandler Form1.UiButton55.Click, AddressOf 让非N网会员去内置浏览器登录
-        AddHandler Form1.UiButton56.Click, Sub() ShellExecute(IntPtr.Zero, "open", "https://gitee.com/profile/personal_access_tokens", Nothing, Nothing, 1)
-        AddHandler Form1.UiButton57.Click, Sub() ShellExecute(IntPtr.Zero, "open", "https://github.com/settings/tokens", Nothing, Nothing, 1)
+        AddHandler Form1.UiButton56.Click, Async Sub(s, e) Await Launcher.LaunchUriAsync(New Uri("https://gitee.com/profile/personal_access_tokens"))
+        AddHandler Form1.UiButton57.Click, Async Sub(s, e) Await Launcher.LaunchUriAsync(New Uri("https://github.com/settings/tokens"))
 
         AddHandler Form1.UiButton60.Click, AddressOf 清理空间.刷新存储信息
         AddHandler Form1.UiButton62.Click, AddressOf 清理空间.清理选中项
-        AddHandler Form1.UiButton61.Click, AddressOf 清理空间.删除谷歌浏览器全部缓存
         AddHandler Form1.UiButton67.Click, AddressOf 清理空间.计算模组数据库总数据大小
 
 
         AddHandler Form1.UiSwitch2.ActiveChanged, AddressOf 控制进程监控功能开关
         AddHandler Form1.UiSwitch3.ActiveChanged, AddressOf 控制性能监控功能开关
 
-        AddHandler Form1.UiRadioButton7.Click, Sub() 全局设置数据("UseWhichBrowser") = "Edge"
-        AddHandler Form1.UiRadioButton8.Click, Sub() 全局设置数据("UseWhichBrowser") = "CEF"
+        AddHandler Form1.UiButton72.Click, Async Sub(s, e) Await Launcher.LaunchUriAsync(New Uri("https://developer.microsoft.com/zh-cn/microsoft-edge/webview2"))
 
-
+        AddHandler Form1.UiButton61.Click, AddressOf 保存WebView2设置
+        AddHandler Form1.UiButton71.Click, AddressOf 选择WebView2独立运行时路径
 
     End Sub
 
@@ -155,7 +155,7 @@ Public Class 设置
 
     Public Shared ReadOnly DLC文件夹路径 As String = Application.StartupPath & "\UserData\DLC"
     Public Shared ReadOnly 插件文件夹路径 As String = Application.StartupPath & "\UserData\Plugin"
-    Public Shared ReadOnly 浏览器缓存路径 As String = Application.StartupPath & "\UserData\WebCache"
+    Public Shared ReadOnly 浏览器缓存路径 As String = Application.StartupPath & "\UserData\WebView2Cache"
     Public Shared ReadOnly 自定义语言包路径 As String = Application.StartupPath & "\UserData\Language"
 
     Public Shared Function 检查并返回数据库下载文件夹路径() As String
@@ -233,15 +233,16 @@ Public Class 设置
 
         Form1.UiSwitch2.Active = 全局设置数据("ProcessMonitor")
         Form1.UiSwitch3.Active = 全局设置数据("PerformanceMonitor")
-        Select Case 全局设置数据("UseWhichBrowser")
-            Case "Edge"
+        Select Case 全局设置数据("UseStandaloneWebView2")
+            Case "False"
                 Form1.UiRadioButton7.Checked = True
                 Form1.UiRadioButton8.Checked = False
             Case Else
                 Form1.UiRadioButton7.Checked = False
                 Form1.UiRadioButton8.Checked = True
         End Select
-
+        Form1.暗黑文本框10.Text = 全局设置数据("WebView2StandalonePath")
+        Form1.UiCheckBox18.Checked = 全局设置数据("AdditionalBuiltinParameters")
 
     End Sub
 
@@ -329,6 +330,18 @@ Public Class 设置
         全局设置数据("UploadCDiskCapacity") = Form1.UiCheckBox15.Checked
         全局设置数据("UploadGPU") = Form1.UiCheckBox12.Checked
         全局设置数据("UploadScreen") = Form1.UiCheckBox13.Checked
+        UIMessageTip.Show("更改已写入内存，正常退出时写入文件",, 2500)
+    End Sub
+
+    Public Shared Sub 保存WebView2设置()
+        If Form1.UiRadioButton7.Checked Then
+            全局设置数据("UseStandaloneWebView2") = "False"
+        Else
+            全局设置数据("UseStandaloneWebView2") = "True"
+        End If
+        If Right(Form1.暗黑文本框10.Text, 1) <> "\" Then Form1.暗黑文本框10.Text &= "\"
+        全局设置数据("WebView2StandalonePath") = Form1.暗黑文本框10.Text
+        全局设置数据("AdditionalBuiltinParameters") = Form1.UiCheckBox17.Checked
         UIMessageTip.Show("更改已写入内存，正常退出时写入文件",, 2500)
     End Sub
 
@@ -538,7 +551,13 @@ R1:
         全局设置数据("PerformanceMonitor") = Form1.UiSwitch3.Active
     End Sub
 
-
+    Public Shared Sub 选择WebView2独立运行时路径()
+        Dim str1 As String = ""
+        If DirEx.SelectDirEx("包含 msedgewebview2.exe 的文件夹", str1) Then
+            If Right(str1, 1) <> "\" Then str1 &= "\"
+            Form1.暗黑文本框10.Text = str1
+        End If
+    End Sub
 
 
 

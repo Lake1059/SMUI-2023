@@ -495,6 +495,12 @@ Line1:
 
     Public Shared Sub 模组项列表键盘按下事件(sender As Object, e As KeyEventArgs)
         Select Case e.KeyCode
+            Case Keys.F5
+                管理模组的菜单.菜单项_安装.PerformClick()
+            Case Keys.F6
+                管理模组的菜单.菜单项_卸载.PerformClick()
+            Case Keys.F2
+                管理模组的菜单.菜单项_重命名项.PerformClick()
             Case Keys.F3
                 上移选中的模组项()
             Case Keys.F4
