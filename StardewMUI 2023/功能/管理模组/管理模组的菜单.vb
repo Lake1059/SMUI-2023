@@ -66,8 +66,8 @@ Public Class 管理模组的菜单
     End Sub
 
     Public Shared Property 分类右键菜单 As New 暗黑菜单条控件本体 With {.ImageScalingSize = New Size(25 * 界面控制.DPI, 25 * 界面控制.DPI)}
-    Public Shared Property 菜单项_打开分类的文件夹 As New ToolStripMenuItem With {.Text = "文件夹", .Image = My.Resources.文件夹}
-    Public Shared Property 菜单项_重命名分类 As New ToolStripMenuItem With {.Text = "重命名"}
+    Public Shared Property 菜单项_打开分类的文件夹 As New ToolStripMenuItem With {.Text = "文件夹（F1）", .Image = My.Resources.文件夹}
+    Public Shared Property 菜单项_重命名分类 As New ToolStripMenuItem With {.Text = "重命名（F2）"}
 
     Public Shared Property 菜单项_分类上下移动菜单 As New ToolStripMenuItem With {.Text = "排序", .Image = My.Resources.移动}
     Public Shared Property 分类上下移动菜单 As New 暗黑菜单条控件本体 With {.ImageScalingSize = New Size(25 * 界面控制.DPI, 25 * 界面控制.DPI)}
@@ -138,14 +138,14 @@ Public Class 管理模组的菜单
     End Sub
 
     Public Shared Property 项右键菜单 As New 暗黑菜单条控件本体 With {.ImageScalingSize = New Size(25 * 界面控制.DPI, 25 * 界面控制.DPI)}
-    Public Shared Property 菜单项_安装 As New ToolStripMenuItem With {.Text = "安装", .Image = My.Resources.下载, .ShortcutKeys = Keys.F5}
-    Public Shared Property 菜单项_卸载 As New ToolStripMenuItem With {.Text = "卸载", .Image = My.Resources.上传, .ShortcutKeys = Keys.F6}
+    Public Shared Property 菜单项_安装 As New ToolStripMenuItem With {.Text = "安装（F5）", .Image = My.Resources.下载, .ShortcutKeys = Keys.F5}
+    Public Shared Property 菜单项_卸载 As New ToolStripMenuItem With {.Text = "卸载（F6）", .Image = My.Resources.上传, .ShortcutKeys = Keys.F6}
     Public Shared Property 菜单项_配置项 As New ToolStripMenuItem With {.Text = "配置项", .Image = My.Resources.试验}
-    Public Shared Property 菜单项_打开项的文件夹 As New ToolStripMenuItem With {.Text = "文件夹", .Image = My.Resources.文件夹, .ShortcutKeys = Keys.F1}
+    Public Shared Property 菜单项_打开项的文件夹 As New ToolStripMenuItem With {.Text = "文件夹（F1）", .Image = My.Resources.文件夹}
     Public Shared Property 菜单项_编辑项 As New ToolStripMenuItem With {.Text = "编辑"}
 
     Public Shared Property 编辑项功能菜单 As New 暗黑菜单条控件本体 With {.ImageScalingSize = New Size(25 * 界面控制.DPI, 25 * 界面控制.DPI)}
-    Public Shared Property 菜单项_重命名项 As New ToolStripMenuItem With {.Text = "重命名", .ShortcutKeys = Keys.F2}
+    Public Shared Property 菜单项_重命名项 As New ToolStripMenuItem With {.Text = "重命名（F2）"}
     Public Shared Property 菜单项_用VSC打开 As New ToolStripMenuItem With {.Text = "用 Visual Studio Code 打开", .Image = My.Resources.代码文件夹}
     Public Shared Property 菜单项_用VS打开 As New ToolStripMenuItem With {.Text = "用 Visual Studio 打开", .Image = My.Resources.代码文件夹}
     Public Shared Property 菜单项_编辑项_清除Config缓存 As New ToolStripMenuItem With {.Text = "清除 Config 缓存", .Image = My.Resources.删除}

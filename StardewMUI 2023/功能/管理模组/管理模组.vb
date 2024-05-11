@@ -4,6 +4,8 @@ Imports System.Text.RegularExpressions
 Imports SMUI6.项信息读取类
 Imports Sunny.UI
 Imports Windows.System
+Imports System.Windows.Forms.Control
+
 
 Public Class 管理模组
 
@@ -54,6 +56,8 @@ Public Class 管理模组
 
         AddHandler Form1.UiButton7.Click, AddressOf 显示依赖项表
         AddHandler Form1.UiButton6.MouseDown, AddressOf 显示更新地址表
+        AddHandler Form1.UiButton8.MouseDown, AddressOf 显示UniqueID表
+        AddHandler Form1.UiButton9.MouseDown, AddressOf 显示作者表
 
         AddHandler 管理模组的菜单.菜单项_打开分类的文件夹.Click, AddressOf 打开分类文件夹
         AddHandler 管理模组的菜单.菜单项_用VSC打开.Click, AddressOf 用VSC打开
@@ -255,6 +259,10 @@ Line1:
                 上移选中的分类()
             Case Keys.F4
                 下移选中的分类()
+            Case Keys.F2
+                管理模组的菜单.菜单项_重命名分类.PerformClick()
+            Case Keys.F1
+                管理模组的菜单.菜单项_打开分类的文件夹.PerformClick()
         End Select
     End Sub
 
@@ -499,6 +507,8 @@ Line1:
                 管理模组的菜单.菜单项_安装.PerformClick()
             Case Keys.F6
                 管理模组的菜单.菜单项_卸载.PerformClick()
+            Case Keys.F10
+                管理模组的菜单.菜单项_打开项的文件夹.PerformClick()
             Case Keys.F2
                 管理模组的菜单.菜单项_重命名项.PerformClick()
             Case Keys.F3
@@ -610,40 +620,40 @@ Line1:
         当前项信息_Github仓库列表 = a.GitHub
         当前项信息_ModDropID列表 = a.ModDrop
         If a.NexusID.Count > 0 And a.ModDrop.Count > 0 Then
-            Form1.UiButton6.Text = " NEXUS: " & a.NexusID(0) & "  ModDrop"
+            Form1.UiButton6.Text = "   NEXUS: " & a.NexusID(0) & "  ModDrop"
         ElseIf a.NexusID.Count > 0 Then
-            Form1.UiButton6.Text = " NEXUS: " & a.NexusID(0)
+            Form1.UiButton6.Text = "   NEXUS: " & a.NexusID(0)
         ElseIf a.ModDrop.Count > 0 Then
-            Form1.UiButton6.Text = " ModDrop: " & a.ModDrop(0)
+            Form1.UiButton6.Text = "   ModDrop: " & a.ModDrop(0)
         ElseIf a.GitHub.Count > 0 Then
-            Form1.UiButton6.Text = " GitHub"
+            Form1.UiButton6.Text = "   GitHub"
         Else
-            Form1.UiButton6.Text = " No Update Keys"
+            Form1.UiButton6.Text = "   无更新键"
         End If
         当前项信息_内容包列表 = a.内容包依赖
         当前项信息_依赖项列表 = a.其他依赖项
         If a.内容包依赖.Count + a.其他依赖项.Count > 0 Then
-            Form1.UiButton7.Text = " Requirements: C" & a.内容包依赖.Count & " + R" & a.其他依赖项.Count
+            Form1.UiButton7.Text = "   依赖项：C" & a.内容包依赖.Count & " + R" & a.其他依赖项.Count
         Else
-            Form1.UiButton7.Text = " No Requirements"
+            Form1.UiButton7.Text = "   没有依赖项"
         End If
         当前项信息_UniqueID列表 = a.UniqueID
         Select Case a.UniqueID.Count
             Case > 1
-                Form1.UiButton8.Text = " [" & a.UniqueID.Count & "] UniqueID: " & a.UniqueID(0)
+                Form1.UiButton8.Text = "   [" & a.UniqueID.Count & "] UniqueID：" & a.UniqueID(0)
             Case 1
-                Form1.UiButton8.Text = " UniqueID: " & a.UniqueID(0)
+                Form1.UiButton8.Text = "   UniqueID：" & a.UniqueID(0)
             Case 0
-                Form1.UiButton8.Text = " No UniqueID"
+                Form1.UiButton8.Text = "   无 UniqueID"
         End Select
         当前项信息_作者列表 = a.作者
         Select Case a.作者.Count
             Case > 1
-                Form1.UiButton9.Text = 在指定的宽度内显示文本(Form1.UiButton9.Width, " [" & a.作者.Count & "] " & a.作者(0), Form1.UiButton9.Font)
+                Form1.UiButton9.Text = 在指定的宽度内显示文本(Form1.UiButton9.Width, "   [" & a.作者.Count & "] " & a.作者(0), Form1.UiButton9.Font)
             Case 1
-                Form1.UiButton9.Text = 在指定的宽度内显示文本(Form1.UiButton9.Width, " Author: " & a.作者(0), Form1.UiButton9.Font)
+                Form1.UiButton9.Text = 在指定的宽度内显示文本(Form1.UiButton9.Width, "   作者：" & a.作者(0), Form1.UiButton9.Font)
             Case 0
-                Form1.UiButton9.Text = " No Author"
+                Form1.UiButton9.Text = "   无作者信息"
         End Select
         If a.版本.Count > 0 And a.已安装版本.Count > 0 Then
             If 共享方法.CompareVersion(a.版本(0), a.已安装版本(0)) <> 0 Then
@@ -755,6 +765,97 @@ Line1:
         Form1.ToolTip1.SetToolTip(Form1.PictureBox1, 当前正在显示的预览图索引 + 1 & "/" & 当前项信息_预览图文件表.Count)
     End Sub
 
+
+    Public Shared Function 生成UniqueID菜单() As 暗黑菜单条控件本体
+        Dim a As New 暗黑菜单条控件本体
+        If Form1.ListView2.SelectedItems.Count <> 1 Then
+            Return a
+            Exit Function
+        End If
+        a.ImageScalingSize = New Size(25, 25)
+        a.DropShadowEnabled = False
+        a.ShowCheckMargin = False
+        a.BackColor = SystemColors.Control
+        a.Font = Form1.Font
+
+        For i = 0 To 当前项信息_UniqueID列表.Count - 1
+            Dim x As New ToolStripMenuItem With {
+                .Image = My.Resources.SMAPI,
+                .Text = 当前项信息_UniqueID列表(i)
+            }
+            a.Items.Add(x)
+            AddHandler x.Click,
+                Sub(s, e)
+                    Clipboard.SetText(s.Text)
+                End Sub
+        Next
+        If 当前项信息_UniqueID列表.Count > 1 Then
+            Dim x As New ToolStripMenuItem With {
+              .Image = My.Resources.试验,
+              .Text = "复制全部到一行并竖线隔开"
+                 }
+            a.Items.Add(x)
+            AddHandler x.Click,
+                Sub(s, e)
+                    Dim str1 As String = ""
+                    For i = 0 To 当前项信息_UniqueID列表.Count - 1
+                        If str1 = "" Then
+                            str1 = 当前项信息_UniqueID列表(i)
+                        Else
+                            str1 &= "|" & 当前项信息_UniqueID列表(i)
+                        End If
+                    Next
+                    Clipboard.SetText(str1)
+                End Sub
+        End If
+        Return a
+    End Function
+
+    Public Shared Function 生成作者列表菜单() As 暗黑菜单条控件本体
+        Dim a As New 暗黑菜单条控件本体
+        If Form1.ListView2.SelectedItems.Count <> 1 Then
+            Return a
+            Exit Function
+        End If
+        a.ImageScalingSize = New Size(25, 25)
+        a.DropShadowEnabled = False
+        a.ShowCheckMargin = False
+        a.BackColor = SystemColors.Control
+        a.Font = Form1.Font
+        For i = 0 To 当前项信息_作者列表.Count - 1
+            Dim x As New ToolStripMenuItem With {
+                .Image = My.Resources.NEXUS,
+                .Text = 当前项信息_作者列表(i)
+            }
+            a.Items.Add(x)
+            AddHandler x.Click,
+                Sub(s, e)
+                    Clipboard.SetText(s.Text)
+                End Sub
+        Next
+        If 当前项信息_UniqueID列表.Count > 1 Then
+            Dim x As New ToolStripMenuItem With {
+              .Image = My.Resources.试验,
+              .Text = "复制全部到一行并竖线隔开"
+                 }
+            a.Items.Add(x)
+            AddHandler x.Click,
+                Sub(s, e)
+                    Dim str1 As String = ""
+                    For i = 0 To 当前项信息_作者列表.Count - 1
+                        If str1 = "" Then
+                            str1 = 当前项信息_作者列表(i)
+                        Else
+                            str1 &= "|" & 当前项信息_作者列表(i)
+                        End If
+                    Next
+                    Clipboard.SetText(str1)
+                End Sub
+        End If
+        Return a
+    End Function
+
+
     Public Shared Sub 显示依赖项表()
         If Form依赖项表.Visible = False Then
             Form依赖项表.Left = Form1.Left + 30 * 界面控制.X轴DPI比率
@@ -769,6 +870,23 @@ Line1:
         If Not Form1.ListView2.SelectedItems.Count = 1 Then Exit Sub
         Dim a As 暗黑菜单条控件本体 = 更新模组.生成更新地址表菜单()
         a.Show(sender, New Point(0, 0 - a.Height - a.Items(0).Height))
+    End Sub
+
+    Public Shared Sub 显示UniqueID表(sender As Object, e As MouseEventArgs)
+        If Not Form1.ListView2.SelectedItems.Count = 1 Then Exit Sub
+        Dim a As 暗黑菜单条控件本体 = 生成UniqueID菜单()
+        a.Show(MousePosition.X - e.X - 1, MousePosition.Y - e.Y - a.Height)
+        If a.Top <> MousePosition.Y - e.Y - a.Height Then a.Top = MousePosition.Y - e.Y - a.Height
+    End Sub
+
+    Public Shared Sub 显示作者表(sender As Object, e As MouseEventArgs)
+        If Not Form1.ListView2.SelectedItems.Count = 1 Then Exit Sub
+        Dim a As 暗黑菜单条控件本体 = 生成作者列表菜单()
+        a.Show(MousePosition.X - e.X - 1, MousePosition.Y - e.Y - a.Height)
+        If Form1.Panel3.Width < a.Width Then
+            a.Show(MousePosition.X - e.X + 1 + (Form1.Panel3.Width - a.Width), MousePosition.Y - e.Y - a.Height)
+        End If
+        If a.Top <> MousePosition.Y - e.Y - a.Height Then a.Top = MousePosition.Y - e.Y - a.Height
     End Sub
 
     Public Shared Sub 打开分类文件夹()

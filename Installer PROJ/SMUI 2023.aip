@@ -99,10 +99,10 @@
     <ROW Property="AppLogoIconDark" Value="applogodark.png" MultiBuildValue="DefaultBuild:dropbox.ico" Type="1" MsiKey="AppLogoIconDark"/>
     <ROW Property="CTRLS" Value="2"/>
     <ROW Property="Manufacturer" Value="1059 Studio"/>
-    <ROW Property="ProductCode" Value="2052:{4D18C37D-102C-4531-A3CC-C80931664DF7} " Type="16"/>
+    <ROW Property="ProductCode" Value="2052:{D1F7EDEE-FBD4-47C3-8459-C44267CED084} " Type="16"/>
     <ROW Property="ProductLanguage" Value="2052"/>
     <ROW Property="ProductName" Value="SMUI 2023"/>
-    <ROW Property="ProductVersion" Value="6.0.17" Options="32"/>
+    <ROW Property="ProductVersion" Value="6.0.18" Options="32"/>
     <ROW Property="REBOOT" MultiBuildValue="DefaultBuild:ReallySuppress"/>
     <ROW Property="SecureCustomProperties" Value="OLDPRODUCTS;AI_NEWERPRODUCTFOUND;AI_SETUPEXEPATH;SETUPEXEDIR"/>
     <ROW Property="UpgradeCode" Value="{349EDF0D-1EB2-4B52-B72A-0F3AEC12DAC8}"/>
@@ -126,11 +126,12 @@
     <ROW Directory="zhHans_Dir" Directory_Parent="APPDIR" DefaultDir="zh-Hans"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiCompsComponent">
-    <ROW Component="AI_CustomARPName" ComponentId="{BB92A9B7-5E93-49A9-8EA3-15E7049E26B6}" Directory_="APPDIR" Attributes="260" KeyPath="DisplayName" Options="1"/>
+    <ROW Component="AI_CustomARPName" ComponentId="{2F28248A-8697-4AA5-AC09-1D29AA167220}" Directory_="APPDIR" Attributes="260" KeyPath="DisplayName" Options="1"/>
     <ROW Component="AI_ExePath" ComponentId="{CBAF2252-48D8-4146-9D8B-2E99237377E4}" Directory_="APPDIR" Attributes="260" KeyPath="AI_ExePath"/>
     <ROW Component="AI_SHORTCUTSREG" ComponentId="{171825E9-7E85-449B-B61B-FC6681D2DE8B}" Directory_="APPDIR" Attributes="260" KeyPath="AI_SHORTCUTSREG" Options="1"/>
     <ROW Component="APPDIR" ComponentId="{94CEB0EC-B9B4-444F-9BAB-40F57B9BEAC3}" Directory_="APPDIR" Attributes="0"/>
     <ROW Component="Accessibility.dll" ComponentId="{3EAD55E2-4958-40EB-BD85-74B2EF043709}" Directory_="APPDIR" Attributes="0" KeyPath="Accessibility.dll"/>
+    <ROW Component="CsvHelper.dll" ComponentId="{9F1FFA02-2836-49A0-AAE4-ACFD807A63F7}" Directory_="APPDIR" Attributes="0" KeyPath="CsvHelper.dll"/>
     <ROW Component="D3DCompiler_47_cor3.dll" ComponentId="{60B898BB-8FCB-41A9-B715-091E9FCA4C74}" Directory_="APPDIR" Attributes="256" KeyPath="D3DCompiler_47_cor3.dll"/>
     <ROW Component="DirectWriteForwarder.dll" ComponentId="{C313A844-7B4C-40B4-9694-FECFEA4B602C}" Directory_="APPDIR" Attributes="256" KeyPath="DirectWriteForwarder.dll"/>
     <ROW Component="Imazen.WebP.dll" ComponentId="{06D821B9-329C-4DF6-9885-A84C580F4CA4}" Directory_="APPDIR" Attributes="0" KeyPath="Imazen.WebP.dll"/>
@@ -396,7 +397,7 @@
     <ROW Component="hostpolicy.dll" ComponentId="{DB5393CE-FFF8-45AB-84C1-70AA02B21CB1}" Directory_="APPDIR" Attributes="256" KeyPath="hostpolicy.dll"/>
     <ROW Component="libwebp.dll" ComponentId="{CE0CBE99-654A-4E14-A249-6FF19555A7B2}" Directory_="APPDIR" Attributes="256" KeyPath="libwebp.dll"/>
     <ROW Component="mscordaccore.dll" ComponentId="{6A65D393-FC29-47E3-94D6-E778E7155C3F}" Directory_="APPDIR" Attributes="256" KeyPath="mscordaccore.dll"/>
-    <ROW Component="mscordaccore_amd64_amd64_8.0.224.6711.dll" ComponentId="{856620C6-8E79-4450-9482-0C1353148BE8}" Directory_="APPDIR" Attributes="256" KeyPath="mscordaccore_amd64_amd64_8.0.224.6711.dll"/>
+    <ROW Component="mscordaccore_amd64_amd64_8.0.424.16909.dll" ComponentId="{15029C7C-BAA1-4B25-BEEB-5A8DF764BFAF}" Directory_="APPDIR" Attributes="256" KeyPath="mscordaccore_amd64_amd64_8.0.424.16909.dll"/>
     <ROW Component="mscordbi.dll" ComponentId="{D4D614CC-7F58-4413-9595-98BA8758554A}" Directory_="APPDIR" Attributes="256" KeyPath="mscordbi.dll"/>
     <ROW Component="mscorlib.dll" ComponentId="{3553ACEF-0180-44E1-B052-128396984A9A}" Directory_="APPDIR" Attributes="0" KeyPath="mscorlib.dll"/>
     <ROW Component="mscorrc.dll" ComponentId="{1F6C7C53-A196-4255-9C0B-D54CB8E9A932}" Directory_="APPDIR" Attributes="256" KeyPath="mscorrc.dll"/>
@@ -687,13 +688,14 @@
     <ROW File="Microsoft.Web.WebView2.Core.dll" Component_="Microsoft.Web.WebView2.Core.dll" FileName="MICRO~11.DLL|Microsoft.Web.WebView2.Core.dll" Attributes="0" SourcePath="..\StardewMUI 2023\bin\Debug\net8.0-windows10.0.22621.0\win-x64\Microsoft.Web.WebView2.Core.dll" SelfReg="false"/>
     <ROW File="Microsoft.Web.WebView2.WinForms.dll" Component_="Microsoft.Web.WebView2.WinForms.dll" FileName="MICRO~12.DLL|Microsoft.Web.WebView2.WinForms.dll" Attributes="0" SourcePath="..\StardewMUI 2023\bin\Debug\net8.0-windows10.0.22621.0\win-x64\Microsoft.Web.WebView2.WinForms.dll" SelfReg="false"/>
     <ROW File="Microsoft.Web.WebView2.Wpf.dll" Component_="Microsoft.Web.WebView2.Wpf.dll" FileName="MICRO~13.DLL|Microsoft.Web.WebView2.Wpf.dll" Attributes="0" SourcePath="..\StardewMUI 2023\bin\Debug\net8.0-windows10.0.22621.0\win-x64\Microsoft.Web.WebView2.Wpf.dll" SelfReg="false"/>
-    <ROW File="mscordaccore_amd64_amd64_8.0.224.6711.dll" Component_="mscordaccore_amd64_amd64_8.0.224.6711.dll" FileName="MSCORD~3.DLL|mscordaccore_amd64_amd64_8.0.224.6711.dll" Attributes="0" SourcePath="..\StardewMUI 2023\bin\Debug\net8.0-windows10.0.22621.0\win-x64\mscordaccore_amd64_amd64_8.0.224.6711.dll" SelfReg="false"/>
     <ROW File="WebView2Loader.dll" Component_="WebView2Loader.dll" FileName="WEBVIE~1.DLL|WebView2Loader.dll" Attributes="0" SourcePath="..\StardewMUI 2023\bin\Debug\net8.0-windows10.0.22621.0\win-x64\WebView2Loader.dll" SelfReg="false"/>
     <ROW File="Microsoft.WindowsAPICodePack.dll" Component_="Microsoft.WindowsAPICodePack.dll" FileName="MICRO~14.DLL|Microsoft.WindowsAPICodePack.dll" Attributes="0" SourcePath="..\StardewMUI 2023\bin\Debug\net8.0-windows10.0.22621.0\win-x64\Microsoft.WindowsAPICodePack.dll" SelfReg="false"/>
     <ROW File="Microsoft.WindowsAPICodePack.Shell.dll" Component_="Microsoft.WindowsAPICodePack.Shell.dll" FileName="MICRO~15.DLL|Microsoft.WindowsAPICodePack.Shell.dll" Attributes="0" SourcePath="..\StardewMUI 2023\bin\Debug\net8.0-windows10.0.22621.0\win-x64\Microsoft.WindowsAPICodePack.Shell.dll" SelfReg="false"/>
     <ROW File="newrtf.rtf" Component_="chrome_100_percent.pak" FileName="newrtf.rtf" Attributes="0" SourcePath="..\StardewMUI 2023\bin\Debug\net8.0-windows10.0.22621.0\win-x64\newrtf.rtf" SelfReg="false"/>
     <ROW File="clretwrc.dll" Component_="clretwrc.dll" FileName="clretwrc.dll" Attributes="0" SourcePath="..\StardewMUI 2023\bin\Debug\net8.0-windows10.0.22621.0\win-x64\clretwrc.dll" SelfReg="false"/>
     <ROW File="SMUI6.pdf" Component_="chrome_100_percent.pak" FileName="SMUI6.pdf" Attributes="0" SourcePath="..\StardewMUI 2023\bin\Debug\net8.0-windows10.0.22621.0\win-x64\SMUI6.pdf" SelfReg="false"/>
+    <ROW File="CsvHelper.dll" Component_="CsvHelper.dll" FileName="CSVHEL~1.DLL|CsvHelper.dll" Attributes="0" SourcePath="..\StardewMUI 2023\bin\Debug\net8.0-windows10.0.22621.0\win-x64\CsvHelper.dll" SelfReg="false"/>
+    <ROW File="mscordaccore_amd64_amd64_8.0.424.16909.dll" Component_="mscordaccore_amd64_amd64_8.0.424.16909.dll" FileName="MSCORD~2.DLL|mscordaccore_amd64_amd64_8.0.424.16909.dll" Attributes="0" SourcePath="..\StardewMUI 2023\bin\Debug\net8.0-windows10.0.22621.0\win-x64\mscordaccore_amd64_amd64_8.0.424.16909.dll" SelfReg="false"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.AiPersistentPropComponent">
     <ROW Property="AI_SHORTCUTSREG" Registry="AI_SHORTCUTSREG" HklmSearch="AI_SHORTCUTSREG" HkcuSearch="AI_SHORTCUTSREG_1" Hklm64Search="AI_SHORTCUTSREG_2" Hkcu64Search="AI_SHORTCUTSREG_3"/>
@@ -1288,11 +1290,12 @@
     <ROW Feature_="MainFeature" Component_="Microsoft.Web.WebView2.Core.dll"/>
     <ROW Feature_="MainFeature" Component_="Microsoft.Web.WebView2.WinForms.dll"/>
     <ROW Feature_="MainFeature" Component_="Microsoft.Web.WebView2.Wpf.dll"/>
-    <ROW Feature_="MainFeature" Component_="mscordaccore_amd64_amd64_8.0.224.6711.dll"/>
     <ROW Feature_="MainFeature" Component_="WebView2Loader.dll"/>
     <ROW Feature_="MainFeature" Component_="Microsoft.WindowsAPICodePack.dll"/>
     <ROW Feature_="MainFeature" Component_="Microsoft.WindowsAPICodePack.Shell.dll"/>
     <ROW Feature_="MainFeature" Component_="clretwrc.dll"/>
+    <ROW Feature_="MainFeature" Component_="CsvHelper.dll"/>
+    <ROW Feature_="MainFeature" Component_="mscordaccore_amd64_amd64_8.0.424.16909.dll"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiIconsComponent">
     <ROW Name="SMUI6.exe" SourcePath="..\StardewMUI 2023\dropbox.ico" Index="0"/>
