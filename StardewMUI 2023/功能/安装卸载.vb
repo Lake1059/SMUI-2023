@@ -68,6 +68,7 @@ Public Class 安装卸载
                         Case 操作类型.卸载
                             For i2 = 任务队列.任务列表.Count - 1 To 0 Step -1
                                 Dim s2 As String = 任务队列.执行卸载(i2)
+                                If 任务队列.是否取消了操作 Then Exit For
                                 If s2 <> "" Then
                                     后台线程对象.ReportProgress(3, $"{s2}")
                                     后台线程对象.ReportProgress(3, $"卸载操作不能通过反向执行来回滚操作，这可能已经导致了预期外的问题")

@@ -99,10 +99,10 @@
     <ROW Property="AppLogoIconDark" Value="applogodark.png" MultiBuildValue="DefaultBuild:dropbox.ico" Type="1" MsiKey="AppLogoIconDark"/>
     <ROW Property="CTRLS" Value="2"/>
     <ROW Property="Manufacturer" Value="1059 Studio"/>
-    <ROW Property="ProductCode" Value="2052:{D1F7EDEE-FBD4-47C3-8459-C44267CED084} " Type="16"/>
+    <ROW Property="ProductCode" Value="2052:{0C0D8F6D-05D9-4EED-AF56-7811D8B4BE47} " Type="16"/>
     <ROW Property="ProductLanguage" Value="2052"/>
     <ROW Property="ProductName" Value="SMUI 2023"/>
-    <ROW Property="ProductVersion" Value="6.0.18" Options="32"/>
+    <ROW Property="ProductVersion" Value="6.0.19" Options="32"/>
     <ROW Property="REBOOT" MultiBuildValue="DefaultBuild:ReallySuppress"/>
     <ROW Property="SecureCustomProperties" Value="OLDPRODUCTS;AI_NEWERPRODUCTFOUND;AI_SETUPEXEPATH;SETUPEXEDIR"/>
     <ROW Property="UpgradeCode" Value="{349EDF0D-1EB2-4B52-B72A-0F3AEC12DAC8}"/>
@@ -126,7 +126,7 @@
     <ROW Directory="zhHans_Dir" Directory_Parent="APPDIR" DefaultDir="zh-Hans"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiCompsComponent">
-    <ROW Component="AI_CustomARPName" ComponentId="{2F28248A-8697-4AA5-AC09-1D29AA167220}" Directory_="APPDIR" Attributes="260" KeyPath="DisplayName" Options="1"/>
+    <ROW Component="AI_CustomARPName" ComponentId="{AA0581D4-E973-4D14-8345-26D70B7A6DB5}" Directory_="APPDIR" Attributes="260" KeyPath="DisplayName" Options="1"/>
     <ROW Component="AI_ExePath" ComponentId="{CBAF2252-48D8-4146-9D8B-2E99237377E4}" Directory_="APPDIR" Attributes="260" KeyPath="AI_ExePath"/>
     <ROW Component="AI_SHORTCUTSREG" ComponentId="{171825E9-7E85-449B-B61B-FC6681D2DE8B}" Directory_="APPDIR" Attributes="260" KeyPath="AI_SHORTCUTSREG" Options="1"/>
     <ROW Component="APPDIR" ComponentId="{94CEB0EC-B9B4-444F-9BAB-40F57B9BEAC3}" Directory_="APPDIR" Attributes="0"/>

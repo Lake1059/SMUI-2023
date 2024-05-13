@@ -59,7 +59,6 @@ Public Class 任务队列
         队列键值匹配字典.Add("CR-UN-SHELL", AddressOf CD1.匹配到_卸载时运行可执行文件)
         队列键值匹配字典.Add("CR-IN-MSGBOX", AddressOf CD1.匹配到_安装时弹窗)
         队列键值匹配字典.Add("CR-UN-MSGBOX", AddressOf CD1.匹配到_卸载时弹窗)
-        队列键值匹配字典.Add("CORE-CLASS", AddressOf CD1.匹配到_声明各种核心功能的启停)
     End Sub
 
     Public Shared Property 安装规划原文本列表对象 As New List(Of KeyValuePair(Of String, String))
@@ -74,6 +73,14 @@ Public Class 任务队列
             当前正在处理的索引 = 0
             是否关闭config自动保留机制 = False
             键值对IO操作.读取键值对文件到列表(安装规划原文本列表对象, Path.Combine(项路径, "Code2"))
+            For Each eve1 In 安装规划原文本列表对象
+                If eve1.Key = "CORE-CLASS" Then
+                    Dim 参数列表 As New List(Of String)(eve1.Value.Split("|").ToList)
+                    If 参数列表.Contains("CG-DB") Then 是否关闭config自动保留机制 = True
+                    Exit For
+                End If
+            Next
+
             For i = 0 To 安装规划原文本列表对象.Count - 1
                 Dim value As DE1 = Nothing
                 If 队列键值匹配字典.TryGetValue(安装规划原文本列表对象(i).Key, value) Then
@@ -81,6 +88,7 @@ Public Class 任务队列
                     Dim operation As DE1 = value
                     operation.Invoke()
                 Else
+                    If 安装规划原文本列表对象(i).Key = "CORE-CLASS" Then Continue For
                     DebugPrint(安装规划原文本列表对象(i).Key & " 不是受支持的规划代码，请不要擅自修改 Code2 文件", Color.OrangeRed, True)
                 End If
             Next
@@ -107,7 +115,6 @@ Public Class 任务队列
         安装操作匹配字典.Add(任务队列操作类型枚举.安装时检查Mods中已安装模组的版本, AddressOf CD2.匹配到_安装时检查Mods中已安装模组的版本)
         安装操作匹配字典.Add(任务队列操作类型枚举.安装时运行可执行文件, AddressOf CD2.匹配到_安装时运行可执行文件)
         安装操作匹配字典.Add(任务队列操作类型枚举.安装时弹窗, AddressOf CD2.匹配到_安装时弹窗)
-        安装操作匹配字典.Add(任务队列操作类型枚举.声明各种核心功能的启停, AddressOf CD2.匹配到_声明各种核心功能的启停)
     End Sub
 
     Public Shared Function 执行安装(任务索引 As Integer) As String
@@ -155,18 +162,5 @@ Public Class 任务队列
             Return ex.Message
         End Try
     End Function
-
-    Public Shared Sub 规划检查器运行()
-        Dim 参数列表 As New List(Of String)(任务队列.任务列表(任务队列.当前正在处理的索引).参数行.Split("|").ToList)
-        For i = 0 To 参数列表.Count - 1
-            Select Case 参数列表(i)
-                Case "CG-DB"
-
-                Case "Mods-AMD"
-
-            End Select
-        Next
-    End Sub
-
 
 End Class

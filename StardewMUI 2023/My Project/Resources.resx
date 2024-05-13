@@ -127,6 +127,9 @@
   <data name="ChatGPT" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\ChatGPT.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="csvhelper" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\csvhelper.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="DarkUI" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\DarkUI.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -168,6 +171,9 @@
   </data>
   <data name="Paypal" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Paypal.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="QQQ" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\QQQ.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="SMAPI" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\SMAPI.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>

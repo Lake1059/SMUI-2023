@@ -14,7 +14,6 @@ Public Class 管理模组
     Public Shared Property 实时模组项排序 As New List(Of String)
     Public Shared Property 实时模组项排序是否经过修改 As Boolean = False
     Public Shared Property 实时模组项列表内容归属的分类 As String = ""
-
     Public Shared Property 点击的链接 As String = ""
 
 
@@ -507,7 +506,7 @@ Line1:
                 管理模组的菜单.菜单项_安装.PerformClick()
             Case Keys.F6
                 管理模组的菜单.菜单项_卸载.PerformClick()
-            Case Keys.F10
+            Case Keys.F1
                 管理模组的菜单.菜单项_打开项的文件夹.PerformClick()
             Case Keys.F2
                 管理模组的菜单.菜单项_重命名项.PerformClick()
@@ -962,7 +961,7 @@ Line1:
         If Form1.ListView2.SelectedItems.Count = 0 Then Exit Sub
         Dim a As String = 管理模组2.检查并返回当前选择分类路径
         If a = "" Then Exit Sub
-        Form导出.Text = "导入模组项"
+        Form导出.Text = "导出模组项"
         显示窗体(Form导出, Form1)
     End Sub
 

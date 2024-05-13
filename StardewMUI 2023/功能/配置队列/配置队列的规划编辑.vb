@@ -9,13 +9,26 @@ Public Class 配置队列的规划编辑
     Public Shared Sub 匹配到_复制文件夹到Mods()
         来自_选择文件夹_所选的文件夹 = ""
         Dim a As New Form编辑规划_选择文件夹 With {.Text = 配置队列.规划显示名称字典(任务队列操作类型枚举.复制文件夹到Mods)}
+        Dim ModsAMD As Boolean = False
+        If 配置队列.当前项的规划操作列表.Contains(任务队列操作类型枚举.声明各种核心功能的启停) Then
+            Dim 控制参数 As New List(Of String)(Form1.ListView7.Items(配置队列.当前项的规划操作列表.IndexOf(任务队列操作类型枚举.声明各种核心功能的启停)).SubItems(1).Text.Split("|").ToList)
+            If 控制参数.Contains("Mods-AMD") Then ModsAMD = True
+        End If
         For Each mDir As DirectoryInfo In New DirectoryInfo(配置队列.正在编辑规划的项路径).GetDirectories
-            If FileIO.FileSystem.FileExists(Path.Combine(mDir.FullName, "manifest.json")) Then
+            If ModsAMD Then
                 Select Case mDir.Name
                     Case "Screenshot", ".config"
                     Case Else
                         a.ListView1.Items.Add(mDir.Name)
                 End Select
+            Else
+                If FileIO.FileSystem.FileExists(Path.Combine(mDir.FullName, "manifest.json")) Then
+                    Select Case mDir.Name
+                        Case "Screenshot", ".config"
+                        Case Else
+                            a.ListView1.Items.Add(mDir.Name)
+                    End Select
+                End If
             End If
         Next
         If Form1.ListView7.SelectedItems(0).SubItems(1).Text <> "" Then
@@ -107,7 +120,7 @@ Public Class 配置队列的规划编辑
         Dim L1 As New List(Of String)
         For Each mFile As FileInfo In New DirectoryInfo(配置队列.正在编辑规划的项路径).GetFiles
             Select Case mFile.Name
-                Case "Code2", "README", "Version", "Code", "README.rtf", "Font", "Color", "SORT"
+                Case "Code2", "README", "Version", "Code", "README.rtf", "Font", "Color", "SORT", "NexusFileName"
                 Case Else
                     L1.Add(mFile.Name)
             End Select
@@ -119,7 +132,7 @@ Public Class 配置队列的规划编辑
         Dim L1 As New List(Of String)
         For Each mFile As FileInfo In New DirectoryInfo(配置队列.正在编辑规划的项路径).GetFiles
             Select Case mFile.Name
-                Case "Code2", "README", "Version", "Code", "README.rtf", "Font", "Color", "SORT"
+                Case "Code2", "README", "Version", "Code", "README.rtf", "Font", "Color", "SORT", "NexusFileName"
                 Case Else
                     L1.Add(mFile.Name)
             End Select
@@ -131,7 +144,7 @@ Public Class 配置队列的规划编辑
         Dim L1 As New List(Of String)
         For Each mFile As FileInfo In New DirectoryInfo(配置队列.正在编辑规划的项路径).GetFiles
             Select Case mFile.Name
-                Case "Code2", "README", "Version", "Code", "README.rtf", "Font", "Color", "SORT"
+                Case "Code2", "README", "Version", "Code", "README.rtf", "Font", "Color", "SORT", "NexusFileName"
                 Case Else
                     L1.Add(mFile.Name)
             End Select
@@ -143,7 +156,7 @@ Public Class 配置队列的规划编辑
         Dim L1 As New List(Of String)
         For Each mFile As FileInfo In New DirectoryInfo(配置队列.正在编辑规划的项路径).GetFiles
             Select Case mFile.Name
-                Case "Code2", "README", "Version", "Code", "README.rtf", "Font", "Color", "SORT"
+                Case "Code2", "README", "Version", "Code", "README.rtf", "Font", "Color", "SORT", "NexusFileName"
                 Case Else
                     L1.Add(mFile.Name)
             End Select
@@ -213,7 +226,23 @@ Public Class 配置队列的规划编辑
     End Sub
 
     Public Shared Sub 匹配到_卸载时取消操作()
-
+        Dim a As New Form编辑规划_卸载时取消操作
+        Dim 参数列表 As String = Form1.ListView7.SelectedItems(0).SubItems(1).Text
+        Select Case 参数列表
+            Case "CANCEL"
+                a.UiRadioButton1.Checked = True
+                a.UiRadioButton2.Checked = False
+            Case "ERROR"
+                a.UiRadioButton1.Checked = False
+                a.UiRadioButton2.Checked = True
+        End Select
+        显示模式窗体(a, Form1)
+        If a.UiRadioButton1.Checked Then
+            Form1.ListView7.SelectedItems(0).SubItems(1).Text = "CANCEL"
+        ElseIf a.UiRadioButton2.Checked Then
+            Form1.ListView7.SelectedItems(0).SubItems(1).Text = "ERROR"
+        End If
+        a.Dispose()
     End Sub
 
     Public Shared Sub 匹配到_安装时运行可执行文件()
@@ -233,8 +262,33 @@ Public Class 配置队列的规划编辑
     End Sub
 
     Public Shared Sub 匹配到_声明各种核心功能的启停()
-
+        Dim a As New Form编辑规划_核心功能启停
+        Dim 参数列表 As New List(Of String)(Form1.ListView7.SelectedItems(0).SubItems(1).Text.Split("|").ToList)
+        For i = 0 To 参数列表.Count - 1
+            Select Case 参数列表(i)
+                Case "Mods-AMD"
+                    a.UiCheckBox1.Checked = True
+                Case "CG-DB"
+                    a.UiCheckBox2.Checked = True
+                Case "FILE-ALLOW-ALL"
+                    a.UiCheckBox3.Checked = True
+            End Select
+        Next
+        显示模式窗体(a, Form1)
+        Dim 参数列表2 As String = ""
+        If a.UiCheckBox1.Checked Then 添加参数(参数列表2, "Mods-AMD")
+        If a.UiCheckBox2.Checked Then 添加参数(参数列表2, "CG-DB")
+        If a.UiCheckBox3.Checked Then 添加参数(参数列表2, "FILE-ALLOW-ALL")
+        Form1.ListView7.SelectedItems(0).SubItems(1).Text = 参数列表2
+        a.Dispose()
     End Sub
 
+    Shared Sub 添加参数(ByRef 参数对象 As String, 添加的参数 As String)
+        If 参数对象 = "" Then
+            参数对象 = 添加的参数
+        Else
+            参数对象 &= "|" & 添加的参数
+        End If
+    End Sub
 
 End Class

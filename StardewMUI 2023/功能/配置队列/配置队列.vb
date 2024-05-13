@@ -67,12 +67,10 @@ Public Class 配置队列
         编辑规划操作字典.Add(任务队列操作类型枚举.卸载时检查文件的存在, AddressOf 配置队列的规划编辑.匹配到_卸载时检查文件的存在)
 
 
+        编辑规划操作字典.Add(任务队列操作类型枚举.卸载时取消操作, AddressOf 配置队列的规划编辑.匹配到_卸载时取消操作)
 
 
-
-
-
-
+        编辑规划操作字典.Add(任务队列操作类型枚举.声明各种核心功能的启停, AddressOf 配置队列的规划编辑.匹配到_声明各种核心功能的启停)
     End Sub
 
     Public Shared Property 规划显示名称字典 As New Dictionary(Of 任务队列操作类型枚举, String)
@@ -139,7 +137,7 @@ Public Class 配置队列
         Form1.UiTextBox1.Text = ""
         Form1.ListView6.Items.Clear()
         Form1.ListView7.Items.Clear()
-        Form1.ListView8.Items.Clear()
+        'Form1.ListView8.Items.Clear()
         当前项的规划操作列表.Clear()
     End Sub
 
@@ -353,26 +351,49 @@ jx1:
     Public Shared Sub 内容列表视图DragDrop(sender As Object, e As DragEventArgs)
         If Form1.ListView3.SelectedItems.Count <> 1 Then Exit Sub
         If e.Data.GetDataPresent(DataFormats.FileDrop) Then
+            Dim 允许所有文件 As Boolean = False
+            If 当前项的规划操作列表.Contains(任务队列操作类型枚举.声明各种核心功能的启停) Then
+                Dim 控制参数 As New List(Of String)(Form1.ListView7.Items(当前项的规划操作列表.IndexOf(任务队列操作类型枚举.声明各种核心功能的启停)).SubItems(1).Text.Split("|").ToList)
+                If 控制参数.Contains("FILE-ALLOW-ALL") Then 允许所有文件 = True
+            End If
             Dim 要复制的文件和文件夹列表 As String() = e.Data.GetData(DataFormats.FileDrop)
             For i = 0 To 要复制的文件和文件夹列表.Length - 1
                 Dim a As String = 要复制的文件和文件夹列表(i)
+                Select Case Path.GetFileName(a)
+                    Case "Code2", "README", "Version", "Code", "README.rtf", "Font", "Color", "SORT", "NexusFileName"
+                        Continue For
+                    Case "manifest.json", "config.json"
+                        If 允许所有文件 = False Then Continue For
+                End Select
                 If Directory.Exists(a) = True Then
                     FileIO.FileSystem.CopyDirectory(a, Path.Combine(正在编辑规划的项路径, Path.GetFileName(a)), FileIO.UIOption.AllDialogs)
                 Else
                     FileIO.FileSystem.CopyFile(a, Path.Combine(正在编辑规划的项路径, Path.GetFileName(a)), FileIO.UIOption.AllDialogs)
                 End If
             Next
+
             重新扫描项的数据内容()
         End If
     End Sub
 
     Public Shared Sub 添加文件()
         If Form1.ListView3.SelectedItems.Count <> 1 Then Exit Sub
+        Dim 允许所有文件 As Boolean = False
+        If 当前项的规划操作列表.Contains(任务队列操作类型枚举.声明各种核心功能的启停) Then
+            Dim 控制参数 As New List(Of String)(Form1.ListView7.Items(当前项的规划操作列表.IndexOf(任务队列操作类型枚举.声明各种核心功能的启停)).SubItems(1).Text.Split("|").ToList)
+            If 控制参数.Contains("FILE-ALLOW-ALL") Then 允许所有文件 = True
+        End If
         Dim x As New OpenFileDialog With {.Multiselect = True}
         x.ShowDialog(Form1)
         If x.FileNames.Length = 0 Then Exit Sub
         For i = 0 To x.FileNames.Length - 1
             Dim a As String = x.FileNames(i)
+            Select Case Path.GetFileName(a)
+                Case "Code2", "README", "Version", "Code", "README.rtf", "Font", "Color", "SORT", "NexusFileName"
+                    Continue For
+                Case "manifest.json", "config.json"
+                    If 允许所有文件 = False Then Continue For
+            End Select
             FileIO.FileSystem.CopyFile(a, Path.Combine(正在编辑规划的项路径, Path.GetFileName(a)), FileIO.UIOption.AllDialogs)
         Next
         重新扫描项的数据内容()

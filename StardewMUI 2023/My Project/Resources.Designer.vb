@@ -83,16 +83,6 @@ Namespace My.Resources
         '''<summary>
         '''  查找 System.Drawing.Bitmap 类型的本地化资源。
         '''</summary>
-        Friend ReadOnly Property BetterFolderBrowser() As System.Drawing.Bitmap
-            Get
-                Dim obj As Object = ResourceManager.GetObject("BetterFolderBrowser", resourceCulture)
-                Return CType(obj,System.Drawing.Bitmap)
-            End Get
-        End Property
-        
-        '''<summary>
-        '''  查找 System.Drawing.Bitmap 类型的本地化资源。
-        '''</summary>
         Friend ReadOnly Property CEF() As System.Drawing.Bitmap
             Get
                 Dim obj As Object = ResourceManager.GetObject("CEF", resourceCulture)
@@ -106,6 +96,16 @@ Namespace My.Resources
         Friend ReadOnly Property ChatGPT() As System.Drawing.Bitmap
             Get
                 Dim obj As Object = ResourceManager.GetObject("ChatGPT", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  查找 System.Drawing.Bitmap 类型的本地化资源。
+        '''</summary>
+        Friend ReadOnly Property csvhelper() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("csvhelper", resourceCulture)
                 Return CType(obj,System.Drawing.Bitmap)
             End Get
         End Property
@@ -236,6 +236,16 @@ Namespace My.Resources
         Friend ReadOnly Property Paypal() As System.Drawing.Bitmap
             Get
                 Dim obj As Object = ResourceManager.GetObject("Paypal", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  查找 System.Drawing.Bitmap 类型的本地化资源。
+        '''</summary>
+        Friend ReadOnly Property QQQ() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("QQQ", resourceCulture)
                 Return CType(obj,System.Drawing.Bitmap)
             End Get
         End Property
@@ -615,8 +625,8 @@ Namespace My.Resources
         
         '''<summary>
         '''  查找类似 {\rtf1\adeflang1025\ansi\ansicpg936\uc2\adeff0\deff0\stshfdbch31505\stshfloch31506\stshfhich31506\stshfbi0\deflang1033\deflangfe2052\themelang1033\themelangfe2052\themelangcs0{\fonttbl{\f0\fbidi \froman\fcharset0\fprq2{\*\panose 02020603050405020304}Times New Roman;}
-        '''{\f13\fbidi \fnil\fcharset134\fprq2{\*\panose 02010600030101010101}\&apos;cb\&apos;ce\&apos;cc\&apos;e5{\*\falt SimSun};}{\f15\fbidi \fmodern\fcharset128\fprq1{\*\panose 020b0609070205080204}MS Gothic{\*\falt \&apos;95\&apos;55? \&apos;8b\&apos;a1???};}
-        '''{\f34\fbidi \froman\fcharset [字符串的其余部分被截断]&quot;; 的本地化字符串。
+        '''{\f13\fbidi \fnil\fcharset134\fprq2{\*\panose 02010600030101010101}\&apos;cb\&apos;ce\&apos;cc\&apos;e5{\*\falt SimSun};}{\f15\fbidi \fmodern\fcharset128\fprq1{\*\panose 020b0609070205080204}MS Gothic{\*\falt ?? ????};}
+        '''{\f34\fbidi \froman\fcharset0\fprq2{\*\pan [字符串的其余部分被截断]&quot;; 的本地化字符串。
         '''</summary>
         Friend ReadOnly Property 用户许可协议() As String
             Get

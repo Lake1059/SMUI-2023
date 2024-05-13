@@ -44,6 +44,8 @@ Public Class 共享方法
     End Function
 
     Public Shared Function CompareVersion(Version1 As String, Version2 As String) As Int128
+        If Version1 Is Nothing Then Return 0
+        If Version2 Is Nothing Then Return 0
         Dim cleanVersion1 As String = System.Text.RegularExpressions.Regex.Replace(Version1, "[^\d\.]", "")
         Dim cleanVersion2 As String = System.Text.RegularExpressions.Regex.Replace(Version2, "[^\d\.]", "")
         ' 将版本号拆分成数字数组

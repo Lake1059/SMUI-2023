@@ -1,6 +1,5 @@
 ﻿Imports System.IO
 Imports System.Reflection
-Imports Microsoft.WindowsAPICodePack.Shell
 
 Public Class DLC
     Public Class DLC解锁标记

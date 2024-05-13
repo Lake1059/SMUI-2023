@@ -30,8 +30,6 @@ Public Class 界面控制
 
         AddHandler Form1.UiRichTextBox2.KeyDown, Sub(sender, e) If e.KeyData = Keys.Delete Then Form1.UiRichTextBox2.Clear()
 
-        暗黑主题资源.初始化关于选项卡列表视图()
-
         Form1.ListView1.DoubleBuffered(True)
         Form1.ListView2.DoubleBuffered(True)
         Form1.ListView3.DoubleBuffered(True)
@@ -39,10 +37,10 @@ Public Class 界面控制
         Form1.ListView5.DoubleBuffered(True)
         Form1.ListView6.DoubleBuffered(True)
         Form1.ListView7.DoubleBuffered(True)
-        Form1.ListView8.DoubleBuffered(True)
+        'Form1.ListView8.DoubleBuffered(True)
         Form1.ListView9.DoubleBuffered(True)
         Form1.ListView10.DoubleBuffered(True)
-        Form1.ListView11.DoubleBuffered(True)
+        'Form1.ListView11.DoubleBuffered(True)
 
         AddHandler Form1.ListView1.DrawSubItem, Sub(sender, e) 暗黑列表视图自绘制.绘制子项(sender, e, 暗黑主题资源.分类列包含的图标字典)
         AddHandler Form1.ListView1.SelectedIndexChanged, Sub(sender, e) sender.Invalidate(sender.ClientRectangle)
@@ -65,22 +63,20 @@ Public Class 界面控制
         AddHandler Form1.ListView7.DrawSubItem, Sub(sender, e) 暗黑列表视图自绘制.绘制子项(sender, e, New Dictionary(Of String, Image))
         AddHandler Form1.ListView7.SelectedIndexChanged, Sub(sender, e) sender.Invalidate(sender.ClientRectangle)
         AddHandler Form1.ListView7.ItemMouseHover, Sub(sender, e) sender.Invalidate(sender.ClientRectangle)
-        AddHandler Form1.ListView8.DrawSubItem, Sub(sender, e) 暗黑列表视图自绘制.绘制子项(sender, e, New Dictionary(Of String, Image))
-        AddHandler Form1.ListView8.SelectedIndexChanged, Sub(sender, e) sender.Invalidate(sender.ClientRectangle)
-        AddHandler Form1.ListView8.ItemMouseHover, Sub(sender, e) sender.Invalidate(sender.ClientRectangle)
+        'AddHandler Form1.ListView8.DrawSubItem, Sub(sender, e) 暗黑列表视图自绘制.绘制子项(sender, e, New Dictionary(Of String, Image))
+        'AddHandler Form1.ListView8.SelectedIndexChanged, Sub(sender, e) sender.Invalidate(sender.ClientRectangle)
+        'AddHandler Form1.ListView8.ItemMouseHover, Sub(sender, e) sender.Invalidate(sender.ClientRectangle)
         AddHandler Form1.ListView9.DrawSubItem, Sub(sender, e) 暗黑列表视图自绘制.绘制子项(sender, e, New Dictionary(Of String, Image))
         AddHandler Form1.ListView9.SelectedIndexChanged, Sub(sender, e) sender.Invalidate(sender.ClientRectangle)
         AddHandler Form1.ListView9.ItemMouseHover, Sub(sender, e) sender.Invalidate(sender.ClientRectangle)
         AddHandler Form1.ListView10.DrawSubItem, Sub(sender, e) 暗黑列表视图自绘制.绘制子项(sender, e, New Dictionary(Of String, Image))
         AddHandler Form1.ListView10.SelectedIndexChanged, Sub(sender, e) sender.Invalidate(sender.ClientRectangle)
         AddHandler Form1.ListView10.ItemMouseHover, Sub(sender, e) sender.Invalidate(sender.ClientRectangle)
-        AddHandler Form1.ListView11.DrawSubItem, Sub(sender, e) 暗黑列表视图自绘制.绘制子项(sender, e, 暗黑主题资源.关于选项卡列表视图所使用的图片字典, 36)
-        AddHandler Form1.ListView11.SelectedIndexChanged, Sub(sender, e) sender.Invalidate(sender.ClientRectangle)
-        AddHandler Form1.ListView11.ItemMouseHover, Sub(sender, e) sender.Invalidate(sender.ClientRectangle)
+        'AddHandler Form1.ListView11.DrawSubItem, Sub(sender, e) 暗黑列表视图自绘制.绘制子项(sender, e, 暗黑主题资源.关于选项卡列表视图所使用的图片字典, 36)
+        'AddHandler Form1.ListView11.SelectedIndexChanged, Sub(sender, e) sender.Invalidate(sender.ClientRectangle)
+        'AddHandler Form1.ListView11.ItemMouseHover, Sub(sender, e) sender.Invalidate(sender.ClientRectangle)
 
 
-
-        多项单选对话框.GlobalDpixRatio = DPI
         Form1.ImageList1.ImageSize = New Size(1, Form1.ImageList1.ImageSize.Height * DPI)
 
         管理模组的菜单.添加菜单的触发()
