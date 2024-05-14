@@ -44,7 +44,7 @@
             a.SendToBack()
         Next
         newDialog.Panel2.Height = SelectionGroup.Length * (40 * 界面控制.DPI + 10 * 界面控制.DPI) + newDialog.Panel2.Padding.Bottom
-        newDialog.MinimumSize = New Size(WindowWidth, 40 + DescriptionPanelHeight + newDialog.Panel2.Height)
+        newDialog.MinimumSize = New Size(WindowWidth * 界面控制.DPI, 40 + DescriptionPanelHeight * 界面控制.DPI + newDialog.Panel2.Height)
         newDialog.Height = newDialog.MinimumSize.Height
 
     End Sub
@@ -53,7 +53,7 @@
         If SelectionGroup Is Nothing Then Err.Raise(10001,, "SelectionGroup is nothing")
         If SelectionGroup.Count = 0 Then Err.Raise(10002,, "SelectionGroup have no item")
         newDialog.Text = Title
-        newDialog.Width = WindowWidth
+        newDialog.Width = WindowWidth * 界面控制.DPI
         If Description = "" Then
             newDialog.Panel1.Visible = False
             newDialog.Panel1.Height = 0
@@ -92,7 +92,7 @@
             a.SendToBack()
         Next
         newDialog.Panel2.Height = SelectionGroup.Count * (40 * 界面控制.DPI + 10) + newDialog.Panel2.Padding.Bottom
-        newDialog.MinimumSize = New Size(WindowWidth, 40 + DescriptionPanelHeight * 界面控制.DPI + newDialog.Panel2.Height)
+        newDialog.MinimumSize = New Size(WindowWidth * 界面控制.DPI, 40 + DescriptionPanelHeight * 界面控制.DPI + newDialog.Panel2.Height)
         newDialog.Height = newDialog.MinimumSize.Height
 
     End Sub
@@ -104,6 +104,14 @@
     ''' <returns>-1 = no choose, 0+ = your group index</returns>
     Public Function ShowDialog(owner As Form) As Integer
         显示模式窗体(newDialog, owner)
+        Return newDialog.选择了哪个项
+    End Function
+
+    Public Function ShowFullScreenShadowDialog() As Integer
+        Dim bw As New Form With {.FormBorderStyle = FormBorderStyle.None, .WindowState = FormWindowState.Maximized, .BackColor = Color.Black, .TopMost = True, .Opacity = 0.5, .ShowInTaskbar = False, .ShowIcon = False}
+        bw.Show()
+        显示模式窗体(newDialog, bw)
+        bw.Dispose()
         Return newDialog.选择了哪个项
     End Function
 
@@ -119,6 +127,7 @@
 
     Public Sub SetOwner(owner As Form)
         newDialog.Owner = owner
+        newDialog.TopMost = owner.TopMost
     End Sub
 
     Public Sub SetTopWindow()

@@ -108,6 +108,8 @@ Module Module1
     Public Sub 显示模式窗体(哪个窗口 As Form, 以谁为基准显示 As Form)
         哪个窗口.Left = (以谁为基准显示.Width - 哪个窗口.Width) * 0.5 + 以谁为基准显示.Left
         哪个窗口.Top = (以谁为基准显示.Height - 哪个窗口.Height) * 0.5 + 以谁为基准显示.Top
+        哪个窗口.TopMost = 以谁为基准显示.TopMost
+        以谁为基准显示.Focus()
         哪个窗口.ShowDialog(以谁为基准显示)
     End Sub
 
@@ -123,17 +125,15 @@ Module Module1
         End If
     End Sub
 
-    Public Delegate Sub Delegate_DebugPrint(文本 As String, 颜色 As Color, 是否需要转到调试选项卡 As Boolean)
 
-    Public Sub DebugPrintInvoke(文本 As String, 颜色 As Color, Optional 是否需要转到调试选项卡 As Boolean = False)
-        If Form1.InvokeRequired Then
-            Dim d As New Delegate_DebugPrint(AddressOf DebugPrintInvoke)
-            Form1.Invoke(d, New Object() {文本, 颜色, 是否需要转到调试选项卡})
-        Else
-            DebugPrint(文本, 颜色, 是否需要转到调试选项卡)
-        End If
+    <DllImport("winmm.dll", SetLastError:=True, CharSet:=CharSet.Auto)>
+    Private Function PlaySound(pszSound As String, hmod As IntPtr, fdwSound As Integer) As Boolean
+    End Function
+    Private Const SND_SYNC As Integer = &H0         ' 同步播放
+    Private Const SND_ASYNC As Integer = &H1        ' 异步播放
+    Private Const SND_ALIAS As Integer = &H10000    ' 使用声音别名
+    Public Sub PlayEventSound(ByVal soundAlias As String)
+        PlaySound(soundAlias, IntPtr.Zero, SND_ASYNC Or SND_ALIAS)
     End Sub
-
-
 
 End Module

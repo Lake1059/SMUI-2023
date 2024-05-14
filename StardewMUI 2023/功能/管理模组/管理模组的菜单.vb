@@ -188,6 +188,9 @@ Public Class 管理模组的菜单
     Public Shared Property 菜单项_选中所有已安装 As New ToolStripMenuItem With {.Text = "选中所有已安装"}
     Public Shared Property 菜单项_选中所有未安装 As New ToolStripMenuItem With {.Text = "选中所有未安装"}
     Public Shared Property 菜单项_选中所有非标项 As New ToolStripMenuItem With {.Text = "选中所有非标项"}
+    Public Shared Property 菜单项_选中所有更新可用 As New ToolStripMenuItem With {.Text = "选中所有更新可用"}
+    Public Shared Property 菜单项_选中所有已有新的 As New ToolStripMenuItem With {.Text = "选中所有已有新的"}
+
     Public Shared Property 菜单项_扫描当前子库所有已安装 As New ToolStripMenuItem With {.Text = "扫描当前子库所有已安装"}
     Public Shared Property 菜单项_扫描当前子库所有未安装 As New ToolStripMenuItem With {.Text = "扫描当前子库所有未安装"}
     Public Shared Property 菜单项_扫描当前子库所有非标项 As New ToolStripMenuItem With {.Text = "扫描当前子库所有非标项"}
@@ -200,6 +203,8 @@ Public Class 管理模组的菜单
         项筛选菜单.Items.Add(菜单项_选中所有已安装)
         项筛选菜单.Items.Add(菜单项_选中所有未安装)
         项筛选菜单.Items.Add(菜单项_选中所有非标项)
+        项筛选菜单.Items.Add(菜单项_选中所有更新可用)
+        项筛选菜单.Items.Add(菜单项_选中所有已有新的)
         项筛选菜单.Items.Add(New ToolStripSeparator)
         项筛选菜单.Items.Add(菜单项_扫描当前子库所有已安装)
         项筛选菜单.Items.Add(菜单项_扫描当前子库所有未安装)

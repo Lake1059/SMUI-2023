@@ -140,9 +140,9 @@ Line1:
             If Form1.ListView2.Items(i).Selected Then
                 Select Case s1
                     Case 0
-                        FileIO.FileSystem.DeleteDirectory(Path.Combine(管理模组2.检查并返回当前选择分类路径(False), Form1.ListView2.Items(i).Text), FileIO.UIOption.AllDialogs, FileIO.RecycleOption.SendToRecycleBin)
+                        FileIO.FileSystem.DeleteDirectory(Path.Combine(管理模组2.检查并返回当前选择分类路径(False), Form1.ListView2.Items(i).Text), FileIO.UIOption.OnlyErrorDialogs, FileIO.RecycleOption.SendToRecycleBin)
                     Case 1
-                        FileIO.FileSystem.DeleteDirectory(Path.Combine(管理模组2.检查并返回当前选择分类路径(False), Form1.ListView2.Items(i).Text), FileIO.UIOption.AllDialogs, FileIO.RecycleOption.DeletePermanently)
+                        FileIO.FileSystem.DeleteDirectory(Path.Combine(管理模组2.检查并返回当前选择分类路径(False), Form1.ListView2.Items(i).Text), FileIO.UIOption.OnlyErrorDialogs, FileIO.RecycleOption.DeletePermanently)
                 End Select
                 If FileIO.FileSystem.DirectoryExists(Path.Combine(管理模组2.检查并返回当前选择分类路径(False), Form1.ListView2.Items(i).Text)) Then
                     i += 1

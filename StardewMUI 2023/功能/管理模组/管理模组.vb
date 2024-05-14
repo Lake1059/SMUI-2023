@@ -69,6 +69,9 @@ Public Class 管理模组
         AddHandler 管理模组的菜单.菜单项_更多分类操作_转换安装命令到安装规划.Click, AddressOf 管理模组3.更新选中分类_从安装命令到安装规划
         AddHandler 管理模组的菜单.菜单项_更多分类操作_转换安装规划到安装命令.Click, AddressOf 管理模组3.更新选中分类_从安装规划到安装命令
 
+
+        AddHandler Form1.UiButton4.Click, Sub() 显示窗体(Form搜索, Form1)
+        筛选.初始化()
         常驻主题.初始化()
         自定义描述功能.初始化()
         预览图功能.初始化()
@@ -240,7 +243,7 @@ Line1:
     Public Shared Sub 保存分类排序()
         If 实时分类排序是否经过修改 = False Then Exit Sub
         Dim 分类排序储存文件路径 As String = Path.Combine(设置.全局设置数据("LocalRepositoryPath"), 设置.全局设置数据("LastUsedSubLibraryName"), "SORT")
-        If Not FileIO.FileSystem.DirectoryExists(IO.Path.GetDirectoryName(分类排序储存文件路径)) Then Exit Sub
+        If Not FileIO.FileSystem.DirectoryExists(Path.GetDirectoryName(分类排序储存文件路径)) Then Exit Sub
         Dim a As String = ""
         For i = 0 To 实时分类排序.Count - 1
             If a = "" Then
@@ -390,11 +393,9 @@ Line1:
                                 Form1.ListView2.Items(i).SubItems(1).Text = a.版本(0) & " → " & a.已安装版本(0)
                                 Form1.ListView2.Items(i).SubItems(2).Text = "已有新的"
                         End Select
-结束版本号高低判断:
                     Else
                         Form1.ListView2.Items(i).SubItems(1).Text = a.版本(0)
                     End If
-
                 Else
                     If a.版本.Count > 0 Then
                         Form1.ListView2.Items(i).SubItems(1).Text = a.版本(0)
@@ -405,8 +406,7 @@ Line1:
                     End If
                     Form1.ListView2.Items(i).ForeColor = Color1.白色
                 End If
-
-
+结束版本号高低判断:
             Else
                 Form1.ListView2.Items(i).SubItems.Add("核心错误")
                 Form1.ListView2.Items(i).SubItems.Add(a.错误信息)
@@ -488,7 +488,7 @@ Line1:
         If 实时模组项排序是否经过修改 = False Then Exit Sub
         If 实时模组项列表内容归属的分类 = "" Then Exit Sub
         Dim 模组项排序储存文件路径 As String = Path.Combine(设置.全局设置数据("LocalRepositoryPath"), 设置.全局设置数据("LastUsedSubLibraryName"), 实时模组项列表内容归属的分类, "SORT")
-        If Not FileIO.FileSystem.DirectoryExists(IO.Path.GetDirectoryName(模组项排序储存文件路径)) Then Exit Sub
+        If Not FileIO.FileSystem.DirectoryExists(Path.GetDirectoryName(模组项排序储存文件路径)) Then Exit Sub
         Dim a As String = ""
         For i = 0 To 实时模组项排序.Count - 1
             If a = "" Then
@@ -528,9 +528,11 @@ Line1:
                     Form1.ListView2.Items.RemoveAt(index)
                     Form1.ListView2.Items.Insert(index - 1, 变动排序的列表视图项)
                     Form1.ListView2.Items(index - 1).Focused = True
-                    实时模组项排序.RemoveAt(index)
-                    实时模组项排序.Insert(index - 1, 变动排序的文本)
-                    实时模组项排序是否经过修改 = True
+                    If 实时模组项列表内容归属的分类 <> "" Then
+                        实时模组项排序.RemoveAt(index)
+                        实时模组项排序.Insert(index - 1, 变动排序的文本)
+                        实时模组项排序是否经过修改 = True
+                    End If
                 End If
             Next
         End If
@@ -547,9 +549,11 @@ Line1:
                     Form1.ListView2.Items.RemoveAt(index)
                     Form1.ListView2.Items.Insert(index + 1, 变动排序的列表视图项)
                     Form1.ListView2.Items(index + 1).Focused = True
-                    实时模组项排序.RemoveAt(index)
-                    实时模组项排序.Insert(index + 1, 变动排序的文本)
-                    实时模组项排序是否经过修改 = True
+                    If 实时模组项列表内容归属的分类 <> "" Then
+                        实时模组项排序.RemoveAt(index)
+                        实时模组项排序.Insert(index + 1, 变动排序的文本)
+                        实时模组项排序是否经过修改 = True
+                    End If
                 End If
             Next
         End If

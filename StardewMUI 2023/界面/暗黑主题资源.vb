@@ -4,4 +4,6 @@
     Public Shared Property 分类列包含的图标字典 As New Dictionary(Of String, Image)
 
 
+
+
 End Class

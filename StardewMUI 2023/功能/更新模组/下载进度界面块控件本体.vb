@@ -1,5 +1,7 @@
 ﻿Imports System.IO
 Imports System.Net.Http
+Imports System.Text.RegularExpressions
+Imports Windows.Devices.Power
 
 Public Class 下载进度界面块控件本体
 
@@ -52,11 +54,15 @@ Public Class 下载进度界面块控件本体
                     If Not response.IsSuccessStatusCode Then
                         Return $"Error: {response.StatusCode} - {response.ReasonPhrase}"
                     End If
-                    Dim 前缀结束位置 As Integer = InStr(URL, "/" & 设置_N网模组ID & "/") + Len("/" & 设置_N网模组ID & "/")
-                    Dim 地址里的文件名 As String = Mid(URL, 前缀结束位置, InStr(URL, "?") - 前缀结束位置)
-                    保存位置 = Path.Combine(FileDir, 地址里的文件名)
-                    If Path.GetExtension(保存位置) = ".rar" Then
-                        Err.Raise(105903,, "检测到目标文件后缀为 .rar 不支持该压缩格式，请手动配置。通知作者不要使用该格式，应该使用 zip 或者 7z，由于授权的问题永远不会考虑支持 RAR。")
+                    Dim regex As New Regex("([^\/?]+)(?=\?|$)")
+                    Dim match As Match = regex.Match(URL)
+                    If match.Success Then
+                        保存位置 = Path.Combine(设置.检查并返回数据库下载文件夹路径, match.Value)
+                        If Path.GetExtension(保存位置) = ".rar" Then
+                            Err.Raise(105903,, "检测到目标文件后缀为 .rar 不支持该压缩格式，请手动配置。通知作者不要使用该格式，应该使用 zip 或者 7z，由于授权的问题永远不会考虑支持 RAR。")
+                        End If
+                    Else
+                        保存位置 = Path.Combine(设置.检查并返回数据库下载文件夹路径, "NEXUS")
                     End If
                     Using fileStream As New FileStream(保存位置, FileMode.Create, FileAccess.Write, FileShare.None)
                         Using responseStream As Stream = Await response.Content.ReadAsStreamAsync()
@@ -389,8 +395,10 @@ Public Class 下载进度界面块控件本体
                 Form1.Panel37.Controls.Item(1).Dispose()
             End If
         End If
-        If Form1.Panel37.Controls.Count <= 1 Then
-            Form1.UiTabControl1.SelectedTab = Form1.TabPage管理模组
+        If 是否要转到管理模组选项卡 Then
+            If Form1.Panel37.Controls.Count <= 1 Then
+                Form1.UiTabControl1.SelectedTab = Form1.TabPage管理模组
+            End If
         End If
         Me.Dispose()
     End Sub

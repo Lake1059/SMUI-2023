@@ -252,7 +252,25 @@ Public Class 更新模组
         End If
     End Sub
 
+    Public Shared Async Function 获取服务器列表(模组ID As String, 文件ID As String, 模组项绝对路径 As String, 向哪一个标签控件输出状态 As Label, Optional key As String = "", Optional expires As String = "") As Task(Of Boolean)
+        向哪一个标签控件输出状态.Text = "正在连接到 NEXUS API 获取服务器列表 ..."
+        Dim a As New NEXUS.GetModFileDownloadURL With {.ST_ApiKey = 设置.全局设置数据("NexusAPI")}
+        Dim str1 As String = Await Task.Run(Function() a.StartGet("stardewvalley", 模组ID, 文件ID, key, expires))
+        If str1 <> "" Then
+            DebugPrint(str1, Color1.红色)
+            向哪一个标签控件输出状态.Text = "获取失败，到调试选项卡查看详情"
+            Return False
+        End If
+        If a.name.Length = 0 Then
+            向哪一个标签控件输出状态.Text = "获取成功但 NEXUS API 没有返回任何可用的服务器"
+            Return False
+        End If
+        添加到下载队列(a.URI(0), 模组项绝对路径, "nexus")
+        Return True
+    End Function
+
     Public Shared Sub 添加到下载队列(下载地址 As String, 模组项绝对路径 As String, Optional 来源 As String = "nexus")
+        Form1.UiTabControl1.SelectedTab = Form1.TabPage下载更新
         Form1.UiTabControlMenu3.SelectedTab = Form1.TabPage下载和更新队列
         Dim DW As New 下载进度界面块控件本体 With {.设置_下载来源 = 来源, .设置_下载地址 = 下载地址, .设置_模组项绝对路径 = 模组项绝对路径, .设置_N网模组ID = 正在处理的NEXUSID, .Dock = DockStyle.Top}
 

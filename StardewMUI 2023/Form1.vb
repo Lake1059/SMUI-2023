@@ -1,5 +1,7 @@
 ﻿Imports System.ComponentModel
 Imports System.IO
+Imports System.Media
+Imports Sunny.UI
 
 Public Class Form1
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -25,8 +27,11 @@ Public Class Form1
         If 设置.全局设置数据("AutoCheckUpdate") = "True" Then 检查更新.运行后台服务器检查更新()
         If 设置.全局设置数据("AutoGetNews") = "True" Then 新闻列表.获取新闻()
         状态信息.刷新起始页面状态信息()
+
+
         Dim a As New 多项单选对话框("开发中", {"OK"}, "目前版本已经基本满足日常需求，仍有部分次要功能尚未制作，请知晓。", 100, 500)
-        a.ShowDialog(Me)
+        PlayEventSound("Notification.IM")
+        a.ShowFullScreenShadowDialog()
     End Sub
 
     Private Sub Form1_ResizeEnd(sender As Object, e As EventArgs) Handles MyBase.ResizeEnd
