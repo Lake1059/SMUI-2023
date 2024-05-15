@@ -41,10 +41,8 @@ Public Class GitAPI
         ''' <summary>
         ''' 访问开源代码平台的网页API，并分析返回的 Json 以获取各项信息
         ''' </summary>
-        ''' <param name="目标平台">选择 Gitee (码云) 和 GitHub</param>
-        ''' <param name="存储库">使用仓库URL中的名称，而不是其他名称</param>
         ''' <returns>如果一切顺利会返回空字符串，否则返回错误描述，你也可以选择判断 ErrorString 字符串</returns>
-        Public Function 获取仓库发布版信息(ByVal 目标平台 As 开源代码平台, ByVal 存储库 As String) As String
+        Public Function 获取仓库发布版信息(目标平台 As 开源代码平台, 存储库 As String, Optional 指定标签 As String = "") As String
             Try
                 Dim str1 As String = ""
                 ErrorString = ""
@@ -111,27 +109,6 @@ Public Class GitAPI
             Return ErrorString
 
         End Function
-
-        Public Sub 检查所有属性()
-            Dim a As String = ""
-            a &= "发布标题：" & 发布标题 & vbCrLf & vbCrLf
-            a &= "版本标签：" & 版本标签 & vbCrLf & vbCrLf
-            a &= "预览版：" & 预览版 & vbCrLf & vbCrLf
-            a &= "发布描述：" & 发布描述 & vbCrLf & vbCrLf
-            a &= "发布时间：" & 发布时间 & vbCrLf & vbCrLf
-
-            a &= "发布者用户名：" & 发布者用户名 & vbCrLf & vbCrLf
-            a &= "发布者昵称：" & 发布者昵称 & vbCrLf & vbCrLf
-
-            a &= "可供下载的文件 对象中有 " & 可供下载的文件.Count & " 个元素：" & vbCrLf
-            For i = 0 To 可供下载的文件.Count - 1
-                a &= 可供下载的文件(i).Key & " --> " & 可供下载的文件(i).Value & vbCrLf
-            Next
-
-
-            MsgBox(a)
-
-        End Sub
 
     End Class
 
@@ -209,5 +186,105 @@ Public Class GitAPI
 
     End Class
 
+
+    Public Class Tag
+
+        Public Tag数据 As New List(Of Tag单片数据)
+
+        Structure Tag单片数据
+            Public name As String
+        End Structure
+
+        Public ErrorString As String = ""
+
+        Public Function 获取仓库Tag信息(目标平台 As 开源代码平台, 存储库 As String) As String
+            Try
+                Tag数据.Clear()
+                Dim str1 As String = ""
+                ErrorString = ""
+                Select Case 目标平台
+                    Case 开源代码平台.Gitee
+                        str1 = "https://gitee.com/api/v5/repos/" & 存储库 & "/tags"
+                    Case 开源代码平台.GitHub
+                        str1 = "https://api.github.com/repos/" & 存储库 & "/tags"
+                End Select
+                Dim content As String
+                Using client As New HttpClient()
+                    client.DefaultRequestHeaders.Add("User-Agent", GitApiObject.自定义UserAgent)
+                    client.Timeout = TimeSpan.FromSeconds(10)
+                    System.Net.ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12
+                    Dim response As HttpResponseMessage = client.GetAsync(str1).Result
+                    If response.IsSuccessStatusCode Then
+                        content = response.Content.ReadAsStringAsync().Result
+                    Else
+                        ErrorString = response.Content.ReadAsStringAsync().Result
+                        Return ErrorString
+                        Exit Function
+                    End If
+                End Using
+                Dim 数据 As String = "{" & """" & "Data" & """" & ": " & content & "}"
+                Dim JsonData As Object = CType(JsonConvert.DeserializeObject(数据), JObject)
+                If JsonData.item("Data").Count Is Nothing Then
+                    If JsonData.item("Data").item("message") IsNot Nothing Then
+                        ErrorString = JsonData.item("Data").item("message").ToString
+                        Return ErrorString
+                        Exit Try
+                    End If
+                End If
+                For i = 0 To JsonData.item("Data").Count - 1
+                    Dim s As New Tag单片数据
+                    If JsonData.item("Data")(i).item("name") IsNot Nothing Then
+                        s.name = JsonData.item("Data")(i).item("name").ToString
+                    End If
+                    Tag数据.Add(s)
+                Next
+                Return ""
+            Catch ex As Exception
+                ErrorString = ex.Message
+                Return ex.Message
+            End Try
+        End Function
+
+    End Class
+
+    Public Class GitHubAllReleaseFile
+        Public 可供下载的文件 As New List(Of KeyValuePair(Of String, String))
+
+        Public Function 获取(存储库 As String) As String
+            Try
+                Dim str1 As String = "https://api.github.com/repos/" & 存储库 & "/releases"
+                Dim content As String
+                Using client As New HttpClient()
+                    client.DefaultRequestHeaders.Add("User-Agent", GitApiObject.自定义UserAgent)
+                    client.Timeout = TimeSpan.FromSeconds(10)
+                    System.Net.ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12
+                    Dim response As HttpResponseMessage = client.GetAsync(str1).Result
+                    If response.IsSuccessStatusCode Then
+                        content = response.Content.ReadAsStringAsync().Result
+                    Else
+                        Return response.Content.ReadAsStringAsync().Result
+                    End If
+                End Using
+                Dim 数据 As String = "{" & """" & "Data" & """" & ": " & content & "}"
+                Dim JsonData As Object = CType(JsonConvert.DeserializeObject(数据), JObject)
+                If JsonData.item("Data").Count Is Nothing Then
+                    If JsonData.item("Data").item("message") IsNot Nothing Then
+                        Return JsonData.item("Data").item("message").ToString
+                    End If
+                End If
+                For i = 0 To JsonData.item("Data").Count - 1
+                    For i2 = 0 To JsonData.item("Data")(i).item("assets").Count - 1
+                        If JsonData.item("Data")(i).item("assets").item(i2)("name") IsNot Nothing Then
+                            可供下载的文件.Add(New KeyValuePair(Of String, String)(JsonData.item("Data")(i).item("assets").item(i2)("name").ToString, JsonData.item("Data")(i).item("assets").item(i2)("browser_download_url").ToString))
+                        End If
+                    Next
+                Next
+                Return ""
+            Catch ex As Exception
+                Return ex.Message
+            End Try
+        End Function
+
+    End Class
 
 End Class

@@ -179,6 +179,9 @@ Public Class 界面控制
         Form1.UiComboBox8.ItemHeight = 30 * DPI
         Form1.UiComboBox6.ItemHeight = 30 * DPI
         Form1.UiComboBox5.ItemHeight = 30 * DPI
+        Form1.UiComboBox8.ItemHeight = 30 * DPI
+        Form1.UiComboBox7.ItemHeight = 30 * DPI
+        Form1.UiComboBox9.ItemHeight = 30 * DPI
 
         Form1.UiComboBox4.Left = 20 * DPI : Form1.UiComboBox4.Top = 111 * DPI : Form1.UiComboBox4.Width = 300 * DPI : Form1.UiComboBox4.Height = 30 * DPI
         Form1.UiComboBox1.Left = 20 * DPI : Form1.UiComboBox1.Top = 202 * DPI : Form1.UiComboBox1.Width = 300 * DPI : Form1.UiComboBox1.Height = 30 * DPI
@@ -186,8 +189,8 @@ Public Class 界面控制
         Form1.UiComboBox3.Left = 20 * DPI : Form1.UiComboBox3.Top = 384 * DPI : Form1.UiComboBox3.Width = 300 * DPI : Form1.UiComboBox3.Height = 30 * DPI
         Form1.UiComboBox5.Left = 20 * DPI : Form1.UiComboBox5.Top = 475 * DPI : Form1.UiComboBox5.Width = 300 * DPI : Form1.UiComboBox5.Height = 30 * DPI
         Form1.UiComboBox8.Left = 20 * DPI : Form1.UiComboBox8.Top = 61 * DPI : Form1.UiComboBox8.Width = 300 * DPI : Form1.UiComboBox8.Height = 30 * DPI
-
-
+        Form1.UiComboBox7.Left = 40 * DPI : Form1.UiComboBox7.Top = 61 * DPI : Form1.UiComboBox7.Width = 470 * DPI : Form1.UiComboBox7.Height = 35 * DPI
+        Form1.UiComboBox9.Left = 40 * DPI : Form1.UiComboBox9.Top = 261 * DPI : Form1.UiComboBox9.Width = 470 * DPI : Form1.UiComboBox9.Height = 35 * DPI
 
 
 

@@ -173,7 +173,6 @@ Partial Class Form搜索
         ' 
         ' UiCheckBox2
         ' 
-        UiCheckBox2.Checked = True
         UiCheckBox2.Font = New Font("微软雅黑", 9.75F, FontStyle.Regular, GraphicsUnit.Point, CByte(134))
         UiCheckBox2.ForeColor = SystemColors.ScrollBar
         UiCheckBox2.Location = New Point(290, 256)
@@ -303,6 +302,7 @@ Partial Class Form搜索
         StartPosition = FormStartPosition.Manual
         Text = "搜索"
         ResumeLayout(False)
+        PerformLayout()
     End Sub
 
     Friend WithEvents 暗黑文本框1 As 暗黑文本框

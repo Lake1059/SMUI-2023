@@ -145,6 +145,8 @@ Public Class 设置
         If FileIO.FileSystem.DirectoryExists(插件文件夹路径) = False Then FileIO.FileSystem.CreateDirectory(插件文件夹路径)
         If FileIO.FileSystem.DirectoryExists(浏览器缓存路径) = False Then FileIO.FileSystem.CreateDirectory(浏览器缓存路径)
         If FileIO.FileSystem.DirectoryExists(自定义语言包路径) = False Then FileIO.FileSystem.CreateDirectory(自定义语言包路径)
+        If FileIO.FileSystem.DirectoryExists(SMAPI下载路径) = False Then FileIO.FileSystem.CreateDirectory(SMAPI下载路径)
+        If FileIO.FileSystem.DirectoryExists(SMAPI解压路径) = False Then FileIO.FileSystem.CreateDirectory(SMAPI解压路径)
     End Sub
 
     Public Shared ReadOnly 用户数据文件夹路径 As String = Application.StartupPath & "\UserData"
@@ -157,6 +159,8 @@ Public Class 设置
     Public Shared ReadOnly 插件文件夹路径 As String = Application.StartupPath & "\UserData\Plugin"
     Public Shared ReadOnly 浏览器缓存路径 As String = Application.StartupPath & "\UserData\WebView2Cache"
     Public Shared ReadOnly 自定义语言包路径 As String = Application.StartupPath & "\UserData\Language"
+    Public Shared ReadOnly SMAPI下载路径 As String = Application.StartupPath & "\UserData\SmapiDownload"
+    Public Shared ReadOnly SMAPI解压路径 As String = Application.StartupPath & "\UserData\SmapiDecompress"
 
     Public Shared Function 检查并返回数据库下载文件夹路径() As String
         If Not FileIO.FileSystem.DirectoryExists(Path.Combine(全局设置数据("LocalRepositoryPath"), ".Download")) Then
