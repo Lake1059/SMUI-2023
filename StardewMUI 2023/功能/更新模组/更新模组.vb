@@ -147,7 +147,7 @@ Public Class 更新模组
             End If
         Next
         For i = a.FileListData.Count - 1 To 0 Step -1
-            If a.FileListData(i).category_name.Equals("updateFile", StringComparison.CurrentCultureIgnoreCase) Then
+            If a.FileListData(i).category_name.Equals("update", StringComparison.CurrentCultureIgnoreCase) Then
                 生成NEXUS单个文件信息(a.FileListData(i), 模组项绝对路径)
             End If
         Next
@@ -170,7 +170,7 @@ Public Class 更新模组
                 标题文字.Text = "[ 可选文件 ] " & 标题文字.Text
             Case "miscellaneous"
                 标题文字.Text = "[ 附加文件] " & 标题文字.Text
-            Case "updateFile"
+            Case "update"
                 标题文字.Text = "[ 更新文件 ] " & 标题文字.Text
         End Select
         Dim 状态文字 As New Label With {.AutoSize = False, .Dock = DockStyle.Top, .Height = 21, .TextAlign = ContentAlignment.TopLeft, .Font = New Font(Form1.Font.Name, 10), .ForeColor = If(设置.全局设置数据("DownloadFileUseSMUI5Color") = True, Color1.橙色, Color1.绿色)}

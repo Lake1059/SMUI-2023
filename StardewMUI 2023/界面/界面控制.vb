@@ -26,7 +26,7 @@ Public Class 界面控制
         设置富文本框行高(Form1.UiRichTextBox1, 35)
         Form1.UiRichTextBox1.AutoWordSelection = False
         Form1.UiRichTextBox1.LanguageOption = RichTextBoxLanguageOptions.UIFonts
-        Form1.UiRichTextBox1.RightMargin = Form1.UiRichTextBox1.Width - 程序DPI_垂直滚动条宽度
+        Form1.UiRichTextBox1.RightMargin = Form1.UiRichTextBox1.Width - 程序DPI_垂直滚动条宽度 * DPI
 
         AddHandler Form1.UiRichTextBox2.KeyDown, Sub(sender, e) If e.KeyData = Keys.Delete Then Form1.UiRichTextBox2.Clear()
 
@@ -37,7 +37,7 @@ Public Class 界面控制
         Form1.ListView5.DoubleBuffered(True)
         Form1.ListView6.DoubleBuffered(True)
         Form1.ListView7.DoubleBuffered(True)
-        'Form1.ListView8.DoubleBuffered(True)
+        Form1.ListView8.DoubleBuffered(True)
         Form1.ListView9.DoubleBuffered(True)
         Form1.ListView10.DoubleBuffered(True)
         'Form1.ListView11.DoubleBuffered(True)
@@ -63,9 +63,9 @@ Public Class 界面控制
         AddHandler Form1.ListView7.DrawSubItem, Sub(sender, e) 暗黑列表视图自绘制.绘制子项(sender, e, New Dictionary(Of String, Image))
         AddHandler Form1.ListView7.SelectedIndexChanged, Sub(sender, e) sender.Invalidate(sender.ClientRectangle)
         AddHandler Form1.ListView7.ItemMouseHover, Sub(sender, e) sender.Invalidate(sender.ClientRectangle)
-        'AddHandler Form1.ListView8.DrawSubItem, Sub(sender, e) 暗黑列表视图自绘制.绘制子项(sender, e, New Dictionary(Of String, Image))
-        'AddHandler Form1.ListView8.SelectedIndexChanged, Sub(sender, e) sender.Invalidate(sender.ClientRectangle)
-        'AddHandler Form1.ListView8.ItemMouseHover, Sub(sender, e) sender.Invalidate(sender.ClientRectangle)
+        AddHandler Form1.ListView8.DrawSubItem, Sub(sender, e) 暗黑列表视图自绘制.绘制子项(sender, e, New Dictionary(Of String, Image))
+        AddHandler Form1.ListView8.SelectedIndexChanged, Sub(sender, e) sender.Invalidate(sender.ClientRectangle)
+        AddHandler Form1.ListView8.ItemMouseHover, Sub(sender, e) sender.Invalidate(sender.ClientRectangle)
         AddHandler Form1.ListView9.DrawSubItem, Sub(sender, e) 暗黑列表视图自绘制.绘制子项(sender, e, New Dictionary(Of String, Image))
         AddHandler Form1.ListView9.SelectedIndexChanged, Sub(sender, e) sender.Invalidate(sender.ClientRectangle)
         AddHandler Form1.ListView9.ItemMouseHover, Sub(sender, e) sender.Invalidate(sender.ClientRectangle)
@@ -148,6 +148,11 @@ Public Class 界面控制
 
         Form1.ColumnHeader9.Width = Form1.ListView9.Width * 0.7
         Form1.ColumnHeader13.Width = Form1.ListView9.Width * 0.3
+
+        Form1.ColumnHeader21.Width = (Form1.ListView8.Width - 程序DPI_垂直滚动条宽度 * 2) * 0.5
+        Form1.ColumnHeader22.Width = (Form1.ListView8.Width - 程序DPI_垂直滚动条宽度 * 2) * 0.25
+        Form1.ColumnHeader23.Width = (Form1.ListView8.Width - 程序DPI_垂直滚动条宽度 * 2) * 0.25
+
     End Sub
 
     Public Shared Sub 主界面高DPI兼容()
@@ -182,6 +187,7 @@ Public Class 界面控制
         Form1.UiComboBox8.ItemHeight = 30 * DPI
         Form1.UiComboBox7.ItemHeight = 30 * DPI
         Form1.UiComboBox9.ItemHeight = 30 * DPI
+        Form1.UiComboBox10.ItemHeight = 30 * DPI
 
         Form1.UiComboBox4.Left = 20 * DPI : Form1.UiComboBox4.Top = 111 * DPI : Form1.UiComboBox4.Width = 300 * DPI : Form1.UiComboBox4.Height = 30 * DPI
         Form1.UiComboBox1.Left = 20 * DPI : Form1.UiComboBox1.Top = 202 * DPI : Form1.UiComboBox1.Width = 300 * DPI : Form1.UiComboBox1.Height = 30 * DPI
@@ -191,6 +197,7 @@ Public Class 界面控制
         Form1.UiComboBox8.Left = 20 * DPI : Form1.UiComboBox8.Top = 61 * DPI : Form1.UiComboBox8.Width = 300 * DPI : Form1.UiComboBox8.Height = 30 * DPI
         Form1.UiComboBox7.Left = 40 * DPI : Form1.UiComboBox7.Top = 61 * DPI : Form1.UiComboBox7.Width = 470 * DPI : Form1.UiComboBox7.Height = 35 * DPI
         Form1.UiComboBox9.Left = 40 * DPI : Form1.UiComboBox9.Top = 261 * DPI : Form1.UiComboBox9.Width = 470 * DPI : Form1.UiComboBox9.Height = 35 * DPI
+        Form1.UiComboBox10.Left = 20 * DPI : Form1.UiComboBox10.Top = 283 * DPI : Form1.UiComboBox10.Width = 263 * DPI : Form1.UiComboBox10.Height = 30 * DPI
 
 
 

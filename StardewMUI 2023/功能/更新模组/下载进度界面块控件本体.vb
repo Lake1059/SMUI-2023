@@ -1,7 +1,13 @@
 ﻿Imports System.IO
 Imports System.Net.Http
 Imports System.Text.RegularExpressions
-Imports Windows.Devices.Power
+Imports System.Threading
+Imports System.Threading.Tasks
+Imports SharpCompress.Archives
+Imports SharpCompress.Archives.Rar
+Imports SharpCompress.Archives.SevenZip
+Imports SharpCompress.Archives.Zip
+Imports SharpCompress.Common
 
 Public Class 下载进度界面块控件本体
 
@@ -58,11 +64,9 @@ Public Class 下载进度界面块控件本体
                     Dim match As Match = regex.Match(URL)
                     If match.Success Then
                         保存位置 = Path.Combine(设置.检查并返回数据库下载文件夹路径, match.Value)
-                        If Path.GetExtension(保存位置) = ".rar" Then
-                            Err.Raise(105903,, "检测到目标文件后缀为 .rar 不支持该压缩格式，请手动配置。通知作者不要使用该格式，应该使用 zip 或者 7z，由于授权的问题永远不会考虑支持 RAR。")
-                        End If
                     Else
-                        保存位置 = Path.Combine(设置.检查并返回数据库下载文件夹路径, "NEXUS")
+                        Return "无法获取到文件名"
+                        Exit Function
                     End If
                     Using fileStream As New FileStream(保存位置, FileMode.Create, FileAccess.Write, FileShare.None)
                         Using responseStream As Stream = Await response.Content.ReadAsStreamAsync()
@@ -71,7 +75,7 @@ Public Class 下载进度界面块控件本体
                             总字节数 = If(response.Content.Headers.ContentLength, 0)
                             Do
                                 If 是否终止下载 Then
-                                    Return $"User: Stop Download."
+                                    Return $"用户终止下载"
                                     Exit Do
                                 End If
                                 bytesRead = Await responseStream.ReadAsync(buffer)
@@ -104,9 +108,6 @@ Public Class 下载进度界面块控件本体
                         Return $"Error: {response.StatusCode} - {response.ReasonPhrase}"
                     End If
                     保存位置 = FileName
-                    If Path.GetExtension(保存位置) = ".rar" Then
-                        Err.Raise(105903,, "检测到目标文件后缀为 .rar 不支持该压缩格式，请手动配置。通知作者不要使用该格式，应该使用 zip 或者 7z，由于授权的问题永远不会考虑支持 RAR。")
-                    End If
                     Using fileStream As New FileStream(保存位置, FileMode.Create, FileAccess.Write, FileShare.None)
                         Using responseStream As Stream = Await response.Content.ReadAsStreamAsync()
                             Dim buffer As Byte() = If(设置.全局设置数据("DownloadFileUseBigBuffer") = "False", New Byte(1023) {}, New Byte(102399) {})
@@ -114,7 +115,7 @@ Public Class 下载进度界面块控件本体
                             总字节数 = If(response.Content.Headers.ContentLength, 0)
                             Do
                                 If 是否终止下载 Then
-                                    Return $"User: Stop Download."
+                                    Return $"用户终止下载"
                                     Exit Do
                                 End If
                                 bytesRead = Await responseStream.ReadAsync(buffer)
@@ -189,22 +190,62 @@ Public Class 下载进度界面块控件本体
         End If
     End Sub
 
-    Public 这份实例使用的临时解压目录 As String = Path.Combine(设置.检查并返回数据库解压文件夹路径, Now.Hour & Now.Minute & Now.Second & Now.Millisecond)
+    Public Property 这份实例使用的临时解压目录 As String = Path.Combine(设置.检查并返回数据库解压文件夹路径, Now.Hour & Now.Minute & Now.Second & Now.Millisecond)
 
     Public Property 是否取消解压 As Boolean = False
 
-    Public Sub 开始解压()
+    Public Async Sub 开始解压()
         If 是否取消解压 Then Exit Sub
         Try
-            Dim zip1 As New SevenZip.SevenZipExtractor(保存位置)
-            For i = 0 To zip1.ArchiveFileData.Count - 1
-                If 是否取消解压 Then Exit Sub
-                Me.Label2.Text = $"正在解压第 {i + 1} 个文件，总计 {zip1.ArchiveFileData.Count} 个文件"
-                Me.Panel3.Width = (i + 1) / zip1.ArchiveFileData.Count * Me.Panel3.Parent.Width
-                Application.DoEvents()
-                zip1.ExtractFiles(这份实例使用的临时解压目录 & "\", i)
-            Next
-            zip1.Dispose()
+            If Not FileIO.FileSystem.DirectoryExists(这份实例使用的临时解压目录) Then FileIO.FileSystem.CreateDirectory(这份实例使用的临时解压目录)
+            Me.Panel3.BackColor = Color1.蓝色
+
+            Select Case Path.GetExtension(保存位置).ToLower
+                Case ".zip"
+                    Using archive = ZipArchive.Open(保存位置)
+                        Dim files = archive.Entries.Where(Function(entry) Not entry.IsDirectory).ToList()
+                        Dim index1 = 0
+                        For Each entry In archive.Entries
+                            If 是否取消解压 Then Exit Sub
+                            If entry.IsDirectory Then Continue For
+                            index1 += 1
+                            Me.Label2.Text = $"正在解压第 {index1} 个文件，总计 {files.Count} 个文件"
+                            Me.Panel3.Width = index1 / files.Count * Me.Panel3.Parent.Width
+                            Application.DoEvents()
+                            Await Task.Run(Sub() entry.WriteToDirectory(这份实例使用的临时解压目录, New ExtractionOptions() With {.ExtractFullPath = True, .Overwrite = True}))
+                        Next
+                    End Using
+                Case ".7z"
+                    Using archive = SevenZipArchive.Open(保存位置)
+                        Dim files = archive.Entries.Where(Function(entry) Not entry.IsDirectory).ToList()
+                        Dim index1 = 0
+                        For Each entry In archive.Entries
+                            If 是否取消解压 Then Exit Sub
+                            If entry.IsDirectory Then Continue For
+                            index1 += 1
+                            Me.Label2.Text = $"正在解压第 {index1} 个文件，总计 {files.Count} 个文件"
+                            Me.Panel3.Width = index1 / files.Count * Me.Panel3.Parent.Width
+                            Application.DoEvents()
+                            Await Task.Run(Sub() entry.WriteToDirectory(这份实例使用的临时解压目录, New ExtractionOptions() With {.ExtractFullPath = True, .Overwrite = True}))
+                        Next
+                    End Using
+                Case ".rar"
+                    Using archive = RarArchive.Open(保存位置)
+                        Dim files = archive.Entries.Where(Function(entry) Not entry.IsDirectory).ToList()
+                        Dim index1 = 0
+                        For Each entry In archive.Entries
+                            If 是否取消解压 Then Exit Sub
+                            If entry.IsDirectory Then Continue For
+                            index1 += 1
+                            Me.Label2.Text = $"正在解压第 {index1} 个文件，总计 {files.Count} 个文件"
+                            Me.Panel3.Width = index1 / files.Count * Me.Panel3.Parent.Width
+                            Application.DoEvents()
+                            Await Task.Run(Sub() entry.WriteToDirectory(这份实例使用的临时解压目录, New ExtractionOptions() With {.ExtractFullPath = True, .Overwrite = True}))
+                        Next
+                    End Using
+
+            End Select
+
             开始处理套娃()
         Catch ex As Exception
             Me.Label1.Text = "解压失败"
