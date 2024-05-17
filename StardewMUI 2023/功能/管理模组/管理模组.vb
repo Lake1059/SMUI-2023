@@ -25,11 +25,16 @@ Public Class 管理模组
         AddHandler 管理模组的菜单.菜单项_转移分类.Click, AddressOf 分类操作.转移分类
         AddHandler 管理模组的菜单.菜单项_重命名分类.Click, AddressOf 分类操作.重命名分类
         AddHandler 管理模组的菜单.菜单项_删除分类.Click, AddressOf 分类操作.删除分类
+        AddHandler 管理模组的菜单.菜单项_将分类上移.Click, AddressOf 上移选中的分类
+        AddHandler 管理模组的菜单.菜单项_将分类下移.Click, AddressOf 下移选中的分类
+
         AddHandler 管理模组的菜单.菜单项_新建项.Click, AddressOf 模组项操作.新建模组项
         AddHandler 管理模组的菜单.菜单项_下载并新建项.Click, AddressOf 模组项操作.下载并新建项
         AddHandler 管理模组的菜单.菜单项_移动项.Click, AddressOf 模组项操作.转移模组项
         AddHandler 管理模组的菜单.菜单项_重命名项.Click, AddressOf 模组项操作.重命名模组项
         AddHandler 管理模组的菜单.菜单项_删除项.Click, AddressOf 模组项操作.删除模组项
+        AddHandler 管理模组的菜单.菜单项_将项上移.Click, AddressOf 上移选中的模组项
+        AddHandler 管理模组的菜单.菜单项_将项下移.Click, AddressOf 下移选中的模组项
 
         AddHandler 管理模组的菜单.菜单项_导入数据子库.Click, AddressOf 导入数据子库
         AddHandler 管理模组的菜单.菜单项_导入分类.Click, AddressOf 导入分类
@@ -43,6 +48,7 @@ Public Class 管理模组
         AddHandler 管理模组的菜单.菜单项_复制链接.Click, Sub() Clipboard.SetText(点击的链接)
         AddHandler 管理模组的菜单.菜单项_从此NEXUS链接更新.Click, AddressOf 从此NEXUS链接更新
         AddHandler 管理模组的菜单.菜单项_从此ModDrop链接更新.Click, AddressOf 从此ModDrop链接更新
+        AddHandler 管理模组的菜单.菜单项_从此GitHub链接更新.Click, AddressOf 从此GitHub链接更新
 
         AddHandler Form1.ListView1.KeyDown, Sub(sender, e) 分类列表键盘按下事件(sender, e)
         AddHandler Form1.ListView1.SelectedIndexChanged, Sub(sender, e) 扫描模组项()
@@ -71,6 +77,7 @@ Public Class 管理模组
 
 
         AddHandler Form1.UiButton4.Click, Sub() 显示窗体(Form搜索, Form1)
+        设置字体和颜色.初始化()
         筛选.初始化()
         常驻主题.初始化()
         自定义描述功能.初始化()
@@ -501,6 +508,7 @@ Line1:
     End Sub
 
     Public Shared Sub 模组项列表键盘按下事件(sender As Object, e As KeyEventArgs)
+        e.SuppressKeyPress = True
         Select Case e.KeyCode
             Case Keys.F5
                 管理模组的菜单.菜单项_安装.PerformClick()
@@ -514,6 +522,24 @@ Line1:
                 上移选中的模组项()
             Case Keys.F4
                 下移选中的模组项()
+            Case Keys.N
+                If Not DLC.DLC解锁标记.UpdateModItemExtension Then Exit Sub
+                If Form1.ListView2.SelectedItems.Count <> 1 Then Exit Sub
+                If 当前项信息_N网ID列表.Count > 0 Then
+                    更新模组.获取NEXUS文件列表(当前项信息_N网ID列表(0), Path.Combine(管理模组2.检查并返回当前所选子库路径(False), Form1.ListView2.SelectedItems(0).SubItems(3).Text, Form1.ListView2.SelectedItems(0).Text))
+                End If
+            Case Keys.M
+                If Not DLC.DLC解锁标记.UpdateModItemExtension Then Exit Sub
+                If Form1.ListView2.SelectedItems.Count <> 1 Then Exit Sub
+                If 当前项信息_ModDropID列表.Count > 0 Then
+                    更新模组.转到浏览器等待ModDrop下载链接(当前项信息_ModDropID列表(0), Path.Combine(管理模组2.检查并返回当前所选子库路径(False), Form1.ListView2.SelectedItems(0).SubItems(3).Text, Form1.ListView2.SelectedItems(0).Text))
+                End If
+            Case Keys.G
+                If Not DLC.DLC解锁标记.UpdateModItemExtension Then Exit Sub
+                If Form1.ListView2.SelectedItems.Count <> 1 Then Exit Sub
+                If 当前项信息_Github仓库列表.Count > 0 Then
+                    更新模组.获取Github文件列表(当前项信息_Github仓库列表(0), Path.Combine(管理模组2.检查并返回当前所选子库路径(False), Form1.ListView2.SelectedItems(0).SubItems(3).Text, Form1.ListView2.SelectedItems(0).Text))
+                End If
         End Select
     End Sub
 
@@ -572,7 +598,7 @@ Line1:
 
     Public Shared Sub 重置模组项信息显示()
         Form1.UiButton11.Text = "TYPE"
-        Form1.UiRichTextBox1.Clear()
+        Form1.RichTextBox1.Clear()
         Form1.Panel8.Visible = False
         Form1.Label1.Text = ""
         Form1.Label2.Text = ""
@@ -601,17 +627,17 @@ Line1:
             Exit Sub
         End If
         If FileIO.FileSystem.FileExists(项路径 & "\README.rtf") = True Then
-            Form1.UiRichTextBox1.LoadFile(项路径 & "\README.rtf")
+            Form1.RichTextBox1.LoadFile(项路径 & "\README.rtf")
             Form1.UiButton11.Text = "RTF"
         ElseIf My.Computer.FileSystem.FileExists(项路径 & "\README") = True Then
-            Form1.UiRichTextBox1.Text = My.Computer.FileSystem.ReadAllText(项路径 & "\README")
+            Form1.RichTextBox1.Text = My.Computer.FileSystem.ReadAllText(项路径 & "\README")
             Form1.UiButton11.Text = "TXT"
         ElseIf a.描述.Count > 0 Then
             For i = 0 To a.描述.Count - 1
                 If i = 0 Then
-                    Form1.UiRichTextBox1.Text = a.描述(0)
+                    Form1.RichTextBox1.Text = a.描述(0)
                 Else
-                    Form1.UiRichTextBox1.Text &= vbCrLf & vbCrLf & a.描述(i)
+                    Form1.RichTextBox1.Text &= vbCrLf & vbCrLf & a.描述(i)
                 End If
             Next
             Form1.UiButton11.Text = "JSON"
@@ -730,7 +756,6 @@ Line1:
                     img.Dispose()
                 End Using
             Case ".webp"
-                'Imazen.WebP.Extern.LoadLibrary.LoadByPath(Application.StartupPath & "\libwebp.dll", False)
                 Try
                     Dim bytes As Byte() = IO.File.ReadAllBytes(文件)
                     Using img As Bitmap = New Imazen.WebP.SimpleDecoder().DecodeFromBytes(bytes, bytes.Length)
@@ -861,8 +886,8 @@ Line1:
 
     Public Shared Sub 显示依赖项表()
         If Form依赖项表.Visible = False Then
-            Form依赖项表.Left = Form1.Left + 30 * 界面控制.X轴DPI比率
-            Form依赖项表.Top = Form1.Top + Form1.Height - Form依赖项表.Height - 60 * 界面控制.X轴DPI比率
+            Form依赖项表.Left = Form1.Left + 30 * 界面控制.DPI
+            Form依赖项表.Top = Form1.Top + Form1.Height - Form依赖项表.Height - 60 * 界面控制.DPI
             Form依赖项表.Show(Form1)
         Else
             Form依赖项表.Close()

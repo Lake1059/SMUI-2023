@@ -439,6 +439,7 @@ Public Class 下载进度界面块控件本体
         If 是否要转到管理模组选项卡 Then
             If Form1.Panel37.Controls.Count <= 1 Then
                 Form1.UiTabControl1.SelectedTab = Form1.TabPage管理模组
+                Form1.ListView2.Focus()
             End If
         End If
         Me.Dispose()

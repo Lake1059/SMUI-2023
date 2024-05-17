@@ -22,7 +22,7 @@ Public Class 自定义描述功能
         If Form1.ListView2.SelectedItems.Count <> 1 Then Exit Sub
         Dim a As String = Path.Combine(管理模组2.检查并返回当前所选子库路径(False), Form1.ListView2.SelectedItems(0).SubItems(3).Text, Form1.ListView2.SelectedItems(0).Text)
 
-        FileIO.FileSystem.WriteAllText(a & "\README", Form1.UiRichTextBox1.Text, False)
+        FileIO.FileSystem.WriteAllText(a & "\README", Form1.RichTextBox1.Text, False)
         If FileIO.FileSystem.FileExists(a & "\README.rtf") = True Then FileIO.FileSystem.DeleteFile(a & "\README.rtf", FileIO.UIOption.OnlyErrorDialogs, FileIO.RecycleOption.SendToRecycleBin)
         Form1.UiButton11.Text = "TXT"
         UIMessageTip.Show("已保存",, 1200)
@@ -32,7 +32,7 @@ Public Class 自定义描述功能
         If Form1.ListView2.SelectedItems.Count <> 1 Then Exit Sub
         Dim a As String = Path.Combine(管理模组2.检查并返回当前所选子库路径(False), Form1.ListView2.SelectedItems(0).SubItems(3).Text, Form1.ListView2.SelectedItems(0).Text)
 
-        Form1.UiRichTextBox1.SaveFile(a & "\README.rtf")
+        Form1.RichTextBox1.SaveFile(a & "\README.rtf")
         If FileIO.FileSystem.FileExists(a & "\README") = True Then FileIO.FileSystem.DeleteFile(a & "\README", FileIO.UIOption.OnlyErrorDialogs, FileIO.RecycleOption.SendToRecycleBin)
         Form1.UiButton11.Text = "RTF"
         UIMessageTip.Show("已保存",, 1200)
@@ -40,7 +40,7 @@ Public Class 自定义描述功能
 
     Public Shared Sub 新建富文本文档()
         If Form1.ListView2.SelectedItems.Count <> 1 Then Exit Sub
-        Form1.UiRichTextBox1.LoadFile(Application.StartupPath & "\newrtf.rtf")
+        Form1.RichTextBox1.LoadFile(Application.StartupPath & "\newrtf.rtf")
     End Sub
 
     Public Shared Sub 用写字板编辑富文本()
@@ -82,27 +82,27 @@ Public Class 自定义描述功能
     Public Shared Sub 设置字体()
         Dim a As New FontDialog
         a.ShowDialog(Form1)
-        If a.Font IsNot Nothing Then Form1.UiRichTextBox1.SelectionFont = a.Font
+        If a.Font IsNot Nothing Then Form1.RichTextBox1.SelectionFont = a.Font
     End Sub
 
     Public Shared Sub 设置文字颜色()
         Dim a As New ColorDialog
         a.ShowDialog(Form1)
-        If a.Color <> Nothing Then Form1.UiRichTextBox1.SelectionColor = a.Color
+        If a.Color <> Nothing Then Form1.RichTextBox1.SelectionColor = a.Color
     End Sub
 
     Public Shared Sub 设置文字背景颜色()
         Dim a As New ColorDialog
         a.ShowDialog(Form1)
-        If a.Color <> Nothing Then Form1.UiRichTextBox1.SelectionBackColor = a.Color
+        If a.Color <> Nothing Then Form1.RichTextBox1.SelectionBackColor = a.Color
     End Sub
 
     Public Shared Sub 清除所有格式()
-        Form1.UiRichTextBox1.SelectionAlignment = HorizontalAlignment.Left
-        Form1.UiRichTextBox1.SelectionBackColor = Form1.UiRichTextBox1.BackColor
-        Form1.UiRichTextBox1.SelectionColor = Form1.UiRichTextBox1.ForeColor
-        Form1.UiRichTextBox1.SelectionFont = Form1.UiRichTextBox1.Font
-        Form1.UiRichTextBox1.SelectionIndent = 0
+        Form1.RichTextBox1.SelectionAlignment = HorizontalAlignment.Left
+        Form1.RichTextBox1.SelectionBackColor = Form1.RichTextBox1.BackColor
+        Form1.RichTextBox1.SelectionColor = Form1.RichTextBox1.ForeColor
+        Form1.RichTextBox1.SelectionFont = Form1.RichTextBox1.Font
+        Form1.RichTextBox1.SelectionIndent = 0
     End Sub
 
 

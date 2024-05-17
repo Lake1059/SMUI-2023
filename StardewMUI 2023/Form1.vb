@@ -20,7 +20,7 @@ Public Class Form1
         更新模组.初始化()
         SMAPI安装管理器.初始化()
 
-
+        全局键盘钩子.SetHook()
     End Sub
 
     Private Sub Form1_Shown(sender As Object, e As EventArgs) Handles MyBase.Shown
@@ -41,10 +41,6 @@ Public Class Form1
         界面控制.主界面元素尺寸动态调整()
     End Sub
 
-    Private Sub Form1_SizeChanged(sender As Object, e As EventArgs) Handles MyBase.SizeChanged
-
-    End Sub
-
     Private Sub Form1_Closing(sender As Object, e As CancelEventArgs) Handles MyBase.Closing
         键值对IO操作.从字典键值对写入文件(设置.全局设置数据, 设置.设置文件存储路径)
         管理模组.模块单元在关机时保存数据()
@@ -58,6 +54,7 @@ Public Class Form1
             End If
         End If
 
+        全局键盘钩子.Unhook()
     End Sub
 
     Private Sub Form1_Closed(sender As Object, e As EventArgs) Handles MyBase.Closed
@@ -69,7 +66,4 @@ Public Class Form1
         界面控制.主界面高DPI兼容()
     End Sub
 
-    Private Sub UiTabControlMenu2_SelectedIndexChanged(sender As Object, e As EventArgs) Handles UiTabControlMenu2.SelectedIndexChanged
-
-    End Sub
 End Class

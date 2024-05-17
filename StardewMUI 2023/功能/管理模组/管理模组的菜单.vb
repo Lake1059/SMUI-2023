@@ -272,6 +272,68 @@ Public Class 管理模组的菜单
         End If
     End Sub
 
+    ''' <summary>
+    ''' 1=分类，2=模组项
+    ''' </summary>
+    ''' <returns></returns>
+    Public Shared Property 打开了分类还是模组项的菜单 As Integer = 0
+
+    Public Shared Property 设置字体菜单 As New 暗黑菜单条控件本体 With {.ImageScalingSize = New Size(25 * 界面控制.DPI, 25 * 界面控制.DPI)}
+    Public Shared Property 菜单项_字体_标准 As New ToolStripMenuItem With {.Text = "标准", .Image = My.Resources.文字大小}
+    Public Shared Property 菜单项_字体_粗体 As New ToolStripMenuItem With {.Text = "粗体"}
+    Public Shared Property 菜单项_字体_斜体 As New ToolStripMenuItem With {.Text = "斜体"}
+    Public Shared Property 菜单项_字体_下划线 As New ToolStripMenuItem With {.Text = "下划线"}
+    Public Shared Property 菜单项_字体_删除线 As New ToolStripMenuItem With {.Text = "删除线"}
+
+    Public Shared Sub 添加设置字体菜单的所有菜单项()
+        设置字体菜单.Items.Add(菜单项_字体_标准)
+        设置字体菜单.Items.Add(New ToolStripSeparator)
+        设置字体菜单.Items.Add(菜单项_字体_粗体)
+        设置字体菜单.Items.Add(菜单项_字体_斜体)
+        设置字体菜单.Items.Add(菜单项_字体_下划线)
+        设置字体菜单.Items.Add(菜单项_字体_删除线)
+    End Sub
+
+    Public Shared Property 设置颜色菜单 As New 暗黑菜单条控件本体 With {.ImageScalingSize = New Size(25 * 界面控制.DPI, 25 * 界面控制.DPI)}
+    Public Shared Property 菜单项_颜色_白色 As New ToolStripMenuItem With {.Text = "白色", .Image = My.Resources.颜色滤镜}
+    Public Shared Property 菜单项_颜色_红色 As New ToolStripMenuItem With {.Text = "红色"}
+    Public Shared Property 菜单项_颜色_橙色 As New ToolStripMenuItem With {.Text = "橙色"}
+    Public Shared Property 菜单项_颜色_黄色 As New ToolStripMenuItem With {.Text = "黄色"}
+    Public Shared Property 菜单项_颜色_绿色 As New ToolStripMenuItem With {.Text = "绿色"}
+    Public Shared Property 菜单项_颜色_青色 As New ToolStripMenuItem With {.Text = "青色"}
+    Public Shared Property 菜单项_颜色_蓝色 As New ToolStripMenuItem With {.Text = "蓝色"}
+    Public Shared Property 菜单项_颜色_紫色 As New ToolStripMenuItem With {.Text = "紫色"}
+
+    Public Shared Sub 添加设置颜色菜单的所有菜单项()
+        设置颜色菜单.Items.Add(菜单项_颜色_白色)
+        设置颜色菜单.Items.Add(New ToolStripSeparator)
+        设置颜色菜单.Items.Add(菜单项_颜色_红色)
+        设置颜色菜单.Items.Add(菜单项_颜色_橙色)
+        设置颜色菜单.Items.Add(菜单项_颜色_黄色)
+        设置颜色菜单.Items.Add(菜单项_颜色_绿色)
+        设置颜色菜单.Items.Add(菜单项_颜色_青色)
+        设置颜色菜单.Items.Add(菜单项_颜色_蓝色)
+        设置颜色菜单.Items.Add(菜单项_颜色_紫色)
+        Dim a As New Bitmap(64, 64)
+        Dim g As Graphics = Graphics.FromImage(a)
+        g.Clear(Color1.红色)
+        菜单项_颜色_红色.Image = Image.FromHbitmap(a.GetHbitmap)
+        g.Clear(Color1.橙色)
+        菜单项_颜色_橙色.Image = Image.FromHbitmap(a.GetHbitmap)
+        g.Clear(Color1.黄色)
+        菜单项_颜色_黄色.Image = Image.FromHbitmap(a.GetHbitmap)
+        g.Clear(Color1.绿色)
+        菜单项_颜色_绿色.Image = Image.FromHbitmap(a.GetHbitmap)
+        g.Clear(Color1.青色)
+        菜单项_颜色_青色.Image = Image.FromHbitmap(a.GetHbitmap)
+        g.Clear(Color1.蓝色)
+        菜单项_颜色_蓝色.Image = Image.FromHbitmap(a.GetHbitmap)
+        g.Clear(Color1.紫色)
+        菜单项_颜色_紫色.Image = Image.FromHbitmap(a.GetHbitmap)
+        g.Dispose()
+        a.Dispose()
+    End Sub
+
     Public Shared Sub 添加菜单的触发()
         添加分类和子库菜单的所有菜单项()
         添加分类右键菜单的所有菜单项()
@@ -281,19 +343,34 @@ Public Class 管理模组的菜单
         添加描述菜单的所有菜单项()
         添加预览图菜单的所有菜单项()
         添加链接菜单的所有菜单项()
+        添加设置字体菜单的所有菜单项()
+        添加设置颜色菜单的所有菜单项()
         AddHandler Form1.UiButton1.MouseDown, Sub(sender, e) 分类和子库菜单.Show(sender, New Point(sender.Width - 分类和子库菜单.Width, sender.Height))
-        AddHandler Form1.UiButton2.MouseDown, Sub(sender, e) 项菜单.Show(sender, New Point(0, sender.Height))
-        AddHandler Form1.ListView1.MouseDown, Sub(sender, e) If e.Button = MouseButtons.Right Then 分类右键菜单.Show(sender, e.X, e.Y)
+        AddHandler Form1.UiButton2.MouseDown, Sub(sender, e)
+                                                  打开了分类还是模组项的菜单 = 2
+                                                  项菜单.Show(sender, New Point(0, sender.Height))
+                                              End Sub
+        AddHandler Form1.ListView1.MouseDown, Sub(sender, e)
+                                                  If e.Button = MouseButtons.Right Then
+                                                      打开了分类还是模组项的菜单 = 1
+                                                      分类右键菜单.Show(sender, e.X, e.Y)
+                                                  End If
+                                              End Sub
         AddHandler Form1.ListView2.MouseDown, Sub(sender, e) If e.Button = MouseButtons.Right Then 项右键菜单.Show(sender, e.X, e.Y)
+
         AddHandler Form1.UiButton5.MouseDown, Sub(sender, e) 项筛选菜单.Show(sender, New Point(0, sender.Height))
         AddHandler Form1.UiButton10.MouseDown, Sub(sender, e) 描述菜单.Show(sender, New Point(0, sender.Height))
         预览图菜单.DropShadowEnabled = False
         AddHandler Form1.UiButton13.MouseDown, Sub(sender, e) 预览图菜单.Show(sender, New Point(0, sender.Height))
         AddHandler Form1.UiButton14.MouseDown, Sub(sender, e) 预览图菜单.Show(sender, New Point(sender.Width - 预览图菜单.Width, 0 - 预览图菜单.Height))
-        AddHandler Form1.UiRichTextBox1.LinkClicked, Sub(sender, e)
-                                                         管理模组.点击的链接 = e.LinkText
-                                                         链接菜单.Show(Control.MousePosition)
-                                                     End Sub
+        AddHandler Form1.RichTextBox1.LinkClicked, Sub(sender, e)
+                                                       管理模组.点击的链接 = e.LinkText
+                                                       链接菜单.Show(Control.MousePosition)
+                                                   End Sub
+
+        菜单项_设置分类的字体.DropDown = 设置字体菜单
+        菜单项_设置分类的颜色.DropDown = 设置颜色菜单
+        菜单项_设置项字体.DropDown = 设置字体菜单
     End Sub
 
     Public Shared Sub 设置字体()
@@ -309,6 +386,9 @@ Public Class 管理模组的菜单
         项筛选菜单.Font = New Font(设置.全局设置数据("FontName"), Form1.Font.Size)
         描述菜单.Font = New Font(设置.全局设置数据("FontName"), Form1.Font.Size)
         预览图菜单.Font = New Font(设置.全局设置数据("FontName"), Form1.Font.Size)
+        链接菜单.Font = New Font(设置.全局设置数据("FontName"), Form1.Font.Size)
+        设置字体菜单.Font = New Font(设置.全局设置数据("FontName"), Form1.Font.Size)
+        设置颜色菜单.Font = New Font(设置.全局设置数据("FontName"), Form1.Font.Size)
     End Sub
 
     Public Shared Sub 调整DPI()
@@ -323,6 +403,10 @@ Public Class 管理模组的菜单
         编辑项功能菜单.ImageScalingSize = New Size(25 * 界面控制.DPI, 25 * 界面控制.DPI)
         项筛选菜单.ImageScalingSize = New Size(25 * 界面控制.DPI, 25 * 界面控制.DPI)
         描述菜单.ImageScalingSize = New Size(25 * 界面控制.DPI, 25 * 界面控制.DPI)
+        预览图菜单.ImageScalingSize = New Size(25 * 界面控制.DPI, 25 * 界面控制.DPI)
+        链接菜单.ImageScalingSize = New Size(25 * 界面控制.DPI, 25 * 界面控制.DPI)
+        设置字体菜单.ImageScalingSize = New Size(25 * 界面控制.DPI, 25 * 界面控制.DPI)
+        设置颜色菜单.ImageScalingSize = New Size(25 * 界面控制.DPI, 25 * 界面控制.DPI)
     End Sub
 
 End Class

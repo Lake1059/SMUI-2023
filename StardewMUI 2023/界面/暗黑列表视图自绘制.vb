@@ -17,15 +17,16 @@
         Dim 文本高度修正 As Integer = (e.Bounds.Height - TextRenderer.MeasureText(e.SubItem.Text, e.SubItem.Font).Height) \ 2
         Dim 文本绘制区 As New Rectangle(e.Bounds.X + 5, e.Bounds.Y + 文本高度修正, e.Bounds.Width - 5, e.Bounds.Height)
         If e.ColumnIndex = 0 Then
-            If 项图标字典.ContainsKey(e.Item.Text) Then
+            Dim value As Image = Nothing
+            If 项图标字典.TryGetValue(e.Item.Text, value) Then
                 文本绘制区.X += 5 : 文本绘制区.Width -= 5
-                If e.ColumnIndex = 0 Then 文本绘制区.X += 图像边长 * 界面控制.X轴DPI比率 : 文本绘制区.Width -= 图像边长 * 界面控制.X轴DPI比率
-                Dim 图标绘制区 As New Rectangle(e.Bounds.X + 5, e.Bounds.Y + (e.Bounds.Height - 图像边长 * 界面控制.Y轴DPI比率) \ 2, 图像边长 * 界面控制.X轴DPI比率, 图像边长 * 界面控制.Y轴DPI比率)
-                e.Graphics.DrawImage(项图标字典(e.Item.Text), 图标绘制区)
+                If e.ColumnIndex = 0 Then 文本绘制区.X += 图像边长 * 界面控制.DPI : 文本绘制区.Width -= 图像边长 * 界面控制.DPI
+                Dim 图标绘制区 As New Rectangle(e.Bounds.X + 5, e.Bounds.Y + (e.Bounds.Height - 图像边长 * 界面控制.DPI) \ 2, 图像边长 * 界面控制.DPI, 图像边长 * 界面控制.DPI)
+                e.Graphics.DrawImage(value, 图标绘制区)
             End If
         End If
         Dim 文字显示所需尺寸 As Size = TextRenderer.MeasureText(e.SubItem.Text, e.SubItem.Font)
-        If 文字显示所需尺寸.Width > (e.Bounds.Width - 5 * 界面控制.X轴DPI比率) Then
+        If 文字显示所需尺寸.Width > (e.Bounds.Width - 5 * 界面控制.DPI) Then
             Dim 点号所占用的宽度 As Integer = TextRenderer.MeasureText("...", e.SubItem.Font).Width
             Dim 实际文本可用宽度 As Integer = e.Bounds.Width - 点号所占用的宽度
             Dim 实际要绘制的文本 As String = e.SubItem.Text
@@ -40,7 +41,7 @@
     End Sub
 
     ''' <summary>
-    ''' 绑定此事件时不要绑定 DrawListViewItemEvent 事件，本事件直接绘制主项和图标
+    ''' 绑定此事件时不要绑定 DrawListViewItemEvent 事件，本事件直接绘制主项
     ''' </summary>
     ''' <param name="哪个列表视图控件"></param>
     ''' <param name="e"></param>
@@ -53,7 +54,7 @@
         Dim 文本高度修正 As Integer = (e.Bounds.Height - TextRenderer.MeasureText(e.SubItem.Text, e.SubItem.Font).Height) \ 2
         Dim 文本绘制区 As New Rectangle(e.Bounds.X + 5, e.Bounds.Y + 文本高度修正, e.Bounds.Width - 5, e.Bounds.Height)
         Dim 文字显示所需尺寸 As Size = TextRenderer.MeasureText(e.SubItem.Text, e.SubItem.Font)
-        If 文字显示所需尺寸.Width > (e.Bounds.Width - 5 * 界面控制.X轴DPI比率) Then
+        If 文字显示所需尺寸.Width > (e.Bounds.Width - 5 * 界面控制.DPI) Then
             Dim 点号所占用的宽度 As Integer = TextRenderer.MeasureText("...", e.SubItem.Font).Width
             Dim 实际文本可用宽度 As Integer = e.Bounds.Width - 点号所占用的宽度
             Dim 实际要绘制的文本 As String = e.SubItem.Text

@@ -12,6 +12,7 @@
     <ROW Property="ALLUSERS" Value="1" MultiBuildValue="DefaultBuild:"/>
     <ROW Property="ARPCOMMENTS" Value="古希腊掌管星露谷模组管理的神" ValueLocId="*"/>
     <ROW Property="ARPNOREPAIR" MultiBuildValue="DefaultBuild:1"/>
+    <ROW Property="ARPPRODUCTICON" Value="dropbox.exe" Type="8"/>
     <ROW Property="ARPURLINFOABOUT" Value="https://github.com/Lake1059/SMUI-2023"/>
     <ROW Property="AiWinUI" MultiBuildValue="DefaultBuild:1"/>
     <ROW Property="AiWinUIBtnBackgroundDisabled" MultiBuildValue="DefaultBuild:##000000"/>
@@ -93,10 +94,10 @@
     <ROW Property="AppLogoIconDark" Value="applogodark.png" MultiBuildValue="DefaultBuild:dropbox.ico" Type="1" MsiKey="AppLogoIconDark"/>
     <ROW Property="CTRLS" Value="2"/>
     <ROW Property="Manufacturer" Value="1059 Studio"/>
-    <ROW Property="ProductCode" Value="2052:{3C3F01C4-F37E-4F74-B549-E12F736C7B3D} " Type="16"/>
+    <ROW Property="ProductCode" Value="2052:{787A395F-71C0-44CD-931C-AB14CD36E422} " Type="16"/>
     <ROW Property="ProductLanguage" Value="2052"/>
     <ROW Property="ProductName" Value="SMUI 2023"/>
-    <ROW Property="ProductVersion" Value="6.0.22" Options="32"/>
+    <ROW Property="ProductVersion" Value="6.0.23" Options="32"/>
     <ROW Property="REBOOT" MultiBuildValue="DefaultBuild:ReallySuppress"/>
     <ROW Property="SecureCustomProperties" Value="OLDPRODUCTS;AI_NEWERPRODUCTFOUND;AI_SETUPEXEPATH;SETUPEXEDIR"/>
     <ROW Property="UpgradeCode" Value="{349EDF0D-1EB2-4B52-B72A-0F3AEC12DAC8}"/>
@@ -392,7 +393,7 @@
     <ROW Component="hostpolicy.dll" ComponentId="{DB5393CE-FFF8-45AB-84C1-70AA02B21CB1}" Directory_="APPDIR" Attributes="256" KeyPath="hostpolicy.dll"/>
     <ROW Component="libwebp.dll" ComponentId="{CE0CBE99-654A-4E14-A249-6FF19555A7B2}" Directory_="APPDIR" Attributes="256" KeyPath="libwebp.dll"/>
     <ROW Component="mscordaccore.dll" ComponentId="{6A65D393-FC29-47E3-94D6-E778E7155C3F}" Directory_="APPDIR" Attributes="256" KeyPath="mscordaccore.dll"/>
-    <ROW Component="mscordaccore_amd64_amd64_8.0.424.16909.dll" ComponentId="{15029C7C-BAA1-4B25-BEEB-5A8DF764BFAF}" Directory_="APPDIR" Attributes="256" KeyPath="mscordaccore_amd64_amd64_8.0.424.16909.dll"/>
+    <ROW Component="mscordaccore_amd64_amd64_8.0.524.21615.dll" ComponentId="{BF30316E-0530-4979-9E19-0BE1CB7E4210}" Directory_="APPDIR" Attributes="256" KeyPath="mscordaccore_amd64_amd64_8.0.524.21615.dll"/>
     <ROW Component="mscordbi.dll" ComponentId="{D4D614CC-7F58-4413-9595-98BA8758554A}" Directory_="APPDIR" Attributes="256" KeyPath="mscordbi.dll"/>
     <ROW Component="mscorlib.dll" ComponentId="{3553ACEF-0180-44E1-B052-128396984A9A}" Directory_="APPDIR" Attributes="0" KeyPath="mscorlib.dll"/>
     <ROW Component="mscorrc.dll" ComponentId="{1F6C7C53-A196-4255-9C0B-D54CB8E9A932}" Directory_="APPDIR" Attributes="256" KeyPath="mscorrc.dll"/>
@@ -690,9 +691,9 @@
     <ROW File="clretwrc.dll" Component_="clretwrc.dll" FileName="clretwrc.dll" Attributes="0" SourcePath="..\StardewMUI 2023\bin\Debug\net8.0-windows10.0.22621.0\win-x64\clretwrc.dll" SelfReg="false"/>
     <ROW File="SMUI6.pdf" Component_="chrome_100_percent.pak" FileName="SMUI6.pdf" Attributes="0" SourcePath="..\StardewMUI 2023\bin\Debug\net8.0-windows10.0.22621.0\win-x64\SMUI6.pdf" SelfReg="false"/>
     <ROW File="CsvHelper.dll" Component_="CsvHelper.dll" FileName="CSVHEL~1.DLL|CsvHelper.dll" Attributes="0" SourcePath="..\StardewMUI 2023\bin\Debug\net8.0-windows10.0.22621.0\win-x64\CsvHelper.dll" SelfReg="false"/>
-    <ROW File="mscordaccore_amd64_amd64_8.0.424.16909.dll" Component_="mscordaccore_amd64_amd64_8.0.424.16909.dll" FileName="MSCORD~2.DLL|mscordaccore_amd64_amd64_8.0.424.16909.dll" Attributes="0" SourcePath="..\StardewMUI 2023\bin\Debug\net8.0-windows10.0.22621.0\win-x64\mscordaccore_amd64_amd64_8.0.424.16909.dll" SelfReg="false"/>
     <ROW File="SharpCompress.dll" Component_="SharpCompress.dll" FileName="SHARPC~1.DLL|SharpCompress.dll" Attributes="0" SourcePath="..\StardewMUI 2023\bin\Debug\net8.0-windows10.0.22621.0\win-x64\SharpCompress.dll" SelfReg="false"/>
     <ROW File="ZstdSharp.dll" Component_="ZstdSharp.dll" FileName="ZSTDSH~1.DLL|ZstdSharp.dll" Attributes="0" SourcePath="..\StardewMUI 2023\bin\Debug\net8.0-windows10.0.22621.0\win-x64\ZstdSharp.dll" SelfReg="false"/>
+    <ROW File="mscordaccore_amd64_amd64_8.0.524.21615.dll" Component_="mscordaccore_amd64_amd64_8.0.524.21615.dll" FileName="MSCORD~2.DLL|mscordaccore_amd64_amd64_8.0.524.21615.dll" Attributes="0" SourcePath="..\StardewMUI 2023\bin\Debug\net8.0-windows10.0.22621.0\win-x64\mscordaccore_amd64_amd64_8.0.524.21615.dll" SelfReg="false"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.AiPersistentPropComponent">
     <ROW Property="AI_SHORTCUTSREG" Registry="AI_SHORTCUTSREG" HklmSearch="AI_SHORTCUTSREG" HkcuSearch="AI_SHORTCUTSREG_1" Hklm64Search="AI_SHORTCUTSREG_2" Hkcu64Search="AI_SHORTCUTSREG_3"/>
@@ -1287,12 +1288,13 @@
     <ROW Feature_="MainFeature" Component_="Microsoft.WindowsAPICodePack.Shell.dll"/>
     <ROW Feature_="MainFeature" Component_="clretwrc.dll"/>
     <ROW Feature_="MainFeature" Component_="CsvHelper.dll"/>
-    <ROW Feature_="MainFeature" Component_="mscordaccore_amd64_amd64_8.0.424.16909.dll"/>
     <ROW Feature_="MainFeature" Component_="SharpCompress.dll"/>
     <ROW Feature_="MainFeature" Component_="ZstdSharp.dll"/>
+    <ROW Feature_="MainFeature" Component_="mscordaccore_amd64_amd64_8.0.524.21615.dll"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiIconsComponent">
     <ROW Name="SMUI6.exe" SourcePath="..\StardewMUI 2023\dropbox.ico" Index="0"/>
+    <ROW Name="dropbox.exe" SourcePath="dropbox.ico" Index="0"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiInstExSeqComponent">
     <ROW Action="AI_STORE_LOCATION" Condition="(Not Installed) OR REINSTALL" Sequence="1501"/>

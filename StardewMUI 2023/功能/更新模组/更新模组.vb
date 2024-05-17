@@ -1,4 +1,5 @@
 ﻿Imports System.IO
+Imports System.Text.RegularExpressions
 Imports SMUI6.NEXUS.GetModFileList
 Imports Windows.System
 
@@ -23,7 +24,19 @@ Public Class 更新模组
                                                    设置.全局设置数据("NexusPremium") = "True"
                                                    Form1.TabPageNEXUS下载模式.Text = "NEXUS 下载模式：Premium"
                                                End Sub
+
+        If DLC.DLC解锁标记.UpdateModItemExtension Then
+            AddHandler 全局键盘钩子.自定义全局键盘事件, Sub(e)
+                                             If Form1.UiTabControl1.SelectedTab IsNot Form1.TabPage下载更新 Then Exit Sub
+                                             If Form1.UiTabControlMenu3.SelectedTab IsNot Form1.TabPage选择要下载的文件 Then Exit Sub
+                                             If DLC6全局快捷键要触发的下载项 Is Nothing Then Exit Sub
+                                             If e = Keys.N Then DLC6全局快捷键要触发的下载项.PerformClick()
+                                         End Sub
+        End If
+
     End Sub
+
+    Public Shared Property DLC6全局快捷键要触发的下载项 As Button = Nothing
 
     Public Shared Function 生成更新地址表菜单() As 暗黑菜单条控件本体
         Dim a As New 暗黑菜单条控件本体
@@ -118,6 +131,7 @@ Public Class 更新模组
         转到下载文件页面()
         正在处理的NEXUSID = 模组ID
         是否取消操作 = False
+        DLC6全局快捷键要触发的下载项 = Nothing
         Form1.Label34.Text = "   正在连接到 NEXUS API 获取文件列表 ..."
         Form1.Panel34.Controls.Clear()
         Form1.Panel34.Enabled = True
@@ -131,21 +145,37 @@ Public Class 更新模组
             Exit Sub
         End If
 
+
+        Dim 分类文字 As New Label With {.AutoSize = True, .Dock = DockStyle.Top, .Padding = New Padding(0, 10, 0, 10), .Font = New Font(Form1.Font.Name, 12), .TextAlign = ContentAlignment.MiddleLeft, .ForeColor = Color1.青色, .AutoEllipsis = True, .Text = "主要文件"}
+        Form1.Panel34.Controls.Add(分类文字)
+        分类文字.BringToFront()
         For i = a.FileListData.Count - 1 To 0 Step -1
             If a.FileListData(i).category_name.Equals("main", StringComparison.CurrentCultureIgnoreCase) Then
                 生成NEXUS单个文件信息(a.FileListData(i), 模组项绝对路径)
             End If
         Next
+
+        Dim 分类文字2 As New Label With {.AutoSize = True, .Dock = DockStyle.Top, .Padding = New Padding(0, 10, 0, 10), .Font = New Font(Form1.Font.Name, 12), .TextAlign = ContentAlignment.MiddleLeft, .ForeColor = Color1.青色, .AutoEllipsis = True, .Text = "可选文件"}
+        Form1.Panel34.Controls.Add(分类文字2)
+        分类文字2.BringToFront()
         For i = a.FileListData.Count - 1 To 0 Step -1
             If a.FileListData(i).category_name.Equals("optional", StringComparison.CurrentCultureIgnoreCase) Then
                 生成NEXUS单个文件信息(a.FileListData(i), 模组项绝对路径)
             End If
         Next
+
+        Dim 分类文字3 As New Label With {.AutoSize = True, .Dock = DockStyle.Top, .Padding = New Padding(0, 10, 0, 10), .Font = New Font(Form1.Font.Name, 12), .TextAlign = ContentAlignment.MiddleLeft, .ForeColor = Color1.青色, .AutoEllipsis = True, .Text = "附加文件"}
+        Form1.Panel34.Controls.Add(分类文字3)
+        分类文字3.BringToFront()
         For i = a.FileListData.Count - 1 To 0 Step -1
             If a.FileListData(i).category_name.Equals("miscellaneous", StringComparison.CurrentCultureIgnoreCase) Then
                 生成NEXUS单个文件信息(a.FileListData(i), 模组项绝对路径)
             End If
         Next
+
+        Dim 分类文字4 As New Label With {.AutoSize = True, .Dock = DockStyle.Top, .Padding = New Padding(0, 10, 0, 10), .Font = New Font(Form1.Font.Name, 12), .TextAlign = ContentAlignment.MiddleLeft, .ForeColor = Color1.青色, .AutoEllipsis = True, .Text = "更新文件"}
+        Form1.Panel34.Controls.Add(分类文字4)
+        分类文字4.BringToFront()
         For i = a.FileListData.Count - 1 To 0 Step -1
             If a.FileListData(i).category_name.Equals("update", StringComparison.CurrentCultureIgnoreCase) Then
                 生成NEXUS单个文件信息(a.FileListData(i), 模组项绝对路径)
@@ -153,26 +183,27 @@ Public Class 更新模组
         Next
     End Sub
 
+
     Public Shared Sub 生成NEXUS单个文件信息(Data As FileListDataOne, 模组项绝对路径 As String)
         Dim 独立容器 As New Panel With {.Dock = DockStyle.Top, .Padding = New Padding(30, 10, 30, 7), .Height = 107}
         Dim 标题文字 As New LinkLabel With {.AutoSize = False, .Dock = DockStyle.Top, .Height = 26, .TextAlign = ContentAlignment.TopLeft, .Font = New Font(Form1.Font.Name, 12), .LinkColor = If(设置.全局设置数据("DownloadFileUseSMUI5Color") = True, Color1.绿色, Color1.蓝色), .LinkBehavior = LinkBehavior.HoverUnderline, .Text = Data.name}
         If DLC.DLC解锁标记.UpdateModItemExtension Then
             If FileIO.FileSystem.FileExists(Path.Combine(模组项绝对路径, "NexusFileName")) Then
-                If Data.name = FileIO.FileSystem.ReadAllText(Path.Combine(模组项绝对路径, "NexusFileName")) Then
+                Dim str1 As String = FileIO.FileSystem.ReadAllText(Path.Combine(模组项绝对路径, "NexusFileName"))
+                If Data.name = str1 And DLC6全局快捷键要触发的下载项 Is Nothing Then
                     独立容器.BackColor = ColorTranslator.FromWin32(RGB(48, 48, 48))
+                    DLC6全局快捷键要触发的下载项 = New Button
+                    AddHandler DLC6全局快捷键要触发的下载项.Click, Sub() 标题文字点击事件(Data.name, Data.file_id, 模组项绝对路径)
+                ElseIf DLC6全局快捷键要触发的下载项 Is Nothing Then
+                    If AreSimilar(Data.name, str1) Then
+                        独立容器.BackColor = ColorTranslator.FromWin32(RGB(48, 48, 48))
+                        DLC6全局快捷键要触发的下载项 = New Button
+                        AddHandler DLC6全局快捷键要触发的下载项.Click, Sub() 标题文字点击事件(Data.name, Data.file_id, 模组项绝对路径)
+                    End If
                 End If
             End If
         End If
-        Select Case Data.category_name.ToLower.Trim
-            Case "main"
-                标题文字.Text = "[ 主要文件 ] " & 标题文字.Text
-            Case "optional"
-                标题文字.Text = "[ 可选文件 ] " & 标题文字.Text
-            Case "miscellaneous"
-                标题文字.Text = "[ 附加文件] " & 标题文字.Text
-            Case "update"
-                标题文字.Text = "[ 更新文件 ] " & 标题文字.Text
-        End Select
+
         Dim 状态文字 As New Label With {.AutoSize = False, .Dock = DockStyle.Top, .Height = 21, .TextAlign = ContentAlignment.TopLeft, .Font = New Font(Form1.Font.Name, 10), .ForeColor = If(设置.全局设置数据("DownloadFileUseSMUI5Color") = True, Color1.橙色, Color1.绿色)}
         Dim 简介文字 As New Label With {.AutoSize = False, .Dock = DockStyle.Fill, .Font = New Font(Form1.Font.Name, 10), .TextAlign = ContentAlignment.TopLeft, .ForeColor = Color.Gray, .AutoEllipsis = True, .Text = Data.description.Replace("<br />", vbCrLf)}
 
@@ -189,15 +220,37 @@ Public Class 更新模组
         简介文字.BringToFront()
         Form1.Panel34.Controls.Add(独立容器)
         独立容器.BringToFront()
-        AddHandler 标题文字.LinkClicked, Sub(sender, e)
-                                         If DLC.DLC解锁标记.UpdateModItemExtension Then FileIO.FileSystem.WriteAllText(Path.Combine(模组项绝对路径, "NexusFileName"), Data.name, False)
-                                         If 设置.全局设置数据("NexusPremium") = "False" Then
-                                             转到浏览器获取额外参数(正在处理的NEXUSID, Data.file_id, 模组项绝对路径)
-                                         Else
-                                             获取服务器列表(正在处理的NEXUSID, Data.file_id, 模组项绝对路径)
-                                         End If
-                                     End Sub
+        AddHandler 标题文字.LinkClicked, Sub(sender, e) 标题文字点击事件(Data.name, Data.file_id, 模组项绝对路径)
     End Sub
+
+    Public Shared Sub 标题文字点击事件(文件标题 As String, 文件ID As String, 模组项绝对路径 As String)
+        FileIO.FileSystem.WriteAllText(Path.Combine(模组项绝对路径, "NexusFileName"), 文件标题, False)
+        If 设置.全局设置数据("NexusPremium") = "False" Then
+            转到浏览器获取额外参数(正在处理的NEXUSID, 文件ID, 模组项绝对路径)
+        Else
+            获取服务器列表(正在处理的NEXUSID, 文件ID, 模组项绝对路径)
+        End If
+    End Sub
+
+    Shared Function AreSimilar(str1 As String, str2 As String) As Boolean
+        Dim match1 = Regex.Match(str1, "(\D+)(\d+\.\d+\.\d+)$")
+        Dim match2 = Regex.Match(str2, "(\D+)(\d+\.\d+\.\d+)$")
+
+        If match1.Success And match2.Success Then
+            Dim prefix1 = match1.Groups(1).Value
+            Dim version1 = New Version(match1.Groups(2).Value)
+
+            Dim prefix2 = match2.Groups(1).Value
+            Dim version2 = New Version(match2.Groups(2).Value)
+
+            If prefix1 = prefix2 And version1.Major = version2.Major Then
+                ' 字符串前缀和主版本号都相同
+                Return True
+            End If
+        End If
+        Return False
+    End Function
+
 
     Public Shared Sub 转到浏览器获取额外参数(模组ID As String, 文件ID As String, 模组项绝对路径 As String)
 
@@ -353,5 +406,9 @@ Public Class 更新模组
                                             End Sub
         Next
     End Sub
+
+
+
+
 
 End Class
