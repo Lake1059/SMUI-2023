@@ -145,13 +145,25 @@ Public Class 更新模组
             Exit Sub
         End If
 
+        Dim 自动判断最合适的 As String = ""
+
+        If DLC.DLC解锁标记.UpdateModItemExtension Then
+            If FileIO.FileSystem.FileExists(Path.Combine(模组项绝对路径, "NexusFileName")) Then
+                Dim str2 = FileIO.FileSystem.ReadAllText(Path.Combine(模组项绝对路径, "NexusFileName"))
+                Dim FileTitles As New List(Of String)
+                For i = a.FileListData.Count - 1 To 0 Step -1
+                    FileTitles.Add(a.FileListData(i).file_name)
+                Next
+                自动判断最合适的 = NEXUS判断合适的文件标题.尝试判断(str2, FileTitles)
+            End If
+        End If
 
         Dim 分类文字 As New Label With {.AutoSize = True, .Dock = DockStyle.Top, .Padding = New Padding(0, 10, 0, 10), .Font = New Font(Form1.Font.Name, 12), .TextAlign = ContentAlignment.MiddleLeft, .ForeColor = Color1.青色, .AutoEllipsis = True, .Text = "主要文件"}
         Form1.Panel34.Controls.Add(分类文字)
         分类文字.BringToFront()
         For i = a.FileListData.Count - 1 To 0 Step -1
             If a.FileListData(i).category_name.Equals("main", StringComparison.CurrentCultureIgnoreCase) Then
-                生成NEXUS单个文件信息(a.FileListData(i), 模组项绝对路径)
+                生成NEXUS单个文件信息(a.FileListData(i), 模组项绝对路径, a.FileListData(i).file_name = 自动判断最合适的)
             End If
         Next
 
@@ -160,7 +172,7 @@ Public Class 更新模组
         分类文字2.BringToFront()
         For i = a.FileListData.Count - 1 To 0 Step -1
             If a.FileListData(i).category_name.Equals("optional", StringComparison.CurrentCultureIgnoreCase) Then
-                生成NEXUS单个文件信息(a.FileListData(i), 模组项绝对路径)
+                生成NEXUS单个文件信息(a.FileListData(i), 模组项绝对路径, a.FileListData(i).file_name = 自动判断最合适的)
             End If
         Next
 
@@ -169,7 +181,7 @@ Public Class 更新模组
         分类文字3.BringToFront()
         For i = a.FileListData.Count - 1 To 0 Step -1
             If a.FileListData(i).category_name.Equals("miscellaneous", StringComparison.CurrentCultureIgnoreCase) Then
-                生成NEXUS单个文件信息(a.FileListData(i), 模组项绝对路径)
+                生成NEXUS单个文件信息(a.FileListData(i), 模组项绝对路径, a.FileListData(i).file_name = 自动判断最合适的)
             End If
         Next
 
@@ -178,31 +190,40 @@ Public Class 更新模组
         分类文字4.BringToFront()
         For i = a.FileListData.Count - 1 To 0 Step -1
             If a.FileListData(i).category_name.Equals("update", StringComparison.CurrentCultureIgnoreCase) Then
-                生成NEXUS单个文件信息(a.FileListData(i), 模组项绝对路径)
+                生成NEXUS单个文件信息(a.FileListData(i), 模组项绝对路径, a.FileListData(i).file_name = 自动判断最合适的)
             End If
         Next
     End Sub
 
 
-    Public Shared Sub 生成NEXUS单个文件信息(Data As FileListDataOne, 模组项绝对路径 As String)
+    Public Shared Sub 生成NEXUS单个文件信息(Data As FileListDataOne, 模组项绝对路径 As String, Optional 是自动判断最合适的 As Boolean = False)
         Dim 独立容器 As New Panel With {.Dock = DockStyle.Top, .Padding = New Padding(30, 10, 30, 7), .Height = 107}
         Dim 标题文字 As New LinkLabel With {.AutoSize = False, .Dock = DockStyle.Top, .Height = 26, .TextAlign = ContentAlignment.TopLeft, .Font = New Font(Form1.Font.Name, 12), .LinkColor = If(设置.全局设置数据("DownloadFileUseSMUI5Color") = True, Color1.绿色, Color1.蓝色), .LinkBehavior = LinkBehavior.HoverUnderline, .Text = Data.name}
+
         If DLC.DLC解锁标记.UpdateModItemExtension Then
-            If FileIO.FileSystem.FileExists(Path.Combine(模组项绝对路径, "NexusFileName")) Then
-                Dim str1 As String = FileIO.FileSystem.ReadAllText(Path.Combine(模组项绝对路径, "NexusFileName"))
-                If Data.name = str1 And DLC6全局快捷键要触发的下载项 Is Nothing Then
-                    独立容器.BackColor = ColorTranslator.FromWin32(RGB(48, 48, 48))
-                    DLC6全局快捷键要触发的下载项 = New Button
-                    AddHandler DLC6全局快捷键要触发的下载项.Click, Sub() 标题文字点击事件(Data.name, Data.file_id, 模组项绝对路径)
-                ElseIf DLC6全局快捷键要触发的下载项 Is Nothing Then
-                    If AreSimilar(Data.name, str1) Then
-                        独立容器.BackColor = ColorTranslator.FromWin32(RGB(48, 48, 48))
-                        DLC6全局快捷键要触发的下载项 = New Button
-                        AddHandler DLC6全局快捷键要触发的下载项.Click, Sub() 标题文字点击事件(Data.name, Data.file_id, 模组项绝对路径)
-                    End If
-                End If
+            If 是自动判断最合适的 And DLC6全局快捷键要触发的下载项 Is Nothing Then
+                独立容器.BackColor = ColorTranslator.FromWin32(RGB(48, 48, 48))
+                DLC6全局快捷键要触发的下载项 = New Button
+                AddHandler DLC6全局快捷键要触发的下载项.Click, Sub() 标题文字点击事件(Data.name, Data.file_id, 模组项绝对路径)
             End If
         End If
+
+        'If DLC.DLC解锁标记.UpdateModItemExtension Then
+        '    If FileIO.FileSystem.FileExists(Path.Combine(模组项绝对路径, "NexusFileName")) Then
+        '        Dim str1 As String = FileIO.FileSystem.ReadAllText(Path.Combine(模组项绝对路径, "NexusFileName"))
+        '        If Data.name = str1 And DLC6全局快捷键要触发的下载项 Is Nothing Then
+        '            独立容器.BackColor = ColorTranslator.FromWin32(RGB(48, 48, 48))
+        '            DLC6全局快捷键要触发的下载项 = New Button
+        '            AddHandler DLC6全局快捷键要触发的下载项.Click, Sub() 标题文字点击事件(Data.name, Data.file_id, 模组项绝对路径)
+        '        ElseIf DLC6全局快捷键要触发的下载项 Is Nothing Then
+        '            If AreSimilar(Data.name, str1) Then
+        '                独立容器.BackColor = ColorTranslator.FromWin32(RGB(48, 48, 48))
+        '                DLC6全局快捷键要触发的下载项 = New Button
+        '                AddHandler DLC6全局快捷键要触发的下载项.Click, Sub() 标题文字点击事件(Data.name, Data.file_id, 模组项绝对路径)
+        '            End If
+        '        End If
+        '    End If
+        'End If
 
         Dim 状态文字 As New Label With {.AutoSize = False, .Dock = DockStyle.Top, .Height = 21, .TextAlign = ContentAlignment.TopLeft, .Font = New Font(Form1.Font.Name, 10), .ForeColor = If(设置.全局设置数据("DownloadFileUseSMUI5Color") = True, Color1.橙色, Color1.绿色)}
         Dim 简介文字 As New Label With {.AutoSize = False, .Dock = DockStyle.Fill, .Font = New Font(Form1.Font.Name, 10), .TextAlign = ContentAlignment.TopLeft, .ForeColor = Color.Gray, .AutoEllipsis = True, .Text = Data.description.Replace("<br />", vbCrLf)}

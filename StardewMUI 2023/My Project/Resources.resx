@@ -268,9 +268,6 @@
   <data name="文字大小" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\文字大小.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="更新记录" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\更新记录.rtf;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
   <data name="模块" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\模块.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>

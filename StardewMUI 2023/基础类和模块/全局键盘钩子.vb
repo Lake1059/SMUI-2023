@@ -40,8 +40,7 @@ Public Class 全局键盘钩子
 
     Private Shared Function HookCallback(nCode As Integer, wParam As IntPtr, lParam As IntPtr) As IntPtr
         If nCode >= 0 AndAlso wParam = CType(WM_KEYDOWN, IntPtr) Then
-            Dim vkCode As Integer = Marshal.ReadInt32(lParam)
-            RaiseEvent 自定义全局键盘事件(vkCode)
+            RaiseEvent 自定义全局键盘事件(Marshal.ReadInt32(lParam))
         End If
         Return CallNextHookEx(hHook, nCode, wParam, lParam)
     End Function

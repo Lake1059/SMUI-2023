@@ -20,7 +20,6 @@ Public Class Form1
         更新模组.初始化()
         SMAPI安装管理器.初始化()
 
-        全局键盘钩子.SetHook()
     End Sub
 
     Private Sub Form1_Shown(sender As Object, e As EventArgs) Handles MyBase.Shown
@@ -66,4 +65,11 @@ Public Class Form1
         界面控制.主界面高DPI兼容()
     End Sub
 
+    Private Sub Form1_Activated(sender As Object, e As EventArgs) Handles Me.Activated
+        全局键盘钩子.SetHook()
+    End Sub
+
+    Private Sub Form1_Deactivate(sender As Object, e As EventArgs) Handles Me.Deactivate
+        全局键盘钩子.Unhook()
+    End Sub
 End Class

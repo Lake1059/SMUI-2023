@@ -561,17 +561,6 @@ Namespace My.Resources
         End Property
         
         '''<summary>
-        '''  查找类似 {\rtf1\adeflang1025\ansi\ansicpg936\uc2\adeff0\deff0\stshfdbch31505\stshfloch31506\stshfhich31506\stshfbi0\deflang1033\deflangfe2052\themelang1033\themelangfe2052\themelangcs0{\fonttbl{\f0\fbidi \froman\fcharset0\fprq2{\*\panose 02020603050405020304}Times New Roman;}
-        '''{\f13\fbidi \fnil\fcharset134\fprq2{\*\panose 02010600030101010101}\&apos;cb\&apos;ce\&apos;cc\&apos;e5{\*\falt SimSun};}{\f34\fbidi \froman\fcharset0\fprq2{\*\panose 02040503050406030204}Cambria Math;}
-        '''{\f36\fbidi \fnil\fcharset134\fprq2{\*\panose 0201060003010 [字符串的其余部分被截断]&quot;; 的本地化字符串。
-        '''</summary>
-        Friend ReadOnly Property 更新记录() As String
-            Get
-                Return ResourceManager.GetString("更新记录", resourceCulture)
-            End Get
-        End Property
-        
-        '''<summary>
         '''  查找 System.Drawing.Bitmap 类型的本地化资源。
         '''</summary>
         Friend ReadOnly Property 模块() As System.Drawing.Bitmap

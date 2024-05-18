@@ -6,9 +6,7 @@
   <COMPONENT cid="caphyon.advinst.msicomp.MsiPropsComponent">
     <ROW Property="AI_APP_FILE" Value="[#SMUI6.exe]"/>
     <ROW Property="AI_BITMAP_DISPLAY_MODE" Value="0"/>
-    <ROW Property="AI_DESKTOP_SH" Type="4" MsiKey="AI_DESKTOP_SH"/>
     <ROW Property="AI_FINDEXE_TITLE" Value="选择 [|ProductName] 安装包" ValueLocId="AI.Property.FindExeTitle"/>
-    <ROW Property="AI_SHORTCUTSREG" Value="0|0|0|0|"/>
     <ROW Property="ALLUSERS" Value="1" MultiBuildValue="DefaultBuild:"/>
     <ROW Property="ARPCOMMENTS" Value="古希腊掌管星露谷模组管理的神" ValueLocId="*"/>
     <ROW Property="ARPNOREPAIR" MultiBuildValue="DefaultBuild:1"/>
@@ -94,10 +92,10 @@
     <ROW Property="AppLogoIconDark" Value="applogodark.png" MultiBuildValue="DefaultBuild:dropbox.ico" Type="1" MsiKey="AppLogoIconDark"/>
     <ROW Property="CTRLS" Value="2"/>
     <ROW Property="Manufacturer" Value="1059 Studio"/>
-    <ROW Property="ProductCode" Value="2052:{787A395F-71C0-44CD-931C-AB14CD36E422} " Type="16"/>
+    <ROW Property="ProductCode" Value="2052:{7479193A-9868-4D08-892F-79CB5A2A3542} " Type="16"/>
     <ROW Property="ProductLanguage" Value="2052"/>
     <ROW Property="ProductName" Value="SMUI 2023"/>
-    <ROW Property="ProductVersion" Value="6.0.23" Options="32"/>
+    <ROW Property="ProductVersion" Value="6.0.24" Options="32"/>
     <ROW Property="REBOOT" MultiBuildValue="DefaultBuild:ReallySuppress"/>
     <ROW Property="SecureCustomProperties" Value="OLDPRODUCTS;AI_NEWERPRODUCTFOUND;AI_SETUPEXEPATH;SETUPEXEDIR"/>
     <ROW Property="UpgradeCode" Value="{349EDF0D-1EB2-4B52-B72A-0F3AEC12DAC8}"/>
@@ -111,7 +109,6 @@
     <ROW Property="WindowsTypeNT5X" MultiBuildValue="DefaultBuild:Windows XP/2003" ValueLocId="-"/>
     <ROW Property="WindowsTypeNT5XDisplay" MultiBuildValue="DefaultBuild:Windows XP/2003" ValueLocId="-"/>
     <ROW Property="WindowsTypeNTDisplay" MultiBuildValue="DefaultBuild:32-bit Windows versions" ValueLocId="-"/>
-    <ATTRIBUTE name="DeletedRows" value="AI_STARTUP_SH"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiDirsComponent">
     <ROW Directory="APPDIR" Directory_Parent="TARGETDIR" DefaultDir="APPDIR:." IsPseudoRoot="1"/>
@@ -122,7 +119,6 @@
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiCompsComponent">
     <ROW Component="AI_ExePath" ComponentId="{CBAF2252-48D8-4146-9D8B-2E99237377E4}" Directory_="APPDIR" Attributes="260" KeyPath="AI_ExePath"/>
-    <ROW Component="AI_SHORTCUTSREG" ComponentId="{171825E9-7E85-449B-B61B-FC6681D2DE8B}" Directory_="APPDIR" Attributes="260" KeyPath="AI_SHORTCUTSREG" Options="1"/>
     <ROW Component="APPDIR" ComponentId="{94CEB0EC-B9B4-444F-9BAB-40F57B9BEAC3}" Directory_="APPDIR" Attributes="0"/>
     <ROW Component="Accessibility.dll" ComponentId="{3EAD55E2-4958-40EB-BD85-74B2EF043709}" Directory_="APPDIR" Attributes="0" KeyPath="Accessibility.dll"/>
     <ROW Component="CsvHelper.dll" ComponentId="{9F1FFA02-2836-49A0-AAE4-ACFD807A63F7}" Directory_="APPDIR" Attributes="0" KeyPath="CsvHelper.dll"/>
@@ -694,9 +690,7 @@
     <ROW File="SharpCompress.dll" Component_="SharpCompress.dll" FileName="SHARPC~1.DLL|SharpCompress.dll" Attributes="0" SourcePath="..\StardewMUI 2023\bin\Debug\net8.0-windows10.0.22621.0\win-x64\SharpCompress.dll" SelfReg="false"/>
     <ROW File="ZstdSharp.dll" Component_="ZstdSharp.dll" FileName="ZSTDSH~1.DLL|ZstdSharp.dll" Attributes="0" SourcePath="..\StardewMUI 2023\bin\Debug\net8.0-windows10.0.22621.0\win-x64\ZstdSharp.dll" SelfReg="false"/>
     <ROW File="mscordaccore_amd64_amd64_8.0.524.21615.dll" Component_="mscordaccore_amd64_amd64_8.0.524.21615.dll" FileName="MSCORD~2.DLL|mscordaccore_amd64_amd64_8.0.524.21615.dll" Attributes="0" SourcePath="..\StardewMUI 2023\bin\Debug\net8.0-windows10.0.22621.0\win-x64\mscordaccore_amd64_amd64_8.0.524.21615.dll" SelfReg="false"/>
-  </COMPONENT>
-  <COMPONENT cid="caphyon.advinst.msicomp.AiPersistentPropComponent">
-    <ROW Property="AI_SHORTCUTSREG" Registry="AI_SHORTCUTSREG" HklmSearch="AI_SHORTCUTSREG" HkcuSearch="AI_SHORTCUTSREG_1" Hklm64Search="AI_SHORTCUTSREG_2" Hkcu64Search="AI_SHORTCUTSREG_3"/>
+    <ROW File="UpdateLog.rtf" Component_="chrome_100_percent.pak" FileName="UPDATE~1.RTF|UpdateLog.rtf" Attributes="0" SourcePath="..\StardewMUI 2023\bin\Debug\net8.0-windows10.0.22621.0\win-x64\UpdateLog.rtf" SelfReg="false"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.BootstrOptComponent">
     <ROW BootstrOptKey="GlobalOptions" DownloadFolder="[AppDataFolder][|Manufacturer]\[|ProductName]\prerequisites" Options="2"/>
@@ -720,7 +714,6 @@
     <ROW Fragment="MaintenanceWelcomeDlg.aip" Path="&lt;AI_THEMES&gt;appinstaller\fragments\MaintenanceWelcomeDlg.aip"/>
     <ROW Fragment="SequenceDialogs.aip" Path="&lt;AI_THEMES&gt;appinstaller\fragments\SequenceDialogs.aip"/>
     <ROW Fragment="Sequences.aip" Path="&lt;AI_FRAGS&gt;Sequences.aip"/>
-    <ROW Fragment="ShortcutsDlg.aip" Path="&lt;AI_THEMES&gt;appinstaller\fragments\ShortcutsDlg.aip"/>
     <ROW Fragment="StaticUIStrings.aip" Path="&lt;AI_FRAGS&gt;StaticUIStrings.aip"/>
     <ROW Fragment="Themes.aip" Path="&lt;AI_FRAGS&gt;Themes.aip"/>
     <ROW Fragment="UI.aip" Path="&lt;AI_THEMES&gt;appinstaller\fragments\UI.aip"/>
@@ -736,10 +729,6 @@
   <COMPONENT cid="caphyon.advinst.msicomp.MsiAppSearchComponent">
     <ROW Property="AI_SETUPEXEPATH" Signature_="AI_EXE_PATH_LM" Builds="DefaultBuild"/>
     <ROW Property="AI_SETUPEXEPATH" Signature_="AI_EXE_PATH_CU" Builds="DefaultBuild"/>
-    <ROW Property="AI_SHORTCUTSREG" Signature_="AI_SHORTCUTSREG"/>
-    <ROW Property="AI_SHORTCUTSREG" Signature_="AI_SHORTCUTSREG_1"/>
-    <ROW Property="AI_SHORTCUTSREG" Signature_="AI_SHORTCUTSREG_2"/>
-    <ROW Property="AI_SHORTCUTSREG" Signature_="AI_SHORTCUTSREG_3"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiBinaryComponent">
     <ROW Name="Prereq.dll" SourcePath="&lt;AI_CUSTACTS&gt;Prereq.dll"/>
@@ -749,7 +738,7 @@
     <ROW Name="lzmaextractor.dll" SourcePath="&lt;AI_CUSTACTS&gt;lzmaextractor.dll"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiCheckBoxComponent">
-    <ATTRIBUTE name="DeletedRows" value="AI_STARTUP_SH@VIEWREADME"/>
+    <ATTRIBUTE name="DeletedRows" value="VIEWREADME"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiControlComponent">
     <ROW Dialog_="AboutDlg" Control="CompanyText" Type="Text" X="14" Y="28" Width="200" Height="15" Attributes="196611" Text="[ProductName] [ProductVersion]" TextStyle="[ManufacturerFont]" Order="400" TextLocId="-" MsiKey="AboutDlg#CompanyText"/>
@@ -865,14 +854,6 @@
     <ROW Dialog_="ResumeDlg" Control="ProductLogo" Type="Bitmap" X="404" Y="15" Width="70" Height="70" Attributes="1" Text="[AppLogoIcon]" Order="700" MsiKey="ResumeDlg#ProductLogo"/>
     <ROW Dialog_="ResumeDlg" Control="ProducVersionText" Type="Text" X="16" Y="60" Width="362" Height="15" Attributes="196611" Text="版本: [ProductVersion]" TextStyle="[ManufacturerFont]" Order="800" TextLocId="AppInstaller.Control.Text.ProductVersion" MsiKey="ResumeDlg#ProducVersionText"/>
     <ROW Dialog_="ResumeDlg" Control="AboutBtn" Type="ImageButton" X="1" Y="382" Width="18" Height="18" Attributes="3" Text="[AboutBtnIcon]" TextStyle="[ManufacturerFont]" Order="900" MsiKey="ResumeDlg#AboutBtn" Options="1" ExtType="ImageButton"/>
-    <ROW Dialog_="ShortcutsDlg" Control="Next" Type="ImageButton" X="379" Y="354" Width="95" Height="28" Attributes="3" Text="[ButtonImage]" TextStyle="[ImageBtnFont]" Order="200" MsiKey="ShortcutsDlg#Next" Options="1" ExtType="ImageButton" ExtData="[ButtonText_Next]" ExtDataLocId="-"/>
-    <ROW Dialog_="ShortcutsDlg" Control="Back" Type="ImageButton" X="280" Y="354" Width="95" Height="28" Attributes="3" Text="[ButtonImage]" TextStyle="[ImageBtnFont]" Order="300" MsiKey="ShortcutsDlg#Back" Options="1" ExtType="ImageButton" ExtData="[ButtonText_Back]" ExtDataLocId="-"/>
-    <ROW Dialog_="ShortcutsDlg" Control="ShortcutsDlgText" Type="Text" X="16" Y="94" Width="458" Height="25" Attributes="196611" Text="在下列位置创建快捷方式：" TextStyle="[ManufacturerFont]" Order="400" MsiKey="ShortcutsDlg#ShortcutsDlgText"/>
-    <ROW Dialog_="ShortcutsDlg" Control="DesktopShortcutsCheckBox" Type="CheckBox" X="35" Y="120" Width="162" Height="15" Attributes="3" Property="AI_DESKTOP_SH" Text="桌面" TextStyle="[ManufacturerFont]" Order="500" TextLocId="Control.Text.ShortcutsDlg#DesktopShortcutsCheckBox" MsiKey="ShortcutsDlg#DesktopShortcutsCheckBox"/>
-    <ROW Dialog_="ShortcutsDlg" Control="ProductNameTitle" Type="Text" X="15" Y="17" Width="364" Height="32" Attributes="196611" Text="快捷启动" TextStyle="[ProductNameTitleFont]" Order="600" MsiKey="ShortcutsDlg#ProductNameTitle"/>
-    <ROW Dialog_="ShortcutsDlg" Control="StartmenuShortcutsCheckBox" Type="CheckBox" X="35" Y="141" Width="162" Height="15" Attributes="3" Property="AI_STARTMENU_SH" Text="开始菜单" TextStyle="[ManufacturerFont]" Order="700" MsiKey="ShortcutsDlg#StartmenuShortcutsCheckBox"/>
-    <ROW Dialog_="ShortcutsDlg" Control="PinToTaskbarShortcutsCheckBox" Type="CheckBox" X="35" Y="162" Width="162" Height="15" Attributes="3" Property="PINTOTASKBAR" Text="固定到任务栏" TextStyle="[ManufacturerFont]" Order="800" MsiKey="ShortcutsDlg#PinToTaskbarShortcutsCheckBox"/>
-    <ROW Dialog_="ShortcutsDlg" Control="AboutBtn" Type="ImageButton" X="1" Y="382" Width="18" Height="18" Attributes="3" Text="[AboutBtnIcon]" TextStyle="[ManufacturerFont]" Order="900" MsiKey="ShortcutsDlg#AboutBtn" Options="1" ExtType="ImageButton"/>
     <ROW Dialog_="UserExit" Control="Finish" Type="ImageButton" X="379" Y="354" Width="95" Height="28" Attributes="3" Text="[ButtonImage]" TextStyle="[ImageBtnFont]" Order="300" MsiKey="UserExit#Finish" Options="1" ExtType="ImageButton" ExtData="[ButtonText_Finish] " ExtDataLocId="Metro.Control.ExtData.ExitDialog#Finish"/>
     <ROW Dialog_="UserExit" Control="ProductNameTitle" Type="Text" X="15" Y="17" Width="364" Height="32" Attributes="196611" Text="中止" TextStyle="[ProductNameTitleFont]" Order="400" MsiKey="UserExit#ProductNameTitle"/>
     <ROW Dialog_="UserExit" Control="Description1" Type="Text" X="16" Y="94" Width="454" Height="40" Attributes="196611" Text="[ProductName] 的安装被中断。您的系统没有被修改。要稍后安装此程序，请再运行安装程序。" TextStyle="[ManufacturerFont]" Order="500" TextLocId="Control.Text.UserExit#Description1" MsiKey="UserExit#Description1"/>
@@ -884,16 +865,13 @@
     <ROW Dialog_="WelcomeDlg" Control="ProducVersionText" Type="Text" X="16" Y="60" Width="362" Height="15" Attributes="196611" Text="版本: [ProductVersion]" TextStyle="[ManufacturerFont]" Order="700" TextLocId="AppInstaller.Control.Text.ProductVersion" MsiKey="WelcomeDlg#ProducVersionText"/>
     <ROW Dialog_="WelcomeDlg" Control="LaunchCheckBox" Type="ImageCheckBox" X="16" Y="354" Width="126" Height="15" Attributes="3" Property="AiSkipExitDlg" Text="[CheckboxImage]" TextStyle="[ManufacturerFont]" Order="800" MsiKey="WelcomeDlg#LaunchCheckBox" ExtType="ImageCheckBox" ExtData="准备就绪时启动" ExtDataLocId="AppInstaller.Control.Text.LaunchWhenReadyCheckbox"/>
     <ROW Dialog_="WelcomeDlg" Control="AboutBtn" Type="ImageButton" X="1" Y="382" Width="18" Height="18" Attributes="3" Text="[AboutBtnIcon]" TextStyle="[ManufacturerFont]" Order="900" MsiKey="WelcomeDlg#AboutBtn" Options="1" ExtType="ImageButton"/>
-    <ATTRIBUTE name="DeletedRows" value="AboutDlg#Hyperlink@AboutDlg#LicenseAgreementLink@AdminWelcomeDlg#Bitmap@ExitDialog#Bitmap@ExitDialog#CompanyText@ExitDialog#Description@ExitDialog#ViewReadmeCheckBox@ExitDialog#ViewReadmeText@FatalError#Bitmap@FatalError#CompanyText@FatalError#ProducVersionText@FatalError#ProductLogo@FilesInUse#Bitmap@FilesInUse#CompanyText@FilesInUse#ProducVersionText@FilesInUse#ProductLogo@FolderDlg#Bitmap@FolderDlg#CompanyText@FolderDlg#ProducVersionText@FolderDlg#ProductLogo@MaintenanceWelcomeDlg#Bitmap@MsiRMFilesInUse#Bitmap@MsiRMFilesInUse#CompanyText@MsiRMFilesInUse#ProducVersionText@MsiRMFilesInUse#ProductLogo@OutOfDiskDlg#Bitmap@OutOfDiskDlg#CompanyText@OutOfDiskDlg#ProducVersionText@OutOfDiskDlg#ProductLogo@OutOfRbDiskDlg#Bitmap@OutOfRbDiskDlg#CompanyText@OutOfRbDiskDlg#ProducVersionText@OutOfRbDiskDlg#ProductLogo@PatchWelcomeDlg#Bitmap@PrepareDlg#ActionText@PrepareDlg#Bitmap@PrepareDlg#CompanyText@PrepareDlg#ProducVersionText@PrepareDlg#ProductLogo@ProgressDlg#Bitmap@ProgressDlg#CompanyText@ProgressDlg#ProducVersionText@ProgressDlg#ProductLogo@ResumeDlg#Bitmap@ShortcutsDlg#Bitmap@ShortcutsDlg#CompanyText@ShortcutsDlg#ProducVersionText@ShortcutsDlg#ProductLogo@ShortcutsDlg#StartupShorcutsCheckBox@UserExit#Bitmap@UserExit#CompanyText@UserExit#ProducVersionText@UserExit#ProductLogo@WelcomeDlg#Bitmap"/>
+    <ATTRIBUTE name="DeletedRows" value="AboutDlg#Hyperlink@AboutDlg#LicenseAgreementLink@AdminWelcomeDlg#Bitmap@ExitDialog#Bitmap@ExitDialog#CompanyText@ExitDialog#Description@ExitDialog#ViewReadmeCheckBox@ExitDialog#ViewReadmeText@FatalError#Bitmap@FatalError#CompanyText@FatalError#ProducVersionText@FatalError#ProductLogo@FilesInUse#Bitmap@FilesInUse#CompanyText@FilesInUse#ProducVersionText@FilesInUse#ProductLogo@FolderDlg#Bitmap@FolderDlg#CompanyText@FolderDlg#ProducVersionText@FolderDlg#ProductLogo@MaintenanceWelcomeDlg#Bitmap@MsiRMFilesInUse#Bitmap@MsiRMFilesInUse#CompanyText@MsiRMFilesInUse#ProducVersionText@MsiRMFilesInUse#ProductLogo@OutOfDiskDlg#Bitmap@OutOfDiskDlg#CompanyText@OutOfDiskDlg#ProducVersionText@OutOfDiskDlg#ProductLogo@OutOfRbDiskDlg#Bitmap@OutOfRbDiskDlg#CompanyText@OutOfRbDiskDlg#ProducVersionText@OutOfRbDiskDlg#ProductLogo@PatchWelcomeDlg#Bitmap@PrepareDlg#ActionText@PrepareDlg#Bitmap@PrepareDlg#CompanyText@PrepareDlg#ProducVersionText@PrepareDlg#ProductLogo@ProgressDlg#Bitmap@ProgressDlg#CompanyText@ProgressDlg#ProducVersionText@ProgressDlg#ProductLogo@ResumeDlg#Bitmap@UserExit#Bitmap@UserExit#CompanyText@UserExit#ProducVersionText@UserExit#ProductLogo@WelcomeDlg#Bitmap"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiControlConditionComponent">
-    <ROW Dialog_="ShortcutsDlg" Control_="PinToTaskbarShortcutsCheckBox" Action="Show" Condition="(Not Installed)"/>
-    <ATTRIBUTE name="DeletedRows" value="AboutDlg#Hyperlink#Hide#((NOT AI_INSTALL) AND (NOT AI_PATCH)) OR NOT AiReadmeLink@ExitDialog#ViewReadmeCheckBox#Hide#(((NOT AI_INSTALL) AND (NOT AI_PATCH)) OR ((CTRLS &lt;&gt; 1) AND (CTRLS &lt;&gt; 3))) OR AiReadmeLink@ExitDialog#ViewReadmeText#Hide#(((NOT AI_INSTALL) AND (NOT AI_PATCH)) OR ((CTRLS &lt;&gt; 1) AND (CTRLS &lt;&gt; 3))) OR AiReadmeLink@ShortcutsDlg#PinToTaskbarShortcutsCheckBox#Hide#(Not Installed)@ShortcutsDlg#StartupShorcutsCheckBox#Show#(Not Installed)"/>
+    <ATTRIBUTE name="DeletedRows" value="AboutDlg#Hyperlink#Hide#((NOT AI_INSTALL) AND (NOT AI_PATCH)) OR NOT AiReadmeLink@ExitDialog#ViewReadmeCheckBox#Hide#(((NOT AI_INSTALL) AND (NOT AI_PATCH)) OR ((CTRLS &lt;&gt; 1) AND (CTRLS &lt;&gt; 3))) OR AiReadmeLink@ExitDialog#ViewReadmeText#Hide#(((NOT AI_INSTALL) AND (NOT AI_PATCH)) OR ((CTRLS &lt;&gt; 1) AND (CTRLS &lt;&gt; 3))) OR AiReadmeLink"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiControlEventComponent">
     <ROW Dialog_="WelcomeDlg" Control_="Next" Event="NewDialog" Argument="NewDialog" Condition="AI_INSTALL" Ordering="1"/>
-    <ROW Dialog_="ShortcutsDlg" Control_="Next" Event="NewDialog" Argument="FolderDlg" Condition="AI_INSTALL" Ordering="1"/>
-    <ROW Dialog_="ShortcutsDlg" Control_="Back" Event="NewDialog" Argument="NewDialog_2" Condition="AI_INSTALL" Ordering="1"/>
     <ROW Dialog_="MaintenanceWelcomeDlg" Control_="Next" Event="EndDialog" Argument="Return" Condition="AI_MAINT" Ordering="1"/>
     <ROW Dialog_="PatchWelcomeDlg" Control_="Next" Event="EndDialog" Argument="Return" Condition="AI_PATCH" Ordering="201"/>
     <ROW Dialog_="ResumeDlg" Control_="Install" Event="EndDialog" Argument="Return" Condition="AI_RESUME" Ordering="99"/>
@@ -914,7 +892,7 @@
     <ROW Dialog_="PatchWelcomeDlg" Control_="Back" Event="[ButtonText_Next]" Argument="[AI_ButtonText_Next_Orig]" Condition="AI_PATCH" Ordering="0" Options="2"/>
     <ROW Dialog_="PatchWelcomeDlg" Control_="Back" Event="[Text_Next]" Argument="[AI_Text_Next_Orig]" Condition="AI_PATCH" Ordering="1" Options="2"/>
     <ROW Dialog_="FolderDlg" Control_="Next" Event="EndDialog" Argument="Return" Condition="AI_INSTALL" Ordering="101"/>
-    <ROW Dialog_="FolderDlg" Control_="Back" Event="NewDialog" Argument="ShortcutsDlg" Condition="AI_INSTALL" Ordering="1"/>
+    <ROW Dialog_="FolderDlg" Control_="Back" Event="NewDialog" Argument="NewDialog_2" Condition="AI_INSTALL" Ordering="1"/>
     <ROW Dialog_="FolderDlg" Control_="Next" Event="SpawnDialog" Argument="OutOfRbDiskDlg" Condition="AI_INSTALL AND OutOfDiskSpace = 1 AND OutOfNoRbDiskSpace = 0 AND (PROMPTROLLBACKCOST=&quot;P&quot; OR NOT PROMPTROLLBACKCOST)" Ordering="102" Options="2"/>
     <ROW Dialog_="FolderDlg" Control_="Next" Event="EnableRollback" Argument="False" Condition="AI_INSTALL AND OutOfDiskSpace = 1 AND OutOfNoRbDiskSpace = 0 AND PROMPTROLLBACKCOST=&quot;D&quot;" Ordering="103" Options="2"/>
     <ROW Dialog_="FolderDlg" Control_="Next" Event="SpawnDialog" Argument="OutOfDiskDlg" Condition="AI_INSTALL AND ( (OutOfDiskSpace = 1 AND OutOfNoRbDiskSpace = 1) OR (OutOfDiskSpace = 1 AND PROMPTROLLBACKCOST=&quot;F&quot;) )" Ordering="104" Options="2"/>
@@ -926,16 +904,14 @@
     <ROW Dialog_="FolderDlg" Control_="Back" Event="[Text_Next]" Argument="[AI_Text_Next_Orig]" Condition="AI_INSTALL" Ordering="3" Options="2"/>
     <ROW Dialog_="NewDialog" Control_="Cancel" Event="EndDialog" Argument="Exit" Condition="1" Ordering="100"/>
     <ROW Dialog_="NewDialog" Control_="AboutBtn" Event="SpawnDialog" Argument="AboutDlg" Condition="1" Ordering="1"/>
-    <ROW Dialog_="NewDialog" Control_="Next" Event="NewDialog" Argument="NewDialog_1" Condition="AI_INSTALL" Ordering="1"/>
+    <ROW Dialog_="NewDialog" Control_="Next" Event="NewDialog" Argument="NewDialog_2" Condition="AI_INSTALL" Ordering="1"/>
     <ROW Dialog_="NewDialog" Control_="Back" Event="NewDialog" Argument="WelcomeDlg" Condition="AI_INSTALL" Ordering="1"/>
     <ROW Dialog_="NewDialog_1" Control_="Cancel" Event="EndDialog" Argument="Exit" Condition="1" Ordering="100"/>
     <ROW Dialog_="NewDialog_1" Control_="AboutBtn" Event="SpawnDialog" Argument="AboutDlg" Condition="1" Ordering="1"/>
-    <ROW Dialog_="NewDialog_1" Control_="Next" Event="NewDialog" Argument="NewDialog_2" Condition="AI_INSTALL" Ordering="1"/>
-    <ROW Dialog_="NewDialog_1" Control_="Back" Event="NewDialog" Argument="NewDialog" Condition="AI_INSTALL" Ordering="1"/>
     <ROW Dialog_="NewDialog_2" Control_="Cancel" Event="EndDialog" Argument="Exit" Condition="1" Ordering="100"/>
     <ROW Dialog_="NewDialog_2" Control_="AboutBtn" Event="SpawnDialog" Argument="AboutDlg" Condition="1" Ordering="1"/>
-    <ROW Dialog_="NewDialog_2" Control_="Next" Event="NewDialog" Argument="ShortcutsDlg" Condition="AI_INSTALL" Ordering="1"/>
-    <ROW Dialog_="NewDialog_2" Control_="Back" Event="NewDialog" Argument="NewDialog_1" Condition="AI_INSTALL" Ordering="1"/>
+    <ROW Dialog_="NewDialog_2" Control_="Next" Event="NewDialog" Argument="FolderDlg" Condition="AI_INSTALL" Ordering="1"/>
+    <ROW Dialog_="NewDialog_2" Control_="Back" Event="NewDialog" Argument="NewDialog" Condition="AI_INSTALL" Ordering="1"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiCreateFolderComponent">
     <ROW Directory_="APPDIR" Component_="APPDIR" ManualDelete="true"/>
@@ -946,9 +922,6 @@
     <ROW Action="AI_BACKUP_AI_SETUPEXEPATH" Type="51" Source="AI_SETUPEXEPATH_ORIGINAL" Target="[AI_SETUPEXEPATH]"/>
     <ROW Action="AI_ChooseTextStyles" Type="1" Source="aicustact.dll" Target="ChooseTextStyles"/>
     <ROW Action="AI_DATA_SETTER" Type="51" Source="CustomActionData" Target="[AI_SETUPEXEPATH]"/>
-    <ROW Action="AI_DATA_SETTER_1" Type="51" Source="AI_DEL_EMPTY_SHORTCUTDIR" Target="[SHORTCUTDIR]"/>
-    <ROW Action="AI_DELETE_SHORTCUTS" Type="1" Source="aicustact.dll" Target="DeleteShortcuts"/>
-    <ROW Action="AI_DEL_EMPTY_SHORTCUTDIR" Type="3073" Source="aicustact.dll" Target="DeleteEmptyDirectory" AdditionalSeq="AI_DATA_SETTER_1"/>
     <ROW Action="AI_DOWNGRADE" Type="19" Target="4010"/>
     <ROW Action="AI_DeleteCadLzma" Type="51" Source="AI_DeleteLzma" Target="[AI_SETUPEXEPATH]"/>
     <ROW Action="AI_DeleteLzma" Type="1025" Source="lzmaextractor.dll" Target="DeleteLZMAFiles"/>
@@ -998,7 +971,6 @@
     <ROW Dialog="PrepareDlg" HCentering="50" VCentering="50" Width="500" Height="400" Attributes="5" Title="[ProductName] [Setup]" Control_Default="Cancel" Control_Cancel="Cancel" TitleLocId="Dialog.PrepareDlg" MsiKey="PrepareDlg"/>
     <ROW Dialog="ProgressDlg" HCentering="50" VCentering="50" Width="500" Height="400" Attributes="5" Title="[ProductName] [Setup]" Control_Default="Cancel" Control_Cancel="Cancel" TitleLocId="Dialog.ProgressDlg" MsiKey="ProgressDlg"/>
     <ROW Dialog="ResumeDlg" HCentering="50" VCentering="50" Width="500" Height="400" Attributes="7" Title="[ProductName] [Setup]" Control_Default="Install" Control_Cancel="Cancel" TitleLocId="Dialog.ResumeDlg" MsiKey="ResumeDlg"/>
-    <ROW Dialog="ShortcutsDlg" HCentering="50" VCentering="50" Width="500" Height="400" Attributes="7" Title="[ProductName] [Setup]" Control_Default="Next" Control_Cancel="Cancel" TitleLocId="Dialog.ShortcutsDlg" MsiKey="ShortcutsDlg"/>
     <ROW Dialog="UserExit" HCentering="50" VCentering="50" Width="500" Height="400" Attributes="7" Title="[ProductName] [Setup]" Control_Default="Finish" Control_Cancel="Finish" TitleLocId="Dialog.UserExit" MsiKey="UserExit"/>
     <ROW Dialog="WelcomeDlg" HCentering="50" VCentering="50" Width="500" Height="400" Attributes="7" Title="[ProductName] [Setup]" Control_Default="Next" Control_Cancel="Cancel" TitleLocId="Dialog.WelcomeDlg" MsiKey="WelcomeDlg"/>
   </COMPONENT>
@@ -1279,7 +1251,6 @@
     <ROW Feature_="MainFeature" Component_="WindowsBase.resources.dll"/>
     <ROW Feature_="MainFeature" Component_="WindowsFormsIntegration.resources.dll"/>
     <ROW Feature_="MainFeature" Component_="SHORTCUTDIR"/>
-    <ROW Feature_="MainFeature" Component_="AI_SHORTCUTSREG"/>
     <ROW Feature_="MainFeature" Component_="Microsoft.Web.WebView2.Core.dll"/>
     <ROW Feature_="MainFeature" Component_="Microsoft.Web.WebView2.WinForms.dll"/>
     <ROW Feature_="MainFeature" Component_="Microsoft.Web.WebView2.Wpf.dll"/>
@@ -1313,9 +1284,6 @@
     <ROW Action="AI_ExtractFiles" Sequence="1399" Builds="DefaultBuild"/>
     <ROW Action="AI_DATA_SETTER" Sequence="1398"/>
     <ROW Action="AI_DOWNGRADE" Condition="AI_NEWERPRODUCTFOUND AND (UILevel &lt;&gt; 5)" Sequence="201"/>
-    <ROW Action="AI_DELETE_SHORTCUTS" Condition="NOT (REMOVE=&quot;ALL&quot;)" Sequence="1401"/>
-    <ROW Action="AI_DEL_EMPTY_SHORTCUTDIR" Condition="NOT (REMOVE=&quot;ALL&quot;)" Sequence="6402"/>
-    <ROW Action="AI_DATA_SETTER_1" Condition="NOT (REMOVE=&quot;ALL&quot;)" Sequence="6401"/>
     <ROW Action="AI_RESTORE_LOCATION" Condition="APPDIR=&quot;&quot;" Sequence="749"/>
     <ROW Action="AI_PrepareShortcutFlags" Condition="(VersionNT &gt; 501) AND ((NOT Installed) OR (Installed AND (REMOVE&lt;&gt;&quot;ALL&quot;) AND (AI_INSTALL_MODE&lt;&gt;&quot;Remove&quot;)))" Sequence="4501"/>
     <ROW Action="AI_PinShortcuts" Condition="(VersionNT &gt; 600) AND ((NOT Installed) OR (Installed AND (REMOVE&lt;&gt;&quot;ALL&quot;) AND (AI_INSTALL_MODE&lt;&gt;&quot;Remove&quot;)))" Sequence="6499"/>
@@ -1367,14 +1335,9 @@
   <COMPONENT cid="caphyon.advinst.msicomp.MsiRegLocatorComponent">
     <ROW Signature_="AI_EXE_PATH_CU" Root="1" Key="Software\Caphyon\Advanced Installer\LZMA\[ProductCode]\[ProductVersion]" Name="AI_ExePath" Type="2"/>
     <ROW Signature_="AI_EXE_PATH_LM" Root="2" Key="Software\Caphyon\Advanced Installer\LZMA\[ProductCode]\[ProductVersion]" Name="AI_ExePath" Type="2"/>
-    <ROW Signature_="AI_SHORTCUTSREG" Root="2" Key="Software\[Manufacturer]\[UpgradeCode]" Name="AI_SHORTCUTSREG" Type="2"/>
-    <ROW Signature_="AI_SHORTCUTSREG_1" Root="1" Key="Software\[Manufacturer]\[UpgradeCode]" Name="AI_SHORTCUTSREG" Type="2"/>
-    <ROW Signature_="AI_SHORTCUTSREG_2" Root="2" Key="Software\[Manufacturer]\[UpgradeCode]" Name="AI_SHORTCUTSREG" Type="18"/>
-    <ROW Signature_="AI_SHORTCUTSREG_3" Root="1" Key="Software\[Manufacturer]\[UpgradeCode]" Name="AI_SHORTCUTSREG" Type="18"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiRegsComponent">
     <ROW Registry="AI_ExePath" Root="-1" Key="Software\Caphyon\Advanced Installer\LZMA\[ProductCode]\[ProductVersion]" Name="AI_ExePath" Value="[AI_SETUPEXEPATH]" Component_="AI_ExePath"/>
-    <ROW Registry="AI_SHORTCUTSREG" Root="-1" Key="Software\[Manufacturer]\[UpgradeCode]" Name="AI_SHORTCUTSREG" Value="[AI_SHORTCUTSREG]" Component_="AI_SHORTCUTSREG"/>
     <ROW Registry="AdvancedInstaller" Root="-1" Key="Software\Caphyon\Advanced Installer" Name="\"/>
     <ROW Registry="Caphyon" Root="-1" Key="Software\Caphyon" Name="\"/>
     <ROW Registry="LZMA" Root="-1" Key="Software\Caphyon\Advanced Installer\LZMA" Name="\"/>
@@ -1384,7 +1347,6 @@
     <ROW Registry="ProductName" Root="-1" Key="Software\[Manufacturer]\[ProductName]" Name="\"/>
     <ROW Registry="ProductVersion" Root="-1" Key="Software\Caphyon\Advanced Installer\LZMA\[ProductCode]\[ProductVersion]" Name="\"/>
     <ROW Registry="Software" Root="-1" Key="Software" Name="\"/>
-    <ROW Registry="UpgradeCode" Root="-1" Key="Software\[Manufacturer]\[UpgradeCode]" Name="\"/>
     <ROW Registry="Version" Root="-1" Key="Software\[Manufacturer]\[ProductName]" Name="Version" Value="[ProductVersion]" Component_="ProductInformation"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiShortsComponent">

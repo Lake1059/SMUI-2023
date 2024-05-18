@@ -1,4 +1,5 @@
 ﻿
+Imports System.IO
 Imports System.Runtime.InteropServices
 Imports Microsoft.Web.WebView2.WinForms
 Imports Sunny.UI
@@ -19,7 +20,7 @@ Public Class 界面控制
         'End If
 
         Form1.UiRichTextBox4.Rtf = My.Resources.用户许可协议
-        Form1.UiRichTextBox3.Rtf = My.Resources.更新记录
+        Form1.UiRichTextBox3.LoadFile(Path.Combine(Application.StartupPath, "UpdateLog.rtf"))
 
         设置富文本框行高(Form1.RichTextBox1, 300)
         Form1.RichTextBox1.AutoWordSelection = False

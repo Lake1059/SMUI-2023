@@ -263,7 +263,33 @@ Line1:
     End Sub
 
     Public Shared Sub 分类列表键盘按下事件(sender As Object, e As KeyEventArgs)
+        e.SuppressKeyPress = True
         Select Case e.KeyCode
+            Case Keys.W, Keys.Up
+                If Form1.ListView1.SelectedItems.Count = 0 Then Exit Sub
+                Dim a = Form1.ListView1.SelectedIndices(0)
+                If a > 0 Then
+                    For Each item In Form1.ListView1.Items
+                        item.Selected = False
+                    Next
+                    Form1.ListView1.Items(a - 1).Selected = True
+                    Form1.ListView1.Items(a - 1).EnsureVisible()
+                End If
+            Case Keys.S, Keys.Down
+                If Form1.ListView1.SelectedItems.Count = 0 Then Exit Sub
+                Dim a = Form1.ListView1.SelectedIndices(0)
+                If a <> Form1.ListView1.Items.Count - 1 Then
+                    For Each item In Form1.ListView1.Items
+                        item.Selected = False
+                    Next
+                    Form1.ListView1.Items(a + 1).Selected = True
+                    Form1.ListView1.Items(a + 1).EnsureVisible()
+                End If
+            Case Keys.D, Keys.Right
+                Form1.ListView2.Focus()
+                If Form1.ListView2.SelectedItems.Count = 0 Then
+                    If Form1.ListView2.Items.Count > 0 Then Form1.ListView2.Items(0).Selected = True
+                End If
             Case Keys.F3
                 上移选中的分类()
             Case Keys.F4
@@ -510,6 +536,28 @@ Line1:
     Public Shared Sub 模组项列表键盘按下事件(sender As Object, e As KeyEventArgs)
         e.SuppressKeyPress = True
         Select Case e.KeyCode
+            Case Keys.W, Keys.Up
+                If Form1.ListView2.SelectedItems.Count = 0 Then Exit Sub
+                Dim a = Form1.ListView2.SelectedIndices(0)
+                If a > 0 Then
+                    For Each item In Form1.ListView2.Items
+                        item.Selected = False
+                    Next
+                    Form1.ListView2.Items(a - 1).Selected = True
+                    Form1.ListView2.Items(a - 1).EnsureVisible()
+                End If
+            Case Keys.S, Keys.Down
+                If Form1.ListView2.SelectedItems.Count = 0 Then Exit Sub
+                Dim a = Form1.ListView2.SelectedIndices(0)
+                If a <> Form1.ListView2.Items.Count - 1 Then
+                    For Each item In Form1.ListView2.Items
+                        item.Selected = False
+                    Next
+                    Form1.ListView2.Items(a + 1).Selected = True
+                    Form1.ListView2.Items(a + 1).EnsureVisible()
+                End If
+            Case Keys.A, Keys.Left
+                Form1.ListView1.Focus()
             Case Keys.F5
                 管理模组的菜单.菜单项_安装.PerformClick()
             Case Keys.F6
