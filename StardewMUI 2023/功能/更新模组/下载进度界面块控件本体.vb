@@ -16,7 +16,7 @@ Public Class 下载进度界面块控件本体
     Public Property 设置_模组项绝对路径 As String
     Public Property 设置_N网模组ID As String
     Public Property 设置_结束后自动释放的控件 As New List(Of Control)
-
+    Public Property 设置_其他来源指定文件名 As String
     Public Async Sub 开始下载()
         If 设置_下载来源 = "" Then Exit Sub
         If 设置_下载地址 = "" And 设置_下载来源.Equals("nexus", StringComparison.CurrentCultureIgnoreCase) Then Exit Sub
@@ -30,7 +30,7 @@ Public Class 下载进度界面块控件本体
         If 设置_下载来源.Equals("nexus", StringComparison.CurrentCultureIgnoreCase) Then
             str1 = Await DownloadFileFromNexusAsync(设置_下载地址, 设置.检查并返回数据库下载文件夹路径)
         Else
-            str1 = Await DownloadFileAsync(设置_下载地址, Path.Combine(设置.检查并返回数据库下载文件夹路径, 设置_下载来源))
+            str1 = Await DownloadFileAsync(设置_下载地址, Path.Combine(设置.检查并返回数据库下载文件夹路径, 设置_其他来源指定文件名))
         End If
         If str1 <> "" Then
             是否下载成功 = False

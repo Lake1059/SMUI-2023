@@ -24,19 +24,19 @@ Partial Class 下载进度界面块控件本体
     Private Sub InitializeComponent()
         components = New ComponentModel.Container()
         Label1 = New Label()
+        暗黑菜单条控件本体1 = New 暗黑菜单条控件本体()
+        取消下载ToolStripMenuItem = New ToolStripMenuItem()
+        开始下载ToolStripMenuItem = New ToolStripMenuItem()
+        ToolStripSeparator1 = New ToolStripSeparator()
+        取消操作ToolStripMenuItem = New ToolStripMenuItem()
         Label2 = New Label()
         Panel1 = New Panel()
         Panel2 = New Panel()
         Panel3 = New Panel()
-        暗黑菜单条控件本体1 = New 暗黑菜单条控件本体()
         Timer1 = New Timer(components)
-        取消下载ToolStripMenuItem = New ToolStripMenuItem()
-        开始下载ToolStripMenuItem = New ToolStripMenuItem()
-        取消操作ToolStripMenuItem = New ToolStripMenuItem()
-        ToolStripSeparator1 = New ToolStripSeparator()
+        暗黑菜单条控件本体1.SuspendLayout()
         Panel1.SuspendLayout()
         Panel2.SuspendLayout()
-        暗黑菜单条控件本体1.SuspendLayout()
         SuspendLayout()
         ' 
         ' Label1
@@ -50,6 +50,46 @@ Partial Class 下载进度界面块控件本体
         Label1.Size = New Size(480, 31)
         Label1.TabIndex = 0
         Label1.Text = "正在对模组项操作下载的文件"
+        ' 
+        ' 暗黑菜单条控件本体1
+        ' 
+        暗黑菜单条控件本体1.BackColor = Color.FromArgb(CByte(48), CByte(48), CByte(48))
+        暗黑菜单条控件本体1.ForeColor = Color.Gainsboro
+        暗黑菜单条控件本体1.ImageScalingSize = New Size(25, 25)
+        暗黑菜单条控件本体1.Items.AddRange(New ToolStripItem() {取消下载ToolStripMenuItem, 开始下载ToolStripMenuItem, ToolStripSeparator1, 取消操作ToolStripMenuItem})
+        暗黑菜单条控件本体1.Name = "暗黑菜单条控件本体1"
+        暗黑菜单条控件本体1.Size = New Size(134, 107)
+        ' 
+        ' 取消下载ToolStripMenuItem
+        ' 
+        取消下载ToolStripMenuItem.ForeColor = Color.Gainsboro
+        取消下载ToolStripMenuItem.Image = My.Resources.Resources.叉号
+        取消下载ToolStripMenuItem.Name = "取消下载ToolStripMenuItem"
+        取消下载ToolStripMenuItem.Size = New Size(133, 32)
+        取消下载ToolStripMenuItem.Text = "取消下载"
+        ' 
+        ' 开始下载ToolStripMenuItem
+        ' 
+        开始下载ToolStripMenuItem.ForeColor = Color.Gainsboro
+        开始下载ToolStripMenuItem.Image = My.Resources.Resources.下载
+        开始下载ToolStripMenuItem.Name = "开始下载ToolStripMenuItem"
+        开始下载ToolStripMenuItem.Size = New Size(133, 32)
+        开始下载ToolStripMenuItem.Text = "开始下载"
+        ' 
+        ' ToolStripSeparator1
+        ' 
+        ToolStripSeparator1.ForeColor = Color.Gainsboro
+        ToolStripSeparator1.Margin = New Padding(0, 0, 0, 1)
+        ToolStripSeparator1.Name = "ToolStripSeparator1"
+        ToolStripSeparator1.Size = New Size(130, 6)
+        ' 
+        ' 取消操作ToolStripMenuItem
+        ' 
+        取消操作ToolStripMenuItem.ForeColor = Color.Gainsboro
+        取消操作ToolStripMenuItem.Image = My.Resources.Resources.删除
+        取消操作ToolStripMenuItem.Name = "取消操作ToolStripMenuItem"
+        取消操作ToolStripMenuItem.Size = New Size(133, 32)
+        取消操作ToolStripMenuItem.Text = "取消操作"
         ' 
         ' Label2
         ' 
@@ -94,49 +134,9 @@ Partial Class 下载进度界面块控件本体
         Panel3.Size = New Size(187, 13)
         Panel3.TabIndex = 0
         ' 
-        ' 暗黑菜单条控件本体1
-        ' 
-        暗黑菜单条控件本体1.BackColor = Color.FromArgb(CByte(48), CByte(48), CByte(48))
-        暗黑菜单条控件本体1.ForeColor = Color.Gainsboro
-        暗黑菜单条控件本体1.ImageScalingSize = New Size(25, 25)
-        暗黑菜单条控件本体1.Items.AddRange(New ToolStripItem() {取消下载ToolStripMenuItem, 开始下载ToolStripMenuItem, ToolStripSeparator1, 取消操作ToolStripMenuItem})
-        暗黑菜单条控件本体1.Name = "暗黑菜单条控件本体1"
-        暗黑菜单条控件本体1.Size = New Size(190, 129)
-        ' 
         ' Timer1
         ' 
         Timer1.Interval = 1000
-        ' 
-        ' 取消下载ToolStripMenuItem
-        ' 
-        取消下载ToolStripMenuItem.ForeColor = Color.Gainsboro
-        取消下载ToolStripMenuItem.Image = My.Resources.Resources.叉号
-        取消下载ToolStripMenuItem.Name = "取消下载ToolStripMenuItem"
-        取消下载ToolStripMenuItem.Size = New Size(189, 32)
-        取消下载ToolStripMenuItem.Text = "取消下载"
-        ' 
-        ' 开始下载ToolStripMenuItem
-        ' 
-        开始下载ToolStripMenuItem.ForeColor = Color.Gainsboro
-        开始下载ToolStripMenuItem.Image = My.Resources.Resources.下载
-        开始下载ToolStripMenuItem.Name = "开始下载ToolStripMenuItem"
-        开始下载ToolStripMenuItem.Size = New Size(189, 32)
-        开始下载ToolStripMenuItem.Text = "开始下载"
-        ' 
-        ' 取消操作ToolStripMenuItem
-        ' 
-        取消操作ToolStripMenuItem.ForeColor = Color.Gainsboro
-        取消操作ToolStripMenuItem.Image = My.Resources.Resources.删除
-        取消操作ToolStripMenuItem.Name = "取消操作ToolStripMenuItem"
-        取消操作ToolStripMenuItem.Size = New Size(189, 32)
-        取消操作ToolStripMenuItem.Text = "取消操作"
-        ' 
-        ' ToolStripSeparator1
-        ' 
-        ToolStripSeparator1.ForeColor = Color.Gainsboro
-        ToolStripSeparator1.Margin = New Padding(0, 0, 0, 1)
-        ToolStripSeparator1.Name = "ToolStripSeparator1"
-        ToolStripSeparator1.Size = New Size(177, 6)
         ' 
         ' 下载进度界面块控件本体
         ' 
@@ -153,9 +153,9 @@ Partial Class 下载进度界面块控件本体
         Name = "下载进度界面块控件本体"
         Padding = New Padding(10)
         Size = New Size(500, 95)
+        暗黑菜单条控件本体1.ResumeLayout(False)
         Panel1.ResumeLayout(False)
         Panel2.ResumeLayout(False)
-        暗黑菜单条控件本体1.ResumeLayout(False)
         ResumeLayout(False)
     End Sub
 

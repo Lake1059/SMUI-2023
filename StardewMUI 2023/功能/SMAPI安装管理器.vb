@@ -37,14 +37,18 @@ Public Class SMAPI安装管理器
         End If
         获取到的文件列表.Clear()
         Form1.UiComboBox7.Items.Clear()
-        获取到的文件列表 = a.可供下载的文件
+        For i = 0 To a.发行版数据集合.Count - 1
+            For i2 = 0 To a.发行版数据集合(i).可供下载的文件.Count - 1
+                获取到的文件列表.Add(a.发行版数据集合(i).可供下载的文件(i2))
+            Next
+        Next
         For i = 0 To 获取到的文件列表.Count - 1
             Form1.UiComboBox7.Items.Add(获取到的文件列表(i).Key)
         Next
         Form1.Label55.Text = "获取成功"
         正在进行获取文件列表 = False
         If Form1.UiComboBox7.Items.Count > 1 Then
-            If a.可供下载的文件(0).Key.Contains("dev") Then
+            If Form1.UiComboBox7.Items(0).Contains("dev") Then
                 Form1.UiComboBox7.SelectedIndex = 1
             Else
                 Form1.UiComboBox7.SelectedIndex = 0

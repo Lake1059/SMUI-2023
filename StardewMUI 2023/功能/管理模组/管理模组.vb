@@ -574,7 +574,7 @@ Line1:
                 If Not DLC.DLC解锁标记.UpdateModItemExtension Then Exit Sub
                 If Form1.ListView2.SelectedItems.Count <> 1 Then Exit Sub
                 If 当前项信息_N网ID列表.Count > 0 Then
-                    更新模组.获取NEXUS文件列表(当前项信息_N网ID列表(0), Path.Combine(管理模组2.检查并返回当前所选子库路径(False), Form1.ListView2.SelectedItems(0).SubItems(3).Text, Form1.ListView2.SelectedItems(0).Text))
+                    更新模组.获取NEXUS文件列表(当前项信息_N网ID列表(0), Path.Combine(管理模组2.检查并返回当前所选子库路径(False), Form1.ListView2.SelectedItems(0).SubItems(3).Text, Form1.ListView2.SelectedItems(0).Text), Form1.ListView2.SelectedItems(0).SubItems(1).Text.Split({" → ", " ← "}, StringSplitOptions.None)(0))
                 End If
             Case Keys.M
                 If Not DLC.DLC解锁标记.UpdateModItemExtension Then Exit Sub

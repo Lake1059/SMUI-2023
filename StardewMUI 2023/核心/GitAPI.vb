@@ -248,7 +248,17 @@ Public Class GitAPI
     End Class
 
     Public Class GitHubAllReleaseFile
-        Public 可供下载的文件 As New List(Of KeyValuePair(Of String, String))
+
+        Public 发行版数据集合 As New List(Of 发行版数据单片)
+
+        Public Structure 发行版数据单片
+            Public 可供下载的文件 As List(Of KeyValuePair(Of String, String))
+            Public 标题 As String
+            Public 描述 As String
+            Public 标签 As String
+            Public 是否是草稿 As Boolean
+            Public 是否预览版 As Boolean
+        End Structure
 
         Public Function 获取(存储库 As String) As String
             Try
@@ -272,13 +282,33 @@ Public Class GitAPI
                         Return JsonData.item("Data").item("message").ToString
                     End If
                 End If
+                发行版数据集合.Clear()
                 For i = 0 To JsonData.item("Data").Count - 1
+                    Dim a1 As New 发行版数据单片
+                    If JsonData.item("Data")(i).item("name") IsNot Nothing Then
+                        a1.标题 = JsonData.item("Data")(i).item("name").ToString
+                    End If
+                    If JsonData.item("Data")(i).item("body") IsNot Nothing Then
+                        a1.描述 = JsonData.item("Data")(i).item("body").ToString
+                    End If
+                    If JsonData.item("Data")(i).item("tag_name") IsNot Nothing Then
+                        a1.标签 = JsonData.item("Data")(i).item("tag_name").ToString
+                    End If
+                    If JsonData.item("Data")(i).item("draft") IsNot Nothing Then
+                        a1.是否是草稿 = JsonData.item("Data")(i).item("draft").ToString
+                    End If
+                    If JsonData.item("Data")(i).item("prerelease") IsNot Nothing Then
+                        a1.是否预览版 = JsonData.item("Data")(i).item("prerelease").ToString
+                    End If
+                    a1.可供下载的文件 = New List(Of KeyValuePair(Of String, String))
                     For i2 = 0 To JsonData.item("Data")(i).item("assets").Count - 1
                         If JsonData.item("Data")(i).item("assets").item(i2)("name") IsNot Nothing Then
-                            可供下载的文件.Add(New KeyValuePair(Of String, String)(JsonData.item("Data")(i).item("assets").item(i2)("name").ToString, JsonData.item("Data")(i).item("assets").item(i2)("browser_download_url").ToString))
+                            a1.可供下载的文件.Add(New KeyValuePair(Of String, String)(JsonData.item("Data")(i).item("assets").item(i2)("name").ToString, JsonData.item("Data")(i).item("assets").item(i2)("browser_download_url").ToString))
                         End If
                     Next
+                    发行版数据集合.Add(a1)
                 Next
+
                 Return ""
             Catch ex As Exception
                 Return ex.Message

@@ -1,9 +1,88 @@
 ﻿
 
 Imports System.Text.RegularExpressions
+Imports SMUI6.NEXUS.GetModFileList
 
 Public Class NEXUS判断合适的文件标题
 
+    ''' <summary>
+    ''' 这是最新的第三版识别
+    ''' </summary>
+    ''' <param name="oldTitle"></param>
+    ''' <param name="oldVersion"></param>
+    ''' <param name="filesList"></param>
+    ''' <returns></returns>
+    Public Shared Function 尝试判断(oldTitle As String, oldVersion As String, filesList As List(Of FileListDataOne)) As FileListDataOne?
+        ' 步骤1：首先判断是否有标题完全相同的文件
+        For Each file In filesList
+            If file.file_name.Equals(oldTitle) Then
+                Return file
+            End If
+        Next
+
+        ' 步骤2：判断标题文字相似度并比较版本号
+        Dim versionPattern As String = "\d+(\.\d+)*"
+        Dim oldTitleWithoutVersion As String = Regex.Replace(oldTitle, versionPattern, "").Trim()
+        Dim bestMatchFile As FileListDataOne? = Nothing
+        Dim bestVersionDifference As Integer = Integer.MaxValue
+
+        For Each file In filesList
+            Dim fileTitleWithoutVersion As String = Regex.Replace(file.file_name, versionPattern, "").Trim()
+            If fileTitleWithoutVersion.Equals(oldTitleWithoutVersion) Then
+                Dim fileVersionMatch As Match = Regex.Match(file.file_name, versionPattern)
+                If fileVersionMatch.Success Then
+                    Dim fileVersion As String = fileVersionMatch.Value
+                    Dim versionDifference As Integer = 共享方法.CompareVersion(oldVersion, fileVersion)
+                    If versionDifference < 0 AndAlso versionDifference < bestVersionDifference Then
+                        bestMatchFile = file
+                        bestVersionDifference = versionDifference
+                    End If
+                End If
+            End If
+        Next
+
+        If bestMatchFile IsNot Nothing Then
+            Return bestMatchFile
+        End If
+
+        ' 步骤3：查找比旧版本号更新的文件
+        bestMatchFile = Nothing
+        bestVersionDifference = Integer.MaxValue
+
+        For Each file In filesList
+            Dim versionDifference As Integer = 共享方法.CompareVersion(oldVersion, file.version)
+            If versionDifference < 0 AndAlso versionDifference < bestVersionDifference Then
+                bestMatchFile = file
+                bestVersionDifference = versionDifference
+            End If
+        Next
+
+        If bestMatchFile IsNot Nothing Then
+            Return bestMatchFile
+        End If
+
+        ' 如果没有找到更新的版本，查找版本号相同的文件
+        For Each file In filesList
+            If 共享方法.CompareVersion(oldVersion, file.version) = 0 Then
+                Return file
+            End If
+        Next
+
+        ' 如果还是没有找到，则取消操作
+        Return Nothing
+    End Function
+
+
+
+
+
+
+    ''' <summary>
+    ''' 这就是旧的第二版识别
+    ''' </summary>
+    ''' <param name="旧标题"></param>
+    ''' <param name="新标题列表"></param>
+    ''' <returns></returns>
     Public Shared Function 尝试判断(旧标题 As String, 新标题列表 As List(Of String)) As String
         Dim bestMatch As String = Nothing
         Dim smallestDifference As Integer = Integer.MaxValue
