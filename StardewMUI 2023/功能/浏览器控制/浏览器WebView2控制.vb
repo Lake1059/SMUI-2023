@@ -170,11 +170,12 @@ Public Class 浏览器WebView2控制
         DebugPrint("key=" & extractedKey, Color.SkyBlue)
         DebugPrint("expires=" & extractedExpires, Color.SkyBlue)
 
-        更新模组.获取服务器列表(浏览器同步数据.用于更新模组项的NEXUS模组ID, 浏览器同步数据.用于更新模组项的NEXUS文件ID, 浏览器同步数据.用于更新模组项的模组项绝对路径, extractedKey, extractedExpires)
+        更新模组.获取服务器列表(浏览器同步数据.用于更新模组项的NEXUS模组ID, 浏览器同步数据.用于更新模组项的NEXUS文件ID, 浏览器同步数据.用于更新模组项的模组项绝对路径, extractedKey, extractedExpires, 浏览器同步数据.结束后切换到选项卡)
         Form1.UiButton54.PerformClick()
         Form1.UiButton70.PerformClick()
         Form1.UiTabControl1.SelectedTab = Form1.TabPage下载更新
 
+        浏览器同步数据.结束后切换到选项卡 = ""
         获取到的HTML数据 = ""
         是否要获取HTML来进行NEXUSAPI更新 = False
         计算额外参数计时器.Enabled = False
@@ -188,7 +189,9 @@ Public Class 浏览器WebView2控制
     Public Shared Sub ModDrop文本DragDrop(sender As Object, e As DragEventArgs)
         If Not 是否要等待ModDrop发起下载文件 Then Exit Sub
         Dim file As String() = CType(e.Data.GetData(DataFormats.FileDrop), String())
-        更新模组.添加ModDrop解压环节到下载队列(浏览器同步数据.用于更新模组项的模组项绝对路径, file(0))
+        更新模组.添加ModDrop解压环节到下载队列(浏览器同步数据.用于更新模组项的模组项绝对路径, file(0), 浏览器同步数据.结束后切换到选项卡)
+
+        浏览器同步数据.结束后切换到选项卡 = ""
         Form1.UiButton54.PerformClick()
         Form1.UiButton70.PerformClick()
         Form1.UiTabControl1.SelectedTab = Form1.TabPage下载更新

@@ -1,6 +1,5 @@
 ﻿Imports System.ComponentModel
 Imports System.IO
-Imports System.Media
 Imports Sunny.UI
 
 Public Class Form1
@@ -18,6 +17,7 @@ Public Class Form1
         任务队列.全部字典初始化()
         配置队列.初始化()
         更新模组.初始化()
+        模组检查更新管理器.初始化()
         SMAPI安装管理器.初始化()
 
     End Sub

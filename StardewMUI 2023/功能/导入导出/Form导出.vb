@@ -125,6 +125,7 @@ Public Class Form导出
 
         FileIO.FileSystem.WriteAllText(Path.Combine(设置.用户数据文件夹路径, "7za.ps1"), str, False, Encoding.UTF8)
         Process.Start("powershell.exe", "-File " & """" & Path.Combine(设置.用户数据文件夹路径, "7za.ps1") & """")
+        密码本.添加导入导出密码到密码本中(Me.暗黑文本框2.Text)
         Me.Close()
 
     End Sub

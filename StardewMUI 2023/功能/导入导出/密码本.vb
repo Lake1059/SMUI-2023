@@ -5,10 +5,9 @@ Public Class 密码本
     Public Shared Property 导入导出密码本 As New List(Of String)
 
     Public Shared Sub 添加导入导出密码到密码本中(key As String)
-        For i = 0 To 导入导出密码本.Count - 1
-            If 导入导出密码本(i) = key Then Exit Sub
-        Next
-        导入导出密码本.Add(key)
+        If Not 导入导出密码本.Contains(key) Then
+            导入导出密码本.Add(key)
+        End If
     End Sub
 
     Public Shared Sub 保存导入导出密码本()

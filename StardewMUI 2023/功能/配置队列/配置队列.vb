@@ -214,7 +214,7 @@ jx1:
         Dim mDirInfo As New System.IO.DirectoryInfo(正在编辑规划的项路径)
         For Each mDir In mDirInfo.GetDirectories
             Select Case mDir.Name
-                Case "Screenshot", ".config"
+                Case "Screenshot", ".config", "_MACOSX"
                 Case Else
                     If InStr(mDir.Name, ".") = 1 Then Continue For
                     Form1.ListView6.Items.Add(mDir.Name)

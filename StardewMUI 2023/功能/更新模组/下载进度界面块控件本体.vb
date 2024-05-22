@@ -1,8 +1,6 @@
 ﻿Imports System.IO
 Imports System.Net.Http
 Imports System.Text.RegularExpressions
-Imports System.Threading
-Imports System.Threading.Tasks
 Imports SharpCompress.Archives
 Imports SharpCompress.Archives.Rar
 Imports SharpCompress.Archives.SevenZip
@@ -17,6 +15,9 @@ Public Class 下载进度界面块控件本体
     Public Property 设置_N网模组ID As String
     Public Property 设置_结束后自动释放的控件 As New List(Of Control)
     Public Property 设置_其他来源指定文件名 As String
+    Public Property 设置_结束后切换到选项卡 As String
+
+
     Public Async Sub 开始下载()
         If 设置_下载来源 = "" Then Exit Sub
         If 设置_下载地址 = "" And 设置_下载来源.Equals("nexus", StringComparison.CurrentCultureIgnoreCase) Then Exit Sub
@@ -427,7 +428,7 @@ Public Class 下载进度界面块控件本体
         End If
     End Sub
 
-    Public Sub 结束(Optional 是否要转到管理模组选项卡 As Boolean = True)
+    Public Sub 结束(Optional 是否要转选项卡 As Boolean = True)
         For i = 0 To 设置_结束后自动释放的控件.Count - 1
             If 设置_结束后自动释放的控件(i) IsNot Nothing Then 设置_结束后自动释放的控件(i).Dispose()
         Next
@@ -436,11 +437,19 @@ Public Class 下载进度界面块控件本体
                 Form1.Panel37.Controls.Item(1).Dispose()
             End If
         End If
-        If 是否要转到管理模组选项卡 Then
-            If Form1.Panel37.Controls.Count <= 1 Then
-                Form1.UiTabControl1.SelectedTab = Form1.TabPage管理模组
-                Form1.ListView2.Focus()
-            End If
+
+        If 是否要转选项卡 Then
+            Select Case 设置_结束后切换到选项卡
+                Case ""
+                    If Form1.Panel37.Controls.Count <= 1 Then
+                        Form1.UiTabControl1.SelectedTab = Form1.TabPage管理模组
+                        Form1.ListView2.Focus()
+                    End If
+                Case "checkupdate"
+                    If Form1.Panel37.Controls.Count <= 1 Then
+                        Form1.UiTabControl1.SelectedTab = Form1.TabPage检查更新
+                    End If
+            End Select
         End If
         Me.Dispose()
     End Sub

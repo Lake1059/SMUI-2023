@@ -1,4 +1,5 @@
 ﻿Imports System.Runtime.InteropServices
+Imports System.Text.Json
 Imports Windows.UI.Input
 
 Module Module1
@@ -124,6 +125,8 @@ Module Module1
             哪个窗口.Show(以谁为基准显示)
         End If
     End Sub
+
+    Public Json序列化器全局选项实例 As New JsonSerializerOptions With {.PropertyNameCaseInsensitive = True}
 
 
     <DllImport("winmm.dll", SetLastError:=True, CharSet:=CharSet.Auto)>

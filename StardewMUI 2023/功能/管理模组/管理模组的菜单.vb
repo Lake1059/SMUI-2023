@@ -75,6 +75,7 @@ Public Class 管理模组的菜单
     Public Shared Property 菜单项_将分类下移 As New ToolStripMenuItem With {.Text = "下移（F4）", .Image = My.Resources.下箭头}
     Public Shared Property 菜单项_删除选中分类中的项排序 As New ToolStripMenuItem With {.Text = "删除其中的项排序", .Image = My.Resources.删除}
 
+    Public Shared Property 菜单项_加入整个分类到检查更新表 As New ToolStripMenuItem With {.Text = "加入检查更新表", .Image = My.Resources.添加带圆圈}
     Public Shared Property 菜单项_设置分类的颜色 As New ToolStripMenuItem With {.Text = "设置颜色", .Image = My.Resources.颜色滤镜}
     Public Shared Property 菜单项_设置分类的字体 As New ToolStripMenuItem With {.Text = "设置字体", .Image = My.Resources.文字大小}
 
@@ -82,6 +83,7 @@ Public Class 管理模组的菜单
         分类右键菜单.Items.Add(菜单项_打开分类的文件夹)
         分类右键菜单.Items.Add(菜单项_重命名分类)
         分类右键菜单.Items.Add(New ToolStripSeparator)
+        分类右键菜单.Items.Add(菜单项_加入整个分类到检查更新表)
         分类右键菜单.Items.Add(菜单项_设置分类的颜色)
         分类右键菜单.Items.Add(菜单项_设置分类的字体)
 
@@ -154,6 +156,7 @@ Public Class 管理模组的菜单
     Public Shared Property 菜单项_将项上移 As New ToolStripMenuItem With {.Text = "上移（F3）", .Image = My.Resources.上箭头}
     Public Shared Property 菜单项_将项下移 As New ToolStripMenuItem With {.Text = "下移（F4）", .Image = My.Resources.下箭头}
 
+    Public Shared Property 菜单项_加入检查更新表 As New ToolStripMenuItem With {.Text = "加入检查更新表", .Image = My.Resources.添加带圆圈}
     Public Shared Property 菜单项_设置虚拟组 As New ToolStripMenuItem With {.Text = "设置虚拟组", .Image = My.Resources.六个点}
 
     Public Shared Sub 添加项右键菜单的所有菜单项()
@@ -162,8 +165,11 @@ Public Class 管理模组的菜单
         项右键菜单.Items.Add(New ToolStripSeparator)
         项右键菜单.Items.Add(菜单项_配置项)
         项右键菜单.Items.Add(菜单项_打开项的文件夹)
-
+        项右键菜单.Items.Add(菜单项_加入检查更新表)
+        项右键菜单.Items.Add(New ToolStripSeparator)
         项右键菜单.Items.Add(菜单项_编辑项)
+        项右键菜单.Items.Add(菜单项_设置虚拟组)
+
         菜单项_编辑项.DropDown = 编辑项功能菜单
         编辑项功能菜单.Items.Add(菜单项_重命名项)
         编辑项功能菜单.Items.Add(New ToolStripSeparator)
@@ -178,7 +184,7 @@ Public Class 管理模组的菜单
         编辑项功能菜单.Items.Add(菜单项_将项上移)
         编辑项功能菜单.Items.Add(菜单项_将项下移)
 
-        项右键菜单.Items.Add(菜单项_设置虚拟组)
+
     End Sub
 
     Public Shared Property 项筛选菜单 As New 暗黑菜单条控件本体 With {.ImageScalingSize = New Size(25 * 界面控制.DPI, 25 * 界面控制.DPI)}
@@ -334,6 +340,28 @@ Public Class 管理模组的菜单
         a.Dispose()
     End Sub
 
+
+    Public Shared Property 检查更新找到模组项的菜单 As New 暗黑菜单条控件本体 With {.ImageScalingSize = New Size(25 * 界面控制.DPI, 25 * 界面控制.DPI)}
+    Public Shared Property 菜单项_检查更新_通过NEXUS更新 As New ToolStripMenuItem With {.Text = "运行更新流程（NEXUS）", .Image = My.Resources.试验}
+    Public Shared Property 菜单项_检查更新_通过ModDrop更新 As New ToolStripMenuItem With {.Text = "运行更新流程（ModDrop）"}
+    Public Shared Property 菜单项_检查更新_通过Gtihub更新 As New ToolStripMenuItem With {.Text = "运行更新流程（GitHub）"}
+    Public Shared Property 菜单项_检查更新_输入NEXUS更新 As New ToolStripMenuItem With {.Text = "自由输入 NEXUS ID"}
+    Public Shared Property 菜单项_检查更新_输入ModDrop更新 As New ToolStripMenuItem With {.Text = "自由输入 ModDrop ID"}
+    Public Shared Property 菜单项_检查更新_输入Gtihub更新 As New ToolStripMenuItem With {.Text = "自由输入 GitHub 信息"}
+
+    Public Shared Sub 添加检查更新找到模组项的菜单的所有菜单项()
+        检查更新找到模组项的菜单.Items.Add(菜单项_检查更新_通过NEXUS更新)
+        检查更新找到模组项的菜单.Items.Add(菜单项_检查更新_通过ModDrop更新)
+        检查更新找到模组项的菜单.Items.Add(菜单项_检查更新_通过Gtihub更新)
+        If DLC.DLC解锁标记.CustomInputExtension Then
+            检查更新找到模组项的菜单.Items.Add(New ToolStripSeparator)
+            检查更新找到模组项的菜单.Items.Add(菜单项_检查更新_输入NEXUS更新)
+            检查更新找到模组项的菜单.Items.Add(菜单项_检查更新_输入ModDrop更新)
+            检查更新找到模组项的菜单.Items.Add(菜单项_检查更新_输入Gtihub更新)
+        End If
+    End Sub
+
+
     Public Shared Sub 添加菜单的触发()
         添加分类和子库菜单的所有菜单项()
         添加分类右键菜单的所有菜单项()
@@ -345,6 +373,7 @@ Public Class 管理模组的菜单
         添加链接菜单的所有菜单项()
         添加设置字体菜单的所有菜单项()
         添加设置颜色菜单的所有菜单项()
+        添加检查更新找到模组项的菜单的所有菜单项()
         AddHandler Form1.UiButton1.MouseDown, Sub(sender, e) 分类和子库菜单.Show(sender, New Point(sender.Width - 分类和子库菜单.Width, sender.Height))
         AddHandler Form1.UiButton2.MouseDown, Sub(sender, e)
                                                   打开了分类还是模组项的菜单 = 2
@@ -367,10 +396,11 @@ Public Class 管理模组的菜单
                                                        管理模组.点击的链接 = e.LinkText
                                                        链接菜单.Show(Control.MousePosition)
                                                    End Sub
-
         菜单项_设置分类的字体.DropDown = 设置字体菜单
         菜单项_设置分类的颜色.DropDown = 设置颜色菜单
         菜单项_设置项字体.DropDown = 设置字体菜单
+        Form1.ListView12.ContextMenuStrip = 检查更新找到模组项的菜单
+        AddHandler Form1.UiButton91.MouseDown, Sub(sender, e) 检查更新找到模组项的菜单.Show(sender, New Point(0, sender.Height))
     End Sub
 
     Public Shared Sub 设置字体()

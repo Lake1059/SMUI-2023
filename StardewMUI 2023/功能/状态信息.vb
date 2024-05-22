@@ -41,13 +41,16 @@ Public Class 状态信息
             If FileIO.FileSystem.FileExists(Path.Combine(设置.全局设置数据("StardewValleyGamePath"), "Stardew Valley.exe")) Then
                 Dim fileVersionInfo As FileVersionInfo = FileVersionInfo.GetVersionInfo(Path.Combine(设置.全局设置数据("StardewValleyGamePath"), "Stardew Valley.exe"))
                 Form1.UiListBox1.Items(0) = $"Stardew Valley {fileVersionInfo.FileMajorPart}.{fileVersionInfo.FileMinorPart}.{fileVersionInfo.FileBuildPart}.{fileVersionInfo.FilePrivatePart}"
+                Form1.暗黑文本框12.Text = $"{fileVersionInfo.FileMajorPart}.{fileVersionInfo.FileMinorPart}.{fileVersionInfo.FileBuildPart}"
             ElseIf FileIO.FileSystem.FileExists(Path.Combine(设置.全局设置数据("StardewValleyGamePath"), "StardewValley.exe")) Then
                 Dim fileVersionInfo As FileVersionInfo = FileVersionInfo.GetVersionInfo(Path.Combine(设置.全局设置数据("StardewValleyGamePath"), "StardewValley.exe"))
                 Form1.UiListBox1.Items(0) = $"StardewValley {fileVersionInfo.FileMajorPart}.{fileVersionInfo.FileMinorPart}.{fileVersionInfo.FileBuildPart}.{fileVersionInfo.FilePrivatePart}"
+                Form1.暗黑文本框12.Text = $"{fileVersionInfo.FileMajorPart}.{fileVersionInfo.FileMinorPart}.{fileVersionInfo.FileBuildPart}"
             End If
             If FileIO.FileSystem.FileExists(Path.Combine(设置.全局设置数据("StardewValleyGamePath"), "StardewModdingAPI.exe")) Then
                 Dim fileVersionInfo As FileVersionInfo = FileVersionInfo.GetVersionInfo(Path.Combine(设置.全局设置数据("StardewValleyGamePath"), "StardewModdingAPI.exe"))
                 Form1.UiListBox1.Items(0) &= $" - SMAPI {fileVersionInfo.FileMajorPart}.{fileVersionInfo.FileMinorPart}.{fileVersionInfo.FileBuildPart}"
+                Form1.暗黑文本框11.Text = $"{fileVersionInfo.FileMajorPart}.{fileVersionInfo.FileMinorPart}.{fileVersionInfo.FileBuildPart}"
             Else
                 Form1.UiListBox1.Items(0) &= " 未安装 SMAPI"
             End If

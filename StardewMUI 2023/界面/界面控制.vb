@@ -25,7 +25,12 @@ Public Class 界面控制
         设置富文本框行高(Form1.RichTextBox1, 300)
         Form1.RichTextBox1.AutoWordSelection = False
         Form1.RichTextBox1.LanguageOption = RichTextBoxLanguageOptions.UIFonts
-        Form1.RichTextBox1.RightMargin = Form1.RichTextBox1.Width - 程序DPI_垂直滚动条宽度
+        设置富文本框行高(Form1.UiRichTextBox2, 300)
+        Form1.UiRichTextBox2.AutoWordSelection = False
+        Form1.UiRichTextBox2.LanguageOption = RichTextBoxLanguageOptions.UIFonts
+        设置富文本框行高(Form1.RichTextBox2, 300)
+        Form1.RichTextBox2.AutoWordSelection = False
+        Form1.RichTextBox2.LanguageOption = RichTextBoxLanguageOptions.UIFonts
 
         AddHandler Form1.UiRichTextBox2.KeyDown, Sub(sender, e) If e.KeyData = Keys.Delete Then Form1.UiRichTextBox2.Clear()
 
@@ -39,7 +44,8 @@ Public Class 界面控制
         Form1.ListView8.DoubleBuffered(True)
         Form1.ListView9.DoubleBuffered(True)
         Form1.ListView10.DoubleBuffered(True)
-        'Form1.ListView11.DoubleBuffered(True)
+        Form1.ListView11.DoubleBuffered(True)
+        Form1.ListView12.DoubleBuffered(True)
 
         AddHandler Form1.ListView1.DrawSubItem, Sub(sender, e) 暗黑列表视图自绘制.绘制子项(sender, e)
         AddHandler Form1.ListView1.SelectedIndexChanged, Sub(sender, e) sender.Invalidate(sender.ClientRectangle)
@@ -71,8 +77,12 @@ Public Class 界面控制
         AddHandler Form1.ListView10.DrawSubItem, Sub(sender, e) 暗黑列表视图自绘制.绘制子项(sender, e)
         AddHandler Form1.ListView10.SelectedIndexChanged, Sub(sender, e) sender.Invalidate(sender.ClientRectangle)
         AddHandler Form1.ListView10.ItemMouseHover, Sub(sender, e) sender.Invalidate(sender.ClientRectangle)
-
-
+        AddHandler Form1.ListView11.DrawSubItem, Sub(sender, e) 暗黑列表视图自绘制.绘制子项(sender, e)
+        AddHandler Form1.ListView11.SelectedIndexChanged, Sub(sender, e) sender.Invalidate(sender.ClientRectangle)
+        AddHandler Form1.ListView11.ItemMouseHover, Sub(sender, e) sender.Invalidate(sender.ClientRectangle)
+        AddHandler Form1.ListView12.DrawSubItem, Sub(sender, e) 暗黑列表视图自绘制.绘制子项(sender, e)
+        AddHandler Form1.ListView12.SelectedIndexChanged, Sub(sender, e) sender.Invalidate(sender.ClientRectangle)
+        AddHandler Form1.ListView12.ItemMouseHover, Sub(sender, e) sender.Invalidate(sender.ClientRectangle)
 
 
         Form1.ImageList1.ImageSize = New Size(1, Form1.ImageList1.ImageSize.Height * DPI)
@@ -124,6 +134,8 @@ Public Class 界面控制
         'Form1.Panel3.Width = 300 / 1264 * DPI
         Form1.RichTextBox1.Width = Form1.RichTextBox1.Parent.Width + 程序DPI_垂直滚动条宽度 - Form1.RichTextBox1.Parent.Padding.Left
         Form1.RichTextBox1.RightMargin = Form1.RichTextBox1.Width - 程序DPI_垂直滚动条宽度 * 2
+        Form1.RichTextBox2.Width = Form1.RichTextBox2.Parent.Width + 程序DPI_垂直滚动条宽度
+        Form1.RichTextBox2.RightMargin = Form1.RichTextBox2.Width - 程序DPI_垂直滚动条宽度 * 2
 
         Form1.ListView1.Width = Form1.ListView1.Parent.Width - Form1.ListView1.Parent.Padding.Left + 程序DPI_垂直滚动条宽度
         Form1.ColumnHeader1.Width = Form1.ListView1.Parent.Width - Form1.ListView1.Parent.Padding.Left * 2
@@ -155,6 +167,18 @@ Public Class 界面控制
         Form1.ColumnHeader21.Width = (Form1.ListView8.Width - 程序DPI_垂直滚动条宽度 * 2) * 0.5
         Form1.ColumnHeader22.Width = (Form1.ListView8.Width - 程序DPI_垂直滚动条宽度 * 2) * 0.25
         Form1.ColumnHeader23.Width = (Form1.ListView8.Width - 程序DPI_垂直滚动条宽度 * 2) * 0.25
+
+        Form1.ColumnHeader20.Width = (Form1.ListView11.Width - 程序DPI_垂直滚动条宽度 * 2) * 0.3
+        Form1.ColumnHeader24.Width = (Form1.ListView11.Width - 程序DPI_垂直滚动条宽度 * 2) * 0.3
+        Form1.ColumnHeader25.Width = (Form1.ListView11.Width - 程序DPI_垂直滚动条宽度 * 2) * 0.1
+        Form1.ColumnHeader26.Width = (Form1.ListView11.Width - 程序DPI_垂直滚动条宽度 * 2) * 0.1
+        Form1.ColumnHeader27.Width = (Form1.ListView11.Width - 程序DPI_垂直滚动条宽度 * 2) * 0.2
+
+        Form1.ColumnHeader30.Width = (Form1.ListView12.Width - 程序DPI_垂直滚动条宽度 * 2) * 0.2
+        Form1.ColumnHeader31.Width = (Form1.ListView12.Width - 程序DPI_垂直滚动条宽度 * 2) * 0.2
+        Form1.ColumnHeader32.Width = (Form1.ListView12.Width - 程序DPI_垂直滚动条宽度 * 2) * 0.1
+        Form1.ColumnHeader33.Width = (Form1.ListView12.Width - 程序DPI_垂直滚动条宽度 * 2) * 0.2
+        Form1.ColumnHeader34.Width = (Form1.ListView12.Width - 程序DPI_垂直滚动条宽度 * 2) * 0.3
 
     End Sub
 
