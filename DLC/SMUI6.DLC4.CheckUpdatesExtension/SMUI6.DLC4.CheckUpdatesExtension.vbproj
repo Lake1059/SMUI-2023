@@ -1,11 +1,11 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <RootNamespace>SMUI6.DLC6.UpdateModItemExtension</RootNamespace>
+    <RootNamespace>SMUI6.DLC4.CheckUpdatesExtension</RootNamespace>
     <TargetFramework>net8.0-windows10.0.22621.0</TargetFramework>
     <SupportedOSPlatformVersion>10.0.17763.0</SupportedOSPlatformVersion>
-    <Authors>1059 Studio</Authors>
     <Company>1059 Studio</Company>
+    <Authors>1059 Studio</Authors>
     <Copyright>Copyright © 2019-2024 1059 Studio, All Rights Reserved.</Copyright>
   </PropertyGroup>
 
@@ -20,7 +20,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\StardewMUI 2023\StardewMUI 2023.vbproj" />
+    <ProjectReference Include="..\..\StardewMUI 2023\StardewMUI 2023.vbproj" />
   </ItemGroup>
 
 </Project>
