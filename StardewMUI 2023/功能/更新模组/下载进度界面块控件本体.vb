@@ -448,6 +448,7 @@ Public Class 下载进度界面块控件本体
                 Case "checkupdate"
                     If Form1.Panel37.Controls.Count <= 1 Then
                         Form1.UiTabControl1.SelectedTab = Form1.TabPage检查更新
+                        Form1.ListView12.Focus()
                     End If
             End Select
         End If

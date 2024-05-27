@@ -13,11 +13,12 @@
     <Title>$(AssemblyName)</Title>
     <Authors>1059 Studio</Authors>
     <PackAsTool>False</PackAsTool>
-    <AssemblyVersion>6.0.28</AssemblyVersion>
-    <FileVersion>6.0.28</FileVersion>
+    <AssemblyVersion>6.0.29</AssemblyVersion>
+    <FileVersion>6.0.29</FileVersion>
     <SupportedOSPlatformVersion>10.0.17763.0</SupportedOSPlatformVersion>
-    <Version>6.0.28</Version>
+    <Version>6.0.29</Version>
     <AnalysisLevel>latest</AnalysisLevel>
+    <UseWPF>True</UseWPF>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">

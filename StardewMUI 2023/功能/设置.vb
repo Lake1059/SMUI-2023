@@ -149,18 +149,18 @@ Public Class 设置
         If FileIO.FileSystem.DirectoryExists(SMAPI解压路径) = False Then FileIO.FileSystem.CreateDirectory(SMAPI解压路径)
     End Sub
 
-    Public Shared ReadOnly 用户数据文件夹路径 As String = Application.StartupPath & "\UserData"
+    Public Shared ReadOnly 用户数据文件夹路径 As String = Path.Combine(Application.StartupPath, "UserData")
 
-    Public Shared ReadOnly 设置文件存储路径 As String = Application.StartupPath & "\UserData\Settings"
-    Public Shared ReadOnly 安装程序更新下载文件路径 As String = Application.StartupPath & "\UserData\SMUI 6 Installer.exe"
-    Public Shared ReadOnly 当日新闻列表文件路径 As String = Application.StartupPath & "\UserData\TodayNews"
+    Public Shared ReadOnly 设置文件存储路径 As String = Path.Combine(Application.StartupPath, "UserData\Settings")
+    Public Shared ReadOnly 安装程序更新下载文件路径 As String = Path.Combine(Application.StartupPath, "UserData\SMUI 6 Installer.exe")
+    Public Shared ReadOnly 当日新闻列表文件路径 As String = Path.Combine(Application.StartupPath, "UserData\TodayNews")
 
-    Public Shared ReadOnly DLC文件夹路径 As String = Application.StartupPath & "\UserData\DLC"
-    Public Shared ReadOnly 插件文件夹路径 As String = Application.StartupPath & "\UserData\Plugin"
-    Public Shared ReadOnly 浏览器缓存路径 As String = Application.StartupPath & "\UserData\WebView2Cache"
-    Public Shared ReadOnly 自定义语言包路径 As String = Application.StartupPath & "\UserData\Language"
-    Public Shared ReadOnly SMAPI下载路径 As String = Application.StartupPath & "\UserData\SmapiDownload"
-    Public Shared ReadOnly SMAPI解压路径 As String = Application.StartupPath & "\UserData\SmapiDecompress"
+    Public Shared ReadOnly DLC文件夹路径 As String = Path.Combine(Application.StartupPath, "UserData\DLC")
+    Public Shared ReadOnly 插件文件夹路径 As String = Path.Combine(Application.StartupPath, "UserData\Plugin")
+    Public Shared ReadOnly 浏览器缓存路径 As String = Path.Combine(Application.StartupPath, "UserData\WebView2Cache")
+    Public Shared ReadOnly 自定义语言包路径 As String = Path.Combine(Application.StartupPath, "UserData\Language")
+    Public Shared ReadOnly SMAPI下载路径 As String = Path.Combine(Application.StartupPath, "UserData\SmapiDownload")
+    Public Shared ReadOnly SMAPI解压路径 As String = Path.Combine(Application.StartupPath, "UserData\SmapiDecompress")
 
     Public Shared Function 检查并返回数据库下载文件夹路径() As String
         If Not FileIO.FileSystem.DirectoryExists(Path.Combine(全局设置数据("LocalRepositoryPath"), ".Download")) Then
@@ -314,6 +314,7 @@ Public Class 设置
             If ctrl.HasChildren Then 刷新字体显示(ctrl)
         Next
         管理模组的菜单.设置字体()
+        内容中心.设置字体()
     End Sub
 
     Private Shared Sub 刷新字体显示_检查属性(control As Control)

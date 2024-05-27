@@ -1,6 +1,6 @@
-﻿Imports System.Runtime.InteropServices
+﻿Imports System.Reflection
+Imports System.Runtime.InteropServices
 Imports System.Text.Json
-Imports Windows.UI.Input
 
 Module Module1
     'Win32 API
@@ -126,18 +126,23 @@ Module Module1
         End If
     End Sub
 
-    Public Json序列化器全局选项实例 As New JsonSerializerOptions With {.PropertyNameCaseInsensitive = True}
+    Public Json序列化器全局选项实例 As New JsonSerializerOptions With {.PropertyNameCaseInsensitive = True, .IgnoreReadOnlyProperties = True}
 
 
     <DllImport("winmm.dll", SetLastError:=True, CharSet:=CharSet.Auto)>
     Private Function PlaySound(pszSound As String, hmod As IntPtr, fdwSound As Integer) As Boolean
     End Function
-    Private Const SND_SYNC As Integer = &H0         ' 同步播放
+    'Private Const SND_SYNC As Integer = &H0         ' 同步播放
     Private Const SND_ASYNC As Integer = &H1        ' 异步播放
     Private Const SND_ALIAS As Integer = &H10000    ' 使用声音别名
     Public Sub PlayEventSound(ByVal soundAlias As String)
         PlaySound(soundAlias, IntPtr.Zero, SND_ASYNC Or SND_ALIAS)
     End Sub
 
+    <System.Runtime.CompilerServices.Extension>
+    Public Sub DoubleBuffer(control As Control)
+        Dim propertyInfo As PropertyInfo = control.GetType().GetProperty("DoubleBuffered", BindingFlags.Instance Or BindingFlags.NonPublic)
+        propertyInfo?.SetValue(control, True, Nothing)
+    End Sub
 
 End Module

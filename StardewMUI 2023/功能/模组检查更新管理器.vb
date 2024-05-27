@@ -34,6 +34,42 @@ Public Class 模组检查更新管理器
         AddHandler 管理模组的菜单.菜单项_检查更新_输入NEXUS更新.Click, Sub() 自由发起更新("nexus")
         AddHandler 管理模组的菜单.菜单项_检查更新_输入ModDrop更新.Click, Sub() 自由发起更新("moddrop")
         AddHandler 管理模组的菜单.菜单项_检查更新_输入Gtihub更新.Click, Sub() 自由发起更新("github")
+
+        If DLC.DLC解锁标记.UpdateModItemExtension Then
+            AddHandler Form1.ListView12.KeyDown, Sub(sender, e)
+                                                     e.SuppressKeyPress = True
+                                                     Select Case e.KeyCode
+                                                         Case Keys.W, Keys.Up
+                                                             If Form1.ListView12.SelectedItems.Count = 0 Then Exit Sub
+                                                             Dim a = Form1.ListView12.SelectedIndices(0)
+                                                             If a > 0 Then
+                                                                 For Each item In Form1.ListView12.Items
+                                                                     item.Selected = False
+                                                                 Next
+                                                                 Form1.ListView12.Items(a - 1).Selected = True
+                                                                 Form1.ListView12.Items(a - 1).EnsureVisible()
+                                                             End If
+                                                         Case Keys.S, Keys.Down
+                                                             If Form1.ListView12.SelectedItems.Count = 0 Then Exit Sub
+                                                             Dim a = Form1.ListView12.SelectedIndices(0)
+                                                             If a <> Form1.ListView12.Items.Count - 1 Then
+                                                                 For Each item In Form1.ListView12.Items
+                                                                     item.Selected = False
+                                                                 Next
+                                                                 Form1.ListView12.Items(a + 1).Selected = True
+                                                                 Form1.ListView12.Items(a + 1).EnsureVisible()
+                                                             End If
+                                                         Case Keys.N
+                                                             发起更新("nexus")
+                                                         Case Keys.M
+                                                             发起更新("moddrop")
+                                                         Case Keys.G
+                                                             发起更新("github")
+                                                     End Select
+                                                 End Sub
+        End If
+
+
     End Sub
 
 
@@ -186,7 +222,12 @@ Public Class 模组检查更新管理器
             Form1.ListView11.Items.Add(获取到的数据.Data(i).metadata.name)
             Form1.ListView11.Items(Form1.ListView11.Items.Count - 1).SubItems.Add(获取到的数据.Data(i).id)
             Form1.ListView11.Items(Form1.ListView11.Items.Count - 1).SubItems.Add(If(获取到的数据.Data(i).metadata.nexusID = 0, "-", 获取到的数据.Data(i).metadata.nexusID))
-            Form1.ListView11.Items(Form1.ListView11.Items.Count - 1).SubItems.Add(If(获取到的数据.Data(i).suggestedUpdate.version = "", "已是最新", 获取到的数据.Data(i).suggestedUpdate.version))
+            If 获取到的数据.Data(i).suggestedUpdate.version = "" Then
+                Form1.ListView11.Items(Form1.ListView11.Items.Count - 1).SubItems.Add("已是最新")
+            Else
+                Form1.ListView11.Items(Form1.ListView11.Items.Count - 1).SubItems.Add(获取到的数据.Data(i).suggestedUpdate.version)
+                Form1.ListView11.Items(Form1.ListView11.Items.Count - 1).ForeColor = Color1.蓝色
+            End If
             Form1.ListView11.Items(Form1.ListView11.Items.Count - 1).SubItems.Add(获取到的数据.Data(i).metadata.compatibilitySummary)
         Next
     End Sub

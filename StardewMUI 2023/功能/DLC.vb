@@ -4,7 +4,7 @@ Imports System.Reflection
 Public Class DLC
     Public Class DLC解锁标记
         Public Shared Property CustomInputExtension As Boolean = False
-        Public Shared Property SkinLoader As Boolean = False
+        Public Shared Property CustomSkinExtension As Boolean = False
         Public Shared Property NewItemExtension As Boolean = False
         Public Shared Property CheckUpdatesExtension As Boolean = False
         Public Shared Property DistributionExtension As Boolean = False
@@ -27,6 +27,7 @@ Public Class DLC
 
     Public Shared Sub 初始化()
         加载单个DLC("SMUI6.DLC1.CustomInputExtension.dll")
+        加载单个DLC("SMUI6.DLC2.CustomSkinExtension.dll")
         加载单个DLC("SMUI6.DLC3.NewItemExtension.dll")
         加载单个DLC("SMUI6.DLC4.CheckUpdatesExtension.dll")
         加载单个DLC("SMUI6.DLC6.UpdateModItemExtension.dll")
@@ -36,6 +37,10 @@ Public Class DLC
         If DLC解锁标记.CustomInputExtension Then
             Form1.ListView9.Items(0).SubItems(1).Text = "已激活"
             Form1.ListView9.Items(0).ForeColor = Color1.绿色
+        End If
+        If DLC解锁标记.CustomSkinExtension Then
+            Form1.ListView9.Items(1).SubItems(1).Text = "已激活"
+            Form1.ListView9.Items(1).ForeColor = Color1.绿色
         End If
         If DLC解锁标记.NewItemExtension Then
             Form1.ListView9.Items(2).SubItems(1).Text = "已激活"
@@ -51,7 +56,7 @@ Public Class DLC
         End If
         If DLC解锁标记.SeasonPass2023 Then
             DLC解锁标记.CustomInputExtension = True
-            DLC解锁标记.SkinLoader = True
+            DLC解锁标记.CustomSkinExtension = True
             DLC解锁标记.NewItemExtension = True
             DLC解锁标记.CheckUpdatesExtension = True
             Form1.ListView9.Items(0).SubItems(1).Text = "已激活"
@@ -66,7 +71,7 @@ Public Class DLC
         End If
         If DLC解锁标记.SeasonPass2024 Then
             DLC解锁标记.CustomInputExtension = True
-            DLC解锁标记.SkinLoader = True
+            DLC解锁标记.CustomSkinExtension = True
             DLC解锁标记.NewItemExtension = True
             DLC解锁标记.CheckUpdatesExtension = True
             DLC解锁标记.DistributionExtension = True

@@ -25,7 +25,7 @@ Public Class 界面控制
         设置富文本框行高(Form1.RichTextBox1, 300)
         Form1.RichTextBox1.AutoWordSelection = False
         Form1.RichTextBox1.LanguageOption = RichTextBoxLanguageOptions.UIFonts
-        设置富文本框行高(Form1.UiRichTextBox2, 300)
+        设置富文本框行高(Form1.UiRichTextBox2, 30)
         Form1.UiRichTextBox2.AutoWordSelection = False
         Form1.UiRichTextBox2.LanguageOption = RichTextBoxLanguageOptions.UIFonts
         设置富文本框行高(Form1.RichTextBox2, 300)
@@ -34,59 +34,24 @@ Public Class 界面控制
 
         AddHandler Form1.UiRichTextBox2.KeyDown, Sub(sender, e) If e.KeyData = Keys.Delete Then Form1.UiRichTextBox2.Clear()
 
-        Form1.ListView1.DoubleBuffered(True)
-        Form1.ListView2.DoubleBuffered(True)
-        Form1.ListView3.DoubleBuffered(True)
-        Form1.ListView4.DoubleBuffered(True)
-        Form1.ListView5.DoubleBuffered(True)
-        Form1.ListView6.DoubleBuffered(True)
-        Form1.ListView7.DoubleBuffered(True)
-        Form1.ListView8.DoubleBuffered(True)
-        Form1.ListView9.DoubleBuffered(True)
-        Form1.ListView10.DoubleBuffered(True)
-        Form1.ListView11.DoubleBuffered(True)
-        Form1.ListView12.DoubleBuffered(True)
+        暗黑列表视图自绘制.绑定列表视图事件(Form1.ListView1)
+        暗黑列表视图自绘制.绑定列表视图事件(Form1.ListView2)
+        暗黑列表视图自绘制.绑定列表视图事件(Form1.ListView3)
+        暗黑列表视图自绘制.绑定列表视图事件(Form1.ListView4)
+        暗黑列表视图自绘制.绑定列表视图事件(Form1.ListView5)
+        暗黑列表视图自绘制.绑定列表视图事件(Form1.ListView6)
+        暗黑列表视图自绘制.绑定列表视图事件(Form1.ListView7)
+        暗黑列表视图自绘制.绑定列表视图事件(Form1.ListView8)
+        暗黑列表视图自绘制.绑定列表视图事件(Form1.ListView9)
+        暗黑列表视图自绘制.绑定列表视图事件(Form1.ListView10)
+        暗黑列表视图自绘制.绑定列表视图事件(Form1.ListView11)
+        暗黑列表视图自绘制.绑定列表视图事件(Form1.ListView12)
 
-        AddHandler Form1.ListView1.DrawSubItem, Sub(sender, e) 暗黑列表视图自绘制.绘制子项(sender, e)
-        AddHandler Form1.ListView1.SelectedIndexChanged, Sub(sender, e) sender.Invalidate(sender.ClientRectangle)
-        AddHandler Form1.ListView1.ItemMouseHover, Sub(sender, e) sender.Invalidate(sender.ClientRectangle)
-        AddHandler Form1.ListView2.DrawSubItem, Sub(sender, e) 暗黑列表视图自绘制.绘制子项(sender, e)
-        AddHandler Form1.ListView2.SelectedIndexChanged, Sub(sender, e) sender.Invalidate(sender.ClientRectangle)
-        AddHandler Form1.ListView2.ItemMouseHover, Sub(sender, e) sender.Invalidate(sender.ClientRectangle)
-        AddHandler Form1.ListView3.DrawSubItem, Sub(sender, e) 暗黑列表视图自绘制.绘制子项(sender, e)
-        AddHandler Form1.ListView3.SelectedIndexChanged, Sub(sender, e) sender.Invalidate(sender.ClientRectangle)
-        AddHandler Form1.ListView3.ItemMouseHover, Sub(sender, e) sender.Invalidate(sender.ClientRectangle)
-        AddHandler Form1.ListView4.DrawSubItem, Sub(sender, e) 暗黑列表视图自绘制.绘制子项(sender, e)
-        AddHandler Form1.ListView4.SelectedIndexChanged, Sub(sender, e) sender.Invalidate(sender.ClientRectangle)
-        AddHandler Form1.ListView4.ItemMouseHover, Sub(sender, e) sender.Invalidate(sender.ClientRectangle)
-        AddHandler Form1.ListView5.DrawSubItem, Sub(sender, e) 暗黑列表视图自绘制.绘制子项(sender, e)
-        AddHandler Form1.ListView5.SelectedIndexChanged, Sub(sender, e) sender.Invalidate(sender.ClientRectangle)
-        AddHandler Form1.ListView5.ItemMouseHover, Sub(sender, e) sender.Invalidate(sender.ClientRectangle)
-        AddHandler Form1.ListView6.DrawSubItem, Sub(sender, e) 暗黑列表视图自绘制.绘制子项(sender, e)
-        AddHandler Form1.ListView6.SelectedIndexChanged, Sub(sender, e) sender.Invalidate(sender.ClientRectangle)
-        AddHandler Form1.ListView6.ItemMouseHover, Sub(sender, e) sender.Invalidate(sender.ClientRectangle)
-        AddHandler Form1.ListView7.DrawSubItem, Sub(sender, e) 暗黑列表视图自绘制.绘制子项(sender, e)
-        AddHandler Form1.ListView7.SelectedIndexChanged, Sub(sender, e) sender.Invalidate(sender.ClientRectangle)
-        AddHandler Form1.ListView7.ItemMouseHover, Sub(sender, e) sender.Invalidate(sender.ClientRectangle)
-        AddHandler Form1.ListView8.DrawSubItem, Sub(sender, e) 暗黑列表视图自绘制.绘制子项(sender, e)
-        AddHandler Form1.ListView8.SelectedIndexChanged, Sub(sender, e) sender.Invalidate(sender.ClientRectangle)
-        AddHandler Form1.ListView8.ItemMouseHover, Sub(sender, e) sender.Invalidate(sender.ClientRectangle)
-        AddHandler Form1.ListView9.DrawSubItem, Sub(sender, e) 暗黑列表视图自绘制.绘制子项(sender, e)
-        AddHandler Form1.ListView9.SelectedIndexChanged, Sub(sender, e) sender.Invalidate(sender.ClientRectangle)
-        AddHandler Form1.ListView9.ItemMouseHover, Sub(sender, e) sender.Invalidate(sender.ClientRectangle)
-        AddHandler Form1.ListView10.DrawSubItem, Sub(sender, e) 暗黑列表视图自绘制.绘制子项(sender, e)
-        AddHandler Form1.ListView10.SelectedIndexChanged, Sub(sender, e) sender.Invalidate(sender.ClientRectangle)
-        AddHandler Form1.ListView10.ItemMouseHover, Sub(sender, e) sender.Invalidate(sender.ClientRectangle)
-        AddHandler Form1.ListView11.DrawSubItem, Sub(sender, e) 暗黑列表视图自绘制.绘制子项(sender, e)
-        AddHandler Form1.ListView11.SelectedIndexChanged, Sub(sender, e) sender.Invalidate(sender.ClientRectangle)
-        AddHandler Form1.ListView11.ItemMouseHover, Sub(sender, e) sender.Invalidate(sender.ClientRectangle)
-        AddHandler Form1.ListView12.DrawSubItem, Sub(sender, e) 暗黑列表视图自绘制.绘制子项(sender, e)
-        AddHandler Form1.ListView12.SelectedIndexChanged, Sub(sender, e) sender.Invalidate(sender.ClientRectangle)
-        AddHandler Form1.ListView12.ItemMouseHover, Sub(sender, e) sender.Invalidate(sender.ClientRectangle)
 
 
         Form1.ImageList1.ImageSize = New Size(1, Form1.ImageList1.ImageSize.Height * DPI)
 
+        内容中心.初始化()
         管理模组的菜单.添加菜单的触发()
         配置队列的菜单.添加菜单的触发()
         AddHandler Form1.UiButton45.Click, AddressOf 状态信息.启动SMAPI
@@ -176,8 +141,8 @@ Public Class 界面控制
 
         Form1.ColumnHeader30.Width = (Form1.ListView12.Width - 程序DPI_垂直滚动条宽度 * 2) * 0.2
         Form1.ColumnHeader31.Width = (Form1.ListView12.Width - 程序DPI_垂直滚动条宽度 * 2) * 0.2
-        Form1.ColumnHeader32.Width = (Form1.ListView12.Width - 程序DPI_垂直滚动条宽度 * 2) * 0.1
-        Form1.ColumnHeader33.Width = (Form1.ListView12.Width - 程序DPI_垂直滚动条宽度 * 2) * 0.2
+        Form1.ColumnHeader32.Width = (Form1.ListView12.Width - 程序DPI_垂直滚动条宽度 * 2) * 0.15
+        Form1.ColumnHeader33.Width = (Form1.ListView12.Width - 程序DPI_垂直滚动条宽度 * 2) * 0.15
         Form1.ColumnHeader34.Width = (Form1.ListView12.Width - 程序DPI_垂直滚动条宽度 * 2) * 0.3
 
     End Sub
@@ -227,10 +192,10 @@ Public Class 界面控制
         Form1.UiComboBox10.Left = 20 * DPI : Form1.UiComboBox10.Top = 283 * DPI : Form1.UiComboBox10.Width = 263 * DPI : Form1.UiComboBox10.Height = 30 * DPI
 
 
-
-
         Form1.ImageList1.ImageSize = New Size(1, 29 * DPI)
         管理模组的菜单.调整DPI()
+        内容中心.调整DPI()
+
 
 
     End Sub

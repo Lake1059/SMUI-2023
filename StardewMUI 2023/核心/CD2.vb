@@ -33,7 +33,7 @@ Public Class CD2
     Public Shared Sub 匹配到_复制文件夹()
         Dim 参数列表 As New List(Of String)(任务队列.任务列表(任务队列.当前正在处理的索引).参数行.Split("|").ToList)
         安装卸载.后台线程对象.ReportProgress(1, $"正在复制文件夹：{参数列表(0)}")
-        CopyDirectory(Path.Combine(任务队列.项路径, 参数列表(0)), Path.Combine(任务队列.游戏路径, 参数列表(0)), True)
+        CopyDirectory(Path.Combine(任务队列.项路径, 参数列表(0)), Path.Combine(任务队列.游戏路径, 参数列表(1)), True)
     End Sub
 
     Public Shared Sub 匹配到_覆盖Content()

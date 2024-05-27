@@ -110,9 +110,9 @@ Public Class CD3
 
     End Sub
 
-    Private Shared Sub 卸载CDVD(ByVal PathInLibrary As String, ByVal CategoryInLibrary As String, ByVal NameInLibrary As String)
+    Private Shared Sub 卸载CDVD(PathInLibrary As String, CategoryInLibrary As String, NameInLibrary As String)
         If DirectoryExists(PathInLibrary) = True Then
-            Dim mDirectory As New System.IO.DirectoryInfo(PathInLibrary)
+            Dim mDirectory As New DirectoryInfo(PathInLibrary)
             For Each sFile In mDirectory.GetFiles("*.*")
                 Try
                     Dim relativePath As String = Mid(Replace(PathInLibrary, 任务队列.项路径, ""), 2)

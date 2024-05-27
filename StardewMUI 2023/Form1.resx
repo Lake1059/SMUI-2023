@@ -120,6 +120,22 @@
   <metadata name="ImageList1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
+  <data name="Label67.Text" xml:space="preserve">
+    <value>图像设定说明
+————————————————————————————
+
+这些背景图都需要自行制作合适的版本
+
+为了最佳视觉效果，请按照目标的尺寸大小和背景 RGB 值来创建图片
+
+在列表视图上使用背景图会改变一些程序逻辑以实现其功能
+
+尽管我已经多次对列表视图的绘制性能做出改进
+
+但这毕竟还是 win32，会导致更多的性能消耗是必然的
+
+如果你的 CPU 单核单线程性能不太好，则不建议对列表视图进行设置</value>
+  </data>
   <metadata name="ToolTip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>135, 17</value>
   </metadata>

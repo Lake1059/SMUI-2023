@@ -19,7 +19,6 @@ Public Class Form1
         更新模组.初始化()
         模组检查更新管理器.初始化()
         SMAPI安装管理器.初始化()
-
     End Sub
 
     Private Sub Form1_Shown(sender As Object, e As EventArgs) Handles MyBase.Shown
@@ -28,7 +27,6 @@ Public Class Form1
         If 设置.全局设置数据("AutoCheckUpdate") = "True" Then 检查更新.运行后台服务器检查更新()
         If 设置.全局设置数据("AutoGetNews") = "True" Then 新闻列表.获取新闻()
         状态信息.刷新起始页面状态信息()
-
 
         Dim a As New 多项单选对话框("开发中", {"OK"}, "目前版本已经基本满足日常需求，仍有部分次要功能尚未制作，请知晓。", 100, 500)
         PlayEventSound("Notification.IM")
