@@ -1,6 +1,7 @@
 ﻿
 Imports System.IO
 Imports SMUI6.下载文件
+Imports Sunny.UI
 
 Public Class 检查更新
 
@@ -209,8 +210,7 @@ Dev1:
                   Form1.UiListBox3.Items(2) = "更新下载完成，关闭应用程序后自动运行更新"
                   在退出后安装更新 = True
                   自动更新界面刷新.Enabled = False
-                  Dim d1 As New 多项单选对话框("更新", {"OK"}, "更新文件下载完成，当本实例关闭后将自动运行安装程序。注意：这种情况下运行的安装程序为静默安装。",, 500)
-                  d1.ShowDialog(Form1)
+                  UIMessageTip.Show("更新文件下载完成，当本实例关闭后将自动运行安装程序" & vbCrLf & "注意：这种情况下运行的安装程序为静默安装",, 5000)
               Else
                   Dim d1 As New 多项单选对话框("错误", {"重试下载", "重连获取", "取消"}, "更新下载失败：" & vbCrLf & vbCrLf & e.Result, 150, 500)
                   Select Case d1.ShowDialog(Form1)

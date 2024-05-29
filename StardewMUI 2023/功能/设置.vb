@@ -67,6 +67,14 @@ Public Class 设置
         AddHandler Form1.UiButton61.Click, AddressOf 保存WebView2设置
         AddHandler Form1.UiButton71.Click, AddressOf 选择WebView2独立运行时路径
 
+        AddHandler Form1.UiButton95.Click, Sub()
+                                               If DLC.DLC解锁标记.CustomSkinExtension Then
+                                                   If Form自定义背景.Visible = False Then 显示窗体(Form自定义背景, Form1)
+                                               Else
+                                                   UIMessageTip.Show("DLC 2 未激活",, 2500)
+                                               End If
+                                           End Sub
+
     End Sub
 
     Public Shared Sub 启动时加载设置()
@@ -562,6 +570,31 @@ R1:
             If Right(str1, 1) <> "\" Then str1 &= "\"
             Form1.暗黑文本框10.Text = str1
         End If
+    End Sub
+
+    Public Shared Sub 加载自定义背景()
+        If Not DLC.DLC解锁标记.CustomSkinExtension Then Exit Sub
+        If FileIO.FileSystem.FileExists(全局设置数据("BGP_News")) Then
+            Using fs As New IO.FileStream(全局设置数据("BGP_News"), IO.FileMode.Open, IO.FileAccess.Read)
+                Form1.Panel35.BackgroundImage = Image.FromStream(fs)
+                Form1.Panel35.BackgroundImageLayout = ImageLayout.Stretch
+            End Using
+        End If
+        If FileIO.FileSystem.FileExists(全局设置数据("BGP_Category")) Then
+            Using fs As New IO.FileStream(全局设置数据("BGP_Category"), IO.FileMode.Open, IO.FileAccess.Read)
+                Form1.ListView1.BackgroundImage = Image.FromStream(fs)
+                Form1.ListView1.BackgroundImageLayout = ImageLayout.Stretch
+            End Using
+        End If
+        If FileIO.FileSystem.FileExists(全局设置数据("BGP_ModItem")) Then
+            Using fs As New IO.FileStream(全局设置数据("BGP_ModItem"), IO.FileMode.Open, IO.FileAccess.Read)
+                Form1.ListView2.BackgroundImage = Image.FromStream(fs)
+                Form1.ListView2.BackgroundImageLayout = ImageLayout.Stretch
+            End Using
+        End If
+
+
+
     End Sub
 
 

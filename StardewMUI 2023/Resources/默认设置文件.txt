@@ -44,3 +44,6 @@ AdditionalBuiltinParameters=False
 DownloadFileUseSMUI5Color=False
 DownloadFileUseBigBuffer=False
 NexusPremium=False
+BGP_News=
+BGP_Category=
+BGP_ModItem=

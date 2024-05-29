@@ -46,7 +46,6 @@
         newDialog.Panel2.Height = SelectionGroup.Length * (40 * 界面控制.DPI + 10 * 界面控制.DPI) + newDialog.Panel2.Padding.Bottom
         newDialog.MinimumSize = New Size(WindowWidth * 界面控制.DPI, 40 + DescriptionPanelHeight * 界面控制.DPI + newDialog.Panel2.Height)
         newDialog.Height = newDialog.MinimumSize.Height
-
     End Sub
 
     Public Sub New(Title As String, SelectionGroup As List(Of String), Optional Description As String = "", Optional DescriptionPanelHeight As Integer = 77, Optional WindowWidth As Integer = 300)
@@ -107,13 +106,8 @@
         Return newDialog.选择了哪个项
     End Function
 
-    Public Function ShowFullScreenShadowDialog() As Integer
-        Dim bw As New Form With {.FormBorderStyle = FormBorderStyle.None, .WindowState = FormWindowState.Maximized, .BackColor = Color.Black, .TopMost = True, .Opacity = 0.5, .ShowInTaskbar = False, .ShowIcon = False}
-        bw.Show()
-        显示模式窗体(newDialog, bw)
-        bw.Dispose()
-        Return newDialog.选择了哪个项
-    End Function
+    Private Declare Function SendMessage Lib "user32" Alias "SendMessageA" (ByVal hwnd As IntPtr, ByVal wMsg As Integer, ByVal wParam As Integer, ByVal lParam As Integer) As Integer
+    Private Declare Sub ReleaseCapture Lib "user32" ()
 
     ''' <summary>
     ''' 

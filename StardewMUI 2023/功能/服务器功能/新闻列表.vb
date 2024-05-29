@@ -11,7 +11,7 @@ Public Class 新闻列表
             Dim c1 As New Label With {.AutoSize = False, .Dock = DockStyle.Top, .Height = 30 * 界面控制.DPI, .TextAlign = ContentAlignment.MiddleLeft, .Padding = New Padding(5, 0, 0, 0), .Text = 列表数据(i).Key, .Tag = i}
             AddHandler c1.MouseEnter, Sub(sender, e) sender.BackColor = ColorTranslator.FromWin32(RGB(56, 56, 56))
             AddHandler c1.MouseDown, Sub(sender, e) sender.BackColor = ColorTranslator.FromWin32(RGB(64, 64, 64))
-            AddHandler c1.MouseLeave, Sub(sender, e) sender.BackColor = sender.Parent.BackColor
+            AddHandler c1.MouseLeave, Sub(sender, e) sender.BackColor = Color.Transparent
             AddHandler c1.Click, Sub(sender, e)
                                      Select Case 列表数据(sender.Tag).Value.Split("|")(0)
                                          Case "msgbox"

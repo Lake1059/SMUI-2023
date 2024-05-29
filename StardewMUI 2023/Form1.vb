@@ -30,7 +30,11 @@ Public Class Form1
 
         Dim a As New 多项单选对话框("开发中", {"OK"}, "目前版本已经基本满足日常需求，仍有部分次要功能尚未制作，请知晓。", 100, 500)
         PlayEventSound("Notification.IM")
-        a.ShowFullScreenShadowDialog()
+        a.ShowDialog(Me)
+
+        设置.加载自定义背景()
+
+
     End Sub
 
     Private Sub Form1_ResizeEnd(sender As Object, e As EventArgs) Handles MyBase.ResizeEnd
@@ -50,7 +54,6 @@ Public Class Form1
                 MsgBox("找不到下载的安装程序文件！", MsgBoxStyle.Critical)
             End If
         End If
-
         全局键盘钩子.Unhook()
     End Sub
 

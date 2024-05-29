@@ -19,6 +19,7 @@ Public Class 界面控制
         '    浏览器CEF控制.初始化功能()
         'End If
 
+        Form1.TabPage许可协议.Padding = New Padding(50)
         Form1.UiRichTextBox4.Rtf = My.Resources.用户许可协议
         Form1.UiRichTextBox3.LoadFile(Path.Combine(Application.StartupPath, "UpdateLog.rtf"))
 

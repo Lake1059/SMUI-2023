@@ -156,7 +156,7 @@ Public Class 更新模组
             End If
         End If
 
-        Dim 分类文字 As New Label With {.AutoSize = True, .Dock = DockStyle.Top, .Padding = New Padding(0, 10, 0, 10), .Font = New Font(Form1.Font.Name, 12), .TextAlign = ContentAlignment.MiddleLeft, .ForeColor = Color1.青色, .AutoEllipsis = True, .Text = "主要文件"}
+        Dim 分类文字 As New Label With {.AutoSize = True, .Dock = DockStyle.Top, .Padding = New Padding(0, 0, 0, 10), .Font = New Font(Form1.Font.Name, 12), .ForeColor = Color1.青色, .AutoEllipsis = True, .Text = "主要文件"}
         Form1.Panel34.Controls.Add(分类文字)
         分类文字.BringToFront()
         For i = a.FileListData.Count - 1 To 0 Step -1
@@ -165,7 +165,7 @@ Public Class 更新模组
             End If
         Next
 
-        Dim 分类文字2 As New Label With {.AutoSize = True, .Dock = DockStyle.Top, .Padding = New Padding(0, 10, 0, 10), .Font = New Font(Form1.Font.Name, 12), .TextAlign = ContentAlignment.MiddleLeft, .ForeColor = Color1.青色, .AutoEllipsis = True, .Text = "可选文件"}
+        Dim 分类文字2 As New Label With {.AutoSize = True, .Dock = DockStyle.Top, .Padding = New Padding(0, 10, 0, 10), .Font = New Font(Form1.Font.Name, 12), .ForeColor = Color1.青色, .AutoEllipsis = True, .Text = "可选文件"}
         Form1.Panel34.Controls.Add(分类文字2)
         分类文字2.BringToFront()
         For i = a.FileListData.Count - 1 To 0 Step -1
@@ -174,7 +174,7 @@ Public Class 更新模组
             End If
         Next
 
-        Dim 分类文字3 As New Label With {.AutoSize = True, .Dock = DockStyle.Top, .Padding = New Padding(0, 10, 0, 10), .Font = New Font(Form1.Font.Name, 12), .TextAlign = ContentAlignment.MiddleLeft, .ForeColor = Color1.青色, .AutoEllipsis = True, .Text = "附加文件"}
+        Dim 分类文字3 As New Label With {.AutoSize = True, .Dock = DockStyle.Top, .Padding = New Padding(0, 10, 0, 10), .Font = New Font(Form1.Font.Name, 12), .ForeColor = Color1.青色, .AutoEllipsis = True, .Text = "附加文件"}
         Form1.Panel34.Controls.Add(分类文字3)
         分类文字3.BringToFront()
         For i = a.FileListData.Count - 1 To 0 Step -1
@@ -183,7 +183,7 @@ Public Class 更新模组
             End If
         Next
 
-        Dim 分类文字4 As New Label With {.AutoSize = True, .Dock = DockStyle.Top, .Padding = New Padding(0, 10, 0, 10), .Font = New Font(Form1.Font.Name, 12), .TextAlign = ContentAlignment.MiddleLeft, .ForeColor = Color1.青色, .AutoEllipsis = True, .Text = "更新文件"}
+        Dim 分类文字4 As New Label With {.AutoSize = True, .Dock = DockStyle.Top, .Padding = New Padding(0, 10, 0, 10), .Font = New Font(Form1.Font.Name, 12), .ForeColor = Color1.青色, .AutoEllipsis = True, .Text = "更新文件"}
         Form1.Panel34.Controls.Add(分类文字4)
         分类文字4.BringToFront()
         For i = a.FileListData.Count - 1 To 0 Step -1
@@ -195,8 +195,8 @@ Public Class 更新模组
 
 
     Public Shared Sub 生成NEXUS单个文件信息(Data As FileListDataOne, 模组项绝对路径 As String, Optional 是自动判断最合适的 As Boolean = False, Optional 结束后切换到选项卡 As String = "")
-        Dim 独立容器 As New Panel With {.Dock = DockStyle.Top, .Padding = New Padding(30, 10, 30, 7), .Height = 107}
-        Dim 标题文字 As New LinkLabel With {.AutoSize = False, .Dock = DockStyle.Top, .Height = 26, .TextAlign = ContentAlignment.TopLeft, .Font = New Font(Form1.Font.Name, 12), .LinkColor = If(设置.全局设置数据("DownloadFileUseSMUI5Color") = True, Color1.绿色, Color1.蓝色), .LinkBehavior = LinkBehavior.HoverUnderline, .Text = Data.name}
+        Dim 独立容器 As New Panel With {.Dock = DockStyle.Top, .Padding = New Padding(30, 10, 30, 7), .Height = 107 * 界面控制.DPI}
+        Dim 标题文字 As New LinkLabel With {.AutoSize = False, .Dock = DockStyle.Top, .Height = 26 * 界面控制.DPI, .TextAlign = ContentAlignment.TopLeft, .Font = New Font(Form1.Font.Name, 12), .LinkColor = If(设置.全局设置数据("DownloadFileUseSMUI5Color") = True, Color1.绿色, Color1.蓝色), .LinkBehavior = LinkBehavior.HoverUnderline, .Text = Data.name}
 
         If DLC.DLC解锁标记.UpdateModItemExtension Then
             If 是自动判断最合适的 And DLC6全局快捷键要触发的下载项 Is Nothing Then
@@ -206,7 +206,7 @@ Public Class 更新模组
             End If
         End If
 
-        Dim 状态文字 As New Label With {.AutoSize = False, .Dock = DockStyle.Top, .Height = 21, .TextAlign = ContentAlignment.TopLeft, .Font = New Font(Form1.Font.Name, 10), .ForeColor = If(设置.全局设置数据("DownloadFileUseSMUI5Color") = True, Color1.橙色, Color1.绿色)}
+        Dim 状态文字 As New Label With {.AutoSize = False, .Dock = DockStyle.Top, .Height = 21 * 界面控制.DPI, .TextAlign = ContentAlignment.TopLeft, .Font = New Font(Form1.Font.Name, 10), .ForeColor = If(设置.全局设置数据("DownloadFileUseSMUI5Color") = True, Color1.橙色, Color1.绿色)}
         Dim 简介文字 As New Label With {.AutoSize = False, .Dock = DockStyle.Fill, .Font = New Font(Form1.Font.Name, 10), .TextAlign = ContentAlignment.TopLeft, .ForeColor = Color.Gray, .AutoEllipsis = True, .Text = Data.description.Replace("<br />", vbCrLf)}
 
         If Data.size_kb < 1024 Then
@@ -307,17 +307,16 @@ Public Class 更新模组
     Public Shared Sub 添加到下载队列(下载地址 As String, 模组项绝对路径 As String, Optional 来源 As String = "nexus", Optional 自定义文件名 As String = "", Optional 结束后切换到选项卡 As String = "")
         Form1.UiTabControl1.SelectedTab = Form1.TabPage下载更新
         Form1.UiTabControlMenu3.SelectedTab = Form1.TabPage下载和更新队列
-        Dim DW As New 下载进度界面块控件本体 With {.设置_下载来源 = 来源, .设置_下载地址 = 下载地址, .设置_模组项绝对路径 = 模组项绝对路径, .设置_N网模组ID = 正在处理的NEXUSID, .设置_其他来源指定文件名 = 自定义文件名, .Dock = DockStyle.Top, .设置_结束后切换到选项卡 = 结束后切换到选项卡}
 
-        If Form1.Panel37.Controls.Count <> 0 Then
-            Dim L1 As New Label With {.AutoSize = False, .Dock = DockStyle.Top, .Height = 20}
-            Form1.Panel37.Controls.Add(L1)
-            L1.BringToFront()
-            DW.设置_结束后自动释放的控件.Add(L1)
-        End If
+        Dim DW As New 下载进度界面块控件本体 With {.设置_下载来源 = 来源, .设置_下载地址 = 下载地址, .设置_模组项绝对路径 = 模组项绝对路径, .设置_N网模组ID = 正在处理的NEXUSID, .设置_其他来源指定文件名 = 自定义文件名, .Dock = DockStyle.Top, .设置_结束后切换到选项卡 = 结束后切换到选项卡}
+        Dim L1 As New Label With {.AutoSize = False, .Dock = DockStyle.Top, .Height = 20 * 界面控制.DPI}
         Form1.Panel37.Controls.Add(DW)
         DW.BringToFront()
+        Form1.Panel37.Controls.Add(L1)
+        L1.BringToFront()
+        DW.设置_结束后自动释放的控件.Add(L1)
         DW.开始下载()
+
         Form1.Label34.Text = "   在管理模组选项卡中发起更新来获取文件列表"
         Form1.Panel34.Controls.Clear()
     End Sub
@@ -345,15 +344,13 @@ Public Class 更新模组
     Public Shared Sub 添加ModDrop解压环节到下载队列(模组项绝对路径 As String, 下载的文件 As String, Optional 结束后切换到选项卡 As String = "")
         Form1.UiTabControlMenu3.SelectedTab = Form1.TabPage下载和更新队列
         Dim DW As New 下载进度界面块控件本体 With {.设置_模组项绝对路径 = 模组项绝对路径, .保存位置 = 下载的文件, .Dock = DockStyle.Top, .设置_结束后切换到选项卡 = 结束后切换到选项卡}
-        If Form1.Panel37.Controls.Count <> 0 Then
-            Dim L1 As New Label With {.AutoSize = False, .Dock = DockStyle.Top, .Height = 20}
-            Form1.Panel37.Controls.Add(L1)
-            L1.BringToFront()
-            DW.设置_结束后自动释放的控件.Add(L1)
-        End If
+        Dim L1 As New Label With {.AutoSize = False, .Dock = DockStyle.Top, .Height = 20 * 界面控制.DPI}
         Form1.Panel37.Controls.Add(DW)
         DW.BringToFront()
-        DW.开始解压()
+        Form1.Panel37.Controls.Add(L1)
+        L1.BringToFront()
+        DW.设置_结束后自动释放的控件.Add(L1)
+        DW.开始下载()
     End Sub
 
     Public Shared Async Sub 获取Github文件列表(仓库作者和名称 As String, 模组项绝对路径 As String, Optional 结束后切换到选项卡 As String = "")
@@ -374,7 +371,7 @@ Public Class 更新模组
 
         For i = 0 To a.发行版数据集合.Count - 1
             If i >= 10 Then Exit For
-            Dim 标题文字 As New LinkLabel With {.AutoSize = False, .Dock = DockStyle.Top, .Height = 40, .TextAlign = ContentAlignment.MiddleLeft, .Font = New Font(Form1.Font.Name, 12), .LinkColor = Form1.ForeColor, .LinkBehavior = LinkBehavior.HoverUnderline, .Text = a.发行版数据集合(i).标签 & " - " & a.发行版数据集合(i).标题, .BackColor = Color.DarkGreen, .Padding = New Padding(5, 0, 0, 0)}
+            Dim 标题文字 As New LinkLabel With {.AutoSize = False, .Dock = DockStyle.Top, .Height = 40 * 界面控制.DPI, .TextAlign = ContentAlignment.MiddleLeft, .Font = New Font(Form1.Font.Name, 12), .LinkColor = Form1.ForeColor, .LinkBehavior = LinkBehavior.HoverUnderline, .Text = a.发行版数据集合(i).标签 & " - " & a.发行版数据集合(i).标题, .BackColor = Color.DarkGreen, .Padding = New Padding(5, 0, 0, 0)}
             Dim ix = i
             AddHandler 标题文字.LinkClicked, Async Sub() Await Launcher.LaunchUriAsync(New Uri("https://github.com/" & 仓库作者和名称 & "/releases/tag/" & a.发行版数据集合(ix).标签))
             If a.发行版数据集合(i).是否是草稿 Then 标题文字.BackColor = ColorTranslator.FromWin32(RGB(48, 48, 48))
@@ -383,13 +380,13 @@ Public Class 更新模组
             标题文字.BringToFront()
 
             If a.发行版数据集合(i).描述 <> "" Then
-                Dim 描述文字 As New Label With {.AutoSize = False, .Dock = DockStyle.Top, .Height = 100, .AutoEllipsis = True, .TextAlign = ContentAlignment.TopLeft, .Padding = New Padding(0, 10, 0, 10), .Font = New Font(Form1.Font.Name, 10), .ForeColor = Color.Gray, .Text = a.发行版数据集合(i).描述.Replace("\r\n", vbCrLf)}
+                Dim 描述文字 As New Label With {.AutoSize = False, .Dock = DockStyle.Top, .Height = 100 * 界面控制.DPI, .AutoEllipsis = True, .TextAlign = ContentAlignment.TopLeft, .Padding = New Padding(0, 10, 0, 10), .Font = New Font(Form1.Font.Name, 10), .ForeColor = Color.Gray, .Text = a.发行版数据集合(i).描述.Replace("\r\n", vbCrLf)}
                 Form1.Panel34.Controls.Add(描述文字)
                 描述文字.BringToFront()
             End If
 
             For i2 = 0 To a.发行版数据集合(i).可供下载的文件.Count - 1
-                Dim 发行版文件文字 As New LinkLabel With {.AutoSize = False, .Dock = DockStyle.Top, .Height = 35, .TextAlign = ContentAlignment.TopLeft, .Font = New Font(Form1.Font.Name, 12), .LinkColor = If(设置.全局设置数据("DownloadFileUseSMUI5Color") = True, Color1.橙色, Color1.绿色), .LinkBehavior = LinkBehavior.HoverUnderline, .Text = a.发行版数据集合(i).可供下载的文件(i2).Key}
+                Dim 发行版文件文字 As New LinkLabel With {.AutoSize = False, .Dock = DockStyle.Top, .Height = 35 * 界面控制.DPI, .TextAlign = ContentAlignment.TopLeft, .Font = New Font(Form1.Font.Name, 12), .LinkColor = If(设置.全局设置数据("DownloadFileUseSMUI5Color") = True, Color1.橙色, Color1.绿色), .LinkBehavior = LinkBehavior.HoverUnderline, .Text = a.发行版数据集合(i).可供下载的文件(i2).Key}
                 Form1.Panel34.Controls.Add(发行版文件文字)
                 发行版文件文字.BringToFront()
                 Dim b As String = a.发行版数据集合(i).可供下载的文件(i2).Value

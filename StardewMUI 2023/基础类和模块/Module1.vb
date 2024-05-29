@@ -3,6 +3,7 @@ Imports System.Runtime.InteropServices
 Imports System.Text.Json
 
 Module Module1
+
     'Win32 API
     Public Declare Auto Function ReleaseCapture Lib "user32.dll" Alias "ReleaseCapture" () As Boolean
     Public Declare Auto Function SendMessage Lib "user32.dll" Alias "SendMessage" (hWnd As IntPtr, wMsg As Integer, wParam As Integer, lParam As Integer) As IntPtr
