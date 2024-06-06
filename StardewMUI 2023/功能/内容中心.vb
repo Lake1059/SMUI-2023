@@ -34,7 +34,7 @@ Public Class 内容中心
         链接菜单.Items.Add(菜单项_存档进度检测器)
 
         AddHandler Form1.UiButton36.MouseDown, Sub(sender, e) 内容中心主菜单.Show(sender, New Point(0, sender.height))
-        AddHandler Form1.UiButton44.MouseDown, Sub(sender, e) 内容中心主菜单.Show(Form1.Panel12, New Point(0, 0))
+        AddHandler Form1.UiButton44.MouseDown, Sub(sender, e) 内容中心主菜单.Show(sender, New Point(sender.Width - 内容中心主菜单.Width, sender.height))
 
         AddHandler 菜单项_打开软件安装目录.Click, Sub() Process.Start("explorer.exe", Application.StartupPath)
         AddHandler 菜单项_打开用户数据文件夹.Click, Sub() Process.Start("explorer.exe", 设置.用户数据文件夹路径)

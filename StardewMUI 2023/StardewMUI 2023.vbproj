@@ -13,10 +13,10 @@
     <Title>$(AssemblyName)</Title>
     <Authors>1059 Studio</Authors>
     <PackAsTool>False</PackAsTool>
-    <AssemblyVersion>6.0.30</AssemblyVersion>
-    <FileVersion>6.0.30</FileVersion>
+    <AssemblyVersion>6.0.31</AssemblyVersion>
+    <FileVersion>6.0.31</FileVersion>
     <SupportedOSPlatformVersion>10.0.17763.0</SupportedOSPlatformVersion>
-    <Version>6.0.30</Version>
+    <Version>6.0.31</Version>
     <AnalysisLevel>latest</AnalysisLevel>
     <UseWPF>True</UseWPF>
   </PropertyGroup>
@@ -48,10 +48,10 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="CsvHelper" Version="32.0.2" />
-    <PackageReference Include="Imazen.WebP" Version="10.0.1" />
+    <PackageReference Include="CsvHelper" Version="32.0.3" />
+    <PackageReference Include="Magick.NET-Q16-x64" Version="13.9.0" />
     <PackageReference Include="Microsoft-WindowsAPICodePack-Shell" Version="1.1.5" />
-    <PackageReference Include="Microsoft.Web.WebView2" Version="1.0.2478.35" />
+    <PackageReference Include="Microsoft.Web.WebView2" Version="1.0.2535.41" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
     <PackageReference Include="SharpCompress" Version="0.37.2" />
     <PackageReference Include="SunnyUI" Version="3.6.6" />

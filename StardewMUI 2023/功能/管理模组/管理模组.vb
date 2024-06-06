@@ -5,6 +5,8 @@ Imports SMUI6.项信息读取类
 Imports Sunny.UI
 Imports Windows.System
 Imports System.Windows.Forms.Control
+Imports ImageMagick
+Imports Microsoft.Win32.SafeHandles
 
 
 Public Class 管理模组
@@ -25,6 +27,7 @@ Public Class 管理模组
         AddHandler 管理模组的菜单.菜单项_转移分类.Click, AddressOf 分类操作.转移分类
         AddHandler 管理模组的菜单.菜单项_重命名分类.Click, AddressOf 分类操作.重命名分类
         AddHandler 管理模组的菜单.菜单项_删除分类.Click, AddressOf 分类操作.删除分类
+        AddHandler 管理模组的菜单.菜单项_删除选中分类中的项排序.Click, AddressOf 分类操作.删除排序
         AddHandler 管理模组的菜单.菜单项_将分类上移.Click, AddressOf 上移选中的分类
         AddHandler 管理模组的菜单.菜单项_将分类下移.Click, AddressOf 下移选中的分类
 
@@ -74,6 +77,7 @@ Public Class 管理模组
 
         AddHandler 管理模组的菜单.菜单项_更多分类操作_转换安装命令到安装规划.Click, AddressOf 管理模组3.更新选中分类_从安装命令到安装规划
         AddHandler 管理模组的菜单.菜单项_更多分类操作_转换安装规划到安装命令.Click, AddressOf 管理模组3.更新选中分类_从安装规划到安装命令
+
 
 
         AddHandler Form1.UiButton4.Click, Sub() 显示窗体(Form搜索, Form1)
@@ -290,14 +294,22 @@ Line1:
                 If Form1.ListView2.SelectedItems.Count = 0 Then
                     If Form1.ListView2.Items.Count > 0 Then Form1.ListView2.Items(0).Selected = True
                 End If
-            Case Keys.F3
+            Case Keys.F9
                 上移选中的分类()
-            Case Keys.F4
+            Case Keys.F10
                 下移选中的分类()
             Case Keys.F2
                 管理模组的菜单.菜单项_重命名分类.PerformClick()
             Case Keys.F1
                 管理模组的菜单.菜单项_打开分类的文件夹.PerformClick()
+            Case Keys.F5
+                扫描分类()
+            Case Keys.A
+                If e.Control Then
+                    For Each item In Form1.ListView1.Items
+                        item.Selected = True
+                    Next
+                End If
         End Select
     End Sub
 
@@ -557,19 +569,27 @@ Line1:
                     Form1.ListView2.Items(a + 1).EnsureVisible()
                 End If
             Case Keys.A, Keys.Left
+                If e.Control Then
+                    管理模组的菜单.菜单项_全选.PerformClick()
+                    Exit Select
+                End If
                 Form1.ListView1.Focus()
-            Case Keys.F5
+            Case Keys.F3
                 管理模组的菜单.菜单项_安装.PerformClick()
-            Case Keys.F6
+            Case Keys.F4
                 管理模组的菜单.菜单项_卸载.PerformClick()
             Case Keys.F1
                 管理模组的菜单.菜单项_打开项的文件夹.PerformClick()
             Case Keys.F2
                 管理模组的菜单.菜单项_重命名项.PerformClick()
-            Case Keys.F3
+            Case Keys.F5
+                扫描模组项(True)
+            Case Keys.F9
                 上移选中的模组项()
-            Case Keys.F4
+            Case Keys.F10
                 下移选中的模组项()
+            Case Keys.F6
+                配置队列.添加到配置队列()
             Case Keys.N
                 If Not DLC.DLC解锁标记.UpdateModItemExtension Then Exit Sub
                 If Form1.ListView2.SelectedItems.Count <> 1 Then Exit Sub
@@ -805,34 +825,32 @@ Line1:
                 End Using
             Case ".webp"
                 Try
-                    Dim bytes As Byte() = IO.File.ReadAllBytes(文件)
-                    Using img As Bitmap = New Imazen.WebP.SimpleDecoder().DecodeFromBytes(bytes, bytes.Length)
-                        Dim s As Integer = img.GetFrameCount(FrameDimension.Page)
-                        Dim mstr As New IO.MemoryStream()
-                        If s = 1 Then
-                            img.Save(mstr, Imaging.ImageFormat.Png)
-                            Dim newImagePath As String = IO.Path.GetDirectoryName(文件) & "\" & IO.Path.GetFileNameWithoutExtension(文件) & ".png"
-                            Using fs As New FileStream(newImagePath, FileMode.Create)
-                                mstr.WriteTo(fs)
+                    Using images As New MagickImageCollection(文件)
+                        If images.Count = 1 Then
+                            Using ms As New MemoryStream()
+                                images(0).Write(ms, MagickFormat.Png)
+                                Dim newImagePath As String = Path.Combine(Path.GetDirectoryName(文件), Path.GetFileNameWithoutExtension(文件) & ".png")
+                                Using fs As New FileStream(newImagePath, FileMode.Create)
+                                    ms.WriteTo(fs)
+                                End Using
+                                If FileIO.FileSystem.FileExists(文件) = True Then FileIO.FileSystem.DeleteFile(文件)
+                                当前项信息_预览图文件表(当前正在显示的预览图索引) = newImagePath
+                                Form1.Panel9.Visible = True
+                                Form1.PictureBox1.Image = Image.FromStream(ms)
+                                Application.DoEvents()
+                                ms.Dispose()
                             End Using
-                            If FileIO.FileSystem.FileExists(文件) = True Then FileIO.FileSystem.DeleteFile(文件)
-                            当前项信息_预览图文件表(当前正在显示的预览图索引) = newImagePath
-                        ElseIf s > 1 Then
-                            img.Save(mstr, Imaging.ImageFormat.Gif)
-                            Dim newImagePath As String = IO.Path.GetDirectoryName(文件) & "\" & IO.Path.GetFileNameWithoutExtension(文件) & ".gif"
-                            Using fs As New FileStream(newImagePath, FileMode.Create)
-                                mstr.WriteTo(fs)
+                        ElseIf images.Count > 1 Then
+                            Using ms As New MemoryStream()
+                                images.Write(ms, MagickFormat.Gif)
+                                Form1.Panel9.Visible = True
+                                Form1.PictureBox1.Image = Image.FromStream(ms)
+                                Application.DoEvents()
+                                ms.Dispose()
                             End Using
-                            If FileIO.FileSystem.FileExists(文件) = True Then FileIO.FileSystem.DeleteFile(文件)
-                            当前项信息_预览图文件表(当前正在显示的预览图索引) = newImagePath
-                        Else
-                            Exit Try
                         End If
-                        Form1.Panel9.Visible = True
-                        Form1.PictureBox1.Image = Image.FromStream(mstr)
-                        Application.DoEvents()
-                        mstr.Dispose()
                     End Using
+
                 Catch ex As Exception
                     Form1.Panel9.Visible = False
                     Form1.PictureBox1.Image = Nothing

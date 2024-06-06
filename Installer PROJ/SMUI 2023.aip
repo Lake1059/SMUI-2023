@@ -92,10 +92,10 @@
     <ROW Property="AppLogoIconDark" Value="applogodark.png" MultiBuildValue="DefaultBuild:dropbox.ico" Type="1" MsiKey="AppLogoIconDark"/>
     <ROW Property="CTRLS" Value="2"/>
     <ROW Property="Manufacturer" Value="1059 Studio"/>
-    <ROW Property="ProductCode" Value="2052:{FBC6AA30-F2E9-4E33-BD80-8D54B901BD3B} " Type="16"/>
+    <ROW Property="ProductCode" Value="2052:{48360196-EE6B-4250-A1E2-E1EC445128A7} " Type="16"/>
     <ROW Property="ProductLanguage" Value="2052"/>
     <ROW Property="ProductName" Value="SMUI 2023"/>
-    <ROW Property="ProductVersion" Value="6.0.30" Options="32"/>
+    <ROW Property="ProductVersion" Value="6.0.31" Options="32"/>
     <ROW Property="REBOOT" MultiBuildValue="DefaultBuild:ReallySuppress"/>
     <ROW Property="SecureCustomProperties" Value="OLDPRODUCTS;AI_NEWERPRODUCTFOUND;AI_SETUPEXEPATH;SETUPEXEDIR"/>
     <ROW Property="UpgradeCode" Value="{349EDF0D-1EB2-4B52-B72A-0F3AEC12DAC8}"/>
@@ -124,7 +124,9 @@
     <ROW Component="CsvHelper.dll" ComponentId="{9F1FFA02-2836-49A0-AAE4-ACFD807A63F7}" Directory_="APPDIR" Attributes="0" KeyPath="CsvHelper.dll"/>
     <ROW Component="D3DCompiler_47_cor3.dll" ComponentId="{60B898BB-8FCB-41A9-B715-091E9FCA4C74}" Directory_="APPDIR" Attributes="256" KeyPath="D3DCompiler_47_cor3.dll"/>
     <ROW Component="DirectWriteForwarder.dll" ComponentId="{C313A844-7B4C-40B4-9694-FECFEA4B602C}" Directory_="APPDIR" Attributes="256" KeyPath="DirectWriteForwarder.dll"/>
-    <ROW Component="Imazen.WebP.dll" ComponentId="{06D821B9-329C-4DF6-9885-A84C580F4CA4}" Directory_="APPDIR" Attributes="0" KeyPath="Imazen.WebP.dll"/>
+    <ROW Component="Magick.NET.Core.dll" ComponentId="{EBA58BFC-C346-41A1-B062-7024E8C80C9D}" Directory_="APPDIR" Attributes="0" KeyPath="Magick.NET.Core.dll"/>
+    <ROW Component="Magick.NETQ16x64.dll" ComponentId="{F6CD09BF-DCF5-4961-ADD4-97A7905AFDB4}" Directory_="APPDIR" Attributes="256" KeyPath="Magick.NETQ16x64.dll"/>
+    <ROW Component="Magick.NativeQ16x64.dll" ComponentId="{FEDB1F21-BAD6-469A-955D-5B7CE9BEBA01}" Directory_="APPDIR" Attributes="256" KeyPath="Magick.NativeQ16x64.dll"/>
     <ROW Component="Microsoft.CSharp.dll" ComponentId="{5E4EDD00-57C6-4DD0-8B15-A4239BC2F718}" Directory_="APPDIR" Attributes="256" KeyPath="Microsoft.CSharp.dll"/>
     <ROW Component="Microsoft.DiaSymReader.Native.amd64.dll" ComponentId="{A3D21F4E-6077-4E8E-B60B-F146AAD2CB87}" Directory_="APPDIR" Attributes="256" KeyPath="Microsoft.DiaSymReader.Native.amd64.dll"/>
     <ROW Component="Microsoft.VisualBasic.Core.dll" ComponentId="{5645A6FF-5307-4209-A681-CEAC651837B8}" Directory_="APPDIR" Attributes="256" KeyPath="Microsoft.VisualBasic.Core.dll"/>
@@ -387,7 +389,6 @@
     <ROW Component="createdump.exe" ComponentId="{C3323A21-B7C9-429C-A4E2-3187F7E38F1E}" Directory_="APPDIR" Attributes="256" KeyPath="createdump.exe"/>
     <ROW Component="hostfxr.dll" ComponentId="{B8B60DAB-51E0-4C4E-9DEA-1F76F8829604}" Directory_="APPDIR" Attributes="256" KeyPath="hostfxr.dll"/>
     <ROW Component="hostpolicy.dll" ComponentId="{DB5393CE-FFF8-45AB-84C1-70AA02B21CB1}" Directory_="APPDIR" Attributes="256" KeyPath="hostpolicy.dll"/>
-    <ROW Component="libwebp.dll" ComponentId="{CE0CBE99-654A-4E14-A249-6FF19555A7B2}" Directory_="APPDIR" Attributes="256" KeyPath="libwebp.dll"/>
     <ROW Component="mscordaccore.dll" ComponentId="{6A65D393-FC29-47E3-94D6-E778E7155C3F}" Directory_="APPDIR" Attributes="256" KeyPath="mscordaccore.dll"/>
     <ROW Component="mscordaccore_amd64_amd64_8.0.524.21615.dll" ComponentId="{BF30316E-0530-4979-9E19-0BE1CB7E4210}" Directory_="APPDIR" Attributes="256" KeyPath="mscordaccore_amd64_amd64_8.0.524.21615.dll"/>
     <ROW Component="mscordbi.dll" ComponentId="{D4D614CC-7F58-4413-9595-98BA8758554A}" Directory_="APPDIR" Attributes="256" KeyPath="mscordbi.dll"/>
@@ -417,8 +418,6 @@
     <ROW File="DirectWriteForwarder.dll" Component_="DirectWriteForwarder.dll" FileName="DIRECT~1.DLL|DirectWriteForwarder.dll" Attributes="0" SourcePath="..\StardewMUI 2023\bin\Debug\net8.0-windows10.0.22621.0\win-x64\DirectWriteForwarder.dll" SelfReg="false"/>
     <ROW File="hostfxr.dll" Component_="hostfxr.dll" FileName="hostfxr.dll" Attributes="0" SourcePath="..\StardewMUI 2023\bin\Debug\net8.0-windows10.0.22621.0\win-x64\hostfxr.dll" SelfReg="false"/>
     <ROW File="hostpolicy.dll" Component_="hostpolicy.dll" FileName="HOSTPO~1.DLL|hostpolicy.dll" Attributes="0" SourcePath="..\StardewMUI 2023\bin\Debug\net8.0-windows10.0.22621.0\win-x64\hostpolicy.dll" SelfReg="false"/>
-    <ROW File="Imazen.WebP.dll" Component_="Imazen.WebP.dll" FileName="IMAZEN~1.DLL|Imazen.WebP.dll" Attributes="0" SourcePath="..\StardewMUI 2023\bin\Debug\net8.0-windows10.0.22621.0\win-x64\Imazen.WebP.dll" SelfReg="false"/>
-    <ROW File="libwebp.dll" Component_="libwebp.dll" FileName="libwebp.dll" Attributes="0" SourcePath="..\StardewMUI 2023\bin\Debug\net8.0-windows10.0.22621.0\win-x64\libwebp.dll" SelfReg="false"/>
     <ROW File="Microsoft.CSharp.dll" Component_="Microsoft.CSharp.dll" FileName="MICROS~1.DLL|Microsoft.CSharp.dll" Attributes="0" SourcePath="..\StardewMUI 2023\bin\Debug\net8.0-windows10.0.22621.0\win-x64\Microsoft.CSharp.dll" SelfReg="false"/>
     <ROW File="Microsoft.DiaSymReader.Native.amd64.dll" Component_="Microsoft.DiaSymReader.Native.amd64.dll" FileName="MICROS~2.DLL|Microsoft.DiaSymReader.Native.amd64.dll" Attributes="0" SourcePath="..\StardewMUI 2023\bin\Debug\net8.0-windows10.0.22621.0\win-x64\Microsoft.DiaSymReader.Native.amd64.dll" SelfReg="false"/>
     <ROW File="Microsoft.VisualBasic.Core.dll" Component_="Microsoft.VisualBasic.Core.dll" FileName="MICROS~3.DLL|Microsoft.VisualBasic.Core.dll" Attributes="0" SourcePath="..\StardewMUI 2023\bin\Debug\net8.0-windows10.0.22621.0\win-x64\Microsoft.VisualBasic.Core.dll" SelfReg="false"/>
@@ -691,6 +690,9 @@
     <ROW File="ZstdSharp.dll" Component_="ZstdSharp.dll" FileName="ZSTDSH~1.DLL|ZstdSharp.dll" Attributes="0" SourcePath="..\StardewMUI 2023\bin\Debug\net8.0-windows10.0.22621.0\win-x64\ZstdSharp.dll" SelfReg="false"/>
     <ROW File="mscordaccore_amd64_amd64_8.0.524.21615.dll" Component_="mscordaccore_amd64_amd64_8.0.524.21615.dll" FileName="MSCORD~2.DLL|mscordaccore_amd64_amd64_8.0.524.21615.dll" Attributes="0" SourcePath="..\StardewMUI 2023\bin\Debug\net8.0-windows10.0.22621.0\win-x64\mscordaccore_amd64_amd64_8.0.524.21615.dll" SelfReg="false"/>
     <ROW File="UpdateLog.rtf" Component_="chrome_100_percent.pak" FileName="UPDATE~1.RTF|UpdateLog.rtf" Attributes="0" SourcePath="..\StardewMUI 2023\bin\Debug\net8.0-windows10.0.22621.0\win-x64\UpdateLog.rtf" SelfReg="false"/>
+    <ROW File="Magick.NativeQ16x64.dll" Component_="Magick.NativeQ16x64.dll" FileName="MAGICK~1.DLL|Magick.Native-Q16-x64.dll" Attributes="0" SourcePath="..\StardewMUI 2023\bin\Debug\net8.0-windows10.0.22621.0\win-x64\Magick.Native-Q16-x64.dll" SelfReg="false"/>
+    <ROW File="Magick.NET.Core.dll" Component_="Magick.NET.Core.dll" FileName="MAGICK~2.DLL|Magick.NET.Core.dll" Attributes="0" SourcePath="..\StardewMUI 2023\bin\Debug\net8.0-windows10.0.22621.0\win-x64\Magick.NET.Core.dll" SelfReg="false"/>
+    <ROW File="Magick.NETQ16x64.dll" Component_="Magick.NETQ16x64.dll" FileName="MAGICK~3.DLL|Magick.NET-Q16-x64.dll" Attributes="0" SourcePath="..\StardewMUI 2023\bin\Debug\net8.0-windows10.0.22621.0\win-x64\Magick.NET-Q16-x64.dll" SelfReg="false"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.BootstrOptComponent">
     <ROW BootstrOptKey="GlobalOptions" DownloadFolder="[AppDataFolder][|Manufacturer]\[|ProductName]\prerequisites" Options="2"/>
@@ -993,8 +995,6 @@
     <ROW Feature_="MainFeature" Component_="DirectWriteForwarder.dll"/>
     <ROW Feature_="MainFeature" Component_="hostfxr.dll"/>
     <ROW Feature_="MainFeature" Component_="hostpolicy.dll"/>
-    <ROW Feature_="MainFeature" Component_="Imazen.WebP.dll"/>
-    <ROW Feature_="MainFeature" Component_="libwebp.dll"/>
     <ROW Feature_="MainFeature" Component_="Microsoft.CSharp.dll"/>
     <ROW Feature_="MainFeature" Component_="Microsoft.DiaSymReader.Native.amd64.dll"/>
     <ROW Feature_="MainFeature" Component_="Microsoft.VisualBasic.Core.dll"/>
@@ -1262,6 +1262,9 @@
     <ROW Feature_="MainFeature" Component_="SharpCompress.dll"/>
     <ROW Feature_="MainFeature" Component_="ZstdSharp.dll"/>
     <ROW Feature_="MainFeature" Component_="mscordaccore_amd64_amd64_8.0.524.21615.dll"/>
+    <ROW Feature_="MainFeature" Component_="Magick.NativeQ16x64.dll"/>
+    <ROW Feature_="MainFeature" Component_="Magick.NET.Core.dll"/>
+    <ROW Feature_="MainFeature" Component_="Magick.NETQ16x64.dll"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiIconsComponent">
     <ROW Name="SMUI6.exe" SourcePath="..\StardewMUI 2023\dropbox.ico" Index="0"/>

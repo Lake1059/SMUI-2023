@@ -124,7 +124,7 @@ Public Class 设置
             Form1.TabPage检查更新.Parent = Nothing
             Form1.TabPage浏览器.Parent = Nothing
             Form1.TabPage调试输出.Parent = Nothing
-            Form1.UiTabControlMenu1.SelectedIndex = 6
+            Form1.UiTabControlMenu1.SelectedTab = Form1.TabPage许可协议
             Form1.TabPage扩展内容.Parent = Nothing
             Form1.TabPage最新模组.Parent = Nothing
             Form1.TabPage集成工具.Parent = Nothing

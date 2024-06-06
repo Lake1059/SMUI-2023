@@ -57,6 +57,7 @@ Public Class 界面控制
         配置队列的菜单.添加菜单的触发()
         AddHandler Form1.UiButton45.Click, AddressOf 状态信息.启动SMAPI
         AddHandler Form1.UiButton48.Click, Sub() 新闻列表.获取新闻(True)
+        AddHandler Form1.UiButton46.Click, Sub() 检查更新.运行后台服务器检查更新()
         AddHandler Form1.UiRichTextBox4.LinkClicked, AddressOf 许可协议签署执行
         主界面高DPI兼容()
 

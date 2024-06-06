@@ -29,12 +29,9 @@ Public Class Form1
         状态信息.刷新起始页面状态信息()
 
         Dim a As New 多项单选对话框("开发中", {"OK"}, "目前版本已经基本满足日常需求，仍有部分次要功能尚未制作，请知晓。", 100, 500)
-        PlayEventSound("Notification.IM")
         a.ShowDialog(Me)
 
         设置.加载自定义背景()
-
-
     End Sub
 
     Private Sub Form1_ResizeEnd(sender As Object, e As EventArgs) Handles MyBase.ResizeEnd

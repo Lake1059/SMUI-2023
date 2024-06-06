@@ -52,6 +52,7 @@ Public Class 检查更新
         End Using
 
 Dev1:
+        Form1.UiButton46.Enabled = False
         获取到的版本号 = ""
         获取到的下载地址 = ""
         获取到的分卷下载.Clear()
@@ -221,6 +222,7 @@ Dev1:
                   End Select
                   正在进行更新 = False
               End If
+              Form1.UiButton46.Enabled = True
               自动更新界面刷新.Dispose()
               GC.Collect()
           End Sub

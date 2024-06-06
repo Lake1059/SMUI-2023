@@ -403,6 +403,7 @@ jx1:
         If Form1.ListView3.SelectedItems.Count <> 1 Then Exit Sub
         Dim str1 As String = ""
         If Not DirEx.SelectDirEx("选择要添加的文件夹（由于五代相关组件无法在这里正常运行，所以目前无法批量选择）", str1) Then Exit Sub
+        If str1.EndsWith("\"c) Then str1 = str1.Substring(0, str1.Length - 1)
         FileIO.FileSystem.CopyDirectory(str1, Path.Combine(正在编辑规划的项路径, Path.GetFileName(str1)), FileIO.UIOption.AllDialogs)
         重新扫描项的数据内容()
     End Sub

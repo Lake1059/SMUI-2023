@@ -162,7 +162,7 @@ Partial Class 关于界面
         ' 
         ' Label6
         ' 
-        Label6.Location = New Point(134, 554)
+        Label6.Location = New Point(581, 50)
         Label6.Margin = New Padding(20, 20, 0, 0)
         Label6.Name = "Label6"
         Label6.Size = New Size(343, 64)
@@ -174,7 +174,7 @@ Partial Class 关于界面
         ' 
         PictureBox6.BackColor = Color.FromArgb(CByte(48), CByte(48), CByte(48))
         PictureBox6.Image = My.Resources.Resources.Jsonnet
-        PictureBox6.Location = New Point(50, 554)
+        PictureBox6.Location = New Point(497, 50)
         PictureBox6.Margin = New Padding(20, 20, 0, 0)
         PictureBox6.Name = "PictureBox6"
         PictureBox6.Size = New Size(64, 64)
@@ -183,7 +183,7 @@ Partial Class 关于界面
         ' 
         ' Label7
         ' 
-        Label7.Location = New Point(581, 134)
+        Label7.Location = New Point(581, 218)
         Label7.Margin = New Padding(20, 20, 0, 0)
         Label7.Name = "Label7"
         Label7.Size = New Size(336, 64)
@@ -194,7 +194,7 @@ Partial Class 关于界面
         ' PictureBox7
         ' 
         PictureBox7.Image = My.Resources.Resources.default_package_icon1
-        PictureBox7.Location = New Point(497, 134)
+        PictureBox7.Location = New Point(497, 218)
         PictureBox7.Margin = New Padding(20, 20, 0, 0)
         PictureBox7.Name = "PictureBox7"
         PictureBox7.Size = New Size(64, 64)
@@ -203,7 +203,7 @@ Partial Class 关于界面
         ' 
         ' Label8
         ' 
-        Label8.Location = New Point(581, 50)
+        Label8.Location = New Point(581, 134)
         Label8.Margin = New Padding(20, 20, 0, 0)
         Label8.Name = "Label8"
         Label8.Size = New Size(336, 64)
@@ -214,7 +214,7 @@ Partial Class 关于界面
         ' PictureBox8
         ' 
         PictureBox8.Image = My.Resources.Resources.csvhelper
-        PictureBox8.Location = New Point(497, 50)
+        PictureBox8.Location = New Point(497, 134)
         PictureBox8.Margin = New Padding(20, 20, 0, 0)
         PictureBox8.Name = "PictureBox8"
         PictureBox8.Size = New Size(64, 64)
@@ -223,18 +223,18 @@ Partial Class 关于界面
         ' 
         ' Label9
         ' 
-        Label9.Location = New Point(581, 218)
+        Label9.Location = New Point(581, 302)
         Label9.Margin = New Padding(20, 20, 0, 0)
         Label9.Name = "Label9"
         Label9.Size = New Size(336, 64)
         Label9.TabIndex = 32
-        Label9.Text = "libwebp-net" & vbCrLf & "MIT - Nathanael Jones" & vbCrLf & "以及来自 Google 的 libwebp.dll"
+        Label9.Text = "Magick.NET-Q16-x64" & vbCrLf & "Apache-2.0 - Dirk Lemstra" & vbCrLf & "WEBP 图像处理"
         Label9.TextAlign = ContentAlignment.MiddleLeft
         ' 
         ' PictureBox9
         ' 
-        PictureBox9.Image = My.Resources.Resources.default_package_icon1
-        PictureBox9.Location = New Point(497, 218)
+        PictureBox9.Image = My.Resources.Resources.Magick_NET
+        PictureBox9.Location = New Point(497, 302)
         PictureBox9.Margin = New Padding(20, 20, 0, 0)
         PictureBox9.Name = "PictureBox9"
         PictureBox9.Size = New Size(64, 64)
@@ -244,7 +244,7 @@ Partial Class 关于界面
         ' Label10
         ' 
         Label10.AutoSize = True
-        Label10.Location = New Point(581, 386)
+        Label10.Location = New Point(581, 470)
         Label10.Margin = New Padding(20, 20, 0, 0)
         Label10.Name = "Label10"
         Label10.Size = New Size(262, 76)
@@ -255,7 +255,7 @@ Partial Class 关于界面
         ' PictureBox10
         ' 
         PictureBox10.Image = My.Resources.Resources._7zip
-        PictureBox10.Location = New Point(497, 386)
+        PictureBox10.Location = New Point(497, 470)
         PictureBox10.Margin = New Padding(20, 20, 0, 0)
         PictureBox10.Name = "PictureBox10"
         PictureBox10.Size = New Size(64, 64)
@@ -264,7 +264,7 @@ Partial Class 关于界面
         ' 
         ' Label11
         ' 
-        Label11.Location = New Point(581, 302)
+        Label11.Location = New Point(581, 386)
         Label11.Margin = New Padding(20, 20, 0, 0)
         Label11.Name = "Label11"
         Label11.Size = New Size(336, 64)
@@ -275,7 +275,7 @@ Partial Class 关于界面
         ' PictureBox11
         ' 
         PictureBox11.Image = My.Resources.Resources.default_package_icon1
-        PictureBox11.Location = New Point(497, 302)
+        PictureBox11.Location = New Point(497, 386)
         PictureBox11.Margin = New Padding(20, 20, 0, 0)
         PictureBox11.Name = "PictureBox11"
         PictureBox11.Size = New Size(64, 64)

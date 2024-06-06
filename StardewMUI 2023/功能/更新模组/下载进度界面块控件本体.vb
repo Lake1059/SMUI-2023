@@ -263,12 +263,18 @@ Public Class 下载进度界面块控件本体
             评估不通过操作("压缩文件内容不包含文件夹，无法继续")
             Exit Sub
         End If
-        If 解压出的文件夹列表.Count = 1 And FileIO.FileSystem.FileExists(Path.Combine(这份实例使用的临时解压目录, 解压出的文件夹列表(0), "manifest.json")) = False Then
-            实际解压路径算起位置 = Path.Combine(这份实例使用的临时解压目录, 解压出的文件夹列表(0))
+
+        Dim 文件夹路径 As String = Path.Combine(这份实例使用的临时解压目录, 解压出的文件夹列表(0))
+        Dim manifest文件路径 As String = Path.Combine(文件夹路径, "manifest.json")
+
+        If 解压出的文件夹列表.Count = 1 And Not FileIO.FileSystem.FileExists(manifest文件路径) Then
+            实际解压路径算起位置 = 文件夹路径
         Else
             实际解压路径算起位置 = 这份实例使用的临时解压目录
         End If
-        If FileIO.FileSystem.FileExists(Path.Combine(设置_模组项绝对路径, "Code2")) Then
+
+        Dim Code2文件路径 As String = Path.Combine(设置_模组项绝对路径, "Code2")
+        If FileIO.FileSystem.FileExists(Code2文件路径) Then
             开始处理更新()
         Else
             开始处理新建()
@@ -351,13 +357,17 @@ Public Class 下载进度界面块控件本体
 
         Dim 准备处理的文件夹列表 As New List(Of String)(共享方法.SearchFolderWithoutSub(实际解压路径算起位置))
         Await Task.Run(Sub()
-                           For i = 0 To 准备处理的文件夹列表.Count - 1
-                               FileIO.FileSystem.MoveDirectory(实际解压路径算起位置 & "\" & 准备处理的文件夹列表(i), 设置_模组项绝对路径 & "\" & 准备处理的文件夹列表(i), True)
+                           For Each folder As String In 准备处理的文件夹列表
+                               Dim sourcePath = Path.Combine(实际解压路径算起位置, folder)
+                               Dim destPath = Path.Combine(设置_模组项绝对路径, folder)
+                               FileIO.FileSystem.MoveDirectory(sourcePath, destPath, True)
                            Next
                        End Sub)
         Await Task.Run(Sub()
-                           For Each F1 As FileInfo In New System.IO.DirectoryInfo(实际解压路径算起位置).GetFiles("*.*")
-                               FileIO.FileSystem.MoveFile(实际解压路径算起位置 & "\" & F1.Name, 设置_模组项绝对路径 & "\" & F1.Name, True)
+                           For Each F1 As FileInfo In New DirectoryInfo(实际解压路径算起位置).GetFiles("*.*")
+                               Dim sourcePath = Path.Combine(实际解压路径算起位置, F1.Name)
+                               Dim destPath = Path.Combine(设置_模组项绝对路径, F1.Name)
+                               FileIO.FileSystem.MoveFile(sourcePath, destPath, True)
                            Next
                        End Sub)
 
@@ -365,27 +375,23 @@ Public Class 下载进度界面块控件本体
         Application.DoEvents()
 
         If 准备处理的文件夹列表.Count = 0 Then
-            评估不通过操作("解压出的内容不包含文件夹或文件夹是空的")
+            评估不通过操作("解压出的内容不包含文件夹或文件夹是空的", False)
             DebugPrint("解压出的内容不包含文件夹或文件夹是空的", Color1.黄色)
             Exit Sub
         End If
         If FileIO.FileSystem.FileExists(Path.Combine(设置_模组项绝对路径, "manifest.json")) Then
-            评估不通过操作("检测到 manifest.json 直接存在于解压出的根位置")
+            评估不通过操作("检测到 manifest.json 直接存在于解压出的根位置", False)
             DebugPrint("检测到 manifest.json 直接存在于解压出的根位置", Color1.黄色)
             Exit Sub
         End If
-        For i = 0 To 准备处理的文件夹列表.Count - 1
-            If InStr(准备处理的文件夹列表(i), ".") > 0 Then Continue For
-            If Not FileIO.FileSystem.FileExists(Path.Combine(设置_模组项绝对路径, 准备处理的文件夹列表(i), "manifest.json")) Then
-                评估不通过操作("存在多重套娃或者非标准 SMAPI 模组")
+        For Each folder As String In 准备处理的文件夹列表
+            If folder.Contains("."c) Then Continue For
+            If Not FileIO.FileSystem.FileExists(Path.Combine(设置_模组项绝对路径, folder, "manifest.json")) Then
+                评估不通过操作("存在多重套娃或者非标准 SMAPI 模组", False)
                 DebugPrint("存在多重套娃或者非标准 SMAPI 模组", Color1.黄色)
                 Exit Sub
             Else
-                If 自动编写的安装规划 = "" Then
-                    自动编写的安装规划 &= "CD-D-MODS=" & 准备处理的文件夹列表(i)
-                Else
-                    自动编写的安装规划 &= vbCrLf & "CD-D-MODS=" & 准备处理的文件夹列表(i)
-                End If
+                自动编写的安装规划 &= If(String.IsNullOrEmpty(自动编写的安装规划), "", vbCrLf) & "CD-D-MODS=" & folder
             End If
         Next
         For Each F1 As FileInfo In New System.IO.DirectoryInfo(设置_模组项绝对路径).GetFiles("*.*")
@@ -396,7 +402,7 @@ Public Class 下载进度界面块控件本体
                     Select Case F1.Extension
                         Case ".txt", ".md", ".log"
                         Case Else
-                            评估不通过操作("存在单独的文件，需要用户处理")
+                            评估不通过操作("存在单独的文件，需要用户处理", False)
                             DebugPrint("存在单独的文件，需要用户处理", Color1.黄色)
                             Exit Sub
                     End Select
@@ -412,11 +418,11 @@ Public Class 下载进度界面块控件本体
 
     End Sub
 
-    Public Sub 评估不通过操作(不能自动完成的原因 As String)
+    Public Sub 评估不通过操作(不能自动完成的原因 As String, Optional 是否要打开解压文件夹 As Boolean = True)
         Dim msg1 As New 多项单选对话框("", {"确定"}, "存在验证不通过的内容，为了避免意外情况不能自动完成，请在配置队列中手动操作，程序将自动打开解压目录并添加到配置队列。以下是不能自动完成的因素：" & vbCrLf & vbCrLf & 不能自动完成的原因, 150, 500)
         msg1.ShowDialog(Form1)
         Process.Start("explorer.exe", 这份实例使用的临时解压目录)
-        配置队列.添加到配置队列(Path.GetFileName(Path.GetDirectoryName(设置_模组项绝对路径)), Path.GetFileName(设置_模组项绝对路径))
+        If 是否要打开解压文件夹 Then 配置队列.添加到配置队列(Path.GetFileName(Path.GetDirectoryName(设置_模组项绝对路径)), Path.GetFileName(设置_模组项绝对路径))
         结束(False)
     End Sub
 
