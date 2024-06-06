@@ -134,6 +134,7 @@ Dev1:
                                 Form1.UiListBox3.Items(1) = 更新_版本 & " - " & 更新_发布时间
                                 Form1.UiListBox3.Items(2) = "若要自动开始下载可以在设置中打开"
                                 Application.DoEvents()
+                                Form1.UiButton46.Enabled = True
                                 Exit Sub
                         End Select
                         自动更新界面刷新.Enabled = True
@@ -142,6 +143,7 @@ Dev1:
                         Form1.UiListBox3.Items(0) = 更新_标题
                         Form1.UiListBox3.Items(1) = "版本 " & 更新_版本 & " 发布者 " & 更新_发布者
                         Form1.UiListBox3.Items(2) = "最近更新：" & 更新_发布时间
+                        Form1.UiButton46.Enabled = True
                         正在进行更新 = False
                     End If
                     获取到的更新内容描述 = 更新_内容描述
