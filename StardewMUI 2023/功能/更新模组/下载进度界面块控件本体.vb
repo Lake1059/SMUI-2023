@@ -22,6 +22,9 @@ Public Class 下载进度界面块控件本体
         If 设置_下载来源 = "" Then Exit Sub
         If 设置_下载地址 = "" And 设置_下载来源.Equals("nexus", StringComparison.CurrentCultureIgnoreCase) Then Exit Sub
         If 设置_模组项绝对路径 = "" Then Exit Sub
+        If 设置_模组项绝对路径.Contains("\\") Then 设置_模组项绝对路径 = 设置_模组项绝对路径.Replace("\\", "\")
+        设置_模组项绝对路径 = New String(设置_模组项绝对路径.Where(Function(c) Not Char.IsControl(c)).ToArray)
+
         Me.Timer1.Enabled = True
         Dim str1 As String
         已下载字节数 = 0 : 总字节数 = 0 : 是否终止下载 = False : 上一秒的已下载字节数 = 0
@@ -264,13 +267,12 @@ Public Class 下载进度界面块控件本体
             Exit Sub
         End If
 
-        Dim 文件夹路径 As String = Path.Combine(这份实例使用的临时解压目录, 解压出的文件夹列表(0))
-        Dim manifest文件路径 As String = Path.Combine(文件夹路径, "manifest.json")
-
-        If 解压出的文件夹列表.Count = 1 And Not FileIO.FileSystem.FileExists(manifest文件路径) Then
-            实际解压路径算起位置 = 文件夹路径
-        Else
-            实际解压路径算起位置 = 这份实例使用的临时解压目录
+        If 解压出的文件夹列表.Count = 1 Then
+            Dim 第一个文件夹路径 As String = Path.Combine(这份实例使用的临时解压目录, 解压出的文件夹列表(0))
+            Dim manifest文件路径 As String = Path.Combine(第一个文件夹路径, "manifest.json")
+            If Not FileIO.FileSystem.FileExists(manifest文件路径) Then
+                实际解压路径算起位置 = 第一个文件夹路径
+            End If
         End If
 
         Dim Code2文件路径 As String = Path.Combine(设置_模组项绝对路径, "Code2")
@@ -337,9 +339,28 @@ Public Class 下载进度界面块控件本体
                 Case "CD-D-MODS", "CD-D-MODS-COVER"
                     Dim v1 As String = 安装规划数据(i2).Value
                     If FileIO.FileSystem.DirectoryExists(Path.Combine(设置_模组项绝对路径, v1)) Then
-                        Await Task.Run(Sub() FileIO.FileSystem.DeleteDirectory(Path.Combine(设置_模组项绝对路径, v1), FileIO.DeleteDirectoryOption.DeleteAllContents))
+                        Await Task.Run(Sub()
+                                           Try
+                                               FileIO.FileSystem.DeleteDirectory(Path.Combine(设置_模组项绝对路径, v1), FileIO.DeleteDirectoryOption.DeleteAllContents)
+                                           Catch ex As Exception
+                                               Me.Invoke(Sub() Me.Panel3.BackColor = Color.DarkRed)
+                                               If FileIO.FileSystem.DirectoryExists(Path.Combine(设置_模组项绝对路径, v1)) Then
+                                                   Me.Invoke(Sub() DebugPrint("删除失败。" & ex.Message, Color1.红色))
+                                               Else
+                                                   Me.Invoke(Sub() DebugPrint("意外错误，但是已经成功删除。" & ex.Message, Color1.橙色))
+                                               End If
+                                           End Try
+                                       End Sub)
                     End If
-                    Await Task.Run(Sub() FileIO.FileSystem.CopyDirectory(Path.Combine(实际解压路径算起位置, v1), Path.Combine(设置_模组项绝对路径, v1), True))
+
+                    Await Task.Run(Sub()
+                                       Try
+                                           FileIO.FileSystem.CopyDirectory(Path.Combine(实际解压路径算起位置, v1), Path.Combine(设置_模组项绝对路径, v1))
+                                       Catch ex As Exception
+                                           Me.Invoke(Sub() Me.Panel3.BackColor = Color.DarkRed)
+                                           Me.Invoke(Sub() DebugPrint("覆盖出错。" & ex.Message, Color1.红色))
+                                       End Try
+                                   End Sub)
             End Select
         Next
 
@@ -421,16 +442,16 @@ Public Class 下载进度界面块控件本体
     Public Sub 评估不通过操作(不能自动完成的原因 As String, Optional 是否要打开解压文件夹 As Boolean = True)
         Dim msg1 As New 多项单选对话框("", {"确定"}, "存在验证不通过的内容，为了避免意外情况不能自动完成，请在配置队列中手动操作，程序将自动打开解压目录并添加到配置队列。以下是不能自动完成的因素：" & vbCrLf & vbCrLf & 不能自动完成的原因, 150, 500)
         msg1.ShowDialog(Form1)
-        Process.Start("explorer.exe", 这份实例使用的临时解压目录)
-        If 是否要打开解压文件夹 Then 配置队列.添加到配置队列(Path.GetFileName(Path.GetDirectoryName(设置_模组项绝对路径)), Path.GetFileName(设置_模组项绝对路径))
+        配置队列.添加到配置队列(Path.GetFileName(Path.GetDirectoryName(设置_模组项绝对路径)), Path.GetFileName(设置_模组项绝对路径))
+        If 是否要打开解压文件夹 Then Process.Start("explorer.exe", 这份实例使用的临时解压目录)
         结束(False)
     End Sub
 
     Public Async Sub 清理解压数据()
-        If FileIO.FileSystem.DirectoryExists(实际解压路径算起位置) Then
+        If FileIO.FileSystem.DirectoryExists(这份实例使用的临时解压目录) Then
             Me.Label2.Text = "正在清理"
             Application.DoEvents()
-            Await Task.Run(Sub() FileIO.FileSystem.DeleteDirectory(实际解压路径算起位置, FileIO.DeleteDirectoryOption.DeleteAllContents))
+            Await Task.Run(Sub() FileIO.FileSystem.DeleteDirectory(这份实例使用的临时解压目录, FileIO.DeleteDirectoryOption.DeleteAllContents))
         End If
     End Sub
 
