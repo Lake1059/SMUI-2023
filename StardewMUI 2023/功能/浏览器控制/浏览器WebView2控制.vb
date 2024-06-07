@@ -152,6 +152,7 @@ Public Class 浏览器WebView2控制
         Dim dataStartIndex As Integer = InStr(获取到的HTML数据, dataStartString) + Len(dataStartString)
         Dim keyStartIndex As Integer = InStr(dataStartIndex, 获取到的HTML数据, "?key=") + Len("?key=")
         Dim keyEndIndex As Integer = InStr(keyStartIndex, 获取到的HTML数据, "&")
+        If keyEndIndex - keyStartIndex < 1 Then Exit Sub
         Dim extractedKey As String = Mid(获取到的HTML数据, keyStartIndex, keyEndIndex - keyStartIndex)
         If extractedKey.Trim = "" Or extractedKey.Contains("/"c) Then
             DebugPrint("参数获取失败，等待下一周期", Color.SkyBlue)
@@ -160,6 +161,7 @@ Public Class 浏览器WebView2控制
         获取到的key = extractedKey
         Dim expiresStartIndex As Integer = InStr(dataStartIndex, 获取到的HTML数据, "expires=") + Len("expires=")
         Dim expiresEndIndex As Integer = InStr(expiresStartIndex, 获取到的HTML数据, "&")
+        If expiresEndIndex - expiresStartIndex < 1 Then Exit Sub
         Dim extractedExpires As String = Mid(获取到的HTML数据, expiresStartIndex, expiresEndIndex - expiresStartIndex)
         If extractedExpires.Trim = "" Or extractedExpires.Contains("/"c) Then
             DebugPrint("参数获取失败，等待下一周期", Color.SkyBlue)

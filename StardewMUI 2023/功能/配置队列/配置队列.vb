@@ -426,7 +426,7 @@ jx1:
                     Form1.ListView6.SelectedItems(0).Text = x
                 End If
             Case "文件"
-                Dim a As New 输入对话框("", "重命名文件", Form1.ListView4.SelectedItems(0).Text)
+                Dim a As New 输入对话框("", "重命名文件", Form1.ListView6.SelectedItems(0).Text)
                 a.TranslateButtonText("确定", "取消")
 返回2:
                 Dim x As String = a.ShowDialog(Form1)
