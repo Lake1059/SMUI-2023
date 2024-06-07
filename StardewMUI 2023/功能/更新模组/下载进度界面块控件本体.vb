@@ -271,8 +271,18 @@ Public Class 下载进度界面块控件本体
             Dim 第一个文件夹路径 As String = Path.Combine(这份实例使用的临时解压目录, 解压出的文件夹列表(0))
             Dim manifest文件路径 As String = Path.Combine(第一个文件夹路径, "manifest.json")
             If Not FileIO.FileSystem.FileExists(manifest文件路径) Then
-                实际解压路径算起位置 = 第一个文件夹路径
+                Dim sf As New 搜索文件类
+                sf.搜索清单文件(第一个文件夹路径, True)
+                If sf.文件绝对路径集合.Count <> 0 Then
+                    实际解压路径算起位置 = 第一个文件夹路径
+                Else
+                    实际解压路径算起位置 = 这份实例使用的临时解压目录
+                End If
+            Else
+                实际解压路径算起位置 = 这份实例使用的临时解压目录
             End If
+        Else
+            实际解压路径算起位置 = 这份实例使用的临时解压目录
         End If
 
         Dim Code2文件路径 As String = Path.Combine(设置_模组项绝对路径, "Code2")
