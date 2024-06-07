@@ -1,12 +1,10 @@
-﻿Imports System.Drawing.Imaging
-Imports System.IO
+﻿Imports System.IO
 Imports System.Text.RegularExpressions
 Imports SMUI6.项信息读取类
 Imports Sunny.UI
 Imports Windows.System
 Imports System.Windows.Forms.Control
 Imports ImageMagick
-Imports Microsoft.Win32.SafeHandles
 
 
 Public Class 管理模组
@@ -21,7 +19,7 @@ Public Class 管理模组
 
     Public Shared Sub 初始化()
         AddHandler 管理模组的菜单.菜单项_刷新数据子库.Click, AddressOf 扫描数据子库
-        AddHandler 管理模组的菜单.菜单项_刷新分类.Click, AddressOf 扫描分类
+        AddHandler 管理模组的菜单.菜单项_刷新分类.Click, Sub() 扫描分类()
         AddHandler 管理模组的菜单.菜单项_新建数据子库.Click, AddressOf 新建数据子库
         AddHandler 管理模组的菜单.菜单项_新建分类.Click, AddressOf 分类操作.新建分类
         AddHandler 管理模组的菜单.菜单项_转移分类.Click, AddressOf 分类操作.转移分类
@@ -113,13 +111,14 @@ Public Class 管理模组
             Dim 子库索引 As Integer = i
             AddHandler 选择子库单项.Click,
                 Sub()
+                    清除分类列表()
                     Dim 选择的子库 As String = 子库列表(子库索引)
                     设置.全局设置数据("LastUsedSubLibraryName") = 选择的子库
                     For i3 = 0 To 管理模组的菜单.子库列表_选择.Items.Count - 1
                         管理模组的菜单.子库列表_选择.Items(i3).Image = My.Resources.数据库
                     Next
                     选择子库单项.Image = My.Resources.右箭头
-                    扫描分类()
+                    扫描分类(False)
                     Form1.Label50.Text = Form1.ListView1.Items.Count
                 End Sub
             管理模组的菜单.子库列表_选择.Items.Add(选择子库单项)
@@ -171,8 +170,8 @@ Line1:
         实时分类排序是否经过修改 = False
     End Sub
 
-    Public Shared Sub 扫描分类()
-        清除分类列表()
+    Public Shared Sub 扫描分类(Optional 是否先清除列表 As Boolean = True)
+        If 是否先清除列表 Then 清除分类列表()
         If 管理模组2.检查并返回当前所选子库路径() = "" Then Exit Sub
         Dim 分类文件夹列表 As List(Of String) = 共享方法.扫描文件夹不包含子目录(Path.Combine(设置.全局设置数据("LocalRepositoryPath"), 设置.全局设置数据("LastUsedSubLibraryName")))
         Dim 分类排序 As New List(Of String)
@@ -294,16 +293,14 @@ Line1:
                 If Form1.ListView2.SelectedItems.Count = 0 Then
                     If Form1.ListView2.Items.Count > 0 Then Form1.ListView2.Items(0).Selected = True
                 End If
-            Case Keys.F9
+            Case Keys.F3
                 上移选中的分类()
-            Case Keys.F10
+            Case Keys.F4
                 下移选中的分类()
             Case Keys.F2
                 管理模组的菜单.菜单项_重命名分类.PerformClick()
             Case Keys.F1
                 管理模组的菜单.菜单项_打开分类的文件夹.PerformClick()
-            Case Keys.F5
-                扫描分类()
             Case Keys.A
                 If e.Control Then
                     For Each item In Form1.ListView1.Items
@@ -574,21 +571,19 @@ Line1:
                     Exit Select
                 End If
                 Form1.ListView1.Focus()
-            Case Keys.F3
+            Case Keys.F5
                 管理模组的菜单.菜单项_安装.PerformClick()
-            Case Keys.F4
+            Case Keys.F6
                 管理模组的菜单.菜单项_卸载.PerformClick()
             Case Keys.F1
                 管理模组的菜单.菜单项_打开项的文件夹.PerformClick()
             Case Keys.F2
                 管理模组的菜单.菜单项_重命名项.PerformClick()
-            Case Keys.F5
-                扫描模组项(True)
-            Case Keys.F9
+            Case Keys.F3
                 上移选中的模组项()
-            Case Keys.F10
+            Case Keys.F4
                 下移选中的模组项()
-            Case Keys.F6
+            Case Keys.F8
                 配置队列.添加到配置队列()
             Case Keys.N
                 If Not DLC.DLC解锁标记.UpdateModItemExtension Then Exit Sub
