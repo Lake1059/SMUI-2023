@@ -16,7 +16,7 @@
 寻找跨平台开发者：我没有技术开发其他操作系统上的版本，如果你有相应的前端能力并且能够调用 .NET 的 dll，欢迎联系我协商合作。Linux、macOS、Android、WebUI 都可以。
 
 ## 功能
-<img src="Res/Cover1.png" width="" height="500" >
+<img src="/Res/Cover1.png" width="" height="500" >
 
 ---
 > ### 如果你还在犹豫
