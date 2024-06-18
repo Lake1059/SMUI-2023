@@ -105,6 +105,7 @@ Public Class 配置队列
         AddHandler Form1.UiButton16.Click, AddressOf 移除选中
         AddHandler Form1.UiButton17.Click, AddressOf 保存改动并移除
         AddHandler Form1.UiButton15.Click, AddressOf 仅保存
+        AddHandler Form1.UiButton103.Click, AddressOf 打开目录
         AddHandler Form1.UiButton23.Click, AddressOf 重新扫描项的数据内容
         AddHandler Form1.UiButton18.Click, AddressOf 添加文件
         AddHandler Form1.UiButton21.Click, AddressOf 添加文件夹
@@ -374,6 +375,11 @@ jx1:
 
             重新扫描项的数据内容()
         End If
+    End Sub
+
+    Public Shared Sub 打开目录()
+        If Form1.ListView3.SelectedItems.Count <> 1 Then Exit Sub
+        Process.Start("explorer.exe", 正在编辑规划的项路径.Replace("\\", "\"))
     End Sub
 
     Public Shared Sub 添加文件()

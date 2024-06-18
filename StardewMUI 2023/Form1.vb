@@ -12,6 +12,7 @@ Public Class Form1
         设置.启动时加载设置()
         密码本.读取导入导出密码本()
         DLC.初始化()
+        DLC.加载用户插件()
         界面控制.初始化界面()
         管理模组.初始化()
         任务队列.全部字典初始化()
@@ -19,6 +20,9 @@ Public Class Form1
         更新模组.初始化()
         模组检查更新管理器.初始化()
         SMAPI安装管理器.初始化()
+        在线模组列表.初始化()
+        全局模组安装检查器.初始化()
+        存档编辑器.初始化()
     End Sub
 
     Private Sub Form1_Shown(sender As Object, e As EventArgs) Handles MyBase.Shown

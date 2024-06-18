@@ -92,10 +92,10 @@
     <ROW Property="AppLogoIconDark" Value="applogodark.png" MultiBuildValue="DefaultBuild:dropbox.ico" Type="1" MsiKey="AppLogoIconDark"/>
     <ROW Property="CTRLS" Value="2"/>
     <ROW Property="Manufacturer" Value="1059 Studio"/>
-    <ROW Property="ProductCode" Value="2052:{FD73FB2B-9B36-45BA-9E4B-AE2C0C0356B9} " Type="16"/>
+    <ROW Property="ProductCode" Value="2052:{357C8B31-E7CD-4DC6-8999-D6F7F5C2303F} " Type="16"/>
     <ROW Property="ProductLanguage" Value="2052"/>
     <ROW Property="ProductName" Value="SMUI 2023"/>
-    <ROW Property="ProductVersion" Value="6.0.36" Options="32"/>
+    <ROW Property="ProductVersion" Value="6.1.0" Options="32"/>
     <ROW Property="REBOOT" MultiBuildValue="DefaultBuild:ReallySuppress"/>
     <ROW Property="SecureCustomProperties" Value="OLDPRODUCTS;AI_NEWERPRODUCTFOUND;AI_SETUPEXEPATH;SETUPEXEDIR"/>
     <ROW Property="UpgradeCode" Value="{349EDF0D-1EB2-4B52-B72A-0F3AEC12DAC8}"/>
@@ -112,6 +112,7 @@
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiDirsComponent">
     <ROW Directory="APPDIR" Directory_Parent="TARGETDIR" DefaultDir="APPDIR:." IsPseudoRoot="1"/>
+    <ROW Directory="Assets_Dir" Directory_Parent="APPDIR" DefaultDir="Assets"/>
     <ROW Directory="SHORTCUTDIR" Directory_Parent="TARGETDIR" DefaultDir="SHORTC~1|SHORTCUTDIR" IsPseudoRoot="1"/>
     <ROW Directory="TARGETDIR" DefaultDir="SourceDir"/>
     <ROW Directory="za64_Dir" Directory_Parent="APPDIR" DefaultDir="7za64"/>
@@ -169,6 +170,7 @@
     <ROW Component="SHORTCUTDIR" ComponentId="{5F7DC2C8-98A8-4A85-B3A4-AACFF240A1F3}" Directory_="SHORTCUTDIR" Attributes="0"/>
     <ROW Component="SMUI6.dll" ComponentId="{A6D31F0D-6044-4502-A87A-450C65F3A90D}" Directory_="APPDIR" Attributes="256" KeyPath="SMUI6.dll"/>
     <ROW Component="SMUI6.exe" ComponentId="{E167DC56-60E1-434A-BB9B-FA7D51C86242}" Directory_="APPDIR" Attributes="256" KeyPath="SMUI6.exe"/>
+    <ROW Component="SaveEditorItems" ComponentId="{1163EB60-AB12-4D79-8FE7-714AF1FB765F}" Directory_="Assets_Dir" Attributes="0" KeyPath="SaveEditorItems" Type="0"/>
     <ROW Component="SevenZipSharp.dll" ComponentId="{61F5C2E9-95E6-4558-BEB3-09A1F45552C3}" Directory_="APPDIR" Attributes="0" KeyPath="SevenZipSharp.dll"/>
     <ROW Component="SharpCompress.dll" ComponentId="{4431C9CD-D1CD-44B9-B8A7-6A77ED173B45}" Directory_="APPDIR" Attributes="0" KeyPath="SharpCompress.dll"/>
     <ROW Component="SunnyUI.Common.dll" ComponentId="{E767E1BE-6EAE-4F33-824A-A42814D80AAE}" Directory_="APPDIR" Attributes="0" KeyPath="SunnyUI.Common.dll"/>
@@ -693,6 +695,7 @@
     <ROW File="Magick.NativeQ16x64.dll" Component_="Magick.NativeQ16x64.dll" FileName="MAGICK~1.DLL|Magick.Native-Q16-x64.dll" Attributes="0" SourcePath="..\StardewMUI 2023\bin\Debug\net8.0-windows10.0.22621.0\win-x64\Magick.Native-Q16-x64.dll" SelfReg="false"/>
     <ROW File="Magick.NET.Core.dll" Component_="Magick.NET.Core.dll" FileName="MAGICK~2.DLL|Magick.NET.Core.dll" Attributes="0" SourcePath="..\StardewMUI 2023\bin\Debug\net8.0-windows10.0.22621.0\win-x64\Magick.NET.Core.dll" SelfReg="false"/>
     <ROW File="Magick.NETQ16x64.dll" Component_="Magick.NETQ16x64.dll" FileName="MAGICK~3.DLL|Magick.NET-Q16-x64.dll" Attributes="0" SourcePath="..\StardewMUI 2023\bin\Debug\net8.0-windows10.0.22621.0\win-x64\Magick.NET-Q16-x64.dll" SelfReg="false"/>
+    <ROW File="SaveEditorItems" Component_="SaveEditorItems" FileName="SAVEED~1|SaveEditorItems" Attributes="0" SourcePath="..\StardewMUI 2023\bin\Debug\net8.0-windows10.0.22621.0\win-x64\Assets\SaveEditorItems" SelfReg="false"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.BootstrOptComponent">
     <ROW BootstrOptKey="GlobalOptions" DownloadFolder="[AppDataFolder][|Manufacturer]\[|ProductName]\prerequisites" Options="2"/>
@@ -1265,6 +1268,7 @@
     <ROW Feature_="MainFeature" Component_="Magick.NativeQ16x64.dll"/>
     <ROW Feature_="MainFeature" Component_="Magick.NET.Core.dll"/>
     <ROW Feature_="MainFeature" Component_="Magick.NETQ16x64.dll"/>
+    <ROW Feature_="MainFeature" Component_="SaveEditorItems"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiIconsComponent">
     <ROW Name="SMUI6.exe" SourcePath="..\StardewMUI 2023\dropbox.ico" Index="0"/>

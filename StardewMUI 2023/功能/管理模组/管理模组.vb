@@ -72,11 +72,14 @@ Public Class 管理模组
         AddHandler 管理模组的菜单.菜单项_安装.Click, Sub(sender, e) 安装卸载.执行操作(安装卸载.操作类型.安装)
         AddHandler 管理模组的菜单.菜单项_卸载.Click, Sub(sender, e) 安装卸载.执行操作(安装卸载.操作类型.卸载)
         AddHandler 管理模组的菜单.菜单项_打开项的文件夹.Click, AddressOf 打开模组项文件夹
+        AddHandler 管理模组的菜单.菜单项_从Mods中替换到数据库.Click, Sub(sender, e) 安装卸载.执行操作(安装卸载.操作类型.更新项_完全替换)
+        AddHandler 管理模组的菜单.菜单项_从Mods中覆盖到数据库.Click, Sub(sender, e) 安装卸载.执行操作(安装卸载.操作类型.更新项_直接覆盖)
+
 
         AddHandler 管理模组的菜单.菜单项_更多分类操作_转换安装命令到安装规划.Click, AddressOf 管理模组3.更新选中分类_从安装命令到安装规划
         AddHandler 管理模组的菜单.菜单项_更多分类操作_转换安装规划到安装命令.Click, AddressOf 管理模组3.更新选中分类_从安装规划到安装命令
 
-
+        AddHandler 管理模组的菜单.菜单项_批量创建项.Click, Sub() 显示窗体(Form批量创建, Form1)
 
         AddHandler Form1.UiButton4.Click, Sub() 显示窗体(Form搜索, Form1)
         设置字体和颜色.初始化()
@@ -98,6 +101,8 @@ Public Class 管理模组
     Public Shared Sub 扫描数据子库()
         管理模组的菜单.子库列表_选择.Items.Clear()
         管理模组的菜单.子库列表_删除.Items.Clear()
+        配置队列.重置配置队列() : Form1.ListView3.Items.Clear()
+        清除分类列表()
         If Not FileIO.FileSystem.DirectoryExists(设置.全局设置数据("LocalRepositoryPath")) Then
             If Form1.UiTabControl1.SelectedTab Is Form1.TabPage管理模组 Then
                 Dim M1 As New 多项单选对话框("", {"OK"}, "模组数据库路径无效")
@@ -111,6 +116,7 @@ Public Class 管理模组
             Dim 子库索引 As Integer = i
             AddHandler 选择子库单项.Click,
                 Sub()
+                    配置队列.重置配置队列() : Form1.ListView3.Items.Clear()
                     清除分类列表()
                     Dim 选择的子库 As String = 子库列表(子库索引)
                     设置.全局设置数据("LastUsedSubLibraryName") = 选择的子库

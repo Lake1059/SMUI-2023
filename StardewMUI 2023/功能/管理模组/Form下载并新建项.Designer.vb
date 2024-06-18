@@ -95,6 +95,7 @@ Partial Class Form下载并新建项
         暗黑文本框1.Name = "暗黑文本框1"
         暗黑文本框1.Padding = New Padding(5, 6, 5, 0)
         暗黑文本框1.PasswordChar = vbNullChar
+        暗黑文本框1.PlaceholderText = ""
         暗黑文本框1.Size = New Size(344, 30)
         暗黑文本框1.TabIndex = 25
         ' 
@@ -119,6 +120,7 @@ Partial Class Form下载并新建项
         暗黑文本框2.Name = "暗黑文本框2"
         暗黑文本框2.Padding = New Padding(5, 6, 5, 0)
         暗黑文本框2.PasswordChar = vbNullChar
+        暗黑文本框2.PlaceholderText = ""
         暗黑文本框2.Size = New Size(344, 30)
         暗黑文本框2.TabIndex = 28
         ' 

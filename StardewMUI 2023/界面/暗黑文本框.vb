@@ -32,6 +32,10 @@ Public Class 暗黑文本框
         End Set
     End Property
 
+    ''' <summary>
+    '''  密码字符
+    ''' </summary>
+    ''' <returns></returns>
     <Browsable(True)>
     Public Property PasswordChar As String
         Get
@@ -39,6 +43,20 @@ Public Class 暗黑文本框
         End Get
         Set(value As String)
             Me.TextBox1.PasswordChar = value
+        End Set
+    End Property
+
+    ''' <summary>
+    ''' 当文本框为空时显示的提示文本
+    ''' </summary>
+    ''' <returns></returns>
+    <Browsable(True)>
+    Public Property PlaceholderText As String
+        Get
+            Return Me.TextBox1.PlaceholderText
+        End Get
+        Set(value As String)
+            Me.TextBox1.PlaceholderText = value
         End Set
     End Property
 

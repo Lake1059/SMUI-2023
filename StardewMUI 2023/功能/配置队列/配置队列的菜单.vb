@@ -68,10 +68,6 @@ Public Class 配置队列的菜单
     Public Shared Property 菜单项_新增文件并验证 As New ToolStripMenuItem With {.Text = "新增文件并验证"}
     Public Shared Property 菜单项_替换文件 As New ToolStripMenuItem With {.Text = "替换文件"}
     Public Shared Property 菜单项_替换文件且无检测 As New ToolStripMenuItem With {.Text = "替换文件且无检测"}
-    Public Shared Property 菜单项_更多高级规划 As New ToolStripMenuItem With {.Text = "更多高级规划"}
-
-    Public Shared Property 更多规划菜单 As New 暗黑菜单条控件本体 With {.ImageScalingSize = New Size(25 * 界面控制.DPI, 25 * 界面控制.DPI), .DropShadowEnabled = False}
-
     Public Shared Property 菜单项_安装时检查文件夹的存在 As New ToolStripMenuItem With {.Text = "安装时检查文件夹的存在", .Image = My.Resources.试验}
     Public Shared Property 菜单项_卸载时检查文件夹的存在 As New ToolStripMenuItem With {.Text = "卸载时检查文件夹的存在"}
     Public Shared Property 菜单项_安装时检查文件的存在 As New ToolStripMenuItem With {.Text = "安装时检查文件的存在"}
@@ -100,26 +96,23 @@ Public Class 配置队列的菜单
         AddHandler 菜单项_替换文件且无检测.Click, Sub() 添加新规划通用调用(任务队列操作类型枚举.替换文件且无检测, "<参数：文件>|<参数：目标位置>")
 
         添加规划菜单.Items.Add(New ToolStripSeparator)
-        添加规划菜单.Items.Add(菜单项_更多高级规划)
 
-        菜单项_更多高级规划.DropDown = 更多规划菜单
-
-        更多规划菜单.Items.Add(菜单项_安装时检查文件夹的存在)
+        添加规划菜单.Items.Add(菜单项_安装时检查文件夹的存在)
         AddHandler 菜单项_安装时检查文件夹的存在.Click, Sub() 添加新规划通用调用(任务队列操作类型枚举.安装时检查文件夹的存在, "<布尔值>|<参数：文件夹>")
-        更多规划菜单.Items.Add(菜单项_卸载时检查文件夹的存在)
+        添加规划菜单.Items.Add(菜单项_卸载时检查文件夹的存在)
         AddHandler 菜单项_卸载时检查文件夹的存在.Click, Sub() 添加新规划通用调用(任务队列操作类型枚举.卸载时检查文件夹的存在, "<布尔值>|<参数：文件夹>")
-        更多规划菜单.Items.Add(菜单项_安装时检查文件的存在)
+        添加规划菜单.Items.Add(菜单项_安装时检查文件的存在)
         AddHandler 菜单项_安装时检查文件的存在.Click, Sub() 添加新规划通用调用(任务队列操作类型枚举.安装时检查文件的存在, "<布尔值>|<参数：文件>")
-        更多规划菜单.Items.Add(菜单项_卸载时检查文件的存在)
+        添加规划菜单.Items.Add(菜单项_卸载时检查文件的存在)
         AddHandler 菜单项_卸载时检查文件的存在.Click, Sub() 添加新规划通用调用(任务队列操作类型枚举.卸载时检查文件的存在, "<布尔值>|<参数：文件>")
 
-        更多规划菜单.Items.Add(New ToolStripSeparator)
+        添加规划菜单.Items.Add(New ToolStripSeparator)
 
-        更多规划菜单.Items.Add(菜单项_卸载时取消操作)
+        添加规划菜单.Items.Add(菜单项_卸载时取消操作)
         AddHandler 菜单项_卸载时取消操作.Click, Sub() 添加新规划通用调用(任务队列操作类型枚举.卸载时取消操作, "<要取消还是报错>")
-        更多规划菜单.Items.Add(New ToolStripSeparator)
+        添加规划菜单.Items.Add(New ToolStripSeparator)
 
-        更多规划菜单.Items.Add(菜单项_声明核心功能的启停)
+        添加规划菜单.Items.Add(菜单项_声明核心功能的启停)
         AddHandler 菜单项_声明核心功能的启停.Click, Sub() 添加新规划通用调用(任务队列操作类型枚举.声明各种核心功能的启停, "<在编辑配置中勾选>")
 
     End Sub
@@ -138,6 +131,7 @@ Public Class 配置队列的菜单
         Form1.ListView6.ContextMenuStrip = 内容右键菜单
         Form1.ListView7.ContextMenuStrip = 规划右键菜单
         AddHandler Form1.UiButton20.MouseDown, Sub(sender, e) 添加规划菜单.Show(sender, New Point(sender.Width - 添加规划菜单.Width, sender.Height))
+
     End Sub
 
 End Class

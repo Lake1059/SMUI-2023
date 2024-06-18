@@ -19,7 +19,8 @@ Public Class 界面控制
         '    浏览器CEF控制.初始化功能()
         'End If
 
-        Form1.TabPage许可协议.Padding = New Padding(50)
+        Form1.TabPage更新记录.Padding = New Padding(20)
+        Form1.TabPage许可协议.Padding = New Padding(20)
         Form1.UiRichTextBox4.Rtf = My.Resources.用户许可协议
         Form1.UiRichTextBox3.LoadFile(Path.Combine(Application.StartupPath, "UpdateLog.rtf"))
 
@@ -32,6 +33,9 @@ Public Class 界面控制
         设置富文本框行高(Form1.RichTextBox2, 300)
         Form1.RichTextBox2.AutoWordSelection = False
         Form1.RichTextBox2.LanguageOption = RichTextBoxLanguageOptions.UIFonts
+        设置富文本框行高(Form1.RichTextBox3, 300)
+        Form1.RichTextBox3.AutoWordSelection = False
+        Form1.RichTextBox3.LanguageOption = RichTextBoxLanguageOptions.UIFonts
 
         AddHandler Form1.UiRichTextBox2.KeyDown, Sub(sender, e) If e.KeyData = Keys.Delete Then Form1.UiRichTextBox2.Clear()
 
@@ -95,57 +99,69 @@ Public Class 界面控制
     End Sub
 
     Public Shared Sub 主界面元素尺寸动态调整()
+        Dim 垂直滚动条实际预留宽度 As Integer = 程序DPI_垂直滚动条宽度 * 2
+
+
+
         Form1.Panel13.Width = Form1.Panel13.Parent.Width * 0.5
 
         'Form1.Panel2.Width = 250 / 1264 * DPI
         'Form1.Panel3.Width = 300 / 1264 * DPI
         Form1.RichTextBox1.Width = Form1.RichTextBox1.Parent.Width + 程序DPI_垂直滚动条宽度 - Form1.RichTextBox1.Parent.Padding.Left
-        Form1.RichTextBox1.RightMargin = Form1.RichTextBox1.Width - 程序DPI_垂直滚动条宽度 * 2
+        Form1.RichTextBox1.RightMargin = Form1.RichTextBox1.Width - 垂直滚动条实际预留宽度
         Form1.RichTextBox2.Width = Form1.RichTextBox2.Parent.Width + 程序DPI_垂直滚动条宽度
-        Form1.RichTextBox2.RightMargin = Form1.RichTextBox2.Width - 程序DPI_垂直滚动条宽度 * 2
+        Form1.RichTextBox2.RightMargin = Form1.RichTextBox2.Width - 垂直滚动条实际预留宽度
 
         Form1.ListView1.Width = Form1.ListView1.Parent.Width - Form1.ListView1.Parent.Padding.Left + 程序DPI_垂直滚动条宽度
         Form1.ColumnHeader1.Width = Form1.ListView1.Parent.Width - Form1.ListView1.Parent.Padding.Left * 2
-        Form1.ColumnHeader2.Width = (Form1.ListView2.Width - 程序DPI_垂直滚动条宽度 * 2) * 0.65
-        Form1.ColumnHeader3.Width = (Form1.ListView2.Width - 程序DPI_垂直滚动条宽度 * 2) * 0.15
-        Form1.ColumnHeader4.Width = (Form1.ListView2.Width - 程序DPI_垂直滚动条宽度 * 2) * 0.2
+        Form1.ColumnHeader2.Width = (Form1.ListView2.Width - 垂直滚动条实际预留宽度) * 0.65
+        Form1.ColumnHeader3.Width = (Form1.ListView2.Width - 垂直滚动条实际预留宽度) * 0.15
+        Form1.ColumnHeader4.Width = (Form1.ListView2.Width - 垂直滚动条实际预留宽度) * 0.2
 
         Form1.Panel16.Width = Form1.Panel16.Parent.Width * 0.475
 
-        Form1.ColumnHeader5.Width = (Form1.ListView3.Width - 程序DPI_垂直滚动条宽度 * 2) * 0.7
-        Form1.ColumnHeader10.Width = (Form1.ListView3.Width - 程序DPI_垂直滚动条宽度 * 2) * 0.3
+        Form1.ColumnHeader5.Width = (Form1.ListView3.Width - 垂直滚动条实际预留宽度) * 0.7
+        Form1.ColumnHeader10.Width = (Form1.ListView3.Width - 垂直滚动条实际预留宽度) * 0.3
 
-        Form1.ColumnHeader6.Width = (Form1.ListView6.Width - 程序DPI_垂直滚动条宽度 * 2) * 0.8
-        Form1.ColumnHeader12.Width = (Form1.ListView6.Width - 程序DPI_垂直滚动条宽度 * 2) * 0.2
+        Form1.ColumnHeader6.Width = (Form1.ListView6.Width - 垂直滚动条实际预留宽度) * 0.8
+        Form1.ColumnHeader12.Width = (Form1.ListView6.Width - 垂直滚动条实际预留宽度) * 0.2
 
-        Form1.ColumnHeader7.Width = (Form1.ListView7.Width - 程序DPI_垂直滚动条宽度 * 2) * 0.3
-        Form1.ColumnHeader8.Width = (Form1.ListView7.Width - 程序DPI_垂直滚动条宽度 * 2) * 0.7
+        Form1.ColumnHeader7.Width = (Form1.ListView7.Width - 垂直滚动条实际预留宽度) * 0.3
+        Form1.ColumnHeader8.Width = (Form1.ListView7.Width - 垂直滚动条实际预留宽度) * 0.7
 
         Form1.UiButton45.Height = Form1.UiTabControl1.ItemSize.Height : Form1.UiButton45.Width = Form1.UiTabControl1.Width - Form1.UiTabControl1.ItemSize.Width * 7
         Form1.UiButton45.Left = Form1.UiTabControl1.Width - Form1.UiButton45.Width : Form1.UiButton45.Top = 0
 
-        Form1.ColumnHeader14.Width = (Form1.ListView10.Width - 程序DPI_垂直滚动条宽度 * 2) * 0.6
-        Form1.ColumnHeader15.Width = (Form1.ListView10.Width - 程序DPI_垂直滚动条宽度 * 2) * 0.2
-        Form1.ColumnHeader16.Width = (Form1.ListView10.Width - 程序DPI_垂直滚动条宽度 * 2) * 0.2
+        Form1.ColumnHeader14.Width = (Form1.ListView10.Width - 垂直滚动条实际预留宽度) * 0.6
+        Form1.ColumnHeader15.Width = (Form1.ListView10.Width - 垂直滚动条实际预留宽度) * 0.2
+        Form1.ColumnHeader16.Width = (Form1.ListView10.Width - 垂直滚动条实际预留宽度) * 0.2
 
         Form1.ColumnHeader9.Width = Form1.ListView9.Width * 0.7
         Form1.ColumnHeader13.Width = Form1.ListView9.Width * 0.3
+        Form1.ColumnHeader11.Width = Form1.ListView4.Width - 垂直滚动条实际预留宽度
 
-        Form1.ColumnHeader21.Width = (Form1.ListView8.Width - 程序DPI_垂直滚动条宽度 * 2) * 0.5
-        Form1.ColumnHeader22.Width = (Form1.ListView8.Width - 程序DPI_垂直滚动条宽度 * 2) * 0.25
-        Form1.ColumnHeader23.Width = (Form1.ListView8.Width - 程序DPI_垂直滚动条宽度 * 2) * 0.25
+        Form1.ColumnHeader21.Width = (Form1.ListView8.Width - 垂直滚动条实际预留宽度) * 0.5
+        Form1.ColumnHeader22.Width = (Form1.ListView8.Width - 垂直滚动条实际预留宽度) * 0.25
+        Form1.ColumnHeader23.Width = (Form1.ListView8.Width - 垂直滚动条实际预留宽度) * 0.25
 
-        Form1.ColumnHeader20.Width = (Form1.ListView11.Width - 程序DPI_垂直滚动条宽度 * 2) * 0.3
-        Form1.ColumnHeader24.Width = (Form1.ListView11.Width - 程序DPI_垂直滚动条宽度 * 2) * 0.3
-        Form1.ColumnHeader25.Width = (Form1.ListView11.Width - 程序DPI_垂直滚动条宽度 * 2) * 0.1
-        Form1.ColumnHeader26.Width = (Form1.ListView11.Width - 程序DPI_垂直滚动条宽度 * 2) * 0.1
-        Form1.ColumnHeader27.Width = (Form1.ListView11.Width - 程序DPI_垂直滚动条宽度 * 2) * 0.2
+        Form1.ColumnHeader20.Width = (Form1.ListView11.Width - 垂直滚动条实际预留宽度) * 0.3
+        Form1.ColumnHeader24.Width = (Form1.ListView11.Width - 垂直滚动条实际预留宽度) * 0.3
+        Form1.ColumnHeader25.Width = (Form1.ListView11.Width - 垂直滚动条实际预留宽度) * 0.1
+        Form1.ColumnHeader26.Width = (Form1.ListView11.Width - 垂直滚动条实际预留宽度) * 0.1
+        Form1.ColumnHeader27.Width = (Form1.ListView11.Width - 垂直滚动条实际预留宽度) * 0.2
 
-        Form1.ColumnHeader30.Width = (Form1.ListView12.Width - 程序DPI_垂直滚动条宽度 * 2) * 0.2
-        Form1.ColumnHeader31.Width = (Form1.ListView12.Width - 程序DPI_垂直滚动条宽度 * 2) * 0.2
-        Form1.ColumnHeader32.Width = (Form1.ListView12.Width - 程序DPI_垂直滚动条宽度 * 2) * 0.15
-        Form1.ColumnHeader33.Width = (Form1.ListView12.Width - 程序DPI_垂直滚动条宽度 * 2) * 0.15
-        Form1.ColumnHeader34.Width = (Form1.ListView12.Width - 程序DPI_垂直滚动条宽度 * 2) * 0.3
+        Form1.ColumnHeader30.Width = (Form1.ListView12.Width - 垂直滚动条实际预留宽度) * 0.2
+        Form1.ColumnHeader31.Width = (Form1.ListView12.Width - 垂直滚动条实际预留宽度) * 0.2
+        Form1.ColumnHeader32.Width = (Form1.ListView12.Width - 垂直滚动条实际预留宽度) * 0.15
+        Form1.ColumnHeader33.Width = (Form1.ListView12.Width - 垂直滚动条实际预留宽度) * 0.15
+        Form1.ColumnHeader34.Width = (Form1.ListView12.Width - 垂直滚动条实际预留宽度) * 0.3
+
+        Form1.ColumnHeader18.Width = (Form1.ListView5.Width - 垂直滚动条实际预留宽度) * 0.3
+        Form1.ColumnHeader19.Width = (Form1.ListView5.Width - 垂直滚动条实际预留宽度) * 0.15
+        Form1.ColumnHeader28.Width = (Form1.ListView5.Width - 垂直滚动条实际预留宽度) * 0.35
+        Form1.ColumnHeader29.Width = (Form1.ListView5.Width - 垂直滚动条实际预留宽度) * 0.2
+
+
 
     End Sub
 

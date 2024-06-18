@@ -219,10 +219,8 @@ Public Class 设置
         Form1.UiCheckBox10.Checked = 全局设置数据("SaveNewsInTodayUse")
         Form1.UiCheckBox9.Checked = 全局设置数据("AutoCheckUpdate")
         Form1.UiCheckBox8.Checked = 全局设置数据("AutoStartDownloadUpdate")
-        Form1.UiCheckBox2.Checked = 全局设置数据("AdminDragDropPatch")
         Form1.UiCheckBox4.Checked = 全局设置数据("AutoSelectFirstNexusDownloadSever")
         Form1.UiCheckBox5.Checked = 全局设置数据("AutoConvertWebpToPng")
-        Form1.UiCheckBox6.Checked = 全局设置数据("SendDeletedDataToRecycleBin")
         Form1.UiCheckBox16.Checked = 全局设置数据("DownloadFileUseSMUI5Color")
         Form1.UiCheckBox17.Checked = 全局设置数据("DownloadFileUseBigBuffer")
 
@@ -299,10 +297,8 @@ Public Class 设置
         全局设置数据("SaveNewsInTodayUse") = Form1.UiCheckBox10.Checked
         全局设置数据("AutoCheckUpdate") = Form1.UiCheckBox9.Checked
         全局设置数据("AutoStartDownloadUpdate") = Form1.UiCheckBox8.Checked
-        全局设置数据("AdminDragDropPatch") = Form1.UiCheckBox2.Checked
         全局设置数据("AutoSelectFirstNexusDownloadSever") = Form1.UiCheckBox4.Checked
         全局设置数据("AutoConvertWebpToPng") = Form1.UiCheckBox5.Checked
-        全局设置数据("SendDeletedDataToRecycleBin") = Form1.UiCheckBox6.Checked
         全局设置数据("DownloadFileUseSMUI5Color") = Form1.UiCheckBox16.Checked
         全局设置数据("DownloadFileUseBigBuffer") = Form1.UiCheckBox17.Checked
         UIMessageTip.Show("更改已写入内存，正常退出时写入文件",, 2500)

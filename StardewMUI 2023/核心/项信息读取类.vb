@@ -186,8 +186,8 @@ Public Class 项信息读取类
                             If 计算类型.内容包依赖 Or 计算类型.全部 Then
                                 Dim ContentPackFor As JObject = JsonData.GetValue("ContentPackFor", StringComparison.OrdinalIgnoreCase)
                                 If ContentPackFor IsNot Nothing Then
-                                    Dim str1 As String = ContentPackFor.GetValue("UniqueID", StringComparison.OrdinalIgnoreCase)?.ToString()
-                                    Dim str2 As String = ContentPackFor.GetValue("MinimumVersion", StringComparison.OrdinalIgnoreCase)?.ToString()
+                                    Dim str1 As String = ContentPackFor.GetValue("UniqueID", StringComparison.OrdinalIgnoreCase)?.ToString
+                                    Dim str2 As String = ContentPackFor.GetValue("MinimumVersion", StringComparison.OrdinalIgnoreCase)?.ToString
                                     If Not String.IsNullOrEmpty(str1) AndAlso Not 内容包依赖.ContainsKey(str1) Then
                                         内容包依赖.Add(str1, New 内容包依赖类型单片结构 With {.最低版本号 = str2})
                                     End If
@@ -199,15 +199,15 @@ Public Class 项信息读取类
                                 Dim Dependencies As JArray = JsonData.GetValue("Dependencies", StringComparison.OrdinalIgnoreCase)
                                 If Dependencies IsNot Nothing Then
                                     For Each dependency As JObject In Dependencies
-                                        Dim str1 As String = dependency.GetValue("UniqueID", StringComparison.OrdinalIgnoreCase)?.ToString()
+                                        Dim str1 As String = dependency.GetValue("UniqueID", StringComparison.OrdinalIgnoreCase)?.ToString
                                         If str1 = "" Then Continue For
                                         Dim str2 As String = If(str1 <> "", dependency.GetValue("IsRequired", StringComparison.OrdinalIgnoreCase)?.ToString.ToLower, "true")
                                         Dim value As 其他依赖项类型单片结构 = Nothing
                                         If Not 其他依赖项.TryGetValue(str1, value) Then
-                                            其他依赖项.Add(str1, New 其他依赖项类型单片结构 With {.依赖项必须性 = str2 = "true", .依赖项最低版本号 = dependency.GetValue("MinimumVersion", StringComparison.OrdinalIgnoreCase)?.ToString()})
+                                            其他依赖项.Add(str1, New 其他依赖项类型单片结构 With {.依赖项必须性 = str2 = "true", .依赖项最低版本号 = dependency.GetValue("MinimumVersion", StringComparison.OrdinalIgnoreCase)?.ToString})
                                         Else
                                             Dim 现有最低版本号 As String = value.依赖项最低版本号
-                                            Dim 新的最低版本号 As String = dependency.GetValue("MinimumVersion", StringComparison.OrdinalIgnoreCase)?.ToString()
+                                            Dim 新的最低版本号 As String = dependency.GetValue("MinimumVersion", StringComparison.OrdinalIgnoreCase)?.ToString
                                             If value.依赖项必须性 = False And str2 = "true" Then
                                                 If 共享方法.CompareVersion(现有最低版本号, 新的最低版本号) > 0 Then
                                                     其他依赖项(str1) = New 其他依赖项类型单片结构 With {.依赖项必须性 = True, .依赖项最低版本号 = 新的最低版本号}

@@ -201,7 +201,7 @@ jx1:
     End Function
 
     Public Class SearchFile
-        Public FileCollection As String()
+        Public FileCollection As New List(Of String)
         Public ErrorString As String
 
         Dim _DirectoryToScan As String
@@ -210,7 +210,7 @@ jx1:
 
         Public Sub SearchFiles(DirectoryToScan As String, ScanSubDirectories As Boolean, Optional ExtensionName As String = "*.*")
             ErrorString = ""
-            FileCollection = Array.Empty(Of String)()
+            FileCollection.Clear()
             Try
                 _DirectoryToScan = DirectoryToScan
                 _ScanSubDirectories = ScanSubDirectories
@@ -223,7 +223,7 @@ jx1:
 
         Public Sub SearchManifests(DirectoryToScan As String, Optional ScanSubDirectories As Boolean = True)
             ErrorString = ""
-            FileCollection = Array.Empty(Of String)()
+            FileCollection.Clear()
             Try
                 _DirectoryToScan = DirectoryToScan
                 _ScanSubDirectories = ScanSubDirectories
@@ -239,8 +239,7 @@ jx1:
             Dim mDirInfo As New System.IO.DirectoryInfo(strDirect)
             For Each mFileInfo In mDirInfo.GetFiles(_ExtensionName)
                 Dim a As String = mFileInfo.FullName
-                ReDim Preserve FileCollection(FileCollection.Length)
-                FileCollection(FileCollection.Length - 1) = Mid(Replace(mFileInfo.FullName, _DirectoryToScan, ""), 2)
+                FileCollection.Add(Mid(Replace(mFileInfo.FullName, _DirectoryToScan, ""), 2))
             Next
             If _ScanSubDirectories = True Then
                 For Each mDir In mDirInfo.GetDirectories
@@ -255,8 +254,7 @@ jx1:
             Dim mDirInfo As New System.IO.DirectoryInfo(strDirect)
             For Each mFileInfo In mDirInfo.GetFiles("manifest.json")
                 Dim a As String = mFileInfo.FullName
-                ReDim Preserve FileCollection(FileCollection.Length)
-                FileCollection(FileCollection.Length - 1) = Mid(Replace(mFileInfo.FullName, _DirectoryToScan, ""), 2)
+                FileCollection.Add(Mid(Replace(mFileInfo.FullName, _DirectoryToScan, ""), 2))
                 Exit Sub
             Next
             If _ScanSubDirectories = True Then
