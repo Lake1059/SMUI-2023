@@ -164,20 +164,20 @@ Public Class 项信息读取类
                                 Dim UpdateKeys As JArray = JsonData.GetValue("UpdateKeys", StringComparison.OrdinalIgnoreCase)
                                 For Each uk As JValue In UpdateKeys
                                     If InStr(uk.ToString.ToLower, "nexus") > 0 Then
-                                        Dim match As Match = Regex.Match(uk.ToString, ":(\w+)")
+                                        Dim match As Match = Regex.Match(uk.ToString, ":\s*(\w+)")
                                         If match.Success AndAlso Not NexusID.Contains(match.Groups(1).Value) Then NexusID.Add(match.Groups(1).Value)
                                     ElseIf InStr(uk.ToString.ToLower, "moddrop") > 0 Then
-                                        Dim match As Match = Regex.Match(uk.ToString, ":(\w+)")
+                                        Dim match As Match = Regex.Match(uk.ToString, ":\s*(\w+)")
                                         If match.Success AndAlso Not ModDrop.Contains(match.Groups(1).Value) Then ModDrop.Add(match.Groups(1).Value)
                                     ElseIf InStr(uk.ToString.ToLower, "github") > 0 Then
                                         Dim str1 As String = 共享方法.获取模组更新平台地址(uk.ToString, "github")
                                         If Right(str1, 1) = "}" Then str1 = str1.Substring(0, str1.Length - 1)
                                         If str1 <> "" Then If Not GitHub.Contains(str1) Then GitHub.Add(str1)
                                     ElseIf InStr(uk.ToString.ToLower, "curseforge") > 0 Then
-                                        Dim match As Match = Regex.Match(uk.ToString, ":(\w+)")
+                                        Dim match As Match = Regex.Match(uk.ToString, ":\s*(\w+)")
                                         If match.Success AndAlso Not CurseForge.Contains(match.Groups(1).Value) Then CurseForge.Add(match.Groups(1).Value)
                                     ElseIf InStr(uk.ToString.ToLower, "chucklefish") > 0 Then
-                                        Dim match As Match = Regex.Match(uk.ToString, ":(\w+)")
+                                        Dim match As Match = Regex.Match(uk.ToString, ":\s*(\w+)")
                                         If match.Success AndAlso Not ChuckleFishID.Contains(match.Groups(1).Value) Then ChuckleFishID.Add(match.Groups(1).Value)
                                     End If
                                 Next

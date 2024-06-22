@@ -1,6 +1,8 @@
 ﻿Imports System.IO
 Imports System.Reflection
+Imports System.Runtime.CompilerServices
 Imports System.Runtime.InteropServices
+Imports System.Text
 Imports System.Text.Json
 
 Module Module1
@@ -141,10 +143,109 @@ Module Module1
         PlaySound(soundAlias, IntPtr.Zero, SND_ASYNC Or SND_ALIAS)
     End Sub
 
-    <System.Runtime.CompilerServices.Extension>
+    <Extension>
     Public Sub DoubleBuffer(control As Control)
         Dim propertyInfo As PropertyInfo = control.GetType().GetProperty("DoubleBuffered", BindingFlags.Instance Or BindingFlags.NonPublic)
         propertyInfo?.SetValue(control, True, Nothing)
     End Sub
+
+    <Extension()>
+    Public Function ItemExists(ListView As ListView, SearchText As String) As Boolean
+        If ListView.Items.Count = 0 Then Return False
+        Dim foundItem As ListViewItem = ListView.FindItemWithText(SearchText, False, 0, True)
+        Return foundItem IsNot Nothing
+    End Function
+
+
+#Region "Windows 密码验证"
+    ' 常量和结构体定义
+    Private Const CREDUIWIN_GENERIC As Integer = &H1
+    Private Const LOGON32_LOGON_INTERACTIVE As Integer = 2
+    Private Const LOGON32_PROVIDER_DEFAULT As Integer = 0
+
+    <StructLayout(LayoutKind.Sequential, CharSet:=CharSet.Unicode)>
+    Private Structure CREDUI_INFO
+        Public cbSize As Integer
+        Public hwndParent As IntPtr
+        Public pszMessageText As String
+        Public pszCaptionText As String
+        Public hbmBanner As IntPtr
+    End Structure
+
+    <DllImport("credui.dll", CharSet:=CharSet.Unicode)>
+    Private Function CredUIPromptForWindowsCredentials(ByRef uiinfo As CREDUI_INFO, ByVal authError As Integer, ByRef authPackage As UInteger, ByVal InBuffer As IntPtr, ByVal InBufferSize As UInteger, ByRef OutBuffer As IntPtr, ByRef OutBufferSize As UInteger, ByRef fSave As Boolean, ByVal flags As Integer) As Integer
+    End Function
+
+    <DllImport("ole32.dll")>
+    Private Sub CoTaskMemFree(ByVal ptr As IntPtr)
+    End Sub
+
+    <DllImport("advapi32.dll", SetLastError:=True, CharSet:=CharSet.Auto)>
+    Private Function LogonUser(ByVal lpszUsername As String, ByVal lpszDomain As String, ByVal lpszPassword As String, ByVal dwLogonType As Integer, ByVal dwLogonProvider As Integer, ByRef phToken As IntPtr) As Boolean
+    End Function
+
+    <DllImport("kernel32.dll", SetLastError:=True)>
+    Private Function CloseHandle(ByVal hObject As IntPtr) As Boolean
+    End Function
+
+    <DllImport("credui.dll", CharSet:=CharSet.Unicode)>
+    Private Function CredUnPackAuthenticationBuffer(dwFlags As Integer, pAuthBuffer As IntPtr, cbAuthBuffer As UInteger, pszUserName As StringBuilder, ByRef pcchMaxUserName As Integer, pszDomainName As StringBuilder, ByRef pcchMaxDomainname As Integer, pszPassword As StringBuilder, ByRef pcchMaxPassword As Integer) As Boolean
+    End Function
+
+    Public Function PromptForWindowsCredentials(Handle As IntPtr, message As String, caption As String) As Boolean
+        Dim credui As New CREDUI_INFO()
+        credui.cbSize = Marshal.SizeOf(credui)
+        credui.pszMessageText = message
+        credui.pszCaptionText = caption
+        credui.hwndParent = Handle
+
+        Dim authPackage As UInteger = 0
+        Dim outCredBuffer As IntPtr = IntPtr.Zero
+        Dim outCredSize As UInteger = 0
+        Dim save As Boolean = False
+        Dim dialogResult As Integer = CredUIPromptForWindowsCredentials(credui, 0, authPackage, IntPtr.Zero, 0, outCredBuffer, outCredSize, save, CREDUIWIN_GENERIC)
+
+        If dialogResult = 0 Then
+            Try
+                Dim maxUserName As Integer = 100
+                Dim maxDomain As Integer = 100
+                Dim maxPassword As Integer = 100
+                Dim usernameBuf As New StringBuilder(maxUserName)
+                Dim passwordBuf As New StringBuilder(maxPassword)
+                Dim domainBuf As New StringBuilder(maxDomain)
+
+                If CredUnPackAuthenticationBuffer(0, outCredBuffer, outCredSize, usernameBuf, maxUserName, domainBuf, maxDomain, passwordBuf, maxPassword) Then
+                    If VerifyCredentials(usernameBuf.ToString(), passwordBuf.ToString(), domainBuf.ToString()) Then
+                        Return True
+                    End If
+                End If
+            Finally
+                CoTaskMemFree(outCredBuffer)
+            End Try
+        End If
+
+        Return False
+    End Function
+
+    Private Function VerifyCredentials(ByVal username As String, ByVal password As String, ByVal domain As String) As Boolean
+        Dim logonToken As IntPtr = IntPtr.Zero
+        Try
+            Dim success As Boolean = LogonUser(username, domain, password, LOGON32_LOGON_INTERACTIVE, LOGON32_PROVIDER_DEFAULT, logonToken)
+            Return success
+        Catch ex As Exception
+            MessageBox.Show(ex.Message)
+        Finally
+            If logonToken <> IntPtr.Zero Then
+                CloseHandle(logonToken)
+            End If
+        End Try
+
+        Return False
+    End Function
+#End Region
+
+
+
+
 
 End Module

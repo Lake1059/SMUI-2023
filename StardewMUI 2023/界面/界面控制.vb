@@ -101,12 +101,8 @@ Public Class 界面控制
     Public Shared Sub 主界面元素尺寸动态调整()
         Dim 垂直滚动条实际预留宽度 As Integer = 程序DPI_垂直滚动条宽度 * 2
 
-
-
         Form1.Panel13.Width = Form1.Panel13.Parent.Width * 0.5
 
-        'Form1.Panel2.Width = 250 / 1264 * DPI
-        'Form1.Panel3.Width = 300 / 1264 * DPI
         Form1.RichTextBox1.Width = Form1.RichTextBox1.Parent.Width + 程序DPI_垂直滚动条宽度 - Form1.RichTextBox1.Parent.Padding.Left
         Form1.RichTextBox1.RightMargin = Form1.RichTextBox1.Width - 垂直滚动条实际预留宽度
         Form1.RichTextBox2.Width = Form1.RichTextBox2.Parent.Width + 程序DPI_垂直滚动条宽度

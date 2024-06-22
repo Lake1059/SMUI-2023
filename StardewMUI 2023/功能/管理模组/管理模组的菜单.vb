@@ -110,11 +110,7 @@ Public Class 管理模组的菜单
     Public Shared Property 本地更新项菜单 As New 暗黑菜单条控件本体 With {.ImageScalingSize = New Size(25 * 界面控制.DPI, 25 * 界面控制.DPI)}
     Public Shared Property 菜单项_从Mods中覆盖到数据库 As New ToolStripMenuItem With {.Text = "从 Mods 中覆盖到数据库", .Image = My.Resources.试验}
     Public Shared Property 菜单项_从Mods中替换到数据库 As New ToolStripMenuItem With {.Text = "从 Mods 中替换到数据库", .Image = My.Resources.试验}
-
     Public Shared Property 菜单项_设置项字体 As New ToolStripMenuItem With {.Text = "设置字体", .Image = My.Resources.文字大小}
-    Public Shared Property 菜单项_切换项所属分类显示 As New ToolStripMenuItem With {.Text = "切换分类列", .Image = My.Resources.切换}
-    Public Shared Property 菜单项_管理虚拟组 As New ToolStripMenuItem With {.Text = "管理虚拟组", .Image = My.Resources.六个点}
-
 
     Public Shared Sub 添加项菜单的所有菜单项()
         项菜单.Items.Add(菜单项_新建项)
@@ -133,10 +129,8 @@ Public Class 管理模组的菜单
         本地更新项菜单.Items.Add(菜单项_从Mods中覆盖到数据库)
         本地更新项菜单.Items.Add(菜单项_从Mods中替换到数据库)
 
-        项菜单.Items.Add(New ToolStripSeparator)
         项菜单.Items.Add(菜单项_设置项字体)
-        项菜单.Items.Add(菜单项_切换项所属分类显示)
-        项菜单.Items.Add(菜单项_管理虚拟组)
+
     End Sub
 
     Public Shared Property 项右键菜单 As New 暗黑菜单条控件本体 With {.ImageScalingSize = New Size(25 * 界面控制.DPI, 25 * 界面控制.DPI)}

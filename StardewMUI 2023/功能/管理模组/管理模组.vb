@@ -65,6 +65,9 @@ Public Class 管理模组
         AddHandler Form1.UiButton8.MouseDown, AddressOf 显示UniqueID表
         AddHandler Form1.UiButton9.MouseDown, AddressOf 显示作者表
 
+
+        AddHandler Form1.UiButton105.Click, Sub(sender, e) 显示窗体(Form数据表, Form1)
+
         AddHandler 管理模组的菜单.菜单项_打开分类的文件夹.Click, AddressOf 打开分类文件夹
         AddHandler 管理模组的菜单.菜单项_用VSC打开.Click, AddressOf 用VSC打开
         AddHandler 管理模组的菜单.菜单项_用VS打开.Click, AddressOf 用VS打开
@@ -74,7 +77,8 @@ Public Class 管理模组
         AddHandler 管理模组的菜单.菜单项_打开项的文件夹.Click, AddressOf 打开模组项文件夹
         AddHandler 管理模组的菜单.菜单项_从Mods中替换到数据库.Click, Sub(sender, e) 安装卸载.执行操作(安装卸载.操作类型.更新项_完全替换)
         AddHandler 管理模组的菜单.菜单项_从Mods中覆盖到数据库.Click, Sub(sender, e) 安装卸载.执行操作(安装卸载.操作类型.更新项_直接覆盖)
-
+        AddHandler Form1.UiButton104.Click, Sub(sender, e) 显示窗体(Form管理虚拟组, Form1)
+        AddHandler 管理模组的菜单.菜单项_设置虚拟组.Click, Sub(sender, e) If Form1.ListView2.SelectedItems.Count > 0 Then 显示窗体(Form编辑虚拟组, Form1)
 
         AddHandler 管理模组的菜单.菜单项_更多分类操作_转换安装命令到安装规划.Click, AddressOf 管理模组3.更新选中分类_从安装命令到安装规划
         AddHandler 管理模组的菜单.菜单项_更多分类操作_转换安装规划到安装命令.Click, AddressOf 管理模组3.更新选中分类_从安装规划到安装命令
@@ -393,6 +397,9 @@ Line1:
         Do Until 排序索引实时 = 排序索引总数 + 1
             If 模组项文件夹列表.Contains(模组项排序(排序索引实时)) Then
                 Form1.ListView2.Items.Add(模组项排序(排序索引实时))
+                Form1.ListView2.Items(Form1.ListView2.Items.Count - 1).SubItems.Add("")
+                Form1.ListView2.Items(Form1.ListView2.Items.Count - 1).SubItems.Add("")
+                Form1.ListView2.Items(Form1.ListView2.Items.Count - 1).SubItems.Add(Form1.ListView1.Items(Form1.ListView1.SelectedIndices(0)).Text)
                 实时模组项排序.Add(模组项排序(排序索引实时))
                 模组项文件夹列表.Remove(模组项排序(排序索引实时))
                 排序索引实时 += 1
@@ -406,71 +413,70 @@ Line1:
         If 模组项文件夹列表.Count > 0 Then
             For i = 0 To 模组项文件夹列表.Count - 1
                 Form1.ListView2.Items.Add(模组项文件夹列表(i))
+                Form1.ListView2.Items(Form1.ListView2.Items.Count - 1).SubItems.Add("")
+                Form1.ListView2.Items(Form1.ListView2.Items.Count - 1).SubItems.Add("")
+                Form1.ListView2.Items(Form1.ListView2.Items.Count - 1).SubItems.Add(Form1.ListView1.Items(Form1.ListView1.SelectedIndices(0)).Text)
                 实时模组项排序.Add(模组项文件夹列表(i))
             Next
             实时模组项排序是否经过修改 = True
         End If
 
+        刷新项列表数据()
+        Form1.Label51.Text = Form1.ListView2.Items.Count
+        实时模组项列表内容归属的分类 = Form1.ListView1.Items(Form1.ListView1.SelectedIndices(0)).Text
+    End Sub
+
+    Public Shared Sub 刷新项列表数据()
         For i = 0 To Form1.ListView2.Items.Count - 1
-            Dim 正在计算信息的模组项路径 As String = Path.Combine(设置.全局设置数据("LocalRepositoryPath"), 设置.全局设置数据("LastUsedSubLibraryName"), Form1.ListView1.Items(Form1.ListView1.SelectedIndices(0)).Text, Form1.ListView2.Items(i).Text)
+            Dim 项路径 As String = Path.Combine(管理模组2.检查并返回当前所选子库路径(False), Form1.ListView2.Items(i).SubItems(3).Text, Form1.ListView2.Items(i).Text)
             Dim a As New 项信息读取类
             Dim ct As New 公共对象.项数据计算类型结构 With {.安装状态 = True, .版本 = True, .已安装版本 = True}
-            If Not FileIO.FileSystem.FileExists(Path.Combine(正在计算信息的模组项路径, "Code2")) Then
-                If FileIO.FileSystem.FileExists(Path.Combine(正在计算信息的模组项路径, "Code")) Then
-                    FileIO.FileSystem.WriteAllText(Path.Combine(正在计算信息的模组项路径, "Code2"), 命令规划转换.将安装命令转换到安装规划(FileIO.FileSystem.ReadAllText(Path.Combine(正在计算信息的模组项路径, "Code"))), False)
+            If Not FileIO.FileSystem.FileExists(Path.Combine(项路径, "Code2")) Then
+                If FileIO.FileSystem.FileExists(Path.Combine(项路径, "Code")) Then
+                    FileIO.FileSystem.WriteAllText(Path.Combine(项路径, "Code2"), 命令规划转换.将安装命令转换到安装规划(FileIO.FileSystem.ReadAllText(Path.Combine(项路径, "Code"))), False)
                 End If
             End If
-            a.读取项信息(正在计算信息的模组项路径, ct, 设置.全局设置数据("StardewValleyGamePath"))
-            If a.错误信息 = "" Then
-                Form1.ListView2.Items(i).SubItems.Add("")
-                Form1.ListView2.Items(i).SubItems.Add("")
-                Form1.ListView2.Items(i).SubItems.Add(Form1.ListView1.Items(Form1.ListView1.SelectedIndices(0)).Text)
-                If a.版本.Count > 0 And a.已安装版本.Count > 0 Then
-                    If a.版本(0) <> a.已安装版本(0) Then
-                        If a.安装状态 = 公共对象.安装状态枚举.安装不完整 Then
-                            Form1.ListView2.Items.Item(i).SubItems(1).Text = a.版本(0)
-                            GoTo 结束版本号高低判断
-                        End If
-                        Select Case 共享方法.CompareVersion(a.版本(0), a.已安装版本(0))
-                            Case = 0
-                                Form1.ListView2.Items(i).SubItems(1).Text = a.版本(0)
-                            Case > 0
-                                Form1.ListView2.Items(i).SubItems(1).Text = a.版本(0) & " ← " & a.已安装版本(0)
-                                Form1.ListView2.Items(i).SubItems(2).Text = "更新可用"
-                            Case < 0
-                                Form1.ListView2.Items(i).SubItems(1).Text = a.版本(0) & " → " & a.已安装版本(0)
-                                Form1.ListView2.Items(i).SubItems(2).Text = "已有新的"
-                        End Select
-                    Else
+            a.读取项信息(项路径, ct, 设置.全局设置数据("StardewValleyGamePath"))
+            If a.错误信息 <> "" Then Continue For
+            If a.版本.Count > 0 And a.已安装版本.Count > 0 Then
+                If a.版本(0) <> a.已安装版本(0) Then
+                    If a.安装状态 = 公共对象.安装状态枚举.安装不完整 Then
                         Form1.ListView2.Items(i).SubItems(1).Text = a.版本(0)
+                        GoTo 结束版本号高低判断
                     End If
+                    Select Case 共享方法.CompareVersion(a.版本(0), a.已安装版本(0))
+                        Case = 0
+                            Form1.ListView2.Items(i).SubItems(1).Text = a.版本(0)
+                        Case > 0
+                            Form1.ListView2.Items(i).SubItems(1).Text = a.版本(0) & " ◀ " & a.已安装版本(0)
+                            Form1.ListView2.Items(i).SubItems(2).Text = "更新可用"
+                        Case < 0
+                            Form1.ListView2.Items(i).SubItems(1).Text = a.版本(0) & " ▶ " & a.已安装版本(0)
+                            Form1.ListView2.Items(i).SubItems(2).Text = "已有新的"
+                    End Select
                 Else
-                    If a.版本.Count > 0 Then
-                        Form1.ListView2.Items(i).SubItems(1).Text = a.版本(0)
-                    ElseIf FileIO.FileSystem.FileExists(Path.Combine(正在计算信息的模组项路径, "Version")) = True Then
-                        Form1.ListView2.Items(i).SubItems(1).Text = FileIO.FileSystem.ReadAllText(Path.Combine(正在计算信息的模组项路径, "Version"))
-                    Else
-                        Form1.ListView2.Items(i).SubItems(1).Text = "未知版本"
-                    End If
-                    Form1.ListView2.Items(i).ForeColor = Color1.白色
+                    Form1.ListView2.Items(i).SubItems(1).Text = a.版本(0)
                 End If
 结束版本号高低判断:
             Else
-                Form1.ListView2.Items(i).SubItems.Add("核心错误")
-                Form1.ListView2.Items(i).SubItems.Add(a.错误信息)
-                Form1.ListView2.Items(i).SubItems.Add(Form1.ListView1.Items(Form1.ListView1.SelectedIndices(0)).Text)
-                Form1.ListView2.Items(i).ForeColor = Color1.红色
-                DebugPrint(a.错误信息, Color1.红色)
+                If a.版本.Count > 0 Then
+                    Form1.ListView2.Items(i).SubItems(1).Text = a.版本(0)
+                ElseIf FileIO.FileSystem.FileExists(Path.Combine(项路径, "Version")) = True Then
+                    Form1.ListView2.Items(i).SubItems(1).Text = FileIO.FileSystem.ReadAllText(Path.Combine(项路径, "Version"))
+                Else
+                    Form1.ListView2.Items(i).SubItems(1).Text = "未知版本"
+                End If
+                Form1.ListView2.Items(i).ForeColor = Color1.白色
             End If
 
             Select Case Form1.ListView2.Items(i).SubItems(2).Text
                 Case ""
-                    Form1.ListView2.Items(i).SubItems(2).Text = 安装状态显示词字典(a.安装状态)
+                    Form1.ListView2.Items(i).SubItems(2).Text = 管理模组.安装状态显示词字典(a.安装状态)
             End Select
 
-            根据安装状态设置项的颜色标记(a.安装状态, Form1.ListView2.Items(i), True)
+            管理模组.根据安装状态设置项的颜色标记(a.安装状态, Form1.ListView2.Items(i), True)
 
-            Dim 模组项字体文件路径 As String = Path.Combine(正在计算信息的模组项路径, "Font")
+            Dim 模组项字体文件路径 As String = Path.Combine(项路径, "Font")
             If FileIO.FileSystem.FileExists(模组项字体文件路径) Then
                 Select Case FileIO.FileSystem.ReadAllText(模组项字体文件路径)
                     Case "BD"
@@ -484,9 +490,6 @@ Line1:
                 End Select
             End If
         Next
-        Form1.Label51.Text = Form1.ListView2.Items.Count
-        实时模组项列表内容归属的分类 = Form1.ListView1.Items(Form1.ListView1.SelectedIndices(0)).Text
-
     End Sub
 
     Public Shared Property 安装状态显示词字典 As New Dictionary(Of 公共对象.安装状态枚举, String)

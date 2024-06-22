@@ -24,7 +24,6 @@ Public Class 键值对IO操作
         End Try
     End Function
 
-
     Public Shared Function 读取键值对文本到字典(ByRef 字典对象 As Dictionary(Of String, String), 文本 As String) As String
         Try
             Using reader As New StringReader(文本)
