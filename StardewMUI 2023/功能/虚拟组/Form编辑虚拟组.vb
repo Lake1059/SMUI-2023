@@ -16,6 +16,7 @@ Public Class Form编辑虚拟组
         Me.ListView2.Width = Me.ListView2.Parent.Width + 界面控制.程序DPI_垂直滚动条宽度
         Me.ColumnHeader1.Width = Me.ListView1.Parent.Width - Me.ListView1.Parent.Padding.Left * 2
         Me.ColumnHeader2.Width = Me.ListView2.Parent.Width - Me.ListView2.Parent.Padding.Left * 2
+        Me.UiButton8.Width = UiButton8.Parent.Width * 0.3
 
         For Each item As String In Form管理虚拟组.虚拟组列表
             Me.ListView2.Items.Add(item)
@@ -54,47 +55,48 @@ Public Class Form编辑虚拟组
         Me.ListView2.Width = Me.ListView2.Parent.Width + 界面控制.程序DPI_垂直滚动条宽度
         Me.ColumnHeader1.Width = Me.ListView1.Parent.Width - Me.ListView1.Parent.Padding.Left * 2
         Me.ColumnHeader2.Width = Me.ListView2.Parent.Width - Me.ListView2.Parent.Padding.Left * 2
+        Me.UiButton8.Width = UiButton8.Parent.Width * 0.3
     End Sub
 
     Private Sub UiButton1_Click(sender As Object, e As EventArgs) Handles UiButton1.Click
         For Each item As ListViewItem In Form1.ListView2.SelectedItems
-            Dim 虚拟组文件路径 As String = Path.Combine(管理模组2.检查并返回当前所选子库路径(False), item.SubItems(3).Text, item.Text, "VirtualGroup")
-            If Me.ListView1.Items.Count = 0 Then
+            Dim 虚拟组文件路径 = Path.Combine(管理模组2.检查并返回当前所选子库路径(False), item.SubItems(3).Text, item.Text, "VirtualGroup")
+            If ListView1.Items.Count = 0 Then
                 If FileIO.FileSystem.FileExists(虚拟组文件路径) Then FileIO.FileSystem.DeleteFile(虚拟组文件路径)
             Else
                 Dim 当前模组项的虚拟组列表 As New List(Of String)
                 If FileIO.FileSystem.FileExists(虚拟组文件路径) Then
                     Using reader As New StringReader(FileIO.FileSystem.ReadAllText(虚拟组文件路径))
-                        Dim line As String = reader.ReadLine()
+                        Dim line = reader.ReadLine
                         While line IsNot Nothing
                             当前模组项的虚拟组列表.Add(line)
-                            line = reader.ReadLine()
+                            line = reader.ReadLine
                         End While
                     End Using
                 End If
-                For Each newitem As ListViewItem In Me.ListView1.Items
+                For Each newitem As ListViewItem In ListView1.Items
                     If Not 当前模组项的虚拟组列表.Contains(newitem.Text) Then 当前模组项的虚拟组列表.Add(newitem.Text)
                 Next
                 FileIO.FileSystem.WriteAllText(虚拟组文件路径, String.Join(Environment.NewLine, 当前模组项的虚拟组列表), False)
             End If
         Next
-        Me.Close()
+        Close()
     End Sub
 
     Private Sub UiButton2_Click(sender As Object, e As EventArgs) Handles UiButton2.Click
         Dim 当前模组项的虚拟组列表 As New List(Of String)
-        For Each newitem As ListViewItem In Me.ListView1.Items
+        For Each newitem As ListViewItem In ListView1.Items
             当前模组项的虚拟组列表.Add(newitem.Text)
         Next
         For Each item As ListViewItem In Form1.ListView2.SelectedItems
-            Dim 虚拟组文件路径 As String = Path.Combine(管理模组2.检查并返回当前所选子库路径(False), item.SubItems(3).Text, item.Text, "VirtualGroup")
-            If Me.ListView1.Items.Count = 0 Then
+            Dim 虚拟组文件路径 = Path.Combine(管理模组2.检查并返回当前所选子库路径(False), item.SubItems(3).Text, item.Text, "VirtualGroup")
+            If ListView1.Items.Count = 0 Then
                 If FileIO.FileSystem.FileExists(虚拟组文件路径) Then FileIO.FileSystem.DeleteFile(虚拟组文件路径)
             Else
                 FileIO.FileSystem.WriteAllText(虚拟组文件路径, String.Join(Environment.NewLine, 当前模组项的虚拟组列表), False)
             End If
         Next
-        Me.Close()
+        Close()
     End Sub
 
     Private Sub UiButton3_Click(sender As Object, e As EventArgs) Handles UiButton3.Click
@@ -120,8 +122,10 @@ Public Class Form编辑虚拟组
         Dim a As New 输入对话框("", "输入新的虚拟组名称，如果已存在则不会添加")
         a.TranslateButtonText("添加", "取消")
         Dim b As String = a.ShowDialog(Me)
-        If Me.ListView1.ItemExists(b) Then Exit Sub
+        If b = "" Then Me.ListView1.Focus() : Exit Sub
+        If Me.ListView1.ItemExists(b) Then Me.ListView1.Focus() : Exit Sub
         Me.ListView1.Items.Add(b)
+        Me.ListView1.Focus()
     End Sub
 
     Private Sub UiButton6_Click(sender As Object, e As EventArgs) Handles UiButton6.Click
@@ -163,5 +167,48 @@ Public Class Form编辑虚拟组
             End If
             i += 1
         Loop
+    End Sub
+
+    Private Sub UiButton8_Click(sender As Object, e As EventArgs) Handles UiButton8.Click
+        For Each item As ListViewItem In Form1.ListView2.SelectedItems
+            Dim 虚拟组文件路径 = Path.Combine(管理模组2.检查并返回当前所选子库路径(False), item.SubItems(3).Text, item.Text, "VirtualGroup")
+            If ListView1.Items.Count = 0 Then
+                If FileIO.FileSystem.FileExists(虚拟组文件路径) Then FileIO.FileSystem.DeleteFile(虚拟组文件路径)
+            Else
+                Dim 当前模组项的虚拟组列表 As New List(Of String)
+                If FileIO.FileSystem.FileExists(虚拟组文件路径) Then
+                    Using reader As New StringReader(FileIO.FileSystem.ReadAllText(虚拟组文件路径))
+                        Dim line = reader.ReadLine
+                        While line IsNot Nothing
+                            当前模组项的虚拟组列表.Add(line)
+                            line = reader.ReadLine
+                        End While
+                    End Using
+                End If
+                For Each newitem As ListViewItem In ListView1.Items
+                    If 当前模组项的虚拟组列表.Contains(newitem.Text) Then 当前模组项的虚拟组列表.Remove(newitem.Text)
+                Next
+                FileIO.FileSystem.WriteAllText(虚拟组文件路径, String.Join(Environment.NewLine, 当前模组项的虚拟组列表), False)
+            End If
+        Next
+        Close()
+    End Sub
+
+    Private Sub ListView1_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ListView1.SelectedIndexChanged
+
+    End Sub
+
+    Private Sub ListView1_KeyDown(sender As Object, e As KeyEventArgs) Handles ListView1.KeyDown
+        Select Case e.KeyCode
+            Case Keys.A
+                If e.Control Then Me.UiButton7.PerformClick()
+            Case Keys.F3
+                Me.UiButton6.PerformClick()
+            Case Keys.F4
+                Me.UiButton5.PerformClick()
+            Case Keys.Delete
+                Me.UiButton9.PerformClick()
+        End Select
+
     End Sub
 End Class

@@ -128,7 +128,7 @@ Partial Class Form管理虚拟组
         UiButton2.Style = Sunny.UI.UIStyle.Custom
         UiButton2.TabIndex = 44
         UiButton2.TabStop = False
-        UiButton2.Text = "删除所有组"
+        UiButton2.Text = "删除选中组"
         UiButton2.TipsColor = Color.Gray
         UiButton2.TipsFont = New Font("微软雅黑", 9F)
         ' 

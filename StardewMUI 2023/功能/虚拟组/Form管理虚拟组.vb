@@ -61,10 +61,7 @@ Public Class Form管理虚拟组
     End Sub
 
     Private Sub UiButton2_Click(sender As Object, e As EventArgs) Handles UiButton2.Click
-        If Not PromptForWindowsCredentials(Me.Handle, "继续执行此操作需要验证你的身份", "SMUI 6 正在执行高危操作") Then
-            UIMessageTip.Show("验证失败",, 2000)
-            Exit Sub
-        End If
+        If Not PromptForWindowsCredentials(Me.Handle, "继续执行此操作需要验证你的身份", "SMUI 6 正在批量删除虚拟组") Then Exit Sub
         Try
             Dim mDir As DirectoryInfo
             Dim mDirInfo As New DirectoryInfo(管理模组2.检查并返回当前所选子库路径(False))
@@ -72,13 +69,36 @@ Public Class Form管理虚拟组
                 Dim mDir2 As DirectoryInfo
                 Dim mDirInfo2 As New DirectoryInfo(mDir.FullName)
                 For Each mDir2 In mDirInfo2.GetDirectories
-                    If FileIO.FileSystem.FileExists(Path.Combine(mDir2.FullName, "VirtualGroup")) Then
+                    If Not FileIO.FileSystem.FileExists(Path.Combine(mDir2.FullName, "VirtualGroup")) Then Continue For
+                    Dim 当前模组项的虚拟组列表 As New List(Of String)
+                    Using reader As New StringReader(FileIO.FileSystem.ReadAllText(Path.Combine(mDir2.FullName, "VirtualGroup")))
+                        Dim line As String = reader.ReadLine()
+                        While line IsNot Nothing
+                            当前模组项的虚拟组列表.Add(line)
+                            line = reader.ReadLine()
+                        End While
+                    End Using
+                    For Each item As ListViewItem In Me.ListView1.SelectedItems
+                        If 当前模组项的虚拟组列表.Contains(item.Text) Then
+                            当前模组项的虚拟组列表.Remove(item.Text)
+                        End If
+                    Next
+                    If 当前模组项的虚拟组列表.Count > 0 Then
+                        FileIO.FileSystem.WriteAllText(Path.Combine(mDir2.FullName, "VirtualGroup"), String.Join(Environment.NewLine, 当前模组项的虚拟组列表), False)
+                    Else
                         FileIO.FileSystem.DeleteFile(Path.Combine(mDir2.FullName, "VirtualGroup"))
                     End If
                 Next
             Next
-            虚拟组列表.Clear()
-            Me.ListView1.Items.Clear()
+            Dim i As Integer = 0
+            Do Until i = Me.ListView1.Items.Count
+                If Me.ListView1.Items(i).Selected Then
+                    虚拟组列表.Remove(Me.ListView1.Items(i).Text)
+                    Me.ListView1.Items(i).Remove()
+                    i -= 1
+                End If
+                i += 1
+            Loop
             UIMessageTip.Show("已删除",, 2500)
         Catch ex As Exception
             DebugPrint(ex.Message, Color1.红色)

@@ -59,8 +59,8 @@ Public Class 配置队列的菜单
         AddHandler 菜单项_下移规划.Click, AddressOf 配置队列.下移规划
     End Sub
 
-    Public Shared Property 添加规划菜单 As New 暗黑菜单条控件本体 With {.ImageScalingSize = New Size(25 * 界面控制.DPI, 25 * 界面控制.DPI), .DropShadowEnabled = False}
-    Public Shared Property 菜单项_复制文件夹到Mods As New ToolStripMenuItem With {.Text = "复制文件夹到 Mods", .Image = My.Resources.试验}
+    Public Shared Property 添加规划菜单 As New 暗黑菜单条控件本体 With {.ImageScalingSize = New Size(23 * 界面控制.DPI, 23 * 界面控制.DPI), .DropShadowEnabled = False}
+    Public Shared Property 菜单项_复制文件夹到Mods As New ToolStripMenuItem With {.Text = "复制文件夹到 Mods", .Image = My.Resources.添加带圆圈}
     Public Shared Property 菜单项_覆盖Mods中的文件夹 As New ToolStripMenuItem With {.Text = "覆盖 Mods 中的文件夹"}
     Public Shared Property 菜单项_复制文件夹到根位置 As New ToolStripMenuItem With {.Text = "复制文件夹"}
     Public Shared Property 菜单项_覆盖Content文件夹 As New ToolStripMenuItem With {.Text = "覆盖 Content 文件夹"}
@@ -68,14 +68,14 @@ Public Class 配置队列的菜单
     Public Shared Property 菜单项_新增文件并验证 As New ToolStripMenuItem With {.Text = "新增文件并验证"}
     Public Shared Property 菜单项_替换文件 As New ToolStripMenuItem With {.Text = "替换文件"}
     Public Shared Property 菜单项_替换文件且无检测 As New ToolStripMenuItem With {.Text = "替换文件且无检测"}
-    Public Shared Property 菜单项_安装时检查文件夹的存在 As New ToolStripMenuItem With {.Text = "安装时检查文件夹的存在", .Image = My.Resources.试验}
+    Public Shared Property 菜单项_安装时检查文件夹的存在 As New ToolStripMenuItem With {.Text = "安装时检查文件夹的存在", .Image = My.Resources.全选}
     Public Shared Property 菜单项_卸载时检查文件夹的存在 As New ToolStripMenuItem With {.Text = "卸载时检查文件夹的存在"}
     Public Shared Property 菜单项_安装时检查文件的存在 As New ToolStripMenuItem With {.Text = "安装时检查文件的存在"}
     Public Shared Property 菜单项_卸载时检查文件的存在 As New ToolStripMenuItem With {.Text = "卸载时检查文件的存在"}
 
     Public Shared Property 菜单项_卸载时取消操作 As New ToolStripMenuItem With {.Text = "卸载时取消操作"}
 
-    Public Shared Property 菜单项_声明核心功能的启停 As New ToolStripMenuItem With {.Text = "声明核心功能的启停"}
+    Public Shared Property 菜单项_声明核心功能的启停 As New ToolStripMenuItem With {.Text = "声明核心功能的启停", .Image = My.Resources.六个点}
 
     Public Shared Sub 添加添加规划菜单的所有菜单项()
         添加规划菜单.Items.Add(菜单项_复制文件夹到Mods)
