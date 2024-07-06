@@ -162,6 +162,7 @@ Public Class 设置
     Public Shared ReadOnly 设置文件存储路径 As String = Path.Combine(Application.StartupPath, "UserData\Settings")
     Public Shared ReadOnly 安装程序更新下载文件路径 As String = Path.Combine(Application.StartupPath, "UserData\SMUI 6 Installer.exe")
     Public Shared ReadOnly 当日新闻列表文件路径 As String = Path.Combine(Application.StartupPath, "UserData\TodayNews")
+    Public Shared ReadOnly 下载的数据表文件 As String = Path.Combine(Application.StartupPath, "UserData\ModsCoordinationDataBase.csv")
 
     Public Shared ReadOnly DLC文件夹路径 As String = Path.Combine(Application.StartupPath, "UserData\DLC")
     Public Shared ReadOnly 插件文件夹路径 As String = Path.Combine(Application.StartupPath, "UserData\Plugin")

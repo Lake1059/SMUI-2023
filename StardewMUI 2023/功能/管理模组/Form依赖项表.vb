@@ -109,15 +109,15 @@ Public Class Form依赖项表
         a.是否是数据克隆 = True
         a.ShowInTaskbar = True
         a.StartPosition = FormStartPosition.CenterScreen
-        a.Size = Me.Size
+        a.Size = Size
         a.Text = "依赖项表（数据克隆）"
-        For i = 0 To Me.ListView1.Items.Count - 1
-            a.ListView1.Items.Add(Me.ListView1.Items(i).Text)
-            a.ListView1.Items(i).SubItems.Add(Me.ListView1.Items(i).SubItems(1).Text)
-            a.ListView1.Items(i).SubItems.Add(Me.ListView1.Items(i).SubItems(2).Text)
+        For i = 0 To ListView1.Items.Count - 1
+            a.ListView1.Items.Add(ListView1.Items(i).Text)
+            a.ListView1.Items(i).SubItems.Add(ListView1.Items(i).SubItems(1).Text)
+            a.ListView1.Items(i).SubItems.Add(ListView1.Items(i).SubItems(2).Text)
             a.ListView1.Items(i).SubItems.Add("")
         Next
-        Me.Label51.Text = Me.ListView1.Items.Count
+        Label51.Text = ListView1.Items.Count
         显示窗体(a, Form1)
     End Sub
 
@@ -146,5 +146,13 @@ Public Class Form依赖项表
         Next
         Clipboard.SetText(a)
         UIMessageTip.Show("已复制选中 UniqueID 到剪贴板",, 2000)
+    End Sub
+
+    Private Sub UiButton1_Click(sender As Object, e As EventArgs) Handles UiButton1.Click
+        If Me.ListView1.SelectedItems.Count <> 1 Then Exit Sub
+        显示窗体(Form数据表, Form1)
+        Form数据表.UiButton2.PerformClick()
+        Form数据表.暗黑文本框3.Text = Me.ListView1.SelectedItems(0).Text
+        Form数据表.UiButton34.PerformClick()
     End Sub
 End Class

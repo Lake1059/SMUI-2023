@@ -38,10 +38,9 @@ Public Class 预览图功能
 
     Public Shared Sub 删除当前图()
         If Form1.ListView2.SelectedItems.Count <> 1 Then Exit Sub
-        Dim S1 As String = Path.Combine(管理模组2.检查并返回当前所选子库路径(False), Form1.ListView2.SelectedItems(0).SubItems(3).Text, Form1.ListView2.SelectedItems(0).Text)
-
-        If FileIO.FileSystem.DirectoryExists(S1 & "\Screenshot") = True Then
-            FileIO.FileSystem.DeleteDirectory(S1 & "\Screenshot", FileIO.UIOption.AllDialogs, FileIO.RecycleOption.SendToRecycleBin)
+        If 管理模组.当前项信息_预览图文件表.Count < 1 Then Exit Sub
+        If FileIO.FileSystem.FileExists(管理模组.当前项信息_预览图文件表(管理模组.当前正在显示的预览图索引)) = True Then
+            FileIO.FileSystem.DeleteFile(管理模组.当前项信息_预览图文件表(管理模组.当前正在显示的预览图索引), FileIO.UIOption.AllDialogs, FileIO.RecycleOption.SendToRecycleBin)
             Form1.PictureBox1.Image = Nothing
             Form1.Panel9.Visible = False
         End If
@@ -50,14 +49,11 @@ Public Class 预览图功能
     Public Shared Sub 删除所有图()
         If Form1.ListView2.SelectedItems.Count <> 1 Then Exit Sub
         Dim S1 As String = Path.Combine(管理模组2.检查并返回当前所选子库路径(False), Form1.ListView2.SelectedItems(0).SubItems(3).Text, Form1.ListView2.SelectedItems(0).Text)
-
-        If 管理模组.当前项信息_预览图文件表.Count < 1 Then Exit Sub
-        If FileIO.FileSystem.FileExists(管理模组.当前项信息_预览图文件表(管理模组.当前正在显示的预览图索引)) = True Then
-            FileIO.FileSystem.DeleteFile(管理模组.当前项信息_预览图文件表(管理模组.当前正在显示的预览图索引), FileIO.UIOption.AllDialogs, FileIO.RecycleOption.SendToRecycleBin)
+        If FileIO.FileSystem.DirectoryExists(S1 & "\Screenshot") = True Then
+            FileIO.FileSystem.DeleteDirectory(S1 & "\Screenshot", FileIO.UIOption.AllDialogs, FileIO.RecycleOption.SendToRecycleBin)
             Form1.PictureBox1.Image = Nothing
             Form1.Panel9.Visible = False
         End If
-
     End Sub
 
     Public Shared Sub PictureBox1_MouseMove(sender As Object, e As MouseEventArgs)

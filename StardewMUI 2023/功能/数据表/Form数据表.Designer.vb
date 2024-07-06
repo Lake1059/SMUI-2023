@@ -23,8 +23,8 @@ Partial Class Form数据表
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Panel1 = New Panel()
-        UiCheckBox7 = New Sunny.UI.UICheckBox()
         Panel8 = New Panel()
+        LinkLabel1 = New LinkLabel()
         Label61 = New Label()
         UiButton3 = New Sunny.UI.UIButton()
         UiButton2 = New Sunny.UI.UIButton()
@@ -52,7 +52,6 @@ Partial Class Form数据表
         UiCheckBox1 = New Sunny.UI.UICheckBox()
         Label1 = New Label()
         Panel9 = New Panel()
-        数据表检索结果单片控件本体1 = New 数据表检索结果单片控件本体()
         Panel1.SuspendLayout()
         Panel8.SuspendLayout()
         Panel7.SuspendLayout()
@@ -61,13 +60,11 @@ Partial Class Form数据表
         Panel4.SuspendLayout()
         Panel3.SuspendLayout()
         Panel2.SuspendLayout()
-        Panel9.SuspendLayout()
         SuspendLayout()
         ' 
         ' Panel1
         ' 
         Panel1.BackColor = Color.FromArgb(CByte(32), CByte(32), CByte(32))
-        Panel1.Controls.Add(UiCheckBox7)
         Panel1.Controls.Add(Panel8)
         Panel1.Controls.Add(Label2)
         Panel1.Controls.Add(Panel7)
@@ -84,22 +81,9 @@ Partial Class Form数据表
         Panel1.Size = New Size(450, 561)
         Panel1.TabIndex = 0
         ' 
-        ' UiCheckBox7
-        ' 
-        UiCheckBox7.CheckBoxSize = 20
-        UiCheckBox7.Font = New Font("微软雅黑", 9.75F, FontStyle.Regular, GraphicsUnit.Point, CByte(134))
-        UiCheckBox7.ForeColor = SystemColors.ScrollBar
-        UiCheckBox7.Location = New Point(170, 301)
-        UiCheckBox7.Margin = New Padding(20, 20, 20, 0)
-        UiCheckBox7.MinimumSize = New Size(1, 1)
-        UiCheckBox7.Name = "UiCheckBox7"
-        UiCheckBox7.Size = New Size(150, 53)
-        UiCheckBox7.Style = Sunny.UI.UIStyle.Custom
-        UiCheckBox7.TabIndex = 45
-        UiCheckBox7.Text = "启用模糊搜索"
-        ' 
         ' Panel8
         ' 
+        Panel8.Controls.Add(LinkLabel1)
         Panel8.Controls.Add(Label61)
         Panel8.Controls.Add(UiButton3)
         Panel8.Controls.Add(UiButton2)
@@ -111,6 +95,20 @@ Partial Class Form数据表
         Panel8.Size = New Size(410, 184)
         Panel8.TabIndex = 44
         ' 
+        ' LinkLabel1
+        ' 
+        LinkLabel1.ActiveLinkColor = Color.Lime
+        LinkLabel1.AutoSize = True
+        LinkLabel1.Dock = DockStyle.Bottom
+        LinkLabel1.LinkBehavior = LinkBehavior.HoverUnderline
+        LinkLabel1.LinkColor = Color.FromArgb(CByte(255), CByte(128), CByte(0))
+        LinkLabel1.Location = New Point(0, 165)
+        LinkLabel1.Name = "LinkLabel1"
+        LinkLabel1.Size = New Size(61, 19)
+        LinkLabel1.TabIndex = 45
+        LinkLabel1.TabStop = True
+        LinkLabel1.Text = "立即支持"
+        ' 
         ' Label61
         ' 
         Label61.Anchor = AnchorStyles.Top Or AnchorStyles.Bottom Or AnchorStyles.Left Or AnchorStyles.Right
@@ -120,7 +118,7 @@ Partial Class Form数据表
         Label61.Name = "Label61"
         Label61.Size = New Size(410, 99)
         Label61.TabIndex = 58
-        Label61.Text = "数据表由开发者和用户们维护，请考虑支持他们的工作" & vbCrLf & vbCrLf & "如果你也想出一份力，在欢迎页上查看协作项目"
+        Label61.Text = "数据表由开发者和用户们维护，请考虑支持他们的工作" & vbCrLf & "如果你也想出一份力，在欢迎页上查看协作项目"
         Label61.TextAlign = ContentAlignment.MiddleCenter
         ' 
         ' UiButton3
@@ -299,7 +297,7 @@ Partial Class Form数据表
         UiComboBox1.ItemHeight = 30
         UiComboBox1.ItemHoverColor = Color.FromArgb(CByte(64), CByte(64), CByte(64))
         UiComboBox1.ItemRectColor = Color.FromArgb(CByte(48), CByte(48), CByte(48))
-        UiComboBox1.Items.AddRange(New Object() {"NEXUS", "ModDrop", "GitHub"})
+        UiComboBox1.Items.AddRange(New Object() {"框架", "扩展", "事件", "功能", "汉化", "材质", "视觉", "地图", "农场", "人物", "物品", "商店", "动物"})
         UiComboBox1.ItemSelectBackColor = Color.DimGray
         UiComboBox1.ItemSelectForeColor = Color.FromArgb(CByte(224), CByte(224), CByte(224))
         UiComboBox1.Location = New Point(150, 5)
@@ -313,6 +311,9 @@ Partial Class Form数据表
         UiComboBox1.RectColor = Color.Silver
         UiComboBox1.RectDisableColor = Color.Silver
         UiComboBox1.RectSides = ToolStripStatusLabelBorderSides.None
+        UiComboBox1.ScrollBarBackColor = Color.FromArgb(CByte(64), CByte(64), CByte(64))
+        UiComboBox1.ScrollBarColor = Color.DimGray
+        UiComboBox1.ScrollBarStyleInherited = False
         UiComboBox1.Size = New Size(260, 30)
         UiComboBox1.Style = Sunny.UI.UIStyle.Custom
         UiComboBox1.SymbolSize = 24
@@ -358,9 +359,9 @@ Partial Class Form数据表
         暗黑文本框5.Name = "暗黑文本框5"
         暗黑文本框5.Padding = New Padding(5, 6, 5, 0)
         暗黑文本框5.PasswordChar = vbNullChar
-        暗黑文本框5.PlaceholderText = "此项不能模糊搜索"
+        暗黑文本框5.PlaceholderText = "先选类型"
         暗黑文本框5.Size = New Size(146, 30)
-        暗黑文本框5.TabIndex = 0
+        暗黑文本框5.TabIndex = 25
         ' 
         ' UiComboBox4
         ' 
@@ -436,9 +437,9 @@ Partial Class Form数据表
         暗黑文本框4.Name = "暗黑文本框4"
         暗黑文本框4.Padding = New Padding(5, 6, 5, 0)
         暗黑文本框4.PasswordChar = vbNullChar
-        暗黑文本框4.PlaceholderText = "保持简短和明确，越长越难搜到"
+        暗黑文本框4.PlaceholderText = "保持简短，越长越难搜到，仅限一个"
         暗黑文本框4.Size = New Size(260, 30)
-        暗黑文本框4.TabIndex = 0
+        暗黑文本框4.TabIndex = 3
         ' 
         ' UiCheckBox4
         ' 
@@ -475,9 +476,9 @@ Partial Class Form数据表
         暗黑文本框3.Name = "暗黑文本框3"
         暗黑文本框3.Padding = New Padding(5, 6, 5, 0)
         暗黑文本框3.PasswordChar = vbNullChar
-        暗黑文本框3.PlaceholderText = "输入 UniqueID"
+        暗黑文本框3.PlaceholderText = "多个值用竖线隔开"
         暗黑文本框3.Size = New Size(260, 30)
-        暗黑文本框3.TabIndex = 0
+        暗黑文本框3.TabIndex = 3
         ' 
         ' UiCheckBox3
         ' 
@@ -514,9 +515,9 @@ Partial Class Form数据表
         暗黑文本框2.Name = "暗黑文本框2"
         暗黑文本框2.Padding = New Padding(5, 6, 5, 0)
         暗黑文本框2.PasswordChar = vbNullChar
-        暗黑文本框2.PlaceholderText = "输入作者"
+        暗黑文本框2.PlaceholderText = "作者"
         暗黑文本框2.Size = New Size(260, 30)
-        暗黑文本框2.TabIndex = 0
+        暗黑文本框2.TabIndex = 3
         ' 
         ' UiCheckBox2
         ' 
@@ -553,9 +554,9 @@ Partial Class Form数据表
         暗黑文本框1.Name = "暗黑文本框1"
         暗黑文本框1.Padding = New Padding(5, 6, 5, 0)
         暗黑文本框1.PasswordChar = vbNullChar
-        暗黑文本框1.PlaceholderText = "输入模组名称（英文）"
+        暗黑文本框1.PlaceholderText = "英文名称"
         暗黑文本框1.Size = New Size(260, 30)
-        暗黑文本框1.TabIndex = 0
+        暗黑文本框1.TabIndex = 2
         ' 
         ' UiCheckBox1
         ' 
@@ -588,26 +589,12 @@ Partial Class Form数据表
         ' Panel9
         ' 
         Panel9.AutoScroll = True
-        Panel9.Controls.Add(数据表检索结果单片控件本体1)
         Panel9.Dock = DockStyle.Fill
         Panel9.Location = New Point(450, 0)
         Panel9.Name = "Panel9"
         Panel9.Padding = New Padding(20)
         Panel9.Size = New Size(534, 561)
         Panel9.TabIndex = 1
-        ' 
-        ' 数据表检索结果单片控件本体1
-        ' 
-        数据表检索结果单片控件本体1.AutoSize = True
-        数据表检索结果单片控件本体1.BackColor = Color.FromArgb(CByte(32), CByte(32), CByte(32))
-        数据表检索结果单片控件本体1.Dock = DockStyle.Top
-        数据表检索结果单片控件本体1.Font = New Font("微软雅黑", 9.75F, FontStyle.Regular, GraphicsUnit.Point, CByte(134))
-        数据表检索结果单片控件本体1.ForeColor = Color.FromArgb(CByte(224), CByte(224), CByte(224))
-        数据表检索结果单片控件本体1.Location = New Point(20, 20)
-        数据表检索结果单片控件本体1.Name = "数据表检索结果单片控件本体1"
-        数据表检索结果单片控件本体1.Padding = New Padding(10)
-        数据表检索结果单片控件本体1.Size = New Size(494, 88)
-        数据表检索结果单片控件本体1.TabIndex = 0
         ' 
         ' Form数据表
         ' 
@@ -626,50 +613,48 @@ Partial Class Form数据表
         ShowIcon = False
         ShowInTaskbar = False
         StartPosition = FormStartPosition.Manual
-        Text = "数据表（还没做）"
+        Text = "数据表"
         Panel1.ResumeLayout(False)
         Panel1.PerformLayout()
         Panel8.ResumeLayout(False)
+        Panel8.PerformLayout()
         Panel7.ResumeLayout(False)
         Panel6.ResumeLayout(False)
         Panel5.ResumeLayout(False)
         Panel4.ResumeLayout(False)
         Panel3.ResumeLayout(False)
         Panel2.ResumeLayout(False)
-        Panel9.ResumeLayout(False)
-        Panel9.PerformLayout()
         ResumeLayout(False)
     End Sub
 
     Friend WithEvents Panel1 As Panel
-    Friend WithEvents 暗黑文本框1 As 暗黑文本框
     Friend WithEvents Label1 As Label
     Friend WithEvents Panel2 As Panel
     Friend WithEvents UiCheckBox1 As Sunny.UI.UICheckBox
     Friend WithEvents Panel4 As Panel
-    Friend WithEvents 暗黑文本框3 As 暗黑文本框
     Friend WithEvents UiCheckBox3 As Sunny.UI.UICheckBox
     Friend WithEvents Panel3 As Panel
-    Friend WithEvents 暗黑文本框2 As 暗黑文本框
     Friend WithEvents UiCheckBox2 As Sunny.UI.UICheckBox
     Friend WithEvents Panel5 As Panel
-    Friend WithEvents 暗黑文本框4 As 暗黑文本框
     Friend WithEvents UiCheckBox4 As Sunny.UI.UICheckBox
     Friend WithEvents UiButton34 As Sunny.UI.UIButton
     Friend WithEvents Panel6 As Panel
     Friend WithEvents UiCheckBox5 As Sunny.UI.UICheckBox
-    Friend WithEvents 暗黑文本框5 As 暗黑文本框
     Friend WithEvents Panel7 As Panel
     Friend WithEvents UiComboBox1 As Sunny.UI.UIComboBox
     Friend WithEvents UiCheckBox6 As Sunny.UI.UICheckBox
-    Friend WithEvents UiComboBox4 As Sunny.UI.UIComboBox
     Friend WithEvents Label2 As Label
     Friend WithEvents Panel8 As Panel
     Friend WithEvents UiButton3 As Sunny.UI.UIButton
     Friend WithEvents UiButton2 As Sunny.UI.UIButton
     Friend WithEvents UiButton1 As Sunny.UI.UIButton
-    Friend WithEvents UiCheckBox7 As Sunny.UI.UICheckBox
     Friend WithEvents Label61 As Label
     Friend WithEvents Panel9 As Panel
-    Friend WithEvents 数据表检索结果单片控件本体1 As 数据表检索结果单片控件本体
+    Friend WithEvents UiComboBox4 As Sunny.UI.UIComboBox
+    Friend WithEvents 暗黑文本框5 As 暗黑文本框
+    Friend WithEvents 暗黑文本框4 As 暗黑文本框
+    Friend WithEvents 暗黑文本框3 As 暗黑文本框
+    Friend WithEvents 暗黑文本框2 As 暗黑文本框
+    Friend WithEvents 暗黑文本框1 As 暗黑文本框
+    Friend WithEvents LinkLabel1 As LinkLabel
 End Class

@@ -158,7 +158,7 @@ Public Class 管理模组
         Dim a As New 输入对话框("", "新建数据子库名称")
         a.TranslateButtonText("确认", "取消")
 Line1:
-        Dim s2 As String = a.ShowDialog(Form1)
+        Dim s2 As String = a.ShowDialog(Form1).Trim
         If s2 = "" Then Exit Sub
         If FileIO.FileSystem.DirectoryExists(Path.Combine(s1, s2)) Then
             Dim b As New 多项单选对话框("", {"确认"}, "目标文件夹已存在" & vbCrLf & vbCrLf & s1 & "\" & s2,, 500)

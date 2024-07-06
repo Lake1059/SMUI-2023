@@ -9,7 +9,7 @@ Public Class 分类操作
         Dim d1 As New 输入对话框("", "输入新建分类的名称",, 500)
         d1.TranslateButtonText("确定", "取消")
 Line1:
-        Dim s1 As String = d1.ShowDialog(Form1)
+        Dim s1 As String = d1.ShowDialog(Form1).Trim
         If s1 = "" Then Exit Sub
         If FileIO.FileSystem.DirectoryExists(a & "\" & s1) Then
             Dim b As New 多项单选对话框("", {"确定"}, "已经存在目标分类：" & vbCrLf & vbCrLf & a & "\" & s1,, 500)
@@ -93,7 +93,7 @@ Line1:
         Dim a As New 输入对话框("", "重新命名分类：" & Form1.ListView1.SelectedItems(0).Text, Form1.ListView1.SelectedItems(0).Text)
         a.TranslateButtonText("确定", "取消")
 Line1:
-        Dim s1 As String = a.ShowDialog(Form1)
+        Dim s1 As String = a.ShowDialog(Form1).Trim
         If s1 = "" Then Exit Sub
         If FileIO.FileSystem.DirectoryExists(Path.Combine(管理模组2.检查并返回当前所选子库路径(False), s1)) Then
             Dim b As New 多项单选对话框("", {"确定"}, "已经存在目标分类：" & vbCrLf & vbCrLf & s1,, 500)

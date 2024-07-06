@@ -23,12 +23,8 @@ Partial Class 数据表检索结果单片控件本体
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Panel3 = New Panel()
-        Label14 = New Label()
-        Label15 = New Label()
         Label4 = New Label()
-        Label12 = New Label()
         Label2 = New Label()
-        Label5 = New Label()
         Label6 = New Label()
         Label7 = New Label()
         Label8 = New Label()
@@ -43,12 +39,8 @@ Partial Class 数据表检索结果单片控件本体
         ' 
         ' Panel3
         ' 
-        Panel3.Controls.Add(Label14)
-        Panel3.Controls.Add(Label15)
         Panel3.Controls.Add(Label4)
-        Panel3.Controls.Add(Label12)
         Panel3.Controls.Add(Label2)
-        Panel3.Controls.Add(Label5)
         Panel3.Controls.Add(Label6)
         Panel3.Controls.Add(Label7)
         Panel3.Controls.Add(Label8)
@@ -60,74 +52,39 @@ Partial Class 数据表检索结果单片控件本体
         Panel3.Font = New Font("微软雅黑", 9F, FontStyle.Regular, GraphicsUnit.Point, CByte(134))
         Panel3.Location = New Point(10, 10)
         Panel3.Name = "Panel3"
-        Panel3.Padding = New Padding(3, 0, 0, 0)
-        Panel3.Size = New Size(480, 20)
+        Panel3.Size = New Size(480, 30)
         Panel3.TabIndex = 7
-        ' 
-        ' Label14
-        ' 
-        Label14.BackColor = Color.DimGray
-        Label14.Dock = DockStyle.Left
-        Label14.Location = New Point(333, 0)
-        Label14.Name = "Label14"
-        Label14.Size = New Size(50, 20)
-        Label14.TabIndex = 13
-        Label14.Text = "组合"
-        Label14.TextAlign = ContentAlignment.MiddleCenter
-        ' 
-        ' Label15
-        ' 
-        Label15.Dock = DockStyle.Left
-        Label15.Location = New Point(328, 0)
-        Label15.Name = "Label15"
-        Label15.Size = New Size(5, 20)
-        Label15.TabIndex = 12
         ' 
         ' Label4
         ' 
         Label4.BackColor = Color.RoyalBlue
-        Label4.Dock = DockStyle.Left
-        Label4.Location = New Point(278, 0)
+        Label4.Dock = DockStyle.Right
+        Label4.Location = New Point(360, 0)
         Label4.Name = "Label4"
-        Label4.Size = New Size(50, 20)
+        Label4.Size = New Size(60, 30)
         Label4.TabIndex = 11
         Label4.Text = "非官方"
         Label4.TextAlign = ContentAlignment.MiddleCenter
-        ' 
-        ' Label12
-        ' 
-        Label12.Dock = DockStyle.Left
-        Label12.Location = New Point(273, 0)
-        Label12.Name = "Label12"
-        Label12.Size = New Size(5, 20)
-        Label12.TabIndex = 10
+        Label4.Visible = False
         ' 
         ' Label2
         ' 
         Label2.BackColor = Color.DarkGreen
-        Label2.Dock = DockStyle.Left
-        Label2.Location = New Point(223, 0)
+        Label2.Dock = DockStyle.Right
+        Label2.Location = New Point(420, 0)
         Label2.Name = "Label2"
-        Label2.Size = New Size(50, 20)
+        Label2.Size = New Size(60, 30)
         Label2.TabIndex = 9
         Label2.Text = "下载"
         Label2.TextAlign = ContentAlignment.MiddleCenter
         ' 
-        ' Label5
-        ' 
-        Label5.Dock = DockStyle.Left
-        Label5.Location = New Point(218, 0)
-        Label5.Name = "Label5"
-        Label5.Size = New Size(5, 20)
-        Label5.TabIndex = 7
-        ' 
         ' Label6
         ' 
-        Label6.BackColor = Color.Maroon
+        Label6.BackColor = Color.DarkRed
         Label6.Dock = DockStyle.Left
-        Label6.Location = New Point(168, 0)
+        Label6.Location = New Point(175, 0)
         Label6.Name = "Label6"
-        Label6.Size = New Size(50, 20)
+        Label6.Size = New Size(50, 30)
         Label6.TabIndex = 6
         Label6.Text = "热度"
         Label6.TextAlign = ContentAlignment.MiddleCenter
@@ -135,18 +92,18 @@ Partial Class 数据表检索结果单片控件本体
         ' Label7
         ' 
         Label7.Dock = DockStyle.Left
-        Label7.Location = New Point(163, 0)
+        Label7.Location = New Point(170, 0)
         Label7.Name = "Label7"
-        Label7.Size = New Size(5, 20)
+        Label7.Size = New Size(5, 30)
         Label7.TabIndex = 5
         ' 
         ' Label8
         ' 
-        Label8.BackColor = Color.DarkGreen
+        Label8.BackColor = Color.SaddleBrown
         Label8.Dock = DockStyle.Left
-        Label8.Location = New Point(113, 0)
+        Label8.Location = New Point(120, 0)
         Label8.Name = "Label8"
-        Label8.Size = New Size(50, 20)
+        Label8.Size = New Size(50, 30)
         Label8.TabIndex = 4
         Label8.Text = "安全"
         Label8.TextAlign = ContentAlignment.MiddleCenter
@@ -154,18 +111,18 @@ Partial Class 数据表检索结果单片控件本体
         ' Label9
         ' 
         Label9.Dock = DockStyle.Left
-        Label9.Location = New Point(108, 0)
+        Label9.Location = New Point(115, 0)
         Label9.Name = "Label9"
-        Label9.Size = New Size(5, 20)
+        Label9.Size = New Size(5, 30)
         Label9.TabIndex = 3
         ' 
         ' Label10
         ' 
-        Label10.BackColor = Color.BlueViolet
+        Label10.BackColor = Color.FromArgb(CByte(64), CByte(64), CByte(64))
         Label10.Dock = DockStyle.Left
-        Label10.Location = New Point(58, 0)
+        Label10.Location = New Point(65, 0)
         Label10.Name = "Label10"
-        Label10.Size = New Size(50, 20)
+        Label10.Size = New Size(50, 30)
         Label10.TabIndex = 2
         Label10.Text = "分类"
         Label10.TextAlign = ContentAlignment.MiddleCenter
@@ -173,18 +130,18 @@ Partial Class 数据表检索结果单片控件本体
         ' Label11
         ' 
         Label11.Dock = DockStyle.Left
-        Label11.Location = New Point(53, 0)
+        Label11.Location = New Point(60, 0)
         Label11.Name = "Label11"
-        Label11.Size = New Size(5, 20)
+        Label11.Size = New Size(5, 30)
         Label11.TabIndex = 1
         ' 
         ' Label13
         ' 
-        Label13.BackColor = Color.DarkGreen
+        Label13.BackColor = Color.Maroon
         Label13.Dock = DockStyle.Left
-        Label13.Location = New Point(3, 0)
+        Label13.Location = New Point(0, 0)
         Label13.Name = "Label13"
-        Label13.Size = New Size(50, 20)
+        Label13.Size = New Size(60, 30)
         Label13.TabIndex = 0
         Label13.Text = "全自动"
         Label13.TextAlign = ContentAlignment.MiddleCenter
@@ -193,7 +150,7 @@ Partial Class 数据表检索结果单片控件本体
         ' 
         Label3.AutoSize = True
         Label3.Dock = DockStyle.Top
-        Label3.Location = New Point(10, 54)
+        Label3.Location = New Point(10, 64)
         Label3.Name = "Label3"
         Label3.Padding = New Padding(0, 5, 0, 0)
         Label3.Size = New Size(48, 24)
@@ -204,7 +161,7 @@ Partial Class 数据表检索结果单片控件本体
         ' 
         Label1.AutoSize = True
         Label1.Dock = DockStyle.Top
-        Label1.Location = New Point(10, 30)
+        Label1.Location = New Point(10, 40)
         Label1.Name = "Label1"
         Label1.Padding = New Padding(0, 5, 0, 0)
         Label1.Size = New Size(101, 24)
@@ -224,7 +181,7 @@ Partial Class 数据表检索结果单片控件本体
         ForeColor = Color.FromArgb(CByte(224), CByte(224), CByte(224))
         Name = "数据表检索结果单片控件本体"
         Padding = New Padding(10)
-        Size = New Size(500, 88)
+        Size = New Size(500, 98)
         Panel3.ResumeLayout(False)
         ResumeLayout(False)
         PerformLayout()
@@ -237,13 +194,9 @@ Partial Class 数据表检索结果单片控件本体
     Friend WithEvents Label10 As Label
     Friend WithEvents Label11 As Label
     Friend WithEvents Label13 As Label
-    Friend WithEvents Label5 As Label
     Friend WithEvents Label3 As Label
     Friend WithEvents Label1 As Label
-    Friend WithEvents Label14 As Label
-    Friend WithEvents Label15 As Label
     Friend WithEvents Label4 As Label
-    Friend WithEvents Label12 As Label
     Friend WithEvents Label2 As Label
 
 End Class
