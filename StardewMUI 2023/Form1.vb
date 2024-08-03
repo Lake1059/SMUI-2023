@@ -23,6 +23,7 @@ Public Class Form1
         在线模组列表.初始化()
         全局模组安装检查器.初始化()
         存档编辑器.初始化()
+        批量分发管理.初始化()
     End Sub
 
     Private Sub Form1_Shown(sender As Object, e As EventArgs) Handles MyBase.Shown

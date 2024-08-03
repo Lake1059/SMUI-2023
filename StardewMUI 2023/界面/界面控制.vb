@@ -1,5 +1,4 @@
-﻿
-Imports System.IO
+﻿Imports System.IO
 Imports System.Runtime.InteropServices
 Imports Microsoft.Web.WebView2.WinForms
 Imports Sunny.UI
@@ -51,8 +50,9 @@ Public Class 界面控制
         暗黑列表视图自绘制.绑定列表视图事件(Form1.ListView10)
         暗黑列表视图自绘制.绑定列表视图事件(Form1.ListView11)
         暗黑列表视图自绘制.绑定列表视图事件(Form1.ListView12)
-
-
+        暗黑列表视图自绘制.绑定列表视图事件(Form1.ListView13)
+        暗黑列表视图自绘制.绑定列表视图事件(Form1.ListView14)
+        暗黑列表视图自绘制.绑定列表视图事件(Form1.ListView15)
 
         Form1.ImageList1.ImageSize = New Size(1, Form1.ImageList1.ImageSize.Height * DPI)
 
@@ -157,7 +157,9 @@ Public Class 界面控制
         Form1.ColumnHeader28.Width = (Form1.ListView5.Width - 垂直滚动条实际预留宽度) * 0.35
         Form1.ColumnHeader29.Width = (Form1.ListView5.Width - 垂直滚动条实际预留宽度) * 0.2
 
-
+        Form1.ColumnHeader35.Width = Form1.ListView13.Width - 垂直滚动条实际预留宽度
+        Form1.ColumnHeader36.Width = Form1.ListView14.Width - 垂直滚动条实际预留宽度
+        Form1.ColumnHeader37.Width = Form1.ListView15.Width - 垂直滚动条实际预留宽度
 
     End Sub
 
@@ -205,13 +207,39 @@ Public Class 界面控制
         Form1.UiComboBox9.Left = 40 * DPI : Form1.UiComboBox9.Top = 261 * DPI : Form1.UiComboBox9.Width = 470 * DPI : Form1.UiComboBox9.Height = 35 * DPI
         Form1.UiComboBox10.Left = 20 * DPI : Form1.UiComboBox10.Top = 283 * DPI : Form1.UiComboBox10.Width = 263 * DPI : Form1.UiComboBox10.Height = 30 * DPI
 
+        Form1.UiRadioButton1.RadioButtonSize = 20 * DPI
+        Form1.UiRadioButton2.RadioButtonSize = 20 * DPI
+        Form1.UiRadioButton3.RadioButtonSize = 20 * DPI
+        Form1.UiRadioButton4.RadioButtonSize = 20 * DPI
+        'Form1.UiRadioButton5.RadioButtonSize = 20 * DPI
+        'Form1.UiRadioButton6.RadioButtonSize = 20 * DPI
+        Form1.UiRadioButton7.RadioButtonSize = 20 * DPI
+        Form1.UiRadioButton8.RadioButtonSize = 20 * DPI
+        Form1.UiRadioButton9.RadioButtonSize = 20 * DPI
+        Form1.UiRadioButton10.RadioButtonSize = 20 * DPI
+
+        'Form1.UiCheckBox1.CheckBoxSize = 20 * DPI
+        Form1.UiCheckBox2.CheckBoxSize = 20 * DPI
+        Form1.UiCheckBox3.CheckBoxSize = 20 * DPI
+        Form1.UiCheckBox4.CheckBoxSize = 20 * DPI
+        Form1.UiCheckBox5.CheckBoxSize = 20 * DPI
+        'Form1.UiCheckBox6.CheckBoxSize = 20 * DPI
+        Form1.UiCheckBox7.CheckBoxSize = 20 * DPI
+        Form1.UiCheckBox8.CheckBoxSize = 20 * DPI
+        Form1.UiCheckBox9.CheckBoxSize = 20 * DPI
+        Form1.UiCheckBox10.CheckBoxSize = 20 * DPI
+        Form1.UiCheckBox11.CheckBoxSize = 20 * DPI
+        Form1.UiCheckBox12.CheckBoxSize = 20 * DPI
+        Form1.UiCheckBox13.CheckBoxSize = 20 * DPI
+        Form1.UiCheckBox14.CheckBoxSize = 20 * DPI
+        Form1.UiCheckBox15.CheckBoxSize = 20 * DPI
+        Form1.UiCheckBox16.CheckBoxSize = 20 * DPI
+        Form1.UiCheckBox17.CheckBoxSize = 20 * DPI
+        Form1.UiCheckBox18.CheckBoxSize = 20 * DPI
 
         Form1.ImageList1.ImageSize = New Size(1, 29 * DPI)
         管理模组的菜单.调整DPI()
         内容中心.调整DPI()
-
-
-
     End Sub
 
 

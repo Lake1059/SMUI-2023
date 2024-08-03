@@ -76,6 +76,7 @@ Public Class 管理模组的菜单
     Public Shared Property 菜单项_删除选中分类中的项排序 As New ToolStripMenuItem With {.Text = "删除其中的项排序", .Image = My.Resources.删除}
 
     Public Shared Property 菜单项_加入整个分类到检查更新表 As New ToolStripMenuItem With {.Text = "加入检查更新表", .Image = My.Resources.添加带圆圈}
+    Public Shared Property 菜单项_将分类加入导出预设 As New ToolStripMenuItem With {.Text = "加入导出预设", .Image = My.Resources.添加带圆圈}
     Public Shared Property 菜单项_设置分类的颜色 As New ToolStripMenuItem With {.Text = "设置颜色", .Image = My.Resources.颜色滤镜}
     Public Shared Property 菜单项_设置分类的字体 As New ToolStripMenuItem With {.Text = "设置字体", .Image = My.Resources.文字大小}
 
@@ -84,6 +85,8 @@ Public Class 管理模组的菜单
         分类右键菜单.Items.Add(菜单项_重命名分类)
         分类右键菜单.Items.Add(New ToolStripSeparator)
         分类右键菜单.Items.Add(菜单项_加入整个分类到检查更新表)
+        分类右键菜单.Items.Add(菜单项_将分类加入导出预设)
+
         分类右键菜单.Items.Add(菜单项_设置分类的颜色)
         分类右键菜单.Items.Add(菜单项_设置分类的字体)
 
@@ -151,6 +154,7 @@ Public Class 管理模组的菜单
     Public Shared Property 菜单项_将项下移 As New ToolStripMenuItem With {.Text = "下移（F4）", .Image = My.Resources.下箭头}
 
     Public Shared Property 菜单项_加入检查更新表 As New ToolStripMenuItem With {.Text = "加入检查更新表", .Image = My.Resources.添加带圆圈}
+    Public Shared Property 菜单项_将模组项加入导出预设 As New ToolStripMenuItem With {.Text = "加入导出预设", .Image = My.Resources.添加带圆圈}
     Public Shared Property 菜单项_设置虚拟组 As New ToolStripMenuItem With {.Text = "设置虚拟组", .Image = My.Resources.六个点}
 
     Public Shared Sub 添加项右键菜单的所有菜单项()
@@ -160,6 +164,7 @@ Public Class 管理模组的菜单
         项右键菜单.Items.Add(菜单项_配置项)
         项右键菜单.Items.Add(菜单项_打开项的文件夹)
         项右键菜单.Items.Add(菜单项_加入检查更新表)
+        项右键菜单.Items.Add(菜单项_将模组项加入导出预设)
         项右键菜单.Items.Add(New ToolStripSeparator)
         项右键菜单.Items.Add(菜单项_编辑项)
         项右键菜单.Items.Add(菜单项_设置虚拟组)

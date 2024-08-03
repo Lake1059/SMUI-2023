@@ -245,7 +245,7 @@ Module Module1
 #End Region
 
 
-
+    Public Json序列化选项 As New JsonSerializerOptions With {.WriteIndented = True}
 
 
 End Module

@@ -30,6 +30,7 @@ Public Class DLC
         加载单个DLC("SMUI6.DLC2.CustomSkinExtension.dll")
         加载单个DLC("SMUI6.DLC3.NewItemExtension.dll")
         加载单个DLC("SMUI6.DLC4.CheckUpdatesExtension.dll")
+        加载单个DLC("SMUI6.DLC5.DistributionExtension.dll")
         加载单个DLC("SMUI6.DLC6.UpdateModItemExtension.dll")
         加载单个DLC("SMUI6.SeasonPass2023.dll")
         加载单个DLC("SMUI6.SeasonPass2024.dll")
@@ -49,6 +50,10 @@ Public Class DLC
         If DLC解锁标记.CheckUpdatesExtension Then
             Form1.ListView9.Items(3).SubItems(1).Text = "已激活"
             Form1.ListView9.Items(3).ForeColor = Color1.绿色
+        End If
+        If DLC解锁标记.DistributionExtension Then
+            Form1.ListView9.Items(5).SubItems(1).Text = "已激活"
+            Form1.ListView9.Items(5).ForeColor = Color1.绿色
         End If
         If DLC解锁标记.UpdateModItemExtension Then
             Form1.ListView9.Items(6).SubItems(1).Text = "已激活"

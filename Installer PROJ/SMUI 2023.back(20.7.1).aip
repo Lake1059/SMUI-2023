@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<DOCUMENT Type="Advanced Installer" CreateVersion="20.7.1" version="21.2.2" Modules="architect" RootPath="." Language="zh" Id="{A12F99ED-F1EE-445F-8B52-85137FD53D6F}">
+<DOCUMENT Type="Advanced Installer" CreateVersion="20.7.1" version="20.7.1" Modules="architect" RootPath="." Language="zh" Id="{A12F99ED-F1EE-445F-8B52-85137FD53D6F}">
   <COMPONENT cid="caphyon.advinst.msicomp.ProjectOptionsComponent">
     <ROW Name="HiddenItems" Value="AppXProductDetailsComponent;AppXDependenciesComponent;AppXAppDetailsComponent;AppXVisualAssetsComponent;AppXCapabilitiesComponent;AppXAppDeclarationsComponent;AppXUriRulesComponent;ActSyncAppComponent;CPLAppletComponent;AutorunComponent;GameUxComponent;SilverlightSlnComponent;SharePointSlnComponent;FixupComponent;MsiXDiffComponent;MsixManifestEditorComponent"/>
   </COMPONENT>
@@ -701,6 +701,9 @@
   <COMPONENT cid="caphyon.advinst.msicomp.BootstrOptComponent">
     <ROW BootstrOptKey="GlobalOptions" DownloadFolder="[AppDataFolder][|Manufacturer]\[|ProductName]\prerequisites" Options="2"/>
   </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.BootstrapperUISequenceComponent">
+    <ROW Action="AI_CustomFrameType" Condition="VersionNT64&gt;=1100" Sequence="51" MsiKey="AI_CustomFrameType"/>
+  </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.BuildComponent">
     <ROW BuildKey="DefaultBuild" BuildName="DefaultBuild" BuildOrder="1" BuildType="0" PackageFolder="C:\Users\1059\Desktop" Languages="zh" InstallationType="2" CabsLocation="1" UseLzma="true" LzmaMethod="2" LzmaCompressionLevel="4" PackageType="1" FilesInsideExe="true" ExeIconPath="dropbox.ico" ExtractionFolder="[AppDataFolder][|Manufacturer]\[|ProductName] [|ProductVersion]\install" ExtUI="true" Options="16" UseLargeSchema="true" Unicode="true" ExeName="SMUI 6 Installer" MsiPackageType="x64"/>
   </COMPONENT>
@@ -748,12 +751,11 @@
     <ROW Dialog_="AboutDlg" Control="ProducVersionText" Type="Text" X="14" Y="43" Width="200" Height="15" Attributes="196611" Text="© [AI_CURRENT_YEAR] [Manufacturer]" TextStyle="[ManufacturerFont]" Order="500" TextLocId="-" MsiKey="AboutDlg#ProducVersionText"/>
     <ROW Dialog_="AdminWelcomeDlg" Control="Next" Type="ImageButton" X="379" Y="354" Width="95" Height="28" Attributes="3" Text="[ButtonImage]" TextStyle="[ImageBtnFont]" Order="300" MsiKey="AdminWelcomeDlg#Next" Options="1" ExtType="ImageButton" ExtData="[ButtonText_Next]" ExtDataLocId="-"/>
     <ROW Dialog_="AdminWelcomeDlg" Control="ProductNameTitle" Type="Text" X="15" Y="17" Width="364" Height="32" Attributes="196611" Text="网络" TextStyle="[ProductNameTitleFont]" Order="400" MsiKey="AdminWelcomeDlg#ProductNameTitle"/>
-    <ROW Dialog_="AdminWelcomeDlg" Control="Bitmap_1" Type="Bitmap" X="404" Y="15" Width="6" Height="8" Attributes="0" Text="[AppLogoIconDark]" Order="500" MsiKey="AdminWelcomeDlg#Bitmap_1"/>
-    <ROW Dialog_="AdminWelcomeDlg" Control="CompanyText" Type="Text" X="16" Y="46" Width="362" Height="15" Attributes="196611" Text="发布者: [Manufacturer]" TextStyle="[ManufacturerFont]" Order="600" TextLocId="AppInstaller.Control.Text.Manufacturer" MsiKey="AdminWelcomeDlg#CompanyText"/>
-    <ROW Dialog_="AdminWelcomeDlg" Control="ProductLogo" Type="Bitmap" X="404" Y="15" Width="70" Height="70" Attributes="1" Text="[AppLogoIcon]" Order="700" MsiKey="AdminWelcomeDlg#ProductLogo"/>
-    <ROW Dialog_="AdminWelcomeDlg" Control="ProducVersionText" Type="Text" X="16" Y="60" Width="362" Height="15" Attributes="196611" Text="版本: [ProductVersion]" TextStyle="[ManufacturerFont]" Order="800" TextLocId="AppInstaller.Control.Text.ProductVersion" MsiKey="AdminWelcomeDlg#ProducVersionText"/>
-    <ROW Dialog_="AdminWelcomeDlg" Control="Description" Type="Text" X="16" Y="94" Width="454" Height="60" Attributes="196611" Text="[Wizard]将在指定的网络位置创建 [ProductName] 的服务器映像。单击 &quot;[Text_Next]&quot; 继续，或者单击 &quot;取消&quot; 退出[Wizard]。" TextStyle="[ManufacturerFont]" Order="900" TextLocId="Control.Text.AdminWelcomeDlg#Description" MsiKey="AdminWelcomeDlg#Description"/>
-    <ROW Dialog_="AdminWelcomeDlg" Control="AboutBtn" Type="ImageButton" X="1" Y="382" Width="18" Height="18" Attributes="3" Text="[AboutBtnIcon]" TextStyle="[ManufacturerFont]" Order="1000" MsiKey="AdminWelcomeDlg#AboutBtn" Options="1" ExtType="ImageButton"/>
+    <ROW Dialog_="AdminWelcomeDlg" Control="CompanyText" Type="Text" X="16" Y="46" Width="362" Height="15" Attributes="196611" Text="发布者: [Manufacturer]" TextStyle="[ManufacturerFont]" Order="500" TextLocId="AppInstaller.Control.Text.Manufacturer" MsiKey="AdminWelcomeDlg#CompanyText"/>
+    <ROW Dialog_="AdminWelcomeDlg" Control="ProductLogo" Type="Bitmap" X="404" Y="15" Width="70" Height="70" Attributes="1" Text="[AppLogoIcon]" Order="600" MsiKey="AdminWelcomeDlg#ProductLogo"/>
+    <ROW Dialog_="AdminWelcomeDlg" Control="ProducVersionText" Type="Text" X="16" Y="60" Width="362" Height="15" Attributes="196611" Text="版本: [ProductVersion]" TextStyle="[ManufacturerFont]" Order="700" TextLocId="AppInstaller.Control.Text.ProductVersion" MsiKey="AdminWelcomeDlg#ProducVersionText"/>
+    <ROW Dialog_="AdminWelcomeDlg" Control="Description" Type="Text" X="16" Y="94" Width="454" Height="60" Attributes="196611" Text="[Wizard]将在指定的网络位置创建 [ProductName] 的服务器映像。单击 &quot;[Text_Next]&quot; 继续，或者单击 &quot;取消&quot; 退出[Wizard]。" TextStyle="[ManufacturerFont]" Order="800" TextLocId="Control.Text.AdminWelcomeDlg#Description" MsiKey="AdminWelcomeDlg#Description"/>
+    <ROW Dialog_="AdminWelcomeDlg" Control="AboutBtn" Type="ImageButton" X="1" Y="382" Width="18" Height="18" Attributes="3" Text="[AboutBtnIcon]" TextStyle="[ManufacturerFont]" Order="900" MsiKey="AdminWelcomeDlg#AboutBtn" Options="1" ExtType="ImageButton"/>
     <ROW Dialog_="ExitDialog" Control="Finish" Type="ImageButton" X="379" Y="354" Width="95" Height="28" Attributes="3" Text="[ButtonImage]" TextStyle="[ImageBtnFont]" Order="300" MsiKey="ExitDialog#Finish" Options="1" ExtType="ImageButton" ExtData="[ButtonText_Finish] " ExtDataLocId="Metro.Control.ExtData.ExitDialog#Finish"/>
     <ROW Dialog_="ExitDialog" Control="ProductNameTitle" Type="Text" X="15" Y="17" Width="364" Height="32" Attributes="196611" Text="完成" TextStyle="[ProductNameTitleFont]" Order="400" MsiKey="ExitDialog#ProductNameTitle"/>
     <ROW Dialog_="ExitDialog" Control="ProductLogo" Type="Bitmap" X="404" Y="15" Width="70" Height="70" Attributes="1" Text="[AppLogoIcon]" Order="500" MsiKey="ExitDialog#ProductLogo"/>
@@ -864,12 +866,11 @@
     <ROW Dialog_="UserExit" Control="AboutBtn" Type="ImageButton" X="1" Y="382" Width="18" Height="18" Attributes="3" Text="[AboutBtnIcon]" TextStyle="[ManufacturerFont]" Order="600" MsiKey="UserExit#AboutBtn" Options="1" ExtType="ImageButton"/>
     <ROW Dialog_="WelcomeDlg" Control="Next" Type="ImageButton" X="379" Y="354" Width="95" Height="28" Attributes="3" Text="[ButtonImage]" TextStyle="[ImageBtnFont]" Order="300" MsiKey="WelcomeDlg#Next" Options="1" ExtType="ImageButton" ExtData="[ButtonText_Next]" ExtDataLocId="-"/>
     <ROW Dialog_="WelcomeDlg" Control="ProductNameTitle" Type="Text" X="15" Y="17" Width="364" Height="32" Attributes="196611" Text="[ProductName]" TextStyle="[ProductNameTitleFont]" Order="400" MsiKey="WelcomeDlg#ProductNameTitle"/>
-    <ROW Dialog_="WelcomeDlg" Control="CustomInstallBtn" Type="ImageButton" X="459" Y="210" Width="15" Height="28" Attributes="2" Text="[CustomInstallBtn]" TextStyle="[ImageBtnFont]" Order="500" MsiKey="WelcomeDlg#CustomInstallBtn" Options="1" ExtType="ImageButton"/>
-    <ROW Dialog_="WelcomeDlg" Control="CompanyText" Type="Text" X="16" Y="46" Width="362" Height="15" Attributes="196611" Text="发布者: [Manufacturer]" TextStyle="[ManufacturerFont]" Order="600" TextLocId="AppInstaller.Control.Text.Manufacturer" MsiKey="WelcomeDlg#CompanyText"/>
-    <ROW Dialog_="WelcomeDlg" Control="ProductLogo" Type="Bitmap" X="404" Y="15" Width="70" Height="70" Attributes="1" Text="[AppLogoIcon]" Order="700" MsiKey="WelcomeDlg#ProductLogo"/>
-    <ROW Dialog_="WelcomeDlg" Control="ProducVersionText" Type="Text" X="16" Y="60" Width="362" Height="15" Attributes="196611" Text="版本: [ProductVersion]" TextStyle="[ManufacturerFont]" Order="800" TextLocId="AppInstaller.Control.Text.ProductVersion" MsiKey="WelcomeDlg#ProducVersionText"/>
-    <ROW Dialog_="WelcomeDlg" Control="LaunchCheckBox" Type="ImageCheckBox" X="16" Y="354" Width="126" Height="15" Attributes="3" Property="AiSkipExitDlg" Text="[CheckboxImage]" TextStyle="[ManufacturerFont]" Order="900" MsiKey="WelcomeDlg#LaunchCheckBox" ExtType="ImageCheckBox" ExtData="准备就绪时启动" ExtDataLocId="AppInstaller.Control.Text.LaunchWhenReadyCheckbox"/>
-    <ROW Dialog_="WelcomeDlg" Control="AboutBtn" Type="ImageButton" X="1" Y="382" Width="18" Height="18" Attributes="3" Text="[AboutBtnIcon]" TextStyle="[ManufacturerFont]" Order="1000" MsiKey="WelcomeDlg#AboutBtn" Options="1" ExtType="ImageButton"/>
+    <ROW Dialog_="WelcomeDlg" Control="CompanyText" Type="Text" X="16" Y="46" Width="362" Height="15" Attributes="196611" Text="发布者: [Manufacturer]" TextStyle="[ManufacturerFont]" Order="500" TextLocId="AppInstaller.Control.Text.Manufacturer" MsiKey="WelcomeDlg#CompanyText"/>
+    <ROW Dialog_="WelcomeDlg" Control="ProductLogo" Type="Bitmap" X="404" Y="15" Width="70" Height="70" Attributes="1" Text="[AppLogoIcon]" Order="600" MsiKey="WelcomeDlg#ProductLogo"/>
+    <ROW Dialog_="WelcomeDlg" Control="ProducVersionText" Type="Text" X="16" Y="60" Width="362" Height="15" Attributes="196611" Text="版本: [ProductVersion]" TextStyle="[ManufacturerFont]" Order="700" TextLocId="AppInstaller.Control.Text.ProductVersion" MsiKey="WelcomeDlg#ProducVersionText"/>
+    <ROW Dialog_="WelcomeDlg" Control="LaunchCheckBox" Type="ImageCheckBox" X="16" Y="354" Width="126" Height="15" Attributes="3" Property="AiSkipExitDlg" Text="[CheckboxImage]" TextStyle="[ManufacturerFont]" Order="800" MsiKey="WelcomeDlg#LaunchCheckBox" ExtType="ImageCheckBox" ExtData="准备就绪时启动" ExtDataLocId="AppInstaller.Control.Text.LaunchWhenReadyCheckbox"/>
+    <ROW Dialog_="WelcomeDlg" Control="AboutBtn" Type="ImageButton" X="1" Y="382" Width="18" Height="18" Attributes="3" Text="[AboutBtnIcon]" TextStyle="[ManufacturerFont]" Order="900" MsiKey="WelcomeDlg#AboutBtn" Options="1" ExtType="ImageButton"/>
     <ATTRIBUTE name="DeletedRows" value="AboutDlg#Hyperlink@AboutDlg#LicenseAgreementLink@AdminWelcomeDlg#Bitmap@ExitDialog#Bitmap@ExitDialog#CompanyText@ExitDialog#Description@ExitDialog#ViewReadmeCheckBox@ExitDialog#ViewReadmeText@FatalError#Bitmap@FatalError#CompanyText@FatalError#ProducVersionText@FatalError#ProductLogo@FilesInUse#Bitmap@FilesInUse#CompanyText@FilesInUse#ProducVersionText@FilesInUse#ProductLogo@FolderDlg#Bitmap@FolderDlg#CompanyText@FolderDlg#ProducVersionText@FolderDlg#ProductLogo@MaintenanceWelcomeDlg#Bitmap@MsiRMFilesInUse#Bitmap@MsiRMFilesInUse#CompanyText@MsiRMFilesInUse#ProducVersionText@MsiRMFilesInUse#ProductLogo@OutOfDiskDlg#Bitmap@OutOfDiskDlg#CompanyText@OutOfDiskDlg#ProducVersionText@OutOfDiskDlg#ProductLogo@OutOfRbDiskDlg#Bitmap@OutOfRbDiskDlg#CompanyText@OutOfRbDiskDlg#ProducVersionText@OutOfRbDiskDlg#ProductLogo@PatchWelcomeDlg#Bitmap@PrepareDlg#ActionText@PrepareDlg#Bitmap@PrepareDlg#CompanyText@PrepareDlg#ProducVersionText@PrepareDlg#ProductLogo@ProgressDlg#Bitmap@ProgressDlg#CompanyText@ProgressDlg#ProducVersionText@ProgressDlg#ProductLogo@ResumeDlg#Bitmap@UserExit#Bitmap@UserExit#CompanyText@UserExit#ProducVersionText@UserExit#ProductLogo@WelcomeDlg#Bitmap"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiControlConditionComponent">
@@ -1304,7 +1305,27 @@
     <ROW Action="AI_BACKUP_AI_SETUPEXEPATH" Sequence="99"/>
     <ROW Action="AI_RESTORE_AI_SETUPEXEPATH" Condition="AI_SETUPEXEPATH_ORIGINAL" Sequence="101"/>
     <ROW Action="AI_FinishActions" Condition="AI_INSTALL AND AiSkipExitDlg" Sequence="1301"/>
+    <ROW Action="AI_CloseBtnBaseC" Condition="DarkTheme" Sequence="52" MsiKey="AI_CloseBtnBaseC"/>
+    <ROW Action="AI_CloseBtnC" Condition="DarkTheme" Sequence="55" MsiKey="AI_CloseBtnC"/>
+    <ROW Action="AI_MinBtnBaseC" Condition="DarkTheme" Sequence="56" MsiKey="AI_MinBtnBaseC"/>
+    <ROW Action="AI_MinBtnBorderC" Condition="DarkTheme" Sequence="57" MsiKey="AI_MinBtnBorderC"/>
+    <ROW Action="AI_MinBtnC" Condition="DarkTheme" Sequence="58" MsiKey="AI_MinBtnC"/>
+    <ROW Action="AI_FrameBaseC" Condition="DarkTheme" Sequence="59" MsiKey="AI_FrameBaseC"/>
+    <ROW Action="AI_FrameBorder1C" Condition="DarkTheme" Sequence="60" MsiKey="AI_FrameBorder1C"/>
+    <ROW Action="AI_FrameBorder2C" Condition="DarkTheme" Sequence="61" MsiKey="AI_FrameBorder2C"/>
+    <ROW Action="AI_FrameBorder3C" Condition="DarkTheme" Sequence="62" MsiKey="AI_FrameBorder3C"/>
+    <ROW Action="AI_FrameCaption2C" Condition="DarkTheme" Sequence="72" MsiKey="AI_FrameCaption2C"/>
+    <ROW Action="AI_ButtonImg" Condition="DarkTheme" Sequence="63" MsiKey="AI_ButtonImg"/>
+    <ROW Action="AI_AboutBtnImg" Condition="DarkTheme" Sequence="64" MsiKey="AI_AboutBtnImg"/>
+    <ROW Action="AI_BkgImg" Condition="DarkTheme" Sequence="65" MsiKey="AI_BkgImg"/>
+    <ROW Action="AI_AppLogoIc" Condition="DarkTheme" Sequence="66" MsiKey="AI_AppLogoIc"/>
+    <ROW Action="AI_CheckBoxImg" Condition="DarkTheme" Sequence="70" MsiKey="AI_CheckBoxImg"/>
+    <ROW Action="AI_ControlVisualStyleExDark" Condition="DarkTheme" Sequence="69" MsiKey="AI_ControlVisualStyleExDark"/>
+    <ROW Action="AI_CustomFrameType" Condition="VersionNT64&gt;=1100" Sequence="71" MsiKey="AI_CustomFrameType"/>
     <ROW Action="AI_ChooseTextStyles" Sequence="74"/>
+    <ROW Action="AI_CloseBtnBorderC" Condition="DarkTheme" Sequence="54" MsiKey="AI_CloseBtnBorderC"/>
+    <ROW Action="AI_ControlVisualStyleDark" Condition="DarkTheme" Sequence="67" MsiKey="AI_ControlVisualStyleDark"/>
+    <ROW Action="AI_WinuiReqTheme" Condition="DarkTheme" Sequence="68" MsiKey="AI_WinuiReqTheme"/>
     <ROW Action="AI_RESTORE_LOCATION" Condition="APPDIR=&quot;&quot;" Sequence="749"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiLaunchConditionsComponent">

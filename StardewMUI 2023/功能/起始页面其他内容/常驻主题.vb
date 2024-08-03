@@ -31,7 +31,7 @@ Public Class 常驻主题
                                            End Sub
         AddHandler Form1.UiButton65.Click, Async Sub(s, e) Await Launcher.LaunchUriAsync(New Uri("https://kook.top/yW15HU"))
 
-        AddHandler Form1.UiButton66.Click, Async Sub(s, e) Await Launcher.LaunchUriAsync(New Uri("https://afdian.net/a/1059Studio?tab=shop"))
+        AddHandler Form1.UiButton66.Click, Async Sub(s, e) Await Launcher.LaunchUriAsync(New Uri("https://afdian.com/a/1059Studio?tab=shop"))
         AddHandler Form1.UiButton69.Click, Async Sub(s, e) Await Launcher.LaunchUriAsync(New Uri("https://payhip.com/1059Studio"))
 
 

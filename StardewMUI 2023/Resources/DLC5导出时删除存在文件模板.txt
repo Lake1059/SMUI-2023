@@ -1,0 +1,17 @@
+function Remove-FileToRecycleBin {
+    param (
+        [Parameter(Mandatory = $true)]
+        [string]$filePath
+    )
+    if (Test-Path -Path $filePath) {
+        Add-Type -AssemblyName Microsoft.VisualBasic
+        [Microsoft.VisualBasic.FileIO.FileSystem]::DeleteFile(
+            $filePath,
+            [Microsoft.VisualBasic.FileIO.UIOption]::OnlyErrorDialogs,
+            [Microsoft.VisualBasic.FileIO.RecycleOption]::SendToRecycleBin
+        )
+        Write-Output "File sent to Recycle Bin: $filePath"
+    } else {
+        Write-Output "File not exist: $filePath"
+    }
+}

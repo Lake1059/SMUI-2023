@@ -170,6 +170,7 @@ Public Class 设置
     Public Shared ReadOnly 自定义语言包路径 As String = Path.Combine(Application.StartupPath, "UserData\Language")
     Public Shared ReadOnly SMAPI下载路径 As String = Path.Combine(Application.StartupPath, "UserData\SmapiDownload")
     Public Shared ReadOnly SMAPI解压路径 As String = Path.Combine(Application.StartupPath, "UserData\SmapiDecompress")
+    Public Shared ReadOnly 导出预设数据保存路径 As String = Path.Combine(Application.StartupPath, "UserData\DLC5.json")
 
     Public Shared Function 检查并返回数据库下载文件夹路径() As String
         If Not FileIO.FileSystem.DirectoryExists(Path.Combine(全局设置数据("LocalRepositoryPath"), ".Download")) Then
@@ -215,7 +216,7 @@ Public Class 设置
         Form1.暗黑文本框8.Text = 全局设置数据("LaunchParameters")
         Form1.暗黑文本框9.Text = 全局设置数据("CustomLaunchCMD")
 
-        Form1.UiCheckBox1.Checked = 全局设置数据("SaveUserWindowSize")
+        'Form1.UiCheckBox1.Checked = 全局设置数据("SaveUserWindowSize")
         Form1.UiCheckBox7.Checked = 全局设置数据("AutoGetNews")
         Form1.UiCheckBox10.Checked = 全局设置数据("SaveNewsInTodayUse")
         Form1.UiCheckBox9.Checked = 全局设置数据("AutoCheckUpdate")
@@ -293,7 +294,7 @@ Public Class 设置
     End Sub
 
     Public Shared Sub 保存数值和开关设置()
-        全局设置数据("SaveUserWindowSize") = Form1.UiCheckBox1.Checked
+        '全局设置数据("SaveUserWindowSize") = Form1.UiCheckBox1.Checked
         全局设置数据("AutoGetNews") = Form1.UiCheckBox7.Checked
         全局设置数据("SaveNewsInTodayUse") = Form1.UiCheckBox10.Checked
         全局设置数据("AutoCheckUpdate") = Form1.UiCheckBox9.Checked

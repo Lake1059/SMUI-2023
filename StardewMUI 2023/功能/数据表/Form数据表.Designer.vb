@@ -437,7 +437,7 @@ Partial Class Form数据表
         暗黑文本框4.Name = "暗黑文本框4"
         暗黑文本框4.Padding = New Padding(5, 6, 5, 0)
         暗黑文本框4.PasswordChar = vbNullChar
-        暗黑文本框4.PlaceholderText = "保持简短，越长越难搜到，仅限一个"
+        暗黑文本框4.PlaceholderText = "保持简短，越长越难搜到"
         暗黑文本框4.Size = New Size(260, 30)
         暗黑文本框4.TabIndex = 3
         ' 
@@ -476,7 +476,7 @@ Partial Class Form数据表
         暗黑文本框3.Name = "暗黑文本框3"
         暗黑文本框3.Padding = New Padding(5, 6, 5, 0)
         暗黑文本框3.PasswordChar = vbNullChar
-        暗黑文本框3.PlaceholderText = "多个值用竖线隔开"
+        暗黑文本框3.PlaceholderText = "仅限一个"
         暗黑文本框3.Size = New Size(260, 30)
         暗黑文本框3.TabIndex = 3
         ' 

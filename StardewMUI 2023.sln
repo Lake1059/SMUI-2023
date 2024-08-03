@@ -24,7 +24,9 @@ Project("{778DAE3C-4631-46EA-AA77-85C1314464D9}") = "SMUI6.EasyStartExperience",
 EndProject
 Project("{778DAE3C-4631-46EA-AA77-85C1314464D9}") = "SMUI6.SeasonPass2024", "DLC\SMUI6.SeasonPass2024\SMUI6.SeasonPass2024.vbproj", "{D6C4680D-CC06-4C6E-A3E5-E89055F1530D}"
 EndProject
-Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "SMUI6.DLC2.CustomSkinExtension", "DLC\SMUI6.DLC2.CustomSkinExtension\SMUI6.DLC2.CustomSkinExtension.vbproj", "{090E6D81-1A59-4E1F-A9BD-0CF06C2D6D99}"
+Project("{778DAE3C-4631-46EA-AA77-85C1314464D9}") = "SMUI6.DLC2.CustomSkinExtension", "DLC\SMUI6.DLC2.CustomSkinExtension\SMUI6.DLC2.CustomSkinExtension.vbproj", "{090E6D81-1A59-4E1F-A9BD-0CF06C2D6D99}"
+EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "SMUI6.DLC5.DistributionExtension", "SMUI6.DLC5.DistributionExtension\SMUI6.DLC5.DistributionExtension.vbproj", "{498976E3-30FB-4CFC-A89F-DE973CAC6376}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -68,6 +70,10 @@ Global
 		{090E6D81-1A59-4E1F-A9BD-0CF06C2D6D99}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{090E6D81-1A59-4E1F-A9BD-0CF06C2D6D99}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{090E6D81-1A59-4E1F-A9BD-0CF06C2D6D99}.Release|Any CPU.Build.0 = Release|Any CPU
+		{498976E3-30FB-4CFC-A89F-DE973CAC6376}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{498976E3-30FB-4CFC-A89F-DE973CAC6376}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{498976E3-30FB-4CFC-A89F-DE973CAC6376}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{498976E3-30FB-4CFC-A89F-DE973CAC6376}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

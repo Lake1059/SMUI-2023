@@ -18,6 +18,8 @@ Public Class Form导入
 
     Private Sub Form导入_Shown(sender As Object, e As EventArgs) Handles Me.Shown
         Me.ColumnHeader1.Width = Me.ListView1.Width - 界面控制.程序DPI_垂直滚动条宽度 * 2
+        Me.UiCheckBox1.CheckBoxSize = 20 * 界面控制.DPI
+        Me.UiCheckBox2.CheckBoxSize = 20 * 界面控制.DPI
     End Sub
 
     Private Sub ListView1_DragDrop(sender As Object, e As DragEventArgs) Handles ListView1.DragDrop
@@ -157,7 +159,7 @@ jx1:
     End Sub
 
     Private Sub UiButton7_Click(sender As Object, e As EventArgs) Handles UiButton7.Click
-        Dim a As New 多项单选对话框("Windows PowerShell", {"确定"}, "由于新版本 .NET 框架不再提供 ANSI 编码，我无法从命令提示符运行脚本，所以改成了 Windows PowerShell，请确保系统中的 PowerShell 能够正常运行。" & vbCrLf & vbCrLf & "需要在 Windows 设置中打开允许运行未签名的本地脚本：Windows 设置 -> 更新和安全 -> 开发者选项 -> PowerShell -> 勾选：更改执行策略，以允许本地 PowerShell 脚本在未签名的情况下运行。应用即可", 200, 500)
+        Dim a As New 多项单选对话框("Windows PowerShell", {"确定"}, "由于新版本 .NET 框架不再提供 ANSI 编码，我无法从命令提示符运行脚本，所以改成了 Windows PowerShell，请确保系统中的 PowerShell 能够正常运行。" & vbCrLf & vbCrLf & "需要在 Windows 设置中打开允许运行未签名的本地脚本：" & vbCrLf & vbCrLf & "Win10：Windows 设置 -> 更新和安全 -> 开发者选项 -> PowerShell -> 勾选：更改执行策略，以允许本地 PowerShell 脚本在未签名的情况下运行。应用即可。" & vbCrLf & vbCrLf & "Win11：Windows 设置 -> 开发者选项 -> PowerShell，然后启用对应选项即可。", 300, 500)
         a.ShowDialog(Me)
     End Sub
 End Class

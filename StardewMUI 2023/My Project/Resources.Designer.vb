@@ -141,6 +141,23 @@ Namespace My.Resources
         End Property
         
         '''<summary>
+        '''  查找类似 $filePath = &quot;&lt;FILE&gt;&quot;
+        '''if (Test-Path -Path $filePath) {
+        '''    Add-Type -AssemblyName Microsoft.VisualBasic
+        '''    [Microsoft.VisualBasic.FileIO.FileSystem]::DeleteFile(
+        '''        $filePath,
+        '''        [Microsoft.VisualBasic.FileIO.UIOption]::OnlyErrorDialogs,
+        '''        [Microsoft.VisualBasic.FileIO.RecycleOption]::SendToRecycleBin
+        '''    )
+        '''} 的本地化字符串。
+        '''</summary>
+        Friend ReadOnly Property DLC5导出时删除存在文件模板() As String
+            Get
+                Return ResourceManager.GetString("DLC5导出时删除存在文件模板", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
         '''  查找类似于 (图标) 的 System.Drawing.Icon 类型的本地化资源。
         '''</summary>
         Friend ReadOnly Property dropbox() As System.Drawing.Icon
@@ -697,8 +714,8 @@ Namespace My.Resources
         '''SaveNewsInTodayUse=False
         '''AutoCheckUpdate=True
         '''AutoStartDownloadUpdate=True
-        '''AdminDragDropPatch=True
-        '''AutoSelectFirstNexusDo [字符串的其余部分被截断]&quot;; 的本地化字符串。
+        '''AutoSelectFirstNexusDownloadSever=False
+        '''AutoCo [字符串的其余部分被截断]&quot;; 的本地化字符串。
         '''</summary>
         Friend ReadOnly Property 默认设置文件() As String
             Get
