@@ -6,7 +6,6 @@ Imports Windows.System
 Imports System.Windows.Forms.Control
 Imports ImageMagick
 
-
 Public Class 管理模组
 
     Public Shared Property 实时分类排序 As New List(Of String)
@@ -16,7 +15,6 @@ Public Class 管理模组
     Public Shared Property 实时模组项列表内容归属的分类 As String = ""
     Public Shared Property 点击的链接 As String = ""
 
-
     Public Shared Sub 初始化()
         AddHandler 管理模组的菜单.菜单项_刷新数据子库.Click, AddressOf 扫描数据子库
         AddHandler 管理模组的菜单.菜单项_刷新分类.Click, Sub() 扫描分类()
@@ -25,7 +23,7 @@ Public Class 管理模组
         AddHandler 管理模组的菜单.菜单项_转移分类.Click, AddressOf 分类操作.转移分类
         AddHandler 管理模组的菜单.菜单项_重命名分类.Click, AddressOf 分类操作.重命名分类
         AddHandler 管理模组的菜单.菜单项_删除分类.Click, AddressOf 分类操作.删除分类
-        AddHandler 管理模组的菜单.菜单项_删除选中分类中的项排序.Click, AddressOf 分类操作.删除排序
+        AddHandler 管理模组的菜单.菜单项_更多分类操作_删除分类排序.Click, AddressOf 分类操作.删除排序
         AddHandler 管理模组的菜单.菜单项_将分类上移.Click, AddressOf 上移选中的分类
         AddHandler 管理模组的菜单.菜单项_将分类下移.Click, AddressOf 下移选中的分类
 
@@ -33,6 +31,7 @@ Public Class 管理模组
         AddHandler 管理模组的菜单.菜单项_下载并新建项.Click, AddressOf 模组项操作.下载并新建项
         AddHandler 管理模组的菜单.菜单项_移动项.Click, AddressOf 模组项操作.转移模组项
         AddHandler 管理模组的菜单.菜单项_重命名项.Click, AddressOf 模组项操作.重命名模组项
+        AddHandler 管理模组的菜单.菜单项_删除选中分类中的项排序.Click, AddressOf 模组项操作.删除排序
         AddHandler 管理模组的菜单.菜单项_删除项.Click, AddressOf 模组项操作.删除模组项
         AddHandler 管理模组的菜单.菜单项_将项上移.Click, AddressOf 上移选中的模组项
         AddHandler 管理模组的菜单.菜单项_将项下移.Click, AddressOf 下移选中的模组项
@@ -71,6 +70,7 @@ Public Class 管理模组
         AddHandler 管理模组的菜单.菜单项_打开分类的文件夹.Click, AddressOf 打开分类文件夹
         AddHandler 管理模组的菜单.菜单项_用VSC打开.Click, AddressOf 用VSC打开
         AddHandler 管理模组的菜单.菜单项_用VS打开.Click, AddressOf 用VS打开
+        AddHandler 管理模组的菜单.菜单项_编辑项_清除Config缓存.Click, AddressOf 模组项操作.清除Config缓存
 
         AddHandler 管理模组的菜单.菜单项_安装.Click, Sub(sender, e) 安装卸载.执行操作(安装卸载.操作类型.安装)
         AddHandler 管理模组的菜单.菜单项_卸载.Click, Sub(sender, e) 安装卸载.执行操作(安装卸载.操作类型.卸载)
@@ -81,7 +81,6 @@ Public Class 管理模组
         AddHandler 管理模组的菜单.菜单项_设置虚拟组.Click, Sub(sender, e) If Form1.ListView2.SelectedItems.Count > 0 Then 显示窗体(Form编辑虚拟组, Form1)
 
         AddHandler 管理模组的菜单.菜单项_更多分类操作_转换安装命令到安装规划.Click, AddressOf 管理模组3.更新选中分类_从安装命令到安装规划
-        AddHandler 管理模组的菜单.菜单项_更多分类操作_转换安装规划到安装命令.Click, AddressOf 管理模组3.更新选中分类_从安装规划到安装命令
 
         AddHandler 管理模组的菜单.菜单项_批量创建项.Click, Sub() 显示窗体(Form批量创建, Form1)
 
@@ -92,7 +91,6 @@ Public Class 管理模组
         自定义描述功能.初始化()
         预览图功能.初始化()
 
-        初始化安装状态显示词字典()
         扫描数据子库()
     End Sub
 
@@ -430,7 +428,7 @@ Line1:
         For i = 0 To Form1.ListView2.Items.Count - 1
             Dim 项路径 As String = Path.Combine(管理模组2.检查并返回当前所选子库路径(False), Form1.ListView2.Items(i).SubItems(3).Text, Form1.ListView2.Items(i).Text)
             Dim a As New 项信息读取类
-            Dim ct As New 公共对象.项数据计算类型结构 With {.安装状态 = True, .版本 = True, .已安装版本 = True}
+            Dim ct As New 项数据计算类型结构 With {.安装状态 = True, .版本 = True, .已安装版本 = True}
             If Not FileIO.FileSystem.FileExists(Path.Combine(项路径, "Code2")) Then
                 If FileIO.FileSystem.FileExists(Path.Combine(项路径, "Code")) Then
                     FileIO.FileSystem.WriteAllText(Path.Combine(项路径, "Code2"), 命令规划转换.将安装命令转换到安装规划(FileIO.FileSystem.ReadAllText(Path.Combine(项路径, "Code"))), False)
@@ -440,7 +438,7 @@ Line1:
             If a.错误信息 <> "" Then Continue For
             If a.版本.Count > 0 And a.已安装版本.Count > 0 Then
                 If a.版本(0) <> a.已安装版本(0) Then
-                    If a.安装状态 = 公共对象.安装状态枚举.安装不完整 Then
+                    If a.安装状态 = "Incomplete" Then
                         Form1.ListView2.Items(i).SubItems(1).Text = a.版本(0)
                         GoTo 结束版本号高低判断
                     End If
@@ -469,10 +467,14 @@ Line1:
                 Form1.ListView2.Items(i).ForeColor = Color1.白色
             End If
 
-            Select Case Form1.ListView2.Items(i).SubItems(2).Text
-                Case ""
-                    Form1.ListView2.Items(i).SubItems(2).Text = 管理模组.安装状态显示词字典(a.安装状态)
-            End Select
+            If Form1.ListView2.Items(i).SubItems(2).Text = "" Then
+                Dim value As String = Nothing
+                If 安装状态字典.TryGetValue(a.安装状态, value) Then
+                    Form1.ListView2.Items(i).SubItems(2).Text = value
+                Else
+                    Form1.ListView2.Items(i).SubItems(2).Text = "未定义的状态值"
+                End If
+            End If
 
             管理模组.根据安装状态设置项的颜色标记(a.安装状态, Form1.ListView2.Items(i), True)
 
@@ -492,46 +494,28 @@ Line1:
         Next
     End Sub
 
-    Public Shared Property 安装状态显示词字典 As New Dictionary(Of 公共对象.安装状态枚举, String)
-    Public Shared Sub 初始化安装状态显示词字典()
-        安装状态显示词字典(公共对象.安装状态枚举.未知) = "未知"
-        安装状态显示词字典(公共对象.安装状态枚举.未配置) = "未配置"
-        安装状态显示词字典(公共对象.安装状态枚举.已安装) = "已安装"
-        安装状态显示词字典(公共对象.安装状态枚举.未安装) = "未安装"
-        安装状态显示词字典(公共对象.安装状态枚举.安装不完整) = "安装不完整"
-        安装状态显示词字典(公共对象.安装状态枚举.文件夹已复制) = "文件夹已复制"
-        安装状态显示词字典(公共对象.安装状态枚举.文件夹未复制) = "文件夹未复制"
-        安装状态显示词字典(公共对象.安装状态枚举.文件夹部分复制) = "文件夹部分复制"
-        安装状态显示词字典(公共对象.安装状态枚举.附加内容) = "附加内容"
-        安装状态显示词字典(公共对象.安装状态枚举.文件已替换) = "文件已替换"
-        安装状态显示词字典(公共对象.安装状态枚举.文件未替换) = "文件未替换"
-        安装状态显示词字典(公共对象.安装状态枚举.文件部分替换) = "文件部分替换"
-        安装状态显示词字典(公共对象.安装状态枚举.文件已复制) = "文件已复制"
-        安装状态显示词字典(公共对象.安装状态枚举.文件未复制) = "文件未复制"
-        安装状态显示词字典(公共对象.安装状态枚举.文件部分复制) = "文件部分复制"
-        安装状态显示词字典(公共对象.安装状态枚举.文件已复制并验证) = "文件已复制并验证"
-        安装状态显示词字典(公共对象.安装状态枚举.文件已复制但验证失败) = "文件已复制但验证失败"
-        安装状态显示词字典(公共对象.安装状态枚举.源文件夹丢失) = "源文件夹丢失"
-        安装状态显示词字典(公共对象.安装状态枚举.源文件丢失) = "源文件丢失"
-        安装状态显示词字典(公共对象.安装状态枚举.不带判断的文件复制) = "无判断的文件复制"
-        安装状态显示词字典(公共对象.安装状态枚举.覆盖Content文件夹) = "覆盖 Content"
-    End Sub
+    Public Shared Property 第三方安装状态颜色值 As New Dictionary(Of String, Color)
 
-    Public Shared Sub 根据安装状态设置项的颜色标记(安装状态 As 公共对象.安装状态枚举, 哪个项 As ListViewItem, Optional 跳过未安装的处理 As Boolean = False)
+    Public Shared Sub 根据安装状态设置项的颜色标记(安装状态 As String, 哪个项 As ListViewItem, Optional 跳过未安装的处理 As Boolean = False)
         Select Case 安装状态
-            Case 公共对象.安装状态枚举.未安装
+            Case "UnInstalled", "FileUnInstalled"
                 If 跳过未安装的处理 = True Then Exit Sub
                 哪个项.ForeColor = Color1.白色
-            Case 公共对象.安装状态枚举.已安装
+            Case "Installed"
                 哪个项.ForeColor = Color1.绿色
-            Case 公共对象.安装状态枚举.安装不完整, 公共对象.安装状态枚举.文件已复制但验证失败
+            Case "Incomplete", "FileInstalledVerifyfailed"
                 哪个项.ForeColor = Color1.青色
-            Case 公共对象.安装状态枚举.文件夹已复制, 公共对象.安装状态枚举.文件已复制, 公共对象.安装状态枚举.附加内容, 公共对象.安装状态枚举.覆盖Content文件夹, 公共对象.安装状态枚举.文件已复制并验证
+            Case "FolderCopied", "FileInstalled", "Additional", "CoverContent", "FileInstalledVerified"
                 哪个项.ForeColor = Color1.紫色
-            Case 公共对象.安装状态枚举.不带判断的文件复制, 公共对象.安装状态枚举.文件已复制但验证失败
+            Case "File"
                 哪个项.ForeColor = Color1.蓝色
-            Case 公共对象.安装状态枚举.未配置, 公共对象.安装状态枚举.未知
+            Case "NoConfigured", "UnKnow", "MissingCalculationProgram"
                 哪个项.ForeColor = Color1.红色
+            Case Else
+                Dim value As Color = Nothing
+                If 第三方安装状态颜色值.TryGetValue(安装状态, value) Then
+                    哪个项.ForeColor = value
+                End If
         End Select
     End Sub
 
@@ -693,7 +677,7 @@ Line1:
         End If
         Dim 项路径 As String = Path.Combine(管理模组2.检查并返回当前所选子库路径(False), Form1.ListView2.Items(Form1.ListView2.SelectedIndices(0)).SubItems(3).Text, Form1.ListView2.Items(Form1.ListView2.SelectedIndices(0)).Text)
         Dim a As New 项信息读取类
-        a.读取项信息(项路径, New 公共对象.项数据计算类型结构 With {.全部 = True}, 设置.全局设置数据("StardewValleyGamePath"))
+        a.读取项信息(项路径, New 项数据计算类型结构 With {.全部 = True}, 设置.全局设置数据("StardewValleyGamePath"))
         If a.错误信息 <> "" Then
             UIMessageTip.Show(a.错误信息,, 2500)
             Exit Sub

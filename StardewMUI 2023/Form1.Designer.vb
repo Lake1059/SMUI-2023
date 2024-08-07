@@ -3596,12 +3596,15 @@ Partial Class Form1
         ListView4.Dock = DockStyle.Fill
         ListView4.ForeColor = Color.FromArgb(CByte(224), CByte(224), CByte(224))
         ListView4.FullRowSelect = True
+        ListView4.HeaderStyle = ColumnHeaderStyle.None
         ListView4.Location = New Point(10, 10)
         ListView4.Name = "ListView4"
         ListView4.OwnerDraw = True
         ListView4.Size = New Size(535, 599)
+        ListView4.SmallImageList = ImageList1
         ListView4.TabIndex = 1
         ListView4.UseCompatibleStateImageBehavior = False
+        ListView4.View = View.Details
         ' 
         ' Label46
         ' 
@@ -4310,9 +4313,9 @@ Partial Class Form1
         Label60.Location = New Point(20, 20)
         Label60.Margin = New Padding(20, 20, 20, 0)
         Label60.Name = "Label60"
-        Label60.Size = New Size(497, 21)
+        Label60.Size = New Size(154, 21)
         Label60.TabIndex = 29
-        Label60.Text = "全局模组安装检查器（BETA！此功能的逻辑尚不完善，持续施工中）"
+        Label60.Text = "全局模组安装检查器"
         ' 
         ' TabPage存档编辑器
         ' 
@@ -5030,9 +5033,9 @@ Partial Class Form1
         TabPage管理模组.Controls.Add(Panel3)
         TabPage管理模组.Controls.Add(Panel2)
         TabPage管理模组.Controls.Add(Panel1)
-        TabPage管理模组.Location = New Point(0, 50)
+        TabPage管理模组.Location = New Point(0, 40)
         TabPage管理模组.Name = "TabPage管理模组"
-        TabPage管理模组.Size = New Size(1264, 700)
+        TabPage管理模组.Size = New Size(200, 60)
         TabPage管理模组.TabIndex = 1
         TabPage管理模组.Text = "管理模组"
         ' 
@@ -5044,7 +5047,7 @@ Partial Class Form1
         Panel4.Dock = DockStyle.Fill
         Panel4.Location = New Point(250, 0)
         Panel4.Name = "Panel4"
-        Panel4.Size = New Size(714, 660)
+        Panel4.Size = New Size(0, 20)
         Panel4.TabIndex = 3
         ' 
         ' Panel12
@@ -5054,7 +5057,7 @@ Partial Class Form1
         Panel12.Location = New Point(0, 40)
         Panel12.Name = "Panel12"
         Panel12.Padding = New Padding(10)
-        Panel12.Size = New Size(714, 620)
+        Panel12.Size = New Size(0, 0)
         Panel12.TabIndex = 4
         ' 
         ' ListView2
@@ -5071,7 +5074,7 @@ Partial Class Form1
         ListView2.Name = "ListView2"
         ListView2.OwnerDraw = True
         ListView2.ShowItemToolTips = True
-        ListView2.Size = New Size(694, 600)
+        ListView2.Size = New Size(0, 0)
         ListView2.StateImageList = ImageList1
         ListView2.TabIndex = 2
         ListView2.UseCompatibleStateImageBehavior = False
@@ -5106,13 +5109,13 @@ Partial Class Form1
         Panel6.Dock = DockStyle.Top
         Panel6.Location = New Point(0, 0)
         Panel6.Name = "Panel6"
-        Panel6.Size = New Size(714, 40)
+        Panel6.Size = New Size(0, 40)
         Panel6.TabIndex = 3
         ' 
         ' Label51
         ' 
         Label51.Dock = DockStyle.Right
-        Label51.Location = New Point(574, 0)
+        Label51.Location = New Point(-140, 0)
         Label51.Name = "Label51"
         Label51.Size = New Size(50, 40)
         Label51.TabIndex = 16
@@ -5300,7 +5303,7 @@ Partial Class Form1
         UiButton44.ForeHoverColor = Color.FromArgb(CByte(244), CByte(244), CByte(244))
         UiButton44.ForePressColor = Color.FromArgb(CByte(244), CByte(244), CByte(244))
         UiButton44.ForeSelectedColor = Color.FromArgb(CByte(244), CByte(244), CByte(244))
-        UiButton44.Location = New Point(624, 0)
+        UiButton44.Location = New Point(-90, 0)
         UiButton44.MinimumSize = New Size(1, 1)
         UiButton44.Name = "UiButton44"
         UiButton44.Radius = 10
@@ -5326,9 +5329,9 @@ Partial Class Form1
         Panel3.Controls.Add(Panel7)
         Panel3.Controls.Add(Panel9)
         Panel3.Dock = DockStyle.Right
-        Panel3.Location = New Point(964, 0)
+        Panel3.Location = New Point(-100, 0)
         Panel3.Name = "Panel3"
-        Panel3.Size = New Size(300, 660)
+        Panel3.Size = New Size(300, 20)
         Panel3.TabIndex = 2
         ' 
         ' Panel58
@@ -5338,7 +5341,7 @@ Partial Class Form1
         Panel58.Location = New Point(0, 40)
         Panel58.Name = "Panel58"
         Panel58.Padding = New Padding(2, 8, 0, 8)
-        Panel58.Size = New Size(300, 369)
+        Panel58.Size = New Size(300, 0)
         Panel58.TabIndex = 7
         ' 
         ' RichTextBox1
@@ -5351,7 +5354,7 @@ Partial Class Form1
         RichTextBox1.Name = "RichTextBox1"
         RichTextBox1.ScrollBars = RichTextBoxScrollBars.ForcedVertical
         RichTextBox1.ShowSelectionMargin = True
-        RichTextBox1.Size = New Size(288, 353)
+        RichTextBox1.Size = New Size(288, 0)
         RichTextBox1.TabIndex = 6
         RichTextBox1.Text = ""
         ' 
@@ -5361,7 +5364,7 @@ Partial Class Form1
         Panel8.Controls.Add(Label2)
         Panel8.Controls.Add(Label1)
         Panel8.Dock = DockStyle.Bottom
-        Panel8.Location = New Point(0, 409)
+        Panel8.Location = New Point(0, -231)
         Panel8.Name = "Panel8"
         Panel8.Size = New Size(300, 50)
         Panel8.TabIndex = 4
@@ -5474,7 +5477,7 @@ Partial Class Form1
         Panel9.Controls.Add(PictureBox1)
         Panel9.Controls.Add(Panel10)
         Panel9.Dock = DockStyle.Bottom
-        Panel9.Location = New Point(0, 459)
+        Panel9.Location = New Point(0, -181)
         Panel9.Name = "Panel9"
         Panel9.Size = New Size(300, 201)
         Panel9.TabIndex = 5
@@ -5576,7 +5579,7 @@ Partial Class Form1
         Panel2.Dock = DockStyle.Left
         Panel2.Location = New Point(0, 0)
         Panel2.Name = "Panel2"
-        Panel2.Size = New Size(250, 660)
+        Panel2.Size = New Size(250, 20)
         Panel2.TabIndex = 1
         ' 
         ' Panel11
@@ -5586,7 +5589,7 @@ Partial Class Form1
         Panel11.Location = New Point(0, 40)
         Panel11.Name = "Panel11"
         Panel11.Padding = New Padding(10)
-        Panel11.Size = New Size(250, 620)
+        Panel11.Size = New Size(250, 0)
         Panel11.TabIndex = 3
         ' 
         ' ListView1
@@ -5603,7 +5606,7 @@ Partial Class Form1
         ListView1.Name = "ListView1"
         ListView1.OwnerDraw = True
         ListView1.ShowItemToolTips = True
-        ListView1.Size = New Size(227, 600)
+        ListView1.Size = New Size(227, 0)
         ListView1.StateImageList = ImageList1
         ListView1.TabIndex = 1
         ListView1.UseCompatibleStateImageBehavior = False
@@ -5673,9 +5676,9 @@ Partial Class Form1
         Panel1.Controls.Add(UiButton7)
         Panel1.Controls.Add(UiButton6)
         Panel1.Dock = DockStyle.Bottom
-        Panel1.Location = New Point(0, 660)
+        Panel1.Location = New Point(0, 20)
         Panel1.Name = "Panel1"
-        Panel1.Size = New Size(1264, 40)
+        Panel1.Size = New Size(200, 40)
         Panel1.TabIndex = 0
         ' 
         ' UiButton9
@@ -5703,7 +5706,7 @@ Partial Class Form1
         UiButton9.RectHoverColor = Color.FromArgb(CByte(64), CByte(64), CByte(64))
         UiButton9.RectPressColor = Color.FromArgb(CByte(80), CByte(80), CByte(80))
         UiButton9.RectSelectedColor = Color.FromArgb(CByte(42), CByte(42), CByte(42))
-        UiButton9.Size = New Size(240, 40)
+        UiButton9.Size = New Size(1, 40)
         UiButton9.Style = Sunny.UI.UIStyle.Custom
         UiButton9.TabIndex = 14
         UiButton9.TabStop = False
@@ -5727,7 +5730,7 @@ Partial Class Form1
         UiButton14.ForeHoverColor = Color.FromArgb(CByte(244), CByte(244), CByte(244))
         UiButton14.ForePressColor = Color.FromArgb(CByte(244), CByte(244), CByte(244))
         UiButton14.ForeSelectedColor = Color.FromArgb(CByte(244), CByte(244), CByte(244))
-        UiButton14.Location = New Point(1204, 0)
+        UiButton14.Location = New Point(140, 0)
         UiButton14.MinimumSize = New Size(1, 1)
         UiButton14.Name = "UiButton14"
         UiButton14.Radius = 10
@@ -8436,15 +8439,12 @@ Partial Class Form1
     Friend WithEvents Panel37 As Panel
     Friend WithEvents TabPageSMAPI安装管理器 As TabPage
     Friend WithEvents Panel41 As Panel
-    Friend WithEvents ListView6 As ListView
     Friend WithEvents ColumnHeader6 As ColumnHeader
     Friend WithEvents Panel38 As Panel
-    Friend WithEvents ListView3 As ListView
     Friend WithEvents ColumnHeader5 As ColumnHeader
     Friend WithEvents UiComboBox5 As Sunny.UI.UIComboBox
     Friend WithEvents Label66 As Label
     Friend WithEvents Panel42 As Panel
-    Friend WithEvents ListView7 As ListView
     Friend WithEvents ColumnHeader7 As ColumnHeader
     Friend WithEvents ColumnHeader8 As ColumnHeader
     Friend WithEvents UiButton44 As Sunny.UI.UIButton
@@ -8685,6 +8685,9 @@ Partial Class Form1
     Friend WithEvents 暗黑文本框13 As 暗黑文本框
     Friend WithEvents UiCheckBox2 As Sunny.UI.UICheckBox
     Friend WithEvents UiButton110 As Sunny.UI.UIButton
-    Public WithEvents ListView1 As ListView
-    Public WithEvents ListView2 As ListView
+    Friend WithEvents ListView1 As ListView
+    Friend WithEvents ListView2 As ListView
+    Friend WithEvents ListView6 As ListView
+    Friend WithEvents ListView3 As ListView
+    Friend WithEvents ListView7 As ListView
 End Class

@@ -82,7 +82,7 @@ Public Class SearchItem
 
                         Case SearchType.ContentPakForAndDependencies
                             Dim a As New 项信息读取类
-                            a.读取项信息(mDir2.FullName, New 公共对象.项数据计算类型结构 With {.内容包依赖 = True, .其他依赖项 = True})
+                            a.读取项信息(mDir2.FullName, New 项信息读取类.项数据计算类型结构 With {.内容包依赖 = True, .其他依赖项 = True})
                             For Each b In a.内容包依赖
                                 If DetermineWhetherToAddToOutput(b.Key, SearchWhat) = True Then
                                     Results.Add(mDir2.FullName)
@@ -108,7 +108,7 @@ jx1:
 
                         Case SearchType.NexusID
                             Dim a As New 项信息读取类
-                            a.读取项信息(mDir2.FullName, New 公共对象.项数据计算类型结构 With {.更新键 = True})
+                            a.读取项信息(mDir2.FullName, New 项信息读取类.项数据计算类型结构 With {.更新键 = True})
                             For i = 0 To a.NexusID.Count - 1
                                 If DetermineWhetherToAddToOutput(a.NexusID(i), SearchWhat) = True Then
                                     Results.Add(mDir2.FullName)
@@ -118,7 +118,7 @@ jx1:
 
                         Case SearchType.ModdropID
                             Dim a As New 项信息读取类
-                            a.读取项信息(mDir2.FullName, New 公共对象.项数据计算类型结构 With {.更新键 = True})
+                            a.读取项信息(mDir2.FullName, New 项信息读取类.项数据计算类型结构 With {.更新键 = True})
                             For i = 0 To a.ModDrop.Count - 1
                                 If DetermineWhetherToAddToOutput(a.ModDrop(i), SearchWhat) = True Then
                                     Results.Add(mDir2.FullName)

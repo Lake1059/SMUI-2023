@@ -23,9 +23,7 @@ Public Class 管理模组的菜单
     Public Shared Property 菜单项_更多分类操作 As New ToolStripMenuItem With {.Text = "更多", .Image = My.Resources.试验}
     Public Shared Property 更多分类操作菜单 As New 暗黑菜单条控件本体 With {.ImageScalingSize = New Size(25 * 界面控制.DPI, 25 * 界面控制.DPI)}
     Public Shared Property 菜单项_更多分类操作_转换安装命令到安装规划 As New ToolStripMenuItem With {.Text = "转换安装命令到安装规划", .Image = My.Resources.试验}
-    Public Shared Property 菜单项_更多分类操作_转换安装规划到安装命令 As New ToolStripMenuItem With {.Text = "转换安装规划到安装命令", .Image = My.Resources.试验}
-    Public Shared Property 菜单项_更多分类操作_清除Config缓存 As New ToolStripMenuItem With {.Text = "清除 Config 缓存", .Image = My.Resources.删除}
-    Public Shared Property 菜单项_更多分类操作_删除分类排序 As New ToolStripMenuItem With {.Text = "删除排序数据以重置顺序", .Image = My.Resources.删除}
+    Public Shared Property 菜单项_更多分类操作_删除分类排序 As New ToolStripMenuItem With {.Text = "删除分类排序", .Image = My.Resources.删除}
 
     Public Shared Property 子库列表_选择 As New 暗黑菜单条控件本体 With {.ImageScalingSize = New Size(25 * 界面控制.DPI, 25 * 界面控制.DPI)}
     Public Shared Property 子库列表_删除 As New 暗黑菜单条控件本体 With {.ImageScalingSize = New Size(25 * 界面控制.DPI, 25 * 界面控制.DPI)}
@@ -60,8 +58,6 @@ Public Class 管理模组的菜单
 
         菜单项_更多分类操作.DropDown = 更多分类操作菜单
         更多分类操作菜单.Items.Add(菜单项_更多分类操作_转换安装命令到安装规划)
-        更多分类操作菜单.Items.Add(菜单项_更多分类操作_转换安装规划到安装命令)
-        更多分类操作菜单.Items.Add(菜单项_更多分类操作_清除Config缓存)
         更多分类操作菜单.Items.Add(菜单项_更多分类操作_删除分类排序)
     End Sub
 
@@ -74,7 +70,6 @@ Public Class 管理模组的菜单
     Public Shared Property 菜单项_将分类上移 As New ToolStripMenuItem With {.Text = "上移（F3）", .Image = My.Resources.上箭头}
     Public Shared Property 菜单项_将分类下移 As New ToolStripMenuItem With {.Text = "下移（F4）", .Image = My.Resources.下箭头}
     Public Shared Property 菜单项_删除选中分类中的项排序 As New ToolStripMenuItem With {.Text = "删除其中的项排序", .Image = My.Resources.删除}
-
     Public Shared Property 菜单项_加入整个分类到检查更新表 As New ToolStripMenuItem With {.Text = "加入检查更新表", .Image = My.Resources.添加带圆圈}
     Public Shared Property 菜单项_将分类加入导出预设 As New ToolStripMenuItem With {.Text = "加入导出预设", .Image = My.Resources.添加带圆圈}
     Public Shared Property 菜单项_设置分类的颜色 As New ToolStripMenuItem With {.Text = "设置颜色", .Image = My.Resources.颜色滤镜}
@@ -148,8 +143,6 @@ Public Class 管理模组的菜单
     Public Shared Property 菜单项_用VSC打开 As New ToolStripMenuItem With {.Text = "用 Visual Studio Code 打开", .Image = My.Resources.代码文件夹}
     Public Shared Property 菜单项_用VS打开 As New ToolStripMenuItem With {.Text = "用 Visual Studio 打开", .Image = My.Resources.代码文件夹}
     Public Shared Property 菜单项_编辑项_清除Config缓存 As New ToolStripMenuItem With {.Text = "清除 Config 缓存", .Image = My.Resources.删除}
-    Public Shared Property 菜单项_编辑项_转换安装命令到安装规划 As New ToolStripMenuItem With {.Text = "转换安装命令到安装规划", .Image = My.Resources.试验}
-    Public Shared Property 菜单项_编辑项_转换安装规划到安装命令 As New ToolStripMenuItem With {.Text = "转换安装规划到安装命令", .Image = My.Resources.试验}
     Public Shared Property 菜单项_将项上移 As New ToolStripMenuItem With {.Text = "上移（F3）", .Image = My.Resources.上箭头}
     Public Shared Property 菜单项_将项下移 As New ToolStripMenuItem With {.Text = "下移（F4）", .Image = My.Resources.下箭头}
 
@@ -177,17 +170,13 @@ Public Class 管理模组的菜单
         编辑项功能菜单.Items.Add(New ToolStripSeparator)
         编辑项功能菜单.Items.Add(菜单项_编辑项_清除Config缓存)
         编辑项功能菜单.Items.Add(New ToolStripSeparator)
-        编辑项功能菜单.Items.Add(菜单项_编辑项_转换安装命令到安装规划)
-        编辑项功能菜单.Items.Add(菜单项_编辑项_转换安装规划到安装命令)
-        编辑项功能菜单.Items.Add(New ToolStripSeparator)
         编辑项功能菜单.Items.Add(菜单项_将项上移)
         编辑项功能菜单.Items.Add(菜单项_将项下移)
-
 
     End Sub
 
     Public Shared Property 项筛选菜单 As New 暗黑菜单条控件本体 With {.ImageScalingSize = New Size(25 * 界面控制.DPI, 25 * 界面控制.DPI)}
-    Public Shared Property 菜单项_全选 As New ToolStripMenuItem With {.Text = "全选（Ctrl + A）", .Image = My.Resources.全选}
+    Public Shared Property 菜单项_全选 As New ToolStripMenuItem With {.Text = "全选", .Image = My.Resources.全选}
     Public Shared Property 菜单项_反选 As New ToolStripMenuItem With {.Text = "反选"}
 
     Public Shared Property 菜单项_选中所有已安装 As New ToolStripMenuItem With {.Text = "选中所有已安装"}

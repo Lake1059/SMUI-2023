@@ -14,7 +14,7 @@ Public Class DLC
         Public Shared Property EasyStartExperience As Boolean = False
     End Class
 
-    Public Shared Property 插件数据 As List(Of 插件数据单片结构)
+    Public Shared Property 插件数据 As New List(Of 插件数据单片结构)
 
     Public Structure 插件数据单片结构
         Public 插件文件路径 As String
@@ -123,9 +123,9 @@ Public Class DLC
             Dim 创建实例 As Object = Activator.CreateInstance(获取类型)
             Dim 实现方法 As MethodInfo = 获取类型.GetMethod("Entry")
             实现方法.Invoke(创建实例, Array.Empty(Of Object)())
-            DebugPrint($"已加载 DLC：{文件名}", Color1.绿色)
+            DebugPrint($"已加载：{文件名}", Color1.绿色)
         Catch ex As Exception
-            DebugPrint($"加载 DLC 错误，对象：{ex.Source} 错误信息：{ex.Message} TargetSite：{ex.TargetSite.Name}", Color1.红色)
+            DebugPrint($"加载 DLL 错误，对象：{ex.Source} 错误信息：{ex.Message} TargetSite：{ex.TargetSite.Name}", Color1.红色)
         End Try
     End Sub
 
@@ -150,9 +150,9 @@ Public Class DLC
                 }
 #Enable Warning SYSLIB0037 ' 类型或成员已过时
                 插件数据.Add(a)
-                DebugPrint($"已加载 DLC：{file.Name }", Color1.绿色)
+                DebugPrint($"已加载：{file.Name }", Color1.绿色)
             Catch ex As Exception
-                DebugPrint($"加载 DLC 错误，对象：{ex.Source} 错误信息：{ex.Message} TargetSite：{ex.TargetSite.Name}", Color1.红色)
+                DebugPrint($"加载 DLL 错误，对象：{ex.Source} 错误信息：{ex.Message} TargetSite：{ex.TargetSite.Name}", Color1.红色)
             End Try
             Form1.ListView4.Items.Add($"{插件数据(插件数据.Count - 1).插件程序集名称} {插件数据(插件数据.Count - 1).插件版本号} {插件数据(插件数据.Count - 1).插件作者名称} {插件数据(插件数据.Count - 1).插件处理器架构}")
             If Not 插件数据(插件数据.Count - 1).插件Entry加载状态 Then

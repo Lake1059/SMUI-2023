@@ -243,13 +243,12 @@ Partial Class 关于界面
         ' 
         ' Label10
         ' 
-        Label10.AutoSize = True
         Label10.Location = New Point(581, 470)
         Label10.Margin = New Padding(20, 20, 0, 0)
         Label10.Name = "Label10"
-        Label10.Size = New Size(262, 76)
+        Label10.Size = New Size(343, 64)
         Label10.TabIndex = 34
-        Label10.Text = "SevenZipSharp" & vbCrLf & "LGPL-3.0" & vbCrLf & "以及来自 7zip 官方的 7za" & vbCrLf & "以及来自 7zip 软件的 7zFull64.dll（7z.dll）"
+        Label10.Text = "SevenZipSharp" & vbCrLf & "LGPL-3.0" & vbCrLf & "以及来自 7zip 官方的 7z.dll、7z.exe 以及旧版组件"
         Label10.TextAlign = ContentAlignment.MiddleLeft
         ' 
         ' PictureBox10
@@ -350,7 +349,6 @@ Partial Class 关于界面
         CType(PictureBox11, ComponentModel.ISupportInitialize).EndInit()
         CType(PictureBox12, ComponentModel.ISupportInitialize).EndInit()
         ResumeLayout(False)
-        PerformLayout()
     End Sub
 
     Friend WithEvents PictureBox1 As PictureBox

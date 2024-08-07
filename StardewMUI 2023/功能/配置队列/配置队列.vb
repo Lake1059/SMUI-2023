@@ -1,104 +1,40 @@
 ﻿Imports System.IO
-Imports SMUI6.公共对象
 Imports Sunny.UI
 
 Public Class 配置队列
 
-    Public Shared Property 保存规划代码字典 As New Dictionary(Of 任务队列操作类型枚举, String)
-    Public Shared Sub 初始化保存规划代码字典()
-        保存规划代码字典.Add(任务队列操作类型枚举.复制文件夹到Mods, "CD-D-MODS")
-        保存规划代码字典.Add(任务队列操作类型枚举.覆盖文件夹到Mods, "CD-D-MODS-COVER")
-        保存规划代码字典.Add(任务队列操作类型枚举.复制文件夹, "CD-D-ROOT")
-        保存规划代码字典.Add(任务队列操作类型枚举.覆盖Content, "CD-D-CONTENT")
-        保存规划代码字典.Add(任务队列操作类型枚举.新增文件, "CD-F-ADD")
-        保存规划代码字典.Add(任务队列操作类型枚举.新增文件并验证, "CD-F-ADD-SHA")
-        保存规划代码字典.Add(任务队列操作类型枚举.替换文件, "CD-F-REP")
-        保存规划代码字典.Add(任务队列操作类型枚举.替换文件且无检测, "CD-F-NULL")
-        保存规划代码字典.Add(任务队列操作类型枚举.安装时检查文件夹的存在, "CR-IN-D-CHECK")
-        保存规划代码字典.Add(任务队列操作类型枚举.安装时检查文件的存在, "CR-IN-F-CHECK")
-        保存规划代码字典.Add(任务队列操作类型枚举.安装时检查Mods中已安装模组的版本, "CR-IN-MODS-VER")
-        保存规划代码字典.Add(任务队列操作类型枚举.安装时运行可执行文件, "CR-IN-SHELL")
-        保存规划代码字典.Add(任务队列操作类型枚举.安装时弹窗, "CR-IN-MSGBOX")
-        保存规划代码字典.Add(任务队列操作类型枚举.卸载时检查文件夹的存在, "CR-UN-D-CHECK")
-        保存规划代码字典.Add(任务队列操作类型枚举.卸载时检查文件的存在, "CR-UN-F-CHECK")
-        保存规划代码字典.Add(任务队列操作类型枚举.卸载时取消操作, "CR-UN")
-        保存规划代码字典.Add(任务队列操作类型枚举.卸载时运行可执行文件, "CR-UN-SHELL")
-        保存规划代码字典.Add(任务队列操作类型枚举.卸载时弹窗, "CR-UN-MSGBOX")
-        保存规划代码字典.Add(任务队列操作类型枚举.声明各种核心功能的启停, "CORE-CLASS")
-    End Sub
-
-    Public Shared Property 识别规划操作字典 As New Dictionary(Of String, 任务队列操作类型枚举)()
-    Public Shared Sub 初始化识别规划操作字典()
-        识别规划操作字典.Add("CD-D-MODS", 任务队列操作类型枚举.复制文件夹到Mods)
-        识别规划操作字典.Add("CD-D-MODS-COVER", 任务队列操作类型枚举.覆盖文件夹到Mods)
-        识别规划操作字典.Add("CD-D-ROOT", 任务队列操作类型枚举.复制文件夹)
-        识别规划操作字典.Add("CD-D-CONTENT", 任务队列操作类型枚举.覆盖Content)
-        识别规划操作字典.Add("CD-F-ADD", 任务队列操作类型枚举.新增文件)
-        识别规划操作字典.Add("CD-F-ADD-SHA", 任务队列操作类型枚举.新增文件并验证)
-        识别规划操作字典.Add("CD-F-REP", 任务队列操作类型枚举.替换文件)
-        识别规划操作字典.Add("CD-F-NULL", 任务队列操作类型枚举.替换文件且无检测)
-        识别规划操作字典.Add("CR-IN-D-CHECK", 任务队列操作类型枚举.安装时检查文件夹的存在)
-        识别规划操作字典.Add("CR-IN-F-CHECK", 任务队列操作类型枚举.安装时检查文件的存在)
-        识别规划操作字典.Add("CR-IN-MODS-VER", 任务队列操作类型枚举.安装时检查Mods中已安装模组的版本)
-        识别规划操作字典.Add("CR-IN-SHELL", 任务队列操作类型枚举.安装时运行可执行文件)
-        识别规划操作字典.Add("CR-IN-MSGBOX", 任务队列操作类型枚举.安装时弹窗)
-        识别规划操作字典.Add("CR-UN-D-CHECK", 任务队列操作类型枚举.卸载时检查文件夹的存在)
-        识别规划操作字典.Add("CR-UN-F-CHECK", 任务队列操作类型枚举.卸载时检查文件的存在)
-        识别规划操作字典.Add("CR-UN", 任务队列操作类型枚举.卸载时取消操作)
-        识别规划操作字典.Add("CR-UN-SHELL", 任务队列操作类型枚举.卸载时运行可执行文件)
-        识别规划操作字典.Add("CR-UN-MSGBOX", 任务队列操作类型枚举.卸载时弹窗)
-        识别规划操作字典.Add("CORE-CLASS", 任务队列操作类型枚举.声明各种核心功能的启停)
-    End Sub
-
-    Public Shared Property 编辑规划操作字典 As New Dictionary(Of 任务队列操作类型枚举, DE1)
+    Public Shared Property 编辑规划操作字典 As New Dictionary(Of String, DE1)
     Delegate Sub DE1()
     Public Shared Sub 初始化编辑规划操作字典()
-        编辑规划操作字典.Add(任务队列操作类型枚举.复制文件夹到Mods, AddressOf 配置队列的规划编辑.匹配到_复制文件夹到Mods)
-        编辑规划操作字典.Add(任务队列操作类型枚举.覆盖文件夹到Mods, AddressOf 配置队列的规划编辑.匹配到_覆盖文件夹到Mods)
-        编辑规划操作字典.Add(任务队列操作类型枚举.复制文件夹, AddressOf 配置队列的规划编辑.匹配到_复制文件夹)
-        编辑规划操作字典.Add(任务队列操作类型枚举.覆盖Content, AddressOf 配置队列的规划编辑.匹配到_覆盖Content)
-        编辑规划操作字典.Add(任务队列操作类型枚举.新增文件, AddressOf 配置队列的规划编辑.匹配到_新增文件)
-        编辑规划操作字典.Add(任务队列操作类型枚举.新增文件并验证, AddressOf 配置队列的规划编辑.匹配到_新增文件并验证)
-        编辑规划操作字典.Add(任务队列操作类型枚举.替换文件, AddressOf 配置队列的规划编辑.匹配到_替换文件)
-        编辑规划操作字典.Add(任务队列操作类型枚举.替换文件且无检测, AddressOf 配置队列的规划编辑.匹配到_替换文件且无检测)
-        编辑规划操作字典.Add(任务队列操作类型枚举.安装时检查文件夹的存在, AddressOf 配置队列的规划编辑.匹配到_安装时检查文件夹的存在)
-        编辑规划操作字典.Add(任务队列操作类型枚举.卸载时检查文件夹的存在, AddressOf 配置队列的规划编辑.匹配到_卸载时检查文件夹的存在)
-        编辑规划操作字典.Add(任务队列操作类型枚举.安装时检查文件的存在, AddressOf 配置队列的规划编辑.匹配到_安装时检查文件的存在)
-        编辑规划操作字典.Add(任务队列操作类型枚举.卸载时检查文件的存在, AddressOf 配置队列的规划编辑.匹配到_卸载时检查文件的存在)
-
-
-        编辑规划操作字典.Add(任务队列操作类型枚举.卸载时取消操作, AddressOf 配置队列的规划编辑.匹配到_卸载时取消操作)
-
-
-        编辑规划操作字典.Add(任务队列操作类型枚举.声明各种核心功能的启停, AddressOf 配置队列的规划编辑.匹配到_声明各种核心功能的启停)
+        编辑规划操作字典.Add("CD-D-MODS", AddressOf 配置队列的规划编辑.匹配到_复制文件夹到Mods)
+        编辑规划操作字典.Add("CD-D-MODS-COVER", AddressOf 配置队列的规划编辑.匹配到_覆盖文件夹到Mods)
+        编辑规划操作字典.Add("CD-D-ROOT", AddressOf 配置队列的规划编辑.匹配到_复制文件夹)
+        编辑规划操作字典.Add("CD-D-CONTENT", AddressOf 配置队列的规划编辑.匹配到_覆盖Content)
+        编辑规划操作字典.Add("CD-F", AddressOf 配置队列的规划编辑.匹配到_安装单个文件)
+        编辑规划操作字典.Add("CR-Check-EXIST", AddressOf 配置队列的规划编辑.匹配到_检查存在性)
+        编辑规划操作字典.Add("CR-IN-MODS-VER", AddressOf 配置队列的规划编辑.匹配到_安装时检查Mods中已安装模组的版本)
+        编辑规划操作字典.Add("CR-UN", AddressOf 配置队列的规划编辑.匹配到_卸载时取消操作)
+        编辑规划操作字典.Add("CR-SHELL", AddressOf 配置队列的规划编辑.匹配到_运行可执行文件)
+        编辑规划操作字典.Add("CR-MSGBOX", AddressOf 配置队列的规划编辑.匹配到_弹窗)
+        编辑规划操作字典.Add("CORE-CLASS", AddressOf 配置队列的规划编辑.匹配到_声明各种核心功能的启停)
     End Sub
 
-    Public Shared Property 规划显示名称字典 As New Dictionary(Of 任务队列操作类型枚举, String)
+    Public Shared Property 规划显示名称字典 As New Dictionary(Of String, String)
     Public Shared Sub 初始化规划显示名称字典()
-        规划显示名称字典.Add(任务队列操作类型枚举.复制文件夹到Mods, "安装标准 SMAPI 模组")
-        规划显示名称字典.Add(任务队列操作类型枚举.覆盖文件夹到Mods, "覆盖 Mods 中的文件夹")
-        规划显示名称字典.Add(任务队列操作类型枚举.复制文件夹, "复制文件夹")
-        规划显示名称字典.Add(任务队列操作类型枚举.覆盖Content, "覆盖 Content 文件夹")
-        规划显示名称字典.Add(任务队列操作类型枚举.新增文件, "新增文件")
-        规划显示名称字典.Add(任务队列操作类型枚举.新增文件并验证, "新增文件并验证")
-        规划显示名称字典.Add(任务队列操作类型枚举.替换文件, "替换文件")
-        规划显示名称字典.Add(任务队列操作类型枚举.替换文件且无检测, "替换文件且无检测")
-        规划显示名称字典.Add(任务队列操作类型枚举.安装时检查文件夹的存在, "安装时检查文件夹")
-        规划显示名称字典.Add(任务队列操作类型枚举.安装时检查文件的存在, "安装时检查文件")
-        规划显示名称字典.Add(任务队列操作类型枚举.安装时检查Mods中已安装模组的版本, "安装时检查模组版本")
-        规划显示名称字典.Add(任务队列操作类型枚举.安装时运行可执行文件, "安装时运行程序")
-        规划显示名称字典.Add(任务队列操作类型枚举.安装时弹窗, "安装时弹窗")
-        规划显示名称字典.Add(任务队列操作类型枚举.卸载时检查文件夹的存在, "卸载时检查文件夹")
-        规划显示名称字典.Add(任务队列操作类型枚举.卸载时检查文件的存在, "卸载时检查文件")
-        规划显示名称字典.Add(任务队列操作类型枚举.卸载时取消操作, "卸载时取消")
-        规划显示名称字典.Add(任务队列操作类型枚举.卸载时运行可执行文件, "卸载时运行程序")
-        规划显示名称字典.Add(任务队列操作类型枚举.卸载时弹窗, "卸载时弹窗")
-        规划显示名称字典.Add(任务队列操作类型枚举.声明各种核心功能的启停, "声明核心功能启停")
+        规划显示名称字典.Add("CD-D-MODS", "安装标准 SMAPI 模组")
+        规划显示名称字典.Add("CD-D-MODS-COVER", "覆盖 Mods 中的文件夹")
+        规划显示名称字典.Add("CD-D-ROOT", "复制文件夹")
+        规划显示名称字典.Add("CD-D-CONTENT", "覆盖 Content 文件夹")
+        规划显示名称字典.Add("CD-F", "安装单个文件")
+        规划显示名称字典.Add("CR-Check-EXIST", "检查存在性")
+        规划显示名称字典.Add("CR-IN-MODS-VER", "安装时检查模组版本")
+        规划显示名称字典.Add("CR-UN", "卸载时取消")
+        规划显示名称字典.Add("CR-SHELL", "运行可执行文件")
+        规划显示名称字典.Add("CR-MSGBOX", "弹窗")
+        规划显示名称字典.Add("CORE-CLASS", "声明核心功能启停")
     End Sub
 
     Public Shared Sub 初始化()
-        初始化保存规划代码字典()
-        初始化识别规划操作字典()
         初始化编辑规划操作字典()
         初始化规划显示名称字典()
         AddHandler Form1.UiButton19.Click, AddressOf 移除全部
@@ -129,16 +65,13 @@ Public Class 配置队列
     End Sub
 
     Public Shared Property 正在编辑规划的项路径 As String
-    Public Shared Property 当前项的规划操作列表 As New List(Of 任务队列操作类型枚举)
-    Public Shared Property 安装规划检查器 As New Timer With {.Interval = 1000, .Enabled = False}
+    Public Shared Property 当前项的规划操作列表 As New List(Of String)
 
     Public Shared Sub 重置配置队列()
-        安装规划检查器.Enabled = False
         Form1.UiTextBox6.Text = ""
         Form1.UiTextBox1.Text = ""
         Form1.ListView6.Items.Clear()
         Form1.ListView7.Items.Clear()
-        'Form1.ListView8.Items.Clear()
         当前项的规划操作列表.Clear()
     End Sub
 
@@ -189,9 +122,12 @@ jx1:
             Dim a As New List(Of KeyValuePair(Of String, String))
             键值对IO操作.读取键值对文件到列表(a, Path.Combine(正在编辑规划的项路径, "Code2"))
             For i = 0 To a.Count - 1
-                当前项的规划操作列表.Add(识别规划操作字典(a(i).Key))
-                Form1.ListView7.Items.Add(规划显示名称字典(当前项的规划操作列表(i)))
-                Form1.ListView7.Items(Form1.ListView7.Items.Count - 1).SubItems.Add(a(i).Value)
+                Dim value As String = Nothing
+                If 规划显示名称字典.TryGetValue(a(i).Key, value) Then
+                    当前项的规划操作列表.Add(a(i).Key)
+                    Form1.ListView7.Items.Add(value)
+                    Form1.ListView7.Items(Form1.ListView7.Items.Count - 1).SubItems.Add(a(i).Value)
+                End If
             Next
         End If
     End Sub
@@ -204,7 +140,7 @@ jx1:
             Dim operation As DE1 = value
             operation.Invoke()
         Else
-            DebugPrint("意外故障，无法在字典中匹配到操作，这在理论上不可能发生，除非我还没做对应的规划编辑", Color1.红色, True)
+            DebugPrint($"指定的规划类型 {当前项的规划操作列表(Form1.ListView7.SelectedIndices(0))} 没有对应的编辑程序，请联系对应插件作者", Color1.红色, True)
         End If
     End Sub
 
@@ -275,6 +211,7 @@ jx1:
     End Sub
 
     Public Shared Sub 保存改动并移除()
+        If Form1.ListView3.SelectedItems.Count <> 1 Then Exit Sub
         仅保存()
         重置配置队列()
         Form1.ListView3.SelectedItems(0).Remove()
@@ -300,7 +237,7 @@ jx1:
         End If
         Dim code As New List(Of KeyValuePair(Of String, String))
         For i = 0 To Form1.ListView7.Items.Count - 1
-            code.Add(New KeyValuePair(Of String, String)(保存规划代码字典(当前项的规划操作列表(i)), Form1.ListView7.Items(i).SubItems(1).Text))
+            code.Add(New KeyValuePair(Of String, String)(当前项的规划操作列表(i), Form1.ListView7.Items(i).SubItems(1).Text))
         Next
         键值对IO操作.从列表键值对写入文件(code, Path.Combine(正在编辑规划的项路径, "Code2"))
         UIMessageTip.Show("已保存",, 1200)
@@ -353,8 +290,8 @@ jx1:
         If Form1.ListView3.SelectedItems.Count <> 1 Then Exit Sub
         If e.Data.GetDataPresent(DataFormats.FileDrop) Then
             Dim 允许所有文件 As Boolean = False
-            If 当前项的规划操作列表.Contains(任务队列操作类型枚举.声明各种核心功能的启停) Then
-                Dim 控制参数 As New List(Of String)(Form1.ListView7.Items(当前项的规划操作列表.IndexOf(任务队列操作类型枚举.声明各种核心功能的启停)).SubItems(1).Text.Split("|").ToList)
+            If 当前项的规划操作列表.Contains("CORE-CLASS") Then
+                Dim 控制参数 As New List(Of String)(Form1.ListView7.Items(当前项的规划操作列表.IndexOf("CORE-CLASS")).SubItems(1).Text.Split("|").ToList)
                 If 控制参数.Contains("FILE-ALLOW-ALL") Then 允许所有文件 = True
             End If
             Dim 要复制的文件和文件夹列表 As String() = e.Data.GetData(DataFormats.FileDrop)
@@ -385,8 +322,8 @@ jx1:
     Public Shared Sub 添加文件()
         If Form1.ListView3.SelectedItems.Count <> 1 Then Exit Sub
         Dim 允许所有文件 As Boolean = False
-        If 当前项的规划操作列表.Contains(任务队列操作类型枚举.声明各种核心功能的启停) Then
-            Dim 控制参数 As New List(Of String)(Form1.ListView7.Items(当前项的规划操作列表.IndexOf(任务队列操作类型枚举.声明各种核心功能的启停)).SubItems(1).Text.Split("|").ToList)
+        If 当前项的规划操作列表.Contains("CORE-CLASS") Then
+            Dim 控制参数 As New List(Of String)(Form1.ListView7.Items(当前项的规划操作列表.IndexOf("CORE-CLASS")).SubItems(1).Text.Split("|").ToList)
             If 控制参数.Contains("FILE-ALLOW-ALL") Then 允许所有文件 = True
         End If
         Dim x As New OpenFileDialog With {.Multiselect = True}
@@ -539,7 +476,7 @@ jx1:
                 Form1.ListView7.Items.RemoveAt(index)
                 Form1.ListView7.Items.Insert(index - 1, 变动排序的列表视图项)
                 Form1.ListView7.Items(index - 1).Focused = True
-                Dim 变动排序的安装规划类型 As 任务队列操作类型枚举 = 当前项的规划操作列表(index)
+                Dim 变动排序的安装规划类型 As String = 当前项的规划操作列表(index)
                 当前项的规划操作列表.RemoveAt(index)
                 当前项的规划操作列表.Insert(index - 1, 变动排序的安装规划类型)
             Next
@@ -556,7 +493,7 @@ jx1:
                 Form1.ListView7.Items.RemoveAt(index)
                 Form1.ListView7.Items.Insert(index + 1, 变动排序的列表视图项)
                 Form1.ListView7.Items(index + 1).Focused = True
-                Dim 变动排序的安装规划类型 As 任务队列操作类型枚举 = 当前项的规划操作列表(index)
+                Dim 变动排序的安装规划类型 As String = 当前项的规划操作列表(index)
                 当前项的规划操作列表.RemoveAt(index)
                 当前项的规划操作列表.Insert(index + 1, 变动排序的安装规划类型)
             Next
@@ -576,10 +513,10 @@ jx1:
                 Case "文件夹"
                     Select Case Form1.ListView6.Items(i).Text
                         Case "Content"
-                            配置队列的菜单.添加新规划通用调用(任务队列操作类型枚举.覆盖Content, "0")
+                            配置队列的菜单.添加新规划通用调用("CD-D-CONTENT", "0")
                         Case Else
                             If FileIO.FileSystem.FileExists(Path.Combine(正在编辑规划的项路径, Form1.ListView6.Items(i).Text, "manifest.json")) Then
-                                配置队列的菜单.添加新规划通用调用(任务队列操作类型枚举.复制文件夹到Mods, Form1.ListView6.Items(i).Text)
+                                配置队列的菜单.添加新规划通用调用("CD-D-MODS", Form1.ListView6.Items(i).Text)
                             Else
                                 是否有对象未生成规划 = True
                             End If

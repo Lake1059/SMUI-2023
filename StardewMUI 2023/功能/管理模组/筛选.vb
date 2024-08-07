@@ -95,23 +95,23 @@ Public Class 筛选
     End Sub
 
     Public Shared Sub 扫描当前子库所有已安装()
-        扫描当前子库({公共对象.安装状态枚举.已安装})
+        扫描当前子库({"Installed"})
     End Sub
     Public Shared Sub 扫描当前子库所有未安装()
-        扫描当前子库({公共对象.安装状态枚举.未安装})
+        扫描当前子库({"UnInstalled"})
     End Sub
     Public Shared Sub 扫描当前子库所有非标项()
-        扫描当前子库({公共对象.安装状态枚举.文件夹已复制, 公共对象.安装状态枚举.文件夹未复制, 公共对象.安装状态枚举.文件夹部分复制, 公共对象.安装状态枚举.附加内容, 公共对象.安装状态枚举.文件已替换, 公共对象.安装状态枚举.文件未替换, 公共对象.安装状态枚举.文件部分替换, 公共对象.安装状态枚举.文件已复制, 公共对象.安装状态枚举.文件未复制, 公共对象.安装状态枚举.文件夹部分复制, 公共对象.安装状态枚举.文件已复制并验证, 公共对象.安装状态枚举.文件已复制但验证失败, 公共对象.安装状态枚举.不带判断的文件复制, 公共对象.安装状态枚举.覆盖Content文件夹})
+        扫描当前子库({"FolderCopied", "FolderNoCopied", "IncompleteFolderCopied", "Additional", "FileInstalled", "FileUnInstalled", "FileIncomplete", "FileInstalledVerified", "FileInstalledVerifyfailed", "File", "CoverContent"})
     End Sub
 
-    Shared Sub 扫描当前子库(安装状态集合 As 公共对象.安装状态枚举())
+    Shared Sub 扫描当前子库(安装状态集合 As String())
         管理模组.清除模组项列表()
         For i = 0 To Form1.ListView1.Items.Count - 1
             Dim mDir2 As IO.DirectoryInfo
             Dim mDirInfo2 As New IO.DirectoryInfo(Path.Combine(管理模组2.检查并返回当前所选子库路径(False), Form1.ListView1.Items(i).Text))
             For Each mDir2 In mDirInfo2.GetDirectories
                 Dim a As New 项信息读取类
-                Dim ct As New 公共对象.项数据计算类型结构 With {.安装状态 = True, .版本 = True, .已安装版本 = True}
+                Dim ct As New 项信息读取类.项数据计算类型结构 With {.安装状态 = True, .版本 = True, .已安装版本 = True}
                 If Not FileIO.FileSystem.FileExists(Path.Combine(mDir2.FullName, "Code2")) Then
                     If FileIO.FileSystem.FileExists(Path.Combine(mDir2.FullName, "Code")) Then
                         FileIO.FileSystem.WriteAllText(Path.Combine(mDir2.FullName, "Code2"), 命令规划转换.将安装命令转换到安装规划(FileIO.FileSystem.ReadAllText(Path.Combine(mDir2.FullName, "Code"))), False)
@@ -128,7 +128,7 @@ Public Class 筛选
 
                 If a.版本.Count > 0 And a.已安装版本.Count > 0 Then
                     If a.版本(0) <> a.已安装版本(0) Then
-                        If a.安装状态 = 公共对象.安装状态枚举.安装不完整 Then
+                        If a.安装状态 = "Incomplete" Then
                             Form1.ListView2.Items(Form1.ListView2.Items.Count - 1).SubItems(1).Text = a.版本(0)
                             GoTo 结束版本号高低判断
                         End If
@@ -160,7 +160,7 @@ Public Class 筛选
 
                 Select Case Form1.ListView2.Items(Form1.ListView2.Items.Count - 1).SubItems(2).Text
                     Case ""
-                        Form1.ListView2.Items(Form1.ListView2.Items.Count - 1).SubItems(2).Text = 管理模组.安装状态显示词字典(a.安装状态)
+                        Form1.ListView2.Items(Form1.ListView2.Items.Count - 1).SubItems(2).Text = 项信息读取类.安装状态字典(a.安装状态)
                 End Select
 
                 管理模组.根据安装状态设置项的颜色标记(a.安装状态, Form1.ListView2.Items(Form1.ListView2.Items.Count - 1), True)

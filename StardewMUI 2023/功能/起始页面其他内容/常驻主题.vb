@@ -33,6 +33,10 @@ Public Class 常驻主题
 
         AddHandler Form1.UiButton66.Click, Async Sub(s, e) Await Launcher.LaunchUriAsync(New Uri("https://afdian.com/a/1059Studio?tab=shop"))
         AddHandler Form1.UiButton69.Click, Async Sub(s, e) Await Launcher.LaunchUriAsync(New Uri("https://payhip.com/1059Studio"))
+        AddHandler Form1.UiButton47.Click, Sub()
+                                               Clipboard.SetText(Form1.UiListBox1.Items(0) & vbCrLf & Form1.UiListBox1.Items(1) & vbCrLf & Form1.UiListBox1.Items(2) & vbCrLf & Form1.UiListBox1.Items(3) & vbCrLf & Form1.UiListBox1.Items(4))
+                                           End Sub
+
 
 
         注册表菜单.Items.Add(菜单项_修改nxm下载协议)

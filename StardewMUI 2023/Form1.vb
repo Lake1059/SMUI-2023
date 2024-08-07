@@ -4,19 +4,20 @@ Imports Sunny.UI
 
 Public Class Form1
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        SevenZip.SevenZipBase.SetLibraryPath(Application.StartupPath & "\7zFull64.dll")
+        SevenZip.SevenZipBase.SetLibraryPath(Application.StartupPath & "\7za64\7z.dll")
         界面控制.DPI = Me.CreateGraphics().DpiX / 96
+        检查用户身份组()
         状态信息.判断应用程序启动模式()
         状态信息.初始化性能计数定时器()
         状态信息.初始化SMAPI运行态定时器()
+        项信息读取类.初始化安装状态字典()
         设置.启动时加载设置()
         密码本.读取导入导出密码本()
         DLC.初始化()
-        DLC.加载用户插件()
+        配置队列.初始化()
         界面控制.初始化界面()
         管理模组.初始化()
         任务队列.全部字典初始化()
-        配置队列.初始化()
         更新模组.初始化()
         模组检查更新管理器.初始化()
         SMAPI安装管理器.初始化()
@@ -24,6 +25,7 @@ Public Class Form1
         全局模组安装检查器.初始化()
         存档编辑器.初始化()
         批量分发管理.初始化()
+        DLC.加载用户插件()
     End Sub
 
     Private Sub Form1_Shown(sender As Object, e As EventArgs) Handles MyBase.Shown
@@ -33,6 +35,10 @@ Public Class Form1
         If 设置.全局设置数据("AutoGetNews") = "True" Then 新闻列表.获取新闻()
         状态信息.刷新起始页面状态信息()
         设置.加载自定义背景()
+        If 设置.全局设置数据("WelcomeWindow") = "False" Then
+            显示模式窗体(FormWelcome, Me)
+            设置.全局设置数据("WelcomeWindow") = "True"
+        End If
     End Sub
 
     Private Sub Form1_ResizeEnd(sender As Object, e As EventArgs) Handles MyBase.ResizeEnd

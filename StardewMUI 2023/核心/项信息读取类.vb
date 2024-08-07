@@ -3,12 +3,50 @@ Imports System.IO
 Imports System.Text
 Imports System.Text.RegularExpressions
 Imports Microsoft.VisualBasic.FileIO.FileSystem
-Imports Newtonsoft.Json
 Imports Newtonsoft.Json.Linq
-Imports Windows.Devices.Power
 
 Public Class 项信息读取类
-    Public 安装状态 As 公共对象.安装状态枚举 = 公共对象.安装状态枚举.未知
+
+    Public Shared Property 安装状态字典 As New Dictionary(Of String, String)
+
+    Public Shared Sub 初始化安装状态字典()
+        安装状态字典.Add("UnKnow", "未知")
+        安装状态字典.Add("NoConfigured", "未配置")
+        安装状态字典.Add("Installed", "已安装")
+        安装状态字典.Add("UnInstalled", "未安装")
+        安装状态字典.Add("Incomplete", "安装不完整")
+        安装状态字典.Add("FolderCopied", "文件夹已复制")
+        安装状态字典.Add("FolderNoCopied", "文件夹未复制")
+        安装状态字典.Add("IncompleteFolderCopied", "文件夹部分复制")
+        安装状态字典.Add("Additional", "附加内容")
+        安装状态字典.Add("FileInstalled", "文件已安装")
+        安装状态字典.Add("FileUnInstalled", "文件未安装")
+        安装状态字典.Add("FileIncomplete", "文件部分安装")
+        安装状态字典.Add("FileInstalledVerified", "文件已安装 (验证)")
+        安装状态字典.Add("FileInstalledVerifyfailed", "文件未安装 (验证)")
+        安装状态字典.Add("FolderMissing", "源文件夹丢失")
+        安装状态字典.Add("FileMissing", "源文件丢失")
+        安装状态字典.Add("File", "不带判断的文件")
+        安装状态字典.Add("CoverContent", "覆盖 Content")
+        安装状态字典.Add("MissingCalculationProgram", "缺少判断程序")
+    End Sub
+
+    Public Structure 项数据计算类型结构
+        Dim 全部 As Boolean
+        Dim 安装状态 As Boolean
+        Dim 名称 As Boolean
+        Dim 作者 As Boolean
+        Dim 版本 As Boolean
+        Dim 已安装版本 As Boolean
+        Dim 最低SMAPI版本 As Boolean
+        Dim 描述 As Boolean
+        Dim UniqueID As Boolean
+        Dim 更新键 As Boolean
+        Dim 内容包依赖 As Boolean
+        Dim 其他依赖项 As Boolean
+    End Structure
+
+    Public 安装状态 As String = ""
 
     Public 名称 As New List(Of String)
     Public 作者 As New List(Of String)
@@ -29,8 +67,7 @@ Public Class 项信息读取类
 
     Public 未安装的文件夹 As New List(Of String)
     Public 未复制的文件夹 As New List(Of String)
-    Public 未替换的文件 As New List(Of String)
-    Public 未复制的文件 As New List(Of String)
+    Public 未安装的文件 As New List(Of String)
 
     Public 错误信息 As String = ""
 
@@ -44,7 +81,7 @@ Public Class 项信息读取类
     End Structure
 
     Public Sub 重置()
-        安装状态 = 公共对象.安装状态枚举.未知
+        安装状态 = "UnKnow"
         名称.Clear()
         作者.Clear()
         版本.Clear()
@@ -61,15 +98,18 @@ Public Class 项信息读取类
         其他依赖项.Clear()
         未安装的文件夹.Clear()
         未复制的文件夹.Clear()
-        未替换的文件.Clear()
-        未复制的文件.Clear()
+        未安装的文件.Clear()
         错误信息 = ""
     End Sub
 
-    Public Sub 读取项信息(项路径 As String, 计算类型 As 公共对象.项数据计算类型结构, Optional 游戏路径 As String = "")
+    Public Sub 读取项信息(项路径 As String, 计算类型 As 项数据计算类型结构, Optional 游戏路径 As String = "")
+        重置()
         错误信息 = ""
         If DirectoryExists(项路径) = False Then 错误信息 = "项不存在：" & 项路径 : Exit Sub
-        If FileExists(CombinePath(项路径, "Code2")) = False Then 错误信息 = "项未配置：" & 项路径 : Exit Sub
+        If FileExists(CombinePath(项路径, "Code2")) = False Then
+            错误信息 = "项未配置：" & 项路径
+            Exit Sub
+        End If
         If 计算类型.安装状态 = True Or 计算类型.已安装版本 = True Or 计算类型.全部 = True Then
             If 游戏路径 = "" Then 错误信息 = "此计算类型需要提供游戏路径" : Exit Sub
             If DirectoryExists(项路径) = False Then 错误信息 = "给定的游戏路径不存在：" & 游戏路径 : Exit Sub
@@ -79,28 +119,29 @@ Public Class 项信息读取类
             Dim 安装规划数据 As New List(Of KeyValuePair(Of String, String))
             键值对IO操作.读取键值对文件到列表(安装规划数据, Path.Combine(项路径, "Code2"))
             For i = 0 To 安装规划数据.Count - 1
-                Select Case 安装规划数据(i).Key
+                Select Case 安装规划数据(i).Key.Trim
                     Case "CD-D-MODS"
 
+                        If 安装状态 = "MissingCalculationProgram" Then GoTo jx1
                         If 计算类型.安装状态 = True Then
-                            If DirectoryExists(Path.Combine(游戏路径, "Mods", 安装规划数据(i).Value)) = True Then
+                            If DirectoryExists(Path.Combine(游戏路径, "Mods", 安装规划数据(i).Value)) Then
                                 Select Case 安装状态
-                                    Case 公共对象.安装状态枚举.未安装
-                                        安装状态 = 公共对象.安装状态枚举.安装不完整
+                                    Case "UnInstalled"
+                                        安装状态 = "Incomplete"
                                     Case Else
-                                        安装状态 = 公共对象.安装状态枚举.已安装
+                                        安装状态 = "Installed"
                                 End Select
                             Else
                                 Select Case 安装状态
-                                    Case 公共对象.安装状态枚举.已安装
-                                        安装状态 = 公共对象.安装状态枚举.安装不完整
+                                    Case "Installed"
+                                        安装状态 = "Incomplete"
                                     Case Else
-                                        安装状态 = 公共对象.安装状态枚举.未安装
+                                        安装状态 = "UnInstalled"
                                 End Select
                                 未安装的文件夹.Add(安装规划数据(i).Value)
                             End If
                         End If
-
+jx1:
                         Dim 清单文件对象 As New 搜索文件类
                         清单文件对象.搜索清单文件(CombinePath(项路径, 安装规划数据(i).Value))
                         If 清单文件对象.错误信息 <> "" Then
@@ -110,7 +151,6 @@ Public Class 项信息读取类
                         For 清单文件集合索引 = 0 To 清单文件对象.文件绝对路径集合.Count - 1
                             Dim a As String = ReadAllText(Path.Combine(项路径, 安装规划数据(i).Value, 清单文件对象.文件绝对路径集合(清单文件集合索引)))
                             Dim JsonData As JObject = JObject.Parse(a)
-
 
                             If 计算类型.名称 Or 计算类型.全部 Then
                                 Dim str1 As String = JsonData.GetValue("Name", StringComparison.OrdinalIgnoreCase)?.ToString
@@ -225,12 +265,12 @@ Public Class 项信息读取类
                     Case "CD-D-MODS-COVER"
 
                         If 计算类型.安装状态 = False Then Continue For
-                        If 安装状态 = 公共对象.安装状态枚举.未知 Then 安装状态 = 公共对象.安装状态枚举.附加内容
+                        If 安装状态 = "UnKnow" Then 安装状态 = "Additional"
 
                     Case "CD-D-CONTENT"
 
                         If 计算类型.安装状态 = False Then Continue For
-                        If 安装状态 = 公共对象.安装状态枚举.未知 Then 安装状态 = 公共对象.安装状态枚举.覆盖Content文件夹
+                        If 安装状态 = "UnKnow" Then 安装状态 = "CoverContent"
 
                     Case "CD-D-ROOT"
 
@@ -240,122 +280,72 @@ Public Class 项信息读取类
                         Dim x3 As String() = 安装规划数据(i).Value.Split("|")
                         x1 = x3(0) : x2 = x3(1)
                         Select Case 安装状态
-                            Case 公共对象.安装状态枚举.未知
-                                If DirectoryExists(CombinePath(游戏路径, x2)) = True Then
-                                    安装状态 = 公共对象.安装状态枚举.文件夹已复制
+                            Case "UnKnow"
+                                If DirectoryExists(CombinePath(游戏路径, x2)) Then
+                                    安装状态 = "FolderCopied"
                                 Else
-                                    安装状态 = 公共对象.安装状态枚举.文件夹未复制
+                                    安装状态 = "FolderNoCopied"
                                     未复制的文件夹.Add(x2)
                                 End If
-                            Case 公共对象.安装状态枚举.文件夹已复制
-                                If DirectoryExists(CombinePath(游戏路径, x2)) = False Then
-                                    安装状态 = 公共对象.安装状态枚举.文件夹部分复制
+                            Case "FolderCopied"
+                                If Not DirectoryExists(CombinePath(游戏路径, x2)) Then
+                                    安装状态 = "IncompleteFolderCopied"
                                     未复制的文件夹.Add(x2)
                                 End If
                         End Select
 
-                    Case "CD-F-ADD"
+                    Case "CD-F"
 
                         If 计算类型.安装状态 = False Then Continue For
-                        Dim x1, x2 As String
+                        Dim 是否需要判断, 是否需要验证, 文件, 目标位置 As String
                         Dim x3 As String() = 安装规划数据(i).Value.Split("|")
-                        x1 = x3(0) : x2 = x3(1)
-                        If FileExists(Path.Combine(项路径, x1)) = False Then
-                            安装状态 = 公共对象.安装状态枚举.源文件丢失
+                        是否需要判断 = x3(1) : 是否需要验证 = x3(2) : 文件 = x3(3) : 目标位置 = x3(4)
+                        If 是否需要判断.Trim.Equals("true", StringComparison.CurrentCultureIgnoreCase) Then
+                            If 安装状态 = "UnKnow" Then 安装状态 = "File"
                             Continue For
                         End If
-                        If FileExists(Path.Combine(游戏路径, x2)) = False Then
+                        If Not FileExists(Path.Combine(项路径, 文件)) Then
+                            安装状态 = "FileMissing"
+                            Continue For
+                        End If
+                        If Not FileExists(Path.Combine(游戏路径, 目标位置)) Then
                             Select Case 安装状态
-                                Case 公共对象.安装状态枚举.未知
-                                    安装状态 = 公共对象.安装状态枚举.文件未复制
-                                Case 公共对象.安装状态枚举.文件夹已复制
-                                    安装状态 = 公共对象.安装状态枚举.文件部分复制
+                                Case "UnKnow"
+                                    安装状态 = "FileUnInstalled"
+                                Case "FileInstalled"
+                                    安装状态 = "FileIncomplete"
                             End Select
+                            未安装的文件.Add(目标位置)
                         Else
                             Select Case 安装状态
-                                Case 公共对象.安装状态枚举.未知
-                                    安装状态 = 公共对象.安装状态枚举.文件夹已复制
-
+                                Case "UnKnow"
+                                    安装状态 = "FileInstalled"
                             End Select
                         End If
-
-                    Case "CD-F-ADD-SHA"
-
-                        If 计算类型.安装状态 = False Then Continue For
-                        Dim x1, x2 As String
-                        Dim x3 As String() = 安装规划数据(i).Value.Split("|")
-                        x1 = x3(0) : x2 = x3(1)
-                        If FileExists(Path.Combine(项路径, x1)) = False Then
-                            安装状态 = 公共对象.安装状态枚举.源文件丢失
-                            Continue For
+                        If 是否需要验证.Trim.Equals("true", StringComparison.CurrentCultureIgnoreCase) And (安装状态 = "FileInstalled" Or 安装状态 = "FileInstalledVerified") Then
+                            Dim a1 As String = 共享方法.CalculateSHA256(Path.Combine(项路径, 文件))
+                            Dim a2 As String = 共享方法.CalculateSHA256(Path.Combine(游戏路径, 目标位置))
+                            If a1 = a2 Then
+                                If 安装状态 = "FileInstalled" Then 安装状态 = "FileInstalledVerified"
+                            Else
+                                If 安装状态 = "FileInstalled" Then 安装状态 = "FileInstalledVerifyfailed"
+                                未安装的文件.Add(目标位置)
+                            End If
                         End If
-                        If FileExists(Path.Combine(游戏路径, x2)) = False Then
-                            Select Case 安装状态
-                                Case 公共对象.安装状态枚举.未知
-                                    安装状态 = 公共对象.安装状态枚举.文件未复制
-                                Case 公共对象.安装状态枚举.文件已替换
-                                    安装状态 = 公共对象.安装状态枚举.文件部分复制
-                            End Select
-                            Continue For
+
+                    Case "CR-Check-EXIST", "CR-IN-MODS-VER", "CR-UN", "CR-SHELL", "CR-MSGBOX", "CORE-CLASS"
+                    Case Else
+                        Dim value As DE1 = Nothing
+                        If 第三方安装判断执行字典.TryGetValue(安装规划数据(i).Key, value) Then
+                            Dim operation As DE1 = value
+                            Dim ba1 = operation.Invoke(项路径, 游戏路径, 安装规划数据(i).Value.Split("|"), 计算类型, 安装状态)
+                            If ba1 <> "" Then
+                                安装状态 = ba1
+                            End If
+                        Else
+                            安装状态 = "MissingCalculationProgram"
+                            DebugPrint(安装规划数据(i).Key & " 的第三方安装判断程序未找到，是否缺失相关插件？", Color1.红色)
                         End If
-                        Dim a1 As String = 共享方法.CalculateSHA256(Path.Combine(项路径, x1))
-                        Dim a2 As String = 共享方法.CalculateSHA256(Path.Combine(游戏路径, x2))
-                        Select Case 安装状态
-                            Case 公共对象.安装状态枚举.未知
-                                If a1 = a2 Then
-                                    安装状态 = 公共对象.安装状态枚举.文件已复制
-                                Else
-                                    安装状态 = 公共对象.安装状态枚举.文件已复制但验证失败
-                                    未替换的文件.Add(x2)
-                                End If
-                            Case 公共对象.安装状态枚举.文件已复制
-                                If a1 <> a2 Then
-                                    安装状态 = 公共对象.安装状态枚举.文件部分复制
-                                    未替换的文件.Add(x2)
-                                End If
-                        End Select
-
-                    Case "CD-F-REP"
-
-                        If 计算类型.安装状态 = False Then Continue For
-                        Dim x1, x2 As String
-                        Dim x3 As String() = 安装规划数据(i).Value.Split("|")
-                        x1 = x3(0) : x2 = x3(1)
-                        If FileExists(Path.Combine(项路径, x1)) = False Then
-                            安装状态 = 公共对象.安装状态枚举.源文件丢失
-                            Continue For
-                        End If
-                        If FileExists(Path.Combine(游戏路径, x2)) = False Then
-                            Select Case 安装状态
-                                Case 公共对象.安装状态枚举.未知
-                                    安装状态 = 公共对象.安装状态枚举.文件未替换
-                                Case 公共对象.安装状态枚举.文件已替换
-                                    安装状态 = 公共对象.安装状态枚举.文件部分替换
-                            End Select
-                            Continue For
-                        End If
-                        Dim a1 As String = 共享方法.CalculateSHA256(Path.Combine(项路径, x1))
-                        Dim a2 As String = 共享方法.CalculateSHA256(Path.Combine(游戏路径, x2))
-                        Select Case 安装状态
-                            Case 公共对象.安装状态枚举.未知
-                                If a1 = a2 Then
-                                    安装状态 = 公共对象.安装状态枚举.文件已替换
-                                Else
-                                    安装状态 = 公共对象.安装状态枚举.文件未替换
-                                    未替换的文件.Add(x2)
-                                End If
-                            Case 公共对象.安装状态枚举.文件已替换
-                                If a1 <> a2 Then
-                                    安装状态 = 公共对象.安装状态枚举.文件部分替换
-                                    未替换的文件.Add(x2)
-                                End If
-                        End Select
-
-                    Case "CD-F-NULL"
-
-                        If 计算类型.安装状态 = False Then Continue For
-                        If 安装状态 = 公共对象.安装状态枚举.未知 Then 安装状态 = 公共对象.安装状态枚举.不带判断的文件复制
-
                 End Select
 
             Next
@@ -370,6 +360,21 @@ Public Class 项信息读取类
         End Try
 
     End Sub
+
+    Public Shared Property 第三方安装判断执行字典 As New Dictionary(Of String, DE1)
+    ''' <summary>
+    ''' 你需要创建一个与此委托的参数完全相同的 Function，这个方法只有一个规划的数据
+    ''' <para></para>
+    ''' 程序会将对应的值传递到参数上，以便你可以编写自己的安装判断程序
+    ''' <para></para>
+    ''' 注意不要与其他类文件中的 DE1 委托混淆
+    ''' </summary>
+    ''' <param name="项路径"></param>
+    ''' <param name="游戏路径"></param>
+    ''' <param name="参数列表"></param>
+    ''' <param name="计算类型"></param>
+    ''' <returns>你需要返回一个 安装状态Key 让程序知道要把模组项的安装状态显示成什么</returns>
+    Delegate Function DE1(项路径 As String, 游戏路径 As String, 参数列表 As String(), 计算类型 As 项数据计算类型结构, 当前的安装状态 As String) As String
 
     Public Shared Function 从JSON读取语义版本号(JsonTextInVersion As String, Optional ByRef ErrorString As String = "") As String
         Try

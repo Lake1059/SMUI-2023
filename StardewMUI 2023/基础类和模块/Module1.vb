@@ -56,6 +56,7 @@ Module Module1
 
     Public Sub DebugPrint(文本 As String, 颜色 As Color, Optional 是否需要转到调试选项卡 As Boolean = False)
         If 文本 = "" Then Exit Sub
+        文本 = $"[{TimeString}] " & 文本
         Form1.UiRichTextBox2.AppendText(vbCrLf & 文本)
         Form1.UiRichTextBox2.Select(Form1.UiRichTextBox2.TextLength - Len(文本), Len(文本))
         Form1.UiRichTextBox2.SelectionColor = 颜色
@@ -247,5 +248,23 @@ Module Module1
 
     Public Json序列化选项 As New JsonSerializerOptions With {.WriteIndented = True}
 
+    Public 当前用户身份组 As Security.Principal.WindowsBuiltInRole = Security.Principal.WindowsBuiltInRole.User
+
+    Public Sub 检查用户身份组()
+        Dim current As Security.Principal.WindowsIdentity = Security.Principal.WindowsIdentity.GetCurrent()
+        Dim windowsPrincipal As New Security.Principal.WindowsPrincipal(current)
+        If windowsPrincipal.IsInRole(Security.Principal.WindowsBuiltInRole.Administrator) Then
+            当前用户身份组 = Security.Principal.WindowsBuiltInRole.Administrator
+            Exit Sub
+        End If
+        If windowsPrincipal.IsInRole(Security.Principal.WindowsBuiltInRole.PowerUser) Then
+            当前用户身份组 = Security.Principal.WindowsBuiltInRole.PowerUser
+            Exit Sub
+        End If
+        If windowsPrincipal.IsInRole(Security.Principal.WindowsBuiltInRole.Guest) Then
+            当前用户身份组 = Security.Principal.WindowsBuiltInRole.Guest
+            Exit Sub
+        End If
+    End Sub
 
 End Module

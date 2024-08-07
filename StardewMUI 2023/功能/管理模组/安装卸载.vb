@@ -80,8 +80,8 @@ Public Class 安装卸载
                             后台线程对象.ReportProgress(2, $"规划数据已载入")
 
                             For i2 = 0 To 任务队列.任务列表.Count - 1
-                                Select Case 任务队列.任务列表(i2).操作类型
-                                    Case 公共对象.任务队列操作类型枚举.复制文件夹到Mods
+                                Select Case 任务队列.任务列表(i2).规划名称
+                                    Case "CD-D-MODS"
                                         If FileIO.FileSystem.DirectoryExists(Path.Combine(设置.全局设置数据("StardewValleyGamePath"), "Mods", 任务队列.任务列表(i2).参数行)) Then
                                             后台线程对象.ReportProgress(1, $"已找到游戏内的 {任务队列.任务列表(i2).参数行} 文件夹，正在覆盖到数据库")
                                             FileIO.FileSystem.CopyDirectory(Path.Combine(设置.全局设置数据("StardewValleyGamePath"), "Mods", 任务队列.任务列表(i2).参数行), Path.Combine(模组项路径列表(i), 任务队列.任务列表(i2).参数行), True)
@@ -93,8 +93,8 @@ Public Class 安装卸载
                         Case 操作类型.更新项_完全替换
                             后台线程对象.ReportProgress(2, $"规划数据已载入")
                             For i2 = 0 To 任务队列.任务列表.Count - 1
-                                Select Case 任务队列.任务列表(i2).操作类型
-                                    Case 公共对象.任务队列操作类型枚举.复制文件夹到Mods
+                                Select Case 任务队列.任务列表(i2).规划名称
+                                    Case "CD-D-MODS"
                                         If FileIO.FileSystem.DirectoryExists(Path.Combine(设置.全局设置数据("StardewValleyGamePath"), "Mods", 任务队列.任务列表(i2).参数行)) Then
                                             后台线程对象.ReportProgress(1, $"已找到游戏内的 {任务队列.任务列表(i2).参数行} 文件夹")
                                             If FileIO.FileSystem.DirectoryExists(Path.Combine(模组项路径列表(i), 任务队列.任务列表(i2).参数行)) Then
@@ -127,13 +127,13 @@ Public Class 安装卸载
                         Dim i As Integer = e.UserState
                         If Form1.ListView2.Items(当前在模组项列表中的索引列表(i)).Text = Path.GetFileName(模组项路径列表(i)) Then
                             Dim x As New 项信息读取类
-                            x.读取项信息(Path.Combine(管理模组2.检查并返回当前所选子库路径(False), Form1.ListView2.Items(当前在模组项列表中的索引列表(i)).SubItems(3).Text, Form1.ListView2.Items(当前在模组项列表中的索引列表(i)).Text), New 公共对象.项数据计算类型结构 With {.安装状态 = True}, 设置.全局设置数据("StardewValleyGamePath"))
+                            x.读取项信息(Path.Combine(管理模组2.检查并返回当前所选子库路径(False), Form1.ListView2.Items(当前在模组项列表中的索引列表(i)).SubItems(3).Text, Form1.ListView2.Items(当前在模组项列表中的索引列表(i)).Text), New 项信息读取类.项数据计算类型结构 With {.安装状态 = True}, 设置.全局设置数据("StardewValleyGamePath"))
                             If x.错误信息 = "" Then
-                                Form1.ListView2.SelectedItems(i).SubItems(2).Text = 管理模组.安装状态显示词字典(x.安装状态)
+                                Form1.ListView2.SelectedItems(i).SubItems(2).Text = 项信息读取类.安装状态字典(x.安装状态)
                                 管理模组.根据安装状态设置项的颜色标记(x.安装状态, Form1.ListView2.SelectedItems(i))
                             Else
                                 DebugPrint($"{线程ID} 刷新项信息时故障：{x.错误信息}", Color1.红色)
-                                Form1.ListView2.SelectedItems(i).SubItems(2).Text = "x.错误信息"
+                                Form1.ListView2.SelectedItems(i).SubItems(2).Text = x.错误信息
                                 Form1.ListView2.SelectedItems(i).ForeColor = Color1.红色
                             End If
                         End If

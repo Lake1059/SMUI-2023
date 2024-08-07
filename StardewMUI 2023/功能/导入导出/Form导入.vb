@@ -115,7 +115,7 @@ jx1:
 
     Private Sub UiButton4_Click(sender As Object, e As EventArgs) Handles UiButton4.Click
         Dim str As String = "$host.UI.RawUI.WindowTitle = " & """" & Me.Text & """"
-        Dim 压缩程序路径 As String = "& " & """" & Application.StartupPath & "\7za64\7za.exe" & """"
+        Dim 压缩程序路径 As String = "& " & """" & Path.Combine(Application.StartupPath, "7za64", "7z.exe") & """"
 
         Select Case Me.Text
             Case "导入数据子库"

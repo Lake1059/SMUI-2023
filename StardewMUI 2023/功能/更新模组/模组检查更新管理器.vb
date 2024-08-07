@@ -80,7 +80,7 @@ Public Class 模组检查更新管理器
             For i2 = 0 To 模组项列表.Count - 1
                 Dim str1 As String = Path.Combine(管理模组2.检查并返回当前所选子库路径(False), Form1.ListView1.SelectedItems(i).Text, 模组项列表(i2))
                 Dim a As New 项信息读取类
-                a.读取项信息(str1, New 公共对象.项数据计算类型结构 With {.UniqueID = True, .版本 = True, .更新键 = True})
+                a.读取项信息(str1, New 项信息读取类.项数据计算类型结构 With {.UniqueID = True, .版本 = True, .更新键 = True})
                 For i3 = 0 To a.UniqueID.Count - 1
                     Form1.ListView8.Items.Add(a.UniqueID(i3))
                     Dim key As String = ""
@@ -118,7 +118,7 @@ Public Class 模组检查更新管理器
         For i = 0 To Form1.ListView2.SelectedItems.Count - 1
             Dim str1 As String = Path.Combine(管理模组2.检查并返回当前所选子库路径(False), Form1.ListView2.SelectedItems(i).SubItems(3).Text, Form1.ListView2.SelectedItems(i).Text)
             Dim a As New 项信息读取类
-            a.读取项信息(str1, New 公共对象.项数据计算类型结构 With {.UniqueID = True, .版本 = True, .更新键 = True})
+            a.读取项信息(str1, New 项信息读取类.项数据计算类型结构 With {.UniqueID = True, .版本 = True, .更新键 = True})
             For i2 = 0 To a.UniqueID.Count - 1
                 Form1.ListView8.Items.Add(a.UniqueID(i2))
                 Dim key As String = ""
@@ -408,7 +408,7 @@ Public Class 模组检查更新管理器
                 Dim mDirInfo2 As New IO.DirectoryInfo(mDir.FullName)
                 For Each mDir2 In mDirInfo2.GetDirectories
                     Dim a As New 项信息读取类
-                    a.读取项信息(mDir2.FullName, New 公共对象.项数据计算类型结构 With {.UniqueID = True})
+                    a.读取项信息(mDir2.FullName, New 项信息读取类.项数据计算类型结构 With {.UniqueID = True})
                     If a.UniqueID.Count = 0 Then Continue For
                     For Each item As ListViewItem In Form1.ListView12.Items
                         If a.UniqueID.Contains(item.SubItems(1).Text) Then
@@ -468,7 +468,7 @@ Public Class 模组检查更新管理器
             Case "nexus"
                 Dim a As New 项信息读取类
                 Dim str = Path.Combine(管理模组2.检查并返回当前所选子库路径(False), Form1.ListView12.SelectedItems(0).SubItems(3).Text, Form1.ListView12.SelectedItems(0).SubItems(4).Text)
-                a.读取项信息(str, New 公共对象.项数据计算类型结构 With {.版本 = True})
+                a.读取项信息(str, New 项信息读取类.项数据计算类型结构 With {.版本 = True})
                 更新模组.获取NEXUS文件列表(获取到的更新键, str, a.版本.FirstOrDefault, "checkupdate")
             Case "moddrop"
                 更新模组.转到浏览器等待ModDrop下载链接(获取到的更新键, Path.Combine(管理模组2.检查并返回当前所选子库路径(False), Form1.ListView12.SelectedItems(0).SubItems(3).Text, Form1.ListView12.SelectedItems(0).SubItems(4).Text), "checkupdate")
@@ -490,7 +490,7 @@ Public Class 模组检查更新管理器
                 Dim a1 As New 项信息读取类
                 Dim str = Path.Combine(管理模组2.检查并返回当前所选子库路径(False), Form1.ListView12.SelectedItems(0).SubItems(3).Text, Form1.ListView12.SelectedItems(0).SubItems(4).Text)
 
-                a1.读取项信息(str, New 公共对象.项数据计算类型结构 With {.版本 = True})
+                a1.读取项信息(str, New 项信息读取类.项数据计算类型结构 With {.版本 = True})
 
                 更新模组.获取NEXUS文件列表(b, str, a1.版本.FirstOrDefault, "checkupdate")
 

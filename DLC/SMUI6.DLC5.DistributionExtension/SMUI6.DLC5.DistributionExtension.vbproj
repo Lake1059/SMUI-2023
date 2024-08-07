@@ -20,7 +20,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\StardewMUI 2023\StardewMUI 2023.vbproj" />
+	<ProjectReference Include="..\..\StardewMUI 2023\StardewMUI 2023.vbproj" />
   </ItemGroup>
 
 </Project>

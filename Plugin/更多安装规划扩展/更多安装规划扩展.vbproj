@@ -1,0 +1,42 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <RootNamespace>更多安装规划扩展</RootNamespace>
+    <TargetFramework>net8.0-windows10.0.22621.0</TargetFramework>
+    <SupportedOSPlatformVersion>10.0.17763.0</SupportedOSPlatformVersion>
+    <Authors>1059 Studio</Authors>
+    <Company>1059 Studio</Company>
+    <Copyright>Copyright © 2019-2024 1059 Studio, All Rights Reserved.</Copyright>
+    <UseApplicationFramework>True</UseApplicationFramework>
+    <EnableVisualStyles>True</EnableVisualStyles>
+    <SingleInstance>True</SingleInstance>
+    <HighDpiMode>3</HighDpiMode>
+    <OutputType>WinExe</OutputType>
+    <UseWindowsForms>True</UseWindowsForms>
+    <UseWPF>True</UseWPF>
+    <MyType>WindowsForms</MyType>
+    <ApplicationManifest>My Project\app.manifest</ApplicationManifest>
+    <StartupObject>更多安装规划扩展.My.MyApplication</StartupObject>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <PlatformTarget>x64</PlatformTarget>
+    <DebugType>embedded</DebugType>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <PlatformTarget>x64</PlatformTarget>
+    <DebugType>embedded</DebugType>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="sunnyui" Version="3.6.6" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="SMUI6">
+      <HintPath>..\..\StardewMUI 2023\bin\Debug\net8.0-windows10.0.22621.0\win-x64\SMUI6.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+</Project>

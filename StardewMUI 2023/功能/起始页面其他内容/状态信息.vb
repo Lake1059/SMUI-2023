@@ -70,6 +70,7 @@ Public Class 状态信息
             Case 应用程序启动模式枚举.Steam
                 Form1.UiListBox1.Items(2) &= " - Steam Version"
         End Select
+        Form1.UiListBox1.Items(2) &= " - " & 当前用户身份组.ToString
 
         If FileIO.FileSystem.DirectoryExists(设置.全局设置数据("LocalRepositoryPath")) Then
             Form1.UiListBox1.Items(3) = 设置.全局设置数据("LocalRepositoryPath")

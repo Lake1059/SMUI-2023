@@ -96,7 +96,7 @@ Public Class Form导出
         End If
 
         Dim str As String = "$host.UI.RawUI.WindowTitle = " & """" & Me.Text & """"
-        str &= vbCrLf & "& " & """" & Path.Combine(Application.StartupPath, "7za64", "7za.exe") & """"
+        str &= vbCrLf & "& " & """" & Path.Combine(Application.StartupPath, "7za64", "7z.exe") & """"
         str &= " a " & """" & Me.暗黑文本框1.Text & """" & " "
 
         Select Case Me.Text

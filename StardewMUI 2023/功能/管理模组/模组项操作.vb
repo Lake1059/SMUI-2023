@@ -158,9 +158,34 @@ Line1:
         Form1.Label51.Text = Form1.ListView2.Items.Count
     End Sub
 
+    Public Shared Sub 删除排序()
+        If Form1.ListView1.SelectedItems.Count = 0 Then Exit Sub
+        Dim a As New 多项单选对话框("", {"删除", "取消"}, "确认删除排序文件？",, 500)
+        Dim s1 As String = a.ShowDialog(Form1)
+        If s1 <> 0 Then Exit Sub
+        管理模组.实时模组项排序是否经过修改 = False
+        管理模组.实时模组项列表内容归属的分类 = ""
+        管理模组.实时模组项排序.Clear()
+        管理模组.清除模组项列表()
+        For i = 0 To Form1.ListView1.SelectedItems.Count - 1
+            Dim path1 As String = Path.Combine(管理模组2.检查并返回当前所选子库路径(False), Form1.ListView1.SelectedItems(i).Text, "SORT")
+            If FileIO.FileSystem.FileExists(path1) Then
+                FileIO.FileSystem.DeleteFile(path1)
+            End If
+        Next
+    End Sub
 
-
-
-
+    Public Shared Sub 清除Config缓存()
+        If Form1.ListView2.SelectedItems.Count <> 1 Then Exit Sub
+        Dim a As New 多项单选对话框("", {"删除", "取消"}, "确认清除选中模组项的已有 Config 缓存？",, 500)
+        Dim s1 As String = a.ShowDialog(Form1)
+        If s1 <> 0 Then Exit Sub
+        For i = 0 To Form1.ListView2.SelectedItems.Count - 1
+            Dim path1 As String = Path.Combine(管理模组2.检查并返回当前所选子库路径(False), Form1.ListView2.SelectedItems(i).SubItems(3).Text, Form1.ListView2.SelectedItems(i).Text, ".config")
+            If FileIO.FileSystem.DirectoryExists(path1) Then
+                FileIO.FileSystem.DeleteDirectory(path1, FileIO.DeleteDirectoryOption.DeleteAllContents)
+            End If
+        Next
+    End Sub
 
 End Class

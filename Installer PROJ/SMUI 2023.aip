@@ -92,10 +92,10 @@
     <ROW Property="AppLogoIconDark" Value="applogodark.png" MultiBuildValue="DefaultBuild:dropbox.ico" Type="1" MsiKey="AppLogoIconDark"/>
     <ROW Property="CTRLS" Value="2"/>
     <ROW Property="Manufacturer" Value="1059 Studio"/>
-    <ROW Property="ProductCode" Value="2052:{05CA26B0-E493-4D76-8B7B-394D9DD1106A} " Type="16"/>
+    <ROW Property="ProductCode" Value="2052:{6E1A6E56-5E3D-404A-AD82-D38EFDE3C705} " Type="16"/>
     <ROW Property="ProductLanguage" Value="2052"/>
     <ROW Property="ProductName" Value="SMUI 2023"/>
-    <ROW Property="ProductVersion" Value="6.5.0" Options="32"/>
+    <ROW Property="ProductVersion" Value="6.6.0" Options="32"/>
     <ROW Property="REBOOT" MultiBuildValue="DefaultBuild:ReallySuppress"/>
     <ROW Property="SecureCustomProperties" Value="OLDPRODUCTS;AI_NEWERPRODUCTFOUND;AI_SETUPEXEPATH;SETUPEXEDIR"/>
     <ROW Property="UpgradeCode" Value="{349EDF0D-1EB2-4B52-B72A-0F3AEC12DAC8}"/>
@@ -400,7 +400,8 @@
     <ROW Component="netstandard.dll" ComponentId="{5C5B993A-35DC-4FFF-B7AB-0822C0257D11}" Directory_="APPDIR" Attributes="0" KeyPath="netstandard.dll"/>
     <ROW Component="vcruntime140_cor3.dll" ComponentId="{D5264078-71C3-4A57-9139-B25EB707EB4D}" Directory_="APPDIR" Attributes="256" KeyPath="vcruntime140_cor3.dll"/>
     <ROW Component="wpfgfx_cor3.dll" ComponentId="{65E9D538-EC4E-43E6-8FD3-2C1CD52F05BB}" Directory_="APPDIR" Attributes="256" KeyPath="wpfgfx_cor3.dll"/>
-    <ROW Component="zFull64.dll" ComponentId="{65CD4039-2B99-4EDA-85B9-AD07DF4B11A4}" Directory_="APPDIR" Attributes="256" KeyPath="zFull64.dll"/>
+    <ROW Component="z.dll" ComponentId="{93E90614-8EBF-4C54-8976-7CCC123F7F61}" Directory_="za64_Dir" Attributes="256" KeyPath="z.dll"/>
+    <ROW Component="z.exe" ComponentId="{FB855522-5965-4DF9-A61D-78431713D8E7}" Directory_="za64_Dir" Attributes="256" KeyPath="z.exe"/>
     <ROW Component="za.dll" ComponentId="{4AE57F98-14D4-49AC-9AAB-92788E985A03}" Directory_="za64_Dir" Attributes="256" KeyPath="za.dll"/>
     <ROW Component="za.exe" ComponentId="{CFBFA32E-753E-41F2-9D99-26306C2B66DE}" Directory_="za64_Dir" Attributes="256" KeyPath="za.exe"/>
     <ROW Component="zxa.dll" ComponentId="{57F802B8-6E0A-4965-8605-40119E0CBFFA}" Directory_="za64_Dir" Attributes="256" KeyPath="zxa.dll"/>
@@ -410,7 +411,6 @@
     <ATTRIBUTE name="CurrentFeature" value="MainFeature"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiFilesComponent">
-    <ROW File="zFull64.dll" Component_="zFull64.dll" FileName="7zFull64.dll" Attributes="0" SourcePath="..\StardewMUI 2023\bin\Debug\net8.0-windows10.0.22621.0\win-x64\7zFull64.dll" SelfReg="false"/>
     <ROW File="Accessibility.dll" Component_="Accessibility.dll" FileName="ACCESS~1.DLL|Accessibility.dll" Attributes="0" SourcePath="..\StardewMUI 2023\bin\Debug\net8.0-windows10.0.22621.0\win-x64\Accessibility.dll" SelfReg="false"/>
     <ROW File="clrgc.dll" Component_="clrgc.dll" FileName="clrgc.dll" Attributes="0" SourcePath="..\StardewMUI 2023\bin\Debug\net8.0-windows10.0.22621.0\win-x64\clrgc.dll" SelfReg="false"/>
     <ROW File="clrjit.dll" Component_="clrjit.dll" FileName="clrjit.dll" Attributes="0" SourcePath="..\StardewMUI 2023\bin\Debug\net8.0-windows10.0.22621.0\win-x64\clrjit.dll" SelfReg="false"/>
@@ -697,6 +697,8 @@
     <ROW File="SaveEditorItems" Component_="SaveEditorItems" FileName="SAVEED~1|SaveEditorItems" Attributes="0" SourcePath="..\StardewMUI 2023\bin\Debug\net8.0-windows10.0.22621.0\win-x64\Assets\SaveEditorItems" SelfReg="false"/>
     <ROW File="ModsCoordinationDataBase.csv" Component_="chrome_100_percent.pak" FileName="MODSCO~1.CSV|ModsCoordinationDataBase.csv" Attributes="0" SourcePath="..\StardewMUI 2023\bin\Debug\net8.0-windows10.0.22621.0\win-x64\ModsCoordinationDataBase.csv" SelfReg="false"/>
     <ROW File="mscordaccore_amd64_amd64_8.0.724.31311.dll" Component_="mscordaccore_amd64_amd64_8.0.724.31311.dll" FileName="MSCORD~2.DLL|mscordaccore_amd64_amd64_8.0.724.31311.dll" Attributes="0" SourcePath="..\StardewMUI 2023\bin\Debug\net8.0-windows10.0.22621.0\win-x64\mscordaccore_amd64_amd64_8.0.724.31311.dll" SelfReg="false"/>
+    <ROW File="z.dll" Component_="z.dll" FileName="7z.dll" Attributes="0" SourcePath="..\StardewMUI 2023\bin\Debug\net8.0-windows10.0.22621.0\win-x64\7za64\7z.dll" SelfReg="false"/>
+    <ROW File="z.exe" Component_="z.exe" FileName="7z.exe" Attributes="0" SourcePath="..\StardewMUI 2023\bin\Debug\net8.0-windows10.0.22621.0\win-x64\7za64\7z.exe" SelfReg="false"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.BootstrOptComponent">
     <ROW BootstrOptKey="GlobalOptions" DownloadFolder="[AppDataFolder][|Manufacturer]\[|ProductName]\prerequisites" Options="2"/>
@@ -803,7 +805,7 @@
     <ROW Dialog_="NewDialog" Control="AboutBtn" Type="ImageButton" X="1" Y="382" Width="18" Height="18" Attributes="3" Text="[AboutBtnIcon]" TextStyle="[ManufacturerFont]" Order="600" Options="1" ExtType="ImageButton"/>
     <ROW Dialog_="NewDialog" Control="Text_1" Type="Text" X="15" Y="125" Width="458" Height="40" Attributes="196611" Text="开发者邮箱：vb1059@outlook.com" TextStyle="[ManufacturerFont]" Order="700"/>
     <ROW Dialog_="NewDialog" Control="Text_2" Type="Text" X="15" Y="164" Width="458" Height="20" Attributes="196611" Text="产品发布于：GitHub、Gitee、Bitbucket（备用）" TextStyle="[ManufacturerFont]" Order="800"/>
-    <ROW Dialog_="NewDialog" Control="Text_3" Type="Text" X="15" Y="183" Width="458" Height="20" Attributes="196611" Text="产品宣传于：BiliBili、小红书、小黑盒" TextStyle="[ManufacturerFont]" Order="900"/>
+    <ROW Dialog_="NewDialog" Control="Text_3" Type="Text" X="15" Y="183" Width="458" Height="20" Attributes="196611" Text="产品宣传于：哔哩哔哩、小黑盒、贴吧" TextStyle="[ManufacturerFont]" Order="900"/>
     <ROW Dialog_="NewDialog" Control="Text_4" Type="Text" X="15" Y="203" Width="458" Height="20" Attributes="196611" Text="可选付费内容销售于：爱发电、Payhip，除此之外无任何销售渠道，谨防诈骗" TextStyle="[ManufacturerFont]" Order="1000"/>
     <ROW Dialog_="NewDialog_1" Control="Cancel" Type="ImageButton" X="0" Y="0" Width="0" Height="0" Attributes="2" Text="[ButtonImage]" TextStyle="[ImageBtnFont]" Order="100" Options="1" ExtType="ImageButton" ExtData="[ButtonText_Cancel]" ExtDataLocId="-"/>
     <ROW Dialog_="NewDialog_1" Control="Next" Type="ImageButton" X="378" Y="354" Width="95" Height="28" Attributes="3" Text="[ButtonImage]" TextStyle="[ImageBtnFont]" Order="200" Options="1" ExtType="ImageButton" ExtData="[ButtonText_Next]" ExtDataLocId="-"/>
@@ -986,7 +988,6 @@
   <COMPONENT cid="caphyon.advinst.msicomp.MsiFeatCompsComponent">
     <ROW Feature_="MainFeature" Component_="APPDIR"/>
     <ROW Feature_="MainFeature" Component_="ProductInformation"/>
-    <ROW Feature_="MainFeature" Component_="zFull64.dll"/>
     <ROW Feature_="MainFeature" Component_="Accessibility.dll"/>
     <ROW Feature_="MainFeature" Component_="chrome_100_percent.pak"/>
     <ROW Feature_="MainFeature" Component_="AI_ExePath"/>
@@ -1269,6 +1270,8 @@
     <ROW Feature_="MainFeature" Component_="Magick.NETQ16x64.dll"/>
     <ROW Feature_="MainFeature" Component_="SaveEditorItems"/>
     <ROW Feature_="MainFeature" Component_="mscordaccore_amd64_amd64_8.0.724.31311.dll"/>
+    <ROW Feature_="MainFeature" Component_="z.dll"/>
+    <ROW Feature_="MainFeature" Component_="z.exe"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiIconsComponent">
     <ROW Name="SMUI6.exe" SourcePath="..\StardewMUI 2023\dropbox.ico" Index="0"/>

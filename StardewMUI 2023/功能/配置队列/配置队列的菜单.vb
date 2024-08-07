@@ -1,6 +1,4 @@
-﻿Imports SMUI6.公共对象
-
-Public Class 配置队列的菜单
+﻿Public Class 配置队列的菜单
 
     Public Shared Property 内容右键菜单 As New 暗黑菜单条控件本体 With {.ImageScalingSize = New Size(25 * 界面控制.DPI, 25 * 界面控制.DPI)}
     Public Shared Property 菜单项_重命名 As New ToolStripMenuItem With {.Text = "重命名", .Image = My.Resources.代码文件夹, .ShortcutKeys = Keys.F2}
@@ -61,63 +59,47 @@ Public Class 配置队列的菜单
 
     Public Shared Property 添加规划菜单 As New 暗黑菜单条控件本体 With {.ImageScalingSize = New Size(23 * 界面控制.DPI, 23 * 界面控制.DPI), .DropShadowEnabled = False}
     Public Shared Property 菜单项_复制文件夹到Mods As New ToolStripMenuItem With {.Text = "复制文件夹到 Mods", .Image = My.Resources.添加带圆圈}
-    Public Shared Property 菜单项_覆盖Mods中的文件夹 As New ToolStripMenuItem With {.Text = "覆盖 Mods 中的文件夹"}
-    Public Shared Property 菜单项_复制文件夹到根位置 As New ToolStripMenuItem With {.Text = "复制文件夹"}
-    Public Shared Property 菜单项_覆盖Content文件夹 As New ToolStripMenuItem With {.Text = "覆盖 Content 文件夹"}
-    Public Shared Property 菜单项_新增文件 As New ToolStripMenuItem With {.Text = "新增文件"}
-    Public Shared Property 菜单项_新增文件并验证 As New ToolStripMenuItem With {.Text = "新增文件并验证"}
-    Public Shared Property 菜单项_替换文件 As New ToolStripMenuItem With {.Text = "替换文件"}
-    Public Shared Property 菜单项_替换文件且无检测 As New ToolStripMenuItem With {.Text = "替换文件且无检测"}
-    Public Shared Property 菜单项_安装时检查文件夹的存在 As New ToolStripMenuItem With {.Text = "安装时检查文件夹的存在", .Image = My.Resources.全选}
-    Public Shared Property 菜单项_卸载时检查文件夹的存在 As New ToolStripMenuItem With {.Text = "卸载时检查文件夹的存在"}
-    Public Shared Property 菜单项_安装时检查文件的存在 As New ToolStripMenuItem With {.Text = "安装时检查文件的存在"}
-    Public Shared Property 菜单项_卸载时检查文件的存在 As New ToolStripMenuItem With {.Text = "卸载时检查文件的存在"}
-
-    Public Shared Property 菜单项_卸载时取消操作 As New ToolStripMenuItem With {.Text = "卸载时取消操作"}
-
+    Public Shared Property 菜单项_覆盖Mods中的文件夹 As New ToolStripMenuItem With {.Text = "覆盖 Mods 中的文件夹", .Image = My.Resources.添加带圆圈}
+    Public Shared Property 菜单项_复制文件夹到根位置 As New ToolStripMenuItem With {.Text = "复制文件夹", .Image = My.Resources.添加带圆圈}
+    Public Shared Property 菜单项_覆盖Content文件夹 As New ToolStripMenuItem With {.Text = "覆盖 Content 文件夹", .Image = My.Resources.添加带圆圈}
+    Public Shared Property 菜单项_安装单个文件 As New ToolStripMenuItem With {.Text = "安装单个文件", .Image = My.Resources.添加带圆圈}
+    Public Shared Property 菜单项_检查存在性 As New ToolStripMenuItem With {.Text = "检查存在性", .Image = My.Resources.试验}
+    Public Shared Property 菜单项_安装时检查模组的版本 As New ToolStripMenuItem With {.Text = "安装时检查模组版本", .Image = My.Resources.试验}
+    Public Shared Property 菜单项_卸载时取消操作 As New ToolStripMenuItem With {.Text = "卸载时取消操作", .Image = My.Resources.试验}
+    Public Shared Property 菜单项_运行可执行文件 As New ToolStripMenuItem With {.Text = "运行可执行文件", .Image = My.Resources.试验}
+    Public Shared Property 菜单项_弹窗 As New ToolStripMenuItem With {.Text = "弹窗", .Image = My.Resources.试验}
     Public Shared Property 菜单项_声明核心功能的启停 As New ToolStripMenuItem With {.Text = "声明核心功能的启停", .Image = My.Resources.六个点}
+    Public Shared Property 菜单项_与第三方规划的分隔符 As New ToolStripSeparator With {.Visible = False}
 
     Public Shared Sub 添加添加规划菜单的所有菜单项()
         添加规划菜单.Items.Add(菜单项_复制文件夹到Mods)
-        AddHandler 菜单项_复制文件夹到Mods.Click, Sub() 添加新规划通用调用(任务队列操作类型枚举.复制文件夹到Mods, "<参数：文件夹>")
+        AddHandler 菜单项_复制文件夹到Mods.Click, Sub() 添加新规划通用调用("CD-D-MODS", "<模组文件夹>")
         添加规划菜单.Items.Add(菜单项_覆盖Mods中的文件夹)
-        AddHandler 菜单项_覆盖Mods中的文件夹.Click, Sub() 添加新规划通用调用(任务队列操作类型枚举.覆盖文件夹到Mods, "<参数：文件夹>")
+        AddHandler 菜单项_覆盖Mods中的文件夹.Click, Sub() 添加新规划通用调用("CD-D-MODS-COVER", "<在 Mods 中的同名文件夹>")
         添加规划菜单.Items.Add(菜单项_复制文件夹到根位置)
-        AddHandler 菜单项_复制文件夹到根位置.Click, Sub() 添加新规划通用调用(任务队列操作类型枚举.复制文件夹, "<参数：文件夹>|<参数：目标位置>")
+        AddHandler 菜单项_复制文件夹到根位置.Click, Sub() 添加新规划通用调用("CD-D-ROOT", "<文件夹>|<目标位置>")
         添加规划菜单.Items.Add(菜单项_覆盖Content文件夹)
-        AddHandler 菜单项_覆盖Content文件夹.Click, Sub() 添加新规划通用调用(任务队列操作类型枚举.覆盖Content, "0")
-        添加规划菜单.Items.Add(菜单项_新增文件)
-        AddHandler 菜单项_新增文件.Click, Sub() 添加新规划通用调用(任务队列操作类型枚举.新增文件, "<参数：文件>|<参数：目标位置>")
-        添加规划菜单.Items.Add(菜单项_新增文件并验证)
-        AddHandler 菜单项_新增文件并验证.Click, Sub() 添加新规划通用调用(任务队列操作类型枚举.新增文件并验证, "<参数：文件>|<参数：目标位置>")
-        添加规划菜单.Items.Add(菜单项_替换文件)
-        AddHandler 菜单项_替换文件.Click, Sub() 添加新规划通用调用(任务队列操作类型枚举.替换文件, "<参数：文件>|<参数：目标位置>")
-        添加规划菜单.Items.Add(菜单项_替换文件且无检测)
-        AddHandler 菜单项_替换文件且无检测.Click, Sub() 添加新规划通用调用(任务队列操作类型枚举.替换文件且无检测, "<参数：文件>|<参数：目标位置>")
-
+        AddHandler 菜单项_覆盖Content文件夹.Click, Sub() 添加新规划通用调用("CD-D-CONTENT", "0")
+        添加规划菜单.Items.Add(菜单项_安装单个文件)
+        AddHandler 菜单项_安装单个文件.Click, Sub() 添加新规划通用调用("CD-F", "<是否需要还原>|<是否需要判断>|<是否需要验证>|<文件>|<目标位置>")
         添加规划菜单.Items.Add(New ToolStripSeparator)
-
-        添加规划菜单.Items.Add(菜单项_安装时检查文件夹的存在)
-        AddHandler 菜单项_安装时检查文件夹的存在.Click, Sub() 添加新规划通用调用(任务队列操作类型枚举.安装时检查文件夹的存在, "<布尔值>|<参数：文件夹>")
-        添加规划菜单.Items.Add(菜单项_卸载时检查文件夹的存在)
-        AddHandler 菜单项_卸载时检查文件夹的存在.Click, Sub() 添加新规划通用调用(任务队列操作类型枚举.卸载时检查文件夹的存在, "<布尔值>|<参数：文件夹>")
-        添加规划菜单.Items.Add(菜单项_安装时检查文件的存在)
-        AddHandler 菜单项_安装时检查文件的存在.Click, Sub() 添加新规划通用调用(任务队列操作类型枚举.安装时检查文件的存在, "<布尔值>|<参数：文件>")
-        添加规划菜单.Items.Add(菜单项_卸载时检查文件的存在)
-        AddHandler 菜单项_卸载时检查文件的存在.Click, Sub() 添加新规划通用调用(任务队列操作类型枚举.卸载时检查文件的存在, "<布尔值>|<参数：文件>")
-
-        添加规划菜单.Items.Add(New ToolStripSeparator)
-
+        添加规划菜单.Items.Add(菜单项_检查存在性)
+        AddHandler 菜单项_检查存在性.Click, Sub() 添加新规划通用调用("CR-Check-EXIST", "<在安装还是卸载中>|<文件夹还是文件>|<要存在还是不存在>|<无限参数：文件夹或文件>")
+        添加规划菜单.Items.Add(菜单项_安装时检查模组的版本)
+        AddHandler 菜单项_安装时检查模组的版本.Click, Sub() 添加新规划通用调用("CR-IN-MODS-VER", "<判断符>|<版本号>|<模组文件夹>")
         添加规划菜单.Items.Add(菜单项_卸载时取消操作)
-        AddHandler 菜单项_卸载时取消操作.Click, Sub() 添加新规划通用调用(任务队列操作类型枚举.卸载时取消操作, "<要取消还是报错>")
-        添加规划菜单.Items.Add(New ToolStripSeparator)
-
+        AddHandler 菜单项_卸载时取消操作.Click, Sub() 添加新规划通用调用("CR-UN", "<要取消还是报错>")
+        添加规划菜单.Items.Add(菜单项_运行可执行文件)
+        AddHandler 菜单项_运行可执行文件.Click, Sub() 添加新规划通用调用("CR-SHELL", "<在安装还是卸载中>|<可执行文件>|<传递参数>|<是否等待>")
+        添加规划菜单.Items.Add(菜单项_弹窗)
+        AddHandler 菜单项_弹窗.Click, Sub() 添加新规划通用调用("CR-MSGBOX", "<在安装还是卸载中>|<标题>|<描述>|<是否要正确>|<正确序号>|<无限参数：选择项>")
         添加规划菜单.Items.Add(菜单项_声明核心功能的启停)
-        AddHandler 菜单项_声明核心功能的启停.Click, Sub() 添加新规划通用调用(任务队列操作类型枚举.声明各种核心功能的启停, "<在编辑配置中勾选>")
+        AddHandler 菜单项_声明核心功能的启停.Click, Sub() 添加新规划通用调用("CORE-CLASS", "<在编辑配置中勾选>")
 
+        添加规划菜单.Items.Add(菜单项_与第三方规划的分隔符)
     End Sub
 
-    Public Shared Sub 添加新规划通用调用(操作类型 As 任务队列操作类型枚举, 默认参数 As String)
+    Public Shared Sub 添加新规划通用调用(操作类型 As String, 默认参数 As String)
         If Form1.ListView3.SelectedItems.Count <> 1 Or 配置队列.正在编辑规划的项路径 = "" Then Exit Sub
         Form1.ListView7.Items.Add(配置队列.规划显示名称字典(操作类型))
         Form1.ListView7.Items(Form1.ListView7.Items.Count - 1).SubItems.Add(默认参数)
@@ -131,7 +113,6 @@ Public Class 配置队列的菜单
         Form1.ListView6.ContextMenuStrip = 内容右键菜单
         Form1.ListView7.ContextMenuStrip = 规划右键菜单
         AddHandler Form1.UiButton20.MouseDown, Sub(sender, e) 添加规划菜单.Show(sender, New Point(sender.Width - 添加规划菜单.Width, sender.Height))
-
     End Sub
 
 End Class

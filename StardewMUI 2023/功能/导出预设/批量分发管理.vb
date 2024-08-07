@@ -341,7 +341,7 @@ jx1:
         For Each FileItem In 预设数据.Data(选择的预设索引).Value.文件列表
             Dim 单个导出文件路径 = Path.Combine(str1, FileItem.Key & If(FileItem.Value.分类还是模组项 = 1, ".smuicpak", ".smuimpak"))
             str &= vbCrLf & "Remove-FileToRecycleBin -filePath " & """" & 单个导出文件路径 & """"
-            str &= vbCrLf & "& " & """" & Path.Combine(Application.StartupPath, "7za64", "7za.exe") & """"
+            str &= vbCrLf & "& " & """" & Path.Combine(Application.StartupPath, "7za64", "7z.exe") & """"
             str &= " a " & """" & 单个导出文件路径 & """" & " "
             For Each FileCC In FileItem.Value.包含的相对路径
                 str &= " " & """" & Path.Combine(设置.全局设置数据("LocalRepositoryPath"), FileCC) & "\" & """"

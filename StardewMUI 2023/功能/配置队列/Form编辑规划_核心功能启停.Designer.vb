@@ -40,39 +40,42 @@ Partial Class Form编辑规划_核心功能启停
         ' 
         ' UiCheckBox1
         ' 
+        UiCheckBox1.CheckBoxSize = 20
         UiCheckBox1.Font = New Font("微软雅黑", 12F)
         UiCheckBox1.ForeColor = SystemColors.ScrollBar
         UiCheckBox1.Location = New Point(29, 70)
         UiCheckBox1.Margin = New Padding(20, 20, 20, 0)
         UiCheckBox1.MinimumSize = New Size(1, 1)
         UiCheckBox1.Name = "UiCheckBox1"
-        UiCheckBox1.Size = New Size(218, 23)
+        UiCheckBox1.Size = New Size(222, 23)
         UiCheckBox1.Style = Sunny.UI.UIStyle.Custom
         UiCheckBox1.TabIndex = 2
         UiCheckBox1.Text = "允许标准 SMAPI 模组套娃"
         ' 
         ' UiCheckBox2
         ' 
+        UiCheckBox2.CheckBoxSize = 20
         UiCheckBox2.Font = New Font("微软雅黑", 12F)
         UiCheckBox2.ForeColor = SystemColors.ScrollBar
         UiCheckBox2.Location = New Point(29, 108)
         UiCheckBox2.Margin = New Padding(20, 15, 20, 0)
         UiCheckBox2.MinimumSize = New Size(1, 1)
         UiCheckBox2.Name = "UiCheckBox2"
-        UiCheckBox2.Size = New Size(250, 23)
+        UiCheckBox2.Size = New Size(254, 23)
         UiCheckBox2.Style = Sunny.UI.UIStyle.Custom
         UiCheckBox2.TabIndex = 3
         UiCheckBox2.Text = "关闭 config.json 自动保留机制"
         ' 
         ' UiCheckBox3
         ' 
+        UiCheckBox3.CheckBoxSize = 20
         UiCheckBox3.Font = New Font("微软雅黑", 12F)
         UiCheckBox3.ForeColor = SystemColors.ScrollBar
         UiCheckBox3.Location = New Point(29, 146)
         UiCheckBox3.Margin = New Padding(20, 15, 20, 0)
         UiCheckBox3.MinimumSize = New Size(1, 1)
         UiCheckBox3.Name = "UiCheckBox3"
-        UiCheckBox3.Size = New Size(157, 23)
+        UiCheckBox3.Size = New Size(161, 23)
         UiCheckBox3.Style = Sunny.UI.UIStyle.Custom
         UiCheckBox3.TabIndex = 4
         UiCheckBox3.Text = "允许添加任何文件"

@@ -45,4 +45,4 @@ NexusPremium=False
 BGP_News=
 BGP_Category=
 BGP_ModItem=
-FirstStartGuide=False
+WelcomeWindow=False
