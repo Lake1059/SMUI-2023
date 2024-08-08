@@ -300,7 +300,7 @@ jx1:
                         Dim 是否需要判断, 是否需要验证, 文件, 目标位置 As String
                         Dim x3 As String() = 安装规划数据(i).Value.Split("|")
                         是否需要判断 = x3(1) : 是否需要验证 = x3(2) : 文件 = x3(3) : 目标位置 = x3(4)
-                        If 是否需要判断.Trim.Equals("true", StringComparison.CurrentCultureIgnoreCase) Then
+                        If 是否需要判断.Trim.Equals("False", StringComparison.CurrentCultureIgnoreCase) Then
                             If 安装状态 = "UnKnow" Then 安装状态 = "File"
                             Continue For
                         End If
