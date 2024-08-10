@@ -135,7 +135,7 @@ Public Class Form管理虚拟组
                     For Each item As String In 当前模组项的虚拟组列表
                         Dim i3 As ListViewItem = Me.ListView1.Items.Find(item, False).FirstOrDefault
                         If i3 Is Nothing Then GoTo jx1
-                        If Not i3.Checked Then GoTo jx1
+                        If Not i3.Selected Then GoTo jx1
                     Next
 
                     Form1.ListView2.Items.Add(Path.GetFileName(mDir2.FullName))

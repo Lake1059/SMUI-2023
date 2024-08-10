@@ -92,10 +92,10 @@
     <ROW Property="AppLogoIconDark" Value="applogodark.png" MultiBuildValue="DefaultBuild:dropbox.ico" Type="1" MsiKey="AppLogoIconDark"/>
     <ROW Property="CTRLS" Value="2"/>
     <ROW Property="Manufacturer" Value="1059 Studio"/>
-    <ROW Property="ProductCode" Value="2052:{1F2ED86F-7305-41AF-B61D-3B0F1A4F3C5A} " Type="16"/>
+    <ROW Property="ProductCode" Value="2052:{14F78A3F-EE2B-4291-A2B5-6CB7A25E8662} " Type="16"/>
     <ROW Property="ProductLanguage" Value="2052"/>
     <ROW Property="ProductName" Value="SMUI 2023"/>
-    <ROW Property="ProductVersion" Value="6.6.1" Options="32"/>
+    <ROW Property="ProductVersion" Value="6.6.2" Options="32"/>
     <ROW Property="REBOOT" MultiBuildValue="DefaultBuild:ReallySuppress"/>
     <ROW Property="SecureCustomProperties" Value="OLDPRODUCTS;AI_NEWERPRODUCTFOUND;AI_SETUPEXEPATH;SETUPEXEDIR"/>
     <ROW Property="UpgradeCode" Value="{349EDF0D-1EB2-4B52-B72A-0F3AEC12DAC8}"/>
