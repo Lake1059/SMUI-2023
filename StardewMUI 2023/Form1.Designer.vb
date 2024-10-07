@@ -23,26 +23,26 @@ Partial Class Form1
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         components = New ComponentModel.Container()
-        Dim ListViewItem1 As ListViewItem = New ListViewItem(New String() {"SMUI 中间型解释代码和二进制本体", "不可清理", ""}, -1, Color.FromArgb(CByte(0), CByte(192), CByte(0)), Color.Empty, Nothing)
-        Dim ListViewItem2 As ListViewItem = New ListViewItem(New String() {"SMUI 所有组件完整容量", "不可清理", ""}, -1, Color.FromArgb(CByte(0), CByte(192), CByte(0)), Color.Empty, Nothing)
-        Dim ListViewItem3 As ListViewItem = New ListViewItem(New String() {"已安装的 DLC 和插件", "不可清理", ""}, -1, Color.FromArgb(CByte(128), CByte(128), CByte(255)), Color.Empty, Nothing)
-        Dim ListViewItem4 As ListViewItem = New ListViewItem(New String() {"检查更新下载的安装包", "可以清理", ""}, -1)
-        Dim ListViewItem5 As ListViewItem = New ListViewItem(New String() {"下载的模组压缩包", "可以清理", ""}, -1)
-        Dim ListViewItem6 As ListViewItem = New ListViewItem(New String() {"临时解压", "可以清理", ""}, -1)
-        Dim ListViewItem7 As ListViewItem = New ListViewItem(New String() {"WebView2 主要缓存", "可以清理", ""}, -1)
-        Dim ListViewItem8 As ListViewItem = New ListViewItem(New String() {"WebView2 Cookies", "可以清理", ""}, -1)
-        Dim ListViewItem9 As ListViewItem = New ListViewItem(New String() {"WebView2 Service Worker", "可以清理", ""}, -1)
-        Dim ListViewItem10 As ListViewItem = New ListViewItem(New String() {"WebView2 其他全部缓存", "可以清理", ""}, -1)
+        Dim ListViewItem20 As ListViewItem = New ListViewItem(New String() {"SMUI 中间型解释代码和二进制本体", "不可清理", ""}, -1, Color.FromArgb(CByte(0), CByte(192), CByte(0)), Color.Empty, Nothing)
+        Dim ListViewItem21 As ListViewItem = New ListViewItem(New String() {"SMUI 所有组件完整容量", "不可清理", ""}, -1, Color.FromArgb(CByte(0), CByte(192), CByte(0)), Color.Empty, Nothing)
+        Dim ListViewItem22 As ListViewItem = New ListViewItem(New String() {"已安装的 DLC 和插件", "不可清理", ""}, -1, Color.FromArgb(CByte(128), CByte(128), CByte(255)), Color.Empty, Nothing)
+        Dim ListViewItem23 As ListViewItem = New ListViewItem(New String() {"检查更新下载的安装包", "可以清理", ""}, -1)
+        Dim ListViewItem24 As ListViewItem = New ListViewItem(New String() {"下载的模组压缩包", "可以清理", ""}, -1)
+        Dim ListViewItem25 As ListViewItem = New ListViewItem(New String() {"临时解压", "可以清理", ""}, -1)
+        Dim ListViewItem26 As ListViewItem = New ListViewItem(New String() {"WebView2 主要缓存", "可以清理", ""}, -1)
+        Dim ListViewItem27 As ListViewItem = New ListViewItem(New String() {"WebView2 Cookies", "可以清理", ""}, -1)
+        Dim ListViewItem28 As ListViewItem = New ListViewItem(New String() {"WebView2 Service Worker", "可以清理", ""}, -1)
+        Dim ListViewItem29 As ListViewItem = New ListViewItem(New String() {"WebView2 其他全部缓存", "可以清理", ""}, -1)
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Form1))
-        Dim ListViewItem11 As ListViewItem = New ListViewItem(New String() {"DLC 1 - 自定义输入扩展", "未启用"}, -1)
-        Dim ListViewItem12 As ListViewItem = New ListViewItem(New String() {"DLC 2 - 自定义皮肤加载器", "未启用"}, -1)
-        Dim ListViewItem13 As ListViewItem = New ListViewItem(New String() {"DLC 3 - 新项扩展", "未启用"}, -1)
-        Dim ListViewItem14 As ListViewItem = New ListViewItem(New String() {"DLC 4 - 检查更新扩展", "未启用"}, -1)
-        Dim ListViewItem15 As ListViewItem = New ListViewItem(New String() {"Season Pass 2023", "未启用"}, -1, Color.MediumOrchid, Color.Empty, Nothing)
-        Dim ListViewItem16 As ListViewItem = New ListViewItem(New String() {"DLC 5 - 分发扩展", "未启用"}, -1)
-        Dim ListViewItem17 As ListViewItem = New ListViewItem(New String() {"DLC 6 - 更新模组项扩展", "未启用"}, -1)
-        Dim ListViewItem18 As ListViewItem = New ListViewItem(New String() {"Season Pass 2024", "未启用"}, -1, Color.MediumOrchid, Color.Empty, Nothing)
-        Dim ListViewItem19 As ListViewItem = New ListViewItem(New String() {"Easy Start Experience", "未启用"}, -1, Color.MediumOrchid, Color.Empty, Nothing)
+        Dim ListViewItem1 As ListViewItem = New ListViewItem(New String() {"DLC 1 - 自定义输入扩展", "未启用"}, -1)
+        Dim ListViewItem2 As ListViewItem = New ListViewItem(New String() {"DLC 2 - 自定义皮肤加载器", "未启用"}, -1)
+        Dim ListViewItem3 As ListViewItem = New ListViewItem(New String() {"DLC 3 - 新项扩展", "未启用"}, -1)
+        Dim ListViewItem4 As ListViewItem = New ListViewItem(New String() {"DLC 4 - 检查更新扩展", "未启用"}, -1)
+        Dim ListViewItem5 As ListViewItem = New ListViewItem(New String() {"Season Pass 2023", "未启用"}, -1, Color.MediumOrchid, Color.Empty, Nothing)
+        Dim ListViewItem6 As ListViewItem = New ListViewItem(New String() {"DLC 5 - 分发扩展", "未启用"}, -1)
+        Dim ListViewItem7 As ListViewItem = New ListViewItem(New String() {"DLC 6 - 更新模组项扩展", "未启用"}, -1)
+        Dim ListViewItem8 As ListViewItem = New ListViewItem(New String() {"Season Pass 2024", "未启用"}, -1, Color.MediumOrchid, Color.Empty, Nothing)
+        Dim ListViewItem9 As ListViewItem = New ListViewItem(New String() {"Easy Start Experience", "未启用"}, -1, Color.MediumOrchid, Color.Empty, Nothing)
         UiTabControl1 = New Sunny.UI.UITabControl()
         TabPage起始页面 = New TabPage()
         Panel29 = New Panel()
@@ -72,7 +72,6 @@ Partial Class Form1
         Label33 = New Label()
         Panel45 = New Panel()
         UiButton68 = New Sunny.UI.UIButton()
-        UiButton42 = New Sunny.UI.UIButton()
         UiButton43 = New Sunny.UI.UIButton()
         Label47 = New Label()
         UiButton36 = New Sunny.UI.UIButton()
@@ -1118,7 +1117,6 @@ Partial Class Form1
         ' 
         Panel45.BackColor = Color.FromArgb(CByte(32), CByte(32), CByte(32))
         Panel45.Controls.Add(UiButton68)
-        Panel45.Controls.Add(UiButton42)
         Panel45.Controls.Add(UiButton43)
         Panel45.Controls.Add(Label47)
         Panel45.Location = New Point(20, 61)
@@ -1159,39 +1157,6 @@ Partial Class Form1
         UiButton68.Text = "官方视频"
         UiButton68.TipsColor = Color.Gray
         UiButton68.TipsFont = New Font("微软雅黑", 9F)
-        ' 
-        ' UiButton42
-        ' 
-        UiButton42.FillColor = Color.FromArgb(CByte(48), CByte(48), CByte(48))
-        UiButton42.FillColor2 = Color.FromArgb(CByte(48), CByte(48), CByte(48))
-        UiButton42.FillDisableColor = Color.FromArgb(CByte(48), CByte(48), CByte(48))
-        UiButton42.FillHoverColor = Color.FromArgb(CByte(64), CByte(64), CByte(64))
-        UiButton42.FillPressColor = Color.FromArgb(CByte(80), CByte(80), CByte(80))
-        UiButton42.FillSelectedColor = Color.FromArgb(CByte(48), CByte(48), CByte(48))
-        UiButton42.Font = New Font("微软雅黑", 9.75F)
-        UiButton42.ForeColor = Color.FromArgb(CByte(224), CByte(224), CByte(224))
-        UiButton42.ForeDisableColor = Color.Gray
-        UiButton42.ForeHoverColor = Color.FromArgb(CByte(244), CByte(244), CByte(244))
-        UiButton42.ForePressColor = Color.FromArgb(CByte(244), CByte(244), CByte(244))
-        UiButton42.ForeSelectedColor = Color.FromArgb(CByte(244), CByte(244), CByte(244))
-        UiButton42.Location = New Point(280, 0)
-        UiButton42.Margin = New Padding(0, 0, 15, 0)
-        UiButton42.MinimumSize = New Size(1, 1)
-        UiButton42.Name = "UiButton42"
-        UiButton42.Radius = 10
-        UiButton42.RadiusSides = Sunny.UI.UICornerRadiusSides.None
-        UiButton42.RectColor = Color.FromArgb(CByte(48), CByte(48), CByte(48))
-        UiButton42.RectDisableColor = Color.FromArgb(CByte(48), CByte(48), CByte(48))
-        UiButton42.RectHoverColor = Color.FromArgb(CByte(64), CByte(64), CByte(64))
-        UiButton42.RectPressColor = Color.FromArgb(CByte(80), CByte(80), CByte(80))
-        UiButton42.RectSelectedColor = Color.FromArgb(CByte(48), CByte(48), CByte(48))
-        UiButton42.Size = New Size(125, 30)
-        UiButton42.Style = Sunny.UI.UIStyle.Custom
-        UiButton42.TabIndex = 50
-        UiButton42.TabStop = False
-        UiButton42.Text = "更多教程"
-        UiButton42.TipsColor = Color.Gray
-        UiButton42.TipsFont = New Font("微软雅黑", 9F)
         ' 
         ' UiButton43
         ' 
@@ -1236,7 +1201,7 @@ Partial Class Form1
         Label47.Padding = New Padding(5, 0, 0, 0)
         Label47.Size = New Size(560, 48)
         Label47.TabIndex = 1
-        Label47.Text = "查阅全新更友好的本地 PDF 教程，或是观看操作视频以及查找其他人的教学"
+        Label47.Text = "查阅全新更友好的本地 PDF 教程，或是观看操作视频"
         Label47.TextAlign = ContentAlignment.MiddleLeft
         ' 
         ' UiButton36
@@ -3235,7 +3200,7 @@ Partial Class Form1
         ListView10.ForeColor = Color.FromArgb(CByte(224), CByte(224), CByte(224))
         ListView10.FullRowSelect = True
         ListView10.HeaderStyle = ColumnHeaderStyle.None
-        ListView10.Items.AddRange(New ListViewItem() {ListViewItem1, ListViewItem2, ListViewItem3, ListViewItem4, ListViewItem5, ListViewItem6, ListViewItem7, ListViewItem8, ListViewItem9, ListViewItem10})
+        ListView10.Items.AddRange(New ListViewItem() {ListViewItem20, ListViewItem21, ListViewItem22, ListViewItem23, ListViewItem24, ListViewItem25, ListViewItem26, ListViewItem27, ListViewItem28, ListViewItem29})
         ListView10.Location = New Point(10, 10)
         ListView10.Name = "ListView10"
         ListView10.OwnerDraw = True
@@ -3559,7 +3524,7 @@ Partial Class Form1
         ListView9.ForeColor = Color.FromArgb(CByte(224), CByte(224), CByte(224))
         ListView9.FullRowSelect = True
         ListView9.HeaderStyle = ColumnHeaderStyle.None
-        ListView9.Items.AddRange(New ListViewItem() {ListViewItem11, ListViewItem12, ListViewItem13, ListViewItem14, ListViewItem15, ListViewItem16, ListViewItem17, ListViewItem18, ListViewItem19})
+        ListView9.Items.AddRange(New ListViewItem() {ListViewItem1, ListViewItem2, ListViewItem3, ListViewItem4, ListViewItem5, ListViewItem6, ListViewItem7, ListViewItem8, ListViewItem9})
         ListView9.Location = New Point(10, 10)
         ListView9.Name = "ListView9"
         ListView9.OwnerDraw = True
@@ -8534,7 +8499,6 @@ Partial Class Form1
     Friend WithEvents Label41 As Label
     Friend WithEvents UiRadioButton9 As Sunny.UI.UIRadioButton
     Friend WithEvents UiRadioButton10 As Sunny.UI.UIRadioButton
-    Friend WithEvents UiButton42 As Sunny.UI.UIButton
     Friend WithEvents 暗黑文本框1 As 暗黑文本框
     Friend WithEvents 暗黑文本框2 As 暗黑文本框
     Friend WithEvents 暗黑文本框3 As 暗黑文本框

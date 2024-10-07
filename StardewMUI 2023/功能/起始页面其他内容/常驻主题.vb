@@ -19,7 +19,6 @@ Public Class 常驻主题
                                                     End Select
                                                 End Sub
         AddHandler Form1.UiButton68.Click, Async Sub(s, e) Await Launcher.LaunchUriAsync(New Uri("https://space.bilibili.com/319785096/channel/collectiondetail?sid=2903558"))
-        AddHandler Form1.UiButton42.Click, Sub(s, e) Return
 
         AddHandler Form1.UiButton64.Click, Sub(s, e)
                                                Dim a As New Form With {.ShowIcon = False, .ShowInTaskbar = False, .Text = "", .MaximizeBox = False, .MinimizeBox = False, .StartPosition = FormStartPosition.Manual, .AutoScaleMode = AutoScaleMode.Dpi}

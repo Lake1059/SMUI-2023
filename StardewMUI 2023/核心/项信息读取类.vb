@@ -174,9 +174,9 @@ jx1:
 
                             If 计算类型.已安装版本 Or 计算类型.全部 Then
                                 Dim p1 As String = Path.Combine(游戏路径, "Mods")
-                                Dim p2 As String = Path.Combine(p1, 安装规划数据(i).Value)
-                                Dim p3 As String = 清单文件对象.文件绝对路径集合(清单文件集合索引).Replace(Path.Combine(项路径, 安装规划数据(i).Value), "")
-                                Dim p4 As String = p2 & p3
+                                Dim p2 As String = 项路径.Replace("\\", "\")
+                                Dim p3 As String = 清单文件对象.文件绝对路径集合(清单文件集合索引).Replace("\\", "\")
+                                Dim p4 As String = p1 & "\" & p3.Replace(p2, "")
                                 If FileExists(p4) Then
                                     Dim b As String = ReadAllText(p4)
                                     Dim JsonData2 As JObject = JObject.Parse(b)
